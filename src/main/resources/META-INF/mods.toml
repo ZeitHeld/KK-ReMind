@@ -1,0 +1,14 @@
+modLoader="javafml"
+loaderVersion="[43,)"
+license="All rights reserved"
+issueTrackerURL=""
+[[mods]]
+modId="magicksaddon"
+version="${file.jarVersion}"
+displayName="Magicks Addon"
+displayURL=""
+credits="Credits to the Kingdom Keys Dev team for helping make this possible."
+authors="Xephiro"
+description='''
+A magic mod that adds on to what Kingdom Keys has with elements from other KH titles as well as various Final Fantasy titles.
+'''
