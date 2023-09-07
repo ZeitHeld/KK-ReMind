@@ -28,6 +28,7 @@ public class MagicksEntityEvents {
                     //Haste Tree
                 if (globalData.getHasteTicks() > 0) {
                     globalData.remHasteTicks(1);
+
                     // Haste
                     if (globalData.getHasteLevel() == 1) {
                         if(event.getEntity().tickCount % 20 == 0){
@@ -37,20 +38,23 @@ public class MagicksEntityEvents {
                         }
                     } else if (globalData.getHasteLevel() == 2) {
                             //Hastera
-                        if(event.getEntity().tickCount % 20 == 0) {
+                        if(event.getEntity().tickCount % 15 == 0) {
                             System.out.println("Hastera!");
                             player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Hastera", 0.75, AttributeModifier.Operation.MULTIPLY_BASE));
                             player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Hastera", 0.75, AttributeModifier.Operation.MULTIPLY_BASE));
                         }
                     } else if (globalData.getHasteLevel() == 3) {
                         //Hastega
-                        if (event.getEntity().tickCount % 20 == 0) {
+                        if (event.getEntity().tickCount % 10 == 0) {
                             System.out.println("Hastega!");
                             player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Hastega", 1, AttributeModifier.Operation.MULTIPLY_BASE));
                             player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Hastega", 1, AttributeModifier.Operation.MULTIPLY_BASE));
                         }
                     }
 
+                }else if(globalData.getHasteTicks() == 0){
+                    player.getAttribute(Attributes.ATTACK_SPEED).removeModifiers();
+                    player.getAttribute(Attributes.MOVEMENT_SPEED).removeModifiers();
                 }
                 //Slow
 
