@@ -4,5 +4,11 @@
   "magic.magicksaddon.magic_haste3.name": "Hastega",
   "magic.magicksaddon.magic_slow1.name": "Slow",
   "magic.magicksaddon.magic_slow2.name": "Slowra",
-  "magic.magicksaddon.magic_slow3.name": "Slowga"
+  "magic.magicksaddon.magic_slow3.name": "Slowga",
+  "magic.magicksaddon.magic_holy1.name": "Holy",
+  "magic.magicksaddon.magic_holy2.name": "Holyra",
+  "magic.magicksaddon.magic_holy3.name": "Holyga",
+  "magic.magicksaddon.magic_ruin1.name": "Ruin",
+  "magic.magicksaddon.magic_ruin2.name": "Ruinra",
+  "magic.magicksaddon.magic_ruin3.name": "Ruinga"
 }
