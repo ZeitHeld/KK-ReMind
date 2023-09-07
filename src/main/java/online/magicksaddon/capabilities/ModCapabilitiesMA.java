@@ -28,8 +28,7 @@ public class ModCapabilitiesMA {
 
     @SubscribeEvent
     public static void register(RegisterCapabilitiesEvent event) {
-        event.register(IGlobalCapabilitiesMA.class);
-        event.register(IPlayerCapabilitiesMA.class);
+
     }
 
     public static IPlayerCapabilitiesMA getPlayer(Player player) {

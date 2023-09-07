@@ -37,15 +37,18 @@ public class MagicksEntityEvents {
                         }
                     } else if (globalData.getHasteLevel() == 2) {
                             //Hastera
-                        System.out.println("Hastera!");
-                        player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Hastera", 1, AttributeModifier.Operation.MULTIPLY_BASE));
-                            player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Hastera", 1, AttributeModifier.Operation.MULTIPLY_BASE));
-
+                        if(event.getEntity().tickCount % 20 == 0) {
+                            System.out.println("Hastera!");
+                            player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Hastera", 0.75, AttributeModifier.Operation.MULTIPLY_BASE));
+                            player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Hastera", 0.75, AttributeModifier.Operation.MULTIPLY_BASE));
+                        }
                     } else if (globalData.getHasteLevel() == 3) {
-                            //Hastega
-                        System.out.println("Hastega!");
-                        player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Hastega", 1.5, AttributeModifier.Operation.MULTIPLY_BASE));
-                        player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Hastega", 1.5, AttributeModifier.Operation.MULTIPLY_BASE));
+                        //Hastega
+                        if (event.getEntity().tickCount % 20 == 0) {
+                            System.out.println("Hastega!");
+                            player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Hastega", 1, AttributeModifier.Operation.MULTIPLY_BASE));
+                            player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Hastega", 1, AttributeModifier.Operation.MULTIPLY_BASE));
+                        }
                     }
 
                 }
