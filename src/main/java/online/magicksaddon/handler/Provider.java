@@ -8,6 +8,7 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.common.util.LazyOptional;
 import online.magicksaddon.capabilities.GlobalCapabilitiesMA;
 import online.magicksaddon.capabilities.IGlobalCapabilitiesMA;
+import online.magicksaddon.capabilities.ModCapabilitiesMA;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,7 +21,7 @@ public class Provider implements ICapabilityProvider, ICapabilitySerializable<Co
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        return null;
+        return ModCapabilitiesMA.GLOBAL_CAPABILITIES.orEmpty(cap, LazyOptional.of(() -> instance));
     }
 
     @Override
