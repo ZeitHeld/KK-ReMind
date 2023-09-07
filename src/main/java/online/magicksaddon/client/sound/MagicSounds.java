@@ -1,4 +1,5 @@
 package online.magicksaddon.client.sound;
+import ca.weblite.objc.Proxy;
 import net.minecraftforge.registries.RegistryObject;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import net.minecraft.sounds.SoundEvent;
@@ -12,6 +13,6 @@ public class MagicSounds {
 
     public static final RegistryObject<SoundEvent>
         what =registerSound("what"),
-        haste1 = registerSound("haste1"),
-        slow1 = registerSound("slow1");
+        haste = registerSound("haste"),
+        slow = registerSound("slow");
 }

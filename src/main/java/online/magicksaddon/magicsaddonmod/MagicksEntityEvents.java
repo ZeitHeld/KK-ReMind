@@ -8,13 +8,15 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.magicksaddon.capabilities.GlobalCapabilitiesMA;
 import online.magicksaddon.capabilities.IGlobalCapabilitiesMA;
+import online.magicksaddon.capabilities.IPlayerCapabilitiesMA;
 import online.magicksaddon.capabilities.ModCapabilitiesMA;
 
 public class MagicksEntityEvents {
 
     private GlobalCapabilitiesMA globalData;
+    private boolean setHasteActive;
 
-//Haste
+    //Haste
     @SubscribeEvent
     public void onLivingUpdate(LivingEvent.LivingTickEvent event) {
         IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(event.getEntity());
@@ -25,39 +27,16 @@ public class MagicksEntityEvents {
             playerData = (IPlayerCapabilities) ModCapabilitiesMA.getPlayer(player);
 
             if (globalData != null) {
-                    //Haste Tree
+                //Haste
                 if (globalData.getHasteTicks() > 0) {
                     globalData.remHasteTicks(1);
-
-                    // Haste
-                    if (globalData.getHasteLevel() == 1) {
-                        if(event.getEntity().tickCount % 20 == 0){
-                            System.out.println(globalData.getHasteTicks());
-                            player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Attack Speed", 0.5, AttributeModifier.Operation.MULTIPLY_TOTAL));
-                            player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Movement Speed", 0.5, AttributeModifier.Operation.MULTIPLY_TOTAL));
-                        }
-                    } else if (globalData.getHasteLevel() == 2) {
-                            //Hastera
-                        if(event.getEntity().tickCount % 15 == 0) {
-                            System.out.println(globalData.getHasteTicks());
-                            player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Hastera", 0.75, AttributeModifier.Operation.MULTIPLY_BASE));
-                            player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Hastera", 0.75, AttributeModifier.Operation.MULTIPLY_BASE));
-                        }
-                    } else if (globalData.getHasteLevel() == 3) {
-                        //Hastega
-                        if (event.getEntity().tickCount % 10 == 0) {
-                            System.out.println(globalData.getHasteTicks());
-                            player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Hastega", 1, AttributeModifier.Operation.MULTIPLY_BASE));
-                            player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Hastega", 1, AttributeModifier.Operation.MULTIPLY_BASE));
-                        }
+                    System.out.println(globalData.getHasteLevel() + " " + globalData.getHasteTicks());
+                    if (globalData.getHasteTicks() <= 0){
+                        player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Haste", -(0.25+(0.25* globalData.getHasteLevel())), AttributeModifier.Operation.MULTIPLY_BASE));
+                        player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Haste", -(0.25+(0.25* globalData.getHasteLevel())), AttributeModifier.Operation.MULTIPLY_BASE));
                     }
-
-                }else if(globalData.getHasteTicks() == 0){
-                    player.getAttribute(Attributes.ATTACK_SPEED).removeModifiers();
-                    player.getAttribute(Attributes.MOVEMENT_SPEED).removeModifiers();
                 }
-                //Slow
-
+                // Slow
             }
         }
     }

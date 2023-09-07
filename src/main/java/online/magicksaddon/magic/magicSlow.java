@@ -20,7 +20,7 @@ public class magicSlow extends Magic {
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult) {
         System.out.println("Casting Spell");
-        player.level.playSound(null, player.blockPosition(), MagicSounds.slow1.get(), SoundSource.PLAYERS, 1F, 1F);
+        player.level.playSound(null, player.blockPosition(), MagicSounds.slow.get(), SoundSource.PLAYERS, 1F, 1F);
         IGlobalCapabilitiesMA globalData = (IGlobalCapabilitiesMA) ModCapabilities.getGlobal(player);
         int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * (4F + level / 2F) * globalData.getHasteTicks());
         globalData.setSlowTicks(time, level);
