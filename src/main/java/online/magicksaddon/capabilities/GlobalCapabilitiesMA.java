@@ -25,6 +25,8 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
         this.setHasteTicks(properties.getInt("haste_ticks"), level);
         this.setSlowTicks(properties.getInt("slow_ticks"));
     }
+
+
     private int hasteTicks, hasteLevel, slowTicks, slowLevel;
 
     @Override
@@ -77,6 +79,11 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
     }
 
     @Override
+    public void setSlowTicks(int time, int level) {
+
+    }
+
+    @Override
     public int getSlowTicks() {
 
         return slowTicks;
@@ -85,6 +92,7 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
     @Override
     public void setSlowTicks(int i) {
         slowTicks = i;
+        slowLevel = level;
     }
 
     @Override
