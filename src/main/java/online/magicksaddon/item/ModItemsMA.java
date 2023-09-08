@@ -22,6 +22,8 @@ public class ModItemsMA{
     public static final RegistryObject<Item>
         hasteSpell = ITEMS.register("haste_spell", () -> new MagicSpellItem(new Item.Properties().tab(ModCreativeModTabMA.MAGICKS_ADDON_TAB), MagicksAddonMod.MODID+":magic_haste")),
         slowSpell = ITEMS.register("slow_spell", () -> new MagicSpellItem(new Item.Properties().tab(ModCreativeModTabMA.MAGICKS_ADDON_TAB), MagicksAddonMod.MODID+":magic_slow"));
+        //holySpell = ITEMS.register("holy_spell", () -> new MagicSpellItem(new Item.Properties().tab(ModCreativeModTabMA.MAGICKS_ADDON_TAB), MagicksAddonMod.MODID+":magic_holy"));
+        //ruinSpell = ITEMS.register("ruin_spell", () -> new MagicSpellItem(new Item.Properties().tab(ModCreativeModTabMA.MAGICKS_ADDON_TAB), MagicksAddonMod.MODID+":magic_ruin"));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
