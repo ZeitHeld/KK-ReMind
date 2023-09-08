@@ -12,7 +12,6 @@ import online.magicksaddon.capabilities.ModCapabilitiesMA;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.magicksaddon.client.sound.MagicSounds;
 
-import static java.awt.Event.F1;
 
 public class magicHaste extends Magic {
 
@@ -29,7 +28,7 @@ public class magicHaste extends Magic {
         // Effect and Level Modifier
         player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
         player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
-        player.level.playSound(player, player.blockPosition(), MagicSounds.HASTE.get(), SoundSource.PLAYERS, F1, F1);
+        player.level.playSound(null, player.blockPosition(), MagicSounds.HASTE.get(), SoundSource.PLAYERS, 1F, 1F);
 
     }
 

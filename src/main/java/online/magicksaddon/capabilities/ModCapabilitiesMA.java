@@ -18,6 +18,7 @@ import online.magicksaddon.handler.Provider;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.kingdomkeys.kingdomkeys.capability.WorldCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
+import org.jetbrains.annotations.NotNull;
 
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModCapabilitiesMA {
@@ -41,8 +42,9 @@ public class ModCapabilitiesMA {
         return playerData.orElse(null);
     }
 
-    public static IWorldCapabilities getWorld(Level level) {
-        return null;
+    public static IWorldCapabilities getWorld(Level w) {
+        @NotNull LazyOptional<IWorldCapabilitiesMA> worldData = w.getCapability(ModCapabilitiesMA.WORLD_CAPABILITIES, null);
+        return (IWorldCapabilities) worldData.orElse(null);
     }
 
 

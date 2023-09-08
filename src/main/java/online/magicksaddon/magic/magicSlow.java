@@ -9,6 +9,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
@@ -32,9 +33,14 @@ public class magicSlow extends Magic {
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult) {
 
-        float radius = 3 + level;
+
+
+        float radius = 4 + level;
         List<Entity> list = player.level.getEntities(player, player.getBoundingBox().inflate(radius, radius, radius));
-        Party casterParty = ModCapabilitiesMA.getWorld(player.level).getPartyFromMember(player.getUUID());
+        Party casterParty = ModCapabilities.getWorld(player.level).getPartyFromMember(player.getUUID());
+        System.out.println("Slow Cast Radius: "+ radius);
+
+
 
         if (casterParty != null && !casterParty.getFriendlyFire()) {
             for (Member m : casterParty.getMembers()){
@@ -47,13 +53,15 @@ public class magicSlow extends Magic {
                 Entity e = (Entity) list.get(i);
                 if (e instanceof LivingEntity){
                     IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal((LivingEntity) e);
+
+                    System.out.println(e);
+
                     if (e instanceof Mob) {
-                        ((Mob)e).getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.5 + (0.25 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
-                        ((Mob)e).getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.5 + (0.25 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
+                        //((Mob)e).getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.25 + (0.25 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
 
                     }
-                    int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * (level * 0.5));
-                    globalData.setSlowTicks(time, level); //Slow
+                    int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * (level * 0.5 + 10));
+                    globalData.setSlowTicks(time); //Slow
                     globalData.setSlowCaster(player.getDisplayName().getString());
                     if (e instanceof ServerPlayer)
                         PacketHandler.sendTo(new SCSyncGlobalCapabilityPacket(), (ServerPlayer) e);
