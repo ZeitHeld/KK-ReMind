@@ -17,8 +17,8 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
 
     public void deserializeNBT(CompoundTag nbt) {
         CompoundTag properties = (CompoundTag) nbt;
-        this.setHasteTicks(properties.getInt("haste_ticks"), hasteLevel);
-        this.setSlowTicks(properties.getInt("slow_ticks"), slowLevel);
+        this.setHasteTicks(properties.getInt("haste_ticks"), properties.getInt("haste_level"));
+        this.setSlowTicks(properties.getInt("slow_ticks"), properties.getInt("slow_level"));
     }
 
 
@@ -67,12 +67,13 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
         return slowTicks;
     }
     @Override
-    public void setSlowTicks(int time, int level) {
-        slowTicks = time;
+    public void setSlowTicks(int i, int level) {
+        slowTicks = i;
         slowLevel = level;
     }
     @Override
     public void remSlowTicks(int ticks) {
+
         slowTicks -= ticks;
     }
 
@@ -80,10 +81,12 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
     public void setSlowCaster(String name) {
 
     }
-    // Not Slow
 
     @Override
     public void deserializeNBT() {
 
     }
+    // Not Slow
+
+
 }

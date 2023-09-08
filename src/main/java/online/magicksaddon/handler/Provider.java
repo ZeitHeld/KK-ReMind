@@ -13,11 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class Provider implements ICapabilityProvider, ICapabilitySerializable<CompoundTag> {
-    IGlobalCapabilitiesMA instance;
-
-    {
-        instance = new GlobalCapabilitiesMA();
-    }
+    IGlobalCapabilitiesMA instance = new GlobalCapabilitiesMA();
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {

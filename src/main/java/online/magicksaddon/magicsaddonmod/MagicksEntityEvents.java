@@ -7,9 +7,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
-import online.magicksaddon.capabilities.GlobalCapabilitiesMA;
 import online.magicksaddon.capabilities.IGlobalCapabilitiesMA;
-import online.magicksaddon.capabilities.IPlayerCapabilitiesMA;
 import online.magicksaddon.capabilities.ModCapabilitiesMA;
 
 public class MagicksEntityEvents {
@@ -21,7 +19,7 @@ public class MagicksEntityEvents {
     public void onLivingUpdate(LivingEvent.LivingTickEvent event) {
         IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(event.getEntity());
         IPlayerCapabilities playerData = null;
-        Player player = null;
+        Player player;
         if (event.getEntity() instanceof Player) {
             player = (Player) event.getEntity();
             playerData = (IPlayerCapabilities) ModCapabilitiesMA.getPlayer(player);
@@ -41,7 +39,7 @@ public class MagicksEntityEvents {
                     globalData.remSlowTicks(1);
                     System.out.println("Slow Level: "+ globalData.getSlowLevel() + " " + "Slow Ticks Remaining: " + globalData.getSlowTicks());
                     if (globalData.getSlowTicks() <= 0){
-                            event.getEntity().getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", 0.25 + (0.25 * globalData.getSlowLevel()), AttributeModifier.Operation.MULTIPLY_BASE));
+                        event.getEntity().getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", 0.25 + (0.25 * globalData.getSlowLevel()), AttributeModifier.Operation.MULTIPLY_BASE));
                     }
                 }
 

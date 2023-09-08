@@ -12,6 +12,6 @@ import online.magicksaddon.capabilities.IPlayerCapabilitiesMA;
 import online.magicksaddon.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.magic.ModMagicks;
 
-public class MagicSpellItemAddon{
+public class ModItemsMA{
 
 }

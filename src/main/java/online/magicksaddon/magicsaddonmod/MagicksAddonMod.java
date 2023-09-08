@@ -29,6 +29,7 @@ import online.magicksaddon.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.client.sound.MagicSounds;
 import online.magicksaddon.magic.ModMagicks;
 import online.magicksaddon.magic.magicHaste;
+import online.magicksaddon.item.ModItemsMA;
 import org.slf4j.Logger;
 
 import static online.kingdomkeys.kingdomkeys.KingdomKeys.*;
@@ -69,6 +70,7 @@ public class MagicksAddonMod
         ModMagicks.MAGIC.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(new ModCapabilitiesMA());
         MagicSounds.SOUNDS.register(modEventBus);
+        //ModItemsMA.ITEMS.register(modEventBus);
 
     }
 

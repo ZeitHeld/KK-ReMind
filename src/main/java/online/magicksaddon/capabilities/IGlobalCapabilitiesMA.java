@@ -25,6 +25,4 @@ public interface IGlobalCapabilitiesMA extends INBTSerializable<CompoundTag> {
 
 
     void deserializeNBT();
-
-
 }
