@@ -60,7 +60,7 @@ public class magicSlow extends Magic {
                         ((Mob)e).getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.1 + (0.1 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
 
                     }
-                    int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * (level * 0.5 + 10));
+                    int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * (level * 0.5));
                     globalData.setSlowTicks(time); //Slow
                     globalData.setSlowCaster(player.getDisplayName().getString());
                     if (e instanceof ServerPlayer)
