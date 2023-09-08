@@ -14,8 +14,7 @@ import online.magicksaddon.capabilities.ModCapabilitiesMA;
 
 public class MagicksEntityEvents {
 
-    private GlobalCapabilitiesMA globalData;
-    private boolean setHasteActive;
+
 
     //Haste
     @SubscribeEvent

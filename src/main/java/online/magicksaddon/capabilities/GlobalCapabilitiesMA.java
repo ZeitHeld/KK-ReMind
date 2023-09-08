@@ -11,7 +11,8 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
         CompoundTag storage = new CompoundTag();
         storage.putInt("haste_ticks", this.getHasteTicks());
         storage.putInt("haste_level", this.gethasteLevel());
-        storage.putInt("level", this.getLevel());
+        storage.putInt("slow_ticks", this.getSlowTicks());
+        storage.putInt("slow_level", this.getSlowLevel());
         return storage;
     }
 
@@ -22,24 +23,12 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
 
     public void deserializeNBT(CompoundTag nbt) {
         CompoundTag properties = (CompoundTag) nbt;
-        this.setHasteTicks(properties.getInt("haste_ticks"), level);
-        this.setSlowTicks(properties.getInt("slow_ticks"));
+        this.setHasteTicks(properties.getInt("haste_ticks"), hasteLevel);
+        this.setSlowTicks(properties.getInt("slow_ticks"), slowLevel);
     }
 
 
     private int hasteTicks, hasteLevel, slowTicks, slowLevel;
-
-    @Override
-    public void setLevel(int lvl) {
-
-        this.level = lvl;
-    }
-
-    @Override
-    public int getLevel() {
-
-        return level;
-    }
 
     //Haste
     public int getHasteLevel() {

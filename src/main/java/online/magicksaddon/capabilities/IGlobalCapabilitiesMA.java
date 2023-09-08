@@ -8,10 +8,6 @@ import net.minecraftforge.common.util.INBTSerializable;
 @AutoRegisterCapability
 public interface IGlobalCapabilitiesMA extends INBTSerializable<CompoundTag> {
 
-    void setLevel(int lvl);
-
-    int getLevel();
-
     //Haste
     int getHasteLevel();
     void setHasteLevel(int level);
