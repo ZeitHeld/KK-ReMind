@@ -22,7 +22,7 @@ public class magicHaste extends Magic {
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult) {
         IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(player);
-        int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * (level * 0.5));
+        int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * (level * 0.75));
         globalData.setHasteTicks(time, level);
         caster.swing(InteractionHand.MAIN_HAND);
         // Effect and Level Modifier
