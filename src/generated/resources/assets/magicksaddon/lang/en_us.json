@@ -1,4 +1,5 @@
 {
+  "itemGroup.magicksaddontab": "Kingdom Keys: Add-on Magic",
   "magic.magicksaddon.magic_haste1.name": "Haste",
   "magic.magicksaddon.magic_haste2.name": "Hastera",
   "magic.magicksaddon.magic_haste3.name": "Hastega",
@@ -10,5 +11,7 @@
   "magic.magicksaddon.magic_holy3.name": "Holyga",
   "magic.magicksaddon.magic_ruin1.name": "Ruin",
   "magic.magicksaddon.magic_ruin2.name": "Ruinra",
-  "magic.magicksaddon.magic_ruin3.name": "Ruinga"
+  "magic.magicksaddon.magic_ruin3.name": "Ruinga",
+  "item.magicksaddon.haste_spell": "Haste Spell",
+  "item.magicksaddon.slow_spell": "Slow Spell"
 }

@@ -45,5 +45,6 @@ public class MagicksEntityEvents {
                 }
              }
         }
+        // Next Spell
     }
 }

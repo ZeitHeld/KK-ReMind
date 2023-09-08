@@ -1,4 +1,4 @@
 package online.magicksaddon.magic;
 
-public class magicPearl {
+public class magicHoly {
 }

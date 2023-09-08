@@ -19,7 +19,7 @@ public class ModMagicks {
             HASTE = MAGIC.register("magic_haste", () -> new magicHaste(new ResourceLocation(MagicksAddonMod.MODID, "magic_haste"), true, 4, order++)),
             SLOW = MAGIC.register("magic_slow", () -> new magicSlow(new ResourceLocation(MagicksAddonMod.MODID, "magic_slow"), true, 4, order++));
             //RUIN = MAGIC.register(new ResourceLocation(Strings.Magic.magicRuin).getPath(), () -> new magicRuin(Strings.magicRuin, true, 4, order++));
-            //PEARL = MAGIC.register(new ResourceLocation(String.Magic.magicPearl).getPath(), () -> new magicPearl(Strings.Magic.magicPearl, true, 4, order++));
+            //PEARL = MAGIC.register(new ResourceLocation(String.Magic.magicHoly).getPath(), () -> new magicHoly(Strings.Magic.magicHoly, true, 4, order++));
 
     // Add more magic later...
 

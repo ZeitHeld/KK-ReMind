@@ -51,7 +51,7 @@ public class magicSlow extends Magic {
                     IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal((LivingEntity) e);
                     ((LivingEntity)e).getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.1 + (0.1 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
 
-                    int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * (level * 0.75));
+                    int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * (level * 0.75) + 5);
                     globalData.setSlowTicks(time, level); //Slow Time
                     globalData.setSlowCaster(player.getDisplayName().getString());
                     if (e instanceof ServerPlayer)

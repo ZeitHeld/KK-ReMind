@@ -40,6 +40,9 @@ public class MagicksAddonMod
 {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "magicksaddon";
+    public static final String MODNAME = "Magicks Addon Mod";
+    public static final String MODVER = "0.1 ALPHA";
+    public static final String MCVER = "1.19.2";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace
@@ -70,7 +73,8 @@ public class MagicksAddonMod
         ModMagicks.MAGIC.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(new ModCapabilitiesMA());
         MagicSounds.SOUNDS.register(modEventBus);
-        //ModItemsMA.ITEMS.register(modEventBus);
+        ModItemsMA.ITEMS.register(modEventBus);
+
 
     }
 
