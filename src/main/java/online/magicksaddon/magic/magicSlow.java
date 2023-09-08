@@ -60,7 +60,13 @@ public class magicSlow extends Magic {
 
                     }
                     int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * (level * 0.5));
-                    globalData.setSlowTicks(time,level); //Slow Time
+                    System.out.println(time);
+                    System.out.println(level);
+                    System.out.println(ModCapabilities.getPlayer(caster).getMaxMP());
+
+
+
+                    globalData.setSlowTicks(time, level); //Slow Time
                     globalData.setSlowCaster(player.getDisplayName().getString());
                     if (e instanceof ServerPlayer)
                         PacketHandler.sendTo(new SCSyncGlobalCapabilityPacket(), (ServerPlayer) e);

@@ -37,7 +37,7 @@ public class MagicksEntityEvents {
                     }
                 }
                 // Slow
-                if (globalData.getSlowTicks() > 0){
+                if (globalData.getSlowTicks() > 0) {
                     globalData.remSlowTicks(1);
                     System.out.println("Slow Level: "+ globalData.getSlowLevel() + " " + "Slow Ticks Remaining: " + globalData.getSlowTicks());
                         if (globalData.getSlowTicks() <= 0){

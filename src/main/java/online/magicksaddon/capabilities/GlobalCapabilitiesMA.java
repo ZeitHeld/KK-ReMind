@@ -6,19 +6,13 @@ import net.minecraft.nbt.CompoundTag;
 public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
 
 
-    private int level;
     public CompoundTag serializeNBT() {
         CompoundTag storage = new CompoundTag();
         storage.putInt("haste_ticks", this.getHasteTicks());
-        storage.putInt("haste_level", this.gethasteLevel());
+        storage.putInt("haste_level", this.getHasteLevel());
         storage.putInt("slow_ticks", this.getSlowTicks());
         storage.putInt("slow_level", this.getSlowLevel());
         return storage;
-    }
-
-    private int gethasteLevel() {
-
-        return hasteLevel;
     }
 
     public void deserializeNBT(CompoundTag nbt) {
@@ -69,7 +63,8 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
 
     @Override
     public void setSlowTicks(int time, int level) {
-
+        slowTicks = time;
+        slowLevel = level;
     }
 
     @Override
@@ -77,13 +72,6 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
 
         return slowTicks;
     }
-
-    @Override
-    public void setSlowTicks(int i) {
-        slowTicks = i;
-        slowLevel = level;
-    }
-
     @Override
     public void remSlowTicks(int ticks) {
         slowTicks -= ticks;
