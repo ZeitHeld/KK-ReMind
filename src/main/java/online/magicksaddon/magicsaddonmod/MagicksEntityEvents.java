@@ -1,5 +1,6 @@
 package online.magicksaddon.magicsaddonmod;
 
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -37,6 +38,23 @@ public class MagicksEntityEvents {
                     }
                 }
                 // Slow
+                if (globalData.getSlowTicks() > 0){
+                    globalData.remSlowTicks(1);
+                    System.out.println(globalData.getSlowLevel() + " " + globalData.getSlowTicks());
+
+                    if (event.getEntity() instanceof Mob){
+                        event.getEntity().getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.5 + (0.25 * globalData.getSlowLevel())), AttributeModifier.Operation.MULTIPLY_BASE));
+                        event.getEntity().getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.5 + (0.25 * globalData.getSlowLevel())), AttributeModifier.Operation.MULTIPLY_BASE));
+
+                        if (globalData.getSlowTicks() <= 0){
+                            event.getEntity().getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", 0.5 + (0.25 * globalData.getSlowLevel()), AttributeModifier.Operation.MULTIPLY_BASE));
+                            event.getEntity().getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Slow", 0.5 + (0.25 * globalData.getSlowLevel()), AttributeModifier.Operation.MULTIPLY_BASE));
+
+                        }
+                    }
+
+
+                }
             }
         }
     }

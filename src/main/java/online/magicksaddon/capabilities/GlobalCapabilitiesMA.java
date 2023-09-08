@@ -7,8 +7,6 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
 
 
     private int level;
-    private int flatTicks;
-
     public CompoundTag serializeNBT() {
         CompoundTag storage = new CompoundTag();
         storage.putInt("haste_ticks", this.getHasteTicks());
@@ -86,6 +84,11 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
 
     @Override
     public void remSlowTicks(int ticks) {
+
+    }
+
+    @Override
+    public void setSlowCaster(String name) {
 
     }
 

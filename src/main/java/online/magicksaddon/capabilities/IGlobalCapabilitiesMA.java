@@ -23,8 +23,9 @@ public interface IGlobalCapabilitiesMA extends INBTSerializable<CompoundTag> {
     int getSlowLevel();
     void setSlowLevel(int level);
     int getSlowTicks();
-    void setSlowTicks(int i, int level);
+    void setSlowTicks(int time, int level);
     void remSlowTicks(int ticks);
+    void setSlowCaster(String name);
 
 
     void deserializeNBT();
