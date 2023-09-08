@@ -1,12 +1,12 @@
 {
-  "haste1": {
+  "haste": {
     "sounds": [
-      "magicksaddon:haste1"
+      "magicksaddon:haste"
     ]
   },
-    "slow1": {
+    "slow": {
       "sounds": [
-        "magicksaddon:slow1"
+        "magicksaddon:slow"
       ]
     }
   }
