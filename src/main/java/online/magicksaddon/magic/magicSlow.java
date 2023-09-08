@@ -38,9 +38,6 @@ public class magicSlow extends Magic {
         float radius = 2 + level;
         List<Entity> list = player.level.getEntities(player, player.getBoundingBox().inflate(radius, radius, radius));
         Party casterParty = ModCapabilities.getWorld(player.level).getPartyFromMember(player.getUUID());
-        //System.out.println("Slow Cast Radius: "+ radius);
-
-
         if (casterParty != null && !casterParty.getFriendlyFire()) {
             for (Member m : casterParty.getMembers()){
                 list.remove(player.level.getPlayerByUUID(m.getUUID()));
@@ -52,20 +49,9 @@ public class magicSlow extends Magic {
                 Entity e = (Entity) list.get(i);
                 if (e instanceof LivingEntity){
                     IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal((LivingEntity) e);
+                    ((LivingEntity)e).getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.1 + (0.1 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
 
-                    System.out.println(e);
-
-                    if (e instanceof Mob) {
-                        ((Mob)e).getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.1 + (0.1 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
-
-                    }
-                    int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * (level * 0.5));
-                    System.out.println(time);
-                    System.out.println(level);
-                    System.out.println(ModCapabilities.getPlayer(caster).getMaxMP());
-
-
-
+                    int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * (level * 0.75));
                     globalData.setSlowTicks(time, level); //Slow Time
                     globalData.setSlowCaster(player.getDisplayName().getString());
                     if (e instanceof ServerPlayer)
