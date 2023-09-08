@@ -50,7 +50,7 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
         hasteTicks -= ticks;
     }
 
-    @Override
+    //Slow
     public int getSlowLevel() {
 
         return slowLevel;
@@ -62,15 +62,14 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
     }
 
     @Override
-    public void setSlowTicks(int time, int level) {
-        slowTicks = time;
-        slowLevel = level;
-    }
-
-    @Override
     public int getSlowTicks() {
 
         return slowTicks;
+    }
+    @Override
+    public void setSlowTicks(int time, int level) {
+        slowTicks = time;
+        slowLevel = level;
     }
     @Override
     public void remSlowTicks(int ticks) {
@@ -81,6 +80,7 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
     public void setSlowCaster(String name) {
 
     }
+    // Not Slow
 
     @Override
     public void deserializeNBT() {
