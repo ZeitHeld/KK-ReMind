@@ -29,7 +29,7 @@ public class magicHaste extends Magic {
         // Effect and Level Modifier
         player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
         player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
-        player.level.playSound(player, player.blockPosition(), MagicSounds.HASTE.get(), SoundSource.PLAYERS, F1, F1);
+        player.level.playSound(null, player.getX(),player.getY(),player.getZ(), MagicSounds.HASTE.get(), SoundSource.PLAYERS, F1, F1);
 
     }
 

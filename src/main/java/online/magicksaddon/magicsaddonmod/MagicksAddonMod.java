@@ -26,6 +26,7 @@ import online.kingdomkeys.kingdomkeys.KingdomKeys;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.kingdomkeys.kingdomkeys.magic.ModMagic;
 import online.magicksaddon.capabilities.ModCapabilitiesMA;
+import online.magicksaddon.item.ModItemsMA;
 import online.magicksaddon.magic.ModMagicks;
 import online.magicksaddon.magic.magicHaste;
 import org.slf4j.Logger;
@@ -36,20 +37,11 @@ import static online.kingdomkeys.kingdomkeys.KingdomKeys.*;
 @Mod(MagicksAddonMod.MODID)
 public class MagicksAddonMod
 {
-    // Define mod id in a common place for everything to reference
-    public static final String MODID = "magicksaddon";
-    // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
-    // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace
+    public static final String MODID = "magicksaddon";private static final Logger LOGGER = LogUtils.getLogger();
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
-    // Create a Deferred Register to hold Items which will all be registered under the "examplemod" namespace
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-
-    // Creates a new Block with the id "examplemod:example_block", combining the namespace and path
     public static final RegistryObject<Block> EXAMPLE_BLOCK = BLOCKS.register("example_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE)));
-    // Creates a new BlockItem with the id "examplemod:example_block", combining the namespace and path
     public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block", () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
-
     public MagicksAddonMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -67,6 +59,7 @@ public class MagicksAddonMod
         MinecraftForge.EVENT_BUS.register(new MagicksEntityEvents());
         ModMagicks.MAGIC.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(new ModCapabilitiesMA());
+        ModItemsMA.register(modEventBus);
 
     }
 

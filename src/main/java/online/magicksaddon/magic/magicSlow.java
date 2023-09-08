@@ -34,7 +34,7 @@ public class magicSlow extends Magic {
 
         float radius = 3 + level;
         List<Entity> list = player.level.getEntities(player, player.getBoundingBox().inflate(radius, radius, radius));
-        Party casterParty = ModCapabilitiesMA.getWorld(player.level).getPartyFromMember(player.getUUID());
+        Party casterParty = ModCapabilities.getWorld(player.level).getPartyFromMember(player.getUUID());
 
         if (casterParty != null && !casterParty.getFriendlyFire()) {
             for (Member m : casterParty.getMembers()){
