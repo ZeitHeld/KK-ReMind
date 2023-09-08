@@ -24,11 +24,16 @@ public class ModCapabilitiesMA {
 
     public static final Capability<IGlobalCapabilitiesMA> GLOBAL_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
     public static final Capability<IPlayerCapabilitiesMA> PLAYER_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
-    //public static final Capability<IWorldCapabilitiesMA> WORLD_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<IWorldCapabilitiesMA> WORLD_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
 
     public static IGlobalCapabilitiesMA getGlobal(LivingEntity e) {
         LazyOptional<IGlobalCapabilitiesMA> globalData = e.getCapability(ModCapabilitiesMA.GLOBAL_CAPABILITIES, null);
         return globalData.orElse(null);
+    }
+
+    @SubscribeEvent
+    public static void register(RegisterCapabilitiesEvent event) {
+
     }
 
     public static IPlayerCapabilitiesMA getPlayer(Player player) {
@@ -36,15 +41,7 @@ public class ModCapabilitiesMA {
         return playerData.orElse(null);
     }
 
-    @SubscribeEvent
-    public static void register(RegisterCapabilitiesEvent event) {
-        event.register(IPlayerCapabilitiesMA.class);
-        event.register(IGlobalCapabilitiesMA.class);
-        event.register(IWorldCapabilitiesMA.class);
-
-    }
-
-    public static IWorldCapabilitiesMA getWorld(Level level) {
+    public static IWorldCapabilities getWorld(Level level) {
         return null;
     }
 
