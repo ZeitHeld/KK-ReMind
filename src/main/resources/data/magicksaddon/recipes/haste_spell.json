@@ -6,23 +6,23 @@
     " P "
   ],
   "key": {
-      "M": {
-        "item": "kingdomkeys:spellfire"
+    "M": {
+      "item": "kingdomkeys:spellfire"
+     },
+    "S": {
+      "item": "minecraft:sugar"
       },
-      "S": {
-        "item": "minecraft:sugar"
+    "P": {
+      "item": "minecraft:powered_rail"
       },
-      "L": {
-        "item": "minecraft:leather_boots"
+    "R": {
+      "item": "minecraft:redstone"
       },
-      "P": {
-        "item": "minecraft:powered_rail"
-      },
-      "R": {
-        "item": "minecraft:redstone"
-      },
+    "L": {
+      "item": "minecraft:leather_boots"
+      }
+    },
       "result": {
         "item": "magicksaddon:haste_spell"
       }
   }
-}
