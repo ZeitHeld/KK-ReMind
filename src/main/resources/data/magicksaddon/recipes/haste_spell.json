@@ -1,31 +1,28 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "0&0",
-    "@#!",
-    "0$0"
+    " R ",
+    "LMS",
+    " P "
   ],
   "key": {
-    "0": {
-      "item": "minecraft:feather"
-    },
-    "#": {
-      "item": "kingdomkeys:spellfire"
-    },
-    "!": {
-      "item": "minecraft:sugar"
-    },
-    "@": {
-      "item": "minecraft:leather_boots"
-    },
-    "$": {
-      "item": "minecraft:powered_rail"
-    },
-    "&": {
-      "item": "minecraft:redstone"
-    },
-    "result": {
-      "item": "magicksaddon:haste_spell"
-    }
+      "M": {
+        "item": "kingdomkeys:spellfire"
+      },
+      "S": {
+        "item": "minecraft:sugar"
+      },
+      "L": {
+        "item": "minecraft:leather_boots"
+      },
+      "P": {
+        "item": "minecraft:powered_rail"
+      },
+      "R": {
+        "item": "minecraft:redstone"
+      },
+      "result": {
+        "item": "magicksaddon:haste_spell"
+      }
   }
 }
