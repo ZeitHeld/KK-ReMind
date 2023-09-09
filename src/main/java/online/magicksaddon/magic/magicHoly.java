@@ -26,16 +26,16 @@ public class magicHoly extends Magic {
 
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult){
-        IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(player);
+        //IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(player);
         float dmgMult = getDamageMult(level);
         System.out.println("Kek");
-        
+
         switch(level) {
 
             case 0:
                 ThrowableProjectile blizzard = new BlizzardEntity(player.level, player, dmgMult);
                 player.level.addFreshEntity(blizzard);
-                blizzard.shootFromRotation(player, player.getXRot(),player.getYRot(), 0,2F,0);
+                blizzard.shootFromRotation(player, player.getXRot(),player.getYRot(), 0,1F,0);
                 // sound line when I find the sound I want
                 break;
             case 1: // -ra will have 2 extra projectiles.
@@ -46,9 +46,9 @@ public class magicHoly extends Magic {
                     player.level.addFreshEntity(blizzard1);
                     player.level.addFreshEntity(blizzard2);
                     player.level.addFreshEntity(blizzard3);
-                    blizzard1.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2F, i*3);
-                    blizzard2.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2F, i*3);
-                    blizzard3.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2F, i*3);
+                    blizzard1.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1F, 0);
+                    blizzard2.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1F, 0);
+                    blizzard3.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1F, 0);
                     break;
                 }
             case 2: //-ga will have 5 total projectiles
