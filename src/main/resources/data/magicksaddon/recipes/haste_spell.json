@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "0&0",
+    "@#!",
+    "0$0"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:feather"
+    },
+    "#": {
+      "item": "kingdomkeys:spellfire"
+    },
+    "!": {
+      "item": "minecraft:sugar"
+    },
+    "@": {
+      "item": "minecraft:leather_boots"
+    },
+    "$": {
+      "item": "minecraft:powered_rail"
+    },
+    "&": {
+      "item": "minecraft:redstone"
+    },
+    "result": {
+      "item": "magicksaddon:haste_spell"
+    }
+  }
+}
