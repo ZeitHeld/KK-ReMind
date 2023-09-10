@@ -1,4 +1,4 @@
-package online.magicksaddon.magic;
+package online.magicksaddon.magicsaddonmod.magic;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
@@ -7,10 +7,10 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
-import online.magicksaddon.capabilities.IGlobalCapabilitiesMA;
-import online.magicksaddon.capabilities.ModCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
-import online.magicksaddon.client.sound.MagicSounds;
+import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 
 
 public class magicHaste extends Magic {
@@ -22,7 +22,7 @@ public class magicHaste extends Magic {
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult) {
         IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(player);
-        int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * (level * 0.75) + 10);
+        int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * ((level * 0.75) + 5) + 5);
         globalData.setHasteTicks(time, level);
         caster.swing(InteractionHand.MAIN_HAND);
         // Effect and Level Modifier

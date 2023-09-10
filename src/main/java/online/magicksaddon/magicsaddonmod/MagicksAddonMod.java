@@ -2,7 +2,6 @@ package online.magicksaddon.magicsaddonmod;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -22,17 +21,13 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import online.kingdomkeys.kingdomkeys.KingdomKeys;
-import online.kingdomkeys.kingdomkeys.magic.Magic;
-import online.kingdomkeys.kingdomkeys.magic.ModMagic;
-import online.magicksaddon.capabilities.ModCapabilitiesMA;
-import online.magicksaddon.client.sound.MagicSounds;
-import online.magicksaddon.magic.ModMagicks;
-import online.magicksaddon.magic.magicHaste;
-import online.magicksaddon.item.ModItemsMA;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.handler.MagicksEntityEvents;
+import online.magicksaddon.magicsaddonmod.magic.ModMagicks;
+import online.magicksaddon.magicsaddonmod.item.ModItemsMA;
 import org.slf4j.Logger;
-
-import static online.kingdomkeys.kingdomkeys.KingdomKeys.*;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MagicksAddonMod.MODID)
@@ -74,6 +69,7 @@ public class MagicksAddonMod
         MinecraftForge.EVENT_BUS.register(new ModCapabilitiesMA());
         MagicSounds.SOUNDS.register(modEventBus);
         ModItemsMA.ITEMS.register(modEventBus);
+        ModEntitiesMA.ENTITIES.register(modEventBus);
 
 
     }

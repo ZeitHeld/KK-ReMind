@@ -1,4 +1,4 @@
-package online.magicksaddon.client.sound;
+package online.magicksaddon.magicsaddonmod.client.sound;
 import ca.weblite.objc.Proxy;
 import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.resources.ResourceLocation;

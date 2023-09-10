@@ -1,10 +1,9 @@
-package online.magicksaddon.magic;
+package online.magicksaddon.magicsaddonmod.magic;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import online.kingdomkeys.kingdomkeys.KingdomKeys;
-import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 

@@ -1,4 +1,4 @@
-package online.magicksaddon.capabilities;
+package online.magicksaddon.magicsaddonmod.capabilities;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.util.INBTSerializable;

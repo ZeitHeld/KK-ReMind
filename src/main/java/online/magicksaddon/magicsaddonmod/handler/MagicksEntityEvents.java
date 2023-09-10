@@ -1,14 +1,13 @@
-package online.magicksaddon.magicsaddonmod;
+package online.magicksaddon.magicsaddonmod.handler;
 
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
-import online.magicksaddon.capabilities.IGlobalCapabilitiesMA;
-import online.magicksaddon.capabilities.ModCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 
 public class MagicksEntityEvents {
 

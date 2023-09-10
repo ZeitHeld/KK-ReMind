@@ -1,4 +1,4 @@
-package online.magicksaddon.capabilities;
+package online.magicksaddon.magicsaddonmod.capabilities;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -14,10 +14,8 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
-import online.magicksaddon.handler.Provider;
+import online.magicksaddon.magicsaddonmod.handler.Provider;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
-import online.kingdomkeys.kingdomkeys.capability.WorldCapabilities;
-import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import org.jetbrains.annotations.NotNull;
 
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)

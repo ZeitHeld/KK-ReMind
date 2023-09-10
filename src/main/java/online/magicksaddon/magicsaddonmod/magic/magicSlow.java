@@ -1,22 +1,20 @@
-package online.magicksaddon.magic;
+package online.magicksaddon.magicsaddonmod.magic;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncGlobalCapabilityPacket;
-import online.magicksaddon.capabilities.IGlobalCapabilitiesMA;
-import online.magicksaddon.capabilities.ModCapabilitiesMA;
-import online.magicksaddon.client.sound.MagicSounds;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import net.minecraft.world.entity.Entity;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.lib.Party.Member;
@@ -51,7 +49,7 @@ public class magicSlow extends Magic {
                     IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal((LivingEntity) e);
                     ((LivingEntity)e).getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.1 + (0.1 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
 
-                    int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * (level * 0.75) + 10);
+                    int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * ((level * 0.75) + 5) + 5);
                     globalData.setSlowTicks(time, level); //Slow Time
                     globalData.setSlowCaster(player.getDisplayName().getString());
                     if (e instanceof ServerPlayer)

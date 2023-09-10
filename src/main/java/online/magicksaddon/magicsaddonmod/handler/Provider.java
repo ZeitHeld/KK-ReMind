@@ -1,4 +1,4 @@
-package online.magicksaddon.handler;
+package online.magicksaddon.magicsaddonmod.handler;
 
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -6,9 +6,9 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.common.util.LazyOptional;
-import online.magicksaddon.capabilities.GlobalCapabilitiesMA;
-import online.magicksaddon.capabilities.IGlobalCapabilitiesMA;
-import online.magicksaddon.capabilities.ModCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.capabilities.GlobalCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

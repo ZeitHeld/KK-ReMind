@@ -1,4 +1,4 @@
-package online.magicksaddon.capabilities;
+package online.magicksaddon.magicsaddonmod.capabilities;
 
 import java.util.List;
 import java.util.UUID;

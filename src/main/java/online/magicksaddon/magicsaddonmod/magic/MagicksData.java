@@ -1,4 +1,4 @@
-package online.magicksaddon.magic;
+package online.magicksaddon.magicsaddonmod.magic;
 
 /**
  * Data loaded from Datapacks for Drive Forms
