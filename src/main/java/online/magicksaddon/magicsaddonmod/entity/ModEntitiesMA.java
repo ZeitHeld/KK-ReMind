@@ -10,6 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.entity.magic.holyEntity;
+import online.magicksaddon.magicsaddonmod.entity.magic.ruinEntity;
 
 import static net.minecraftforge.registries.ForgeRegistries.ENTITY_TYPES;
 import static online.kingdomkeys.kingdomkeys.entity.ModEntities.createEntityType;
@@ -18,4 +19,5 @@ public class ModEntitiesMA {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ENTITY_TYPES, MagicksAddonMod.MODID);
 
     public static final RegistryObject<EntityType<holyEntity>> TYPE_HOLY = createEntityType(holyEntity::create, holyEntity::new, MobCategory.MISC,"entity_holy", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<ruinEntity>> TYPE_RUIN = createEntityType(ruinEntity::create, ruinEntity::new, MobCategory.MISC,"entity_ruin", 0.5F, 0.5F);
 }

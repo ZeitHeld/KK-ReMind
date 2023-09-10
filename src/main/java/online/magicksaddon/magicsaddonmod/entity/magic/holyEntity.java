@@ -100,4 +100,8 @@ public class holyEntity extends ThrowableProjectile {
             }
 
         }
+
+    public static <T extends Entity> T create(EntityType<T> tEntityType, Level level) {
+        return null;
+    }
 }
