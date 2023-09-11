@@ -15,8 +15,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.client.model.HolyModel;
 import online.magicksaddon.magicsaddonmod.entity.magic.HolyEntity;
-//import online.magicksaddon.magicksaddon.client.model.HolyModel;
 import online.magicksaddon.magicsaddonmod.entity.magic.ruinEntity;
 //import online.magicksaddon.magicksaddon.client.model.RuinModel;
 
@@ -42,7 +42,10 @@ public class ModEntitiesMA {
                 .sized(sizeX, sizeY)
                 .build(name));
     }
-
+    @OnlyIn(Dist.CLIENT)
+    public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(HolyModel.LAYER_LOCATION, HolyModel::createBodyLayer);
+    }
 
     @OnlyIn(Dist.CLIENT)
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
