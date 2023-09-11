@@ -36,7 +36,7 @@ import java.util.List;
 
 public class HolyEntity extends ThrowableProjectile {
 
-    int maxTicks = 100;
+    int maxTicks = 150;
     Player player;
     String caster;
     float dmgMult = 1;
@@ -107,8 +107,8 @@ public class HolyEntity extends ThrowableProjectile {
             double z2 = cz + (radius * Math.sin(Math.toRadians(-a)));
 
             if(!level.isClientSide) {
-                ((ServerLevel) level).sendParticles(ParticleTypes.DRAGON_BREATH, x,  (cy+0.5) - a / 1080D, z, 1, 0,0,0, 0.5);
-                ((ServerLevel) level).sendParticles(ParticleTypes.WHITE_ASH, x2, (cy+0.5) - a / 1080D, z2, 1, 0,0,0, 0.5);
+                ((ServerLevel) level).sendParticles(ParticleTypes.END_ROD, x,  2, z, 1, 0,0,0, 0.5);
+                ((ServerLevel) level).sendParticles(ParticleTypes.WHITE_ASH, x2, 2, z2, 1, 0,0,0, 0.5);
             }
 
             List<Entity> list = this.level.getEntities(player, player.getBoundingBox().inflate(radius), Entity::isAlive);
@@ -124,20 +124,10 @@ public class HolyEntity extends ThrowableProjectile {
             }
 
         } else { //Projectile
-            shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2F, 0);
-            player.level.playSound(null, player.blockPosition(), SoundEvents.BEACON_AMBIENT, SoundSource.PLAYERS, 1F, 1F);
 
             hurtMarked = true;
-            float radius = 0.2F;
-            for (int t = 1; t < 360; t += 30) {
-                for (int s = 1; s < 360 ; s += 30) {
-                    double x = getX() + (radius * Math.cos(Math.toRadians(s)) * Math.sin(Math.toRadians(t)));
-                    double z = getZ() + (radius * Math.sin(Math.toRadians(s)) * Math.sin(Math.toRadians(t)));
-                    double y = getY() + (radius * Math.cos(Math.toRadians(t)));
-                    if(!level.isClientSide)
-                        ((ServerLevel) level).sendParticles(ParticleTypes.WHITE_ASH, x, y, z, 1, 0,0,0, 0.5);
-                }
-            }
+                        if(!level.isClientSide)
+                        ((ServerLevel) level).sendParticles(ParticleTypes.CLOUD, getX(), getY(), getZ(), 1, 0,0,0, 0.5);
 
         }
 

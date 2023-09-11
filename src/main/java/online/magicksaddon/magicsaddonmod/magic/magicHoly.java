@@ -9,6 +9,7 @@ import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.entity.magic.HolyEntity;
+import online.magicksaddon.magicsaddonmod.client.model.HolyModel;
 //Deleting After Testing and custom entities are made
 
 
@@ -26,89 +27,105 @@ public class magicHoly extends Magic {
         dmgMult *= fullMPBlastMult;
         System.out.println(dmgMult);
 
+
         if (level == 0) {
             System.out.println(level);
             for(int i = -1; i <1; i++) {
-                ThrowableProjectile holy = new HolyEntity(player.level, player, dmgMult);
+                HolyEntity holy = new HolyEntity(player.level, player, dmgMult);
+                holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
                 holy.shootFromRotation(player, player.getXRot(), player.getYRot()-2, 0, 1F, 0);
                 // sound line when I find the sound I want
             }
                 for (int i = -1; i < 1; i++) {
-                    ThrowableProjectile holy = new HolyEntity(player.level, player, dmgMult);
+                    HolyEntity holy = new HolyEntity(player.level, player, dmgMult);
+                    holy.setCaster(player.getDisplayName().getString());
                     player.level.addFreshEntity(holy);
-                    holy.shootFromRotation(player, player.getXRot(), player.getYRot()+2, 0, 1F, 0);
+                    holy.shootFromRotation(player, player.getXRot(), player.getYRot()+2, 0, 0.75F, 0);
                     // sound line when I find the sound I want
                 }
                 for (int i = -1; i < 0; i++) {
-                    ThrowableProjectile holy = new HolyEntity(player.level, player, dmgMult);
+                    HolyEntity holy = new HolyEntity(player.level, player, dmgMult);
+                    holy.setCaster(player.getDisplayName().getString());
                     player.level.addFreshEntity(holy);
-                    holy.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1F, 0);
+                    holy.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 0.75F, 0);
                     // sound line when I find the sound I want
                 }
         } else if (level == 1) {
             System.out.println(level);
             for(int i = -1; i < 2; i++) {
-                ThrowableProjectile holy = new HolyEntity(player.level, player, dmgMult * 0.25F);
+                HolyEntity holy = new HolyEntity(player.level, player, dmgMult * 0.25F);
+                holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
                 holy.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1F, 0);
                 }
             for(int i = -1; i < 1; i++) {
-                ThrowableProjectile holy = new HolyEntity(player.level, player, dmgMult * 0.25F);
+                HolyEntity holy = new HolyEntity(player.level, player, dmgMult * 0.25F);
+                holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
-                holy.shootFromRotation(player, player.getXRot(), player.getYRot()+4, 0, 1F, 0);
+                holy.shootFromRotation(player, player.getXRot(), player.getYRot()+4, 0, 0.75F, 0);
                 }
             for(int i = -1; i < 1; i++) {
-                ThrowableProjectile holy = new HolyEntity(player.level, player, dmgMult * 0.25F);
+                HolyEntity holy = new HolyEntity(player.level, player, dmgMult * 0.25F);
+                holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
-                holy.shootFromRotation(player, player.getXRot(), player.getYRot()+2, 0, 1F, 0);
+                holy.shootFromRotation(player, player.getXRot(), player.getYRot()+2, 0, 0.75F, 0);
                 }
             for(int i = -1; i < 1; i++) {
-                ThrowableProjectile holy = new HolyEntity(player.level, player, dmgMult * 0.25F);
+                HolyEntity holy = new HolyEntity(player.level, player, dmgMult * 0.25F);
+                holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
-                holy.shootFromRotation(player, player.getXRot(), player.getYRot()-4, 0, 1F, 0);
+                holy.shootFromRotation(player, player.getXRot(), player.getYRot()-4, 0, 0.65F, 0);
                 }
             for(int i = -1; i < 1; i++) {
-                ThrowableProjectile holy = new HolyEntity(player.level, player, dmgMult * 0.25F);
+                HolyEntity holy = new HolyEntity(player.level, player, dmgMult * 0.25F);
+                holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
-                holy.shootFromRotation(player, player.getXRot(), player.getYRot()-2, 0, 1F, 0);
+                holy.shootFromRotation(player, player.getXRot(), player.getYRot()-2, 0, 0.65F, 0);
                 }
         } else if (level == 2) {
             System.out.println(level);
             for(int i = -1; i < 2; i++) {
-                ThrowableProjectile holy = new HolyEntity(player.level, player, dmgMult * 0.5F);
+                HolyEntity holy = new HolyEntity(player.level, player, dmgMult * 0.5F);
+                holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
                 holy.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1F, 0);
             }
             for(int i = -1; i < 1; i++) {
-                ThrowableProjectile holy = new HolyEntity(player.level, player, dmgMult * 0.5F);
+                HolyEntity holy = new HolyEntity(player.level, player, dmgMult * 0.5F);
+                holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
-                holy.shootFromRotation(player, player.getXRot(), player.getYRot()+4, 0, 1F, 0);
+                holy.shootFromRotation(player, player.getXRot(), player.getYRot()+4, 0, 0.75F, 0);
             }
             for(int i = -1; i < 1; i++) {
-                ThrowableProjectile holy = new HolyEntity(player.level, player, dmgMult * 0.5F);
+                HolyEntity holy = new HolyEntity(player.level, player, dmgMult * 0.5F);
+                holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
-                holy.shootFromRotation(player, player.getXRot(), player.getYRot()-4, 0, 1F, 0);
+                holy.shootFromRotation(player, player.getXRot(), player.getYRot()-4, 0, 0.75F, 0);
             }
             for(int i = -1; i < 1; i++) {
-                ThrowableProjectile holy = new HolyEntity(player.level, player, dmgMult * 0.5F);
+                HolyEntity holy = new HolyEntity(player.level, player, dmgMult * 0.5F);
+                holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
-                holy.shootFromRotation(player, player.getXRot(), player.getYRot()-8, 0, 1F, 0);
+                holy.shootFromRotation(player, player.getXRot(), player.getYRot()-8, 0, 0.65F, 0);
             }
             for(int i = -1; i < 1; i++) {
-                ThrowableProjectile holy = new HolyEntity(player.level, player, dmgMult * 0.5F);
+                HolyEntity holy = new HolyEntity(player.level, player, dmgMult * 0.5F);
+                holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
-                holy.shootFromRotation(player, player.getXRot(), player.getYRot()+8, 0, 1F, 0);
+                holy.shootFromRotation(player, player.getXRot(), player.getYRot()+8, 0, 0.65F, 0);
             }
             for(int i = -1; i < 1; i++) {
-                ThrowableProjectile holy = new HolyEntity(player.level, player, dmgMult * 0.5F);
+                HolyEntity holy = new HolyEntity(player.level, player, dmgMult * 0.5F);
+                holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
-                holy.shootFromRotation(player, player.getXRot(), player.getYRot()+12, 0, 1F, 0);
+                holy.shootFromRotation(player, player.getXRot(), player.getYRot()+12, 0, 0.55F, 0);
             }
             for(int i = -1; i < 1; i++) {
-                ThrowableProjectile holy = new HolyEntity(player.level, player, dmgMult * 0.5F);
+                HolyEntity holy = new HolyEntity(player.level, player, dmgMult * 0.5F);
+                holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
-                holy.shootFromRotation(player, player.getXRot(), player.getYRot()-12, 0, 1F, 0);
+                holy.shootFromRotation(player, player.getXRot(), player.getYRot()-12, 0, 0.55F, 0);
             }
         }
     }
