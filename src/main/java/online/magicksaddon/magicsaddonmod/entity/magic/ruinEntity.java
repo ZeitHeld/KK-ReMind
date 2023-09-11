@@ -28,7 +28,11 @@ public class ruinEntity extends ThrowableProjectile {
     Player player;
     String caster;
     float dmgMult = 1;
-    
+
+    protected ruinEntity(EntityType<? extends ThrowableProjectile> pEntityType, Level pLevel) {
+        super(pEntityType, pLevel);
+    }
+
     @Override
     protected void defineSynchedData() {
 
