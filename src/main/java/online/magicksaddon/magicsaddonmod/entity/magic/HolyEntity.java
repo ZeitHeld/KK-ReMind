@@ -107,8 +107,8 @@ public class HolyEntity extends ThrowableProjectile {
             double z2 = cz + (radius * Math.sin(Math.toRadians(-a)));
 
             if(!level.isClientSide) {
-                ((ServerLevel) level).sendParticles(ParticleTypes.END_ROD, x,  2, z, 1, 0,0,0, 0.5);
-                ((ServerLevel) level).sendParticles(ParticleTypes.WHITE_ASH, x2, 2, z2, 1, 0,0,0, 0.5);
+                ((ServerLevel) level).sendParticles(ParticleTypes.END_ROD, x,  2, z, 1, 0,1,0, 0.5);
+                ((ServerLevel) level).sendParticles(ParticleTypes.END_ROD, x2, 2, z2, 1, 0,2,0, 0.5);
             }
 
             List<Entity> list = this.level.getEntities(player, player.getBoundingBox().inflate(radius), Entity::isAlive);
@@ -124,10 +124,11 @@ public class HolyEntity extends ThrowableProjectile {
             }
 
         } else { //Projectile
+            shootFromRotation(player, player.getXRot(), player.getYRot()+5, 0, 0.5F, 0);
 
             hurtMarked = true;
                         if(!level.isClientSide)
-                        ((ServerLevel) level).sendParticles(ParticleTypes.CLOUD, getX(), getY(), getZ(), 1, 0,0,0, 0.5);
+                        ((ServerLevel) level).sendParticles(ParticleTypes.END_ROD, getX(), getY(), getZ(), 1, 0,0,0, 0.5);
 
         }
 
