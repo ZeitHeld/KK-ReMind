@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " R ",
+    "LMS",
+    " P "
+  ],
+  "key": {
+    "M": {
+      "item": "kingdomkeys:spellfire"
+     },
+    "S": {
+      "item": "minecraft:flint_and_steel"
+      },
+    "P": {
+      "item": "minecraft:redstone"
+      },
+    "R": {
+      "item": "minecraft:gunpowder"
+      },
+    "L": {
+      "item": "minecraft:tnt"
+      }
+    },
+      "result": {
+        "item": "magicksaddon:ruin_spell"
+      }
+  }

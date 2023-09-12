@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " R ",
+    "LMS",
+    " P "
+  ],
+  "key": {
+    "M": {
+      "item": "kingdomkeys:spellwater"
+     },
+    "S": {
+      "item": "minecraft:ghast_tear"
+      },
+    "P": {
+      "item": "minecraft:quartz"
+      },
+    "R": {
+      "item": "minecraft:ender_eye"
+      },
+    "L": {
+      "item": "minecraft:diamond"
+      }
+    },
+      "result": {
+        "item": "magicksaddon:holy_spell"
+      }
+  }

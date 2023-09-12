@@ -13,5 +13,7 @@
   "magic.magicksaddon.magic_ruin1.name": "Ruinra",
   "magic.magicksaddon.magic_ruin2.name": "Ruinga",
   "item.magicksaddon.haste_spell": "Haste Spell",
-  "item.magicksaddon.slow_spell": "Slow Spell"
+  "item.magicksaddon.slow_spell": "Slow Spell",
+  "item.magicksaddon.holy_spell": "Holy Spell",
+  "item.magicksaddon.ruin_spell": "Ruin Spell"
 }
