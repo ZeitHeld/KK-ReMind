@@ -33,29 +33,11 @@ public class RuinEntityRenderer extends EntityRenderer<ThrowableProjectile> {
     public void render(ThrowableProjectile entity, float entityYaw, float partialTicks, PoseStack matrixStackIn, MultiBufferSource bufferIn, int packedLightIn) {
         matrixStackIn.pushPose();
         {
-
-            float rotation = prevRotationTicks + (ticks - prevRotationTicks) * partialTicks;
-
-            float speed = 2;
-            float scale = 0;
-            int maxTicks = 0;
-
-
-
-            //float r = 1, g = 0, b = 0;
             VertexConsumer vertexconsumer = bufferIn.getBuffer(RenderType.entityCutoutNoCull(TEXTURE));
-            matrixStackIn.translate(0, 1, 0);
-
-            matrixStackIn.scale(scale, scale, scale);
-            matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(rotation));
-
+            matrixStackIn.scale(2, 2, 2);
             this.ruinModel.renderToBuffer(matrixStackIn, vertexconsumer, packedLightIn, OverlayTexture.NO_OVERLAY, 1,1,1,1);
-
-            prevRotationTicks = ticks;
-            ticks += speed;
-
-
         }
+
         matrixStackIn.popPose();
         super.render(entity, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }

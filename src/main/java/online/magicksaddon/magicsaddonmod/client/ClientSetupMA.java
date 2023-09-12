@@ -12,4 +12,9 @@ public class ClientSetupMA {
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         ModEntitiesMA.registerRenderers(event);
     }
+
+    @SubscribeEvent
+    public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        ModEntitiesMA.registerLayers(event);
+    }
 }
