@@ -11,6 +11,7 @@ import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
+import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 
 
 public class magicHaste extends Magic {

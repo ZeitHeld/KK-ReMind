@@ -17,7 +17,9 @@ public class MagicSounds {
 
     public static final RegistryObject<SoundEvent>
             HASTE = registerSound("haste"),
-            SLOW = registerSound("slow");
+            SLOW = registerSound("slow"),
+            HOLY = registerSound("holy"),
+            RUIN = registerSound("ruin");
 
 
     public static RegistryObject<SoundEvent> registerSound(String name) {

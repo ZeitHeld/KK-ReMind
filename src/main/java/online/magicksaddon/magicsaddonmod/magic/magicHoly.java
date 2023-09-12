@@ -1,6 +1,7 @@
 package online.magicksaddon.magicsaddonmod.magic;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
@@ -9,9 +10,9 @@ import online.kingdomkeys.kingdomkeys.lib.Strings;
 
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.entity.magic.HolyEntity;
 import online.magicksaddon.magicsaddonmod.client.model.HolyModel;
-//Deleting After Testing and custom entities are made
 
 
 public class magicHoly extends Magic {
@@ -36,7 +37,7 @@ public class magicHoly extends Magic {
                 holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
                 holy.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1F, 0);
-                // sound line when I find the sound I want
+                player.level.playSound(null, player.blockPosition(), MagicSounds.HOLY.get(), SoundSource.PLAYERS, 1F, 1F);
             }
                 for (int i = -1; i < 1; i++) {
                     HolyEntity holy = new HolyEntity(player.level, player, dmgMult);
@@ -59,7 +60,8 @@ public class magicHoly extends Magic {
                 holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
                 holy.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1F, 0);
-                }
+                player.level.playSound(null, player.blockPosition(), MagicSounds.HOLY.get(), SoundSource.PLAYERS, 1F, 1F);
+            }
             for(int i = -1; i < 1; i++) {
                 HolyEntity holy1 = new HolyEntity(player.level, player, dmgMult * 0.25F);
                 holy1.setCaster(player.getDisplayName().getString());
@@ -91,6 +93,7 @@ public class magicHoly extends Magic {
                 holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
                 holy.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1F, 0);
+                player.level.playSound(null, player.blockPosition(), MagicSounds.HOLY.get(), SoundSource.PLAYERS, 1F, 1F);
             }
             for(int i = -1; i < 1; i++) {
                 HolyEntity holy1 = new HolyEntity(player.level, player, dmgMult * 0.5F);

@@ -8,5 +8,15 @@
       "sounds": [
         "magicksaddon:slow"
       ]
-    }
+    },
+      "holy": {
+        "sounds": [
+          "magicksaddon:holy"
+        ]
+      },
+        "ruin": {
+        "sounds": [
+          "magicksaddon:ruin"
+        ]
+      }
   }
