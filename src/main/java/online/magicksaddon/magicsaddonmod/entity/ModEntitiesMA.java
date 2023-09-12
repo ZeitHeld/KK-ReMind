@@ -17,8 +17,8 @@ import net.minecraftforge.registries.RegistryObject;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.client.model.HolyModel;
 import online.magicksaddon.magicsaddonmod.entity.magic.HolyEntity;
-import online.magicksaddon.magicsaddonmod.entity.magic.ruinEntity;
-//import online.magicksaddon.magicksaddon.client.model.RuinModel;
+import online.magicksaddon.magicsaddonmod.entity.magic.RuinEntity;
+//import online.magicksaddon.magicsaddonmod.client.model.RuinModel;
 
 import online.kingdomkeys.kingdomkeys.client.render.magic.InvisibleEntityRenderer;
 
@@ -31,7 +31,7 @@ public class ModEntitiesMA {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ENTITY_TYPES, MagicksAddonMod.MODID);
 
     public static final RegistryObject<EntityType<HolyEntity>> TYPE_HOLY = createEntityType(HolyEntity::new, HolyEntity::new, MobCategory.MISC,"entity_holy", 0.5F, 0.5F);
-    //public static final RegistryObject<EntityType<ruinEntity>> TYPE_RUIN = createEntityType(ruinEntity::new, ruinEntity::new, MobCategory.MISC,"entity_ruin", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<RuinEntity>> TYPE_RUIN = createEntityType(RuinEntity::new, RuinEntity::new, MobCategory.MISC,"entity_ruin", 0.5F, 0.5F);
 
     public static <T extends Entity, M extends EntityType<T>>RegistryObject<EntityType<T>> createEntityType(EntityType.EntityFactory<T> factory, BiFunction<PlayMessages.SpawnEntity, Level, T> clientFactory, MobCategory classification, String name, float sizeX, float sizeY) {
         return ENTITIES.register(name, () -> EntityType.Builder.of(factory, classification)
@@ -51,7 +51,7 @@ public class ModEntitiesMA {
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
 
         event.registerEntityRenderer(TYPE_HOLY.get(), InvisibleEntityRenderer::new);
-        //event.registerEntityRenderer(TYPE_RUIN.get(), InvisibleEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_RUIN.get(), InvisibleEntityRenderer::new);
 
     }
 
