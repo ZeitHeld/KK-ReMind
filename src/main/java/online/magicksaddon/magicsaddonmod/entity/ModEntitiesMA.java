@@ -1,6 +1,7 @@
 package online.magicksaddon.magicsaddonmod.entity;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -9,6 +10,7 @@ import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.registries.DeferredRegister;
@@ -16,9 +18,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.client.model.HolyModel;
+import online.magicksaddon.magicsaddonmod.client.render.RuinEntityRenderer;
+import online.magicksaddon.magicsaddonmod.client.render.HolyEntityRenderer;
 import online.magicksaddon.magicsaddonmod.entity.magic.HolyEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.RuinEntity;
-//import online.magicksaddon.magicsaddonmod.client.model.RuinModel;
+import online.magicksaddon.magicsaddonmod.client.model.RuinModel;
 
 import online.kingdomkeys.kingdomkeys.client.render.magic.InvisibleEntityRenderer;
 
@@ -43,15 +47,15 @@ public class ModEntitiesMA {
                 .build(name));
     }
     @OnlyIn(Dist.CLIENT)
-    public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+    public static void registerLayers(RegisterLayerDefinitions event) {
         event.registerLayerDefinition(HolyModel.LAYER_LOCATION, HolyModel::createBodyLayer);
     }
 
     @OnlyIn(Dist.CLIENT)
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
 
-        event.registerEntityRenderer(TYPE_HOLY.get(), InvisibleEntityRenderer::new);
-        event.registerEntityRenderer(TYPE_RUIN.get(), InvisibleEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_HOLY.get(), HolyEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_RUIN.get(), RuinEntityRenderer::new);
 
     }
 
