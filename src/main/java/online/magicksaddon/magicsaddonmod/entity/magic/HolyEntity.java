@@ -68,6 +68,7 @@ public class HolyEntity extends ThrowableProjectile {
 
     @Override
     protected float getGravity() {
+
         return 0F;
     }
 
@@ -82,7 +83,10 @@ public class HolyEntity extends ThrowableProjectile {
             }
         }
 
-        if (this.tickCount > maxTicks) {
+        if(player == null)
+            return;
+
+        if (this.tickCount > maxTicks || player == null) {
             this.remove(RemovalReason.KILLED);
         }else if(tickCount > 2) {
             level.addParticle(ParticleTypes.END_ROD, getX(), getY(), getZ(), 0, 0, 0);
