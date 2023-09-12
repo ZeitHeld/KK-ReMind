@@ -82,56 +82,11 @@ public class HolyEntity extends ThrowableProjectile {
             }
         }
 
-        if(player == null)
-            return;
-
-        if (this.tickCount > maxTicks || player == null) {
+        if (this.tickCount > maxTicks) {
             this.remove(RemovalReason.KILLED);
+        }else if(tickCount > 2) {
+            level.addParticle(ParticleTypes.END_ROD, getX(), getY(), getZ(), 0, 0, 0);
         }
-
-        if(tickCount <= 1) {
-            this.setDeltaMovement(0, 0, 0);
-
-        } else if (tickCount < 50) { //Shield
-            setPos(player.getX(), getY(), player.getZ());
-            double radius = 1D;
-            double cx = getX();
-            double cy = getY();
-            double cz = getZ();
-
-            a+=40; //Speed and distance between particles
-            double x = cx + (radius * Math.cos(Math.toRadians(a)));
-            double z = cz + (radius * Math.sin(Math.toRadians(a)));
-
-            double x2 = cx + (radius * Math.cos(Math.toRadians(-a)));
-            double z2 = cz + (radius * Math.sin(Math.toRadians(-a)));
-
-            if(!level.isClientSide) {
-                ((ServerLevel) level).sendParticles(ParticleTypes.END_ROD, x,  2, z, 1, 0,1,0, 0.5);
-                ((ServerLevel) level).sendParticles(ParticleTypes.END_ROD, x2, 2, z2, 1, 0,2,0, 0.5);
-            }
-
-            List<Entity> list = this.level.getEntities(player, player.getBoundingBox().inflate(radius), Entity::isAlive);
-            if (!list.isEmpty() && list.get(0) != this) {
-                float baseDmg = DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.3F;
-                float dmg = this.getOwner() instanceof Player ? baseDmg : 2;
-                for (int i = 0; i < list.size(); i++) {
-                    Entity e = (Entity) list.get(i);
-                    if (e instanceof LivingEntity) {
-                        e.hurt(DamageSource.thrown(this, (Player) this.getOwner()), dmg);
-                    }
-                }
-            }
-
-        } else { //Projectile
-            shootFromRotation(player, player.getXRot(), player.getYRot()+5, 0, 0.5F, 0);
-
-            hurtMarked = true;
-                        if(!level.isClientSide)
-                        ((ServerLevel) level).sendParticles(ParticleTypes.END_ROD, getX(), getY(), getZ(), 1, 0,0,0, 0.5);
-
-        }
-
         super.tick();
     }
 
@@ -154,9 +109,6 @@ public class HolyEntity extends ThrowableProjectile {
 
                 LivingEntity target = (LivingEntity) ertResult.getEntity();
 
-                if (target.isOnFire()) {
-                    target.clearFire();
-                } else {
                     if (target != getOwner()) {
                         Party p = null;
                         if (getOwner() != null) {
@@ -165,6 +117,7 @@ public class HolyEntity extends ThrowableProjectile {
                         if(p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { //If caster is not in a party || the party doesn't have the target in it || the party has FF on
                             float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.3F : 2;
                             target.hurt(DamageSource.thrown(this, this.getOwner()), dmg * dmgMult);
+                            target.invulnerableTime = 0;
                             remove(RemovalReason.KILLED);
                         }
                     }
@@ -173,8 +126,6 @@ public class HolyEntity extends ThrowableProjectile {
                 remove(RemovalReason.KILLED);
             }
         }
-    }
-
 
     public int getMaxTicks() {
         return maxTicks;
