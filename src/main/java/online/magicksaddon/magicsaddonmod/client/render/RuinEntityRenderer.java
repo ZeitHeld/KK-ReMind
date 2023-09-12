@@ -23,7 +23,7 @@ public class RuinEntityRenderer extends EntityRenderer<ThrowableProjectile> {
     public RuinEntityRenderer(EntityRendererProvider.Context context){
         super(context);
         this.shadowRadius = 0.25F;
-        ruinModel = new RuinModel<>(context.bakeLayer(ruinModel.LAYER_LOCATION));
+        ruinModel = new RuinModel<>(context.bakeLayer(RuinModel.LAYER_LOCATION));
     }
 
     float ticks = 0F;

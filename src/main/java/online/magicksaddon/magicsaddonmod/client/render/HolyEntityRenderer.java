@@ -23,7 +23,7 @@ public class HolyEntityRenderer extends EntityRenderer<ThrowableProjectile> {
     public HolyEntityRenderer(EntityRendererProvider.Context context){
         super(context);
         this.shadowRadius = 0.25F;
-        holyModel = new HolyModel<>(context.bakeLayer(holyModel.LAYER_LOCATION));
+        holyModel = new HolyModel<>(context.bakeLayer(HolyModel.LAYER_LOCATION));
     }
 
     float ticks = 0F;
