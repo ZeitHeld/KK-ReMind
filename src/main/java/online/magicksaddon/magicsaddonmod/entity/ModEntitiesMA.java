@@ -49,6 +49,7 @@ public class ModEntitiesMA {
     @OnlyIn(Dist.CLIENT)
     public static void registerLayers(RegisterLayerDefinitions event) {
         event.registerLayerDefinition(HolyModel.LAYER_LOCATION, HolyModel::createBodyLayer);
+        event.registerLayerDefinition(RuinModel.LAYER_LOCATION, RuinModel::createBodyLayer);
     }
 
     @OnlyIn(Dist.CLIENT)
