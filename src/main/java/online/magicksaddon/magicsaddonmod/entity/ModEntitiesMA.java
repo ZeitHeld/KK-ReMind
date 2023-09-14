@@ -23,6 +23,8 @@ import online.magicksaddon.magicsaddonmod.client.model.HolyModel;
 import online.magicksaddon.magicsaddonmod.client.model.RuinModel;
 import online.magicksaddon.magicsaddonmod.client.render.RuinEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.HolyEntityRenderer;
+import online.magicksaddon.magicsaddonmod.client.render.BalloonEntityRenderer;
+import online.magicksaddon.magicsaddonmod.client.render.BalloongaEntityRenderer;
 import online.magicksaddon.magicsaddonmod.entity.magic.BalloongaEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.HolyEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.RuinEntity;
@@ -57,8 +59,8 @@ public class ModEntitiesMA {
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(HolyModel.LAYER_LOCATION, HolyModel::createBodyLayer);
         event.registerLayerDefinition(RuinModel.LAYER_LOCATION, RuinModel::createBodyLayer);
-        event.registerLayerDefinition(BalloonModel.LAYER_LOCATION, RuinModel::createBodyLayer);
-        event.registerLayerDefinition(BalloongaModel.LAYER_LOCATION, RuinModel::createBodyLayer);
+        event.registerLayerDefinition(BalloonModel.LAYER_LOCATION, BalloonModel::createBodyLayer);
+        event.registerLayerDefinition(BalloongaModel.LAYER_LOCATION, BalloongaModel::createBodyLayer);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -66,8 +68,8 @@ public class ModEntitiesMA {
 
         event.registerEntityRenderer(TYPE_HOLY.get(), HolyEntityRenderer::new);
         event.registerEntityRenderer(TYPE_RUIN.get(), RuinEntityRenderer::new);
-        event.registerEntityRenderer(TYPE_BALLOON.get(), RuinEntityRenderer::new);
-        event.registerEntityRenderer(TYPE_BALLOONGA.get(), RuinEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_BALLOON.get(), BalloonEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_BALLOONGA.get(), BalloongaEntityRenderer::new);
 
     }
 

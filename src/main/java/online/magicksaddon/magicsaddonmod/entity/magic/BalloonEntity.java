@@ -158,9 +158,6 @@ public class BalloonEntity extends ThrowableProjectile {
 
     }
 
-    private void setDeltaMovement(RandomSource random, RandomSource random1, RandomSource random2) {
-    }
-
     public int getMaxTicks() {
         return maxTicks;
     }
