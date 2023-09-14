@@ -17,10 +17,13 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.client.model.BalloonModel;
+import online.magicksaddon.magicsaddonmod.client.model.BalloongaModel;
 import online.magicksaddon.magicsaddonmod.client.model.HolyModel;
 import online.magicksaddon.magicsaddonmod.client.model.RuinModel;
 import online.magicksaddon.magicsaddonmod.client.render.RuinEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.HolyEntityRenderer;
+import online.magicksaddon.magicsaddonmod.entity.magic.BalloongaEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.HolyEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.RuinEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.BalloonEntity;
@@ -39,6 +42,7 @@ public class ModEntitiesMA {
     public static final RegistryObject<EntityType<HolyEntity>> TYPE_HOLY = createEntityType(HolyEntity::new, HolyEntity::new, MobCategory.MISC,"entity_holy", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<RuinEntity>> TYPE_RUIN = createEntityType(RuinEntity::new, RuinEntity::new, MobCategory.MISC,"entity_ruin", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<BalloonEntity>> TYPE_BALLOON = createEntityType(BalloonEntity::new, BalloonEntity::new, MobCategory.MISC, "entity_balloon", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<BalloongaEntity>> TYPE_BALLOONGA = createEntityType(BalloongaEntity::new, BalloongaEntity::new, MobCategory.MISC, "entity_balloonga", 1F, 1F);
 
     public static <T extends Entity, M extends EntityType<T>>RegistryObject<EntityType<T>> createEntityType(EntityType.EntityFactory<T> factory, BiFunction<PlayMessages.SpawnEntity, Level, T> clientFactory, MobCategory classification, String name, float sizeX, float sizeY) {
         return ENTITIES.register(name, () -> EntityType.Builder.of(factory, classification)
@@ -53,7 +57,8 @@ public class ModEntitiesMA {
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(HolyModel.LAYER_LOCATION, HolyModel::createBodyLayer);
         event.registerLayerDefinition(RuinModel.LAYER_LOCATION, RuinModel::createBodyLayer);
-        //event.registerLayerDefinition(BalloonModel.LAYER_LOCATION, RuinModel::createBodyLayer);
+        event.registerLayerDefinition(BalloonModel.LAYER_LOCATION, RuinModel::createBodyLayer);
+        event.registerLayerDefinition(BalloongaModel.LAYER_LOCATION, RuinModel::createBodyLayer);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -61,7 +66,8 @@ public class ModEntitiesMA {
 
         event.registerEntityRenderer(TYPE_HOLY.get(), HolyEntityRenderer::new);
         event.registerEntityRenderer(TYPE_RUIN.get(), RuinEntityRenderer::new);
-        //event.registerEntityRenderer(TYPE_BALLOON.get(), RuinEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_BALLOON.get(), RuinEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_BALLOONGA.get(), RuinEntityRenderer::new);
 
     }
 

@@ -116,7 +116,7 @@ public class RuinEntity extends ThrowableProjectile {
                         this.level.explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), explosionSize, false,Explosion.BlockInteraction.NONE );
                         target.invulnerableTime = 0;
                         target.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg * dmgMult);
-
+                        remove(RemovalReason.KILLED);
 
                     }
                 }

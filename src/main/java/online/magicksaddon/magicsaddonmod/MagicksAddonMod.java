@@ -72,6 +72,8 @@ public class MagicksAddonMod
         ModEntitiesMA.ENTITIES.register(modEventBus);
 
 
+
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

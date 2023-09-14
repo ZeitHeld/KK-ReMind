@@ -18,5 +18,15 @@
         "sounds": [
           "magicksaddon:ruin"
         ]
+      },
+        "balloon": {
+          "sounds": [
+            "magicksaddon:balloon"
+          ]
+      },
+        "balloon_bounce": {
+          "sounds": [
+            "magicksaddon:balloon_bounce"
+          ]
       }
   }

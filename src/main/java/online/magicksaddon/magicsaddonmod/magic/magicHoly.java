@@ -31,7 +31,6 @@ public class magicHoly extends Magic {
 
 
         if (level == 0) {
-            System.out.println(level);
             for(int i = -1; i <1; i++) {
                 HolyEntity holy = new HolyEntity(player.level, player, dmgMult);
                 holy.setCaster(player.getDisplayName().getString());
@@ -54,7 +53,6 @@ public class magicHoly extends Magic {
                     // sound line when I find the sound I want
                 }
         } else if (level == 1) {
-            System.out.println(level);
             for(int i = -1; i < 2; i++) {
                 HolyEntity holy = new HolyEntity(player.level, player, dmgMult * 0.25F);
                 holy.setCaster(player.getDisplayName().getString());
@@ -87,7 +85,6 @@ public class magicHoly extends Magic {
                 holy4.shootFromRotation(player, player.getXRot(), player.getYRot()-2, 0, 0.95F, 0);
                 }
         } else if (level == 2) {
-            System.out.println(level);
             for(int i = -1; i < 2; i++) {
                 HolyEntity holy = new HolyEntity(player.level, player, dmgMult * 0.5F);
                 holy.setCaster(player.getDisplayName().getString());

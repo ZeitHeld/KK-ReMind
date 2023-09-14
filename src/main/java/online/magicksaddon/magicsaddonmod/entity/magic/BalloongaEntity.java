@@ -1,27 +1,11 @@
 package online.magicksaddon.magicsaddonmod.entity.magic;
 
-import com.mojang.math.Vector3f;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import online.kingdomkeys.kingdomkeys.entity.EntityHelper;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
-import org.slf4j.Logger;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -31,40 +15,37 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraft.core.Direction;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
-import online.kingdomkeys.kingdomkeys.entity.magic.MagnetEntity;
+import online.kingdomkeys.kingdomkeys.capability.PlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
+import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.entity.magic.BalloonEntity;
 
-public class BalloonEntity extends ThrowableProjectile {
+public class BalloongaEntity extends ThrowableProjectile {
     // Start
     int maxTicks = 100;
     float dmgMult = 1;
 
-    public BalloonEntity(EntityType<? extends ThrowableProjectile> type, Level world) {
+    public BalloongaEntity(EntityType<? extends ThrowableProjectile> type, Level world) {
         super(type, world);
         this.blocksBuilding = true;
     }
 
-    public BalloonEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
+    public BalloongaEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
         super(ModEntitiesMA.TYPE_BALLOON.get(), world);
     }
 
-    public BalloonEntity(Level world) {
+    public BalloongaEntity(Level world) {
         super(ModEntitiesMA.TYPE_BALLOON.get(), world);
         this.blocksBuilding = true;
     }
 
-    public BalloonEntity(Level world, LivingEntity player, float dmgMult) {
+    public BalloongaEntity(Level world, LivingEntity player, float dmgMult) {
         super(ModEntitiesMA.TYPE_BALLOON.get(), player, world);
         this.dmgMult = dmgMult;
     }
@@ -84,6 +65,10 @@ public class BalloonEntity extends ThrowableProjectile {
     @Override
     protected float getGravity() {
         return 0.125F;
+    }
+
+    private void Caster(){
+        this.getOwner();
     }
 
     @Override
@@ -123,9 +108,29 @@ public class BalloonEntity extends ThrowableProjectile {
                     }
                     if(p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { //If caster is not in a party || the party doesn't have the target in it || the party has FF on
                         float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
+                        this.getOwner();
                         target.hurt(DamageSource.thrown(this, this.getOwner()), dmg * dmgMult);
                         target.invulnerableTime = 0;
                         playSound(MagicSounds.BALLOON_BOUNCE.get(),1F,1F);
+                        // The Dumb part
+                        ThrowableProjectile balloon = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
+                        level.addFreshEntity(balloon);
+                        balloon.shootFromRotation(this, this.getXRot(), this.getYRot()+90, 0, 0.5F, 0);
+                        ThrowableProjectile balloon1 = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
+                        level.addFreshEntity(balloon1);
+                        balloon1.shootFromRotation(this, this.getXRot(), this.getYRot()-90, 0, 0.5F, 0);
+                        ThrowableProjectile balloon2 = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
+                        level.addFreshEntity(balloon2);
+                        balloon2.shootFromRotation(this, this.getXRot(), this.getYRot()+45, 0, 0.5F, 0);
+                        ThrowableProjectile balloon3 = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
+                        level.addFreshEntity(balloon3);
+                        balloon3.shootFromRotation(this, this.getXRot(), this.getYRot()-45, 0, 0.5F, 0);
+                        ThrowableProjectile balloon4 = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
+                        level.addFreshEntity(balloon4);
+                        balloon3.shootFromRotation(this, this.getXRot(), this.getYRot()+180, 0, 0.5F, 0);
+                        ThrowableProjectile balloon5 = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
+                        level.addFreshEntity(balloon5);
+                        balloon5.shootFromRotation(this, this.getXRot(), this.getYRot()-180, 0, 0.5F, 0);
                         this.remove(RemovalReason.KILLED);
                     }
                 }
