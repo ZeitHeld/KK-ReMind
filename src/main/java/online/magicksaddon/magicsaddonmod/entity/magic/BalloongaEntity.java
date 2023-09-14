@@ -108,29 +108,15 @@ public class BalloongaEntity extends ThrowableProjectile {
                     }
                     if(p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { //If caster is not in a party || the party doesn't have the target in it || the party has FF on
                         float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
-                        this.getOwner();
                         target.hurt(DamageSource.thrown(this, this.getOwner()), dmg * dmgMult);
                         target.invulnerableTime = 0;
                         playSound(MagicSounds.BALLOON_BOUNCE.get(),1F,1F);
                         // The Dumb part
-                        ThrowableProjectile balloon = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
-                        level.addFreshEntity(balloon);
-                        balloon.shootFromRotation(this, this.getXRot(), this.getYRot()+90, 0, 0.5F, 0);
-                        ThrowableProjectile balloon1 = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
-                        level.addFreshEntity(balloon1);
-                        balloon1.shootFromRotation(this, this.getXRot(), this.getYRot()-90, 0, 0.5F, 0);
-                        ThrowableProjectile balloon2 = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
-                        level.addFreshEntity(balloon2);
-                        balloon2.shootFromRotation(this, this.getXRot(), this.getYRot()+45, 0, 0.5F, 0);
-                        ThrowableProjectile balloon3 = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
-                        level.addFreshEntity(balloon3);
-                        balloon3.shootFromRotation(this, this.getXRot(), this.getYRot()-45, 0, 0.5F, 0);
-                        ThrowableProjectile balloon4 = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
-                        level.addFreshEntity(balloon4);
-                        balloon3.shootFromRotation(this, this.getXRot(), this.getYRot()+180, 0, 0.5F, 0);
-                        ThrowableProjectile balloon5 = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
-                        level.addFreshEntity(balloon5);
-                        balloon5.shootFromRotation(this, this.getXRot(), this.getYRot()-180, 0, 0.5F, 0);
+                        for(int i = 0; i < 360; i+=45) {
+                            ThrowableProjectile balloon = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
+                            level.addFreshEntity(balloon);
+                            balloon.shootFromRotation(this, this.getXRot(), this.getYRot()+i, 0, 0.5F, 0);
+                        }
                         this.remove(RemovalReason.KILLED);
                     }
                 }

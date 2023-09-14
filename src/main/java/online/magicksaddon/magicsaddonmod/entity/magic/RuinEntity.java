@@ -113,9 +113,9 @@ public class RuinEntity extends ThrowableProjectile {
                     if(p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { //If caster is not in a party || the party doesn't have the target in it || the party has FF on
                         float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
                         float explosionSize = 2.0F;
-                        this.level.explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), explosionSize, false,Explosion.BlockInteraction.NONE );
-                        target.invulnerableTime = 0;
                         target.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg * dmgMult);
+                        target.invulnerableTime = 0;
+                        this.level.explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), explosionSize, false,Explosion.BlockInteraction.NONE );
                         remove(RemovalReason.KILLED);
 
                     }
