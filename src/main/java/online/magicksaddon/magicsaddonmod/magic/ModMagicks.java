@@ -19,7 +19,8 @@ public class ModMagicks {
             HASTE = MAGIC.register("magic_haste", () -> new magicHaste(new ResourceLocation(MagicksAddonMod.MODID, "magic_haste"), true, 3, order++)),
             SLOW = MAGIC.register("magic_slow", () -> new magicSlow(new ResourceLocation(MagicksAddonMod.MODID, "magic_slow"), true, 3, order++)),
             HOLY = MAGIC.register("magic_holy",() -> new magicHoly(new ResourceLocation(MagicksAddonMod.MODID, "magic_holy"), true, 3, null, order++)),
-            RUIN = MAGIC.register("magic_ruin", () -> new magicRuin(new ResourceLocation(MagicksAddonMod.MODID, "magic_ruin"), true, 3, null, order++));
+            RUIN = MAGIC.register("magic_ruin", () -> new magicRuin(new ResourceLocation(MagicksAddonMod.MODID, "magic_ruin"), true, 3, null, order++)),
+            BALLOON = MAGIC.register("magic_balloon", () -> new magicBalloon(new ResourceLocation(MagicksAddonMod.MODID, "magic_balloon"), true, 3, order++));
 
 
 

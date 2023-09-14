@@ -12,6 +12,12 @@
   "magic.magicksaddon.magic_ruin0.name": "Ruin",
   "magic.magicksaddon.magic_ruin1.name": "Ruinra",
   "magic.magicksaddon.magic_ruin2.name": "Ruinga",
+  "magic.magicksaddon.magic_balloon0.name": "Balloon",
+  "magic.magicksaddon.magic_balloon1.name": "Balloonra",
+  "magic.magicksaddon.magic_balloon2.name": "Balloonga",
+
+
+
   "item.magicksaddon.haste_spell": "Haste Spell",
   "item.magicksaddon.slow_spell": "Slow Spell",
   "item.magicksaddon.holy_spell": "Holy Spell",
