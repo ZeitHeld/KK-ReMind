@@ -36,7 +36,7 @@ import java.util.List;
 
 public class HolyEntity extends ThrowableProjectile {
 
-    int maxTicks = 150;
+    int maxTicks = 100;
     Player player;
     String caster;
     float dmgMult = 1;
