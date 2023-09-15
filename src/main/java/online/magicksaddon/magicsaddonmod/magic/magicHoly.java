@@ -27,7 +27,6 @@ public class magicHoly extends Magic {
         System.out.println("Casting!");
         float dmgMult = getDamageMult(level);
         dmgMult *= fullMPBlastMult;
-        System.out.println(dmgMult);
 
 
         if (level == 0) {
