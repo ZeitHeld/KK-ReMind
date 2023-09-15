@@ -22,13 +22,14 @@ public class magicHaste extends Magic {
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult) {
         IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(player);
-        int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * ((level * 0.75) + 5) + 5);
-        globalData.setHasteTicks(time, level);
-        caster.swing(InteractionHand.MAIN_HAND);
-        // Effect and Level Modifier
-        player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
-        player.level.playSound(null, player.blockPosition(), MagicSounds.HASTE.get(), SoundSource.PLAYERS, 1F, 1F);
-
+        if(globalData != null) {
+            int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * ((level * 0.75) + 5) + 5);
+            globalData.setHasteTicks(time, level);
+            caster.swing(InteractionHand.MAIN_HAND);
+            // Effect and Level Modifier
+            player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
+            player.level.playSound(null, player.blockPosition(), MagicSounds.HASTE.get(), SoundSource.PLAYERS, 1F, 1F);
+        }
     }
 
 }

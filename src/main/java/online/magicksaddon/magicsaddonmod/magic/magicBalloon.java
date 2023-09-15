@@ -21,6 +21,8 @@ public class magicBalloon extends Magic {
         super(registryName, hasToSelect, maxLevel, null, order++);
     }
 
+
+
         @Override
         protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult) {
             IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(player);
@@ -74,6 +76,8 @@ public class magicBalloon extends Magic {
                 player.level.addFreshEntity(balloonga);
                 balloonga.shootFromRotation(player, player.getXRot(), player.getYRot(),0,0.5F,0);
             }
+
+
 
 
 

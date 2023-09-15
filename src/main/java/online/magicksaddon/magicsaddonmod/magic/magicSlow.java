@@ -46,7 +46,9 @@ public class magicSlow extends Magic {
             for (int i = 0; i < list.size(); i++){
                 Entity e = (Entity) list.get(i);
                 if (e instanceof LivingEntity){
-                    IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal((LivingEntity) e);
+                    if(globalData != null) {
+
+                        IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal((LivingEntity) e);
                     ((LivingEntity)e).getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.1 + (0.1 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
 
                     int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * ((level * 0.75) + 5) + 5);
@@ -59,7 +61,6 @@ public class magicSlow extends Magic {
         }
         player.swing(InteractionHand.MAIN_HAND);
         player.level.playSound(null, player.blockPosition(), MagicSounds.SLOW.get(), SoundSource.PLAYERS, 1F, 1F);
-
-
+        }
     }
 }
