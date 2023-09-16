@@ -50,6 +50,7 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
         hasteTicks -= ticks;
     }
 
+
     //Slow
     public int getSlowLevel() {
 
