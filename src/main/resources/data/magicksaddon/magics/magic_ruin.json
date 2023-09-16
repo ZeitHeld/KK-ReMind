@@ -2,16 +2,16 @@
   "0": {
     "cost":12,
     "cooldown":50,
-    "dmg_mult":1.0
+    "dmg_mult":1.5
   },
   "1": {
     "cost":16,
     "cooldown":50,
-    "dmg_mult":1.25
+    "dmg_mult":2.0
   },
   "2": {
     "cost":24,
     "cooldown":50,
-    "dmg_mult":1.50
+    "dmg_mult":2.5
   }
 }
