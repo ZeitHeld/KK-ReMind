@@ -15,7 +15,7 @@ import online.magicksaddon.magicsaddonmod.entity.magic.BalloongaEntity;
 public class magicBalloon extends Magic {
 
 	public magicBalloon(ResourceLocation registryName, boolean hasToSelect, int maxLevel, int order) {
-		super(registryName, hasToSelect, maxLevel, null, order++);
+		super(registryName, hasToSelect, maxLevel, null, order);
 	}
 
 	@Override

@@ -23,7 +23,7 @@ import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 
 public class magicSlow extends Magic {
     public magicSlow(ResourceLocation registryName, boolean hasToSelect, int maxLevel, int order) {
-        super(registryName, hasToSelect, maxLevel, null, order++);
+        super(registryName, hasToSelect, maxLevel, null, order);
     }
 
     IGlobalCapabilitiesMA globalData;
@@ -33,7 +33,7 @@ public class magicSlow extends Magic {
 
 
 
-        float radius = 2 + level;
+        float radius = 2 + (level * 1.5F);
         List<Entity> list = player.level.getEntities(player, player.getBoundingBox().inflate(radius, radius, radius));
         Party casterParty = ModCapabilities.getWorld(player.level).getPartyFromMember(player.getUUID());
         if (casterParty != null && !casterParty.getFriendlyFire()) {

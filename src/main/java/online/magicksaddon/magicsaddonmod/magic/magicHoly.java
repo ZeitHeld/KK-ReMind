@@ -33,7 +33,7 @@ public class magicHoly extends Magic {
         	break;
         case 1:
         	for(int i = -2; i <= 2; i++) {
-                HolyEntity holy = new HolyEntity(player.level, player,i, dmgMult * 0.25F);
+                HolyEntity holy = new HolyEntity(player.level, player,i, dmgMult);
                 holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
             }
@@ -42,7 +42,7 @@ public class magicHoly extends Magic {
         	break;
         case 2:
         	for(int i = -3; i <= 3; i++) {
-                HolyEntity holy = new HolyEntity(player.level, player,i, dmgMult * 0.5F);
+                HolyEntity holy = new HolyEntity(player.level, player,i, dmgMult);
                 holy.setCaster(player.getDisplayName().getString());
                 player.level.addFreshEntity(holy);
             }

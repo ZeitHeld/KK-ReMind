@@ -16,7 +16,7 @@ import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 public class magicHaste extends Magic {
 
     public magicHaste(ResourceLocation registryName, boolean hasToSelect, int maxLevel, int order) {
-        super(registryName, hasToSelect, maxLevel, null, order++);
+        super(registryName, hasToSelect, maxLevel, null, order);
     }
 
 
