@@ -7,8 +7,6 @@ import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.entity.magic.RuinEntity;
-import online.magicksaddon.magicsaddonmod.client.model.RuinModel;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 
 public class magicRuin extends Magic {
 
@@ -22,23 +20,26 @@ public class magicRuin extends Magic {
         float dmgMult = getDamageMult(level);
         dmgMult *= fullMPBlastMult;
 
-        if (level == 0){
-            ThrowableProjectile ruin = new RuinEntity(player.level, player, dmgMult);
+        switch (level) {
+		case 0: 
+			ThrowableProjectile ruin = new RuinEntity(player.level, player, dmgMult);
             player.level.addFreshEntity(ruin);
             ruin.shootFromRotation(player, player.getXRot(), player.getYRot(),0,2F,0);
             player.level.playSound(null, player.blockPosition(), MagicSounds.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
-        } else if (level == 1){
+			break;
+		case 1:
             ThrowableProjectile ruinra = new RuinEntity(player.level, player, (dmgMult));
             player.level.addFreshEntity(ruinra);
             ruinra.shootFromRotation(player, player.getXRot(), player.getYRot(),0,2F,0);
             player.level.playSound(null, player.blockPosition(), MagicSounds.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
-        } else if (level == 2){
+			break;
+		case 2:
             ThrowableProjectile ruinaga = new RuinEntity(player.level, player, (dmgMult));
             player.level.addFreshEntity(ruinaga);
             ruinaga.shootFromRotation(player, player.getXRot(), player.getYRot(),0,2F,0);
             player.level.playSound(null, player.blockPosition(), MagicSounds.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
-        }
-
+			break;
+        }    
     }
 }
 

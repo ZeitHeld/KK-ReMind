@@ -1,7 +1,10 @@
 package online.magicksaddon.magicsaddonmod.client.render;
 
+import javax.annotation.Nullable;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -12,8 +15,6 @@ import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.client.model.BalloonModel;
 import online.magicksaddon.magicsaddonmod.client.model.BalloongaModel;
-
-import javax.annotation.Nullable;
 
 public class BalloongaEntityRenderer extends EntityRenderer<ThrowableProjectile> {
     public static final ResourceLocation TEXTURE = new ResourceLocation(MagicksAddonMod.MODID,"textures/entity/models/balloonga.png");
@@ -33,7 +34,9 @@ public class BalloongaEntityRenderer extends EntityRenderer<ThrowableProjectile>
         matrixStackIn.pushPose();
         {
             VertexConsumer vertexconsumer = bufferIn.getBuffer(RenderType.entityCutoutNoCull(TEXTURE));
-            matrixStackIn.scale(2, 2, 2);
+            matrixStackIn.scale(3, 3, 3);
+            matrixStackIn.translate(0, -0.65, 0);
+
             this.balloongaModel.renderToBuffer(matrixStackIn, vertexconsumer, packedLightIn, OverlayTexture.NO_OVERLAY, 1,1,1,1);
         }
 

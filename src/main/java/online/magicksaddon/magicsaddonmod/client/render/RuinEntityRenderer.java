@@ -1,8 +1,10 @@
 package online.magicksaddon.magicsaddonmod.client.render;
 
+import javax.annotation.Nullable;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Vector3f;
+
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -12,9 +14,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.client.model.RuinModel;
-import online.magicksaddon.magicsaddonmod.entity.magic.RuinEntity;
-
-import javax.annotation.Nullable;
 
 public class RuinEntityRenderer extends EntityRenderer<ThrowableProjectile> {
     public static final ResourceLocation TEXTURE = new ResourceLocation(MagicksAddonMod.MODID,"textures/entity/models/ruin.png");

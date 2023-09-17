@@ -1,42 +1,32 @@
 package online.magicksaddon.magicsaddonmod.entity;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
+import static net.minecraftforge.registries.ForgeRegistries.ENTITY_TYPES;
+
+import java.util.function.BiFunction;
+
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.EntityRenderersEvent.RegisterLayerDefinitions;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.client.model.BalloonModel;
 import online.magicksaddon.magicsaddonmod.client.model.BalloongaModel;
 import online.magicksaddon.magicsaddonmod.client.model.HolyModel;
 import online.magicksaddon.magicsaddonmod.client.model.RuinModel;
-import online.magicksaddon.magicsaddonmod.client.render.RuinEntityRenderer;
-import online.magicksaddon.magicsaddonmod.client.render.HolyEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.BalloonEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.BalloongaEntityRenderer;
+import online.magicksaddon.magicsaddonmod.client.render.HolyEntityRenderer;
+import online.magicksaddon.magicsaddonmod.client.render.RuinEntityRenderer;
+import online.magicksaddon.magicsaddonmod.entity.magic.BalloonEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.BalloongaEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.HolyEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.RuinEntity;
-import online.magicksaddon.magicsaddonmod.entity.magic.BalloonEntity;
-
-
-import online.kingdomkeys.kingdomkeys.client.render.magic.InvisibleEntityRenderer;
-
-import java.util.function.BiFunction;
-
-import static net.minecraftforge.registries.ForgeRegistries.ENTITY_TYPES;
-import static online.kingdomkeys.kingdomkeys.entity.ModEntities.createEntityType;
 
 public class ModEntitiesMA {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ENTITY_TYPES, MagicksAddonMod.MODID);

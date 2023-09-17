@@ -1,5 +1,8 @@
 package online.magicksaddon.magicsaddonmod.handler;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.capabilities.Capability;
@@ -9,8 +12,6 @@ import net.minecraftforge.common.util.LazyOptional;
 import online.magicksaddon.magicsaddonmod.capabilities.GlobalCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class Provider implements ICapabilityProvider, ICapabilitySerializable<CompoundTag> {
     IGlobalCapabilitiesMA instance = new GlobalCapabilitiesMA();

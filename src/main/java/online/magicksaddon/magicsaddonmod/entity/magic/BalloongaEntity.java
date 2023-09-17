@@ -4,7 +4,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,12 +18,10 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
-import online.kingdomkeys.kingdomkeys.capability.PlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
-import online.magicksaddon.magicsaddonmod.entity.magic.BalloonEntity;
 
 public class BalloongaEntity extends ThrowableProjectile {
     // Start
@@ -37,16 +34,16 @@ public class BalloongaEntity extends ThrowableProjectile {
     }
 
     public BalloongaEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-        super(ModEntitiesMA.TYPE_BALLOON.get(), world);
+        super(ModEntitiesMA.TYPE_BALLOONGA.get(), world);
     }
 
     public BalloongaEntity(Level world) {
-        super(ModEntitiesMA.TYPE_BALLOON.get(), world);
+        super(ModEntitiesMA.TYPE_BALLOONGA.get(), world);
         this.blocksBuilding = true;
     }
 
     public BalloongaEntity(Level world, LivingEntity player, float dmgMult) {
-        super(ModEntitiesMA.TYPE_BALLOON.get(), player, world);
+        super(ModEntitiesMA.TYPE_BALLOONGA.get(), player, world);
         this.dmgMult = dmgMult;
     }
 
@@ -114,8 +111,10 @@ public class BalloongaEntity extends ThrowableProjectile {
                         // The Dumb part
                         for(int i = 0; i < 360; i+=45) {
                             ThrowableProjectile balloon = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
-                            level.addFreshEntity(balloon);
+                            balloon.setPos(new Vec3(this.getX(), this.getY(), this.getZ()));
                             balloon.shootFromRotation(this, this.getXRot(), this.getYRot()+i, 0, 0.5F, 0);
+                            level.addFreshEntity(balloon);
+
                         }
                         this.remove(RemovalReason.KILLED);
                     }
@@ -132,15 +131,15 @@ public class BalloongaEntity extends ThrowableProjectile {
                 double y = mot.y();
                 double z = mot.z();
 
-                //System.out.println(brtResult);
-                //System.out.println(brtResult.getDirection());
-                //System.out.println(getDeltaMovement());
                 if(brtResult.getDirection() == Direction.UP || brtResult.getDirection() == Direction.DOWN){
-                    this.setDeltaMovement(x,y*-1,z);
+                    this.setDeltaMovement(x,-y,z);
+                    this.markHurt();
                 } else if (brtResult.getDirection() == Direction.EAST || brtResult.getDirection() == Direction.WEST){
-                    this.setDeltaMovement(x*-1,y,z);
+                    this.setDeltaMovement(-x,y,z);
+                    this.markHurt();
                 }else if (brtResult.getDirection() == Direction.NORTH || brtResult.getDirection() == Direction.SOUTH){
-                    this.setDeltaMovement(x,y,z*-1);
+                	this.setDeltaMovement(x,y,-z);
+                    this.markHurt();
                 }
                 playSound(MagicSounds.BALLOON_BOUNCE.get(),1F,1F);
 

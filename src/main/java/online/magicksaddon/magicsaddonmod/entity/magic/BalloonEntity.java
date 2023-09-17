@@ -1,27 +1,10 @@
 package online.magicksaddon.magicsaddonmod.entity.magic;
 
-import com.mojang.math.Vector3f;
-import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import online.kingdomkeys.kingdomkeys.entity.EntityHelper;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
-import org.slf4j.Logger;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -31,18 +14,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraft.core.Direction;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
-import online.kingdomkeys.kingdomkeys.entity.magic.MagnetEntity;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
+import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
 
 public class BalloonEntity extends ThrowableProjectile {
@@ -145,11 +123,14 @@ public class BalloonEntity extends ThrowableProjectile {
                 //System.out.println(brtResult.getDirection());
                 //System.out.println(getDeltaMovement());
                 if(brtResult.getDirection() == Direction.UP || brtResult.getDirection() == Direction.DOWN){
-                    this.setDeltaMovement(x,y*-1,z);
+                    this.setDeltaMovement(x,-y,z);
+                    this.markHurt();
                 } else if (brtResult.getDirection() == Direction.EAST || brtResult.getDirection() == Direction.WEST){
-                    this.setDeltaMovement(x*-1,y,z);
+                    this.setDeltaMovement(-x,y,z);
+                    this.markHurt();
                 }else if (brtResult.getDirection() == Direction.NORTH || brtResult.getDirection() == Direction.SOUTH){
-                    this.setDeltaMovement(x,y,z*-1);
+                	this.setDeltaMovement(x,y,-z);
+                    this.markHurt();
                 }
                 playSound(MagicSounds.BALLOON_BOUNCE.get(),1F,1F);
 
