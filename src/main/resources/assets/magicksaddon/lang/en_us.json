@@ -15,6 +15,12 @@
   "magic.magicksaddon.magic_balloon0.name": "Balloon",
   "magic.magicksaddon.magic_balloon1.name": "Balloonra",
   "magic.magicksaddon.magic_balloon2.name": "Balloonga",
+  "magic.magicksaddon.magic_comet0.name": "Comet",
+  "magic.magicksaddon.magic_comet1.name": "Meteor",
+  "magic.magicksaddon.magic_ultima0.name": "Ultima",
+  "magic.magicksaddon.magic_ultima1.name": "Apocolypse",
+
+
 
 
   "item.magicksaddon.balloon_spell": "Balloon Spell",
