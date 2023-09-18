@@ -1,5 +1,7 @@
 {
   "itemGroup.magicksaddontab": "Kingdom Keys: Add-on Magic",
+
+
   "magic.magicksaddon.magic_haste0.name": "Haste",
   "magic.magicksaddon.magic_haste1.name": "Hastera",
   "magic.magicksaddon.magic_haste2.name": "Hastega",
@@ -18,7 +20,7 @@
   "magic.magicksaddon.magic_comet0.name": "Comet",
   "magic.magicksaddon.magic_comet1.name": "Meteor",
   "magic.magicksaddon.magic_ultima0.name": "Ultima",
-  "magic.magicksaddon.magic_ultima1.name": "Apocolypse",
+  "magic.magicksaddon.magic_ultima1.name": "Apocalypse",
 
 
 
