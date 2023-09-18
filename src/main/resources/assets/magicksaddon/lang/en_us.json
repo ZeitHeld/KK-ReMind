@@ -27,5 +27,8 @@
   "item.magicksaddon.haste_spell": "Haste Spell",
   "item.magicksaddon.slow_spell": "Slow Spell",
   "item.magicksaddon.holy_spell": "Holy Spell",
-  "item.magicksaddon.ruin_spell": "Ruin Spell"
+  "item.magicksaddon.ruin_spell": "Ruin Spell",
+  "item.magicksaddon.comet_spell": "Comet Spell",
+  "item.magicksaddon.ultima_spell": "Ultima Spell"
+
 }
