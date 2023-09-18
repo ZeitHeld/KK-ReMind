@@ -26,8 +26,8 @@ public class MagicksEntityEvents {
 					// System.out.println("Slow Level: " + globalData.getSlowLevel() + " " + "Slow
 					// Ticks Remaining: " + globalData.getSlowTicks());
 					if (globalData.getSlowTicks() <= 0) {
-						event.getEntity().getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", 0.1 + (0.1 * globalData.getSlowLevel()), AttributeModifier.Operation.MULTIPLY_BASE));
-						event.getEntity().getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Slow", 0.1 + (0.1 * globalData.getSlowLevel()), AttributeModifier.Operation.MULTIPLY_BASE));
+						event.getEntity().getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", 0.25 + (0.25 * globalData.getSlowLevel()), AttributeModifier.Operation.MULTIPLY_BASE));
+						event.getEntity().getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Slow", 0.25 + (0.25 * globalData.getSlowLevel()), AttributeModifier.Operation.MULTIPLY_BASE));
 					}
 				}
 			}
