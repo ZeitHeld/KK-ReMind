@@ -122,10 +122,6 @@ public class UltimaEntity extends ThrowableProjectile {
                 }
 
         }
-        }
-
-
-
         @Override
         protected void defineSynchedData() {
 

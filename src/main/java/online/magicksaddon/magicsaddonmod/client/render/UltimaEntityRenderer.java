@@ -34,7 +34,7 @@ public class UltimaEntityRenderer extends EntityRenderer<UltimaEntity> {
                 if(ticks < 25){ // Stationary spin
 
 
-                }else if (ticks > 25){ //Grow alongside hitbox
+                }else if (ticks > 25){ //Grow alongside hitbox, it no grow
                     matrixStackIn.scale(ticks*0.2f, ticks*0.2f, ticks*0.2f);
 
                 }
