@@ -24,6 +24,7 @@ public class magicUltima extends Magic {
         switch (level) {
             case 0:
                 ThrowableProjectile ultima = new UltimaEntity(player.level, player, dmgMult);
+                ultima.setOwner(caster);
                 ultima.setPos(player.getX(), player.getY()+4, player.getZ());
                 player.level.addFreshEntity(ultima);
                 ultima.shootFromRotation(player, player.getXRot(), player.getYRot()-7,0,0.75F,0);
