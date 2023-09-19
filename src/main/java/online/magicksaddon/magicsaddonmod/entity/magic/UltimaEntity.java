@@ -33,16 +33,16 @@ public class UltimaEntity extends ThrowableProjectile {
         }
 
         public UltimaEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-                super(ModEntitiesMA.TYPE_RUIN.get(), world);
+                super(ModEntitiesMA.TYPE_ULTIMA.get(), world);
         }
 
         public UltimaEntity(Level world) {
-                super(ModEntitiesMA.TYPE_RUIN.get(), world);
+                super(ModEntitiesMA.TYPE_ULTIMA.get(), world);
                 this.blocksBuilding = true;
         }
 
         public UltimaEntity(Level world, LivingEntity player, float dmgMult) {
-                super(ModEntitiesMA.TYPE_RUIN.get(), player, world);
+                super(ModEntitiesMA.TYPE_ULTIMA.get(), player, world);
                 this.dmgMult = dmgMult;
         }
 
