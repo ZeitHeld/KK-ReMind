@@ -116,7 +116,12 @@ public class UltimaEntity extends ThrowableProjectile {
                                         }
                                 }
                         }
+                        if (brtResult != null) {
+                                setDeltaMovement(0,0,0);
+                        }
                 }
+
+        }
         }
 
 
