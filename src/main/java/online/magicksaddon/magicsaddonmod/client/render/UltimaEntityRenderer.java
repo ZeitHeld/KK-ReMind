@@ -39,12 +39,12 @@ public class UltimaEntityRenderer extends EntityRenderer<UltimaEntity> {
         VertexConsumer vertexconsumer = bufferIn.getBuffer(RenderType.entityCutoutNoCull(TEXTURE));
 		matrixStackIn.pushPose();
 		{
-            //matrixStackIn.translate(0, -0.7, 0);
+            matrixStackIn.translate(0, 1, 0);
 			float ticks = entity.tickCount;
-			matrixStackIn.scale(3,3,3);
+			matrixStackIn.scale(1.1F,1.1F,1.1F);
 			
-			//float radius = (ticks-entity.getStartingTicks()) * 0.2f;
-			float radius = 2f;
+			float radius = (ticks-entity.getStartingTicks()) * 0.2f;
+			//float radius = 2f;
 			 if(entity.getStartingTicks() > -1) { // Grow alongside hitbox, it no grow
 				//System.out.println("Render: "+entity.getStartingTicks());
 				matrixStackIn.scale(radius, radius, radius);
