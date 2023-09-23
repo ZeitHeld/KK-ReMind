@@ -42,12 +42,14 @@ public class UltimaEntityRenderer extends EntityRenderer<UltimaEntity> {
             //matrixStackIn.translate(0, -0.7, 0);
 			float ticks = entity.tickCount;
 			matrixStackIn.scale(3,3,3);
-
+			
 			float radius = (ticks-entity.getStartingTicks()) * 0.2f;
-			if (entity.getStartingTicks() > -1) { // Grow alongside hitbox, it no grow
+			 if(entity.getStartingTicks() > -1) { // Grow alongside hitbox, it no grow
 				//System.out.println("Render: "+entity.getStartingTicks());
 				matrixStackIn.scale(radius, radius, radius);
 				//matrixStackIn.scale((ticks-25) * 0.2f, 0, (ticks-25) * 0.2f);
+	            model.renderToBuffer(matrixStackIn, vertexconsumer, packedLightIn, OverlayTexture.NO_OVERLAY, 1,1,1,1);
+			} else if (ticks > 25) {
 	            model.renderToBuffer(matrixStackIn, vertexconsumer, packedLightIn, OverlayTexture.NO_OVERLAY, 1,1,1,1);
 
 			}
