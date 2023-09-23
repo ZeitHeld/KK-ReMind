@@ -99,7 +99,6 @@ public class UltimaEntity extends ThrowableProjectile {
 				 setPos(new Vec3(getX(), getY(+20), getZ()));
                  this.setDeltaMovement(0,-1,0);
                  this.markHurt();
-
 			} else { // EXPLOOOOOSION!!!!! (And damage)
 				if(getStartingTicks() > -1) {// Start
 					//System.out.println("Entity: "+getStartingTicks());
@@ -151,7 +150,6 @@ public class UltimaEntity extends ThrowableProjectile {
 	@Override
 	protected void onHit(HitResult rtRes) {
 		if (!level.isClientSide) {
-
 			EntityHitResult ertResult = null;
 			BlockHitResult brtResult = null;
 

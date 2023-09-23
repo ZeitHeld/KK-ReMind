@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -44,13 +45,12 @@ public class UltimaEntityRenderer extends EntityRenderer<UltimaEntity> {
 			matrixStackIn.scale(1.1F,1.1F,1.1F);
 			
 			float radius = (ticks-entity.getStartingTicks()) * 0.2f;
-			//float radius = 2f;
 			 if(entity.getStartingTicks() > -1) { // Grow alongside hitbox, it no grow
-				//System.out.println("Render: "+entity.getStartingTicks());
 				matrixStackIn.scale(radius, radius, radius);
-				//matrixStackIn.scale((ticks-25) * 0.2f, 0, (ticks-25) * 0.2f);
 	            model.renderToBuffer(matrixStackIn, vertexconsumer, packedLightIn, OverlayTexture.NO_OVERLAY, 1,1,1,1);
 			} else if (ticks > 25) {
+				matrixStackIn.scale(0.5F,2,0.5F);
+	            matrixStackIn.translate(0, -1, 0);
 	            model.renderToBuffer(matrixStackIn, vertexconsumer, packedLightIn, OverlayTexture.NO_OVERLAY, 1,1,1,1);
 
 			}
@@ -59,7 +59,12 @@ public class UltimaEntityRenderer extends EntityRenderer<UltimaEntity> {
 		matrixStackIn.popPose();
 		super.render(entity, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
 	}
-
+	
+	@Override
+	public boolean shouldRender(UltimaEntity pLivingEntity, Frustum pCamera, double pCamX, double pCamY, double pCamZ) {
+		return true;
+	}
+	
 	@Nullable
 	@Override
 	public ResourceLocation getTextureLocation(UltimaEntity entity) {
