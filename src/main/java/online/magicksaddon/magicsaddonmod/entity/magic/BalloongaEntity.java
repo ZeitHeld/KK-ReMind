@@ -1,10 +1,14 @@
 package online.magicksaddon.magicsaddonmod.entity.magic;
 
+import java.util.List;
+
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -17,9 +21,11 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
+import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
+import online.kingdomkeys.kingdomkeys.lib.Party.Member;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
 
@@ -64,14 +70,12 @@ public class BalloongaEntity extends ThrowableProjectile {
         return 0.125F;
     }
 
-    private void Caster(){
-        this.getOwner();
-    }
-
     @Override
     public void tick() {
         if (this.tickCount > maxTicks) {
-            this.remove(RemovalReason.KILLED);
+            if (!level.isClientSide && getOwner() != null) {
+            	explodeBalloonga();
+            }
         }
 
         //world.addParticle(ParticleTypes.ENTITY_EFFECT, getPosX(), getPosY(), getPosZ(), 1, 1, 0);
@@ -107,16 +111,7 @@ public class BalloongaEntity extends ThrowableProjectile {
                         float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
                         target.hurt(DamageSource.thrown(this, this.getOwner()), dmg * dmgMult);
                         target.invulnerableTime = 0;
-                        playSound(MagicSounds.BALLOON_BOUNCE.get(),1F,1F);
-                        // The Dumb part
-                        for(int i = 0; i < 360; i+=45) {
-                            ThrowableProjectile balloon = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
-                            balloon.setPos(new Vec3(this.getX(), this.getY(), this.getZ()));
-                            balloon.shootFromRotation(this, this.getXRot(), this.getYRot()+i, 0, 0.5F, 0);
-                            level.addFreshEntity(balloon);
-
-                        }
-                        this.remove(RemovalReason.KILLED);
+                        explodeBalloonga();
                     }
                 }
             }
@@ -131,9 +126,20 @@ public class BalloongaEntity extends ThrowableProjectile {
                 double y = mot.y();
                 double z = mot.z();
 
+                LivingEntity target = this.tickCount > 20 ? getNearbyEntity(ModCapabilities.getWorld(level)) : null;
                 if(brtResult.getDirection() == Direction.UP || brtResult.getDirection() == Direction.DOWN){
-                    this.setDeltaMovement(x,-y,z);
+                	if(target != null) {
+                		//this.shoot(target.getX() - this.getX(), -y, target.getZ() - this.getZ(), 0.5f, 0);
+                		Vec3 vec3 = new Vec3(target.getX() - this.getX(), -y, target.getZ() - this.getZ()).normalize();
+                	    this.setDeltaMovement(vec3);
+                	    double d0 = vec3.horizontalDistance();
+                	    this.setXRot((float)(Mth.atan2(vec3.y, d0) * (double)(180F / (float)Math.PI)));
+                	    this.xRotO = this.getXRot();
+                	} else {
+                		this.setDeltaMovement(x,-y,z);
+                	}
                     this.markHurt();
+
                 } else if (brtResult.getDirection() == Direction.EAST || brtResult.getDirection() == Direction.WEST){
                     this.setDeltaMovement(-x,y,z);
                     this.markHurt();
@@ -147,7 +153,43 @@ public class BalloongaEntity extends ThrowableProjectile {
         }
 
     }
-    public int getMaxTicks() {
+    
+    private void explodeBalloonga() {
+    	playSound(MagicSounds.BALLOON_BOUNCE.get(),1F,1F);
+        // The Dumb part
+        for(int i = 0; i < 360; i+=45) {
+            ThrowableProjectile balloon = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
+            balloon.setPos(new Vec3(this.getX(), this.getY(), this.getZ()));
+            balloon.shootFromRotation(this, this.getXRot(), this.getYRot()+i, 0, 0.5F, 0);
+            level.addFreshEntity(balloon);
+            this.remove(RemovalReason.KILLED);
+        }		
+	}
+
+	private LivingEntity getNearbyEntity(IWorldCapabilities worldData) {
+    	List<Entity> list = level.getEntities(getOwner(), getBoundingBox().inflate(3));
+    	if(worldData == null)
+    		return null;
+		Party casterParty = worldData.getPartyFromMember(getOwner().getUUID());
+
+		if(casterParty != null && !casterParty.getFriendlyFire()) {
+			for(Member m : casterParty.getMembers()) {
+				list.remove(level.getPlayerByUUID(m.getUUID()));
+			}
+		} else {
+			list.remove(getOwner());
+		}
+		
+		if (!list.isEmpty()) {
+			for (Entity entity : list) {
+				if(entity instanceof LivingEntity le) {
+					return le;
+				}
+			}
+		}
+		return null;
+	}
+	public int getMaxTicks() {
         return maxTicks;
     }
 

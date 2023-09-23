@@ -1,10 +1,13 @@
 package online.magicksaddon.magicsaddonmod.entity.magic;
 
+import java.util.List;
+
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -17,9 +20,13 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
+import online.kingdomkeys.kingdomkeys.KingdomKeys;
+import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
+import online.kingdomkeys.kingdomkeys.lib.Party.Member;
+import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
 
@@ -119,11 +126,13 @@ public class BalloonEntity extends ThrowableProjectile {
                 double y = mot.y();
                 double z = mot.z();
 
-                //System.out.println(brtResult);
-                //System.out.println(brtResult.getDirection());
-                //System.out.println(getDeltaMovement());
+                LivingEntity target = this.tickCount > 30 ? getNearbyEntity(ModCapabilities.getWorld(level)) : null;
                 if(brtResult.getDirection() == Direction.UP || brtResult.getDirection() == Direction.DOWN){
-                    this.setDeltaMovement(x,-y,z);
+                	if(target != null) {
+                		this.shoot(target.getX() - this.getX(), -y, target.getZ() - this.getZ(), 0.5f, 0);
+                	} else {
+                		this.setDeltaMovement(x,-y,z);
+                	}
                     this.markHurt();
                 } else if (brtResult.getDirection() == Direction.EAST || brtResult.getDirection() == Direction.WEST){
                     this.setDeltaMovement(-x,y,z);
@@ -139,7 +148,31 @@ public class BalloonEntity extends ThrowableProjectile {
 
     }
 
-    public int getMaxTicks() {
+    private LivingEntity getNearbyEntity(IWorldCapabilities worldData) {
+    	List<Entity> list = level.getEntities(getOwner(), getBoundingBox().inflate(3));
+    	if(worldData == null)
+    		return null;
+		Party casterParty = worldData.getPartyFromMember(getOwner().getUUID());
+
+		if(casterParty != null && !casterParty.getFriendlyFire()) {
+			for(Member m : casterParty.getMembers()) {
+				list.remove(level.getPlayerByUUID(m.getUUID()));
+			}
+		} else {
+			list.remove(getOwner());
+		}
+		
+		if (!list.isEmpty()) {
+			for (Entity entity : list) {
+				if(entity instanceof LivingEntity le) {
+					return le;
+				}
+			}
+		}
+		return null;
+	}
+
+	public int getMaxTicks() {
         return maxTicks;
     }
 

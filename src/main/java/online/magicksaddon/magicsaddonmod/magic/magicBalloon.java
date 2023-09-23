@@ -24,10 +24,7 @@ public class magicBalloon extends Magic {
 		caster.swing(InteractionHand.MAIN_HAND);
 
 		// Levels
-		// ThrowableProjectile balloon = new BalloonEntity(player.level, player,
-		// dmgMult);
 		player.level.playSound(null, player.blockPosition(), MagicSounds.BALLOON.get(), SoundSource.PLAYERS, 1F, 1F);
-    	//System.out.println(player.level.isClientSide);
 
 		switch(level) {
 		case 0:
