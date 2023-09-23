@@ -110,7 +110,7 @@ public class UltimaEntity extends ThrowableProjectile {
 							double x = X + (radius * Math.cos(Math.toRadians(s)) * Math.sin(Math.toRadians(t)));
 							double z = Z + (radius * Math.sin(Math.toRadians(s)) * Math.sin(Math.toRadians(t)));
 							double y = Y + (radius * Math.cos(Math.toRadians(t)));
-							((ServerLevel) level).sendParticles(ParticleTypes.DRAGON_BREATH, x, y+1, z, 1, 0,0,0, 0);
+							//((ServerLevel) level).sendParticles(ParticleTypes.DRAGON_BREATH, x, y+1, z, 1, 0,0,0, 0);
 						}
 					}
 					
