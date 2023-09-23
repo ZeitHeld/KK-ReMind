@@ -103,7 +103,8 @@ public class UltimaEntity extends ThrowableProjectile {
 			} else { // EXPLOOOOOSION!!!!! (And damage)
 				if(getStartingTicks() > -1) {// Start
 					//System.out.println("Entity: "+getStartingTicks());
-					float radius = (tickCount - getStartingTicks()) * 0.2f;
+					//float radius = (tickCount - getStartingTicks()) * 0.2f;
+					float radius = 2;
 					for (int t = 1; t < 360; t += 20) {
 						for (int s = 1; s < 360 ; s += 20) {
 							double x = X + (radius * Math.cos(Math.toRadians(s)) * Math.sin(Math.toRadians(t)));

@@ -43,7 +43,8 @@ public class UltimaEntityRenderer extends EntityRenderer<UltimaEntity> {
 			float ticks = entity.tickCount;
 			matrixStackIn.scale(3,3,3);
 			
-			float radius = (ticks-entity.getStartingTicks()) * 0.2f;
+			//float radius = (ticks-entity.getStartingTicks()) * 0.2f;
+			float radius = 2f;
 			 if(entity.getStartingTicks() > -1) { // Grow alongside hitbox, it no grow
 				//System.out.println("Render: "+entity.getStartingTicks());
 				matrixStackIn.scale(radius, radius, radius);
