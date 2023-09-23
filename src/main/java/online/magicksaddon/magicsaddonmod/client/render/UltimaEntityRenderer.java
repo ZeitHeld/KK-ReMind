@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
@@ -24,7 +25,7 @@ import javax.annotation.Nullable;
 public class UltimaEntityRenderer extends EntityRenderer<UltimaEntity> {
     public static final ResourceLocation TEXTURE = new ResourceLocation(MagicksAddonMod.MODID,"textures/entity/models/ultima.png");
 
-	UltimaModel model;
+	UltimaModel<Entity> model;
 
 	public UltimaEntityRenderer(EntityRendererProvider.Context context) {
 		super(context);
@@ -39,15 +40,15 @@ public class UltimaEntityRenderer extends EntityRenderer<UltimaEntity> {
 		matrixStackIn.pushPose();
 		{
             //matrixStackIn.translate(0, -0.7, 0);
-
 			float ticks = entity.tickCount;
-			if (ticks < 25) { // Stationary spin
+			matrixStackIn.scale(3,3,3);
 
-			} else if (ticks > 25) { // Grow alongside hitbox, it no grow
-				matrixStackIn.scale((ticks-25) * 0.2f, (ticks-25) * 0.2f, (ticks-25) * 0.2f);
+			float radius = (ticks-entity.getStartingTicks()) * 0.2f;
+			if (entity.getStartingTicks() > -1) { // Grow alongside hitbox, it no grow
+				//System.out.println("Render: "+entity.getStartingTicks());
+				matrixStackIn.scale(radius, radius, radius);
 				//matrixStackIn.scale((ticks-25) * 0.2f, 0, (ticks-25) * 0.2f);
 	            model.renderToBuffer(matrixStackIn, vertexconsumer, packedLightIn, OverlayTexture.NO_OVERLAY, 1,1,1,1);
-
 
 			}
 
