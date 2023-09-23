@@ -37,7 +37,7 @@ import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
 
 public class UltimaEntity extends ThrowableProjectile {
-	int maxTicks = 300;
+	int maxTicks = 200;
 	Player player;
 	String caster;
 	float dmgMult = 1;
