@@ -1,5 +1,7 @@
 package online.magicksaddon.magicsaddonmod.entity.magic;
 
+import java.util.List;
+
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -18,12 +20,13 @@ import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.damagesource.DarknessDamageSource;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
+import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
 
 public class RuinEntity extends ThrowableProjectile {
 
     // Start
-    int maxTicks = 100;
+    int maxTicks = 100, radius = 2;
     float dmgMult = 1;
 
     public RuinEntity(EntityType<? extends ThrowableProjectile> type, Level world) {
@@ -40,16 +43,11 @@ public class RuinEntity extends ThrowableProjectile {
         this.blocksBuilding = true;
     }
 
-    public RuinEntity(Level world, LivingEntity player, float dmgMult) {
+    public RuinEntity(Level world, LivingEntity player, float dmgMult, int radius) {
         super(ModEntitiesMA.TYPE_RUIN.get(), player, world);
         this.dmgMult = dmgMult;
+        this.radius = radius;
     }
-
-    private void ruinExplode(){
-        float explosionSize = 2.0F;
-        this.level.explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 1.0F), this.blockPosition().getZ(), explosionSize, false, Explosion.BlockInteraction.NONE);
-    }
-
 
     @Override
     public Packet<ClientGamePacketListener> getAddEntityPacket() {
@@ -98,23 +96,37 @@ public class RuinEntity extends ThrowableProjectile {
                     }
                     if(p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { //If caster is not in a party || the party doesn't have the target in it || the party has FF on
                         float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
-                        float explosionSize = 2.0F;
-                        target.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg * dmgMult);
-                        target.invulnerableTime = 0;
-                        this.level.explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), explosionSize, false,Explosion.BlockInteraction.NONE );
-                        target.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg * dmgMult);
+                        //target.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg * dmgMult);
+                        if(this.getOwner() instanceof Player) {
+	                        List<LivingEntity> targetList = Utils.getLivingEntitiesInRadiusExcludingParty((Player) this.getOwner(), this, radius,radius,radius);
+	                        System.out.println(targetList);
+	                        for(LivingEntity e : targetList) {
+	                        	e.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg * dmgMult);
+	                            e.invulnerableTime = 0;
+	                        }
+                        }
+                        this.level.explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false,Explosion.BlockInteraction.NONE );
                         remove(RemovalReason.KILLED);
 
                     }
                 }
-            }
+			}
 
-            if (brtResult != null) {
-                float explosionSize = 2.0F;
-                this.level.explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), explosionSize, false,Explosion.BlockInteraction.NONE );
-                remove(RemovalReason.KILLED);
-                }
-            }
+			if (brtResult != null) {
+				if (this.getOwner() instanceof Player) {
+					float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
+					List<LivingEntity> targetList = Utils.getLivingEntitiesInRadiusExcludingParty((Player) this.getOwner(), this, radius, radius, radius);
+					System.out.println(targetList);
+					for (LivingEntity e : targetList) {
+						e.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg * dmgMult);
+						e.invulnerableTime = 0;
+					}
+				}
+				this.level.explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double) (this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, Explosion.BlockInteraction.NONE);
+
+				remove(RemovalReason.KILLED);
+			}
+		}
 
         }
 

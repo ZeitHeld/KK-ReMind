@@ -11,13 +11,14 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.client.model.RuinModel;
 
 public class RuinEntityRenderer extends EntityRenderer<ThrowableProjectile> {
     public static final ResourceLocation TEXTURE = new ResourceLocation(MagicksAddonMod.MODID,"textures/entity/models/ruin.png");
-    RuinModel ruinModel;
+    RuinModel<Entity> ruinModel;
 
     public RuinEntityRenderer(EntityRendererProvider.Context context){
         super(context);
