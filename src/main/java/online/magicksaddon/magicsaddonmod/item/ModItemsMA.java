@@ -18,7 +18,9 @@ public class ModItemsMA{
         slowSpell = ITEMS.register("slow_spell", () -> new MagicSpellItem(new Item.Properties().tab(ModCreativeModTabMA.MAGICKS_ADDON_TAB), MagicksAddonMod.MODID+":magic_slow")),
         holySpell = ITEMS.register("holy_spell", () -> new MagicSpellItem(new Item.Properties().tab(ModCreativeModTabMA.MAGICKS_ADDON_TAB), MagicksAddonMod.MODID+":magic_holy")),
         ruinSpell = ITEMS.register("ruin_spell", () -> new MagicSpellItem(new Item.Properties().tab(ModCreativeModTabMA.MAGICKS_ADDON_TAB), MagicksAddonMod.MODID+":magic_ruin")),
-        balloonSpell = ITEMS.register("balloon_spell", () -> new MagicSpellItem(new Item.Properties().tab(ModCreativeModTabMA.MAGICKS_ADDON_TAB), MagicksAddonMod.MODID+":magic_balloon"));
+        balloonSpell = ITEMS.register("balloon_spell", () -> new MagicSpellItem(new Item.Properties().tab(ModCreativeModTabMA.MAGICKS_ADDON_TAB), MagicksAddonMod.MODID+":magic_balloon")),
+        ultimaSpell = ITEMS.register("ultima_spell", () -> new MagicSpellItem(new Item.Properties().tab(ModCreativeModTabMA.MAGICKS_ADDON_TAB), MagicksAddonMod.MODID+":magic_ultima")),
+        cometSpell = ITEMS.register("comet_spell", () -> new MagicSpellItem(new Item.Properties().tab(ModCreativeModTabMA.MAGICKS_ADDON_TAB), MagicksAddonMod.MODID+":magic_comet"));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

@@ -15,7 +15,10 @@ public class MagicSounds {
             HOLY = registerSound("holy"),
             RUIN = registerSound("ruin"),
             BALLOON = registerSound("balloon"),
-            BALLOON_BOUNCE = registerSound("balloon_bounce");
+            BALLOON_BOUNCE = registerSound("balloon_bounce"),
+            PLAYER_CAST = registerSound("player_cast"),
+            ULTIMA_CAST = registerSound("ultima_cast"),
+            ULTIMA_EXPLOSION = registerSound("ultima_explosion");
 
 
     public static RegistryObject<SoundEvent> registerSound(String name) {

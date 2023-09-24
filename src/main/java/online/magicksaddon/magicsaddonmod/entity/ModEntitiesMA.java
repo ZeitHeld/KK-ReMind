@@ -20,7 +20,7 @@ import online.magicksaddon.magicsaddonmod.client.model.BalloongaModel;
 import online.magicksaddon.magicsaddonmod.client.model.HolyModel;
 import online.magicksaddon.magicsaddonmod.client.model.RuinModel;
 import online.magicksaddon.magicsaddonmod.client.model.UltimaModel;
-//import online.magicksaddon.magicsaddonmod.client.model.CometModel;
+import online.magicksaddon.magicsaddonmod.client.model.CometModel;
 import online.magicksaddon.magicsaddonmod.client.render.BalloonEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.BalloongaEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.HolyEntityRenderer;
@@ -37,7 +37,7 @@ public class ModEntitiesMA {
     public static final RegistryObject<EntityType<BalloonEntity>> TYPE_BALLOON = createEntityType(BalloonEntity::new, BalloonEntity::new, MobCategory.MISC, "entity_balloon", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<BalloongaEntity>> TYPE_BALLOONGA = createEntityType(BalloongaEntity::new, BalloongaEntity::new, MobCategory.MISC, "entity_balloonga", 1F, 1F);
     public static final RegistryObject<EntityType<UltimaEntity>> TYPE_ULTIMA = createEntityType(UltimaEntity::new, UltimaEntity::new, MobCategory.MISC, "entity_ultima", 1F, 1F);
-    //public static final RegistryObject<EntityType<CometEntity>> TYPE_COMET = createEntityType(CometEntity::new, CometEntity::new, MobCategory.MISC, "entity_comet", 1F, 1F);
+    public static final RegistryObject<EntityType<CometEntity>> TYPE_COMET = createEntityType(CometEntity::new, CometEntity::new, MobCategory.MISC, "entity_comet", 2F, 2F);
 
 
     public static <T extends Entity, M extends EntityType<T>>RegistryObject<EntityType<T>> createEntityType(EntityType.EntityFactory<T> factory, BiFunction<PlayMessages.SpawnEntity, Level, T> clientFactory, MobCategory classification, String name, float sizeX, float sizeY) {
@@ -56,7 +56,7 @@ public class ModEntitiesMA {
         event.registerLayerDefinition(BalloonModel.LAYER_LOCATION, BalloonModel::createBodyLayer);
         event.registerLayerDefinition(BalloongaModel.LAYER_LOCATION, BalloongaModel::createBodyLayer);
         event.registerLayerDefinition(UltimaModel.LAYER_LOCATION, UltimaModel::createBodyLayer);
-        //event.registerLayerDefinition(CometModel.LAYER_LOCATION, CometModel::createBodyLayer);
+        event.registerLayerDefinition(CometModel.LAYER_LOCATION, CometModel::createBodyLayer);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -66,7 +66,7 @@ public class ModEntitiesMA {
         event.registerEntityRenderer(TYPE_RUIN.get(), RuinEntityRenderer::new);
         event.registerEntityRenderer(TYPE_BALLOON.get(), BalloonEntityRenderer::new);
         event.registerEntityRenderer(TYPE_BALLOONGA.get(), BalloongaEntityRenderer::new);
-        //event.registerEntityRenderer(TYPE_COMET.get(), CometEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_COMET.get(), CometEntityRenderer::new);
         event.registerEntityRenderer(TYPE_ULTIMA.get(), UltimaEntityRenderer::new);
 
     }

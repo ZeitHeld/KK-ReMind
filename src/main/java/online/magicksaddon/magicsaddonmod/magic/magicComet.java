@@ -24,12 +24,14 @@ public class magicComet extends Magic {
 
         switch (level) {
             case 0:
+                // Comet
                 ThrowableProjectile comet = new CometEntity(player.level, player, dmgMult);
                 player.level.addFreshEntity(comet);
                 comet.shootFromRotation(player, player.getXRot(), player.getYRot(),0,2F,0);
                 player.level.playSound(null, player.blockPosition(), MagicSounds.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
                 break;
             case 1:
+                // Meteor
 
                 break;
         }

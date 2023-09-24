@@ -28,5 +28,20 @@
           "sounds": [
             "magicksaddon:balloon_bounce"
           ]
+      },
+        "player_cast": {
+          "sounds": [
+            "magicksaddon:player_cast"
+          ]
+      },
+        "ultima_cast": {
+          "sounds": [
+            "magicksaddon:ultima_cast"
+          ]
+      },
+        "ultima_explosion": {
+          "sounds": [
+            "magicksaddon:ultima_explosion"
+          ]
       }
   }
