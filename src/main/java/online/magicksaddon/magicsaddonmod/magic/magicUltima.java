@@ -27,7 +27,7 @@ public class magicUltima extends Magic {
                 ultima.setOwner(caster);
                 ultima.setPos(player.getX(), player.getY()+4, player.getZ());
                 player.level.addFreshEntity(ultima);
-                ultima.shootFromRotation(player, player.getXRot(), player.getYRot()-7,0,0.75F,0);
+                ultima.shootFromRotation(player, player.getXRot(), player.getYRot(),0,0.75F,0);
                 player.level.playSound(null, player.blockPosition(), MagicSounds.PLAYER_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
                 break;
             case 1:
