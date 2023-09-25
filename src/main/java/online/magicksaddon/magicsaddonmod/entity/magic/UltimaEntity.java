@@ -38,7 +38,7 @@ import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
 
 public class UltimaEntity extends ThrowableProjectile {
-	int maxTicks = 230;
+	int maxTicks = 200;
 	Player player;
 	String caster;
 	float dmgMult = 1;
@@ -116,8 +116,8 @@ public class UltimaEntity extends ThrowableProjectile {
 					}
 					if (tickCount == 50){
 						playSound(MagicSounds.ULTIMA_CAST.get(),1F,1F);
-					} if (tickCount == 150) {
-						playSound(MagicSounds.ULTIMA_EXPLOSION.get(),1F,1F);
+					} if (tickCount == 140) {
+						playSound(MagicSounds.ULTIMA_EXPLOSION.get(),0.75F,1F);
 					}
 					
 					//System.out.println("Ent rad: "+radius);

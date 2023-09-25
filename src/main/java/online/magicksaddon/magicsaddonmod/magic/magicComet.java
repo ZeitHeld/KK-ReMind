@@ -27,21 +27,21 @@ public class magicComet extends Magic {
                 // Comet
                 ThrowableProjectile comet = new CometEntity(player.level, player, dmgMult, 2, 0);
                 comet.setOwner(caster);
-                comet.setPos(player.getX(), player.getY() + 5, player.getZ());
+                comet.setPos(player.getX(), player.getY() + 4, player.getZ());
                 player.level.addFreshEntity(comet);
-                comet.shootFromRotation(player, player.getXRot(), player.getYRot() -7, 0, 2F, 0);
-                player.level.playSound(null, player.blockPosition(), MagicSounds.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
+                comet.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2F, 0);
+                player.level.playSound(null, player.blockPosition(), MagicSounds.PLAYER_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
                 break;
             case 1:
                 // Meteor
                 for (int i = -3; i <= 3; i++) {
                     ThrowableProjectile meteor = new CometEntity(player.level, player, dmgMult, 2, i);
                     meteor.setOwner(caster);
-                    meteor.setPos(player.getX()+ (Math.random() * 10 ) - 5, player.getY() + (Math.random() * i + 1) + 7, player.getZ()+ (Math.random() * 10) - 5);
+                    meteor.setPos(player.getX()+ (Math.random() * 10 ) - 5, player.getY() + (Math.random() * i) + 6, player.getZ()+ (Math.random() * 10) - 5);
                     player.level.addFreshEntity(meteor);
                     meteor.shootFromRotation(player, player.getXRot(), player.getYRot() , 0, 2F, 0);
                 }
-
+                player.level.playSound(null, player.blockPosition(), MagicSounds.PLAYER_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
                 break;
         }
 
