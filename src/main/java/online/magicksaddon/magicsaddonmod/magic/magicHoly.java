@@ -17,7 +17,6 @@ public class magicHoly extends Magic {
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult){
         //IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(player);
-        System.out.println("Casting!");
         float dmgMult = getDamageMult(level);
         dmgMult *= fullMPBlastMult;
 

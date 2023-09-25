@@ -26,6 +26,7 @@ import java.util.List;
 public class CometEntity extends ThrowableProjectile {
         int maxTicks = 200, radius = 2;
         float dmgMult = 1;
+        int index = 0;
 
 
         public CometEntity(EntityType<? extends ThrowableProjectile> type, Level world) {
@@ -42,10 +43,11 @@ public class CometEntity extends ThrowableProjectile {
                 this.blocksBuilding = true;
         }
 
-        public CometEntity(Level world, LivingEntity player, float dmgMult, int radius) {
+        public CometEntity(Level world, LivingEntity player, float dmgMult, int radius, int index) {
                 super(ModEntitiesMA.TYPE_COMET.get(), player, world);
                 this.dmgMult = dmgMult;
                 this.radius = radius;
+                this.index = index;
         }
         @Override
         public Packet<ClientGamePacketListener> getAddEntityPacket() {
