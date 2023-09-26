@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NON",
+    "SGE",
+    "NFN"
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:dragon_breath"
+     },
+    "O": {
+      "item": "minecraft:obsidian"
+      },
+    "S": {
+      "item": "minecraft:stone"
+      },
+    "G": {
+      "item": "kingdomkeys:spellgravity"
+    },
+    "E": {
+      "item": "minecraft:end_stone"
+    },
+    "F": {
+      "item": "minecraft:fire_charge"
+    }
+        },
+      "result": {
+        "item": "magicksaddon:comet_spell"
+      }
+  }

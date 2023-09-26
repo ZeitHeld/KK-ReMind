@@ -29,7 +29,7 @@ public class magicComet extends Magic {
                 comet.setOwner(caster);
                 comet.setPos(player.getX(), player.getY() + 4, player.getZ());
                 player.level.addFreshEntity(comet);
-                comet.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2F, 0);
+                comet.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1.5F, 0);
                 player.level.playSound(null, player.blockPosition(), MagicSounds.PLAYER_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
                 break;
             case 1:
@@ -39,7 +39,7 @@ public class magicComet extends Magic {
                     meteor.setOwner(caster);
                     meteor.setPos(player.getX()+ (Math.random() * 10 ) - 5, player.getY() + (Math.random() * i) + 6, player.getZ()+ (Math.random() * 10) - 5);
                     player.level.addFreshEntity(meteor);
-                    meteor.shootFromRotation(player, player.getXRot(), player.getYRot() , 0, 2F, 0);
+                    meteor.shootFromRotation(player, player.getXRot(), player.getYRot() , 0, 1.5F, 0);
                 }
                 player.level.playSound(null, player.blockPosition(), MagicSounds.PLAYER_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
                 break;
