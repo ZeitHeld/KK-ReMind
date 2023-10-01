@@ -37,7 +37,7 @@ public class magicComet extends Magic {
                 for (int i = -3; i <= 3; i++) {
                     ThrowableProjectile meteor = new CometEntity(player.level, player, dmgMult, 2, i);
                     meteor.setOwner(caster);
-                    meteor.setPos(player.getX()+ (Math.random() * 10 ) - 7, player.getY() + (Math.random() * i) + 6, player.getZ()+ (Math.random() * 10) - 5);
+                    meteor.setPos(player.getX()+ (Math.random() * 10 ) - 5, player.getY() + (Math.random() * i) + 3, player.getZ()+ (Math.random() * 10) - 5);
                     player.level.addFreshEntity(meteor);
                     meteor.shootFromRotation(player, player.getXRot() + 2, player.getYRot() , 0, 1.5F, 0);
                 }
