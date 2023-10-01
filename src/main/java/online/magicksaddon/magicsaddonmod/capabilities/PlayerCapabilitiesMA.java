@@ -1,8 +1,6 @@
 package online.magicksaddon.magicsaddonmod.capabilities;
 
 import net.minecraft.nbt.CompoundTag;
-import online.kingdomkeys.kingdomkeys.capability.PlayerCapabilities;
-import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 
 public class PlayerCapabilitiesMA implements IPlayerCapabilitiesMA{
 
@@ -42,11 +40,6 @@ public class PlayerCapabilitiesMA implements IPlayerCapabilitiesMA{
         return false;
     }
 
-    @Override
-    public int getNumberOfAbilitiesEquipped(String ability) {
-        int amount = 0;
-        
-    }
 
     @Override
     public CompoundTag serializeNBT() {

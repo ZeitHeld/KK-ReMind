@@ -18,5 +18,4 @@ public interface IPlayerCapabilitiesMA  extends INBTSerializable<CompoundTag> {
 
     // Abilities Stuff
 
-    int getNumberOfAbilitiesEquipped(String ability);
 }

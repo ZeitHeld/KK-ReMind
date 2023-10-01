@@ -20,7 +20,8 @@ public class magicRuin extends Magic {
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult){
         // dmg
-        float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.darknessBoost) * 0.2F;
+        float dmgMult = getDamageMult(level);
+        //float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.darknessBoost) * 0.2F;
         dmgMult *= fullMPBlastMult;
 
         switch (level) {

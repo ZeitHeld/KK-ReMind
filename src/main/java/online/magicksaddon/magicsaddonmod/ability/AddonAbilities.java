@@ -10,6 +10,7 @@ import net.minecraftforge.registries.RegistryBuilder;
 import net.minecraftforge.registries.RegistryObject;
 
 //KK Imports
+import online.kingdomkeys.kingdomkeys.KingdomKeys;
 import online.kingdomkeys.kingdomkeys.ability.Ability;
 import online.kingdomkeys.kingdomkeys.ability.ModAbilities;
 
@@ -19,7 +20,7 @@ import online.magicksaddon.magicsaddonmod.lib.Strings;
 
 public class AddonAbilities extends ModAbilities{
 
-    public static DeferredRegister<Ability> ABILITIES = DeferredRegister.create(new ResourceLocation(MagicksAddonMod.MODID, "abilities"), MagicksAddonMod.MODID);
+    public static DeferredRegister<Ability> ABILITIES = DeferredRegister.create(new ResourceLocation(KingdomKeys.MODID, "abilities"), MagicksAddonMod.MODID);
 
     public static Supplier<IForgeRegistry<Ability>> registry = ABILITIES.makeRegistry(RegistryBuilder::new);
 

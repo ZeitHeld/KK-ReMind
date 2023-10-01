@@ -30,6 +30,7 @@ import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
 import online.magicksaddon.magicsaddonmod.handler.MagicksEntityEvents;
 import online.magicksaddon.magicsaddonmod.item.ModItemsMA;
 import online.magicksaddon.magicsaddonmod.magic.ModMagicks;
+import online.magicksaddon.magicsaddonmod.ability.AddonAbilities;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MagicksAddonMod.MODID)
@@ -72,6 +73,7 @@ public class MagicksAddonMod
         MagicSounds.SOUNDS.register(modEventBus);
         ModItemsMA.ITEMS.register(modEventBus);
         ModEntitiesMA.ENTITIES.register(modEventBus);
+        AddonAbilities.ABILITIES.register(modEventBus);
 
 
 
