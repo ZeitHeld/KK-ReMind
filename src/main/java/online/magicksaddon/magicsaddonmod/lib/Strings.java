@@ -11,7 +11,7 @@ public class Strings {
         //Forms
 
         //Support
-        darkPassage = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"dark_passage",
+        darkPassage = Strings.ABMA_Prefix+"dark_passage",
         darknessBoost = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"darkness_boost",
         rageAwakened = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"rage_awakened";
 
