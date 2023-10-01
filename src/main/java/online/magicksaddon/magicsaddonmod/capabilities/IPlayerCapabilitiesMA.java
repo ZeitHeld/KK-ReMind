@@ -5,6 +5,7 @@ import net.minecraftforge.common.util.INBTSerializable;
 
 public interface IPlayerCapabilitiesMA  extends INBTSerializable<CompoundTag> {
 
+
     // Status Effect Spell Values
     int getHasteLevel();
     void setHasteLevel(int level);
@@ -14,4 +15,8 @@ public interface IPlayerCapabilitiesMA  extends INBTSerializable<CompoundTag> {
     void setHasteActive(boolean active);
     boolean getHasteActive();
 
+
+    // Abilities Stuff
+
+    int getNumberOfAbilitiesEquipped(String ability);
 }

@@ -22,14 +22,20 @@
   "magic.magicksaddon.magic_ultima0.name": "Ultima",
 
 
-
-
   "item.magicksaddon.balloon_spell": "Balloon Spell",
   "item.magicksaddon.haste_spell": "Haste Spell",
   "item.magicksaddon.slow_spell": "Slow Spell",
   "item.magicksaddon.holy_spell": "Holy Spell",
   "item.magicksaddon.ruin_spell": "Ruin Spell",
   "item.magicksaddon.comet_spell": "Comet Spell",
-  "item.magicksaddon.ultima_spell": "Ultima Spell"
+  "item.magicksaddon.ultima_spell": "Ultima Spell",
+
+
+  "ability.ability_dark_passage.name": "Dark Passage",
+  "ability.ability_dark_passage.desc": "Allows you to use Organization Portals without being apart of the Organization.",
+  "ability.ability_rage_awakened.name": "Rage Awakened",
+  "ability.ability_rage_awakened.desc": "Allows you to give into your rage and let your heart blacken with anger -- let it empower you!",
+  "ability.ability_darkness_boost.name": "Darkness Boost",
+  "ability.ability_darkness_boost.desc": "Increases damage done with dark-based attacks."
 
 }
