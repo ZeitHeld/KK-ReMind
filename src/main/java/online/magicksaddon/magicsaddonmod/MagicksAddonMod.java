@@ -31,6 +31,7 @@ import online.magicksaddon.magicsaddonmod.handler.MagicksEntityEvents;
 import online.magicksaddon.magicsaddonmod.item.ModItemsMA;
 import online.magicksaddon.magicsaddonmod.magic.ModMagicks;
 import online.magicksaddon.magicsaddonmod.ability.AddonAbilities;
+import online.magicksaddon.magicsaddonmod.driveform.AddonForms;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MagicksAddonMod.MODID)
@@ -74,6 +75,7 @@ public class MagicksAddonMod
         ModItemsMA.ITEMS.register(modEventBus);
         ModEntitiesMA.ENTITIES.register(modEventBus);
         AddonAbilities.ABILITIES.register(modEventBus);
+        AddonForms.DRIVE_FORMS.register(modEventBus);
 
 
 
