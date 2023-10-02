@@ -7,6 +7,8 @@ import net.minecraftforge.registries.RegistryBuilder;
 import net.minecraftforge.registries.RegistryObject;
 import online.kingdomkeys.kingdomkeys.KingdomKeys;
 import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
+import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.lib.Strings;
 
 import java.util.function.Supplier;
 
@@ -17,9 +19,9 @@ public class AddonForms {
 
     static int order = 6;
 
-    // public static final RegistryObject<DriveForm>
+     public static final RegistryObject<DriveForm>
 
         // Forms list
-           // RAGE = DRIVE_FORMS.register(DriveForm.RAGE.getPath(), () -> new DriveFormRage(DriveForm.RAGE.toString(), order++, true)),
-           // DARK = DRIVE_FORMS.register(DriveForm.DARK.getPath(), () -> new DriveFormDark(DriveForm.DARK.toString(), order++, true));
+            RAGE = DRIVE_FORMS.register(Strings.DFMA_Prefix + "rage", () -> new DriveFormRage(MagicksAddonMod.MODID + ":"+ Strings.DFMA_Prefix + "rage", order++, new ResourceLocation(MagicksAddonMod.MODID, "textures/models/armor/rage.png"), true)),
+            DARK = DRIVE_FORMS.register(Strings.DFMA_Prefix + "dark", () -> new DriveFormDark(MagicksAddonMod.MODID + ":"+ Strings.DFMA_Prefix + "dark", order++, new ResourceLocation(MagicksAddonMod.MODID, "textures/models/armor/dark.png"), false));
 }
