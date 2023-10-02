@@ -134,7 +134,7 @@ dependencies {
 
     // KK Implementation
     implementation fg.deobf("kingdomkeys:kingdomkeys:1.19.2-2.3.2.1")
-    //implementation fg.deobf("curse.maven:kingdomkey-242862:4509540")
+    //implementation fg.deobf("curse.maven:kingdomkey-242862:4760536")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
