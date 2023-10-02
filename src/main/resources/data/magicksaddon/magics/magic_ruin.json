@@ -10,7 +10,7 @@
     "dmg_mult":2.0
   },
   "2": {
-    "cost":24,
+    "cost":20,
     "cooldown":25,
     "dmg_mult":2.5
   }
