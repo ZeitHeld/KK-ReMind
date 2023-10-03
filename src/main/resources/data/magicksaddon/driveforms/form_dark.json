@@ -1,0 +1,11 @@
+{
+  "cost": 100,
+  "ap": 100,
+  "str_mult": 2,
+  "mag_mult": 2,
+  "speed_mult": 1.5,
+  "level_up":[ 0, 20, 80, 152, 242, 350, 500 ],
+  "abilities": [
+    "magicksaddon:ability_darkness_boost"
+  ]
+}

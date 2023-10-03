@@ -75,7 +75,7 @@ public class MagicksAddonMod
         ModItemsMA.ITEMS.register(modEventBus);
         ModEntitiesMA.ENTITIES.register(modEventBus);
         AddonAbilities.ABILITIES.register(modEventBus);
-        //AddonForms.DRIVE_FORMS.register(modEventBus);
+        AddonForms.DRIVE_FORMS.register(modEventBus);
 
 
 
