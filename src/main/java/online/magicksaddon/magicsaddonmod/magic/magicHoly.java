@@ -2,6 +2,7 @@ package online.magicksaddon.magicsaddonmod.magic;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
@@ -10,12 +11,12 @@ import online.magicksaddon.magicsaddonmod.entity.magic.HolyEntity;
 
 public class magicHoly extends Magic {
 
-    public magicHoly(ResourceLocation registryName, boolean hasToSelect, int maxLevel, String gmAbility, int order) {
-        super(registryName, hasToSelect, maxLevel, gmAbility, order);
+    public magicHoly(ResourceLocation registryName, boolean hasToSelect, int maxLevel, String gmAbility) {
+        super(registryName, hasToSelect, maxLevel, gmAbility);
     }
 
     @Override
-    protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult){
+    protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget){
         //IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(player);
         float dmgMult = getDamageMult(level);
         dmgMult *= fullMPBlastMult;

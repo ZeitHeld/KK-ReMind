@@ -24,14 +24,14 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import online.magicksaddon.magicsaddonmod.ability.AddonAbilities;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
+import online.magicksaddon.magicsaddonmod.driveform.AddonForms;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
 import online.magicksaddon.magicsaddonmod.handler.MagicksEntityEvents;
 import online.magicksaddon.magicsaddonmod.item.ModItemsMA;
 import online.magicksaddon.magicsaddonmod.magic.ModMagicks;
-import online.magicksaddon.magicsaddonmod.ability.AddonAbilities;
-import online.magicksaddon.magicsaddonmod.driveform.AddonForms;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MagicksAddonMod.MODID)

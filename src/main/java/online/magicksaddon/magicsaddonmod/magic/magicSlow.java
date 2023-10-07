@@ -22,14 +22,14 @@ import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 
 public class magicSlow extends Magic {
-    public magicSlow(ResourceLocation registryName, boolean hasToSelect, int maxLevel, int order) {
-        super(registryName, hasToSelect, maxLevel, null, order);
+    public magicSlow(ResourceLocation registryName, boolean hasToSelect, int maxLevel) {
+        super(registryName, hasToSelect, maxLevel, null);
     }
 
     IGlobalCapabilitiesMA globalData;
 
     @Override
-    protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult) {
+    protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
 
 
 

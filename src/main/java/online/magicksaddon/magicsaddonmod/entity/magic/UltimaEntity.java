@@ -1,10 +1,7 @@
 package online.magicksaddon.magicsaddonmod.entity.magic;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
-import net.minecraft.Util;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;

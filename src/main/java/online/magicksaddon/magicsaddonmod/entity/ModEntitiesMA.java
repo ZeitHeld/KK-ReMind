@@ -17,17 +17,22 @@ import net.minecraftforge.registries.RegistryObject;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.client.model.BalloonModel;
 import online.magicksaddon.magicsaddonmod.client.model.BalloongaModel;
+import online.magicksaddon.magicsaddonmod.client.model.CometModel;
 import online.magicksaddon.magicsaddonmod.client.model.HolyModel;
 import online.magicksaddon.magicsaddonmod.client.model.RuinModel;
 import online.magicksaddon.magicsaddonmod.client.model.UltimaModel;
-import online.magicksaddon.magicsaddonmod.client.model.CometModel;
 import online.magicksaddon.magicsaddonmod.client.render.BalloonEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.BalloongaEntityRenderer;
+import online.magicksaddon.magicsaddonmod.client.render.CometEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.HolyEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.RuinEntityRenderer;
-import online.magicksaddon.magicsaddonmod.client.render.CometEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.UltimaEntityRenderer;
-import online.magicksaddon.magicsaddonmod.entity.magic.*;
+import online.magicksaddon.magicsaddonmod.entity.magic.BalloonEntity;
+import online.magicksaddon.magicsaddonmod.entity.magic.BalloongaEntity;
+import online.magicksaddon.magicsaddonmod.entity.magic.CometEntity;
+import online.magicksaddon.magicsaddonmod.entity.magic.HolyEntity;
+import online.magicksaddon.magicsaddonmod.entity.magic.RuinEntity;
+import online.magicksaddon.magicsaddonmod.entity.magic.UltimaEntity;
 
 public class ModEntitiesMA {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ENTITY_TYPES, MagicksAddonMod.MODID);

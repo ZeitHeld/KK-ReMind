@@ -7,20 +7,18 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.entity.magic.BalloonEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.BalloongaEntity;
 
 public class magicBalloon extends Magic {
 
-	public magicBalloon(ResourceLocation registryName, boolean hasToSelect, int maxLevel, int order) {
-		super(registryName, hasToSelect, maxLevel, null, order);
+	public magicBalloon(ResourceLocation registryName, boolean hasToSelect, int maxLevel) {
+		super(registryName, hasToSelect, maxLevel, null);
 	}
 
 	@Override
-	protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult) {
+	protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
 		float dmgMult = getDamageMult(level) * 1F;
 		caster.swing(InteractionHand.MAIN_HAND);
 
