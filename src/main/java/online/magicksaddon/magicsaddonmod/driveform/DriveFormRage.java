@@ -2,6 +2,7 @@ package online.magicksaddon.magicsaddonmod.driveform;
 
 import net.minecraft.resources.ResourceLocation;
 import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
+import online.kingdomkeys.kingdomkeys.lib.Strings;
 
 public class DriveFormRage extends DriveForm {
 	ResourceLocation skinRL2;
@@ -17,11 +18,12 @@ public class DriveFormRage extends DriveForm {
     }
     @Override
     public String getBaseAbilityForLevel(int driveFormLevel) {
-        return null;
+        return Strings.highJump;
     }
+    
 
     @Override
     public String getDFAbilityForLevel(int driveFormLevel) {
-        return null;
+        return Strings.highJump;
     }
 }

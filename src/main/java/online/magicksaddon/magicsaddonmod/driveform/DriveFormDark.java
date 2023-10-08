@@ -3,6 +3,7 @@ package online.magicksaddon.magicsaddonmod.driveform;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
+import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
@@ -20,11 +21,11 @@ public class DriveFormDark extends DriveForm {
     }
     @Override
     public String getBaseAbilityForLevel(int driveFormLevel) {
-        return null;
+        return Strings.highJump;
     }
 
     @Override
     public String getDFAbilityForLevel(int driveFormLevel) {
-        return null;
+        return Strings.highJump;
     }
 }
