@@ -22,45 +22,42 @@ import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 
 public class magicSlow extends Magic {
-    public magicSlow(ResourceLocation registryName, boolean hasToSelect, int maxLevel) {
-        super(registryName, hasToSelect, maxLevel, null);
-    }
+	public magicSlow(ResourceLocation registryName, boolean hasToSelect, int maxLevel) {
+		super(registryName, hasToSelect, maxLevel, null);
+	}
 
-    IGlobalCapabilitiesMA globalData;
+	IGlobalCapabilitiesMA globalData;
 
-    @Override
-    protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
+	@Override
+	protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
 
+		float radius = 2 + (level * 1.5F);
+		List<Entity> list = player.level.getEntities(player, player.getBoundingBox().inflate(radius, radius, radius));
+		Party casterParty = ModCapabilities.getWorld(player.level).getPartyFromMember(player.getUUID());
+		if (casterParty != null && !casterParty.getFriendlyFire()) {
+			for (Member m : casterParty.getMembers()) {
+				list.remove(player.level.getPlayerByUUID(m.getUUID()));
+			}
+		}
 
-
-        float radius = 2 + (level * 1.5F);
-        List<Entity> list = player.level.getEntities(player, player.getBoundingBox().inflate(radius, radius, radius));
-        Party casterParty = ModCapabilities.getWorld(player.level).getPartyFromMember(player.getUUID());
-        if (casterParty != null && !casterParty.getFriendlyFire()) {
-            for (Member m : casterParty.getMembers()){
-                list.remove(player.level.getPlayerByUUID(m.getUUID()));
-            }
-        }
-
-        if (!list.isEmpty()){
-            for (int i = 0; i < list.size(); i++){
-                Entity e = (Entity) list.get(i);
-                if (e instanceof LivingEntity){
-                    if(globalData != null) {
-
-                        IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal((LivingEntity) e);
-                    ((LivingEntity)e).getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.25 + (0.25 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
-                    ((LivingEntity)e).getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.25 + (0.25 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
-                    int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * ((level * 0.75) + 5) + 5);
-                    globalData.setSlowTicks(time, level); //Slow Time
-                    globalData.setSlowCaster(player.getDisplayName().getString());
-                    if (e instanceof ServerPlayer)
-                        PacketHandler.sendTo(new SCSyncGlobalCapabilityPacket(), (ServerPlayer) e);
-                }
-            }
-        }
-        player.swing(InteractionHand.MAIN_HAND);
-        player.level.playSound(null, player.blockPosition(), MagicSounds.SLOW.get(), SoundSource.PLAYERS, 1F, 1F);
-        }
-    }
+		if (!list.isEmpty()) {
+			for (int i = 0; i < list.size(); i++) {
+				Entity e = (Entity) list.get(i);
+				if (e instanceof LivingEntity) {
+					if (globalData != null) {
+						IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal((LivingEntity) e);
+						((LivingEntity) e).getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.25 + (0.25 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
+						((LivingEntity) e).getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.25 + (0.25 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
+						int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * ((level * 0.75) + 5) + 5);
+						globalData.setSlowTicks(time, level); // Slow Time
+						globalData.setSlowCaster(player.getDisplayName().getString());
+						if (e instanceof ServerPlayer)
+							PacketHandler.sendTo(new SCSyncGlobalCapabilityPacket(), (ServerPlayer) e);
+					}
+				}
+			}
+			player.swing(InteractionHand.MAIN_HAND);
+			player.level.playSound(null, player.blockPosition(), MagicSounds.SLOW.get(), SoundSource.PLAYERS, 1F, 1F);
+		}
+	}
 }

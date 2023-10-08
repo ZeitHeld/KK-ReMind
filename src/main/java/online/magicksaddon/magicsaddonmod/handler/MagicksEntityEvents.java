@@ -13,6 +13,13 @@ public class MagicksEntityEvents {
 	// Haste
 	@SubscribeEvent
 	public void onLivingUpdate(LivingEvent.LivingTickEvent event) {
+		/*if(event.getEntity() instanceof Player player) {
+			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+			//System.out.println(playerData.getActiveDriveForm());
+			@Nullable
+			DriveForm df = ModDriveForms.registry.get().getValue(new ResourceLocation(playerData.getActiveDriveForm()));
+			System.out.println(df.getTextureLocation());
+		}*/
 
 		IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(event.getEntity());
 		if (globalData != null) {

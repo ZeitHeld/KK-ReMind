@@ -9,6 +9,8 @@ import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 
 public class ModMagicks {
 
+    static int order = 11;
+
     //The Command
     public static DeferredRegister<Magic> MAGIC = DeferredRegister.create(new ResourceLocation(KingdomKeys.MODID, "magics"), "magicksaddon");
 

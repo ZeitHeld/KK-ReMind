@@ -5,9 +5,11 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
+import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.entity.magic.RuinEntity;
+import online.magicksaddon.magicsaddonmod.lib.Strings;
 
 public class magicRuin extends Magic {
 
@@ -18,10 +20,10 @@ public class magicRuin extends Magic {
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget){
         // dmg
-        float dmgMult = getDamageMult(level);
-        //float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.darknessBoost) * 0.2F;
+        float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.darknessBoost) * 0.2F;
         dmgMult *= fullMPBlastMult;
 
+        System.out.println(dmgMult);
         switch (level) {
 		case 0: 
 			ThrowableProjectile ruin = new RuinEntity(player.level, player, dmgMult, 2);

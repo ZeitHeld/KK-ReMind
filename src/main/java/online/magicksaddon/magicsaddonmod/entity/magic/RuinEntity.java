@@ -99,7 +99,6 @@ public class RuinEntity extends ThrowableProjectile {
                         //target.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg * dmgMult);
                         if(this.getOwner() instanceof Player) {
 	                        List<LivingEntity> targetList = Utils.getLivingEntitiesInRadiusExcludingParty((Player) this.getOwner(), this, radius,radius,radius);
-	                        System.out.println(targetList);
 	                        for(LivingEntity e : targetList) {
 	                        	e.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg * dmgMult);
 	                            e.invulnerableTime = 0;
