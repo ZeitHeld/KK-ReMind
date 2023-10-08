@@ -3,6 +3,6 @@
     "cost": 300,
     "cooldown": 100,
     "dmg_mult": 5.0,
-	"magic_lock_on":false
+	"magic_lock_on":true
   }
 }

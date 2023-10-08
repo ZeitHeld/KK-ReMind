@@ -22,6 +22,7 @@ public class AddonAbilities extends ModAbilities{
     public static final RegistryObject<Ability>
     	DARK_PASSAGE = ABILITIES.register(Strings.ABMA_Prefix+"dark_passage", () -> new Ability(new ResourceLocation(Strings.darkPassage), 3, Ability.AbilityType.ACTION, order++)),
     	DARKNESS_BOOST = ABILITIES.register(Strings.ABMA_Prefix+"darkness_boost", () -> new Ability(new ResourceLocation(Strings.darknessBoost), 3, Ability.AbilityType.SUPPORT, order++)),
-        RAGE_AWAKENED = ABILITIES.register(Strings.ABMA_Prefix+"rage_awakened", () -> new Ability(new ResourceLocation(Strings.rageAwakened), 5,Ability.AbilityType.SUPPORT, order++));
+        RAGE_AWAKENED = ABILITIES.register(Strings.ABMA_Prefix+"rage_awakened", () -> new Ability(new ResourceLocation(Strings.rageAwakened), 5,Ability.AbilityType.SUPPORT, order++)),
+        DARK_POWER = ABILITIES.register(Strings.ABMA_Prefix+"dark_power", () -> new Ability(new ResourceLocation(Strings.darkPower), 5, Ability.AbilityType.SUPPORT, order++));
 
 }

@@ -37,6 +37,8 @@
   "ability.ability_rage_awakened.desc": "Allows you to give into your rage and let your heart blacken with anger -- let it empower you!",
   "ability.ability_darkness_boost.name": "Darkness Boost",
   "ability.ability_darkness_boost.desc": "Increases damage done with dark-based attacks.",
+  "ability.ability_dark_power.name": "Dark Power",
+  "ability.ability_dark_power.desc": "Allows you to embrace the power of Darkness and access Dark Mode.",
 
   "form.form_rage.name": "Rage Form",
   "form.form_dark.name": "Dark Mode"
