@@ -29,6 +29,7 @@ import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.driveform.AddonForms;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.handler.MAInputHandler;
 import online.magicksaddon.magicsaddonmod.handler.MagicksEntityEvents;
 import online.magicksaddon.magicsaddonmod.item.ModItemsMA;
 import online.magicksaddon.magicsaddonmod.magic.ModMagicks;
@@ -105,6 +106,8 @@ public class MagicksAddonMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             // Some client setup code
+    		MinecraftForge.EVENT_BUS.register(new MAInputHandler());
+
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
