@@ -4,15 +4,58 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
+import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
+import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.kingdomkeys.kingdomkeys.lib.Strings;
+import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 
 public class MagicksEntityEvents {
 
+	
+	@SubscribeEvent
+	public void onPlayerJoin(PlayerLoggedInEvent e) {
+		/*Player player = e.getEntity();
+		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+		
+		if(playerData != null) {
+			if (!player.level.isClientSide) { // Sync from server to client		
+				if(!playerData.getDriveFormMap().containsKey(Strings.Form_Anti)) {
+					//playerData.setDriveFormLevel(Strings.Form_Anti, 1);
+				}
+			}
+		}*/		
+	}
+
 	// Haste
 	@SubscribeEvent
 	public void onLivingUpdate(LivingEvent.LivingTickEvent event) {
+		if(event.getEntity() instanceof Player player) {
+			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+			if(playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.darkPower)) {
+				if(!playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.darkMode)) {
+					playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.darkMode, 1);
+				}
+			} else {
+				if(playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.darkMode)) {
+					playerData.getDriveFormMap().remove(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.darkMode);
+				}
+			}
+			
+			if(playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.rageAwakened)) {
+				if(!playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.rageForm)) {
+					playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.rageForm, 1);
+				}
+			} else {
+				if(playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.rageForm)) {
+					playerData.getDriveFormMap().remove(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.rageForm);
+				}
+			}
+		}
 		/*if(event.getEntity() instanceof Player player) {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			//System.out.println(playerData.getActiveDriveForm());
