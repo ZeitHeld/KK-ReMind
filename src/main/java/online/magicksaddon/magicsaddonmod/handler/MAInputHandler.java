@@ -83,7 +83,7 @@ public class MAInputHandler extends InputHandler{
     Map<Integer, ItemStack> itemsList;
     List<String> reactionList = new ArrayList<String>();
     
-    public static LivingEntity lockOn = null;
+   // public static LivingEntity lockOn = null;
     public static int qrCooldown = 40;
 
     public boolean antiFormCheck() { //Only checks if form is not final
