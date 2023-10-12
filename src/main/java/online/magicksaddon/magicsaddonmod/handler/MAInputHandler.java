@@ -83,9 +83,6 @@ public class MAInputHandler extends InputHandler{
     Map<Integer, ItemStack> itemsList;
     List<String> reactionList = new ArrayList<String>();
     
-   // public static LivingEntity lockOn = null;
-    public static int qrCooldown = 40;
-
     public boolean antiFormCheck() { //Only checks if form is not final
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
@@ -771,70 +768,6 @@ public class MAInputHandler extends InputHandler{
             }
         }
 	}
-
-	private void commandAction() {
-		Minecraft mc = Minecraft.getInstance();
-		Player player = mc.player;
-		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-		
-    	if (qrCooldown <= 0 && (player.getDeltaMovement().x != 0 && player.getDeltaMovement().z != 0)) { // If player is moving do dodge roll / quick run
-			if (player.isSprinting()) { //If player is sprinting do quick run
-				if (playerData.isAbilityEquipped(Strings.quickRun) || playerData.getActiveDriveForm().equals(Strings.Form_Wisdom)) {
-					float yaw = player.getYRot();
-					float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
-					float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
-
-					int wisdomLevel = playerData.getDriveFormLevel(Strings.Form_Wisdom);
-
-					double power = 0;
-					// Wisdom Form
-					if (playerData.getActiveDriveForm().equals(Strings.Form_Wisdom)) {
-						power = Constants.WISDOM_QR[wisdomLevel];
-						if (!player.isOnGround()) {
-							player.push(motionX * power / 2, 0, motionZ * power / 2);
-							qrCooldown = 20;
-						}
-					} else if (playerData.getActiveDriveForm().equals(DriveForm.NONE.toString())) { //Base
-						if (wisdomLevel > 2) {
-							power = Constants.WISDOM_QR[wisdomLevel - 2];
-						}
-					}
-
-					if (player.isOnGround()) {
-						player.push(motionX * power, 0, motionZ * power);
-						qrCooldown = 20;
-					}
-				}
-			} else { //If player is moving without sprinting do dodge roll
-				if (playerData.isAbilityEquipped(Strings.dodgeRoll) || playerData.getActiveDriveForm().equals(Strings.Form_Limit)) {
-					int limitLevel = playerData.getDriveFormLevel(Strings.Form_Limit);
-					double power = 0;
-					if (playerData.getActiveDriveForm().equals(Strings.Form_Limit)) {
-						power = Constants.LIMIT_DR[limitLevel];
-					} else if (playerData.getActiveDriveForm().equals(DriveForm.NONE.toString())) {//Base
-						if (limitLevel > 2) {
-							power = Constants.LIMIT_DR[limitLevel - 2];
-						}
-					}
-
-					if (player.isOnGround()) {
-						player.push(player.getDeltaMovement().x * power, 0, player.getDeltaMovement().z * power);
-						qrCooldown = 20;
-						//PacketDispatcher.sendToServer(new InvinciblePacket(20));
-					}
-				}
-			}
-		} else { // If player is not moving do guard
-			/*if (ABILITIES.getEquippedAbility(ModAbilities.guard)) {
-				if (player.getHeldItemMainhand() != null) {
-					// If the player holds a weapon
-					if (player.getHeldItemMainhand().getItem() instanceof ItemKeyblade || player.getHeldItemMainhand().getItem() instanceof IOrgWeapon) {
-						PacketDispatcher.sendToServer(new InvinciblePacket(20));
-					}
-				}
-			}*/
-		}
-    }
 
 	private Keybinds getPressedKey() {
         for (Keybinds key : Keybinds.values())
