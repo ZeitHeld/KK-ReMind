@@ -16,6 +16,6 @@ public class AddonForms {
      public static final RegistryObject<DriveForm>
 
         // Forms list
-            RAGE = DRIVE_FORMS.register(Strings.DFMA_Prefix + "rage", () -> new DriveFormRage(MagicksAddonMod.MODID + ":"+ Strings.DFMA_Prefix + "rage", order++, new ResourceLocation(MagicksAddonMod.MODID, "textures/models/armor/rage.png"), false)),
-            DARK = DRIVE_FORMS.register(Strings.DFMA_Prefix + "dark", () -> new DriveFormDark(MagicksAddonMod.MODID + ":"+ Strings.DFMA_Prefix + "dark", order++, new ResourceLocation(MagicksAddonMod.MODID, "textures/models/armor/dark_mode.png"), false));
+            RAGE = DRIVE_FORMS.register(Strings.DFMA_Prefix + "rage", () -> new DriveFormRage(MagicksAddonMod.MODID + ":"+ Strings.DFMA_Prefix + "rage", order++, new ResourceLocation(MagicksAddonMod.MODID, "textures/models/armor/rage.png"), false, true)),
+            DARK = DRIVE_FORMS.register(Strings.DFMA_Prefix + "dark", () -> new DriveFormDark(MagicksAddonMod.MODID + ":"+ Strings.DFMA_Prefix + "dark", order++, new ResourceLocation(MagicksAddonMod.MODID, "textures/models/armor/dark_mode.png"), false, true));
 }

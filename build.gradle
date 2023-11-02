@@ -133,7 +133,7 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.19.2-43.2.0'
 
     // KK Implementation
-    implementation fg.deobf("kingdomkeys:kingdomkeys:1.19.2-2.3.3.0")
+    implementation fg.deobf("kingdomkeys:kingdomkeys:1.19.2-2.3.4.0")
     //implementation fg.deobf("curse.maven:kingdomkey-242862:4760536")
 }
 

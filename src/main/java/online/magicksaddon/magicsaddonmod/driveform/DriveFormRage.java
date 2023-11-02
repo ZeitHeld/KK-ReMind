@@ -7,8 +7,8 @@ import online.kingdomkeys.kingdomkeys.lib.Strings;
 public class DriveFormRage extends DriveForm {
 	ResourceLocation skinRL2;
 
-    public DriveFormRage(String registeryName, int order, ResourceLocation skinRL, boolean hasKeychain) {
-        super(registeryName, order, hasKeychain);
+    public DriveFormRage(String registeryName, int order, ResourceLocation skinRL, boolean hasKeychain, boolean baseGrowthAbilities) {
+        super(registeryName, order, hasKeychain, baseGrowthAbilities);
         skinRL2 = skinRL;        
     }
     
@@ -16,14 +16,5 @@ public class DriveFormRage extends DriveForm {
     public ResourceLocation getTextureLocation() {
     	return skinRL2;
     }
-    @Override
-    public String getBaseAbilityForLevel(int driveFormLevel) {
-        return Strings.highJump;
-    }
-    
-
-    @Override
-    public String getDFAbilityForLevel(int driveFormLevel) {
-        return Strings.highJump;
-    }
+   
 }

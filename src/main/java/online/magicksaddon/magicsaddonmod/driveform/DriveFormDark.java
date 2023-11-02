@@ -10,22 +10,13 @@ import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 public class DriveFormDark extends DriveForm {
 	ResourceLocation skinRL2;
 
-    public DriveFormDark(String registeryName, int order, ResourceLocation skinRL, boolean hasKeychain) {
-        super(registeryName, order, hasKeychain);
+    public DriveFormDark(String registeryName, int order, ResourceLocation skinRL, boolean hasKeychain, boolean baseGrowthAbilities) {
+        super(registeryName, order, hasKeychain, baseGrowthAbilities);
         skinRL2 = skinRL;        
     }
     
     @Override
     public ResourceLocation getTextureLocation() {
     	return skinRL2;
-    }
-    @Override
-    public String getBaseAbilityForLevel(int driveFormLevel) {
-        return Strings.highJump;
-    }
-
-    @Override
-    public String getDFAbilityForLevel(int driveFormLevel) {
-        return Strings.highJump;
     }
 }
