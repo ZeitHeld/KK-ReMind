@@ -140,7 +140,7 @@ public class UltimaEntity extends ThrowableProjectile {
 									//System.out.println("Hostile: "+e);
 									float dmg = this.getOwner() instanceof Player ? ((LivingEntity) e).getMaxHealth() * DamageCalculation.getMagicDamage((Player) this.getOwner()) / 100 : 2;
 									dmg = Math.min(dmg, 99);
-									e.hurt(DamageSource.indirectMagic(this, this.getOwner()), dmg * dmgMult);
+									e.hurt(e.damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);
 								}
 							}
 						}
@@ -178,7 +178,7 @@ public class UltimaEntity extends ThrowableProjectile {
 																											// party has FF on
 							float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
 							target.invulnerableTime = 0;
-							target.hurt(DamageSource.thrown(this, this.getOwner()), dmg * dmgMult);
+							target.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);
 						}
 					}
 				}

@@ -56,7 +56,7 @@ public class BalloongaEntity extends ThrowableProjectile {
 
     private void balloonBurst(){
         float explosionSize = 2.0F;
-        this.level.explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 1.0F), this.blockPosition().getZ(), explosionSize, false, Explosion.BlockInteraction.NONE);
+        this.level.explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 1.0F), this.blockPosition().getZ(), explosionSize, false, Explosion.BlockInteraction.KEEP);
     }
 
 
@@ -109,7 +109,7 @@ public class BalloongaEntity extends ThrowableProjectile {
                     }
                     if(p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { //If caster is not in a party || the party doesn't have the target in it || the party has FF on
                         float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
-                        target.hurt(DamageSource.indirectMagic(this, this.getOwner()), dmg * dmgMult);
+                        target.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);
                         target.invulnerableTime = 0;
                         explodeBalloonga();
                     }
