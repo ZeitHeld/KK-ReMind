@@ -130,10 +130,10 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.2.0'
+    minecraft 'net.minecraftforge:forge:1.19.4-45.2.6'
 
     // KK Implementation
-    implementation fg.deobf("kingdomkeys:kingdomkeys:1.19.2-2.3.4.0")
+    implementation fg.deobf("kingdomkeys:kingdomkeys:1.19.4-2.3.4.0")
     //implementation fg.deobf("curse.maven:kingdomkey-242862:4760536")
 }
 
