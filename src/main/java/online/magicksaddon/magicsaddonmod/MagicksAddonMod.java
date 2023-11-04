@@ -1,19 +1,23 @@
 package online.magicksaddon.magicsaddonmod;
 
+import java.util.List;
+import java.util.function.Supplier;
+
 import org.slf4j.Logger;
 
+import com.google.common.base.Suppliers;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -24,6 +28,11 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import online.kingdomkeys.kingdomkeys.block.ModBlocks;
+import online.kingdomkeys.kingdomkeys.item.KeybladeItem;
+import online.kingdomkeys.kingdomkeys.item.KeychainItem;
+import online.kingdomkeys.kingdomkeys.item.ModItems;
+import online.kingdomkeys.kingdomkeys.item.organization.IOrgWeapon;
 import online.magicksaddon.magicsaddonmod.ability.AddonAbilities;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
@@ -32,6 +41,7 @@ import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
 import online.magicksaddon.magicsaddonmod.handler.MAInputHandler;
 import online.magicksaddon.magicsaddonmod.handler.MagicksEntityEvents;
 import online.magicksaddon.magicsaddonmod.item.ModItemsMA;
+import online.magicksaddon.magicsaddonmod.lib.Strings;
 import online.magicksaddon.magicsaddonmod.magic.ModMagicks;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -50,11 +60,22 @@ public class MagicksAddonMod
     // Create a Deferred Register to hold Items which will all be registered under the "examplemod" namespace
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
 
-    // Creates a new Block with the id "examplemod:example_block", combining the namespace and path
-    public static final RegistryObject<Block> EXAMPLE_BLOCK = BLOCKS.register("example_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE)));
-    // Creates a new BlockItem with the id "examplemod:example_block", combining the namespace and path
-    public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block", () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
+    @SubscribeEvent
+	public void creativeTabRegistry(CreativeModeTabEvent.Register event) {
+		final List<ItemStack> kkItems = ModItemsMA.ITEMS.getEntries().stream().map(RegistryObject::get).map(ItemStack::new).toList();
+		final Supplier<List<ItemStack>> misc = Suppliers.memoize(() -> kkItems.stream().filter(item -> !(item.getItem() instanceof KeybladeItem) && !(item.getItem() instanceof IOrgWeapon) && !(item.getItem() instanceof KeychainItem)).toList());
 
+		event.registerCreativeModeTab(new ResourceLocation(MODID, "magicksaddontab"), builder -> {
+			builder
+				.title(Component.translatable("itemGroup.magicksaddontab"))
+				.icon(() -> new ItemStack(ModItemsMA.hasteSpell.get()))
+				.displayItems(((params, output) -> {
+					misc.get().forEach(output::accept);
+				}));
+		});
+	}
+
+    
     public MagicksAddonMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -77,8 +98,6 @@ public class MagicksAddonMod
         ModEntitiesMA.ENTITIES.register(modEventBus);
         AddonAbilities.ABILITIES.register(modEventBus);
         AddonForms.DRIVE_FORMS.register(modEventBus);
-
-
 
 
     }

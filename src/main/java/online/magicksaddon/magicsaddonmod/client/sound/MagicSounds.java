@@ -23,7 +23,7 @@ public class MagicSounds {
 
     public static RegistryObject<SoundEvent> registerSound(String name) {
         final ResourceLocation soundID = new ResourceLocation(MagicksAddonMod.MODID, name);
-        return SOUNDS.register(name, () -> new SoundEvent(soundID));
-
+        return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(soundID));
     }
+
 }
