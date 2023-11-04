@@ -98,6 +98,7 @@ public class MagicksAddonMod
         ModEntitiesMA.ENTITIES.register(modEventBus);
         AddonAbilities.ABILITIES.register(modEventBus);
         AddonForms.DRIVE_FORMS.register(modEventBus);
+		modEventBus.addListener(this::creativeTabRegistry);
 
 
     }
