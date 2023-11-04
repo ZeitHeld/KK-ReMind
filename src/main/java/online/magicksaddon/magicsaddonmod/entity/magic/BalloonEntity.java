@@ -7,6 +7,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -106,7 +107,7 @@ public class BalloonEntity extends ThrowableProjectile {
                     }
                     if(p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { //If caster is not in a party || the party doesn't have the target in it || the party has FF on
                         float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
-                        target.hurt(DamageSource.indirectMagic(this, this.getOwner()), dmg * dmgMult);
+                        target.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);
                         target.invulnerableTime = 0;
                         playSound(MagicSounds.BALLOON_BOUNCE.get(),1F,1F);
                         this.remove(RemovalReason.KILLED);
