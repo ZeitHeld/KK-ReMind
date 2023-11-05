@@ -143,7 +143,7 @@ jar {
         attributes([
                 "Specification-Title"     : "Xephiro's Magicks Addon",
                 "Specification-Vendor"    : "Xephiro",
-                "Specification-Version"   : "1.19.4-0.6.3a", // We are version 1 of ourselves
+                "Specification-Version"   : "1.20.1-0.6.3a", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : "${version}",
                 "Implementation-Vendor"   : "Xephiro",
