@@ -78,14 +78,14 @@ public class BalloonEntity extends ThrowableProjectile {
 
         //world.addParticle(ParticleTypes.ENTITY_EFFECT, getPosX(), getPosY(), getPosZ(), 1, 1, 0);
         if(tickCount > 2)
-            level.addParticle(ParticleTypes.GLOW_SQUID_INK, getX(), getY(), getZ(), 0, 0, 0);
+            level().addParticle(ParticleTypes.GLOW_SQUID_INK, getX(), getY(), getZ(), 0, 0, 0);
 
         super.tick();
     }
 
     @Override
     protected void onHit(HitResult rtRes) {
-        if (!level.isClientSide && getOwner() != null) {
+        if (!level().isClientSide && getOwner() != null) {
             EntityHitResult ertResult = null;
             BlockHitResult brtResult = null;
 

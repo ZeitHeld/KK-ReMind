@@ -75,12 +75,12 @@ public class UltimaEntity extends ThrowableProjectile {
 	
 	@Override
 	public void tick() {
-		if (!level.isClientSide) {
+		if (!level().isClientSide) {
 			if (this.tickCount > maxTicks) {
 				this.remove(RemovalReason.KILLED);
 			}
 
-			IWorldCapabilities worldData = ModCapabilities.getWorld(level);
+			IWorldCapabilities worldData = ModCapabilities.getWorld(level());
 			if (worldData == null || getOwner() == null) {
 				this.remove(RemovalReason.KILLED);
 				return;
@@ -107,7 +107,7 @@ public class UltimaEntity extends ThrowableProjectile {
 							double x = X + (radius * Math.cos(Math.toRadians(s)) * Math.sin(Math.toRadians(t)));
 							double z = Z + (radius * Math.sin(Math.toRadians(s)) * Math.sin(Math.toRadians(t)));
 							double y = Y + (radius * Math.cos(Math.toRadians(t)));
-							((ServerLevel) level).sendParticles(ParticleTypes.EXPLOSION, x, y+1, z, 1, 0,0,0, 0);
+							((ServerLevel) level()).sendParticles(ParticleTypes.EXPLOSION, x, y+1, z, 1, 0,0,0, 0);
 						}
 
 					}
@@ -119,13 +119,13 @@ public class UltimaEntity extends ThrowableProjectile {
 					
 					//System.out.println("Ent rad: "+radius);
 	
-					List<Entity> list = level.getEntities(getOwner(), getBoundingBox().inflate(radius));
+					List<Entity> list = level().getEntities(getOwner(), getBoundingBox().inflate(radius));
 	
 					Party casterParty = worldData.getPartyFromMember(getOwner().getUUID());
 	
 					if (casterParty != null && !casterParty.getFriendlyFire()) {
 						for (Member m : casterParty.getMembers()) {
-							list.remove(level.getPlayerByUUID(m.getUUID()));
+							list.remove(level().getPlayerByUUID(m.getUUID()));
 						}
 					} else {
 						list.remove(getOwner());
@@ -153,7 +153,7 @@ public class UltimaEntity extends ThrowableProjectile {
 
 	@Override
 	protected void onHit(HitResult rtRes) {
-		if (!level.isClientSide) {
+		if (!level().isClientSide) {
 			EntityHitResult ertResult = null;
 			BlockHitResult brtResult = null;
 
@@ -172,7 +172,7 @@ public class UltimaEntity extends ThrowableProjectile {
 					if (target != getOwner()) {
 						Party p = null;
 						if (getOwner() != null) {
-							p = ModCapabilities.getWorld(getOwner().level).getPartyFromMember(getOwner().getUUID());
+							p = ModCapabilities.getWorld(getOwner().level()).getPartyFromMember(getOwner().getUUID());
 						}
 						if (p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { // If caster is not in a party || the party doesn't have the target in it || the
 																											// party has FF on

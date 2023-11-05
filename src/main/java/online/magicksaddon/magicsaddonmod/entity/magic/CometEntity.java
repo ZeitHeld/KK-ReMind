@@ -67,14 +67,14 @@ public class CometEntity extends ThrowableProjectile {
 
                 //world.addParticle(ParticleTypes.ENTITY_EFFECT, getPosX(), getPosY(), getPosZ(), 1, 1, 0);
                 if(tickCount > 2)
-                        level.addParticle(ParticleTypes.FLAME, getX(), getY(), getZ(), 0, 0, 0);
+                        level().addParticle(ParticleTypes.FLAME, getX(), getY(), getZ(), 0, 0, 0);
 
                 super.tick();
         }
 
         @Override
         protected void onHit(HitResult rtRes) {
-                if (!level.isClientSide && getOwner() != null) {
+                if (!level().isClientSide && getOwner() != null) {
                         EntityHitResult ertResult = null;
                         BlockHitResult brtResult = null;
 
@@ -92,7 +92,7 @@ public class CometEntity extends ThrowableProjectile {
                                 if (target != getOwner()) {
                                         Party p = null;
                                         if (getOwner() != null) {
-                                                p = ModCapabilities.getWorld(getOwner().level).getPartyFromMember(getOwner().getUUID());
+                                                p = ModCapabilities.getWorld(getOwner().level()).getPartyFromMember(getOwner().getUUID());
                                         }
                                         if(p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { //If caster is not in a party || the party doesn't have the target in it || the party has FF on
                                                 float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
@@ -105,7 +105,7 @@ public class CometEntity extends ThrowableProjectile {
                                                                 e.invulnerableTime = 0;
                                                         }
                                                 }
-                                                this.level.explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, Level.ExplosionInteraction.NONE);
+                                                this.level().explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, Level.ExplosionInteraction.NONE);
                                                 remove(RemovalReason.KILLED);
 
                                         }
@@ -122,7 +122,7 @@ public class CometEntity extends ThrowableProjectile {
                                                 e.invulnerableTime = 0;
                                         }
                                 }
-                                this.level.explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double) (this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, Level.ExplosionInteraction.NONE);
+                                this.level().explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double) (this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, Level.ExplosionInteraction.NONE);
 
                                 remove(RemovalReason.KILLED);
                         }

@@ -68,7 +68,7 @@ public class HolyEntity extends ThrowableProjectile {
 
 	@Override
 	public void tick() {
-		for (Player playerFromList : level.players()) {
+		for (Player playerFromList : level().players()) {
 			if (playerFromList.getDisplayName().getString().equals(getCaster())) {
 				player = playerFromList;
 				break;
@@ -81,9 +81,9 @@ public class HolyEntity extends ThrowableProjectile {
 		if (this.tickCount > maxTicks) {
 			this.remove(RemovalReason.KILLED);
 		} else if (tickCount > 2) {
-			level.addParticle(ParticleTypes.END_ROD, getX(), getY(), getZ(), 0, 0, 0);
+			level().addParticle(ParticleTypes.END_ROD, getX(), getY(), getZ(), 0, 0, 0);
 		}
-		if(!level.isClientSide) {
+		if(!level().isClientSide) {
 			shootFromRotation(player, player.getXRot(), player.getYRot() + (index*5), 0, 2F, 0);
 			this.markHurt();
 		}
@@ -92,7 +92,7 @@ public class HolyEntity extends ThrowableProjectile {
 
 	@Override
 	protected void onHit(HitResult rtRes) {
-		if (!level.isClientSide) {
+		if (!level().isClientSide) {
 
 			EntityHitResult ertResult = null;
 			BlockHitResult brtResult = null;
@@ -112,7 +112,7 @@ public class HolyEntity extends ThrowableProjectile {
 				if (target != getOwner()) {
 					Party p = null;
 					if (getOwner() != null) {
-						p = ModCapabilities.getWorld(getOwner().level).getPartyFromMember(getOwner().getUUID());
+						p = ModCapabilities.getWorld(getOwner().level()).getPartyFromMember(getOwner().getUUID());
 					}
 					if (p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { // If caster is not in a party || the party doesn't have the target in it || the
 																										// party has FF on

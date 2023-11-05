@@ -56,7 +56,7 @@ public class BalloongaEntity extends ThrowableProjectile {
 
     private void balloonBurst(){
         float explosionSize = 2.0F;
-        this.level.explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 1.0F), this.blockPosition().getZ(), explosionSize, false, Level.ExplosionInteraction.NONE);
+        this.level().explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 1.0F), this.blockPosition().getZ(), explosionSize, false, Level.ExplosionInteraction.NONE);
     }
 
 
@@ -73,21 +73,21 @@ public class BalloongaEntity extends ThrowableProjectile {
     @Override
     public void tick() {
         if (this.tickCount > maxTicks) {
-            if (!level.isClientSide && getOwner() != null) {
+            if (!level().isClientSide && getOwner() != null) {
             	explodeBalloonga();
             }
         }
 
         //world.addParticle(ParticleTypes.ENTITY_EFFECT, getPosX(), getPosY(), getPosZ(), 1, 1, 0);
         if(tickCount > 2)
-            level.addParticle(ParticleTypes.GLOW_SQUID_INK, getX(), getY(), getZ(), 0, 0, 0);
+            level().addParticle(ParticleTypes.GLOW_SQUID_INK, getX(), getY(), getZ(), 0, 0, 0);
 
         super.tick();
     }
 
     @Override
     protected void onHit(HitResult rtRes) {
-        if (!level.isClientSide && getOwner() != null) {
+        if (!level().isClientSide && getOwner() != null) {
             EntityHitResult ertResult = null;
             BlockHitResult brtResult = null;
 
@@ -105,7 +105,7 @@ public class BalloongaEntity extends ThrowableProjectile {
                 if (target != getOwner()) {
                     Party p = null;
                     if (getOwner() != null) {
-                        p = ModCapabilities.getWorld(getOwner().level).getPartyFromMember(getOwner().getUUID());
+                        p = ModCapabilities.getWorld(getOwner().level()).getPartyFromMember(getOwner().getUUID());
                     }
                     if(p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { //If caster is not in a party || the party doesn't have the target in it || the party has FF on
                         float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
@@ -126,7 +126,7 @@ public class BalloongaEntity extends ThrowableProjectile {
                 double y = mot.y();
                 double z = mot.z();
 
-                LivingEntity target = this.tickCount > 20 ? getNearbyEntity(ModCapabilities.getWorld(level)) : null;
+                LivingEntity target = this.tickCount > 20 ? getNearbyEntity(ModCapabilities.getWorld(level())) : null;
                 if(brtResult.getDirection() == Direction.UP || brtResult.getDirection() == Direction.DOWN){
                 	if(target != null) {
                 		//this.shoot(target.getX() - this.getX(), -y, target.getZ() - this.getZ(), 0.5f, 0);
@@ -158,23 +158,23 @@ public class BalloongaEntity extends ThrowableProjectile {
     	playSound(MagicSounds.BALLOON_BOUNCE.get(),1F,1F);
         // The Dumb part
         for(int i = 0; i < 360; i+=45) {
-            ThrowableProjectile balloon = new BalloonEntity(this.level, (LivingEntity) getOwner(), dmgMult);
+            ThrowableProjectile balloon = new BalloonEntity(this.level(), (LivingEntity) getOwner(), dmgMult);
             balloon.setPos(new Vec3(this.getX(), this.getY(), this.getZ()));
             balloon.shootFromRotation(this, this.getXRot(), this.getYRot()+i, 0, 0.5F, 0);
-            level.addFreshEntity(balloon);
+            level().addFreshEntity(balloon);
             this.remove(RemovalReason.KILLED);
         }		
 	}
 
 	private LivingEntity getNearbyEntity(IWorldCapabilities worldData) {
-    	List<Entity> list = level.getEntities(getOwner(), getBoundingBox().inflate(3));
+    	List<Entity> list = level().getEntities(getOwner(), getBoundingBox().inflate(3));
     	if(worldData == null)
     		return null;
 		Party casterParty = worldData.getPartyFromMember(getOwner().getUUID());
 
 		if(casterParty != null && !casterParty.getFriendlyFire()) {
 			for(Member m : casterParty.getMembers()) {
-				list.remove(level.getPlayerByUUID(m.getUUID()));
+				list.remove(level().getPlayerByUUID(m.getUUID()));
 			}
 		} else {
 			list.remove(getOwner());
