@@ -23,26 +23,26 @@ public class magicBalloon extends Magic {
 		caster.swing(InteractionHand.MAIN_HAND);
 
 		// Levels
-		player.level.playSound(null, player.blockPosition(), MagicSounds.BALLOON.get(), SoundSource.PLAYERS, 1F, 1F);
+		player.level().playSound(null, player.blockPosition(), MagicSounds.BALLOON.get(), SoundSource.PLAYERS, 1F, 1F);
 
 		switch(level) {
 		case 0:
 			for (int i = -45; i <= 45; i += 45) {
-				ThrowableProjectile balloon = new BalloonEntity(player.level, player, dmgMult);
-				player.level.addFreshEntity(balloon);
+				ThrowableProjectile balloon = new BalloonEntity(player.level(), player, dmgMult);
+				player.level().addFreshEntity(balloon);
 				balloon.shootFromRotation(player, player.getXRot(), player.getYRot() + i, 0, 0.5F, 0);
 			}
 			break;
 		case 1:
 			for (int i = -90; i <= 90; i += 45) {
-				ThrowableProjectile balloonra = new BalloonEntity(player.level, player, dmgMult);
-				player.level.addFreshEntity(balloonra);
+				ThrowableProjectile balloonra = new BalloonEntity(player.level(), player, dmgMult);
+				player.level().addFreshEntity(balloonra);
 				balloonra.shootFromRotation(player, player.getXRot(), player.getYRot() + i, 0, 0.5F, 0);
 			}
 			break;
 		case 2:
-			ThrowableProjectile balloonga = new BalloongaEntity(player.level, player, dmgMult);
-			player.level.addFreshEntity(balloonga);
+			ThrowableProjectile balloonga = new BalloongaEntity(player.level(), player, dmgMult);
+			player.level().addFreshEntity(balloonga);
 			balloonga.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 0.5F, 0);
 			break;
 		}

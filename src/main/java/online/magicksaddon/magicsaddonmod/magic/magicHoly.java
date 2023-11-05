@@ -24,29 +24,29 @@ public class magicHoly extends Magic {
         switch(level) {
         case 0:
         	for(int i = -1; i <=1; i++) {
-                HolyEntity holy = new HolyEntity(player.level, player,i, dmgMult);
+                HolyEntity holy = new HolyEntity(player.level(), player,i, dmgMult);
                 holy.setCaster(player.getDisplayName().getString());
-                player.level.addFreshEntity(holy);
+                player.level().addFreshEntity(holy);
             }
-            player.level.playSound(null, player.blockPosition(), MagicSounds.HOLY.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.blockPosition(), MagicSounds.HOLY.get(), SoundSource.PLAYERS, 1F, 1F);
 
         	break;
         case 1:
         	for(int i = -2; i <= 2; i++) {
-                HolyEntity holy = new HolyEntity(player.level, player,i, dmgMult);
+                HolyEntity holy = new HolyEntity(player.level(), player,i, dmgMult);
                 holy.setCaster(player.getDisplayName().getString());
-                player.level.addFreshEntity(holy);
+                player.level().addFreshEntity(holy);
             }
-            player.level.playSound(null, player.blockPosition(), MagicSounds.HOLY.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.blockPosition(), MagicSounds.HOLY.get(), SoundSource.PLAYERS, 1F, 1F);
 
         	break;
         case 2:
         	for(int i = -3; i <= 3; i++) {
-                HolyEntity holy = new HolyEntity(player.level, player,i, dmgMult);
+                HolyEntity holy = new HolyEntity(player.level(), player,i, dmgMult);
                 holy.setCaster(player.getDisplayName().getString());
-                player.level.addFreshEntity(holy);
+                player.level().addFreshEntity(holy);
             }
-            player.level.playSound(null, player.blockPosition(), MagicSounds.HOLY.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.blockPosition(), MagicSounds.HOLY.get(), SoundSource.PLAYERS, 1F, 1F);
 
         	break;
         }

@@ -66,26 +66,21 @@ public class MagicksAddonMod
 
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-		private static final List<ItemStack> kkItems = ModItemsMA.ITEMS.getEntries().stream().map(RegistryObject::get).map(ItemStack::new).toList();
-		private static final Supplier<List<ItemStack>> misc = Suppliers.memoize(() -> kkItems.stream().filter(item -> !(item.getItem() instanceof KeybladeItem) && !(item.getItem() instanceof IOrgWeapon) && !(item.getItem() instanceof KeychainItem)).toList());
+	private static final Supplier<List<ItemStack>> maItems = Suppliers.memoize(() -> ModItemsMA.ITEMS.getEntries().stream().map(RegistryObject::get).map(ItemStack::new).toList());
+//		private static final Supplier<List<ItemStack>> misc = Suppliers.memoize(() -> kkItems.get().stream().filter(item -> !(item.getItem() instanceof KeybladeItem) && !(item.getItem() instanceof IOrgWeapon) && !(item.getItem() instanceof KeychainItem)).toList());
 
 
         public static final RegistryObject<CreativeModeTab>
-		misc_tab = TABS.register(new ResourceLocation(MODID, "magicksaddontab"), () -> CreativeModeTab.builder()
+        
+		misc_tab = TABS.register("magicksaddontab", () -> CreativeModeTab.builder()
 				.title(Component.translatable("itemGroup.magicksaddontab"))
 				.icon(() -> new ItemStack(ModItemsMA.hasteSpell.get()))
 				.displayItems(((params, output) -> {
-					misc.get().forEach(output::accept);
+					maItems.get().forEach(output::accept);
 				}))
-                .build());
-
-
-
-
-
-    
-    public MagicksAddonMod()
-    {
+				.build());
+        
+    public MagicksAddonMod(){
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the commonSetup method for modloading

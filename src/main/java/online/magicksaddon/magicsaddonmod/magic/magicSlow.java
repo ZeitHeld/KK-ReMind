@@ -32,11 +32,11 @@ public class magicSlow extends Magic {
 	protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
 
 		float radius = 2 + (level * 1.5F);
-		List<Entity> list = player.level.getEntities(player, player.getBoundingBox().inflate(radius, radius, radius));
-		Party casterParty = ModCapabilities.getWorld(player.level).getPartyFromMember(player.getUUID());
+		List<Entity> list = player.level().getEntities(player, player.getBoundingBox().inflate(radius, radius, radius));
+		Party casterParty = ModCapabilities.getWorld(player.level()).getPartyFromMember(player.getUUID());
 		if (casterParty != null && !casterParty.getFriendlyFire()) {
 			for (Member m : casterParty.getMembers()) {
-				list.remove(player.level.getPlayerByUUID(m.getUUID()));
+				list.remove(player.level().getPlayerByUUID(m.getUUID()));
 			}
 		}
 
@@ -57,7 +57,7 @@ public class magicSlow extends Magic {
 				}
 			}
 			player.swing(InteractionHand.MAIN_HAND);
-			player.level.playSound(null, player.blockPosition(), MagicSounds.SLOW.get(), SoundSource.PLAYERS, 1F, 1F);
+			player.level().playSound(null, player.blockPosition(), MagicSounds.SLOW.get(), SoundSource.PLAYERS, 1F, 1F);
 		}
 	}
 }

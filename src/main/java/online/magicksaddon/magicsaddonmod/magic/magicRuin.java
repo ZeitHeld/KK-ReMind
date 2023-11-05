@@ -26,22 +26,22 @@ public class magicRuin extends Magic {
         System.out.println(dmgMult);
         switch (level) {
 		case 0: 
-			ThrowableProjectile ruin = new RuinEntity(player.level, player, dmgMult, 2);
-            player.level.addFreshEntity(ruin);
+			ThrowableProjectile ruin = new RuinEntity(player.level(), player, dmgMult, 2);
+            player.level().addFreshEntity(ruin);
             ruin.shootFromRotation(player, player.getXRot(), player.getYRot(),0,2F,0);
-            player.level.playSound(null, player.blockPosition(), MagicSounds.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.blockPosition(), MagicSounds.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
 			break;
 		case 1:
-            ThrowableProjectile ruinra = new RuinEntity(player.level, player, dmgMult * 1.5F, 3);
-            player.level.addFreshEntity(ruinra);
+            ThrowableProjectile ruinra = new RuinEntity(player.level(), player, dmgMult * 1.5F, 3);
+            player.level().addFreshEntity(ruinra);
             ruinra.shootFromRotation(player, player.getXRot(), player.getYRot(),0,2F,0);
-            player.level.playSound(null, player.blockPosition(), MagicSounds.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.blockPosition(), MagicSounds.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
 			break;
 		case 2:
-            ThrowableProjectile ruinaga = new RuinEntity(player.level, player, dmgMult * 2.5F, 4);
-            player.level.addFreshEntity(ruinaga);
+            ThrowableProjectile ruinaga = new RuinEntity(player.level(), player, dmgMult * 2.5F, 4);
+            player.level().addFreshEntity(ruinaga);
             ruinaga.shootFromRotation(player, player.getXRot(), player.getYRot(),0,2F,0);
-            player.level.playSound(null, player.blockPosition(), MagicSounds.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.blockPosition(), MagicSounds.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
 			break;
         }    
     }

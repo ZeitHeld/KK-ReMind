@@ -27,7 +27,7 @@ public class magicHaste extends Magic {
         if(globalData != null) {
             int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * ((level * 0.75) + 5) + 5);
             caster.swing(InteractionHand.MAIN_HAND);
-            player.level.playSound(null, player.blockPosition(), MagicSounds.HASTE.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.blockPosition(), MagicSounds.HASTE.get(), SoundSource.PLAYERS, 1F, 1F);
             // Effect and Level Modifier
 
             if (globalData.getHasteTicks() <= 0) {

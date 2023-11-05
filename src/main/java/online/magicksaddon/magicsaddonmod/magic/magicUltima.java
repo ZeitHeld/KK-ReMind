@@ -22,12 +22,12 @@ public class magicUltima extends Magic {
 
         switch (level) {
             case 0:
-                ThrowableProjectile ultima = new UltimaEntity(player.level, player, dmgMult);
+                ThrowableProjectile ultima = new UltimaEntity(player.level(), player, dmgMult);
                 ultima.setOwner(caster);
                 ultima.setPos(player.getX(), player.getY()+4, player.getZ());
-                player.level.addFreshEntity(ultima);
+                player.level().addFreshEntity(ultima);
                 ultima.shootFromRotation(player, player.getXRot(), player.getYRot(),0,0.75F,0);
-                player.level.playSound(null, player.blockPosition(), MagicSounds.PLAYER_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
+                player.level().playSound(null, player.blockPosition(), MagicSounds.PLAYER_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
                 break;
             case 1:
 
