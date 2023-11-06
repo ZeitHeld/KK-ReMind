@@ -23,6 +23,13 @@ public interface IGlobalCapabilitiesMA extends INBTSerializable<CompoundTag> {
     void remSlowTicks(int ticks);
     void setSlowCaster(String name);
 
+    //Berserk
+    int getBerserkLevel();
+    void setBerserkLevel(int level);
+    int getBerserkTicks();
+    void setBerserkTicks(int i, int level);
+    void remBerserkTicks(int ticks);
+
 
     void deserializeNBT();
 }

@@ -94,7 +94,18 @@ public class MagicksEntityEvents {
 					}
 				}				
 			}
-			// Next Spell
+			// Berserk
+			if (event.getEntity() instanceof Player){
+				Player player = (Player) event.getEntity();
+				if (globalData.getBerserkTicks() > 0) {
+					globalData.remBerserkTicks(1);
+					// System.out.println("Haste Level: " + globalData.getHasteLevel() + " " +
+					// "Haste Ticks Remaining: " + globalData.getHasteTicks());
+					if (globalData.getBerserkTicks() <= 0) {
+						player.getAttribute(Attributes.ATTACK_DAMAGE).addTransientModifier(new AttributeModifier("Berserk", -0.25 + (-0.25 * globalData.getBerserkLevel()), AttributeModifier.Operation.MULTIPLY_BASE));
+					}
+				}
+			}
 		}
 	}
 }

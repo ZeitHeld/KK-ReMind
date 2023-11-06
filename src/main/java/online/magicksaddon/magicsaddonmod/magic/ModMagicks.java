@@ -22,7 +22,8 @@ public class ModMagicks {
             RUIN = MAGIC.register("magic_ruin", () -> new magicRuin(new ResourceLocation(MagicksAddonMod.MODID, "magic_ruin"), false, 3, null)),
             BALLOON = MAGIC.register("magic_balloon", () -> new magicBalloon(new ResourceLocation(MagicksAddonMod.MODID, "magic_balloon"), false, 3)),
             ULTIMA = MAGIC.register("magic_ultima", () -> new magicUltima(new ResourceLocation(MagicksAddonMod.MODID, "magic_ultima"), false, 1, null)),
-            COMET = MAGIC.register("magic_comet", () -> new magicComet(new ResourceLocation(MagicksAddonMod.MODID, "magic_comet"), false, 2, null));
+            COMET = MAGIC.register("magic_comet", () -> new magicComet(new ResourceLocation(MagicksAddonMod.MODID, "magic_comet"), false, 2, null)),
+            BERSERK = MAGIC.register("magic_berserk", () -> new magicHaste(new ResourceLocation(MagicksAddonMod.MODID, "magic_berserk"), true, 3));
 
 
 

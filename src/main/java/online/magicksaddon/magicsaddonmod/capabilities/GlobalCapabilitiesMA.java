@@ -12,6 +12,8 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
         storage.putInt("haste_level", this.getHasteLevel());
         storage.putInt("slow_ticks", this.getSlowTicks());
         storage.putInt("slow_level", this.getSlowLevel());
+        storage.putInt("berserk_ticks",this.getBerserkTicks());
+        storage.putInt("berserk_level", this.getBerserkLevel());
         return storage;
     }
 
@@ -22,7 +24,7 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
     }
 
 
-    private int hasteTicks, hasteLevel, slowTicks, slowLevel;
+    private int hasteTicks, hasteLevel, slowTicks, slowLevel, berserkLevel, berserkTicks;
 
     //Haste
     public int getHasteLevel() {
@@ -81,6 +83,33 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
     @Override
     public void setSlowCaster(String name) {
 
+    }
+
+    @Override
+    public int getBerserkLevel() {
+        return berserkLevel;
+    }
+
+    @Override
+    public void setBerserkLevel(int level) {
+        this.berserkLevel = level;
+    }
+
+    @Override
+    public int getBerserkTicks() {
+        return berserkTicks;
+    }
+
+    @Override
+    public void setBerserkTicks(int i, int level) {
+        berserkTicks = i;
+        berserkLevel = level;
+
+    }
+
+    @Override
+    public void remBerserkTicks(int ticks) {
+        berserkTicks -= ticks;
     }
 
     @Override
