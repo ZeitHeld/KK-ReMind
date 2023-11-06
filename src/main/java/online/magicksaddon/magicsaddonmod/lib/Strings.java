@@ -15,9 +15,10 @@ public class Strings {
         darkMode = Strings.DFMA_Prefix+"dark",
 
 
-        //Support
+        //Ability List
         darkPassage = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"dark_passage",
         darknessBoost = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"darkness_boost",
+        lightBoost = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"light_boost",
         rageAwakened = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"rage_awakened",
         darkPower = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"dark_power";
 
