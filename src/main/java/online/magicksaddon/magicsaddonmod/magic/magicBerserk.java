@@ -32,7 +32,7 @@ public class magicBerserk extends Magic {
 
             if (globalData.getBerserkTicks() <= 0) {
 
-                player.getAttribute(Attributes.ATTACK_DAMAGE).addTransientModifier(new AttributeModifier("Berserk", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
+                player.getAttribute(Attributes.ATTACK_DAMAGE).addTransientModifier(new AttributeModifier("Berserk", 0.25 + (0.25 * level), AttributeModifier.Operation.ADDITION));
             }
             globalData.setBerserkTicks(time, level);
         }

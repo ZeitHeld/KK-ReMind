@@ -102,7 +102,7 @@ public class MagicksEntityEvents {
 					// System.out.println("Haste Level: " + globalData.getHasteLevel() + " " +
 					// "Haste Ticks Remaining: " + globalData.getHasteTicks());
 					if (globalData.getBerserkTicks() <= 0) {
-						player.getAttribute(Attributes.ATTACK_DAMAGE).addTransientModifier(new AttributeModifier("Berserk", -0.25 + (-0.25 * globalData.getBerserkLevel()), AttributeModifier.Operation.MULTIPLY_BASE));
+						player.getAttribute(Attributes.ATTACK_DAMAGE).addTransientModifier(new AttributeModifier("Berserk", -0.25 + (-0.25 * globalData.getBerserkLevel()), AttributeModifier.Operation.ADDITION));
 					}
 				}
 			}
