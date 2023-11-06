@@ -6,6 +6,8 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
+import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.entity.magic.BalloonEntity;
@@ -19,7 +21,7 @@ public class magicBalloon extends Magic {
 
 	@Override
 	protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
-		float dmgMult = getDamageMult(level) * 1F;
+		float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.waterBoost) * 0.2F;
 		caster.swing(InteractionHand.MAIN_HAND);
 
 		// Levels
