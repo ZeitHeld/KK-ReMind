@@ -21,6 +21,7 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
         CompoundTag properties = (CompoundTag) nbt;
         this.setHasteTicks(properties.getInt("haste_ticks"), properties.getInt("haste_level"));
         this.setSlowTicks(properties.getInt("slow_ticks"), properties.getInt("slow_level"));
+        this.setBerserkTicks(properties.getInt("berserk_ticks"), properties.getInt("berserk_level"));
     }
 
 
@@ -87,6 +88,7 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
 
     @Override
     public int getBerserkLevel() {
+
         return berserkLevel;
     }
 
@@ -97,6 +99,7 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
 
     @Override
     public int getBerserkTicks() {
+
         return berserkTicks;
     }
 
@@ -109,6 +112,7 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
 
     @Override
     public void remBerserkTicks(int ticks) {
+
         berserkTicks -= ticks;
     }
 
