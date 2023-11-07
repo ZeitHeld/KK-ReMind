@@ -1,5 +1,6 @@
 package online.magicksaddon.magicsaddonmod.handler;
 
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -10,7 +11,10 @@ import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.PlayerCapabilities;
+import online.kingdomkeys.kingdomkeys.leveling.Stat;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
+import online.kingdomkeys.kingdomkeys.network.PacketHandler;
+import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
@@ -20,7 +24,8 @@ import online.magicksaddon.magicsaddonmod.magic.magicBerserk;
 public class MagicksEntityEvents {
 
 
-	private IPlayerCapabilities playerData;
+	private PlayerCapabilities playerData;
+
 
 	@SubscribeEvent
 	public void onPlayerJoin(PlayerLoggedInEvent e) {
@@ -107,11 +112,14 @@ public class MagicksEntityEvents {
 					System.out.println("Berserk Level: " + globalData.getBerserkLevel() + " " +
 					"Berserk Ticks Remaining: " + globalData.getBerserkTicks());
 					if (globalData.getBerserkTicks() <= 0) {
-						playerData.getStrengthStat().addModifier("berserk_spell", -5, false);
+
+						playerData.getStrengthStat().addModifier("buff", -5 , false);
+						PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 						player.getAttribute(Attributes.ATTACK_DAMAGE).addTransientModifier(new AttributeModifier("Berserk", -0.5 + (-0.5 * globalData.getBerserkLevel()), AttributeModifier.Operation.ADDITION));
 					}
 				}
 			}
+
 		}
 	}
 }
