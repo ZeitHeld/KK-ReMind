@@ -9,14 +9,19 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.kingdomkeys.kingdomkeys.capability.PlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 
+import online.magicksaddon.magicsaddonmod.magic.magicBerserk;
+
 public class MagicksEntityEvents {
 
-	
+
+	private IPlayerCapabilities playerData;
+
 	@SubscribeEvent
 	public void onPlayerJoin(PlayerLoggedInEvent e) {
 		/*Player player = e.getEntity();
@@ -102,7 +107,8 @@ public class MagicksEntityEvents {
 					System.out.println("Berserk Level: " + globalData.getBerserkLevel() + " " +
 					"Berserk Ticks Remaining: " + globalData.getBerserkTicks());
 					if (globalData.getBerserkTicks() <= 0) {
-						player.getAttribute(Attributes.ATTACK_DAMAGE).addTransientModifier(new AttributeModifier("Berserk", -0.25 + (-0.25 * globalData.getBerserkLevel()), AttributeModifier.Operation.ADDITION));
+						playerData.getStrengthStat().addModifier("berserk_spell", -5, false);
+						player.getAttribute(Attributes.ATTACK_DAMAGE).addTransientModifier(new AttributeModifier("Berserk", -0.5 + (-0.5 * globalData.getBerserkLevel()), AttributeModifier.Operation.ADDITION));
 					}
 				}
 			}

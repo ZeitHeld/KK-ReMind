@@ -7,14 +7,21 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 
+import online.kingdomkeys.kingdomkeys.capability.PlayerCapabilities;
+
+
+
 
 public class magicBerserk extends Magic {
+
+    private IPlayerCapabilities playerData;
 
     public magicBerserk(ResourceLocation registryName, boolean hasToSelect, int maxLevel) {
         super(registryName, hasToSelect, maxLevel, null);
@@ -23,6 +30,7 @@ public class magicBerserk extends Magic {
 
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
+
         IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(player);
         if(globalData != null) {
             int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * ((level * 0.75) + 5) + 5);
@@ -31,11 +39,12 @@ public class magicBerserk extends Magic {
             // Effect and Level Modifier
 
             if (globalData.getBerserkTicks() <= 0) {
-
-                player.getAttribute(Attributes.ATTACK_DAMAGE).addTransientModifier(new AttributeModifier("Berserk", 0.25 + (0.25 * level), AttributeModifier.Operation.ADDITION));
+                playerData.getStrengthStat().addModifier("berserk_spell", 5, false);
+                player.getAttribute(Attributes.ATTACK_DAMAGE).addTransientModifier(new AttributeModifier("Berserk", 0.5 + (0.5 * level), AttributeModifier.Operation.ADDITION));
             }
             globalData.setBerserkTicks(time, level);
         }
     }
+
 
 }

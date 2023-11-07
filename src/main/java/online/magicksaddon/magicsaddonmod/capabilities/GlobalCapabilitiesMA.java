@@ -117,6 +117,16 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
     }
 
     @Override
+    public boolean activeBerserk() {
+        return false;
+    }
+
+    @Override
+    public void berserkBoost(int level, int i) {
+        berserkLevel = level;
+    }
+
+    @Override
     public void deserializeNBT() {
 
     }
