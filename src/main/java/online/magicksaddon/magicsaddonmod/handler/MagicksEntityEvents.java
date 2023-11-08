@@ -113,9 +113,9 @@ public class MagicksEntityEvents {
 					"Berserk Ticks Remaining: " + globalData.getBerserkTicks());
 					if (globalData.getBerserkTicks() <= 0) {
 
-						playerData.getStrengthStat().addModifier("buff", -5 , false);
+						IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+						playerData.getStrengthStat().removeModifier("buff");
 						PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
-						player.getAttribute(Attributes.ATTACK_DAMAGE).addTransientModifier(new AttributeModifier("Berserk", -0.5 + (-0.5 * globalData.getBerserkLevel()), AttributeModifier.Operation.ADDITION));
 					}
 				}
 			}

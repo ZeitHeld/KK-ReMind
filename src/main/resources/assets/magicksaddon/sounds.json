@@ -43,5 +43,10 @@
           "sounds": [
             "magicksaddon:ultima_explosion"
           ]
-      }
+      },
+        "berserk": {
+          "sounds": [
+            "magicksaddon:berserk"
+          ]
+        }
   }
