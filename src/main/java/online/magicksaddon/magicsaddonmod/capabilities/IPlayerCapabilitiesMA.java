@@ -14,6 +14,8 @@ public interface IPlayerCapabilitiesMA  extends INBTSerializable<CompoundTag> {
     int getHasteTicks();
     void setHasteActive(boolean active);
     boolean getHasteActive();
+    boolean getautoLife();
+    boolean AutoLife();
 
 
     // Abilities Stuff

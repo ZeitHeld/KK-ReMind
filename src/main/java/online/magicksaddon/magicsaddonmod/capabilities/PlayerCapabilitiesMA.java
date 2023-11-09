@@ -40,6 +40,16 @@ public class PlayerCapabilitiesMA implements IPlayerCapabilitiesMA{
         return false;
     }
 
+    @Override
+    public boolean getautoLife() {
+        return false;
+    }
+
+    @Override
+    public boolean AutoLife() {
+        return false;
+    }
+
 
     @Override
     public CompoundTag serializeNBT() {

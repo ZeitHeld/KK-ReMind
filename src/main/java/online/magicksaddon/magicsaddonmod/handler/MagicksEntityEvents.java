@@ -4,6 +4,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -116,7 +117,17 @@ public class MagicksEntityEvents {
 					}
 				}
 			}
+			// Auto Life
+			if (event.getEntity() instanceof Player){
+				Player player = (Player) event.getEntity();
+				if (globalData.getAutoLife() == 1){
+					if(player.getHealth() == 0){
+						player.setHealth(player.getMaxHealth());
+					}
+					//globalData.autoLifeActive() == 0;
 
+				}
+			}
 		}
 	}
 }

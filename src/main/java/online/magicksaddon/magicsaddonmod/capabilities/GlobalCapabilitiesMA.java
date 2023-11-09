@@ -14,6 +14,7 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
         storage.putInt("slow_level", this.getSlowLevel());
         storage.putInt("berserk_ticks",this.getBerserkTicks());
         storage.putInt("berserk_level", this.getBerserkLevel());
+        storage.putBoolean("auto-life_active", this.getAutoLifeActive());
         return storage;
     }
 
@@ -25,7 +26,13 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
     }
 
 
-    private int hasteTicks, hasteLevel, slowTicks, slowLevel, berserkLevel, berserkTicks;
+    private int hasteTicks;
+    private int hasteLevel;
+    private int slowTicks;
+    private int slowLevel;
+    private int berserkLevel;
+    private int berserkTicks;
+    private boolean isAutoLifeActive;
 
     //Haste
     public int getHasteLevel() {
@@ -117,19 +124,21 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
     }
 
     @Override
-    public boolean activeBerserk() {
+    public boolean setAutoLifeActive() {
         return false;
     }
 
     @Override
-    public void berserkBoost(int level, int i) {
-        berserkLevel = level;
+    public boolean getAutoLifeActive() {
+        return isAutoLifeActive;
     }
+
 
     @Override
     public void deserializeNBT() {
 
     }
+
     // Not Slow
 
 
