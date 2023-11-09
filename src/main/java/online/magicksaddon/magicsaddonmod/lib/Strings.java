@@ -4,10 +4,13 @@ import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 
 public class Strings {
 
-    // Abilities
+
     public static final String
+            // Prefixes
         ABMA_Prefix = "ability_",
         DFMA_Prefix = "form_",
+        KBMA_Prefix = "keyblade_",
+        KCMA_Prefix = "keychain_",
 
 
         //Forms
@@ -20,6 +23,11 @@ public class Strings {
         darknessBoost = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"darkness_boost",
         lightBoost = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"light_boost",
         rageAwakened = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"rage_awakened",
-        darkPower = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"dark_power";
+        darkPower = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"dark_power",
 
+        //Keyblades
+        xephiroKeyblade = MagicksAddonMod.MODID+":"+Strings.KBMA_Prefix+"xephiro_keyblade",
+
+        //Keychains
+        xephiroKeybladeChain = MagicksAddonMod.MODID+":"+Strings.KCMA_Prefix+"xephiro_keyblade_chain";
 }

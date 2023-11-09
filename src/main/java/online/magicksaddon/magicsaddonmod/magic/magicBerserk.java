@@ -9,6 +9,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.event.RenderPlayerEvent;
+import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
@@ -18,6 +19,7 @@ import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.IPlayerCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerMA;
 
 import online.kingdomkeys.kingdomkeys.capability.PlayerCapabilities;
 
@@ -45,7 +47,6 @@ public class magicBerserk extends Magic {
             IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
                 if (globalData.getBerserkTicks() <= 0) {
                     // Future color change line below
-
                     // Levels 0 - 2
                     switch (level) {
                         case 0:
