@@ -69,6 +69,19 @@ public class MagicksEntityEvents {
 						playerData.getDriveFormMap().remove(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.rageForm);
 					}
 				}
+
+				if(playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.wayToLight)) {
+					if(!playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.light)) {
+						playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.light, 1);
+					}
+				} else {
+					if (playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID + ":" + online.magicksaddon.magicsaddonmod.lib.Strings.light)) {
+						playerData.getDriveFormMap().remove(MagicksAddonMod.MODID + ":" + online.magicksaddon.magicsaddonmod.lib.Strings.light);
+					}
+				}
+				// Additional Forms Here
+
+				// Additional Forms ^
 			}
 		}
 		/*if(event.getEntity() instanceof Player player) {

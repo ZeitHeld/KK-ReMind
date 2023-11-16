@@ -16,6 +16,7 @@ public class Strings {
         //Forms
         rageForm = Strings.DFMA_Prefix+"rage",
         darkMode = Strings.DFMA_Prefix+"dark",
+        light = Strings.DFMA_Prefix+"light",
 
 
         //Ability List
@@ -24,6 +25,9 @@ public class Strings {
         lightBoost = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"light_boost",
         rageAwakened = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"rage_awakened",
         darkPower = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"dark_power",
+        wayToLight = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"way_to_light",
+        lightStep = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"light_step",
+        darkStep = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"dark_step",
 
         //Keyblades
         xephiroKeyblade = MagicksAddonMod.MODID+":"+Strings.KBMA_Prefix+"xephiro_keyblade",

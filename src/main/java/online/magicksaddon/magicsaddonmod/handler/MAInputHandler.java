@@ -289,7 +289,7 @@ public class MAInputHandler extends InputHandler{
 
     @Override
     public void commandEnter() {
-    	System.out.println("MA");
+    	//System.out.println("MA");
     	Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         Level world = mc.level;

@@ -23,7 +23,12 @@ public class AddonAbilities extends ModAbilities{
             // Action
     	DARK_PASSAGE = ABILITIES.register(Strings.ABMA_Prefix+"dark_passage", () -> new Ability(new ResourceLocation(Strings.darkPassage), 3, Ability.AbilityType.ACTION, order++)),
         RAGE_AWAKENED = ABILITIES.register(Strings.ABMA_Prefix+"rage_awakened", () -> new Ability(new ResourceLocation(Strings.rageAwakened), 5,Ability.AbilityType.ACTION, order++)),
+        WAY_TO_LIGHT = ABILITIES.register(Strings.ABMA_Prefix+"way_to_light", () -> new Ability(new ResourceLocation(Strings.wayToLight), 5, Ability.AbilityType.ACTION, order++)),
         DARK_POWER = ABILITIES.register(Strings.ABMA_Prefix+"dark_power", () -> new Ability(new ResourceLocation(Strings.darkPower), 5, Ability.AbilityType.ACTION, order++)),
+
+            // Growth
+        LIGHT_STEP = ABILITIES.register(Strings.ABMA_Prefix+"light_step", () -> new Ability(new ResourceLocation(Strings.lightStep), 3, Ability.AbilityType.GROWTH, order++)),
+        DARK_STEP = ABILITIES.register(Strings.ABMA_Prefix+"dark_step", () -> new Ability(new ResourceLocation(Strings.darkStep), 3, Ability.AbilityType.GROWTH, order++)),
 
             // Support
         DARKNESS_BOOST = ABILITIES.register(Strings.ABMA_Prefix+"darkness_boost", () -> new Ability(new ResourceLocation(Strings.darknessBoost), 3, Ability.AbilityType.SUPPORT, order++)),
