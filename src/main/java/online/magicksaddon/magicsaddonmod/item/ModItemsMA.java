@@ -26,6 +26,7 @@ public class ModItemsMA{
         ultimaSpell = ITEMS.register("ultima_spell", () -> new MagicSpellItem(new Item.Properties(), MagicksAddonMod.MODID+":magic_ultima")),
         cometSpell = ITEMS.register("comet_spell", () -> new MagicSpellItem(new Item.Properties(), MagicksAddonMod.MODID+":magic_comet")),
         berserkSpell = ITEMS.register("berserk_spell",() -> new MagicSpellItem(new Item.Properties(),MagicksAddonMod.MODID+":magic_berserk")),
+        autoLifeSpell = ITEMS.register("autolife_spell", () -> new MagicSpellItem(new Item.Properties(), MagicksAddonMod.MODID+":magic_auto-life")),
 
             // Keyblades
         xephiroKeyblade = ITEMS.register("xephiro_keyblade", () -> new KeybladeItem(new Item.Properties())),

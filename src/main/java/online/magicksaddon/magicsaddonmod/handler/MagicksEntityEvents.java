@@ -1,23 +1,28 @@
 package online.magicksaddon.magicsaddonmod.handler;
 
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.client.gui.screens.DeathScreen;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.*;
-import online.kingdomkeys.kingdomkeys.leveling.Stat;
-import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
-
-import online.magicksaddon.magicsaddonmod.magic.magicBerserk;
 
 public class MagicksEntityEvents {
 
@@ -118,16 +123,33 @@ public class MagicksEntityEvents {
 				}
 			}
 			// Auto Life
+
 			if (event.getEntity() instanceof Player){
 				Player player = (Player) event.getEntity();
-				if (globalData.getAutoLife() == 1){
-					if(player.getHealth() == 0){
-						player.setHealth(player.getMaxHealth());
-					}
-					//globalData.autoLifeActive() == 0;
+				if (1 == globalData.getAutoLifeActive()){
+					//ItemStack autoLife = null;
+					//if (player.isDeadOrDying()) {
+					if (player.getHealth() <= 0){
+						event.setCanceled(true);
+						player.awardStat(Stats.ITEM_USED.get(Items.TOTEM_OF_UNDYING));
+						CriteriaTriggers.USED_TOTEM.trigger((ServerPlayer) player, null);
 
+						player.setHealth(20.0F);
+						globalData.remAutoLifeActive(1);
+						player.removeAllEffects();
+						player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 150,10));
+						player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 10));
+						player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 10));
+						/*
+						System.out.println("Healed!");
+						System.out.println(globalData.getAutoLifeActive());
+						*/
+					}
 				}
 			}
+
+			// Next Spell Goes Below
+
 		}
 	}
 }

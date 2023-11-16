@@ -20,12 +20,14 @@ public class magicAutoLife extends Magic {
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
         IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(player);
-        caster.swing(InteractionHand.MAIN_HAND);
-        player.level.playSound(null, player.blockPosition(), MagicSounds.HASTE.get(), SoundSource.PLAYERS, 1F, 1F);
-
-        // Auto Life status set to True
-        //globalData.setAutoLifeActive() = true;
-        System.out.println("Auto Life Active?" + globalData.getAutoLifeActive());
+        if (globalData != null) {
+            caster.swing(InteractionHand.MAIN_HAND);
+            player.level.playSound(null, player.blockPosition(), MagicSounds.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
+            globalData.setAutoLifeActive(1);
+            // Auto Life status set to True
+            // Test Line
+            //System.out.println("Auto Life Active? " + globalData.getAutoLifeActive());
+        }
     }
 
 

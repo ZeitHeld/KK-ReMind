@@ -48,5 +48,10 @@
           "sounds": [
             "magicksaddon:berserk"
           ]
+        },
+        "auto_life": {
+          "sounds": [
+            "magicksaddon:auto_life"
+          ]
         }
   }

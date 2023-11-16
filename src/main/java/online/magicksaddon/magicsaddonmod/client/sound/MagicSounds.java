@@ -19,7 +19,8 @@ public class MagicSounds {
             PLAYER_CAST = registerSound("player_cast"),
             ULTIMA_CAST = registerSound("ultima_cast"),
             ULTIMA_EXPLOSION = registerSound("ultima_explosion"),
-            BERSERK = registerSound("berserk");
+            BERSERK = registerSound("berserk"),
+            AUTOLIFE = registerSound("auto_life");
 
 
     public static RegistryObject<SoundEvent> registerSound(String name) {

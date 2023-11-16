@@ -23,6 +23,7 @@
   "magic.magicksaddon.magic_berserk0.name": "Berserk",
   "magic.magicksaddon.magic_berserk1.name": "Berserkera",
   "magic.magicksaddon.magic_berserk2.name": "Berserkega",
+  "magic.magicksaddon.magic_auto-life0.name": "Auto-Life",
 
 
   "item.magicksaddon.balloon_spell": "Balloon Spell",
@@ -33,6 +34,7 @@
   "item.magicksaddon.comet_spell": "Comet Spell",
   "item.magicksaddon.ultima_spell": "Ultima Spell",
   "item.magicksaddon.berserk_spell": "Berserk Spell",
+  "item.magicksaddon.autolife_spell": "Auto-Life Spell",
 
 
   "ability.ability_dark_passage.name": "Dark Passage",

@@ -14,7 +14,7 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
         storage.putInt("slow_level", this.getSlowLevel());
         storage.putInt("berserk_ticks",this.getBerserkTicks());
         storage.putInt("berserk_level", this.getBerserkLevel());
-        storage.putBoolean("auto-life_active", this.getAutoLifeActive());
+        storage.putInt("autolife_active", this.getAutoLifeActive());
         return storage;
     }
 
@@ -32,7 +32,7 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
     private int slowLevel;
     private int berserkLevel;
     private int berserkTicks;
-    private boolean isAutoLifeActive;
+    private int isAutoLifeActive;
 
     //Haste
     public int getHasteLevel() {
@@ -92,7 +92,7 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
     public void setSlowCaster(String name) {
 
     }
-
+    // Berserk
     @Override
     public int getBerserkLevel() {
 
@@ -122,15 +122,21 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
 
         berserkTicks -= ticks;
     }
-
+    // Auto-Life
     @Override
-    public boolean setAutoLifeActive() {
-        return false;
+    public int setAutoLifeActive(int autoLifeActive) {
+        isAutoLifeActive = autoLifeActive;
+        return autoLifeActive;
     }
 
     @Override
-    public boolean getAutoLifeActive() {
+    public int getAutoLifeActive() {
         return isAutoLifeActive;
+    }
+
+    @Override
+    public void remAutoLifeActive(int use) {
+        isAutoLifeActive -= use;
     }
 
 
