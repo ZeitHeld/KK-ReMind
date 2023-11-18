@@ -177,10 +177,10 @@ public class MagicksEntityEvents {
 					event.setCanceled(true);
 					CriteriaTriggers.USED_TOTEM.trigger((ServerPlayer) player, null);
 
-					player.setHealth(20.0F);
+					player.setHealth(10.0F);
 					globalData.remAutoLifeActive(1);
 					player.removeAllEffects();
-					player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 10));
+					player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 10));
 					player.level.playSound(null, player.blockPosition(), MagicSounds.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
 
 						/*
