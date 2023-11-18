@@ -161,7 +161,7 @@ public class MagicksEntityEvents {
 				}
 			}*/
 
-			// Next Spell Goes Below
+			// Next Tick Based Spell Goes Below
 
 		}
 	}
@@ -171,22 +171,14 @@ public class MagicksEntityEvents {
 		if (event.getEntity() instanceof Player){
 			Player player = (Player) event.getEntity();
 			if (1 == globalData.getAutoLifeActive()){
-
-
 				if (player.getHealth() <= 0){
 					event.setCanceled(true);
-					CriteriaTriggers.USED_TOTEM.trigger((ServerPlayer) player, null);
-
 					player.setHealth(10.0F);
 					globalData.remAutoLifeActive(1);
 					player.removeAllEffects();
 					player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 10));
 					player.level.playSound(null, player.blockPosition(), MagicSounds.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
 
-						/*
-						System.out.println("Healed!");
-						System.out.println(globalData.getAutoLifeActive());
-						*/
 				}
 			}
 		}
