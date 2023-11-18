@@ -5,6 +5,7 @@ import net.minecraft.client.gui.screens.DeathScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -14,15 +15,19 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import online.kingdomkeys.kingdomkeys.handler.EntityEvents;
 import online.kingdomkeys.kingdomkeys.capability.*;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 
 public class MagicksEntityEvents {
 
@@ -41,7 +46,7 @@ public class MagicksEntityEvents {
 					//playerData.setDriveFormLevel(Strings.Form_Anti, 1);
 				}
 			}
-		}*/		
+		}*/
 	}
 
 	// Haste
@@ -59,7 +64,7 @@ public class MagicksEntityEvents {
 						playerData.getDriveFormMap().remove(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.darkMode);
 					}
 				}
-				
+
 				if(playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.rageAwakened)) {
 					if(!playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.rageForm)) {
 						playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.rageForm, 1);
@@ -106,7 +111,7 @@ public class MagicksEntityEvents {
 					event.getEntity().getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Slow", 0.25 + (0.25 * globalData.getSlowLevel()), AttributeModifier.Operation.MULTIPLY_BASE));
 				}
 			}
-			
+
 			// Haste
 			if (event.getEntity() instanceof Player) {
 				Player player = (Player) event.getEntity();
@@ -118,7 +123,7 @@ public class MagicksEntityEvents {
 						player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Haste", -(0.25 + (0.25 * globalData.getHasteLevel())), AttributeModifier.Operation.MULTIPLY_BASE));
 						player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Haste", -(0.25 + (0.25 * globalData.getHasteLevel())), AttributeModifier.Operation.MULTIPLY_BASE));
 					}
-				}				
+				}
 			}
 			// Berserk
 			if (event.getEntity() instanceof Player){
@@ -136,15 +141,14 @@ public class MagicksEntityEvents {
 				}
 			}
 			// Auto Life
-
+			/*
 			if (event.getEntity() instanceof Player){
 				Player player = (Player) event.getEntity();
 				if (1 == globalData.getAutoLifeActive()){
-					//ItemStack autoLife = null;
-					//if (player.isDeadOrDying()) {
+
+
 					if (player.getHealth() <= 0){
 						event.setCanceled(true);
-						player.awardStat(Stats.ITEM_USED.get(Items.TOTEM_OF_UNDYING));
 						CriteriaTriggers.USED_TOTEM.trigger((ServerPlayer) player, null);
 
 						player.setHealth(20.0F);
@@ -153,16 +157,38 @@ public class MagicksEntityEvents {
 						player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 150,10));
 						player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 10));
 						player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 10));
+					}
+				}
+			}*/
+
+			// Next Spell Goes Below
+
+		}
+	}
+	@SubscribeEvent
+	public void onDeath(LivingDeathEvent event){
+		IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(event.getEntity());
+		if (event.getEntity() instanceof Player){
+			Player player = (Player) event.getEntity();
+			if (1 == globalData.getAutoLifeActive()){
+
+
+				if (player.getHealth() <= 0){
+					event.setCanceled(true);
+					CriteriaTriggers.USED_TOTEM.trigger((ServerPlayer) player, null);
+
+					player.setHealth(20.0F);
+					globalData.remAutoLifeActive(1);
+					player.removeAllEffects();
+					player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 10));
+					player.level.playSound(null, player.blockPosition(), MagicSounds.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
+
 						/*
 						System.out.println("Healed!");
 						System.out.println(globalData.getAutoLifeActive());
 						*/
-					}
 				}
 			}
-
-			// Next Spell Goes Below
-
 		}
 	}
 }
