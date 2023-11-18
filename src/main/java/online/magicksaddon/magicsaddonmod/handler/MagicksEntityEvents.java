@@ -140,26 +140,6 @@ public class MagicksEntityEvents {
 					}
 				}
 			}
-			// Auto Life
-			/*
-			if (event.getEntity() instanceof Player){
-				Player player = (Player) event.getEntity();
-				if (1 == globalData.getAutoLifeActive()){
-
-
-					if (player.getHealth() <= 0){
-						event.setCanceled(true);
-						CriteriaTriggers.USED_TOTEM.trigger((ServerPlayer) player, null);
-
-						player.setHealth(20.0F);
-						globalData.remAutoLifeActive(1);
-						player.removeAllEffects();
-						player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 150,10));
-						player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 10));
-						player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 10));
-					}
-				}
-			}*/
 
 			// Next Tick Based Spell Goes Below
 
