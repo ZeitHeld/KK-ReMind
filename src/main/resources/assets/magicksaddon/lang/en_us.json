@@ -49,6 +49,10 @@
   "ability.ability_way_to_light.desc": "BURY THE LIGHT DEEP WITHIN! CAST ASIDE THERE'S NO COMING HOME!",
   "ability.ability_light_boost.name": "Light Boost",
   "ability.ability_light_boost.desc": "Increases damage done with light-based attacks.",
+  "ability.ability_adrenaline.name": "Adrenaline",
+  "ability.ability_adrenaline.desc": "Increases your strength stat depending on missing HP, this bonus doubles when you're 25% HP or lower.",
+  "ability.ability_critical_surge.name": "Critical Surge",
+  "ability.ability_critical_surge.desc": "Increases your magic stat depending on missing HP, this bonus doubles when you're 25% HP or lower.",
 
   "form.form_rage.name": "Rage Form",
   "form.form_dark.name": "Dark Mode",

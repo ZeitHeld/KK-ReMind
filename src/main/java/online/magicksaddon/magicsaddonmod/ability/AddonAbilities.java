@@ -32,5 +32,8 @@ public class AddonAbilities extends ModAbilities{
 
             // Support
         DARKNESS_BOOST = ABILITIES.register(Strings.ABMA_Prefix+"darkness_boost", () -> new Ability(new ResourceLocation(Strings.darknessBoost), 3, Ability.AbilityType.SUPPORT, order++)),
-        LIGHT_BOOST = ABILITIES.register(Strings.ABMA_Prefix+"light_boost", () -> new Ability(new ResourceLocation(Strings.lightBoost), 3, Ability.AbilityType.SUPPORT, order++));
+        LIGHT_BOOST = ABILITIES.register(Strings.ABMA_Prefix+"light_boost", () -> new Ability(new ResourceLocation(Strings.lightBoost), 3, Ability.AbilityType.SUPPORT, order++)),
+        ADRENALINE = ABILITIES.register(Strings.ABMA_Prefix+"adrenaline", () -> new Ability(new ResourceLocation(Strings.adrenaline), 6, Ability.AbilityType.SUPPORT, order++)),
+        CRITICAL_SURGE = ABILITIES.register(Strings.ABMA_Prefix+"critical_surge", () -> new Ability(new ResourceLocation(Strings.critical_surge), 6, Ability.AbilityType.SUPPORT, order++));
+
 }

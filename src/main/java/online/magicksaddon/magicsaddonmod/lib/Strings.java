@@ -28,6 +28,8 @@ public class Strings {
         wayToLight = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"way_to_light",
         lightStep = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"light_step",
         darkStep = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"dark_step",
+        adrenaline = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"adrenaline",
+        critical_surge = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"critical_surge",
 
         //Keyblades
         xephiroKeyblade = MagicksAddonMod.MODID+":"+Strings.KBMA_Prefix+"xephiro_keyblade",

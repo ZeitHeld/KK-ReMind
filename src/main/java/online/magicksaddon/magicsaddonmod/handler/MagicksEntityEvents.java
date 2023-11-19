@@ -24,10 +24,12 @@ import online.kingdomkeys.kingdomkeys.handler.EntityEvents;
 import online.kingdomkeys.kingdomkeys.capability.*;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
+import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
+import online.magicksaddon.magicsaddonmod.lib.Strings;
 
 public class MagicksEntityEvents {
 
@@ -160,6 +162,22 @@ public class MagicksEntityEvents {
 					player.level.playSound(null, player.blockPosition(), MagicSounds.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
 
 				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void hitEntity(LivingHurtEvent event){
+
+		if(event.getEntity() instanceof Player) {
+
+			// Adrenaline
+			Player player = (Player) event.getEntity();
+			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+
+			if (playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.adrenaline) && Utils.isPlayerLowHP(player) ) {
+				System.out.println("Player HP: "+ player.getHealth());
+					playerData.getStrengthStat().addModifier("adrenaline", 5, false);
 			}
 		}
 	}
