@@ -167,18 +167,42 @@ public class MagicksEntityEvents {
 	}
 
 	@SubscribeEvent
-	public void hitEntity(LivingHurtEvent event){
-
+	public void hurtEvent(LivingHurtEvent event){
+		IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(event.getEntity());
 		if(event.getEntity() instanceof Player) {
-
-			// Adrenaline
 			Player player = (Player) event.getEntity();
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-
-			if (playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.adrenaline) && Utils.isPlayerLowHP(player) ) {
-				System.out.println("Player HP: "+ player.getHealth());
+			// Adrenaline
+			if (playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.adrenaline)) {
+				if (player.getHealth() - event.getAmount() <= player.getMaxHealth() / 4){
+					System.out.println(player.getHealth() + " / " + player.getMaxHealth());
 					playerData.getStrengthStat().addModifier("adrenaline", 5, false);
+					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
+					System.out.println("Strength Added");
+				}
 			}
+			// Critical Surge
+			if (playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.critical_surge)){
+				if (player.getHealth() - event.getAmount() <= player.getMaxHealth() / 4){
+					System.out.println(player.getHealth() + " / " + player.getMaxHealth());
+					playerData.getMagicStat().addModifier("critical_surge", 5, false);
+					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
+					System.out.println("Magic Added");
+				}
+			}
+			// Remove If Statement
+			// Utils.isPlayerLowHP(player) == false
+			if (player.getHealth() + 1 >= player.getMaxHealth() / 4) {
+				System.out.println(player.getHealth() + " / " + player.getMaxHealth());
+				playerData.getStrengthStat().removeModifier("adrenaline");
+				System.out.println("Adrenaline Removed");
+				playerData.getMagicStat().removeModifier("critical_surge");
+				System.out.println("Critical Surge Removed");
+				PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
+			}
+
+
+
 		}
 	}
 }
