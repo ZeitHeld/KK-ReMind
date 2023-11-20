@@ -33,7 +33,7 @@ public class Strings {
         critical_surge = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"critical_surge",
 
         // Shotlocks
-        flameSalvo = MagicksAddonMod.MODID+":"+Strings.SLMA_Prefix+"flame_salvo",
+        flameSalvo = "flame_salvo",
 
 
         //Keyblades
