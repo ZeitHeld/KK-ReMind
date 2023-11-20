@@ -13,6 +13,7 @@ import online.kingdomkeys.kingdomkeys.shotlock.Shotlock;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IPlayerCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.entity.shotlock.FlameSalvoCoreEntity;
 
 import java.util.List;
 
@@ -31,7 +32,9 @@ public class ShotlockFlameSalvo extends Shotlock {
         PacketHandler.sendTo(new SCSyncCapabilityPacket(), (ServerPlayer)player);
 
         float damage = (float) (DamageCalculation.getMagicDamage(player) * 1.5 + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.fireBoost) * 0.2F);
-
+        FlameSalvoCoreEntity core = new FlameSalvoCoreEntity(player.level, player, targetList, damage);
+        core.setPos(player.getX(), player.getY(), player.getZ());
+        player.level.addFreshEntity(core);
 
 
 
