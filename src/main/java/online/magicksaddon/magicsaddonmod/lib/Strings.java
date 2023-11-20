@@ -11,6 +11,7 @@ public class Strings {
         DFMA_Prefix = "form_",
         KBMA_Prefix = "keyblade_",
         KCMA_Prefix = "keychain_",
+        SLMA_Prefix = "shotlock_",
 
 
         //Forms
@@ -30,6 +31,10 @@ public class Strings {
         darkStep = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"dark_step",
         adrenaline = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"adrenaline",
         critical_surge = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"critical_surge",
+
+        // Shotlocks
+        flameSalvo = MagicksAddonMod.MODID+":"+Strings.SLMA_Prefix+"flame_salvo",
+
 
         //Keyblades
         xephiroKeyblade = MagicksAddonMod.MODID+":"+Strings.KBMA_Prefix+"xephiro_keyblade",
