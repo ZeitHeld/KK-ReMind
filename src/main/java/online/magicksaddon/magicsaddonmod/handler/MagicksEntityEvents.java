@@ -64,6 +64,7 @@ public class MagicksEntityEvents {
 				playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.bubbleBlaster, true);
 				playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.thunderStorm, true);
 				playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.bioBarrage, true);
+				playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.meteorShower, true);
 
 				if(playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.darkPower)) {
 					if(!playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.darkMode)) {

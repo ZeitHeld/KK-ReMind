@@ -87,7 +87,7 @@ public class BioBarrageShotEntity extends BaseShotlockShotEntity {
                 LivingEntity target = (LivingEntity) ertResult.getEntity();
                 if (target != getOwner()) {
                     target.hurt(target.damageSources().thrown(this, this.getOwner()), dmg);
-                    target.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 2));
+                    target.addEffect(new MobEffectInstance(MobEffects.POISON, 300, 3));
                     super.remove(RemovalReason.KILLED);
                 }
             }

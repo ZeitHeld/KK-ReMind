@@ -46,7 +46,7 @@
   "ability.ability_dark_power.name": "Dark Power",
   "ability.ability_dark_power.desc": "Allows you to embrace the power of Darkness and access Dark Mode.",
   "ability.ability_way_to_light.name": "Way to Light",
-  "ability.ability_way_to_light.desc": "BURY THE LIGHT DEEP WITHIN! CAST ASIDE THERE'S NO COMING HOME!",
+  "ability.ability_way_to_light.desc": "Allows you to embrace the power of Light and access Light Form.",
   "ability.ability_light_boost.name": "Light Boost",
   "ability.ability_light_boost.desc": "Increases damage done with light-based attacks.",
   "ability.ability_adrenaline.name": "Adrenaline",
@@ -63,10 +63,11 @@
 
   "shotlock.thunderstorm.name": "Thunderstorm",
   "shotlock.bio_barrage.name": "Bio Barrage",
+  "shotlock.meteor_shower.name": "Meteor Shower",
 
   "form.form_rage.name": "Rage Form",
   "form.form_dark.name": "Dark Mode",
-  "form.form_light.name": "Light",
+  "form.form_light.name": "Light Form",
 
   "item.magicksaddon.xephiro_keyblade": "Sanguine Gaze",
 

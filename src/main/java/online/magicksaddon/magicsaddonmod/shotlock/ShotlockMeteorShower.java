@@ -4,18 +4,17 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
-import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.shotlock.Shotlock;
 import online.magicksaddon.magicsaddonmod.capabilities.IPlayerCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
-import online.magicksaddon.magicsaddonmod.entity.shotlock.BioBarrageCoreEntity;
-import online.magicksaddon.magicsaddonmod.entity.shotlock.BubbleBlasterCoreEntity;
+import online.magicksaddon.magicsaddonmod.entity.shotlock.MeteorShowerCoreEntity;
+import online.magicksaddon.magicsaddonmod.lib.Strings;
 
 import java.util.List;
 
-public class ShotlockBioBarrage extends Shotlock {
+public class ShotlockMeteorShower extends Shotlock {
 
-    public ShotlockBioBarrage(String registeryName, int order, int cooldown, int max){
+    public ShotlockMeteorShower(String registeryName, int order, int cooldown, int max){
         super(registeryName,order,cooldown,max);
     }
 
@@ -25,8 +24,8 @@ public class ShotlockBioBarrage extends Shotlock {
         IPlayerCapabilitiesMA playerData = ModCapabilitiesMA.getPlayer(player);
 
 
-        float damage = (float) (DamageCalculation.getMagicDamage(player) * 1.25);
-        BioBarrageCoreEntity core = new BioBarrageCoreEntity(player.level, player, targetList, damage);
+        float damage = (float) (DamageCalculation.getMagicDamage(player) * 0.5 + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.lightBoost) * 0.2F);
+        MeteorShowerCoreEntity core = new MeteorShowerCoreEntity(player.level, player, targetList, damage);
         core.setPos(player.getX(), player.getY(), player.getZ());
         player.level.addFreshEntity(core);
 

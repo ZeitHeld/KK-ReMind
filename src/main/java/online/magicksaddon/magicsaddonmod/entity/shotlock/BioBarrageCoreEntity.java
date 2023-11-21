@@ -105,7 +105,7 @@ public class BioBarrageCoreEntity extends ThrowableProjectile {
                 }
             } else if(tickCount > 4 && tickCount < 10) {
                 for(int i = 0; i< list.size();i++) {
-                	BioBarrageShotEntity bullet = list.get(i);
+                    BioBarrageShotEntity bullet = list.get(i);
                     float posI = i + tickCount*2;
                     float r = 0.3F*tickCount;
                     double offset_amount = -2;

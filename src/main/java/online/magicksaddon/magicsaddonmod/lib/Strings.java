@@ -38,6 +38,7 @@ public class Strings {
 
         thunderStorm = "thunderstorm",
         bioBarrage = "bio_barrage",
+        meteorShower = "meteor_shower",
 
 
         //Keyblades

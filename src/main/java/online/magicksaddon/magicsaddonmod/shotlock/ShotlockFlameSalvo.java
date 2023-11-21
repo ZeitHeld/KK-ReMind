@@ -27,7 +27,7 @@ public class ShotlockFlameSalvo extends Shotlock {
         IPlayerCapabilitiesMA playerData = ModCapabilitiesMA.getPlayer(player);
 
 
-        float damage = (float) (DamageCalculation.getMagicDamage(player) * 1.5 + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.fireBoost) * 0.2F);
+        float damage = (float) (DamageCalculation.getMagicDamage(player) * 1.25 + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.fireBoost) * 0.2F);
         FlameSalvoCoreEntity core = new FlameSalvoCoreEntity(player.level, player, targetList, damage);
         core.setPos(player.getX(), player.getY(), player.getZ());
         player.level.addFreshEntity(core);
