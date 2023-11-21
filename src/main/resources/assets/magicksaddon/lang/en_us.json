@@ -58,6 +58,12 @@
   "ability.ability_dark_step.name": "Dark Step",
   "ability.ability_dark_step.desc": "",
 
+  "shotlock.flame_salvo.name": "Flame Salvo",
+  "shotlock.bubble_blaster.name": "Bubble Blaster",
+
+  "shotlock.thunderstorm.name": "Thunderstorm",
+  "shotlock.bio_barrage.name": "Bio Barrage",
+
   "form.form_rage.name": "Rage Form",
   "form.form_dark.name": "Dark Mode",
   "form.form_light.name": "Light",

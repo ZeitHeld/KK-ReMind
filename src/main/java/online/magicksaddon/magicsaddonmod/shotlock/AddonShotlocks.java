@@ -15,7 +15,10 @@ public class AddonShotlocks {
 
     static int order = 100;
     public static final RegistryObject<Shotlock>
-    	FLAME_SALVO = SHOTLOCKS.register(Strings.flameSalvo, () -> new ShotlockFlameSalvo(MagicksAddonMod.MODID + ":" + Strings.flameSalvo, order++, 2, 15));
+    	FLAME_SALVO = SHOTLOCKS.register(Strings.flameSalvo, () -> new ShotlockFlameSalvo(MagicksAddonMod.MODID + ":" + Strings.flameSalvo, order++, 2, 15)),
+        BUBBLE_BLASTER = SHOTLOCKS.register(Strings.bubbleBlaster, () -> new ShotlockBubbleBlaster(MagicksAddonMod.MODID + ":" + Strings.bubbleBlaster, order++, 2, 15)),
+        THUNDERSTORM = SHOTLOCKS.register(Strings.thunderStorm, () -> new ShotlockThunderstorm(MagicksAddonMod.MODID + ":" + Strings.thunderStorm, order++, 2, 5)),
+        BIO_BARRAGE = SHOTLOCKS.register(Strings.bioBarrage, () -> new ShotlockBioBarrage(MagicksAddonMod.MODID + ":" + Strings.bioBarrage, order++, 2,8));
 
 
 }

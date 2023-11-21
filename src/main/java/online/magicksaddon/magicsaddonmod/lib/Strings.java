@@ -34,6 +34,10 @@ public class Strings {
 
         // Shotlocks
         flameSalvo = "flame_salvo",
+        bubbleBlaster = "bubble_blaster",
+
+        thunderStorm = "thunderstorm",
+        bioBarrage = "bio_barrage",
 
 
         //Keyblades

@@ -15,7 +15,6 @@ import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import online.kingdomkeys.kingdomkeys.client.render.magic.InvisibleEntityRenderer;
-import online.kingdomkeys.kingdomkeys.shotlock.ShotlockRagnarok;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.client.model.BalloonModel;
 import online.magicksaddon.magicsaddonmod.client.model.BalloongaModel;
@@ -29,13 +28,14 @@ import online.magicksaddon.magicsaddonmod.client.render.CometEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.HolyEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.RuinEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.UltimaEntityRenderer;
+import online.magicksaddon.magicsaddonmod.client.render.shotlock.BioShotEntityRenderer;
 import online.magicksaddon.magicsaddonmod.entity.magic.BalloonEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.BalloongaEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.CometEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.HolyEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.RuinEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.UltimaEntity;
-import online.magicksaddon.magicsaddonmod.entity.shotlock.FlameSalvoCoreEntity;
+import online.magicksaddon.magicsaddonmod.entity.shotlock.*;
 
 public class ModEntitiesMA {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ENTITY_TYPES, MagicksAddonMod.MODID);
@@ -47,7 +47,13 @@ public class ModEntitiesMA {
     public static final RegistryObject<EntityType<UltimaEntity>> TYPE_ULTIMA = createEntityType(UltimaEntity::new, UltimaEntity::new, MobCategory.MISC, "entity_ultima", 1F, 1F);
     public static final RegistryObject<EntityType<CometEntity>> TYPE_COMET = createEntityType(CometEntity::new, CometEntity::new, MobCategory.MISC, "entity_comet", 2F, 2F);
 
+    public static final RegistryObject<EntityType<BioBarrageShotEntity>> TYPE_BIO_SHOT = createEntityType(BioBarrageShotEntity::new, BioBarrageShotEntity::new, MobCategory.MISC, "entity_bio_shot", 0.5F, 0.5F);
+
+
     public static final RegistryObject<EntityType<FlameSalvoCoreEntity>> TYPE_SHOTLOCK_FLAME_SALVO = createEntityType(FlameSalvoCoreEntity::new, FlameSalvoCoreEntity::new, MobCategory.MISC, "entity_shotlock_flame_salvo_core", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<BubbleBlasterCoreEntity>> TYPE_SHOTLOCK_BUBBLE_BLASTER = createEntityType(BubbleBlasterCoreEntity::new, BubbleBlasterCoreEntity::new, MobCategory.MISC, "entity_shotlock_bubble_blaster_core", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<ThunderstormCoreEntity>> TYPE_SHOTLOCK_THUNDERSTORM = createEntityType(ThunderstormCoreEntity::new, ThunderstormCoreEntity::new, MobCategory.MISC, "entity_shotlock_thunderstorm_core", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<BioBarrageCoreEntity>> TYPE_SHOTLOCK_BIO_BARRAGE = createEntityType(BioBarrageCoreEntity::new, BioBarrageCoreEntity::new, MobCategory.MISC, "entity_shotlock_bio_barrage_core", 0.5F, 0.5F);
 
 
     public static <T extends Entity, M extends EntityType<T>>RegistryObject<EntityType<T>> createEntityType(EntityType.EntityFactory<T> factory, BiFunction<PlayMessages.SpawnEntity, Level, T> clientFactory, MobCategory classification, String name, float sizeX, float sizeY) {
@@ -78,7 +84,15 @@ public class ModEntitiesMA {
         event.registerEntityRenderer(TYPE_BALLOONGA.get(), BalloongaEntityRenderer::new);
         event.registerEntityRenderer(TYPE_COMET.get(), CometEntityRenderer::new);
         event.registerEntityRenderer(TYPE_ULTIMA.get(), UltimaEntityRenderer::new);
+
+        event.registerEntityRenderer(TYPE_BIO_SHOT.get(), BioShotEntityRenderer::new);
+
         event.registerEntityRenderer(TYPE_SHOTLOCK_FLAME_SALVO.get(), InvisibleEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_SHOTLOCK_BUBBLE_BLASTER.get(), InvisibleEntityRenderer::new);
+
+        event.registerEntityRenderer(TYPE_SHOTLOCK_BIO_BARRAGE.get(), InvisibleEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_SHOTLOCK_THUNDERSTORM.get(), InvisibleEntityRenderer::new);
+
 
     }
 
