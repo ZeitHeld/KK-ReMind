@@ -14,6 +14,8 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
+import online.kingdomkeys.kingdomkeys.client.render.magic.InvisibleEntityRenderer;
+import online.kingdomkeys.kingdomkeys.shotlock.ShotlockRagnarok;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.client.model.BalloonModel;
 import online.magicksaddon.magicsaddonmod.client.model.BalloongaModel;
@@ -76,6 +78,7 @@ public class ModEntitiesMA {
         event.registerEntityRenderer(TYPE_BALLOONGA.get(), BalloongaEntityRenderer::new);
         event.registerEntityRenderer(TYPE_COMET.get(), CometEntityRenderer::new);
         event.registerEntityRenderer(TYPE_ULTIMA.get(), UltimaEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_SHOTLOCK_FLAME_SALVO.get(), InvisibleEntityRenderer::new);
 
     }
 
