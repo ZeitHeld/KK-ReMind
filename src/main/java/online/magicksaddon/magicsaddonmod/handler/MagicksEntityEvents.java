@@ -64,6 +64,7 @@ public class MagicksEntityEvents {
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.thunderStorm, true);
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.bioBarrage, true);
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.meteorShower, true);
+		
 
 
 	}
@@ -106,7 +107,38 @@ public class MagicksEntityEvents {
 				// Additional Forms Here
 
 				// Additional Forms ^
+
+				// Light/Darkness Within Code?
+
+				int boostWithin = (playerData.getStrengthStat().getStat() + playerData.getMagicStat().getStat()) / 4;
+
+				int darknessWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.darknessBoost) * 0.25F);
+				int lightWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.lightBoost) * 0.25F);
+
+				//System.out.println("Initial Within Boost: "+boostWithin);
+				//System.out.println("Light Within Boost: "+lightWithinBoost);
+				//System.out.println("Darkness Within Boost: "+darknessWithinBoost);
+
+				if (playerData.isAbilityEquipped(Strings.lightWithin)) {
+					playerData.getStrengthStat().addModifier("light_within", lightWithinBoost, false);
+					playerData.getMagicStat().addModifier("light_within", lightWithinBoost, false);
+				} else {
+					playerData.getStrengthStat().removeModifier("light_within");
+					playerData.getMagicStat().removeModifier("light_within");
+				}
+				if (playerData.isAbilityEquipped(Strings.darknessWithin)){
+					playerData.getStrengthStat().addModifier("darkness_within", darknessWithinBoost, false);
+					playerData.getMagicStat().addModifier("darkness_within", darknessWithinBoost, false);
+				} else {
+					playerData.getStrengthStat().removeModifier("darkness_within");
+					playerData.getMagicStat().removeModifier("darkness_within");
+				}
+
 			}
+
+
+
+
 		}
 		/*if(event.getEntity() instanceof Player player) {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
@@ -154,7 +186,7 @@ public class MagicksEntityEvents {
 					if (globalData.getBerserkTicks() <= 0) {
 
 						IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-						playerData.getStrengthStat().removeModifier("buff");
+						playerData.getStrengthStat().removeModifier("berserk");
 						PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 					}
 				}

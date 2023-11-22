@@ -27,7 +27,7 @@ public class DriveFormLight extends DriveForm {
 
     @SubscribeEvent
     public static void getDarkModeXP(LivingDeathEvent event) {
-        if (event.getEntity().level.isClientSide && event.getEntity() instanceof Monster) {
+        if (!event.getEntity().level.isClientSide && event.getEntity() instanceof Monster) {
             if (event.getSource().getEntity() instanceof Player) {
                 Player player = (Player) event.getSource().getEntity();
                 IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);

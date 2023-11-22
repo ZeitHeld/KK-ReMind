@@ -57,6 +57,10 @@
   "ability.ability_light_step.desc": "",
   "ability.ability_dark_step.name": "Dark Step",
   "ability.ability_dark_step.desc": "",
+  "ability.ability_light_within.name": "Light Within",
+  "ability.ability_light_within.desc": "Empowers you with the power of Light! Equip Light Boost to increase the effect.",
+  "ability.ability_darkness_within.name": "Darkness Within",
+  "ability.ability_darkness_within.desc": "Empowers you with the power of Darkness! Equip Darkness Boost to increase the effect.",
 
   "shotlock.flame_salvo.name": "Flame Salvo",
   "shotlock.bubble_blaster.name": "Bubble Blaster",

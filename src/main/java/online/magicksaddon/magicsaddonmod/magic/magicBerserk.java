@@ -50,15 +50,15 @@ public class magicBerserk extends Magic {
                     // Levels 0 - 2
                     switch (level) {
                         case 0:
-                            playerData.getStrengthStat().addModifier("buff", +3, true);
+                            playerData.getStrengthStat().addModifier("berserk", +3, false);
                             PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
                     break;
                         case 1:
-                            playerData.getStrengthStat().addModifier("buff", +6 , true);
+                            playerData.getStrengthStat().addModifier("berserk", +6 , false);
                             PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
                             break;
                         case 2:
-                            playerData.getStrengthStat().addModifier("buff", +9 , true);
+                            playerData.getStrengthStat().addModifier("berserk", +9 , false);
                             PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
                             break;
 

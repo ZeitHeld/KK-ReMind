@@ -31,6 +31,8 @@ public class Strings {
         darkStep = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"dark_step",
         adrenaline = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"adrenaline",
         critical_surge = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"critical_surge",
+        lightWithin = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"light_within",
+        darknessWithin = MagicksAddonMod.MODID+":"+Strings.ABMA_Prefix+"darkness_within",
 
         // Shotlocks
         flameSalvo = "flame_salvo",
