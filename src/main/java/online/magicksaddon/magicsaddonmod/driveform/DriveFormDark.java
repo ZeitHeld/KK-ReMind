@@ -33,7 +33,7 @@ public class DriveFormDark extends DriveForm {
                 Player player = (Player) event.getSource().getEntity();
                 IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 
-                if (playerData != null && playerData.getActiveDriveForm().equals(Strings.darkMode)) {
+                if (playerData != null && playerData.getActiveDriveForm().equals(MagicksAddonMod.MODID+":"+ Strings.darkMode)) {
                     double mult = Double.parseDouble(ModConfigs.driveFormXPMultiplier.get(0).split(",")[1]);
                     playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
                     PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);

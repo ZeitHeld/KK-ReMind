@@ -64,7 +64,7 @@ public class MagicksEntityEvents {
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.thunderStorm, true);
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.bioBarrage, true);
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.meteorShower, true);
-		
+
 
 
 	}
