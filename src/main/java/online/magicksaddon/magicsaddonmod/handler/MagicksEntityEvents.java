@@ -52,11 +52,22 @@ public class MagicksEntityEvents {
 
 		// Testing Stuff
 
+
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.flameSalvo, true);
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.bubbleBlaster, true);
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.thunderStorm, true);
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.bioBarrage, true);
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.meteorShower, true);
+
+		if (playerData != null) {
+			if (playerData.getChoicePedestal() == null){
+				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.darkMode, 1);
+				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.light, 1);
+				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.rageForm, 1);
+
+
+			}
+		}
 
 
 
