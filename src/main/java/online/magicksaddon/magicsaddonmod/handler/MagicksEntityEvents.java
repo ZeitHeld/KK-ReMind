@@ -1,36 +1,29 @@
 package online.magicksaddon.magicsaddonmod.handler;
 
-import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.client.gui.screens.DeathScreen;
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import online.kingdomkeys.kingdomkeys.handler.EntityEvents;
 import online.kingdomkeys.kingdomkeys.capability.*;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
-import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.lib.Strings;
+
+import java.awt.*;
+import java.awt.image.ColorModel;
 
 public class MagicksEntityEvents {
 
@@ -239,8 +232,6 @@ public class MagicksEntityEvents {
 					System.out.println("Magic Added");
 				}
 			}
-			// Remove If Statement
-			// Utils.isPlayerLowHP(player) == false
 			if (player.getHealth() + 1 >= player.getMaxHealth() / 4) {
 				System.out.println(player.getHealth() + " / " + player.getMaxHealth());
 				playerData.getStrengthStat().removeModifier("adrenaline");
@@ -252,6 +243,20 @@ public class MagicksEntityEvents {
 
 
 
+		}
+	}
+
+	// Berserk Color Changer
+	@SubscribeEvent
+	public void PlayerRender(RenderPlayerEvent event){
+		IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(event.getEntity());
+		if (event.getEntity() instanceof Player){
+			Player player = (Player) event.getEntity();
+			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+			if (globalData.getBerserkTicks() > 0) {
+				Color berserk = new Color(0xA3D50606, true);
+
+			}
 		}
 	}
 }

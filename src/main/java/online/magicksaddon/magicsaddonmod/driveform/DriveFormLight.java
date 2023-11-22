@@ -22,8 +22,12 @@ public class DriveFormLight extends DriveForm {
 
     public DriveFormLight(String registeryName, int order, ResourceLocation skinRL, boolean hasKeychain, boolean baseGrowthAbilities) {
         super(registeryName, order, hasKeychain, baseGrowthAbilities);
-        skinRL2 = skinRL;        
+
+        this.skinRL2 = skinRL;
     }
+
+
+
 
     @SubscribeEvent
     public static void getDarkModeXP(LivingDeathEvent event) {
@@ -45,4 +49,5 @@ public class DriveFormLight extends DriveForm {
     public ResourceLocation getTextureLocation() {
     	return skinRL2;
     }
+
 }
