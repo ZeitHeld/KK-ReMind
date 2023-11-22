@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+import online.magicksaddon.magicsaddonmod.capabilities.IPlayerCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import org.lwjgl.glfw.GLFW;
 
 import net.minecraft.ChatFormatting;
@@ -768,6 +770,71 @@ public class MAInputHandler extends InputHandler{
             }
         }
 	}
+
+    public void commandAction() {
+        Minecraft mc = Minecraft.getInstance();
+        Player player = mc.player;
+        IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+
+
+        // Light/Dark Step Abilities
+        if (qrCooldown <= 0 && (player.getDeltaMovement().x != 0 && player.getDeltaMovement().z != 0)) {
+            boolean lightStepActive = false;
+            boolean darkStepActive = false;
+            if (player.isSprinting()){
+                // Light Step
+                if (playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.lightStep) || playerData.getActiveDriveForm().equals(online.magicksaddon.magicsaddonmod.lib.Strings.light)){
+                    float yaw = player.getYRot();
+                    float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
+                    float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
+
+                    int lightLevel = playerData.getDriveFormLevel(online.magicksaddon.magicsaddonmod.lib.Strings.light);
+                    double power = 0;
+
+                    // Light Form
+
+                    if (playerData.getActiveDriveForm().equals(online.magicksaddon.magicsaddonmod.lib.Strings.light)){
+                        //power = Constants.WISDOM_QR[lightLevel];
+                        power = 3;
+
+                        player.push(motionX * power / 2, 0, motionZ * power /2);
+                        qrCooldown = 20;
+                    } else if (playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.lightStep)){
+                        power = 2;
+
+                        player.push(motionX * power, 0, motionZ * power);
+                        qrCooldown = 20;
+                    }
+
+
+                } else if (playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.darkStep) || playerData.getActiveDriveForm().equals(online.magicksaddon.magicsaddonmod.lib.Strings.darkMode)){
+                    float yaw = player.getYRot();
+                    float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
+                    float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
+
+                    int darkLevel = playerData.getDriveFormLevel(online.magicksaddon.magicsaddonmod.lib.Strings.darkMode);
+                    double power = 0;
+
+                    // Dark Mode
+
+                    if (playerData.getActiveDriveForm().equals(online.magicksaddon.magicsaddonmod.lib.Strings.darkMode)){
+                        //power = Constants.WISDOM_QR[darkLevel];
+                        power = 3;
+
+                        player.push(motionX * power / 2, 0, motionZ * power /2);
+                        qrCooldown = 20;
+                    } else if (playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.darkStep)){
+                        power = 2;
+
+                        player.push(motionX * power, 0, motionZ * power);
+                        qrCooldown = 20;
+                    }
+
+
+                }
+            }
+        }
+    }
 
 	private Keybinds getPressedKey() {
         for (Keybinds key : Keybinds.values())
