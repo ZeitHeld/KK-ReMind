@@ -14,6 +14,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.*;
+import online.kingdomkeys.kingdomkeys.lib.SoAState;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
@@ -60,7 +61,7 @@ public class MagicksEntityEvents {
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.meteorShower, true);
 
 		if (playerData != null) {
-			if (playerData.getChoicePedestal() == null){
+			if (playerData.getSoAState() == SoAState.NONE){
 				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.darkMode, 1);
 				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.light, 1);
 				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.rageForm, 1);
