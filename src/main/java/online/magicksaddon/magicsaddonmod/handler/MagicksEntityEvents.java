@@ -1,5 +1,6 @@
 package online.magicksaddon.magicsaddonmod.handler;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -25,6 +26,7 @@ import online.magicksaddon.magicsaddonmod.lib.Strings;
 
 import java.awt.*;
 import java.awt.image.ColorModel;
+import java.util.LinkedHashMap;
 
 public class MagicksEntityEvents {
 
@@ -59,19 +61,13 @@ public class MagicksEntityEvents {
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.thunderStorm, true);
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.bioBarrage, true);
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+Strings.meteorShower, true);
+			if (playerData.getSoAState() == SoAState.COMPLETE){
+				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ Strings.darkMode, 1);
+				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ Strings.light, 1);
+				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ Strings.rageForm, 1);
 
-		if (playerData != null) {
-			if (playerData.getSoAState() == SoAState.NONE){
-				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.darkMode, 1);
-				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.light, 1);
-				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.rageForm, 1);
-
-
+				System.out.println(playerData.getDriveFormMap());
 			}
-		}
-
-
-
 	}
 
 
@@ -82,7 +78,7 @@ public class MagicksEntityEvents {
 			if(playerData != null) {
 				if(playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.darkPower)) {
 					if(!playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.darkMode)) {
-						playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.darkMode, 1);
+						playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ Strings.darkMode, 1);
 					}
 				} else {
 					if(playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+online.magicksaddon.magicsaddonmod.lib.Strings.darkMode)) {
@@ -260,14 +256,20 @@ public class MagicksEntityEvents {
 
 	// Berserk Color Changer
 	@SubscribeEvent
-	public void PlayerRender(RenderPlayerEvent event){
+	public void PlayerRender(RenderPlayerEvent.Pre event){
 		IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(event.getEntity());
 		if (event.getEntity() instanceof Player){
 			Player player = (Player) event.getEntity();
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+
+			
+
 			if (globalData.getBerserkTicks() > 0) {
 				Color berserk = new Color(0xA3D50606, true);
 
+			}
+			else {
+				//RenderSystem.setShaderColor(125,125,125,125);
 			}
 		}
 	}

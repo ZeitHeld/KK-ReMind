@@ -16,25 +16,10 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import online.kingdomkeys.kingdomkeys.client.render.magic.InvisibleEntityRenderer;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
-import online.magicksaddon.magicsaddonmod.client.model.BalloonModel;
-import online.magicksaddon.magicsaddonmod.client.model.BalloongaModel;
-import online.magicksaddon.magicsaddonmod.client.model.CometModel;
-import online.magicksaddon.magicsaddonmod.client.model.HolyModel;
-import online.magicksaddon.magicsaddonmod.client.model.RuinModel;
-import online.magicksaddon.magicsaddonmod.client.model.UltimaModel;
-import online.magicksaddon.magicsaddonmod.client.render.BalloonEntityRenderer;
-import online.magicksaddon.magicsaddonmod.client.render.BalloongaEntityRenderer;
-import online.magicksaddon.magicsaddonmod.client.render.CometEntityRenderer;
-import online.magicksaddon.magicsaddonmod.client.render.HolyEntityRenderer;
-import online.magicksaddon.magicsaddonmod.client.render.RuinEntityRenderer;
-import online.magicksaddon.magicsaddonmod.client.render.UltimaEntityRenderer;
+import online.magicksaddon.magicsaddonmod.client.model.*;
+import online.magicksaddon.magicsaddonmod.client.render.*;
 import online.magicksaddon.magicsaddonmod.client.render.shotlock.BioShotEntityRenderer;
-import online.magicksaddon.magicsaddonmod.entity.magic.BalloonEntity;
-import online.magicksaddon.magicsaddonmod.entity.magic.BalloongaEntity;
-import online.magicksaddon.magicsaddonmod.entity.magic.CometEntity;
-import online.magicksaddon.magicsaddonmod.entity.magic.HolyEntity;
-import online.magicksaddon.magicsaddonmod.entity.magic.RuinEntity;
-import online.magicksaddon.magicsaddonmod.entity.magic.UltimaEntity;
+import online.magicksaddon.magicsaddonmod.entity.magic.*;
 import online.magicksaddon.magicsaddonmod.entity.shotlock.*;
 
 public class ModEntitiesMA {
@@ -46,6 +31,7 @@ public class ModEntitiesMA {
     public static final RegistryObject<EntityType<BalloongaEntity>> TYPE_BALLOONGA = createEntityType(BalloongaEntity::new, BalloongaEntity::new, MobCategory.MISC, "entity_balloonga", 1F, 1F);
     public static final RegistryObject<EntityType<UltimaEntity>> TYPE_ULTIMA = createEntityType(UltimaEntity::new, UltimaEntity::new, MobCategory.MISC, "entity_ultima", 1F, 1F);
     public static final RegistryObject<EntityType<CometEntity>> TYPE_COMET = createEntityType(CometEntity::new, CometEntity::new, MobCategory.MISC, "entity_comet", 2F, 2F);
+    //public static final RegistryObject<EntityType<BerserkModel>> TYPE_BERSERK_AURA = createEntityType(BerserkModel::new, BerserkModel::new, MobCategory.MISC,"entity_berserk_aura", 1F,1F);
 
     public static final RegistryObject<EntityType<BioBarrageShotEntity>> TYPE_BIO_SHOT = createEntityType(BioBarrageShotEntity::new, BioBarrageShotEntity::new, MobCategory.MISC, "entity_bio_shot", 0.5F, 0.5F);
 
@@ -74,6 +60,8 @@ public class ModEntitiesMA {
         event.registerLayerDefinition(BalloongaModel.LAYER_LOCATION, BalloongaModel::createBodyLayer);
         event.registerLayerDefinition(UltimaModel.LAYER_LOCATION, UltimaModel::createBodyLayer);
         event.registerLayerDefinition(CometModel.LAYER_LOCATION, CometModel::createBodyLayer);
+
+        event.registerLayerDefinition(BerserkAuraModel.LAYER_LOCATION, BerserkAuraModel::createBodyLayer);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -85,6 +73,8 @@ public class ModEntitiesMA {
         event.registerEntityRenderer(TYPE_BALLOONGA.get(), BalloongaEntityRenderer::new);
         event.registerEntityRenderer(TYPE_COMET.get(), CometEntityRenderer::new);
         event.registerEntityRenderer(TYPE_ULTIMA.get(), UltimaEntityRenderer::new);
+
+        //event.registerEntityRenderer(TYPE_BERSERK_AURA.get(), BerserkAuraRender::new);
 
         event.registerEntityRenderer(TYPE_BIO_SHOT.get(), BioShotEntityRenderer::new);
 

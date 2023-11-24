@@ -32,8 +32,10 @@ public interface IGlobalCapabilitiesMA extends INBTSerializable<CompoundTag> {
     boolean activeBerserk();
     void berserkBoost (int level, int i);
 
-    //AutoLife
+    void setBerserkModelTicks(int berserkTicks);
+    int getBerserkModelTicks();
 
+    //AutoLife
     int setAutoLifeActive(int i);
     int getAutoLifeActive();
     void remAutoLifeActive(int use);
