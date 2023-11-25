@@ -31,7 +31,6 @@ public class ModEntitiesMA {
     public static final RegistryObject<EntityType<BalloongaEntity>> TYPE_BALLOONGA = createEntityType(BalloongaEntity::new, BalloongaEntity::new, MobCategory.MISC, "entity_balloonga", 1F, 1F);
     public static final RegistryObject<EntityType<UltimaEntity>> TYPE_ULTIMA = createEntityType(UltimaEntity::new, UltimaEntity::new, MobCategory.MISC, "entity_ultima", 1F, 1F);
     public static final RegistryObject<EntityType<CometEntity>> TYPE_COMET = createEntityType(CometEntity::new, CometEntity::new, MobCategory.MISC, "entity_comet", 2F, 2F);
-    //public static final RegistryObject<EntityType<BerserkModel>> TYPE_BERSERK_AURA = createEntityType(BerserkModel::new, BerserkModel::new, MobCategory.MISC,"entity_berserk_aura", 1F,1F);
 
     public static final RegistryObject<EntityType<BioBarrageShotEntity>> TYPE_BIO_SHOT = createEntityType(BioBarrageShotEntity::new, BioBarrageShotEntity::new, MobCategory.MISC, "entity_bio_shot", 0.5F, 0.5F);
 
@@ -73,8 +72,6 @@ public class ModEntitiesMA {
         event.registerEntityRenderer(TYPE_BALLOONGA.get(), BalloongaEntityRenderer::new);
         event.registerEntityRenderer(TYPE_COMET.get(), CometEntityRenderer::new);
         event.registerEntityRenderer(TYPE_ULTIMA.get(), UltimaEntityRenderer::new);
-
-        //event.registerEntityRenderer(TYPE_BERSERK_AURA.get(), BerserkAuraRender::new);
 
         event.registerEntityRenderer(TYPE_BIO_SHOT.get(), BioShotEntityRenderer::new);
 
