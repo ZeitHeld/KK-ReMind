@@ -117,17 +117,7 @@ public class MagicksEntityEvents {
 
 			}
 
-
-
-
 		}
-		/*if(event.getEntity() instanceof Player player) {
-			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-			//System.out.println(playerData.getActiveDriveForm());
-			@Nullable
-			DriveForm df = ModDriveForms.registry.get().getValue(new ResourceLocation(playerData.getActiveDriveForm()));
-			System.out.println(df.getTextureLocation());
-		}*/
 
 		IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(event.getEntity());
 		if (globalData != null) {
@@ -161,10 +151,12 @@ public class MagicksEntityEvents {
 			if (event.getEntity() instanceof Player){
 				Player player = (Player) event.getEntity();
 
-				if (globalData.getBerserkModelTicks() > 0){
-					globalData.setBerserkModelTicks(globalData.getBerserkModelTicks()-1);
-					if (globalData.getBerserkModelTicks() <=0){
-						online.magicksaddon.magicsaddonmod.network.PacketHandler.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesMA) globalData);
+				if (globalData.getBerserkTicks() > 0){
+					globalData.setBerserkTicks(globalData.getBerserkLevel(), globalData.getBerserkTicks()-1);
+					if (globalData.getBerserkTicks() <=0){
+						if(!event.getEntity().level.isClientSide) {
+							online.magicksaddon.magicsaddonmod.network.PacketHandler.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesMA) globalData);
+						}
 					}
 				}
 

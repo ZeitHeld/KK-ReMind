@@ -20,7 +20,7 @@ public class PacketHandler {
 
     public static void register() {
         int packetID = 0;
-
+System.out.println("REGISTERING PACKETS");
         //ServerToClient
 		HANDLER.registerMessage(packetID++, SCSyncGlobalCapabilityToAllPacket.class, SCSyncGlobalCapabilityToAllPacket::encode, SCSyncGlobalCapabilityToAllPacket::decode, SCSyncGlobalCapabilityToAllPacket::handle);
 

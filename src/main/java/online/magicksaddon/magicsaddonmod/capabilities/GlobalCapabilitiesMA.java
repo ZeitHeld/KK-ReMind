@@ -34,8 +34,6 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
     private int berserkTicks;
     private int isAutoLifeActive;
 
-    private int berserkModelTicks;
-
     //Haste
     public int getHasteLevel() {
 
@@ -123,16 +121,6 @@ public class GlobalCapabilitiesMA implements IGlobalCapabilitiesMA {
     public void remBerserkTicks(int ticks) {
 
         berserkTicks -= ticks;
-    }
-
-    @Override
-    public void setBerserkModelTicks (int berserkTicks){
-        berserkModelTicks = berserkTicks;
-    }
-
-    @Override
-    public int getBerserkModelTicks (){
-        return berserkModelTicks;
     }
 
     // Auto-Life
