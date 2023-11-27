@@ -5,6 +5,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -20,6 +21,7 @@ import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.capabilities.IPlayerCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.lib.Strings;
@@ -180,6 +182,14 @@ public class MagicksEntityEvents {
 			// Berserk
 			if (event.getEntity() instanceof Player){
 				Player player = (Player) event.getEntity();
+
+				if (globalData.getBerserkModelTicks() > 0){
+					globalData.setBerserkModelTicks(globalData.getBerserkModelTicks()-1);
+					if (globalData.getBerserkModelTicks() <=0){
+						online.magicksaddon.magicsaddonmod.network.PacketHandler.syncToAllAround((Player) event.getEntity(), (IPlayerCapabilitiesMA) globalData);
+					}
+				}
+
 				if (globalData.getBerserkTicks() > 0) {
 					globalData.remBerserkTicks(1);
 					System.out.println("Berserk Level: " + globalData.getBerserkLevel() + " " +
