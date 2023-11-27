@@ -1,11 +1,11 @@
 package online.magicksaddon.magicsaddonmod.handler;
 
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.awt.Color;
+
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -15,7 +15,8 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import online.kingdomkeys.kingdomkeys.capability.*;
+import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
+import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.SoAState;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
@@ -26,30 +27,7 @@ import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.lib.Strings;
 
-import java.awt.*;
-import java.awt.image.ColorModel;
-import java.util.LinkedHashMap;
-
 public class MagicksEntityEvents {
-
-
-	private PlayerCapabilities playerData;
-
-
-	@SubscribeEvent
-	public void onPlayerJoin(PlayerLoggedInEvent e) {
-		/*Player player = e.getEntity();
-		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-		
-		if(playerData != null) {
-			if (!player.level.isClientSide) { // Sync from server to client		
-				if(!playerData.getDriveFormMap().containsKey(Strings.Form_Anti)) {
-					//playerData.setDriveFormLevel(Strings.Form_Anti, 1);
-				}
-			}
-		}*/
-	}
-
 	@SubscribeEvent
 	public void onJoin(PlayerLoggedInEvent e){
 		Player player = e.getEntity();
@@ -186,7 +164,7 @@ public class MagicksEntityEvents {
 				if (globalData.getBerserkModelTicks() > 0){
 					globalData.setBerserkModelTicks(globalData.getBerserkModelTicks()-1);
 					if (globalData.getBerserkModelTicks() <=0){
-						online.magicksaddon.magicsaddonmod.network.PacketHandler.syncToAllAround((Player) event.getEntity(), (IPlayerCapabilitiesMA) globalData);
+						online.magicksaddon.magicsaddonmod.network.PacketHandler.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesMA) globalData);
 					}
 				}
 

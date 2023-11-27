@@ -9,26 +9,20 @@ import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
-
-import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
-import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
-import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityToAllPacket;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
-import online.magicksaddon.magicsaddonmod.capabilities.IPlayerCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.network.stc.SCSyncGlobalCapabilityToAllPacket;
-
-
 
 public class PacketHandler {
     private static final String PROTOCOL_VERSION = Integer.toString(1);
 
-    private static final SimpleChannel HANDLER = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(MagicksAddonMod.MODID, "main_channel")).clientAcceptedVersions(PROTOCOL_VERSION::equals).serverAcceptedVersions(PROTOCOL_VERSION::equals).networkProtocolVersion(() -> PROTOCOL_VERSION).simpleChannel();
+	private static final SimpleChannel HANDLER = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(MagicksAddonMod.MODID, "main_channel")).clientAcceptedVersions(PROTOCOL_VERSION::equals).serverAcceptedVersions(PROTOCOL_VERSION::equals).networkProtocolVersion(() -> PROTOCOL_VERSION).simpleChannel();
 
     public static void register() {
         int packetID = 0;
 
         //ServerToClient
+		HANDLER.registerMessage(packetID++, SCSyncGlobalCapabilityToAllPacket.class, SCSyncGlobalCapabilityToAllPacket::encode, SCSyncGlobalCapabilityToAllPacket::decode, SCSyncGlobalCapabilityToAllPacket::handle);
 
         // ClientToServer
     }
@@ -51,15 +45,8 @@ public class PacketHandler {
             HANDLER.send(PacketDistributor.ALL.noArg(), msg);
         }
 
-        public static void syncToAllAround(Player player, IPlayerCapabilitiesMA playerData) {
-            if (!player.level.isClientSide) {
-                for (Player playerFromList : player.level.players()) {
-                    sendTo(new SCSyncCapabilityToAllPacket(player.getDisplayName().getString(), (IPlayerCapabilities) playerData), (ServerPlayer) playerFromList);
-                }
-            }
-        }
-
-        public static void syncToAllAround(LivingEntity entity, IGlobalCapabilities globalData) {
+        public static void syncGlobalToAllAround(LivingEntity entity, IGlobalCapabilitiesMA globalData) {
+        	System.out.println("Trying to sync");
             if (!entity.level.isClientSide) {
                 for (Player playerFromList : entity.level.players()) {
                     sendTo(new SCSyncGlobalCapabilityToAllPacket(entity.getId(), (IGlobalCapabilitiesMA) globalData), (ServerPlayer) playerFromList);
