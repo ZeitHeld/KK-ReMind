@@ -3,7 +3,7 @@ package online.magicksaddon.magicsaddonmod.capabilities;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.common.util.INBTSerializable;
 
-public interface IPlayerCapabilitiesMA  extends INBTSerializable<CompoundTag> {
+public interface IPlayerCapabilitiesX extends INBTSerializable<CompoundTag> {
 
 
     // Status Effect Spell Values

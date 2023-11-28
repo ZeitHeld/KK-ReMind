@@ -17,8 +17,8 @@ import online.kingdomkeys.kingdomkeys.lib.Party.Member;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncGlobalCapabilityPacket;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 
 public class magicSlow extends Magic {
@@ -26,7 +26,7 @@ public class magicSlow extends Magic {
 		super(registryName, hasToSelect, maxLevel, null);
 	}
 
-	IGlobalCapabilitiesMA globalData;
+	IGlobalCapabilitiesX globalData;
 
 	@Override
 	protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
@@ -45,7 +45,7 @@ public class magicSlow extends Magic {
 				Entity e = (Entity) list.get(i);
 				if (e instanceof LivingEntity) {
 					if (globalData != null) {
-						IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal((LivingEntity) e);
+						IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal((LivingEntity) e);
 						((LivingEntity) e).getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.25 + (0.25 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
 						((LivingEntity) e).getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.25 + (0.25 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
 						int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * ((level * 0.75) + 5) + 5);

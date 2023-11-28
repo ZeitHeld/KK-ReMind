@@ -6,19 +6,19 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkEvent;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.client.ClientUtilsMA;
 
-public class SCSyncGlobalCapabilityToAllPacket {
+public class SCSyncGlobalCapabilityToAllPacketX {
 
     public int id;
     public int berserkLvl, berserkTicks;
 
-    public SCSyncGlobalCapabilityToAllPacket() {
+    public SCSyncGlobalCapabilityToAllPacketX() {
 
     }
 
-    public SCSyncGlobalCapabilityToAllPacket(int id, IGlobalCapabilitiesMA capability) {
+    public SCSyncGlobalCapabilityToAllPacketX(int id, IGlobalCapabilitiesX capability) {
         this.id = id;
         this.berserkLvl= capability.getBerserkLevel();
         this.berserkTicks = capability.getBerserkTicks();
@@ -30,15 +30,15 @@ public class SCSyncGlobalCapabilityToAllPacket {
         buffer.writeInt(this.berserkTicks);
     }
 
-    public static SCSyncGlobalCapabilityToAllPacket decode(FriendlyByteBuf buffer){
-        SCSyncGlobalCapabilityToAllPacket msg = new SCSyncGlobalCapabilityToAllPacket();
+    public static SCSyncGlobalCapabilityToAllPacketX decode(FriendlyByteBuf buffer){
+        SCSyncGlobalCapabilityToAllPacketX msg = new SCSyncGlobalCapabilityToAllPacketX();
         msg.id = buffer.readInt();
         msg.berserkLvl = buffer.readInt();
         msg.berserkTicks = buffer.readInt();
         return msg;
     }
 
-    public static void handle(final SCSyncGlobalCapabilityToAllPacket message, Supplier<NetworkEvent.Context> ctx) {
+    public static void handle(final SCSyncGlobalCapabilityToAllPacketX message, Supplier<NetworkEvent.Context> ctx) {
 		ctx.get().enqueueWork(() -> DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> ClientUtilsMA.syncCapability(message)));
         ctx.get().setPacketHandled(true);
     }

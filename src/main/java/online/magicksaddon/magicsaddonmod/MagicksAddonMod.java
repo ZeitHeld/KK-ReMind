@@ -3,6 +3,7 @@ package online.magicksaddon.magicsaddonmod;
 import java.util.List;
 import java.util.function.Supplier;
 
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.shotlock.AddonShotlocks;
 import org.slf4j.Logger;
 
@@ -15,7 +16,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
@@ -29,22 +29,17 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import online.kingdomkeys.kingdomkeys.block.ModBlocks;
-import online.kingdomkeys.kingdomkeys.entity.ModEntities;
 import online.kingdomkeys.kingdomkeys.item.KeybladeItem;
 import online.kingdomkeys.kingdomkeys.item.KeychainItem;
-import online.kingdomkeys.kingdomkeys.item.ModItems;
 import online.kingdomkeys.kingdomkeys.item.organization.IOrgWeapon;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.magicksaddon.magicsaddonmod.ability.AddonAbilities;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.driveform.AddonForms;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
 import online.magicksaddon.magicsaddonmod.handler.MAInputHandler;
 import online.magicksaddon.magicsaddonmod.handler.MagicksEntityEvents;
 import online.magicksaddon.magicsaddonmod.item.ModItemsMA;
-import online.magicksaddon.magicsaddonmod.lib.Strings;
 import online.magicksaddon.magicsaddonmod.magic.ModMagicks;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -92,7 +87,7 @@ public class MagicksAddonMod {
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(new MagicksEntityEvents());
         ModMagicks.MAGIC.register(modEventBus);
-        MinecraftForge.EVENT_BUS.register(new ModCapabilitiesMA());
+        MinecraftForge.EVENT_BUS.register(new ModCapabilitiesX());
         MagicSounds.SOUNDS.register(modEventBus);
         ModItemsMA.ITEMS.register(modEventBus);
         ModEntitiesMA.ENTITIES.register(modEventBus);

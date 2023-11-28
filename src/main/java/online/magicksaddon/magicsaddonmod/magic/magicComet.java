@@ -9,7 +9,7 @@ import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.entity.magic.CometEntity;
-import online.magicksaddon.magicsaddonmod.lib.Strings;
+import online.magicksaddon.magicsaddonmod.lib.StringsX;
 
 
 public class magicComet extends Magic {
@@ -20,7 +20,7 @@ public class magicComet extends Magic {
 
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
-        float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.darknessBoost) * 0.2F;
+        float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsX.darknessBoost) * 0.2F;
         dmgMult *= fullMPBlastMult;
 
         switch (level) {

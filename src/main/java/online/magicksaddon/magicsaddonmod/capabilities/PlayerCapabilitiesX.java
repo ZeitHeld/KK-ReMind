@@ -2,7 +2,7 @@ package online.magicksaddon.magicsaddonmod.capabilities;
 
 import net.minecraft.nbt.CompoundTag;
 
-public class PlayerCapabilitiesMA implements IPlayerCapabilitiesMA{
+public class PlayerCapabilitiesX implements IPlayerCapabilitiesX {
 
 
     @Override

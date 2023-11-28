@@ -4,10 +4,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import online.kingdomkeys.kingdomkeys.KingdomKeys;
-import online.kingdomkeys.kingdomkeys.shotlock.ModShotlocks;
 import online.kingdomkeys.kingdomkeys.shotlock.Shotlock;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
-import online.magicksaddon.magicsaddonmod.lib.Strings;
+import online.magicksaddon.magicsaddonmod.lib.StringsX;
 
 public class AddonShotlocks {
 
@@ -15,11 +14,11 @@ public class AddonShotlocks {
 
     static int order = 100;
     public static final RegistryObject<Shotlock>
-    	FLAME_SALVO = SHOTLOCKS.register(Strings.flameSalvo, () -> new ShotlockFlameSalvo(MagicksAddonMod.MODID + ":" + Strings.flameSalvo, order++, 2, 15)),
-        BUBBLE_BLASTER = SHOTLOCKS.register(Strings.bubbleBlaster, () -> new ShotlockBubbleBlaster(MagicksAddonMod.MODID + ":" + Strings.bubbleBlaster, order++, 2, 15)),
-        THUNDERSTORM = SHOTLOCKS.register(Strings.thunderStorm, () -> new ShotlockThunderstorm(MagicksAddonMod.MODID + ":" + Strings.thunderStorm, order++, 2, 5)),
-        BIO_BARRAGE = SHOTLOCKS.register(Strings.bioBarrage, () -> new ShotlockBioBarrage(MagicksAddonMod.MODID + ":" + Strings.bioBarrage, order++, 2,8)),
-        METEOR_SHOWER = SHOTLOCKS.register(Strings.meteorShower, () -> new ShotlockMeteorShower(MagicksAddonMod.MODID + ":" + Strings.meteorShower, order++, 4,30));
+    	FLAME_SALVO = SHOTLOCKS.register(StringsX.flameSalvo, () -> new ShotlockFlameSalvo(MagicksAddonMod.MODID + ":" + StringsX.flameSalvo, order++, 2, 15)),
+        BUBBLE_BLASTER = SHOTLOCKS.register(StringsX.bubbleBlaster, () -> new ShotlockBubbleBlaster(MagicksAddonMod.MODID + ":" + StringsX.bubbleBlaster, order++, 2, 15)),
+        THUNDERSTORM = SHOTLOCKS.register(StringsX.thunderStorm, () -> new ShotlockThunderstorm(MagicksAddonMod.MODID + ":" + StringsX.thunderStorm, order++, 2, 5)),
+        BIO_BARRAGE = SHOTLOCKS.register(StringsX.bioBarrage, () -> new ShotlockBioBarrage(MagicksAddonMod.MODID + ":" + StringsX.bioBarrage, order++, 2,8)),
+        METEOR_SHOWER = SHOTLOCKS.register(StringsX.meteorShower, () -> new ShotlockMeteorShower(MagicksAddonMod.MODID + ":" + StringsX.meteorShower, order++, 4,30));
 
 
 }

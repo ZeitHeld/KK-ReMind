@@ -6,7 +6,7 @@ import net.minecraftforge.common.capabilities.AutoRegisterCapability;
 import net.minecraftforge.common.util.INBTSerializable;
 
 @AutoRegisterCapability
-public interface IGlobalCapabilitiesMA extends INBTSerializable<CompoundTag> {
+public interface IGlobalCapabilitiesX extends INBTSerializable<CompoundTag> {
 
     //Haste
     int getHasteLevel();

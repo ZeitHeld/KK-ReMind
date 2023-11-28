@@ -20,14 +20,14 @@ import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.handler.Provider;
 
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ModCapabilitiesMA {
+public class ModCapabilitiesX {
 
-    public static final Capability<IGlobalCapabilitiesMA> GLOBAL_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
-    public static final Capability<IPlayerCapabilitiesMA> PLAYER_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
-    public static final Capability<IWorldCapabilitiesMA> WORLD_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<IGlobalCapabilitiesX> GLOBAL_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<IPlayerCapabilitiesX> PLAYER_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<IWorldCapabilitiesX> WORLD_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
 
-    public static IGlobalCapabilitiesMA getGlobal(LivingEntity e) {
-        LazyOptional<IGlobalCapabilitiesMA> globalData = e.getCapability(ModCapabilitiesMA.GLOBAL_CAPABILITIES, null);
+    public static IGlobalCapabilitiesX getGlobal(LivingEntity e) {
+        LazyOptional<IGlobalCapabilitiesX> globalData = e.getCapability(ModCapabilitiesX.GLOBAL_CAPABILITIES, null);
         return globalData.orElse(null);
     }
 
@@ -36,13 +36,13 @@ public class ModCapabilitiesMA {
 
     }
 
-    public static IPlayerCapabilitiesMA getPlayer(Player player) {
-        LazyOptional<IPlayerCapabilitiesMA> playerData = player.getCapability(ModCapabilitiesMA.PLAYER_CAPABILITIES, null);
+    public static IPlayerCapabilitiesX getPlayer(Player player) {
+        LazyOptional<IPlayerCapabilitiesX> playerData = player.getCapability(ModCapabilitiesX.PLAYER_CAPABILITIES, null);
         return playerData.orElse(null);
     }
 
     public static IWorldCapabilities getWorld(Level w) {
-        @NotNull LazyOptional<IWorldCapabilitiesMA> worldData = w.getCapability(ModCapabilitiesMA.WORLD_CAPABILITIES, null);
+        @NotNull LazyOptional<IWorldCapabilitiesX> worldData = w.getCapability(ModCapabilitiesX.WORLD_CAPABILITIES, null);
         return (IWorldCapabilities) worldData.orElse(null);
     }
 

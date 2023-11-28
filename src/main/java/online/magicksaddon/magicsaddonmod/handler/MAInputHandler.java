@@ -3,40 +3,31 @@ package online.magicksaddon.magicsaddonmod.handler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.UUID;
 
-import online.magicksaddon.magicsaddonmod.capabilities.IPlayerCapabilitiesMA;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
-import org.lwjgl.glfw.GLFW;
+import online.magicksaddon.magicsaddonmod.lib.StringsX;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.client.event.InputEvent.MouseScrollingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
-import online.kingdomkeys.kingdomkeys.client.ClientSetup;
 import online.kingdomkeys.kingdomkeys.client.gui.GuiHelper;
 import online.kingdomkeys.kingdomkeys.client.gui.menu.NoChoiceMenuPopup;
 import online.kingdomkeys.kingdomkeys.client.gui.overlay.CommandMenuGui;
@@ -48,7 +39,6 @@ import online.kingdomkeys.kingdomkeys.entity.mob.SpawningOrbEntity;
 import online.kingdomkeys.kingdomkeys.handler.EntityEvents;
 import online.kingdomkeys.kingdomkeys.handler.InputHandler;
 import online.kingdomkeys.kingdomkeys.handler.KeyboardHelper;
-import online.kingdomkeys.kingdomkeys.handler.InputHandler.Keybinds;
 import online.kingdomkeys.kingdomkeys.item.KKPotionItem;
 import online.kingdomkeys.kingdomkeys.lib.Constants;
 import online.kingdomkeys.kingdomkeys.lib.Party;
@@ -304,7 +294,7 @@ public class MAInputHandler extends InputHandler{
         	return;
         switch (CommandMenuGui.selected) {
             case CommandMenuGui.ATTACK: //Accessing ATTACK / PORTAL submenu
-                if (playerData.getAlignment() != Utils.OrgMember.NONE || playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.darkPassage)) {
+                if (playerData.getAlignment() != Utils.OrgMember.NONE || playerData.isAbilityEquipped(StringsX.darkPassage)) {
                     // Submenu of the portals
                     if (CommandMenuGui.submenu == CommandMenuGui.SUB_MAIN) {
                         if (!this.portalCommands.isEmpty() && !playerData.getRecharge()) {
@@ -783,23 +773,23 @@ public class MAInputHandler extends InputHandler{
             boolean darkStepActive = false;
             if (player.isSprinting()){
                 // Light Step
-                if (playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.lightStep) || playerData.getActiveDriveForm().equals(online.magicksaddon.magicsaddonmod.lib.Strings.light)){
+                if (playerData.isAbilityEquipped(StringsX.lightStep) || playerData.getActiveDriveForm().equals(StringsX.light)){
                     float yaw = player.getYRot();
                     float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
                     float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
 
-                    int lightLevel = playerData.getDriveFormLevel(online.magicksaddon.magicsaddonmod.lib.Strings.light);
+                    int lightLevel = playerData.getDriveFormLevel(StringsX.light);
                     double power = 0;
 
                     // Light Form
 
-                    if (playerData.getActiveDriveForm().equals(online.magicksaddon.magicsaddonmod.lib.Strings.light)){
+                    if (playerData.getActiveDriveForm().equals(StringsX.light)){
                         //power = Constants.WISDOM_QR[lightLevel];
                         power = 3;
 
                         player.push(motionX * power / 2, 0, motionZ * power /2);
                         qrCooldown = 20;
-                    } else if (playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.lightStep)){
+                    } else if (playerData.isAbilityEquipped(StringsX.lightStep)){
                         power = 2;
 
                         player.push(motionX * power, 0, motionZ * power);
@@ -807,23 +797,23 @@ public class MAInputHandler extends InputHandler{
                     }
 
 
-                } else if (playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.darkStep) || playerData.getActiveDriveForm().equals(online.magicksaddon.magicsaddonmod.lib.Strings.darkMode)){
+                } else if (playerData.isAbilityEquipped(StringsX.darkStep) || playerData.getActiveDriveForm().equals(StringsX.darkMode)){
                     float yaw = player.getYRot();
                     float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
                     float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
 
-                    int darkLevel = playerData.getDriveFormLevel(online.magicksaddon.magicsaddonmod.lib.Strings.darkMode);
+                    int darkLevel = playerData.getDriveFormLevel(StringsX.darkMode);
                     double power = 0;
 
                     // Dark Mode
 
-                    if (playerData.getActiveDriveForm().equals(online.magicksaddon.magicsaddonmod.lib.Strings.darkMode)){
+                    if (playerData.getActiveDriveForm().equals(StringsX.darkMode)){
                         //power = Constants.WISDOM_QR[darkLevel];
                         power = 3;
 
                         player.push(motionX * power / 2, 0, motionZ * power /2);
                         qrCooldown = 20;
-                    } else if (playerData.isAbilityEquipped(online.magicksaddon.magicsaddonmod.lib.Strings.darkStep)){
+                    } else if (playerData.isAbilityEquipped(StringsX.darkStep)){
                         power = 2;
 
                         player.push(motionX * power, 0, motionZ * power);

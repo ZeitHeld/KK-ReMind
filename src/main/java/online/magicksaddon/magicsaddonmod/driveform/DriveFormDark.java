@@ -2,7 +2,6 @@ package online.magicksaddon.magicsaddonmod.driveform;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -15,7 +14,7 @@ import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
-import online.magicksaddon.magicsaddonmod.lib.Strings;
+import online.magicksaddon.magicsaddonmod.lib.StringsX;
 
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
 public class DriveFormDark extends DriveForm {
@@ -33,7 +32,7 @@ public class DriveFormDark extends DriveForm {
                 Player player = (Player) event.getSource().getEntity();
                 IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 
-                if (playerData != null && playerData.getActiveDriveForm().equals(MagicksAddonMod.MODID+":"+ Strings.darkMode)) {
+                if (playerData != null && playerData.getActiveDriveForm().equals(MagicksAddonMod.MODID+":"+ StringsX.darkMode)) {
                     double mult = Double.parseDouble(ModConfigs.driveFormXPMultiplier.get(0).split(",")[1]);
                     playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
                     PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);

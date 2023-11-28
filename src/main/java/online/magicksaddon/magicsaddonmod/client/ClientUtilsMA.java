@@ -1,20 +1,18 @@
 package online.magicksaddon.magicsaddonmod.client;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.fml.DistExecutor;
-import online.kingdomkeys.kingdomkeys.network.stc.SCSyncGlobalCapabilityPacket;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesMA;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesMA;
-import online.magicksaddon.magicsaddonmod.network.stc.SCSyncGlobalCapabilityToAllPacket;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
+import online.magicksaddon.magicsaddonmod.network.stc.SCSyncGlobalCapabilityToAllPacketX;
 
 public class ClientUtilsMA {
 
-	 public static DistExecutor.SafeRunnable syncCapability(SCSyncGlobalCapabilityToAllPacket message) {
+	 public static DistExecutor.SafeRunnable syncCapability(SCSyncGlobalCapabilityToAllPacketX message) {
 	        return new DistExecutor.SafeRunnable() {
 	            @Override
 	            public void run() {
-	                IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(Minecraft.getInstance().player);
+	                IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(Minecraft.getInstance().player);
 
 	                globalData.setBerserkTicks(message.berserkLvl, message.berserkTicks);
 	                
