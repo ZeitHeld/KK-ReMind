@@ -48,7 +48,7 @@ public class DawnCrossDuskMod {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "dawncrossdusk";
     public static final String MODNAME = "Dawn [Cross] Dusk";
-    public static final String MODVER = "1.0.0";
+    public static final String MODVER = "0.7";
     public static final String MCVER = "1.19.4";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();

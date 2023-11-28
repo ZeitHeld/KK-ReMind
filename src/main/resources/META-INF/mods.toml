@@ -3,12 +3,12 @@ loaderVersion="[43,)"
 license="All rights reserved"
 issueTrackerURL=""
 [[mods]]
-modId="dawncrossdusk"
+modId="magicksaddon"
 version="${file.jarVersion}"
-displayName="Dawn [cross] Dusk"
+displayName="Magicks Addon"
 displayURL=""
 credits="Credits to the Kingdom Keys Dev team for helping make this possible."
 authors="Xephiro"
 description='''
-A mod that adds on to what Kingdom Keys has with elements from other KH titles as well as various Final Fantasy titles as well as original content!
+A magic mod that adds on to what Kingdom Keys has with elements from other KH titles as well as various Final Fantasy titles.
 '''
