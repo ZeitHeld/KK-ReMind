@@ -20,7 +20,7 @@ import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.SoAState;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
-import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.DawnCrossDuskMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
@@ -36,15 +36,15 @@ public class MagicksEntityEvents {
 		// Testing Stuff
 
 
-		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.flameSalvo, true);
-		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.bubbleBlaster, true);
-		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.thunderStorm, true);
-		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.bioBarrage, true);
-		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.meteorShower, true);
+		playerData.addShotlockToList(DawnCrossDuskMod.MODID+":"+ StringsX.flameSalvo, true);
+		playerData.addShotlockToList(DawnCrossDuskMod.MODID+":"+ StringsX.bubbleBlaster, true);
+		playerData.addShotlockToList(DawnCrossDuskMod.MODID+":"+ StringsX.thunderStorm, true);
+		playerData.addShotlockToList(DawnCrossDuskMod.MODID+":"+ StringsX.bioBarrage, true);
+		playerData.addShotlockToList(DawnCrossDuskMod.MODID+":"+ StringsX.meteorShower, true);
 			if (playerData.getSoAState() == SoAState.COMPLETE){
-				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.darkMode, 1);
-				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.light, 1);
-				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.rageForm, 1);
+				playerData.setDriveFormLevel(DawnCrossDuskMod.MODID+":"+ StringsX.darkMode, 1);
+				playerData.setDriveFormLevel(DawnCrossDuskMod.MODID+":"+ StringsX.light, 1);
+				playerData.setDriveFormLevel(DawnCrossDuskMod.MODID+":"+ StringsX.rageForm, 1);
 
 				System.out.println(playerData.getDriveFormMap());
 			}
@@ -57,32 +57,32 @@ public class MagicksEntityEvents {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			if(playerData != null) {
 				if(playerData.isAbilityEquipped(StringsX.darkPower)) {
-					if(!playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+ StringsX.darkMode)) {
-						playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.darkMode, 1);
+					if(!playerData.getDriveFormMap().containsKey(DawnCrossDuskMod.MODID+":"+ StringsX.darkMode)) {
+						playerData.setDriveFormLevel(DawnCrossDuskMod.MODID+":"+ StringsX.darkMode, 1);
 					}
 				} else {
-					if(playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+ StringsX.darkMode)) {
-						playerData.getDriveFormMap().remove(MagicksAddonMod.MODID+":"+ StringsX.darkMode);
+					if(playerData.getDriveFormMap().containsKey(DawnCrossDuskMod.MODID+":"+ StringsX.darkMode)) {
+						playerData.getDriveFormMap().remove(DawnCrossDuskMod.MODID+":"+ StringsX.darkMode);
 					}
 				}
 
 				if(playerData.isAbilityEquipped(StringsX.rageAwakened)) {
-					if(!playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+ StringsX.rageForm)) {
-						playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.rageForm, 1);
+					if(!playerData.getDriveFormMap().containsKey(DawnCrossDuskMod.MODID+":"+ StringsX.rageForm)) {
+						playerData.setDriveFormLevel(DawnCrossDuskMod.MODID+":"+ StringsX.rageForm, 1);
 					}
 				} else {
-					if(playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+ StringsX.rageForm)) {
-						playerData.getDriveFormMap().remove(MagicksAddonMod.MODID+":"+ StringsX.rageForm);
+					if(playerData.getDriveFormMap().containsKey(DawnCrossDuskMod.MODID+":"+ StringsX.rageForm)) {
+						playerData.getDriveFormMap().remove(DawnCrossDuskMod.MODID+":"+ StringsX.rageForm);
 					}
 				}
 
 				if(playerData.isAbilityEquipped(StringsX.wayToLight)) {
-					if(!playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+ StringsX.light)) {
-						playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.light, 1);
+					if(!playerData.getDriveFormMap().containsKey(DawnCrossDuskMod.MODID+":"+ StringsX.light)) {
+						playerData.setDriveFormLevel(DawnCrossDuskMod.MODID+":"+ StringsX.light, 1);
 					}
 				} else {
-					if (playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID + ":" + StringsX.light)) {
-						playerData.getDriveFormMap().remove(MagicksAddonMod.MODID + ":" + StringsX.light);
+					if (playerData.getDriveFormMap().containsKey(DawnCrossDuskMod.MODID + ":" + StringsX.light)) {
+						playerData.getDriveFormMap().remove(DawnCrossDuskMod.MODID + ":" + StringsX.light);
 					}
 				}
 				// Additional Forms Here

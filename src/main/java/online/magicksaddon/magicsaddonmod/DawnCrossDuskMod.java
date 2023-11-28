@@ -43,12 +43,12 @@ import online.magicksaddon.magicsaddonmod.item.ModItemsMA;
 import online.magicksaddon.magicsaddonmod.magic.ModMagicks;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(MagicksAddonMod.MODID)
-public class MagicksAddonMod {
+@Mod(DawnCrossDuskMod.MODID)
+public class DawnCrossDuskMod {
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "magicksaddon";
-    public static final String MODNAME = "Magicks Addon Mod";
-    public static final String MODVER = "0.6.3a";
+    public static final String MODID = "dawncrossdusk";
+    public static final String MODNAME = "Dawn [Cross] Dusk";
+    public static final String MODVER = "0.7";
     public static final String MCVER = "1.19.4";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -62,9 +62,9 @@ public class MagicksAddonMod {
 		final List<ItemStack> kkItems = ModItemsMA.ITEMS.getEntries().stream().map(RegistryObject::get).map(ItemStack::new).toList();
 		final Supplier<List<ItemStack>> misc = Suppliers.memoize(() -> kkItems.stream().filter(item -> !(item.getItem() instanceof KeybladeItem) && !(item.getItem() instanceof IOrgWeapon) && !(item.getItem() instanceof KeychainItem)).toList());
 
-		event.registerCreativeModeTab(new ResourceLocation(MODID, "magicksaddontab"), builder -> {
+		event.registerCreativeModeTab(new ResourceLocation(MODID, "dawncrossdusktab"), builder -> {
 			builder
-				.title(Component.translatable("itemGroup.magicksaddontab"))
+				.title(Component.translatable("itemGroup.dawncrossdusktab"))
 				.icon(() -> new ItemStack(ModItemsMA.hasteSpell.get()))
 				.displayItems(((params, output) -> {
 					misc.get().forEach(output::accept);
@@ -73,7 +73,7 @@ public class MagicksAddonMod {
 	}
 
     
-    public MagicksAddonMod(){
+    public DawnCrossDuskMod(){
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the commonSetup method for modloading

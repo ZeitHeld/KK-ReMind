@@ -9,12 +9,12 @@ import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.shotlock.Shotlock;
-import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.DawnCrossDuskMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IPlayerCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.entity.shotlock.FlameSalvoCoreEntity;
 
-@Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
+@Mod.EventBusSubscriber(modid = DawnCrossDuskMod.MODID)
 public class ShotlockFlameSalvo extends Shotlock {
 
     public ShotlockFlameSalvo(String registeryName, int order, int cooldown, int max){

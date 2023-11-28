@@ -1,5 +1,6 @@
 package online.magicksaddon.magicsaddonmod.capabilities;
 
+import online.magicksaddon.magicsaddonmod.DawnCrossDuskMod;
 import org.jetbrains.annotations.NotNull;
 
 import net.minecraft.resources.ResourceLocation;
@@ -16,10 +17,9 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
-import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.handler.Provider;
 
-@Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = DawnCrossDuskMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModCapabilitiesX {
 
     public static final Capability<IGlobalCapabilitiesX> GLOBAL_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
@@ -49,7 +49,7 @@ public class ModCapabilitiesX {
 
     @SubscribeEvent
     public void attachCapabilities(AttachCapabilitiesEvent<Entity> event) {
-        event.addCapability(new ResourceLocation(MagicksAddonMod.MODID, "global_capabilities"), new Provider());
+        event.addCapability(new ResourceLocation(DawnCrossDuskMod.MODID, "global_capabilities"), new Provider());
     }
 }
 

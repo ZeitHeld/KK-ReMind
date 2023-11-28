@@ -13,10 +13,10 @@ import online.kingdomkeys.kingdomkeys.config.ModConfigs;
 import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
-import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.DawnCrossDuskMod;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
 
-@Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
+@Mod.EventBusSubscriber(modid = DawnCrossDuskMod.MODID)
 public class DriveFormLight extends DriveForm {
 	ResourceLocation skinRL2;
 
@@ -36,7 +36,7 @@ public class DriveFormLight extends DriveForm {
                 Player player = (Player) event.getSource().getEntity();
                 IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 
-                if (playerData != null && playerData.getActiveDriveForm().equals(MagicksAddonMod.MODID+":"+ StringsX.light)) {
+                if (playerData != null && playerData.getActiveDriveForm().equals(DawnCrossDuskMod.MODID+":"+ StringsX.light)) {
                     double mult = Double.parseDouble(ModConfigs.driveFormXPMultiplier.get(0).split(",")[1]);
                     playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
                     PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
