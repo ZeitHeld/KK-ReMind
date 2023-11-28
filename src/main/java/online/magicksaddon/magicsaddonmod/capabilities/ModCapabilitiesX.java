@@ -1,6 +1,5 @@
 package online.magicksaddon.magicsaddonmod.capabilities;
 
-import online.magicksaddon.magicsaddonmod.DawnCrossDuskMod;
 import org.jetbrains.annotations.NotNull;
 
 import net.minecraft.resources.ResourceLocation;
@@ -17,6 +16,7 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
+import online.magicksaddon.magicsaddonmod.DawnCrossDuskMod;
 import online.magicksaddon.magicsaddonmod.handler.Provider;
 
 @Mod.EventBusSubscriber(modid = DawnCrossDuskMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
