@@ -15,13 +15,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import online.magicksaddon.magicsaddonmod.DawnCrossDuskMod;
+import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.client.model.UltimaModel;
 import online.magicksaddon.magicsaddonmod.entity.magic.UltimaEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class UltimaEntityRenderer extends EntityRenderer<UltimaEntity> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation(DawnCrossDuskMod.MODID,"textures/entity/models/ultima.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(MagicksAddonMod.MODID,"textures/entity/models/ultima.png");
 
 	UltimaModel<Entity> model;
 

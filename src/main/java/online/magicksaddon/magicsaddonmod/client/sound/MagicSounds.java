@@ -4,10 +4,10 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import online.magicksaddon.magicsaddonmod.DawnCrossDuskMod;
+import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 
 public class MagicSounds {
-    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, DawnCrossDuskMod.MODID);
+    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MagicksAddonMod.MODID);
 
     public static final RegistryObject<SoundEvent>
             HASTE = registerSound("haste"),
@@ -24,7 +24,7 @@ public class MagicSounds {
 
 
     public static RegistryObject<SoundEvent> registerSound(String name) {
-        final ResourceLocation soundID = new ResourceLocation(DawnCrossDuskMod.MODID, name);
+        final ResourceLocation soundID = new ResourceLocation(MagicksAddonMod.MODID, name);
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(soundID));
     }
 

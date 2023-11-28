@@ -8,24 +8,24 @@ import net.minecraftforge.registries.RegistryObject;
 import online.kingdomkeys.kingdomkeys.item.KeybladeItem;
 import online.kingdomkeys.kingdomkeys.item.KeychainItem;
 import online.kingdomkeys.kingdomkeys.item.MagicSpellItem;
-import online.magicksaddon.magicsaddonmod.DawnCrossDuskMod;
+import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 
 
 public class ModItemsMA{
     public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(ForgeRegistries.ITEMS, DawnCrossDuskMod.MODID);
+            DeferredRegister.create(ForgeRegistries.ITEMS, MagicksAddonMod.MODID);
 
     public static final RegistryObject<Item>
             // Spell Orbs
-        hasteSpell = ITEMS.register("haste_spell", () -> new MagicSpellItem(new Item.Properties(), DawnCrossDuskMod.MODID+":magic_haste")),
-        slowSpell = ITEMS.register("slow_spell", () -> new MagicSpellItem(new Item.Properties(), DawnCrossDuskMod.MODID+":magic_slow")),
-        holySpell = ITEMS.register("holy_spell", () -> new MagicSpellItem(new Item.Properties(), DawnCrossDuskMod.MODID+":magic_holy")),
-        ruinSpell = ITEMS.register("ruin_spell", () -> new MagicSpellItem(new Item.Properties(), DawnCrossDuskMod.MODID+":magic_ruin")),
-        balloonSpell = ITEMS.register("balloon_spell", () -> new MagicSpellItem(new Item.Properties(), DawnCrossDuskMod.MODID+":magic_balloon")),
-        ultimaSpell = ITEMS.register("ultima_spell", () -> new MagicSpellItem(new Item.Properties(), DawnCrossDuskMod.MODID+":magic_ultima")),
-        cometSpell = ITEMS.register("comet_spell", () -> new MagicSpellItem(new Item.Properties(), DawnCrossDuskMod.MODID+":magic_comet")),
-        berserkSpell = ITEMS.register("berserk_spell",() -> new MagicSpellItem(new Item.Properties(), DawnCrossDuskMod.MODID+":magic_berserk")),
-        autoLifeSpell = ITEMS.register("autolife_spell", () -> new MagicSpellItem(new Item.Properties(), DawnCrossDuskMod.MODID+":magic_auto-life")),
+        hasteSpell = ITEMS.register("haste_spell", () -> new MagicSpellItem(new Item.Properties(), MagicksAddonMod.MODID+":magic_haste")),
+        slowSpell = ITEMS.register("slow_spell", () -> new MagicSpellItem(new Item.Properties(), MagicksAddonMod.MODID+":magic_slow")),
+        holySpell = ITEMS.register("holy_spell", () -> new MagicSpellItem(new Item.Properties(), MagicksAddonMod.MODID+":magic_holy")),
+        ruinSpell = ITEMS.register("ruin_spell", () -> new MagicSpellItem(new Item.Properties(), MagicksAddonMod.MODID+":magic_ruin")),
+        balloonSpell = ITEMS.register("balloon_spell", () -> new MagicSpellItem(new Item.Properties(), MagicksAddonMod.MODID+":magic_balloon")),
+        ultimaSpell = ITEMS.register("ultima_spell", () -> new MagicSpellItem(new Item.Properties(), MagicksAddonMod.MODID+":magic_ultima")),
+        cometSpell = ITEMS.register("comet_spell", () -> new MagicSpellItem(new Item.Properties(), MagicksAddonMod.MODID+":magic_comet")),
+        berserkSpell = ITEMS.register("berserk_spell",() -> new MagicSpellItem(new Item.Properties(),MagicksAddonMod.MODID+":magic_berserk")),
+        autoLifeSpell = ITEMS.register("autolife_spell", () -> new MagicSpellItem(new Item.Properties(), MagicksAddonMod.MODID+":magic_auto-life")),
 
             // Keyblades
         xephiroKeyblade = ITEMS.register("xephiro_keyblade", () -> new KeybladeItem(new Item.Properties())),

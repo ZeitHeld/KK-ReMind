@@ -20,14 +20,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import online.kingdomkeys.kingdomkeys.util.IDisabledAnimations;
-import online.magicksaddon.magicsaddonmod.DawnCrossDuskMod;
+import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.client.model.BerserkAuraModel;
 
 @OnlyIn(Dist.CLIENT)
 public class BerserkLayerRenderer<T extends LivingEntity> extends RenderLayer<T, PlayerModel<T>>  {
-    public static final ResourceLocation TEXTURE = new ResourceLocation(DawnCrossDuskMod.MODID,"textures/entity/models/berserk1.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(MagicksAddonMod.MODID,"textures/entity/models/berserk1.png");
     public static final String BOX = "box";
     private final ModelPart box;
 

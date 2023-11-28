@@ -13,11 +13,11 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
-import online.magicksaddon.magicsaddonmod.DawnCrossDuskMod;
+import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.client.model.CometModel;
 
 public class CometEntityRenderer extends EntityRenderer<ThrowableProjectile> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation(DawnCrossDuskMod.MODID,"textures/entity/models/comet.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(MagicksAddonMod.MODID,"textures/entity/models/comet.png");
     CometModel<Entity> cometModel;
 
     public CometEntityRenderer(EntityRendererProvider.Context context){

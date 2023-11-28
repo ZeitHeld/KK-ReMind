@@ -1,6 +1,6 @@
 package online.magicksaddon.magicsaddonmod.lib;
 
-import online.magicksaddon.magicsaddonmod.DawnCrossDuskMod;
+import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 
 public class StringsX {
 
@@ -21,18 +21,18 @@ public class StringsX {
 
 
         //Ability List
-        darkPassage = DawnCrossDuskMod.MODID+":"+ StringsX.ABMA_Prefix+"dark_passage",
-        darknessBoost = DawnCrossDuskMod.MODID+":"+ StringsX.ABMA_Prefix+"darkness_boost",
-        lightBoost = DawnCrossDuskMod.MODID+":"+ StringsX.ABMA_Prefix+"light_boost",
-        rageAwakened = DawnCrossDuskMod.MODID+":"+ StringsX.ABMA_Prefix+"rage_awakened",
-        darkPower = DawnCrossDuskMod.MODID+":"+ StringsX.ABMA_Prefix+"dark_power",
-        wayToLight = DawnCrossDuskMod.MODID+":"+ StringsX.ABMA_Prefix+"way_to_light",
-        lightStep = DawnCrossDuskMod.MODID+":"+ StringsX.ABMA_Prefix+"light_step",
-        darkStep = DawnCrossDuskMod.MODID+":"+ StringsX.ABMA_Prefix+"dark_step",
-        adrenaline = DawnCrossDuskMod.MODID+":"+ StringsX.ABMA_Prefix+"adrenaline",
-        critical_surge = DawnCrossDuskMod.MODID+":"+ StringsX.ABMA_Prefix+"critical_surge",
-        lightWithin = DawnCrossDuskMod.MODID+":"+ StringsX.ABMA_Prefix+"light_within",
-        darknessWithin = DawnCrossDuskMod.MODID+":"+ StringsX.ABMA_Prefix+"darkness_within",
+        darkPassage = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"dark_passage",
+        darknessBoost = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"darkness_boost",
+        lightBoost = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"light_boost",
+        rageAwakened = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"rage_awakened",
+        darkPower = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"dark_power",
+        wayToLight = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"way_to_light",
+        lightStep = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"light_step",
+        darkStep = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"dark_step",
+        adrenaline = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"adrenaline",
+        critical_surge = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"critical_surge",
+        lightWithin = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"light_within",
+        darknessWithin = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"darkness_within",
 
         // Shotlocks
         flameSalvo = "flame_salvo",
@@ -44,8 +44,8 @@ public class StringsX {
 
 
         //Keyblades
-        xephiroKeyblade = DawnCrossDuskMod.MODID+":"+ StringsX.KBMA_Prefix+"xephiro_keyblade",
+        xephiroKeyblade = MagicksAddonMod.MODID+":"+ StringsX.KBMA_Prefix+"xephiro_keyblade",
 
         //Keychains
-        xephiroKeybladeChain = DawnCrossDuskMod.MODID+":"+ StringsX.KCMA_Prefix+"xephiro_keyblade_chain";
+        xephiroKeybladeChain = MagicksAddonMod.MODID+":"+ StringsX.KCMA_Prefix+"xephiro_keyblade_chain";
 }
