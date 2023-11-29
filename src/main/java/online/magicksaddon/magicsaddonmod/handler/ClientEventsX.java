@@ -6,7 +6,7 @@ import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.magicksaddon.magicsaddonmod.sound.BerserkAuraSoundInstance;
 
-public class ClientEvents {
+public class ClientEventsX {
 
     @SubscribeEvent
     public void onEntityJoinWorld(EntityJoinLevelEvent e) {

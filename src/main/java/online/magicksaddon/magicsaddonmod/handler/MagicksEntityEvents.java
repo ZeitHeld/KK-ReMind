@@ -9,7 +9,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -120,6 +119,8 @@ public class MagicksEntityEvents {
 		}
 
 		IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(event.getEntity());
+		//globalData.setBerserkTicks(100, 0);
+
 		if (globalData != null) {
 			// Spells go Down Below
 
@@ -228,7 +229,7 @@ public class MagicksEntityEvents {
 	}
 
 	// Berserk Color Changer
-	@SubscribeEvent
+	/*@SubscribeEvent
 	public void PlayerRender(RenderPlayerEvent.Pre event){
 		IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(event.getEntity());
 		if (event.getEntity() instanceof Player){
@@ -245,5 +246,5 @@ public class MagicksEntityEvents {
 				//RenderSystem.setShaderColor(125,125,125,125);
 			}
 		}
-	}
+	}*/
 }

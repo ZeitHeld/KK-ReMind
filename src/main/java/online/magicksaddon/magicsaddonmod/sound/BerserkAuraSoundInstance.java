@@ -11,13 +11,7 @@ import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 
 @OnlyIn(Dist.CLIENT)
 public class BerserkAuraSoundInstance extends AbstractTickableSoundInstance {
-    private static final float VOLUME_MIN = 0.0F;
-    private static final float VOLUME_MAX = 0.7F;
-    private static final float PITCH_MIN = 0.0F;
-    private static final float PITCH_MAX = 1.0F;
-    private static final float PITCH_DELTA = 0.0025F;
     private final LivingEntity ent;
-    private float pitch = 0.0F;
 
     public BerserkAuraSoundInstance(LivingEntity ent) {
         super(MagicSounds.BERSERK2.get(), SoundSource.PLAYERS, SoundInstance.createUnseededRandom());
@@ -40,10 +34,12 @@ public class BerserkAuraSoundInstance extends AbstractTickableSoundInstance {
 
     @Override
     public void tick() {
+    //	System.out.println("Ticking");
         if(ent.isRemoved()) {
             this.stop();
         } else {
             if (ModCapabilitiesX.getGlobal(ent) != null) {
+            	System.out.println(ModCapabilitiesX.getGlobal(ent).getBerserkTicks());
                 if(ModCapabilitiesX.getGlobal(ent).getBerserkTicks() <= 0) {
                     this.volume = 0;
                 } else {
