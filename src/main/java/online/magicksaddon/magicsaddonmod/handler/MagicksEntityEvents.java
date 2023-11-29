@@ -151,20 +151,16 @@ public class MagicksEntityEvents {
 			if (event.getEntity() instanceof Player){
 				Player player = (Player) event.getEntity();
 
-				if (globalData.getBerserkTicks() > 0){
-					globalData.setBerserkTicks(globalData.getBerserkLevel(), globalData.getBerserkTicks()-1);
-				}
-
 				if (globalData.getBerserkTicks() > 0) {
 					globalData.remBerserkTicks(1);
 					System.out.println("Berserk Level: " + globalData.getBerserkLevel() + " " +
 					"Berserk Ticks Remaining: " + globalData.getBerserkTicks());
 					if(!event.getEntity().level.isClientSide) {
-					if (globalData.getBerserkTicks() <= 0) {
+						if (globalData.getBerserkTicks() <= 0) {
 							IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 							playerData.getStrengthStat().removeModifier("berserk");
-							PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
-							//PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
+							PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player); //Sync KK stat packet
+							PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
 						}
 					}
 				}

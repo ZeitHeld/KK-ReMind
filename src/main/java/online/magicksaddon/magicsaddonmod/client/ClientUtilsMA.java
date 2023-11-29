@@ -14,7 +14,7 @@ public class ClientUtilsMA {
 	            public void run() {
 	                IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(Minecraft.getInstance().player);
 
-	                globalData.setBerserkTicks(message.berserkLvl, message.berserkTicks);
+	                globalData.setBerserkTicks(message.berserkTicks, message.berserkLvl);
 	                
 	            }
 	        };
