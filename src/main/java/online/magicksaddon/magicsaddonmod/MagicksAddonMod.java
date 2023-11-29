@@ -3,7 +3,9 @@ package online.magicksaddon.magicsaddonmod;
 import java.util.List;
 import java.util.function.Supplier;
 
+import net.minecraftforge.client.ForgeRenderTypes;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
 import online.magicksaddon.magicsaddonmod.shotlock.AddonShotlocks;
 import org.slf4j.Logger;
 
@@ -101,7 +103,7 @@ public class MagicksAddonMod {
     
     private void setup(final FMLCommonSetupEvent event){
         // Some common setup code
-		event.enqueueWork(PacketHandler::register);
+		event.enqueueWork(PacketHandlerX::register);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -125,5 +127,7 @@ public class MagicksAddonMod {
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
+
+
     }
 }

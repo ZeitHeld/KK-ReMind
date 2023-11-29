@@ -153,22 +153,19 @@ public class MagicksEntityEvents {
 
 				if (globalData.getBerserkTicks() > 0){
 					globalData.setBerserkTicks(globalData.getBerserkLevel(), globalData.getBerserkTicks()-1);
-					if (globalData.getBerserkTicks() <=0){
-						if(!event.getEntity().level.isClientSide) {
-							PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
-						}
-					}
 				}
 
 				if (globalData.getBerserkTicks() > 0) {
 					globalData.remBerserkTicks(1);
 					System.out.println("Berserk Level: " + globalData.getBerserkLevel() + " " +
 					"Berserk Ticks Remaining: " + globalData.getBerserkTicks());
+					if(!event.getEntity().level.isClientSide) {
 					if (globalData.getBerserkTicks() <= 0) {
-
-						IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-						playerData.getStrengthStat().removeModifier("berserk");
-						PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
+							IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+							playerData.getStrengthStat().removeModifier("berserk");
+							PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
+							//PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
+						}
 					}
 				}
 			}

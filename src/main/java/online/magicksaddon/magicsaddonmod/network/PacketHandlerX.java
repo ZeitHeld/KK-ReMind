@@ -5,6 +5,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
@@ -23,6 +24,9 @@ public class PacketHandlerX {
 System.out.println("REGISTERING PACKETS");
         //ServerToClient
 		HANDLER.registerMessage(packetID++, SCSyncGlobalCapabilityToAllPacketX.class, SCSyncGlobalCapabilityToAllPacketX::encode, SCSyncGlobalCapabilityToAllPacketX::decode, SCSyncGlobalCapabilityToAllPacketX::handle);
+
+
+
 
         // ClientToServer
     }

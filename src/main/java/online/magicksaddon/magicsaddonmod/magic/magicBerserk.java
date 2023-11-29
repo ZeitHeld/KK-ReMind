@@ -32,6 +32,7 @@ public class magicBerserk extends Magic {
             // Effect and Level Modifier
             IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
                 if (globalData.getBerserkTicks() <= 0) {
+
                     // Future color change line below
                     // Levels 0 - 2
                     switch (level) {

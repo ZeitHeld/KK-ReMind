@@ -53,7 +53,7 @@ public class BerserkLayerRenderer<T extends LivingEntity> extends RenderLayer<T,
         if (ModCapabilitiesX.getGlobal(entitylivingbaseIn) != null) {
             IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(entitylivingbaseIn);
             if (globalData.getBerserkTicks() > 0) {
-                VertexConsumer vertexconsumer = bufferIn.getBuffer(RenderType.entityCutoutNoCull(TEXTURE));
+                VertexConsumer vertexconsumer = bufferIn.getBuffer(RenderType.entityTranslucent(TEXTURE));
 
                 for (int i = 1; i <= globalData.getBerserkLevel() + 1; ++i) {
                     matrixStackIn.pushPose();
