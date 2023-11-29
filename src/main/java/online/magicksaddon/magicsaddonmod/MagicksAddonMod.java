@@ -50,7 +50,7 @@ public class MagicksAddonMod {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "magicksaddon";
     public static final String MODNAME = "Magicks Addon Mod";
-    public static final String MODVER = "0.6.3a";
+    public static final String MODVER = "0.7a";
     public static final String MCVER = "1.19.4";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();

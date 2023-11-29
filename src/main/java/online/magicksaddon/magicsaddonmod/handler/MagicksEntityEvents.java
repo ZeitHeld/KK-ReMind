@@ -154,8 +154,7 @@ public class MagicksEntityEvents {
 
 				if (globalData.getBerserkTicks() > 0) {
 					globalData.remBerserkTicks(1);
-					System.out.println("Berserk Level: " + globalData.getBerserkLevel() + " " +
-					"Berserk Ticks Remaining: " + globalData.getBerserkTicks());
+					//System.out.println("Berserk Level: " + globalData.getBerserkLevel() + " " + "Berserk Ticks Remaining: " + globalData.getBerserkTicks());
 					if(!event.getEntity().level.isClientSide) {
 						if (globalData.getBerserkTicks() <= 0) {
 							IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);

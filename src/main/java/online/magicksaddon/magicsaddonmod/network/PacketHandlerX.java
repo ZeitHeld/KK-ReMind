@@ -50,7 +50,7 @@ System.out.println("REGISTERING PACKETS");
         }
 
         public static void syncGlobalToAllAround(LivingEntity entity, IGlobalCapabilitiesX globalData) {
-        	System.out.println("Trying to sync");
+        	//System.out.println("Trying to sync");
             if (!entity.level.isClientSide) {
                 for (Player playerFromList : entity.level.players()) {
                     sendTo(new SCSyncGlobalCapabilityToAllPacketX(entity.getId(), (IGlobalCapabilitiesX) globalData), (ServerPlayer) playerFromList);
