@@ -20,6 +20,7 @@ public class MagicSounds {
             ULTIMA_CAST = registerSound("ultima_cast"),
             ULTIMA_EXPLOSION = registerSound("ultima_explosion"),
             BERSERK = registerSound("berserk"),
+            BERSERK2 = registerSound("berserk2"),
             AUTOLIFE = registerSound("auto_life");
 
 

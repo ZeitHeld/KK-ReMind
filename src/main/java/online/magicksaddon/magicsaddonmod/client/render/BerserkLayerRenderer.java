@@ -66,7 +66,7 @@ public class BerserkLayerRenderer<T extends LivingEntity> extends RenderLayer<T,
                         case 0:
                             if (entitylivingbaseIn instanceof Player) {
                                 scale = 0.75F * i;
-                                matrixStackIn.scale(scale, scale * 1.2F, scale);
+                                matrixStackIn.scale(scale, scale * 1.0F, scale);
                                 matrixStackIn.translate(0.0D, (double) (-0.4F + 0.8F * (float) i), 0.0D);
                             } else {
                                 scale = 0.35F * i;
@@ -77,8 +77,9 @@ public class BerserkLayerRenderer<T extends LivingEntity> extends RenderLayer<T,
                         case 1:
                             if (entitylivingbaseIn instanceof Player) {
                                 scale = 0.85F * i;
-                                matrixStackIn.scale(scale, scale * 1F, scale);
-                                matrixStackIn.translate(0.0D, (double) (-0.8F + 0.8F * (float) i), 0.0D);
+                                matrixStackIn.scale(scale, scale * 1.25F, scale);
+                                matrixStackIn.translate(0.0D, (double) (-0.8F + 0.8F * (float) i) - 1.5, 0.0D);
+
                             } else {
                                 scale = 0.45F * i;
                                 matrixStackIn.scale(scale, scale, scale);
@@ -88,8 +89,8 @@ public class BerserkLayerRenderer<T extends LivingEntity> extends RenderLayer<T,
                         case 2:
                             if (entitylivingbaseIn instanceof Player) {
                                 scale = 0.7F * i;
-                                matrixStackIn.scale(scale, scale * 0.6F, scale);
-                                matrixStackIn.translate(0.0D, (double) (-1.2F + 0.6F * (float) i), 0.0D);
+                                matrixStackIn.scale(scale, scale * 1.5F, scale);
+                                matrixStackIn.translate(0.0D, (double) (-1.2F + 0.6F * (float) i) - 1.5, 0.0D);
                             } else {
                                 scale = 0.55F * i;
                                 matrixStackIn.scale(scale, scale * 0.6F, scale);
