@@ -198,27 +198,29 @@ public class MagicksEntityEvents {
 			// Adrenaline
 			if (playerData.isAbilityEquipped(StringsX.adrenaline)) {
 				if (player.getHealth() - event.getAmount() <= player.getMaxHealth() / 4){
-					System.out.println(player.getHealth() + " / " + player.getMaxHealth());
+					//System.out.println(player.getHealth() + " / " + player.getMaxHealth());
 					playerData.getStrengthStat().addModifier("adrenaline", 5, false);
 					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
-					System.out.println("Strength Added");
+					//System.out.println("Strength Added");
 				}
 			}
 			// Critical Surge
 			if (playerData.isAbilityEquipped(StringsX.critical_surge)){
 				if (player.getHealth() - event.getAmount() <= player.getMaxHealth() / 4){
-					System.out.println(player.getHealth() + " / " + player.getMaxHealth());
+					//System.out.println(player.getHealth() + " / " + player.getMaxHealth());
 					playerData.getMagicStat().addModifier("critical_surge", 5, false);
 					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
-					System.out.println("Magic Added");
+					//System.out.println("Magic Added");
 				}
 			}
 			if (player.getHealth() + 1 >= player.getMaxHealth() / 4) {
+				/*
 				System.out.println(player.getHealth() + " / " + player.getMaxHealth());
 				playerData.getStrengthStat().removeModifier("adrenaline");
 				System.out.println("Adrenaline Removed");
 				playerData.getMagicStat().removeModifier("critical_surge");
 				System.out.println("Critical Surge Removed");
+				*/
 				PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 			}
 
