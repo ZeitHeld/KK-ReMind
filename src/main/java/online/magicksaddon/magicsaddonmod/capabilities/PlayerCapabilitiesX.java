@@ -50,6 +50,16 @@ public class PlayerCapabilitiesX implements IPlayerCapabilitiesX {
         return false;
     }
 
+    @Override
+    public void setPrestigeCount(int prestigeCount) {
+
+    }
+
+    @Override
+    public int getPrestigeCount() {
+        return 0;
+    }
+
 
     @Override
     public CompoundTag serializeNBT() {

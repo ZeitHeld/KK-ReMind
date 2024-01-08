@@ -7,6 +7,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -19,6 +20,7 @@ import online.kingdomkeys.kingdomkeys.handler.ClientEvents;
 import online.magicksaddon.magicsaddonmod.client.render.BerserkLayerRenderer;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
 import online.magicksaddon.magicsaddonmod.handler.ClientEventsX;
+import online.magicksaddon.magicsaddonmod.handler.MAInputHandler;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus=Mod.EventBusSubscriber.Bus.MOD)
 public class ClientSetupMA {
@@ -30,6 +32,12 @@ public class ClientSetupMA {
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         ModEntitiesMA.registerLayers(event);
+    }
+
+    @SubscribeEvent
+    public static void registerKeyBinding(RegisterKeyMappingsEvent event) {
+        for (MAInputHandler.Keybinds key : MAInputHandler.Keybinds.values())
+            event.register(key.getKeybind());
     }
 
     @SubscribeEvent

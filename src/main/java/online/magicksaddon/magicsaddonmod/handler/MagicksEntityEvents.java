@@ -45,7 +45,7 @@ public class MagicksEntityEvents {
 				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.light, 1);
 				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.rageForm, 1);
 
-				System.out.println(playerData.getDriveFormMap());
+				//System.out.println(playerData.getDriveFormMap());
 			}
 	}
 
@@ -92,8 +92,8 @@ public class MagicksEntityEvents {
 
 				int boostWithin = (playerData.getStrengthStat().getStat() + playerData.getMagicStat().getStat()) / 4;
 
-				int darknessWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsX.darknessBoost) * 0.25F);
-				int lightWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsX.lightBoost) * 0.25F);
+				int darknessWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsX.darknessBoost) * 0.05F);
+				int lightWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsX.lightBoost) * 0.05F);
 
 				//System.out.println("Initial Within Boost: "+boostWithin);
 				//System.out.println("Light Within Boost: "+lightWithinBoost);

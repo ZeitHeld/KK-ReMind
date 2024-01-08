@@ -1,5 +1,9 @@
 {
-  "itemGroup.magicksaddontab": "Kingdom Keys: Add-on Magic",
+  "itemGroup.addonmagictab": "KK ReMind: Magics",
+  "itemGroup.addonarmortab": "KK ReMind: Armors",
+  "itemGroup.addonaccessorytab": "KK ReMind: Accesories",
+  "itemGroup.addonkeyblades": "KK ReMind: Keyblades",
+
 
 
   "magic.magicksaddon.magic_haste0.name": "Haste",
@@ -75,6 +79,37 @@
 
   "item.magicksaddon.xephiro_keyblade": "Sanguine Gaze",
 
-  "item.magicksaddon.xephiro_keyblade_chain": "Sanguine Gaze Chain"
+  "item.magicksaddon.xephiro_keyblade_chain": "Sanguine Gaze Chain",
+
+  "item.magicksaddon.abas_chain": "Abas Chain",
+  "item.magicksaddon.acrisius": "Acrisius",
+  "item.magicksaddon.acrisius_plus": "Acrisius +",
+  "item.magicksaddon.aegis_chain": "Aegis Chain",
+  "item.magicksaddon.blizzara_armlet": "Blizzara Armlet",
+  "item.magicksaddon.blizzaga_armlet": "Blizzaga Armlet",
+  "item.magicksaddon.blizzagun_armlet": "Blizzagun Armlet",
+  "item.magicksaddon.buster_band": "Buster Band",
+  "item.magicksaddon.champion_belt": "Champion Belt",
+  "item.magicksaddon.chaos_anklet": "Chaos Anklet",
+  "item.magicksaddon.cosmic_belt": "Cosmic Belt",
+  "item.magicksaddon.cosmic_chain": "Cosmic Chain",
+  "item.magicksaddon.divine_bandanna": "Divine Bandanna",
+  "item.magicksaddon.elven_bandanna": "Elven Bandanna",
+  "item.magicksaddon.fira_bangle": "Fira Bangle",
+  "item.magicksaddon.firaga_bangle": "Firaga Bangle",
+  "item.magicksaddon.firagun_bangle": "Firagun Bangle",
+  "item.magicksaddon.gaia_belt": "Gaia Belt",
+  "item.magicksaddon.midnight_anklet": "Midnight Anklet",
+  "item.magicksaddon.shadow_anklet": "Shadow Anklet",
+  "item.magicksaddon.shock_charm": "Shock Charm",
+  "item.magicksaddon.shock_charm_plus": "Shock Charm +",
+  "item.magicksaddon.thundara_trinket": "Thundara Trinket",
+  "item.magicksaddon.thundaga_trinket": "Thundaga Trinket",
+  "item.magicksaddon.thundagun_trinket": "Thundagun Trinket",
+
+  "item.magicksaddon.luck_of_the_draw": "Luck of The Draw",
+  "item.magicksaddon.light_heart": "Light Heart",
+  "item.magicksaddon.dark_heart": "Dark Heart"
+
 
 }

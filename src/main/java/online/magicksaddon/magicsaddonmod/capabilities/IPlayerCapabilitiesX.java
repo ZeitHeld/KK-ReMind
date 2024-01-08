@@ -17,6 +17,11 @@ public interface IPlayerCapabilitiesX extends INBTSerializable<CompoundTag> {
     boolean getautoLife();
     boolean AutoLife();
 
+    // Prestiging
+    void setPrestigeCount(int prestigeCount);
+    int getPrestigeCount();
+
+
 
     // Abilities Stuff
 

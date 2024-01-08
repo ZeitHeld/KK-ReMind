@@ -140,6 +140,16 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         isAutoLifeActive -= use;
     }
 
+    @Override
+    public int getPrestigeCount() {
+        return 0;
+    }
+
+    @Override
+    public int setPrestigeCount(int prestigeCount) {
+        return 0;
+    }
+
 
     @Override
     public void deserializeNBT() {
