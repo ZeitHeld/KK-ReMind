@@ -109,7 +109,10 @@
 
   "item.magicksaddon.luck_of_the_draw": "Luck of The Draw",
   "item.magicksaddon.light_heart": "Light Heart",
-  "item.magicksaddon.dark_heart": "Dark Heart"
+  "item.magicksaddon.dark_heart": "Dark Heart",
+
+  "key.categories.magicksaddon": "Re:Mind",
+  "key.magicksaddon.openmenu": "Open Menu"
 
 
 }

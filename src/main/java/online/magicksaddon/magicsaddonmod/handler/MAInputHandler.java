@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import online.magicksaddon.magicsaddonmod.client.gui.GUIHelperX;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
 
 import net.minecraft.ChatFormatting;
@@ -64,6 +65,8 @@ import online.kingdomkeys.kingdomkeys.util.IExtendedReach;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.kingdomkeys.kingdomkeys.util.Utils.OrgMember;
 import online.kingdomkeys.kingdomkeys.world.dimension.ModDimensions;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
+import online.magicksaddon.magicsaddonmod.network.cts.CSSyncAllClientDataPacketX;
 import org.lwjgl.glfw.GLFW;
 
 public class MAInputHandler extends InputHandler{
@@ -667,13 +670,13 @@ public class MAInputHandler extends InputHandler{
             if (key != null) {
                 switch (key) {
                     case OPENMENU:
-                        PacketHandler.sendToServer(new CSSyncAllClientDataPacket());
+                        PacketHandlerX.sendToServer(new CSSyncAllClientDataPacketX());
                         if (ModCapabilities.getPlayer(player).getSoAState() != SoAState.COMPLETE) {
                             if (player.level().dimension() != ModDimensions.DIVE_TO_THE_HEART) {
                                 mc.setScreen(new NoChoiceMenuPopup());
                             }
                         } else {
-                            GuiHelper.openMenu();
+                            GUIHelperX.openAddonMenu();
                         }
                         break;
 
