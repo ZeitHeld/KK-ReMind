@@ -670,7 +670,7 @@ public class MAInputHandler extends InputHandler{
             if (key != null) {
                 switch (key) {
                     case OPENMENU:
-                        PacketHandlerX.sendToServer(new CSSyncAllClientDataPacketX());
+                        PacketHandler.sendToServer(new CSSyncAllClientDataPacket());
                         if (ModCapabilities.getPlayer(player).getSoAState() != SoAState.COMPLETE) {
                             if (player.level().dimension() != ModDimensions.DIVE_TO_THE_HEART) {
                                 mc.setScreen(new NoChoiceMenuPopup());

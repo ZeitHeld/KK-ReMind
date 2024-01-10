@@ -39,7 +39,7 @@ public class BerserkAuraSoundInstance extends AbstractTickableSoundInstance {
             this.stop();
         } else {
             if (ModCapabilitiesX.getGlobal(ent) != null) {
-            	System.out.println(ModCapabilitiesX.getGlobal(ent).getBerserkTicks());
+            	//System.out.println(ModCapabilitiesX.getGlobal(ent).getBerserkTicks());
                 if(ModCapabilitiesX.getGlobal(ent).getBerserkTicks() <= 0) {
                     this.volume = 0;
                 } else {

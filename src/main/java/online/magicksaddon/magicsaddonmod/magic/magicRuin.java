@@ -23,7 +23,6 @@ public class magicRuin extends Magic {
         float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsX.darknessBoost) * 0.2F;
         dmgMult *= fullMPBlastMult;
 
-        System.out.println(dmgMult);
         switch (level) {
 		case 0: 
 			ThrowableProjectile ruin = new RuinEntity(player.level(), player, dmgMult, 2);

@@ -93,6 +93,7 @@
   "item.magicksaddon.chaos_anklet": "Chaos Anklet",
   "item.magicksaddon.cosmic_belt": "Cosmic Belt",
   "item.magicksaddon.cosmic_chain": "Cosmic Chain",
+  "item.magicksaddon.dark_anklet": "Dark Anklet",
   "item.magicksaddon.divine_bandanna": "Divine Bandanna",
   "item.magicksaddon.elven_bandanna": "Elven Bandanna",
   "item.magicksaddon.fira_bangle": "Fira Bangle",
@@ -112,7 +113,12 @@
   "item.magicksaddon.dark_heart": "Dark Heart",
 
   "key.categories.magicksaddon": "Re:Mind",
-  "key.magicksaddon.openmenu": "Open Menu"
+  "key.magicksaddon.openmenu": "Open Menu",
+  "menu_button.prestige": "New Game +",
+  "menu_button.prestigeConfirm": "New Game +",
+  "menu_button.prestigeConfirm.desc": "Resets your level and choice. WARNING!!! You cannot undo this!!!",
+  "menu_button.prestige.desc": "Allows you to reset your level if you meet the requirements.",
+  "menu_button.prestigeLevel": "NG+ Counter"
 
 
 }

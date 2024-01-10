@@ -1,41 +1,41 @@
 {
   "parent": "forge:item/default",
   "loader": "forge:obj",
-  "flip_v" : true,
+  "flip_v" : "true",
   "model": "magicksaddon:models/item/keyblade/xephiro_keyblade.obj",
   "textures": {
-
+    "layer0": "magicksaddon:textures/item/keyblades/xephiro_keyblade"
   },
   "display": {
     "firstperson_righthand": {
       "rotation": [0.0, 180.0, 0.0 ],
-      "translation": [0.0, 0.0, 0.0 ],
+      "translation": [0.0, -12.5, 0.0 ],
       "scale": [0.25, 0.25, 0.25]
     },
     "thirdperson_righthand": {
       "rotation": [0.0, 180.0, 0.0 ],
-      "translation": [-1.5, 0, -1.5 ],
+      "translation": [-1.5, -15, -1.5 ],
       "scale": [0.25, 0.25, 0.25]
     },
     "firstperson_lefthand": {
       "rotation": [0.0, 180.0, 0.0 ],
-      "translation": [0.0, 0.0, 0.0 ],
+      "translation": [0.0, -12.5, 0.0 ],
       "scale": [0.25, 0.25, 0.25]
     },
     "thirdperson_lefthand": {
       "rotation": [0.0, -180.0, 0.0 ],
-      "translation": [1.5, 0, -1.5 ],
+      "translation": [1.5, -15, -1.5 ],
       "scale": [0.25, 0.25, 0.25]
     },
     "gui": {
-      "rotation": [0, 90.0, 30.0 ],
-      "translation": [0.0, 0.0, 0.0 ],
+      "rotation": [0, 90.0, 45.0 ],
+      "translation": [0.0, -10.0, 0.0 ],
       "scale": [0.20, 0.20, 0.20]
     },
     "ground": {
-      "rotation": [45.0, 90.0, 0.0 ],
+      "rotation": [0, 90.0, 45.0 ],
       "translation": [0.0, 0.0, 0.0 ],
-      "scale": [0.8, 0.8, 0.8]
+      "scale": [0.25, 0.25, 0.25]
     },
     "fixed": {
       "rotation": [0.0, 90.0, 0.0 ],

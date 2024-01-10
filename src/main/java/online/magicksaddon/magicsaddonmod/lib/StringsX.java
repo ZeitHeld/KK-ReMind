@@ -14,6 +14,7 @@ public class StringsX {
         SLMA_Prefix = "shotlock_",
         ARMA_Prefix = "armor_",
         ACMA_Prefix = "accessory_",
+        MENU_Prefix = "menu_button",
 
 
         //Forms
@@ -65,6 +66,7 @@ public class StringsX {
         chaosAnklet = MagicksAddonMod.MODID+":"+ StringsX.ARMA_Prefix+"chaos_anklet",
         cosmicBelt = MagicksAddonMod.MODID+":"+ StringsX.ARMA_Prefix+"cosmic_belt",
         cosmicChain = MagicksAddonMod.MODID+":"+ StringsX.ARMA_Prefix+"cosmic_chain",
+        darkAnklet = MagicksAddonMod.MODID+":"+ StringsX.ARMA_Prefix+"dark_anklet",
         divineBandanna = MagicksAddonMod.MODID+":"+ StringsX.ARMA_Prefix+"divine_bandanna",
         elvenBandanna = MagicksAddonMod.MODID+":"+ StringsX.ARMA_Prefix+"elven_bandanna",
         firaBangle = MagicksAddonMod.MODID+":"+ StringsX.ARMA_Prefix+"fira_bangle",
@@ -85,5 +87,10 @@ public class StringsX {
         // KK Accessories
         luckOfTheDraw = MagicksAddonMod.MODID+":"+ StringsX.ACMA_Prefix+"luck_of_the_draw",
         lightHeart = MagicksAddonMod.MODID+":"+ StringsX.ACMA_Prefix+"lightHeart",
-        darkHeart = MagicksAddonMod.MODID+":"+ StringsX.ACMA_Prefix+"darkHeart";
+        darkHeart = MagicksAddonMod.MODID+":"+ StringsX.ACMA_Prefix+"darkHeart",
+
+        // GUI
+        Gui_Menu_Button_Prestige = StringsX.MENU_Prefix + ".prestige",
+        Gui_Menu_Button_PrestigeLevel = StringsX.MENU_Prefix + ".prestigeLevel",
+        Gui_Menu_Button_PrestigeConfirm = StringsX.MENU_Prefix +".prestigeConfirm";
 }

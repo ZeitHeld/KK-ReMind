@@ -46,6 +46,7 @@ public class ModItemsMA{
         chaosAnklet = ITEMS.register("chaos_anklet", () -> new KKArmorItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ARMOR_TAB).stacksTo(1),3, ImmutableMap.of(KKResistanceType.darkness, 25))),
         cosmicBelt = ITEMS.register("cosmic_belt", () -> new KKArmorItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ARMOR_TAB).stacksTo(1),6, ImmutableMap.of(KKResistanceType.darkness,0))),
         cosmicChain = ITEMS.register("cosmic_chain", () -> new KKArmorItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ARMOR_TAB).stacksTo(1),3, ImmutableMap.of(KKResistanceType.fire, 25,KKResistanceType.ice,25,KKResistanceType.lightning,25))),
+        darkAnklet = ITEMS.register("dark_anklet", () -> new KKArmorItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ARMOR_TAB).stacksTo(1),2, ImmutableMap.of(KKResistanceType.darkness, 20))),
         divineBandanna = ITEMS.register("divine_bandanna", () -> new KKArmorItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ARMOR_TAB).stacksTo(1),2, ImmutableMap.of(KKResistanceType.darkness,0))),
         elvenBandanna = ITEMS.register("elven_bandanna", () -> new KKArmorItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ARMOR_TAB).stacksTo(1),1, ImmutableMap.of(KKResistanceType.darkness,0))),
         firaBangle = ITEMS.register("fira_bangle", () -> new KKArmorItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ARMOR_TAB).stacksTo(1),2, ImmutableMap.of(KKResistanceType.fire,20))),
