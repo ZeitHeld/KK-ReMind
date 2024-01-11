@@ -1,10 +1,9 @@
 package online.magicksaddon.magicsaddonmod.client.gui;
 
-import com.mojang.blaze3d.vertex.PoseStack;
+import java.awt.Color;
+
 //import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.Minecraft;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
@@ -12,22 +11,13 @@ import online.kingdomkeys.kingdomkeys.client.gui.GuiHelper;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.MenuBackground;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.MenuColourBox;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.buttons.MenuButton;
-import online.kingdomkeys.kingdomkeys.lib.SoAState;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
-import online.kingdomkeys.kingdomkeys.network.PacketHandler;
-import online.kingdomkeys.kingdomkeys.network.cts.CSSyncAllClientDataPacket;
-import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.IPlayerCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.PlayerCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
 import online.magicksaddon.magicsaddonmod.network.cts.CSPrestigePacket;
-import online.magicksaddon.magicsaddonmod.network.cts.CSSyncAllClientDataPacketX;
-
-import java.awt.*;
 
 public class PrestigeMenu extends MenuBackground{
 
@@ -63,7 +53,7 @@ public class PrestigeMenu extends MenuBackground{
 
         Player player;
         final IPlayerCapabilities playerData = ModCapabilities.getPlayer(minecraft.player);
-        IPlayerCapabilitiesX addedData = ModCapabilitiesX.getPlayer(minecraft.player);
+        IGlobalCapabilitiesX addedData = ModCapabilitiesX.getGlobal(minecraft.player);
         System.out.println(addedData);
 
         super.init();

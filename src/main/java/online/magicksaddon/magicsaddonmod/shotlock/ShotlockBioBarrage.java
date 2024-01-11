@@ -1,14 +1,12 @@
 package online.magicksaddon.magicsaddonmod.shotlock;
 
+import java.util.List;
+
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.shotlock.Shotlock;
-import online.magicksaddon.magicsaddonmod.capabilities.IPlayerCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.entity.shotlock.BioBarrageCoreEntity;
-
-import java.util.List;
 
 public class ShotlockBioBarrage extends Shotlock {
 
@@ -18,9 +16,6 @@ public class ShotlockBioBarrage extends Shotlock {
 
     @Override
     public void onUse(Player player, List<Entity> targetList) {
-
-        IPlayerCapabilitiesX playerData = ModCapabilitiesX.getPlayer(player);
-
 
         float damage = (float) (DamageCalculation.getMagicDamage(player) * 1.25);
         BioBarrageCoreEntity core = new BioBarrageCoreEntity(player.level, player, targetList, damage);

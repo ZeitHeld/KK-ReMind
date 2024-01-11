@@ -10,8 +10,6 @@ import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.shotlock.Shotlock;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
-import online.magicksaddon.magicsaddonmod.capabilities.IPlayerCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.entity.shotlock.FlameSalvoCoreEntity;
 
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
@@ -23,9 +21,6 @@ public class ShotlockFlameSalvo extends Shotlock {
 
     @Override
     public void onUse(Player player, List<Entity> targetList) {
-
-        IPlayerCapabilitiesX playerData = ModCapabilitiesX.getPlayer(player);
-
 
         float damage = (float) (DamageCalculation.getMagicDamage(player) * 1.25 + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.fireBoost) * 0.2F);
         FlameSalvoCoreEntity core = new FlameSalvoCoreEntity(player.level, player, targetList, damage);

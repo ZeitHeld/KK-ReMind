@@ -23,7 +23,7 @@ import online.magicksaddon.magicsaddonmod.handler.Provider;
 public class ModCapabilitiesX {
 
     public static final Capability<IGlobalCapabilitiesX> GLOBAL_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
-    public static final Capability<IPlayerCapabilitiesX> PLAYER_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
+   // public static final Capability<IPlayerCapabilitiesX> PLAYER_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
     public static final Capability<IWorldCapabilitiesX> WORLD_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
 
     public static IGlobalCapabilitiesX getGlobal(LivingEntity e) {
@@ -36,10 +36,10 @@ public class ModCapabilitiesX {
 
     }
 
-    public static IPlayerCapabilitiesX getPlayer(Player player) {
+/*    public static IPlayerCapabilitiesX getPlayer(Player player) {
         LazyOptional<IPlayerCapabilitiesX> playerData = player.getCapability(ModCapabilitiesX.PLAYER_CAPABILITIES, null);
         return playerData.orElse(null);
-    }
+    }*/
 
     public static IWorldCapabilities getWorld(Level w) {
         @NotNull LazyOptional<IWorldCapabilitiesX> worldData = w.getCapability(ModCapabilitiesX.WORLD_CAPABILITIES, null);

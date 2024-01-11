@@ -26,9 +26,6 @@ System.out.println("REGISTERING PACKETS");
         //ServerToClient
 		HANDLER.registerMessage(packetID++, SCSyncGlobalCapabilityToAllPacketX.class, SCSyncGlobalCapabilityToAllPacketX::encode, SCSyncGlobalCapabilityToAllPacketX::decode, SCSyncGlobalCapabilityToAllPacketX::handle);
 
-
-
-
         // ClientToServer
         HANDLER.registerMessage(packetID++, CSPrestigePacket.class, CSPrestigePacket::encode, CSPrestigePacket::decode, CSPrestigePacket::handle);
     }

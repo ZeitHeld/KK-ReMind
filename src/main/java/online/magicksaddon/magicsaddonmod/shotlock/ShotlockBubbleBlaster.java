@@ -1,16 +1,14 @@
 package online.magicksaddon.magicsaddonmod.shotlock;
 
+import java.util.List;
+
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.shotlock.Shotlock;
-import online.magicksaddon.magicsaddonmod.capabilities.IPlayerCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.entity.shotlock.BubbleBlasterCoreEntity;
-
-import java.util.List;
 
 public class ShotlockBubbleBlaster extends Shotlock {
 
@@ -20,9 +18,6 @@ public class ShotlockBubbleBlaster extends Shotlock {
 
     @Override
     public void onUse(Player player, List<Entity> targetList) {
-
-        IPlayerCapabilitiesX playerData = ModCapabilitiesX.getPlayer(player);
-
 
         float damage = (float) (DamageCalculation.getMagicDamage(player) * 1.25 + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.waterBoost) * 0.2F);
         BubbleBlasterCoreEntity core = new BubbleBlasterCoreEntity(player.level, player, targetList, damage);

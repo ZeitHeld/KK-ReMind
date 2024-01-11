@@ -5,9 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import online.magicksaddon.magicsaddonmod.client.gui.GUIHelperX;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
-
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -29,7 +26,6 @@ import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
-import online.kingdomkeys.kingdomkeys.client.gui.GuiHelper;
 import online.kingdomkeys.kingdomkeys.client.gui.menu.NoChoiceMenuPopup;
 import online.kingdomkeys.kingdomkeys.client.gui.overlay.CommandMenuGui;
 import online.kingdomkeys.kingdomkeys.client.sound.ModSounds;
@@ -43,10 +39,10 @@ import online.kingdomkeys.kingdomkeys.handler.KeyboardHelper;
 import online.kingdomkeys.kingdomkeys.item.KKPotionItem;
 import online.kingdomkeys.kingdomkeys.lib.Constants;
 import online.kingdomkeys.kingdomkeys.lib.Party;
+import online.kingdomkeys.kingdomkeys.lib.Party.Member;
 import online.kingdomkeys.kingdomkeys.lib.PortalData;
 import online.kingdomkeys.kingdomkeys.lib.SoAState;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
-import online.kingdomkeys.kingdomkeys.lib.Party.Member;
 import online.kingdomkeys.kingdomkeys.limit.Limit;
 import online.kingdomkeys.kingdomkeys.magic.ModMagic;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
@@ -65,9 +61,8 @@ import online.kingdomkeys.kingdomkeys.util.IExtendedReach;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.kingdomkeys.kingdomkeys.util.Utils.OrgMember;
 import online.kingdomkeys.kingdomkeys.world.dimension.ModDimensions;
-import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
-import online.magicksaddon.magicsaddonmod.network.cts.CSSyncAllClientDataPacketX;
-import org.lwjgl.glfw.GLFW;
+import online.magicksaddon.magicsaddonmod.client.gui.GUIHelperX;
+import online.magicksaddon.magicsaddonmod.lib.StringsX;
 
 public class MAInputHandler extends InputHandler{
 	
