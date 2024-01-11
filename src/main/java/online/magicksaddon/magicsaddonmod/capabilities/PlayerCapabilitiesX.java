@@ -51,12 +51,14 @@ public class PlayerCapabilitiesX implements IPlayerCapabilitiesX {
     }
 
     @Override
-    public void setPrestigeCount(int prestigeCount) {
+    public int addPrestigeLvl(int i) {
 
+        return i;
     }
 
     @Override
-    public int getPrestigeCount() {
+    public int getPrestigeLvl() {
+
         return 0;
     }
 

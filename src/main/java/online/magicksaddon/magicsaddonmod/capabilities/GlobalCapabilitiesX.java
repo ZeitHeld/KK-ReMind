@@ -15,6 +15,7 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         storage.putInt("berserk_ticks",this.getBerserkTicks());
         storage.putInt("berserk_level", this.getBerserkLevel());
         storage.putInt("autolife_active", this.getAutoLifeActive());
+        storage.putInt("prestige_level", this.getPrestigeLvl());
         return storage;
     }
 
@@ -33,6 +34,7 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     private int berserkLevel;
     private int berserkTicks;
     private int isAutoLifeActive;
+    private int prestigeLvl;
 
     //Haste
     public int getHasteLevel() {
@@ -141,14 +143,16 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     }
 
     @Override
-    public int getPrestigeCount() {
-        return 0;
+    public int getPrestigeLvl() {
+        return prestigeLvl;
     }
 
     @Override
-    public int setPrestigeCount(int prestigeCount) {
-        return 0;
+    public int addPrestigeLvl(int i) {
+        return prestigeLvl;
     }
+
+
 
 
     @Override

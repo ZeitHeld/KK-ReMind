@@ -35,8 +35,11 @@ public interface IGlobalCapabilitiesX extends INBTSerializable<CompoundTag> {
     int getAutoLifeActive();
     void remAutoLifeActive(int use);
 
-    int getPrestigeCount();
-    int setPrestigeCount(int prestigeCount);
+    //Prestige
+    int getPrestigeLvl();
+    int addPrestigeLvl(int i);
+
+    //Forms
 
     void deserializeNBT();
 }
