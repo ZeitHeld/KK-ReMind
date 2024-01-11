@@ -2,21 +2,15 @@ package online.magicksaddon.magicsaddonmod.client;
 
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
-import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import online.kingdomkeys.kingdomkeys.KingdomKeys;
-import online.kingdomkeys.kingdomkeys.client.ClientSetup;
-import online.kingdomkeys.kingdomkeys.client.gui.overlay.GuiOverlay;
-import online.kingdomkeys.kingdomkeys.handler.ClientEvents;
 import online.magicksaddon.magicsaddonmod.client.render.BerserkLayerRenderer;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
 import online.magicksaddon.magicsaddonmod.handler.ClientEventsX;
@@ -34,11 +28,11 @@ public class ClientSetupMA {
         ModEntitiesMA.registerLayers(event);
     }
 
-    @SubscribeEvent
+    /*@SubscribeEvent
     public static void registerKeyBinding(RegisterKeyMappingsEvent event) {
         for (MAInputHandler.Keybinds key : MAInputHandler.Keybinds.values())
             event.register(key.getKeybind());
-    }
+    }*/
 
     @SubscribeEvent
     public static void addLayers(EntityRenderersEvent.AddLayers event) {

@@ -12,6 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
@@ -48,7 +49,21 @@ public class MagicksEntityEvents {
 				//System.out.println(playerData.getDriveFormMap());
 			}
 	}
-
+	
+	@SubscribeEvent
+	public void onPlayerClone(PlayerEvent.Clone event) {
+		Player oPlayer = event.getOriginal();
+		Player nPlayer = event.getEntity();
+				
+		oPlayer.reviveCaps();
+		IGlobalCapabilitiesX oldPlayerData = ModCapabilitiesX.getGlobal(oPlayer);
+		IGlobalCapabilitiesX newPlayerData = ModCapabilitiesX.getGlobal(nPlayer);
+		
+		newPlayerData.setPrestigeLvl(oldPlayerData.getPrestigeLvl());
+		
+		oPlayer.invalidateCaps();
+	}
+	
 
 	@SubscribeEvent
 	public void onLivingUpdate(LivingEvent.LivingTickEvent event) {

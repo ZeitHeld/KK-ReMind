@@ -15,6 +15,7 @@ import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
 
 public class CSPrestigePacket {
 
@@ -35,7 +36,6 @@ public class CSPrestigePacket {
     public static void handle(final CSPrestigePacket message, Supplier<NetworkEvent.Context> ctx) {
         Player player = ctx.get().getSender();
 
-        //IPlayerCapabilitiesX playerDataX = ModCapabilitiesX.getPlayer(player);
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
         IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
         Utils.restartLevel(playerData, player);
@@ -48,6 +48,8 @@ public class CSPrestigePacket {
         playerData.getDefenseStat().addModifier("NG+ Bonus",1, true);
         playerData.addAbility(Strings.luckyLucky, true);
         PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
+        System.out.println(globalData.getPrestigeLvl());
+        PacketHandlerX.syncGlobalToAllAround(player, globalData);
         ctx.get().setPacketHandled(true);
     }
 }

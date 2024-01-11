@@ -40,9 +40,7 @@ public class PrestigeMenu extends MenuBackground{
         if (string.equals("back"))
             GuiHelper.openMenu();
         if (string.equals("confirm")){
-
             PacketHandlerX.sendToServer(new CSPrestigePacket());
-
             minecraft.setScreen(null);
         }
 
@@ -96,7 +94,7 @@ public class PrestigeMenu extends MenuBackground{
         int spacer = 14;
 
         addRenderableWidget(level = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal(Strings.Gui_Menu_Status_Level),"" + playerData.getLevel(), 0x000088));
-        //addRenderableWidget(prestigeLevel = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal(StringsX.Gui_Menu_Button_PrestigeLevel),"" + addedData.getPrestigeLvl(), 0xe3ce44));
+        addRenderableWidget(prestigeLevel = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal(StringsX.Gui_Menu_Button_PrestigeLevel),"" + addedData.getPrestigeLvl(), 0xe3ce44));
         //addRenderableWidget(gainedSTR = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal("Gained STR: "), "0", 0xe3ce44));
         //addRenderableWidget(gainedMAG = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal("Gained MAG: "), "0", 0xe3ce44));
         //addRenderableWidget(gainedDEF = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal("Gained MAG: "), "0", 0xe3ce44));

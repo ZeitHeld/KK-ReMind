@@ -63,6 +63,8 @@ import online.kingdomkeys.kingdomkeys.util.Utils.OrgMember;
 import online.kingdomkeys.kingdomkeys.world.dimension.ModDimensions;
 import online.magicksaddon.magicsaddonmod.client.gui.GUIHelperX;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
+import online.magicksaddon.magicsaddonmod.network.cts.CSSyncAllClientDataXPacket;
 
 public class MAInputHandler extends InputHandler{
 	
@@ -73,6 +75,8 @@ public class MAInputHandler extends InputHandler{
     List<String> magicList;
     Map<Integer, ItemStack> itemsList;
     List<String> reactionList = new ArrayList<String>();
+    
+    
     
     public boolean antiFormCheck() { //Only checks if form is not final
         Minecraft mc = Minecraft.getInstance();
@@ -633,7 +637,7 @@ public class MAInputHandler extends InputHandler{
 		}
 	}
 
-
+    @Override
     @SubscribeEvent
     public void handleKeyInputEvent(InputEvent.Key event) {
         Minecraft mc = Minecraft.getInstance();
@@ -666,12 +670,14 @@ public class MAInputHandler extends InputHandler{
                 switch (key) {
                     case OPENMENU:
                         PacketHandler.sendToServer(new CSSyncAllClientDataPacket());
+                        PacketHandlerX.sendToServer(new CSSyncAllClientDataXPacket());
                         if (ModCapabilities.getPlayer(player).getSoAState() != SoAState.COMPLETE) {
                             if (player.level().dimension() != ModDimensions.DIVE_TO_THE_HEART) {
                                 mc.setScreen(new NoChoiceMenuPopup());
                             }
                         } else {
                             GUIHelperX.openAddonMenu();
+                            //return;
                         }
                         break;
 

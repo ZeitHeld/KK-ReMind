@@ -1,4 +1,4 @@
-package online.magicksaddon.magicsaddonmod.handler;
+package online.magicksaddon.magicsaddonmod.capabilities;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -13,7 +13,7 @@ import online.magicksaddon.magicsaddonmod.capabilities.GlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 
-public class Provider implements ICapabilityProvider, ICapabilitySerializable<CompoundTag> {
+public class GlobalCapabilitiesXProvider implements ICapabilityProvider, ICapabilitySerializable<CompoundTag> {
     IGlobalCapabilitiesX instance = new GlobalCapabilitiesX();
 
     @Override
@@ -22,13 +22,13 @@ public class Provider implements ICapabilityProvider, ICapabilitySerializable<Co
     }
 
     @Override
-    public CompoundTag serializeNBT() {
-        return instance.serializeNBT();
-    }
+	public CompoundTag serializeNBT() {
+		return instance.serializeNBT();
+	}
 
-    @Override
-    public void deserializeNBT(CompoundTag nbt) {
-        instance.deserializeNBT();
-    }
+	@Override
+	public void deserializeNBT(CompoundTag nbt) {
+		instance.deserializeNBT(nbt);
+	}
 }
 

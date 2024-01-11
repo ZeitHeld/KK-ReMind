@@ -5,7 +5,7 @@ import net.minecraft.nbt.CompoundTag;
 
 public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
 
-
+	@Override
     public CompoundTag serializeNBT() {
         CompoundTag storage = new CompoundTag();
         storage.putInt("haste_ticks", this.getHasteTicks());
@@ -19,13 +19,14 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         return storage;
     }
 
+	@Override
     public void deserializeNBT(CompoundTag nbt) {
         CompoundTag properties = (CompoundTag) nbt;
         this.setHasteTicks(properties.getInt("haste_ticks"), properties.getInt("haste_level"));
         this.setSlowTicks(properties.getInt("slow_ticks"), properties.getInt("slow_level"));
         this.setBerserkTicks(properties.getInt("berserk_ticks"), properties.getInt("berserk_level"));
+        this.setPrestigeLvl(properties.getInt("prestige_level"));
     }
-
 
     private int hasteTicks;
     private int hasteLevel;
@@ -148,16 +149,13 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     }
 
     @Override
-    public int addPrestigeLvl(int i) {
-        return prestigeLvl;
+    public void addPrestigeLvl(int i) {
+        prestigeLvl += i;
     }
 
-
-
-
     @Override
-    public void deserializeNBT() {
-
+    public void setPrestigeLvl(int i) {
+        prestigeLvl = i;
     }
 
     // Not Slow

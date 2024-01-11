@@ -18,7 +18,7 @@ import online.magicksaddon.magicsaddonmod.client.ClientUtilsMA;
 public class SCSyncGlobalCapabilityToAllPacketX {
 
     public int id;
-    public int berserkLvl, berserkTicks;
+    public int berserkLvl, berserkTicks, prestige;
 
     public SCSyncGlobalCapabilityToAllPacketX() {
 
@@ -28,12 +28,14 @@ public class SCSyncGlobalCapabilityToAllPacketX {
         this.id = id;
         this.berserkLvl= capability.getBerserkLevel();
         this.berserkTicks = capability.getBerserkTicks();
+        this.prestige = capability.getPrestigeLvl();
     }
 
     public void encode(FriendlyByteBuf buffer){
         buffer.writeInt(id);
         buffer.writeInt(this.berserkLvl);
         buffer.writeInt(this.berserkTicks);
+        buffer.writeInt(this.prestige);
     }
 
     public static SCSyncGlobalCapabilityToAllPacketX decode(FriendlyByteBuf buffer){
@@ -41,6 +43,7 @@ public class SCSyncGlobalCapabilityToAllPacketX {
         msg.id = buffer.readInt();
         msg.berserkLvl = buffer.readInt();
         msg.berserkTicks = buffer.readInt();
+        msg.prestige = buffer.readInt();
         return msg;
     }
 
@@ -52,6 +55,7 @@ public class SCSyncGlobalCapabilityToAllPacketX {
 				LazyOptional<IGlobalCapabilitiesX> globalData = entity.getCapability(ModCapabilitiesX.GLOBAL_CAPABILITIES);
 				globalData.ifPresent(cap -> {
 					cap.setBerserkTicks(message.berserkTicks, message.berserkLvl);
+					cap.setPrestigeLvl(message.prestige);
 				});
 			}
 		});
