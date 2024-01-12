@@ -15,6 +15,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import online.kingdomkeys.kingdomkeys.capability.GlobalCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.SoAState;
@@ -42,11 +43,13 @@ public class MagicksEntityEvents {
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.bioBarrage, true);
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.meteorShower, true);
 			if (playerData.getSoAState() == SoAState.COMPLETE){
+				/*
 				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.darkMode, 1);
 				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.light, 1);
 				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.rageForm, 1);
-
+				 */
 				//System.out.println(playerData.getDriveFormMap());
+
 			}
 	}
 	
@@ -82,7 +85,7 @@ public class MagicksEntityEvents {
 					}
 				} else {
 					if(playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+ StringsX.darkMode)) {
-						playerData.getDriveFormMap().remove(MagicksAddonMod.MODID+":"+ StringsX.darkMode);
+						//playerData.getDriveFormMap().remove(MagicksAddonMod.MODID+":"+ StringsX.darkMode);
 					}
 				}
 
@@ -109,7 +112,7 @@ public class MagicksEntityEvents {
 
 				// Additional Forms ^
 
-				// Light/Darkness Within Code?
+				// Light/Darkness Within
 
 				int boostWithin = (playerData.getStrengthStat().getStat() + playerData.getMagicStat().getStat()) / 4;
 

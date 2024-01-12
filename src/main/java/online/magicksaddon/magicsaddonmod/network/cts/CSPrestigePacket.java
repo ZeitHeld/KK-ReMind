@@ -96,6 +96,7 @@ public class CSPrestigePacket {
         // NG+ Bonus Abilities
 
         playerData.addAbility(Strings.experienceBoost, true);
+        playerData.addAbility(Strings.luckyLucky, true);
 
         if (globalData.getNGPWarriorCount() >= 1) {
             playerData.addAbility(StringsX.adrenaline, true);

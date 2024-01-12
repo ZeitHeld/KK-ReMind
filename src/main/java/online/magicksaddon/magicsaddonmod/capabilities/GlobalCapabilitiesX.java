@@ -2,6 +2,13 @@ package online.magicksaddon.magicsaddonmod.capabilities;
 
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.player.Player;
+import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
+import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
+import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.kingdomkeys.kingdomkeys.capability.PlayerCapabilities;
+import online.magicksaddon.magicsaddonmod.lib.StringsX;
+
 
 public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
 
@@ -16,7 +23,8 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         storage.putInt("berserk_level", this.getBerserkLevel());
         storage.putInt("autolife_active", this.getAutoLifeActive());
 
-
+        storage.putInt("dark_mode_exp", this.getDarkModeEXP());
+        storage.putInt("light_form_exp", this.getLightFormEXP());
 
 
         // New Game Plus NBT
@@ -40,6 +48,11 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         this.setHasteTicks(properties.getInt("haste_ticks"), properties.getInt("haste_level"));
         this.setSlowTicks(properties.getInt("slow_ticks"), properties.getInt("slow_level"));
         this.setBerserkTicks(properties.getInt("berserk_ticks"), properties.getInt("berserk_level"));
+
+        this.setDarkModeEXP(properties.getInt("dark_mode_exp"));
+        this.setLightFormEXP(properties.getInt("light_form_exp"));
+        this.setDarkModeLvl(properties.getInt("dark_mode_lvl"));
+        this.setLightFormLvl(properties.getInt("light_form_lvl"));
 
         this.setPrestigeLvl(properties.getInt("prestige_level"));
 
@@ -66,6 +79,11 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     private int NGPlusWarriorCount;
     private int NGPlusMysticCount;
     private int NGPlusGuardianCount;
+
+    private int darkModeEXP;
+    private int lightFormEXP;
+    private int darkModeLvl;
+    private int lightFormLvl;
 
     //Haste
     public int getHasteLevel() {
@@ -162,6 +180,49 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         isAutoLifeActive = autoLifeActive;
         return autoLifeActive;
     }
+
+    //Forms
+
+    @Override
+    public int getDarkModeEXP(){
+        return darkModeEXP;
+    }
+    @Override
+    public int getLightFormEXP(){
+        return lightFormEXP;
+    }
+
+    @Override
+    public void setDarkModeEXP(int i){
+        darkModeEXP = i;
+    }
+
+    @Override
+    public void setLightFormEXP(int i){
+        lightFormEXP = i;
+
+    }
+    @Override
+    public void setDarkModeLvl(int i){
+        darkModeEXP = i;
+    }
+
+    @Override
+    public void setLightFormLvl(int i){
+        lightFormEXP = i;
+
+    }
+
+    @Override
+    public int getDarkModeLvl(){
+        return darkModeLvl;
+    }
+    @Override
+    public int getLightFormLvl(){
+        return lightFormLvl;
+    }
+
+
 
     @Override
     public int getAutoLifeActive() {

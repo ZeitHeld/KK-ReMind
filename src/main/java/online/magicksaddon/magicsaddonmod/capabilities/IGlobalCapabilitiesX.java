@@ -35,6 +35,20 @@ public interface IGlobalCapabilitiesX extends INBTSerializable<CompoundTag> {
     int getAutoLifeActive();
     void remAutoLifeActive(int use);
 
+    // Forms
+
+    int getDarkModeEXP();
+    int getLightFormEXP();
+
+    void setDarkModeEXP(int i);
+    void setLightFormEXP(int i);
+
+    int getDarkModeLvl();
+    int getLightFormLvl();
+
+    void setDarkModeLvl(int i);
+    void setLightFormLvl(int i);
+
     //Prestige
     int getPrestigeLvl();
     void addPrestigeLvl(int i);
