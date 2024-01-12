@@ -25,9 +25,9 @@ public class PrestigeMenu extends MenuBackground{
 
     private MenuButton backButton, prestige, levelReq;
 
-    MenuColourBox level, prestigeLevel, gainedHP, gainedMP, gainedSTR, gainedMAG, gainedDEF;
+    MenuColourBox level, prestigeLevel, gainedHP, gainedMP, gainedSTR, gainedMAG, gainedDEF, currentPath;
 
-    MenuColourBox[] playerWidgets = {level, prestigeLevel, gainedHP, gainedMP, gainedSTR, gainedMAG, gainedDEF};
+    MenuColourBox[] playerWidgets = {level, prestigeLevel, gainedHP, gainedMP, gainedSTR, gainedMAG, gainedDEF, currentPath};
 
 
 
@@ -53,6 +53,8 @@ public class PrestigeMenu extends MenuBackground{
         final IPlayerCapabilities playerData = ModCapabilities.getPlayer(minecraft.player);
         IGlobalCapabilitiesX addedData = ModCapabilitiesX.getGlobal(minecraft.player);
         System.out.println(addedData);
+        System.out.println(addedData.getSTRBonus());
+        System.out.println(addedData.getNGPWarriorCount());
 
         super.init();
         this.renderables.clear();
@@ -91,13 +93,25 @@ public class PrestigeMenu extends MenuBackground{
 
         //Stats
         int c = 0;
+        int d = 0;
         int spacer = 14;
 
+        System.out.println(addedData.getSTRBonus());
+        System.out.println(addedData.getNGPWarriorCount());
+
+        // Levels
         addRenderableWidget(level = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal(Strings.Gui_Menu_Status_Level),"" + playerData.getLevel(), 0x000088));
         addRenderableWidget(prestigeLevel = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal(StringsX.Gui_Menu_Button_PrestigeLevel),"" + addedData.getPrestigeLvl(), 0xe3ce44));
-        //addRenderableWidget(gainedSTR = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal("Gained STR: "), "0", 0xe3ce44));
-        //addRenderableWidget(gainedMAG = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal("Gained MAG: "), "0", 0xe3ce44));
-        //addRenderableWidget(gainedDEF = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal("Gained MAG: "), "0", 0xe3ce44));
+        addRenderableWidget(currentPath = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal("Current Path: "),"" + playerData.getChosen(), 0xe3ce44));
+
+        // Stats Column
+        addRenderableWidget(gainedHP = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth*2, Utils.translateToLocal("Gained Max HP: "), "" + addedData.getPrestigeLvl() * 2, 0x3ECE44));
+        addRenderableWidget(gainedMP = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth*2, Utils.translateToLocal("Gained Max MP: "), "" + addedData.getPrestigeLvl() * 2, 0x3ECE44));
+
+
+        addRenderableWidget(gainedSTR = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth*2, Utils.translateToLocal("Gained STR: "), "" + addedData.getNGPWarriorCount() * 2, 0xaa190f));
+        addRenderableWidget(gainedMAG = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth*2, Utils.translateToLocal("Gained MAG: "), "" + addedData.getMAGBonus(), 0xaa190f));
+        addRenderableWidget(gainedDEF = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth*2, Utils.translateToLocal("Gained DEF: "), "" + addedData.getDEFBonus(), 0xaa190f));
     }
 
 

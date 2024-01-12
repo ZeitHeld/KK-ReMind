@@ -15,7 +15,22 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         storage.putInt("berserk_ticks",this.getBerserkTicks());
         storage.putInt("berserk_level", this.getBerserkLevel());
         storage.putInt("autolife_active", this.getAutoLifeActive());
+
+
+
+
+        // New Game Plus NBT
         storage.putInt("prestige_level", this.getPrestigeLvl());
+
+        storage.putInt("NGPlus_STR_Bonus", this.getSTRBonus());
+        storage.putInt("NGPlus_MAG_Bonus", this.getMAGBonus());
+        storage.putInt("NGPlus_DEF_Bonus", this.getDEFBonus());
+
+        storage.putInt("NGPlus_Warrior", this.getNGPWarriorCount());
+        storage.putInt("NGPlus_Mystic", this.getNGPMysticCount());
+        storage.putInt("NGPlus_Guardian", this.getNGPGuardianCount());
+
+
         return storage;
     }
 
@@ -25,7 +40,16 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         this.setHasteTicks(properties.getInt("haste_ticks"), properties.getInt("haste_level"));
         this.setSlowTicks(properties.getInt("slow_ticks"), properties.getInt("slow_level"));
         this.setBerserkTicks(properties.getInt("berserk_ticks"), properties.getInt("berserk_level"));
+
         this.setPrestigeLvl(properties.getInt("prestige_level"));
+
+        this.setSTRBonus(properties.getInt("NGPlus_STR_Bonus"));
+        this.setMAGBonus(properties.getInt("NGPlus_MAG_Bonus"));
+        this.setDEFBonus(properties.getInt("NGPlus_DEF_Bonus"));
+
+        this.setNGPWarriorCount(properties.getInt("NGPlus_Warrior"));
+        this.setNGPMysticCount(properties.getInt("NGPlus_Mystic"));
+        this.setNGPGuardianCount(properties.getInt("NGPlus_Guardian"));
     }
 
     private int hasteTicks;
@@ -36,6 +60,12 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     private int berserkTicks;
     private int isAutoLifeActive;
     private int prestigeLvl;
+    private int strBonus;
+    private int magBonus;
+    private int defBonus;
+    private int NGPlusWarriorCount;
+    private int NGPlusMysticCount;
+    private int NGPlusGuardianCount;
 
     //Haste
     public int getHasteLevel() {
@@ -158,7 +188,65 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         prestigeLvl = i;
     }
 
-    // Not Slow
+    @Override
+    public int getSTRBonus() {
+        return strBonus;
+    }
+
+    @Override
+    public int getMAGBonus() {
+        return magBonus;
+    }
+
+    @Override
+    public int getDEFBonus() {
+        return defBonus;
+    }
+
+    @Override
+    public void setSTRBonus(int i) {
+        strBonus += i;
+    }
+
+    @Override
+    public void setMAGBonus(int i) {
+        magBonus += i;
+    }
+
+    @Override
+    public void setDEFBonus(int i) {
+        defBonus += i;
+    }
+
+    @Override
+    public int getNGPWarriorCount() {
+        return NGPlusWarriorCount;
+    }
+
+    @Override
+    public int getNGPMysticCount() {
+        return NGPlusMysticCount;
+    }
+
+    @Override
+    public int getNGPGuardianCount() {
+        return NGPlusGuardianCount;
+    }
+
+    @Override
+    public void setNGPWarriorCount(int i) {
+        NGPlusWarriorCount += i;
+    }
+
+    @Override
+    public void setNGPMysticCount(int i) {
+        NGPlusMysticCount += i;
+    }
+
+    @Override
+    public void setNGPGuardianCount(int i) {
+        NGPlusGuardianCount += i;
+    }
 
 
 }
