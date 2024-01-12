@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.kingdomkeys.kingdomkeys.driveform.DriveFormValor;
 import online.kingdomkeys.kingdomkeys.lib.SoAState;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
@@ -49,16 +50,8 @@ public class CSPrestigePacket {
 
         if (oldChoice == "WARRIOR"){
             //System.out.println("Warrior NG+ Working");
-            globalData.setNGPWarriorCount(+1);
-            /*
-            playerData.addAbility(Strings.luckyLucky, true);
-            playerData.addAbility(Strings.formBoost, true);
-            playerData.addAbility(Strings.formBoost, true);
-            playerData.addAbility(Strings.criticalBoost, true);
-            playerData.addAbility(Strings.criticalBoost, true);
-            playerData.addAbility(StringsX.adrenaline, true);
-            */
-            globalData.setSTRBonus(+2);
+            globalData.addNGPWarriorCount(+1);
+            globalData.addSTRBonus(+2);
             System.out.println("Strength Bonus: " + globalData.getSTRBonus());
             PacketHandlerX.syncGlobalToAllAround(player, globalData);
 
@@ -66,16 +59,8 @@ public class CSPrestigePacket {
         }
         if (oldChoice == "MYSTIC"){
             //System.out.println("Mystic NG+ Working");
-            globalData.setNGPMysticCount(+1);
-            /*
-            playerData.addAbility(Strings.mpHastega, true);
-            playerData.addAbility(Strings.mpThrift, true);
-            playerData.addAbility(Strings.fireBoost, true);
-            playerData.addAbility(Strings.blizzardBoost, true);
-            playerData.addAbility(Strings.thunderBoost, true);
-            playerData.addAbility(StringsX.critical_surge, true);
-             */
-            globalData.setMAGBonus(+2);
+            globalData.addNGPMysticCount(+1);
+            globalData.addMAGBonus(+2);
             System.out.println("Magic Bonus: " + globalData.getMAGBonus());
             PacketHandlerX.syncGlobalToAllAround(player, globalData);
 
@@ -83,21 +68,13 @@ public class CSPrestigePacket {
         }
         if (oldChoice == "GUARDIAN"){
             //System.out.println("Guardian NG+ Working");
-            globalData.setNGPGuardianCount(+1);
-            /*
-            playerData.addAbility(Strings.luckyLucky, true);
-            playerData.addAbility(Strings.jackpot, true);
-            playerData.addAbility(Strings.jackpot, true);
-            playerData.addAbility(Strings.damageControl, true);
-            playerData.addAbility(Strings.damageControl, true);
-             */
-            globalData.setDEFBonus(+2);
+            globalData.addNGPGuardianCount(+1);
+            globalData.addDEFBonus(+2);
             System.out.println("Defense Bonus: " + globalData.getDEFBonus());
             PacketHandlerX.syncGlobalToAllAround(player, globalData);
-
-
-
         }
+
+
         System.out.println("NG+ Counts: " + globalData.getNGPWarriorCount() + ", " + globalData.getNGPMysticCount() + ", " + globalData.getNGPGuardianCount());
 
         System.out.println("Bonus Stats: " + globalData.getSTRBonus() + ", " + globalData.getMAGBonus() + ", " + globalData.getDEFBonus());
@@ -116,9 +93,51 @@ public class CSPrestigePacket {
         playerData.addMaxHP(2 * globalData.getPrestigeLvl());
         playerData.addMaxMP(2 * globalData.getPrestigeLvl());
 
+        // NG+ Bonus Abilities
+
+        playerData.addAbility(Strings.experienceBoost, true);
+
+        if (globalData.getNGPWarriorCount() >= 1) {
+            playerData.addAbility(StringsX.adrenaline, true);
+            if (globalData.getNGPWarriorCount() >= 2) {
+                playerData.addAbility(Strings.formBoost, true);
+            }
+            if (globalData.getNGPWarriorCount() >= 3) {
+                playerData.addAbility(Strings.criticalBoost, true);
+            }
+            if (globalData.getNGPWarriorCount() >= 4) {
+                playerData.addAbility(Strings.driveBoost, true);
+            }
+        }
+
+        if (globalData.getNGPMysticCount() >= 1) {
+            playerData.addAbility(StringsX.critical_surge, true);
+            if (globalData.getNGPMysticCount() >= 2) {
+                playerData.addAbility(Strings.mpHastega, true);
+            }
+            if (globalData.getNGPMysticCount() >= 3) {
+                playerData.addAbility(Strings.mpThrift, true);
+            }
+            if (globalData.getNGPMysticCount() >= 4){
+                playerData.addAbility(Strings.grandMagicHaste, true);
+            }
+        }
+
+        if (globalData.getNGPGuardianCount() >= 1) {
+            playerData.addAbility(Strings.damageControl, true);
+            if (globalData.getNGPGuardianCount() >= 2) {
+                playerData.addAbility(Strings.damageDrive, true);
+            }
+            if (globalData.getNGPGuardianCount() >= 3) {
+                playerData.addAbility(Strings.jackpot, true);
+            }
+            if (globalData.getNGPGuardianCount() >= 4){
+                playerData.addAbility(Strings.itemBoost, true);
+            }
+        }
 
         PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
-        System.out.println("Prestige Level: " + globalData.getPrestigeLvl());
+        //System.out.println("Prestige Level: " + globalData.getPrestigeLvl());
         PacketHandlerX.syncGlobalToAllAround(player, globalData);
         ctx.get().setPacketHandled(true);
     }

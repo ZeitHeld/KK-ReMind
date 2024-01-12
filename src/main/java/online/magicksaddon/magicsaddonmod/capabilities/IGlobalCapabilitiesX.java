@@ -48,6 +48,10 @@ public interface IGlobalCapabilitiesX extends INBTSerializable<CompoundTag> {
     void setMAGBonus(int i);
     void setDEFBonus(int i);
 
+    void addSTRBonus(int i);
+    void addMAGBonus(int i);
+    void addDEFBonus(int i);
+
     int getNGPWarriorCount();
     int getNGPMysticCount();
     int getNGPGuardianCount();
@@ -55,6 +59,10 @@ public interface IGlobalCapabilitiesX extends INBTSerializable<CompoundTag> {
     void setNGPWarriorCount(int i);
     void setNGPMysticCount(int i);
     void setNGPGuardianCount(int i);
+
+    void addNGPWarriorCount(int i);
+    void addNGPMysticCount(int i);
+    void addNGPGuardianCount(int i);
 
 
 }

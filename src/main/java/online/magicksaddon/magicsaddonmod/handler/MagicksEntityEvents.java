@@ -60,7 +60,13 @@ public class MagicksEntityEvents {
 		IGlobalCapabilitiesX newPlayerData = ModCapabilitiesX.getGlobal(nPlayer);
 		
 		newPlayerData.setPrestigeLvl(oldPlayerData.getPrestigeLvl());
-		
+		newPlayerData.setNGPWarriorCount(oldPlayerData.getNGPWarriorCount());
+		newPlayerData.setNGPMysticCount(oldPlayerData.getNGPMysticCount());
+		newPlayerData.setNGPGuardianCount(oldPlayerData.getNGPGuardianCount());
+		newPlayerData.setSTRBonus(oldPlayerData.getSTRBonus());
+		newPlayerData.setMAGBonus(oldPlayerData.getMAGBonus());
+		newPlayerData.setDEFBonus(oldPlayerData.getDEFBonus());
+
 		oPlayer.invalidateCaps();
 	}
 	

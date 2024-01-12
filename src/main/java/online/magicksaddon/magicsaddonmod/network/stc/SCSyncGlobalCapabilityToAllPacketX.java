@@ -18,7 +18,7 @@ import online.magicksaddon.magicsaddonmod.client.ClientUtilsMA;
 public class SCSyncGlobalCapabilityToAllPacketX {
 
     public int id;
-    public int berserkLvl, berserkTicks, prestige;
+    public int berserkLvl, berserkTicks, prestige, strBonus, magBonus, defBonus, NGPlusWarriorCount, NGPlusMysticCount, NGPlusGuardianCount;
 
     public SCSyncGlobalCapabilityToAllPacketX() {
 
@@ -29,6 +29,12 @@ public class SCSyncGlobalCapabilityToAllPacketX {
         this.berserkLvl= capability.getBerserkLevel();
         this.berserkTicks = capability.getBerserkTicks();
         this.prestige = capability.getPrestigeLvl();
+        this.strBonus = capability.getSTRBonus();
+        this.magBonus = capability.getMAGBonus();
+        this.defBonus = capability.getDEFBonus();
+        this.NGPlusWarriorCount = capability.getNGPWarriorCount();
+        this.NGPlusMysticCount = capability.getNGPMysticCount();
+        this.NGPlusGuardianCount = capability.getNGPGuardianCount();
     }
 
     public void encode(FriendlyByteBuf buffer){
@@ -36,6 +42,12 @@ public class SCSyncGlobalCapabilityToAllPacketX {
         buffer.writeInt(this.berserkLvl);
         buffer.writeInt(this.berserkTicks);
         buffer.writeInt(this.prestige);
+        buffer.writeInt(this.strBonus);
+        buffer.writeInt(this.magBonus);
+        buffer.writeInt(this.defBonus);
+        buffer.writeInt(this.NGPlusWarriorCount);
+        buffer.writeInt(this.NGPlusMysticCount);
+        buffer.writeInt(this.NGPlusGuardianCount);
     }
 
     public static SCSyncGlobalCapabilityToAllPacketX decode(FriendlyByteBuf buffer){
@@ -44,6 +56,12 @@ public class SCSyncGlobalCapabilityToAllPacketX {
         msg.berserkLvl = buffer.readInt();
         msg.berserkTicks = buffer.readInt();
         msg.prestige = buffer.readInt();
+        msg.strBonus = buffer.readInt();
+        msg.magBonus = buffer.readInt();
+        msg.defBonus = buffer.readInt();
+        msg.NGPlusWarriorCount = buffer.readInt();
+        msg.NGPlusMysticCount = buffer.readInt();
+        msg.NGPlusGuardianCount = buffer.readInt();
         return msg;
     }
 
@@ -56,6 +74,12 @@ public class SCSyncGlobalCapabilityToAllPacketX {
 				globalData.ifPresent(cap -> {
 					cap.setBerserkTicks(message.berserkTicks, message.berserkLvl);
 					cap.setPrestigeLvl(message.prestige);
+                    cap.setSTRBonus(message.strBonus);
+                    cap.setMAGBonus(message.magBonus);
+                    cap.setDEFBonus(message.defBonus);
+                    cap.setNGPWarriorCount(message.NGPlusWarriorCount);
+                    cap.setNGPMysticCount(message.NGPlusMysticCount);
+                    cap.setNGPGuardianCount(message.NGPlusGuardianCount);
 				});
 			}
 		});

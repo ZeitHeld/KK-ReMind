@@ -205,16 +205,31 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
 
     @Override
     public void setSTRBonus(int i) {
-        strBonus += i;
+        strBonus = i;
     }
 
     @Override
     public void setMAGBonus(int i) {
-        magBonus += i;
+        magBonus = i;
     }
 
     @Override
     public void setDEFBonus(int i) {
+        defBonus = i;
+    }
+
+    @Override
+    public void addSTRBonus(int i) {
+        strBonus += i;
+    }
+
+    @Override
+    public void addMAGBonus(int i) {
+        magBonus += i;
+    }
+
+    @Override
+    public void addDEFBonus(int i) {
         defBonus += i;
     }
 
@@ -235,18 +250,31 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
 
     @Override
     public void setNGPWarriorCount(int i) {
-        NGPlusWarriorCount += i;
+        NGPlusWarriorCount = i;
     }
 
     @Override
     public void setNGPMysticCount(int i) {
-        NGPlusMysticCount += i;
+        NGPlusMysticCount = i;
     }
 
     @Override
     public void setNGPGuardianCount(int i) {
-        NGPlusGuardianCount += i;
+        NGPlusGuardianCount = i;
     }
+
+    @Override
+    public void addNGPWarriorCount(int i){
+        NGPlusWarriorCount += i;
+    }
+    @Override
+    public void addNGPMysticCount(int i){
+        NGPlusMysticCount += i;
+    }
+    @Override
+        public void addNGPGuardianCount(int i){
+            NGPlusGuardianCount += i;
+        }
 
 
 }
