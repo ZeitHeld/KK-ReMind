@@ -14,7 +14,10 @@ import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
 
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
 public class DriveFormLight extends DriveForm {
@@ -35,10 +38,13 @@ public class DriveFormLight extends DriveForm {
             if (event.getSource().getEntity() instanceof Player) {
                 Player player = (Player) event.getSource().getEntity();
                 IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+                IGlobalCapabilitiesX formData = ModCapabilitiesX.getGlobal(player);
 
                 if (playerData != null && playerData.getActiveDriveForm().equals(MagicksAddonMod.MODID+":"+ StringsX.light)) {
                     double mult = Double.parseDouble(ModConfigs.driveFormXPMultiplier.get(0).split(",")[1]);
                     playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
+                    formData.setDarkModeEXP((int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
+                    PacketHandlerX.syncGlobalToAllAround(player, formData);
                     PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
                 }
             }

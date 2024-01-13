@@ -19,14 +19,25 @@ import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
 
+import java.awt.*;
+
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
 public class DriveFormDark extends DriveForm {
-	ResourceLocation skinRL2;
+    public float[] color;
+    ResourceLocation skinRL2;
+
 
     public DriveFormDark(String registeryName, int order, ResourceLocation skinRL, boolean hasKeychain, boolean baseGrowthAbilities) {
         super(registeryName, order, hasKeychain, baseGrowthAbilities);
-        skinRL2 = skinRL;        
+        this.color = new float[] {1F, 1F, 0F};
+        skinRL2 = skinRL;
     }
+
+
+
+
+
+
 
     @SubscribeEvent
     public static void getDarkModeXP(LivingDeathEvent event) {
@@ -39,9 +50,13 @@ public class DriveFormDark extends DriveForm {
                 if (playerData != null && playerData.getActiveDriveForm().equals(MagicksAddonMod.MODID+":"+ StringsX.darkMode)) {
                     double mult = Double.parseDouble(ModConfigs.driveFormXPMultiplier.get(0).split(",")[1]);
                     playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
-                    formData.setDarkModeEXP(playerData.getDriveFormExp(StringsX.darkMode));
-                    System.out.println(formData.getDarkModeEXP());
-                    System.out.println(formData.getDarkModeLvl());
+
+                    formData.setDarkModeEXP((int) (playerData.getDriveFormExp(playerData.getActiveDriveForm())));
+                    formData.setDarkModeLvl((int) (playerData.getDriveFormLevel(playerData.getActiveDriveForm())));
+
+                    System.out.println("EXP: " + formData.getDarkModeEXP());
+                    System.out.println("Level: " + formData.getDarkModeLvl());
+
 
                     PacketHandlerX.syncGlobalToAllAround(player, formData);
                     PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
@@ -54,4 +69,13 @@ public class DriveFormDark extends DriveForm {
     public ResourceLocation getTextureLocation() {
     	return skinRL2;
     }
+
+    /*
+    @Override
+    public float[] getDriveColor(){
+        return color2;
+    }
+
+     */
+
 }

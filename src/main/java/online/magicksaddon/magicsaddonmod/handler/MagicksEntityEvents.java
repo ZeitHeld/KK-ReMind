@@ -34,6 +34,7 @@ public class MagicksEntityEvents {
 		Player player = e.getEntity();
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 
+
 		// Testing Stuff
 
 
@@ -78,14 +79,21 @@ public class MagicksEntityEvents {
 	public void onLivingUpdate(LivingEvent.LivingTickEvent event) {
 		if(event.getEntity() instanceof Player player) {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+			IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
 			if(playerData != null) {
 				if(playerData.isAbilityEquipped(StringsX.darkPower)) {
 					if(!playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+ StringsX.darkMode)) {
 						playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.darkMode, 1);
+						if (globalData.getDarkModeLvl() > 1){
+
+						}
+						//playerData.setDriveFormExp(player, MagicksAddonMod.MODID+":"+ StringsX.darkMode,globalData.getDarkModeEXP());
 					}
 				} else {
 					if(playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+ StringsX.darkMode)) {
-						//playerData.getDriveFormMap().remove(MagicksAddonMod.MODID+":"+ StringsX.darkMode);
+						System.out.println(globalData.getDarkModeEXP());
+						System.out.println(globalData.getDarkModeLvl());
+						playerData.getDriveFormMap().remove(MagicksAddonMod.MODID+":"+ StringsX.darkMode);
 					}
 				}
 
@@ -101,7 +109,9 @@ public class MagicksEntityEvents {
 
 				if(playerData.isAbilityEquipped(StringsX.wayToLight)) {
 					if(!playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+ StringsX.light)) {
-						playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.light, 1);
+						//playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.light, 1);
+						playerData.setDriveFormExp(player, MagicksAddonMod.MODID+":"+ StringsX.light,globalData.getLightFormEXP());
+
 					}
 				} else {
 					if (playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID + ":" + StringsX.light)) {

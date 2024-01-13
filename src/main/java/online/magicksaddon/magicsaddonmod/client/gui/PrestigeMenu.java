@@ -52,7 +52,7 @@ public class PrestigeMenu extends MenuBackground{
         Player player;
         final IPlayerCapabilities playerData = ModCapabilities.getPlayer(minecraft.player);
         IGlobalCapabilitiesX addedData = ModCapabilitiesX.getGlobal(minecraft.player);
-        System.out.println(addedData);
+        //System.out.println(addedData);
 
         super.init();
         this.renderables.clear();

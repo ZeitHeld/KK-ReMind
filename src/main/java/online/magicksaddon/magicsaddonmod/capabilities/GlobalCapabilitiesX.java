@@ -204,12 +204,12 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     }
     @Override
     public void setDarkModeLvl(int i){
-        darkModeEXP = i;
+        darkModeLvl = i;
     }
 
     @Override
     public void setLightFormLvl(int i){
-        lightFormEXP = i;
+        lightFormLvl = i;
 
     }
 
