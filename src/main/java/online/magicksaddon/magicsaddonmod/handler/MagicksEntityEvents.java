@@ -74,6 +74,32 @@ public class MagicksEntityEvents {
 		oPlayer.invalidateCaps();
 	}
 	
+	/**
+	 * 
+	 * @param player
+	 * @param AbilityName StringsX.darkPower
+	 * @param formName ModID + StringsX.darkMode
+	 * @param formEXP getDarkModeEXP()
+	 */
+	private void updateDriveAbilities(Player player, String AbilityName, String formName, int formEXP) {
+		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+		IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
+
+		if(playerData.isAbilityEquipped(AbilityName)) { //if ability to use dark form is equipped
+			if(!playerData.getDriveFormMap().containsKey(formName)) {
+				playerData.setDriveFormLevel(formName, 1); //We give the form to the player
+				if(globalData.getDarkModeEXP() > 0) { //If we have some amount of exp stored in the new capability give it to the KK form so it properly gets leveled up
+					playerData.setDriveFormExp(player, formName, formEXP);
+					System.out.println("Leveled dark form with "+formEXP+"xp points");
+				}
+			}
+		} else { // If ability to use dark form is NOT equipped
+			if(playerData.getDriveFormMap().containsKey(formName)) {
+				playerData.getDriveFormMap().remove(formName);
+			}
+		}		
+	}
+
 
 	@SubscribeEvent
 	public void onLivingUpdate(LivingEvent.LivingTickEvent event) {
@@ -81,47 +107,11 @@ public class MagicksEntityEvents {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
 			if(playerData != null) {
-				if(playerData.isAbilityEquipped(StringsX.darkPower)) {
-					if(!playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+ StringsX.darkMode)) {
-						playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.darkMode, 1);
-						if (globalData.getDarkModeLvl() > 1){
+				updateDriveAbilities(player, StringsX.darkPower, MagicksAddonMod.MODID+":"+ StringsX.darkMode, globalData.getDarkModeEXP());
+				updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm, globalData.getRageModeEXP());
+				updateDriveAbilities(player, StringsX.wayToLight, MagicksAddonMod.MODID+":"+ StringsX.light, globalData.getLightFormEXP());
 
-						}
-						//playerData.setDriveFormExp(player, MagicksAddonMod.MODID+":"+ StringsX.darkMode,globalData.getDarkModeEXP());
-					}
-				} else {
-					if(playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+ StringsX.darkMode)) {
-						System.out.println(globalData.getDarkModeEXP());
-						System.out.println(globalData.getDarkModeLvl());
-						playerData.getDriveFormMap().remove(MagicksAddonMod.MODID+":"+ StringsX.darkMode);
-					}
-				}
-
-				if(playerData.isAbilityEquipped(StringsX.rageAwakened)) {
-					if(!playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+ StringsX.rageForm)) {
-						playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.rageForm, 1);
-					}
-				} else {
-					if(playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+ StringsX.rageForm)) {
-						playerData.getDriveFormMap().remove(MagicksAddonMod.MODID+":"+ StringsX.rageForm);
-					}
-				}
-
-				if(playerData.isAbilityEquipped(StringsX.wayToLight)) {
-					if(!playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID+":"+ StringsX.light)) {
-						//playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.light, 1);
-						playerData.setDriveFormExp(player, MagicksAddonMod.MODID+":"+ StringsX.light,globalData.getLightFormEXP());
-
-					}
-				} else {
-					if (playerData.getDriveFormMap().containsKey(MagicksAddonMod.MODID + ":" + StringsX.light)) {
-						playerData.getDriveFormMap().remove(MagicksAddonMod.MODID + ":" + StringsX.light);
-					}
-				}
 				// Additional Forms Here
-
-				// Additional Forms ^
-
 				// Light/Darkness Within
 
 				int boostWithin = (playerData.getStrengthStat().getStat() + playerData.getMagicStat().getStat()) / 4;
@@ -204,6 +194,7 @@ public class MagicksEntityEvents {
 
 		}
 	}
+	
 	@SubscribeEvent
 	public void onDeath(LivingDeathEvent event){
 		IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(event.getEntity());

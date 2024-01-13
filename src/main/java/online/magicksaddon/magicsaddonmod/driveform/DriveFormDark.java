@@ -33,12 +33,6 @@ public class DriveFormDark extends DriveForm {
         skinRL2 = skinRL;
     }
 
-
-
-
-
-
-
     @SubscribeEvent
     public static void getDarkModeXP(LivingDeathEvent event) {
         if (!event.getEntity().level.isClientSide && event.getEntity() instanceof Monster) {
@@ -50,12 +44,8 @@ public class DriveFormDark extends DriveForm {
                 if (playerData != null && playerData.getActiveDriveForm().equals(MagicksAddonMod.MODID+":"+ StringsX.darkMode)) {
                     double mult = Double.parseDouble(ModConfigs.driveFormXPMultiplier.get(0).split(",")[1]);
                     playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
-
-                    formData.setDarkModeEXP((int) (playerData.getDriveFormExp(playerData.getActiveDriveForm())));
-                    formData.setDarkModeLvl((int) (playerData.getDriveFormLevel(playerData.getActiveDriveForm())));
-
-                    System.out.println("EXP: " + formData.getDarkModeEXP());
-                    System.out.println("Level: " + formData.getDarkModeLvl());
+                    System.out.println(playerData.getDriveFormExp(playerData.getActiveDriveForm()));
+                    formData.setDarkModeEXP(playerData.getDriveFormExp(playerData.getActiveDriveForm()));
 
 
                     PacketHandlerX.syncGlobalToAllAround(player, formData);
