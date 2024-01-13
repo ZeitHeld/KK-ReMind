@@ -108,7 +108,7 @@ public class MagicksEntityEvents {
 			IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
 			if(playerData != null) {
 				updateDriveAbilities(player, StringsX.darkPower, MagicksAddonMod.MODID+":"+ StringsX.darkMode, globalData.getDarkModeEXP());
-				updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm, globalData.getRageModeEXP());
+				//updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm, globalData.getRageModeEXP());
 				updateDriveAbilities(player, StringsX.wayToLight, MagicksAddonMod.MODID+":"+ StringsX.light, globalData.getLightFormEXP());
 
 				// Additional Forms Here

@@ -23,7 +23,7 @@ import java.awt.*;
 
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
 public class DriveFormDark extends DriveForm {
-    public float[] color;
+    //public float[] color;
     ResourceLocation skinRL2;
 
 

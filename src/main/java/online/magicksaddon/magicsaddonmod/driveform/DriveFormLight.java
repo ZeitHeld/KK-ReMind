@@ -27,6 +27,7 @@ public class DriveFormLight extends DriveForm {
         super(registeryName, order, hasKeychain, baseGrowthAbilities);
 
         this.skinRL2 = skinRL;
+		this.color = new float[] { 0F, 0F, 0F };
         
     }
 
