@@ -10,7 +10,7 @@ public class DriveFormRage extends DriveForm {
 
     public DriveFormRage(String registeryName, int order, ResourceLocation skinRL, boolean hasKeychain, boolean baseGrowthAbilities) {
         super(registeryName, order, hasKeychain, baseGrowthAbilities);
-        ((DriveFormMixin) this).setColor(new float[] { 1F, 1F, 0F });
+        ((DriveFormMixin) this).setColor(new float[] { 0.5F, 0F, 0F });
         skinRL2 = skinRL;        
     }
     

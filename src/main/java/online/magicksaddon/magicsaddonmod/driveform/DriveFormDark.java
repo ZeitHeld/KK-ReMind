@@ -29,7 +29,7 @@ public class DriveFormDark extends DriveForm {
 
     public DriveFormDark(String registeryName, int order, ResourceLocation skinRL, boolean hasKeychain, boolean baseGrowthAbilities) {
         super(registeryName, order, hasKeychain, baseGrowthAbilities);
-        ((DriveFormMixin) this).setColor(new float[] {1F, 1F, 0F});
+        ((DriveFormMixin) this).setColor(new float[] {0.25F,0F,0.25F});
         skinRL2 = skinRL;
     }
 

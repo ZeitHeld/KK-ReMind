@@ -58,9 +58,11 @@
   "ability.ability_adrenaline.desc": "Increases your strength stat when you're low on HP.",
   "ability.ability_critical_surge.name": "Critical Surge",
   "ability.ability_critical_surge.desc": "Increases your magic stat when you're low on HP.",
-  "ability.ability_light_step_0.name": "Light Step",
+  "ability.ability_light_step_0.name": "Light Step I",
+  "ability.ability_light_step_1.name": "Light Step II",
   "ability.ability_light_step_0.desc": "",
-  "ability.ability_dark_step_0.name": "Dark Step",
+  "ability.ability_dark_step_0.name": "Dark Step I",
+  "ability.ability_dark_step_1.name": "Dark Step II",
   "ability.ability_dark_step_0.desc": "",
   "ability.ability_light_within.name": "Light Within",
   "ability.ability_light_within.desc": "Empowers you with the power of Light! Equip Light Boost to increase the effect.",
@@ -69,7 +71,6 @@
 
   "shotlock.flame_salvo.name": "Flame Salvo",
   "shotlock.bubble_blaster.name": "Bubble Blaster",
-
   "shotlock.thunderstorm.name": "Thunderstorm",
   "shotlock.bio_barrage.name": "Bio Barrage",
   "shotlock.meteor_shower.name": "Meteor Shower",

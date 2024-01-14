@@ -26,10 +26,9 @@ public class DriveFormLight extends DriveForm {
 
     public DriveFormLight(String registeryName, int order, ResourceLocation skinRL, boolean hasKeychain, boolean baseGrowthAbilities) {
         super(registeryName, order, hasKeychain, baseGrowthAbilities);
-
+        ((DriveFormMixin) this).setColor(new float[] { 0.5F, 1F, 0.5F });
         this.skinRL2 = skinRL;
-        ((DriveFormMixin) this).setColor(new float[] { 0F, 0F, 0F });
-        
+
     }
 
     @SubscribeEvent
