@@ -39,6 +39,7 @@ public interface IGlobalCapabilitiesX extends INBTSerializable<CompoundTag> {
 
     int getDarkModeEXP();
     int getLightFormEXP();
+    int getRageFormEXP();
 
     void setDarkModeEXP(int i);
     void setLightFormEXP(int i);

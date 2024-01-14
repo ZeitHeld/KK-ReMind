@@ -25,6 +25,7 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
 
         storage.putInt("dark_mode_exp", this.getDarkModeEXP());
         storage.putInt("light_form_exp", this.getLightFormEXP());
+        storage.putInt("rage_form_exp", this.getRageFormEXP());
 
 
         // New Game Plus NBT
@@ -82,6 +83,7 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
 
     private int darkModeEXP;
     private int lightFormEXP;
+    private int rageFormEXP;
     private int darkModeLvl;
     private int lightFormLvl;
 
@@ -190,6 +192,10 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     @Override
     public int getLightFormEXP(){
         return lightFormEXP;
+    }
+    @Override
+    public int getRageFormEXP(){
+        return rageFormEXP;
     }
 
     @Override
