@@ -61,6 +61,8 @@ import online.kingdomkeys.kingdomkeys.util.IExtendedReach;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.kingdomkeys.kingdomkeys.util.Utils.OrgMember;
 import online.kingdomkeys.kingdomkeys.world.dimension.ModDimensions;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.client.gui.GUIHelperX;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
@@ -771,59 +773,56 @@ public class MAInputHandler extends InputHandler{
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+        IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
 
+        // 0.13000001 - Sprint speed (Vanilla)
 
         // Light/Dark Step Abilities
         if (qrCooldown <= 0 && (player.getDeltaMovement().x != 0 && player.getDeltaMovement().z != 0)) {
             boolean lightStepActive = false;
             boolean darkStepActive = false;
             if (player.isSprinting()){
+
+                //System.out.println(playerData.getActiveDriveForm());
+                int lightLevel = playerData.getDriveFormLevel("magicksaddon:form_light");
+                int darkLevel = playerData.getDriveFormLevel("magicksaddon:form_dark");
+
                 // Light Step
-                if (playerData.isAbilityEquipped(StringsX.lightStep) || playerData.getActiveDriveForm().equals(StringsX.light)){
+                if (playerData.isAbilityEquipped(StringsX.lightStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_light")){
                     float yaw = player.getYRot();
                     float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
                     float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
-
-                    int lightLevel = playerData.getDriveFormLevel(StringsX.light);
-                    double power = 0;
-
+                    double power = lightLevel;
+                    System.out.println(power);
                     // Light Form
-
-                    if (playerData.getActiveDriveForm().equals(StringsX.light)){
-                        //power = Constants.WISDOM_QR[lightLevel];
-                        power = 3;
-
-                        player.push(motionX * power / 2, 0, motionZ * power /2);
+                    if (playerData.getActiveDriveForm().equals("magicksaddon:form_light")){
+                        player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
                         qrCooldown = 20;
-                    } else if (playerData.isAbilityEquipped(StringsX.lightStep)){
-                        power = 2;
-
-                        player.push(motionX * power, 0, motionZ * power);
-                        qrCooldown = 20;
+                    } else if (playerData.isAbilityEquipped(StringsX.lightStep)) {
+                        if (lightLevel > 2){
+                            power = lightLevel - 2;
+                            player.push(motionX * power, 0, motionZ * power);
+                            qrCooldown = 20;
+                        }
                     }
 
 
-                } else if (playerData.isAbilityEquipped(StringsX.darkStep) || playerData.getActiveDriveForm().equals(StringsX.darkMode)){
+                } else if (playerData.isAbilityEquipped(StringsX.darkStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_dark")){
                     float yaw = player.getYRot();
                     float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
                     float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
-
-                    int darkLevel = playerData.getDriveFormLevel(StringsX.darkMode);
-                    double power = 0;
+                    double power = darkLevel;
 
                     // Dark Mode
-
-                    if (playerData.getActiveDriveForm().equals(StringsX.darkMode)){
-                        //power = Constants.WISDOM_QR[darkLevel];
-                        power = 3;
-
-                        player.push(motionX * power / 2, 0, motionZ * power /2);
+                    if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")){
+                        player.push(motionX * power / 1.5, 0, motionZ * power /1.5);
                         qrCooldown = 20;
                     } else if (playerData.isAbilityEquipped(StringsX.darkStep)){
-                        power = 2;
-
-                        player.push(motionX * power, 0, motionZ * power);
-                        qrCooldown = 20;
+                        if (darkLevel >2) {
+                            power = darkLevel -2;
+                            player.push(motionX * power, 0, motionZ * power);
+                            qrCooldown = 20;
+                        }
                     }
 
 
