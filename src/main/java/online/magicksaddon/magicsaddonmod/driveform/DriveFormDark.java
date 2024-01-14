@@ -17,19 +17,19 @@ import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
-import online.magicksaddon.magicsaddonmod.mixin.DriveFormMixin;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
 
 import java.awt.*;
 
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
 public class DriveFormDark extends DriveForm {
+    //public float[] color;
     ResourceLocation skinRL2;
 
 
     public DriveFormDark(String registeryName, int order, ResourceLocation skinRL, boolean hasKeychain, boolean baseGrowthAbilities) {
         super(registeryName, order, hasKeychain, baseGrowthAbilities);
-        ((DriveFormMixin) this).setColor(new float[] {1F, 1F, 0F});
+        this.color = new float[] {1F, 1F, 0F};
         skinRL2 = skinRL;
     }
 
@@ -59,5 +59,13 @@ public class DriveFormDark extends DriveForm {
     public ResourceLocation getTextureLocation() {
     	return skinRL2;
     }
+
+    /*
+    @Override
+    public float[] getDriveColor(){
+        return color2;
+    }
+
+     */
 
 }
