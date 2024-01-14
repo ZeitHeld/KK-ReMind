@@ -37,12 +37,17 @@ public class magicBerserk extends Magic {
 				switch (level) {
 				case 0:
 					playerData.getStrengthStat().addModifier("berserk", +3, false);
+					playerData.getDefenseStat().addModifier("berserk", -3, false);
 					break;
 				case 1:
 					playerData.getStrengthStat().addModifier("berserk", +6, false);
+					playerData.getDefenseStat().addModifier("berserk", -6, false);
+
 					break;
 				case 2:
 					playerData.getStrengthStat().addModifier("berserk", +9, false);
+					playerData.getDefenseStat().addModifier("berserk", -9, false);
+
 					break;
 
 				}

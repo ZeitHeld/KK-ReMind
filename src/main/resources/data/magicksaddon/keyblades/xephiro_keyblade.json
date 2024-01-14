@@ -1,5 +1,5 @@
 {
-  "ability": "kingdomkeys:ability_critical_boost",
+  "ability": "magicksaddon:ability_darkness_boost",
   "base_stats": {
     "mag": 5,
     "str": 13
@@ -47,7 +47,8 @@
           "quantity": 4
         }
       ],
-      "str": 15
+      "str": 15,
+      "ability": "magicksaddon:ability_darkness_boost"
     },
     {
       "mag": 8,
@@ -79,7 +80,8 @@
           "quantity": 2
         }
       ],
-      "str": 16
+      "str": 16,
+      "ability": "kingdomkeys:ability_hp_gain"
     },
     {
       "mag": 9,
@@ -115,7 +117,8 @@
           "quantity": 1
         }
       ],
-      "str": 17
+      "str": 17,
+      "ability": "magicksaddon:ability_dark_power"
     },
     {
       "mag": 11,
@@ -133,7 +136,8 @@
           "quantity": 2
         }
       ],
-      "str": 18
+      "str": 18,
+      "ability": "kingdomkeys:ability_critical_boost"
     },
     {
       "mag": 12,
@@ -169,7 +173,8 @@
           "quantity": 1
         }
       ],
-      "str": 23
+      "str": 23,
+      "ability": "kingdomkeys:ability_critical_boost"
     }
   ],
   "reach": 5.0

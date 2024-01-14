@@ -183,6 +183,7 @@ public class MagicksEntityEvents {
 						if (globalData.getBerserkTicks() <= 0) {
 							IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 							playerData.getStrengthStat().removeModifier("berserk");
+							playerData.getDefenseStat().removeModifier("berserk");
 							PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player); //Sync KK stat packet
 							PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
 						}
