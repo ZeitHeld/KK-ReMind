@@ -17,6 +17,7 @@ import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
+import online.magicksaddon.magicsaddonmod.mixin.DriveFormMixin;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
 
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
@@ -27,7 +28,7 @@ public class DriveFormLight extends DriveForm {
         super(registeryName, order, hasKeychain, baseGrowthAbilities);
 
         this.skinRL2 = skinRL;
-		this.color = new float[] { 0F, 0F, 0F };
+        ((DriveFormMixin) this).setColor(new float[] { 0F, 0F, 0F });
         
     }
 
