@@ -6,11 +6,13 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -276,6 +278,7 @@ public class MagicksEntityEvents {
 	}
 
 
+
 	@SubscribeEvent
 	public void RenderEntity(RenderLivingEvent.Pre event){
 		if (event.getEntity() != null){
@@ -287,6 +290,7 @@ public class MagicksEntityEvents {
 					// Light and Dark Step SFX
 					if(globalData.getStepTicks() > 0){
 						event.setCanceled(true);
+						player.invulnerableTime = globalData.getStepTicks();
 					//	System.out.println(globalData.getStepTicks());
 						if (playerData.isAbilityEquipped(StringsX.darkStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_dark")) {
 							player.level.addAlwaysVisibleParticle(ParticleTypes.SQUID_INK, player.getX() + player.level.random.nextDouble() - 0.5D, player.getY()+ player.level.random.nextDouble() *2D, player.getZ() + player.level.random.nextDouble() - 0.5D, 0, 0, 0);
@@ -304,6 +308,7 @@ public class MagicksEntityEvents {
 
 				// Dark Mode Hand Particles?
 				if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")){
+
 					//player.level.addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.5F,0F,0.5F),1F),player.getX(), player.getY()+0.65, player.getZ()-0.5,0.5,0, 0);
 				}
 
@@ -317,7 +322,10 @@ public class MagicksEntityEvents {
 					}
 				}
 
-
+				// Light Form Active
+				if (playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {
+					player.level.addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(1F, 1F, 0.7F), 1F), player.getX() + player.level.random.nextDouble() - 0.55D, player.getY() + player.level.random.nextDouble() * 2D, player.getZ() + player.level.random.nextDouble() - 0.55D, 0, 0, 0);
+				}
 			}
 		}
 	}
