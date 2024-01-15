@@ -312,6 +312,15 @@ public class MagicksEntityEvents {
 				if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")){
 					//player.level.addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.5F,0F,0.5F),1F),player.getX(), player.getY()+0.65, player.getZ()-0.5,0.5,0, 0);
 				}
+				// Rage Form Active and Walk particles
+				if (playerData.getActiveDriveForm().equals("magicksaddon:form_rage")){
+					player.level.addParticle(new DustParticleOptions(new Vector3f(0.1F,0F,0F),1F),player.getX() + player.level.random.nextDouble() - 0.55D, player.getY()+ player.level.random.nextDouble() *2D, player.getZ() + player.level.random.nextDouble() - 0.55D, 0, 0, 0);
+
+					if (player.isOnGround() == true){
+						player.level.addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.2F,0F,0F),1F),player.getX(), player.getY(), player.getZ(), 0, 0, 0);
+
+					}
+				}
 
 
 			}

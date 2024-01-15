@@ -791,7 +791,7 @@ public class MAInputHandler extends InputHandler{
                 int lightLevel = playerData.getDriveFormLevel("magicksaddon:form_light");
                 int darkLevel = playerData.getDriveFormLevel("magicksaddon:form_dark");
 
-                //globalData.setStepTicks(10);
+                globalData.setStepTicks(10);
                 System.out.println(globalData.getStepTicks());
 
                 // Light Step
@@ -800,13 +800,11 @@ public class MAInputHandler extends InputHandler{
                     float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
                     float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
                     double power = lightLevel;
-                    globalData.setStepTicks(10);
                     //player.level.playSound(player, player.blockPosition(), MagicSounds.LIGHTSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
 
                     // Light Form
                     if (playerData.getActiveDriveForm().equals("magicksaddon:form_light")){
                         player.level.playSound(player, player.blockPosition(), MagicSounds.LIGHTSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
-
                         player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
                         qrCooldown = 20;
                     } else if (playerData.isAbilityEquipped(StringsX.lightStep)) {
@@ -823,7 +821,6 @@ public class MAInputHandler extends InputHandler{
                     float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
                     float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
                     double power = darkLevel;
-                    globalData.setStepTicks(10);
 
                     // Dark Mode
                     if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")){
