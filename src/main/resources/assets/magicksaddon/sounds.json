@@ -58,5 +58,25 @@
           "sounds": [
             "magicksaddon:berserk2"
           ]
+      },
+      "darkstep1":{
+        "sounds": [
+          "magicksaddon:darkstep1"
+        ]
+      },
+      "darkstep2":{
+        "sounds": [
+          "magicksaddon:darkstep2"
+        ]
+      },
+      "lightstep1":{
+        "sounds": [
+          "magicksaddon:lightstep1"
+        ]
+      },
+      "lightstep2":{
+        "sounds": [
+          "magicksaddon:lightstep2"
+        ]
       }
   }

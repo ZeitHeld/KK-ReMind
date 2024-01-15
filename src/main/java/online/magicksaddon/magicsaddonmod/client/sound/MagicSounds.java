@@ -21,7 +21,11 @@ public class MagicSounds {
             ULTIMA_EXPLOSION = registerSound("ultima_explosion"),
             BERSERK = registerSound("berserk"),
             BERSERK2 = registerSound("berserk2"),
-            AUTOLIFE = registerSound("auto_life");
+            AUTOLIFE = registerSound("auto_life"),
+            DARKSTEP1 = registerSound("darkstep1"),
+            DARKSTEP2 = registerSound("darkstep2"),
+            LIGHTSTEP1 = registerSound("lightstep1"),
+            LIGHTSTEP2 = registerSound("lightstep2");
 
 
     public static RegistryObject<SoundEvent> registerSound(String name) {

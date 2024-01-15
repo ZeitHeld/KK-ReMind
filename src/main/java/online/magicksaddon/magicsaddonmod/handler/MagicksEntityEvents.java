@@ -297,6 +297,14 @@ public class MagicksEntityEvents {
 							player.level.addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0F,0.9F,0.9F),1F),player.getX() + player.level.random.nextDouble() - 0.5D, player.getY()+ player.level.random.nextDouble() *2D, player.getZ() + player.level.random.nextDouble() - 0.5D, 0, 0, 0);
 							player.level.addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(1F,1F,0.7F),1F),player.getX() + player.level.random.nextDouble() - 0.55D, player.getY()+ player.level.random.nextDouble() *2D, player.getZ() + player.level.random.nextDouble() - 0.55D, 0, 0, 0);
 						}
+					} else if (globalData.getStepTicks() == 0) {
+						// Sound Here for getting out of Dark Step
+						if (playerData.isAbilityEquipped(StringsX.darkStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_dark")) {
+							player.level.playSound(null, player.blockPosition(), MagicSounds.DARKSTEP2.get(), SoundSource.PLAYERS, 1F, 1F);
+						}
+						if (playerData.isAbilityEquipped(StringsX.lightStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {
+							player.level.playSound(null, player.blockPosition(), MagicSounds.LIGHTSTEP2.get(), SoundSource.PLAYERS, 1F, 1F);
+						}
 					}
 				}
 
