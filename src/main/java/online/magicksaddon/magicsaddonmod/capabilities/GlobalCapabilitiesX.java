@@ -87,6 +87,8 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     private int darkModeLvl;
     private int lightFormLvl;
 
+    private int stepTicks;
+
     //Haste
     public int getHasteLevel() {
 
@@ -220,6 +222,21 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     }
 
     @Override
+    public void setStepTicks(int i) {
+        stepTicks = i;
+    }
+
+    @Override
+    public void remStepTicks(int ticks) {
+        stepTicks -= ticks;
+    }
+
+    @Override
+    public int getStepTicks(){
+        return stepTicks;
+    }
+
+    @Override
     public int getDarkModeLvl(){
         return darkModeLvl;
     }
@@ -342,6 +359,7 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         public void addNGPGuardianCount(int i){
             NGPlusGuardianCount += i;
         }
+
 
 
 }

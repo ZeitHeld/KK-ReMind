@@ -18,7 +18,7 @@ import online.magicksaddon.magicsaddonmod.client.ClientUtilsMA;
 public class SCSyncGlobalCapabilityToAllPacketX {
 
     public int id;
-    public int berserkLvl, berserkTicks, prestige, strBonus, magBonus, defBonus, NGPlusWarriorCount, NGPlusMysticCount, NGPlusGuardianCount;
+    public int berserkLvl, berserkTicks, prestige, strBonus, magBonus, defBonus, NGPlusWarriorCount, NGPlusMysticCount, NGPlusGuardianCount, stepTicks;
 
     public SCSyncGlobalCapabilityToAllPacketX() {
 
@@ -35,6 +35,7 @@ public class SCSyncGlobalCapabilityToAllPacketX {
         this.NGPlusWarriorCount = capability.getNGPWarriorCount();
         this.NGPlusMysticCount = capability.getNGPMysticCount();
         this.NGPlusGuardianCount = capability.getNGPGuardianCount();
+        this.stepTicks = capability.getStepTicks();
     }
 
     public void encode(FriendlyByteBuf buffer){
@@ -48,6 +49,7 @@ public class SCSyncGlobalCapabilityToAllPacketX {
         buffer.writeInt(this.NGPlusWarriorCount);
         buffer.writeInt(this.NGPlusMysticCount);
         buffer.writeInt(this.NGPlusGuardianCount);
+        buffer.writeInt(this.stepTicks);
     }
 
     public static SCSyncGlobalCapabilityToAllPacketX decode(FriendlyByteBuf buffer){
@@ -62,6 +64,8 @@ public class SCSyncGlobalCapabilityToAllPacketX {
         msg.NGPlusWarriorCount = buffer.readInt();
         msg.NGPlusMysticCount = buffer.readInt();
         msg.NGPlusGuardianCount = buffer.readInt();
+        msg.stepTicks = buffer.readInt();
+
         return msg;
     }
 
@@ -80,6 +84,7 @@ public class SCSyncGlobalCapabilityToAllPacketX {
                     cap.setNGPWarriorCount(message.NGPlusWarriorCount);
                     cap.setNGPMysticCount(message.NGPlusMysticCount);
                     cap.setNGPGuardianCount(message.NGPlusGuardianCount);
+                    cap.setStepTicks(message.stepTicks);
 				});
 			}
 		});

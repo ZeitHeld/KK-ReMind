@@ -8,10 +8,12 @@ import java.util.UUID;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -787,13 +789,18 @@ public class MAInputHandler extends InputHandler{
                 int lightLevel = playerData.getDriveFormLevel("magicksaddon:form_light");
                 int darkLevel = playerData.getDriveFormLevel("magicksaddon:form_dark");
 
+                globalData.setStepTicks(35);
+                System.out.println(globalData.getStepTicks());
+
                 // Light Step
                 if (playerData.isAbilityEquipped(StringsX.lightStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_light")){
                     float yaw = player.getYRot();
                     float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
                     float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
                     double power = lightLevel;
-                    System.out.println(power);
+
+
+
                     // Light Form
                     if (playerData.getActiveDriveForm().equals("magicksaddon:form_light")){
                         player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
@@ -827,6 +834,7 @@ public class MAInputHandler extends InputHandler{
 
 
                 }
+
             }
         }
     }

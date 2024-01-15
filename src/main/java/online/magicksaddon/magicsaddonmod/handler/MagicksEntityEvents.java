@@ -2,13 +2,22 @@ package online.magicksaddon.magicsaddonmod.handler;
 
 import java.awt.Color;
 
+import com.mojang.math.Vector3f;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.commands.ParticleCommand;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.ParticleUtils;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.client.event.RenderLivingEvent;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -43,7 +52,7 @@ public class MagicksEntityEvents {
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.thunderStorm, true);
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.bioBarrage, true);
 		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.meteorShower, true);
-			if (playerData.getSoAState() == SoAState.COMPLETE){
+			//if (playerData.getSoAState() == SoAState.COMPLETE){
 				/*
 				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.darkMode, 1);
 				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.light, 1);
@@ -51,7 +60,7 @@ public class MagicksEntityEvents {
 				 */
 				//System.out.println(playerData.getDriveFormMap());
 
-			}
+			//}
 	}
 	
 	@SubscribeEvent
@@ -255,23 +264,41 @@ public class MagicksEntityEvents {
 		}
 	}
 
-	// Berserk Color Changer
-	/*@SubscribeEvent
-	public void PlayerRender(RenderPlayerEvent.Pre event){
-		IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(event.getEntity());
-		if (event.getEntity() instanceof Player){
-			Player player = (Player) event.getEntity();
-			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 
-			
+	@SubscribeEvent
+	public void RenderEntity(RenderLivingEvent.Pre event){
+		if (event.getEntity() != null){
+			if (event.getEntity() instanceof Player) {
+				Player player = (Player) event.getEntity();
+				IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+				IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(event.getEntity());
+				if (playerData != null){
+					// Light and Dark Step SFX
+					if(globalData.getStepTicks() > 0){
+						globalData.remStepTicks(1);
+						System.out.println(globalData.getStepTicks());
+						if (playerData.isAbilityEquipped(StringsX.darkStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_dark")) {
+							player.level.addAlwaysVisibleParticle(ParticleTypes.SQUID_INK, player.getX() + player.level.random.nextDouble() - 0.5D, player.getY()+ player.level.random.nextDouble() *2D, player.getZ() + player.level.random.nextDouble() - 0.5D, 0, 0, 0);
+							player.level.addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.5F,0F,0.5F),1F),player.getX() + player.level.random.nextDouble() - 0.5D, player.getY()+ player.level.random.nextDouble() *2D, player.getZ() + player.level.random.nextDouble() - 0.5D, 0, 0, 0);
+							player.level.addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.5F,0F,1F),1F),player.getX() + player.level.random.nextDouble() - 0.5D, player.getY()+ player.level.random.nextDouble() *2D, player.getZ() + player.level.random.nextDouble() - 0.5D, 0, 0, 0);
+							player.level.addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.2F,0F,0F),1F),player.getX() + player.level.random.nextDouble() - 0.55D, player.getY()+ player.level.random.nextDouble() *2D, player.getZ() + player.level.random.nextDouble() - 0.55D, 0, 0, 0);
+						} else if (playerData.isAbilityEquipped(StringsX.lightStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {
+							player.level.addAlwaysVisibleParticle(ParticleTypes.END_ROD, player.getX() + player.level.random.nextDouble() - 0.5D, player.getY()+ player.level.random.nextDouble() *2D, player.getZ() + player.level.random.nextDouble() - 0.5D, 0, 0, 0);
+							player.level.addAlwaysVisibleParticle(ParticleTypes.CLOUD, player.getX() + player.level.random.nextDouble() - 0.5D, player.getY()+ player.level.random.nextDouble() *2D, player.getZ() + player.level.random.nextDouble() - 0.5D, 0, 0, 0);
+							player.level.addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0F,0.9F,0.9F),1F),player.getX() + player.level.random.nextDouble() - 0.5D, player.getY()+ player.level.random.nextDouble() *2D, player.getZ() + player.level.random.nextDouble() - 0.5D, 0, 0, 0);
+							player.level.addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(1F,1F,0.7F),1F),player.getX() + player.level.random.nextDouble() - 0.55D, player.getY()+ player.level.random.nextDouble() *2D, player.getZ() + player.level.random.nextDouble() - 0.55D, 0, 0, 0);
+						}
+					}
+					PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
+				}
 
-			if (globalData.getBerserkTicks() > 0) {
-				Color berserk = new Color(0xA3D50606, true);
+				// Dark Mode Hand Particles?
+				if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")){
+					//player.level.addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.5F,0F,0.5F),1F),player.getX(), player.getY()+0.65, player.getZ()-0.5,0.5,0, 0);
+				}
 
-			}
-			else {
-				//RenderSystem.setShaderColor(125,125,125,125);
+
 			}
 		}
-	}*/
+	}
 }

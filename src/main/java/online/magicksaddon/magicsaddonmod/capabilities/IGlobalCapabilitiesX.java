@@ -50,6 +50,11 @@ public interface IGlobalCapabilitiesX extends INBTSerializable<CompoundTag> {
     void setDarkModeLvl(int i);
     void setLightFormLvl(int i);
 
+    // Light/Dark Step SFX Ticks
+    void setStepTicks(int i);
+    void remStepTicks(int ticks);
+    int getStepTicks();
+
     //Prestige
     int getPrestigeLvl();
     void addPrestigeLvl(int i);
