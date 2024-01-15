@@ -68,6 +68,7 @@ import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.client.gui.GUIHelperX;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
+import online.magicksaddon.magicsaddonmod.network.cts.CSSetStepTicksPacket;
 import online.magicksaddon.magicsaddonmod.network.cts.CSSyncAllClientDataXPacket;
 
 public class MAInputHandler extends InputHandler{
@@ -834,7 +835,8 @@ public class MAInputHandler extends InputHandler{
 
 
                 }
-
+                PacketHandlerX.syncGlobalToAllAround(player, globalData);
+                //PacketHandlerX.sendToServer(new CSSetStepTicksPacket());
             }
         }
     }

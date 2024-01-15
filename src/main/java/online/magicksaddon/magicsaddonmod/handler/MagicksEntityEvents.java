@@ -36,6 +36,7 @@ import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
+import online.magicksaddon.magicsaddonmod.network.cts.CSSetStepTicksPacket;
 
 public class MagicksEntityEvents {
 	@SubscribeEvent
@@ -289,6 +290,7 @@ public class MagicksEntityEvents {
 							player.level.addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(1F,1F,0.7F),1F),player.getX() + player.level.random.nextDouble() - 0.55D, player.getY()+ player.level.random.nextDouble() *2D, player.getZ() + player.level.random.nextDouble() - 0.55D, 0, 0, 0);
 						}
 					}
+					PacketHandlerX.sendToServer(new CSSetStepTicksPacket());
 					PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
 				}
 

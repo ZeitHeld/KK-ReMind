@@ -13,6 +13,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.network.cts.CSPrestigePacket;
+import online.magicksaddon.magicsaddonmod.network.cts.CSSetStepTicksPacket;
 import online.magicksaddon.magicsaddonmod.network.cts.CSSyncAllClientDataXPacket;
 import online.magicksaddon.magicsaddonmod.network.stc.SCSyncGlobalCapabilityToAllPacketX;
 
@@ -30,10 +31,8 @@ System.out.println("REGISTERING PACKETS");
         // ClientToServer
         HANDLER.registerMessage(packetID++, CSPrestigePacket.class, CSPrestigePacket::encode, CSPrestigePacket::decode, CSPrestigePacket::handle);
         HANDLER.registerMessage(packetID++, CSSyncAllClientDataXPacket.class, CSSyncAllClientDataXPacket::encode, CSSyncAllClientDataXPacket::decode, CSSyncAllClientDataXPacket::handle);
+        HANDLER.registerMessage(packetID++,CSSetStepTicksPacket.class,CSSetStepTicksPacket::encode,CSSetStepTicksPacket::decode,CSSetStepTicksPacket::handle);
     }
-
-
-        //Saving this for another day...
 
         public static <MSG> void sendToServer(MSG msg) {
             HANDLER.sendToServer(msg);
