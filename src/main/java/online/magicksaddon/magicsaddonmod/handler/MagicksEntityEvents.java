@@ -158,6 +158,14 @@ public class MagicksEntityEvents {
 		if (globalData != null) {
 			// Spells go Down Below
 
+			if(globalData.getStepTicks() > 0) {
+				globalData.remStepTicks(1);
+				if (globalData.getStepTicks() <= 0) {
+					PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
+				}
+
+			}
+
 			// Slow
 			if (globalData.getSlowTicks() > 0) {
 				globalData.remSlowTicks(1);
@@ -276,7 +284,7 @@ public class MagicksEntityEvents {
 				if (playerData != null){
 					// Light and Dark Step SFX
 					if(globalData.getStepTicks() > 0){
-						globalData.remStepTicks(1);
+						event.setCanceled(true);
 						System.out.println(globalData.getStepTicks());
 						if (playerData.isAbilityEquipped(StringsX.darkStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_dark")) {
 							player.level.addAlwaysVisibleParticle(ParticleTypes.SQUID_INK, player.getX() + player.level.random.nextDouble() - 0.5D, player.getY()+ player.level.random.nextDouble() *2D, player.getZ() + player.level.random.nextDouble() - 0.5D, 0, 0, 0);
@@ -290,8 +298,6 @@ public class MagicksEntityEvents {
 							player.level.addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(1F,1F,0.7F),1F),player.getX() + player.level.random.nextDouble() - 0.55D, player.getY()+ player.level.random.nextDouble() *2D, player.getZ() + player.level.random.nextDouble() - 0.55D, 0, 0, 0);
 						}
 					}
-					PacketHandlerX.sendToServer(new CSSetStepTicksPacket());
-					PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
 				}
 
 				// Dark Mode Hand Particles?
