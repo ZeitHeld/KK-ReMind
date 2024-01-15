@@ -13,6 +13,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.client.event.MovementInputUpdateEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -38,14 +39,22 @@ public class MagicksEntityEvents {
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 
 
-		// Testing Stuff
+		// Shotlocks Gain (Temp)
+		if (playerData.getLevel() >= 1){
+			playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.flameSalvo, true);
+			playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.bubbleBlaster, true);
+		}
+		if (playerData.getLevel() >= 25){
+			playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.thunderStorm, true);
+			playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.bioBarrage, true);
+		}
+		if (playerData.getLevel() >= 50){
+			playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.meteorShower, true);
+		}
 
 
-		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.flameSalvo, true);
-		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.bubbleBlaster, true);
-		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.thunderStorm, true);
-		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.bioBarrage, true);
-		playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.meteorShower, true);
+
+
 			//if (playerData.getSoAState() == SoAState.COMPLETE){
 				/*
 				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.darkMode, 1);
@@ -111,6 +120,7 @@ public class MagicksEntityEvents {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
 			if(playerData != null) {
+
 				updateDriveAbilities(player, StringsX.darkPower, MagicksAddonMod.MODID+":"+ StringsX.darkMode, globalData.getDarkModeEXP());
 				//updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm, globalData.getRageModeEXP());
 				updateDriveAbilities(player, StringsX.wayToLight, MagicksAddonMod.MODID+":"+ StringsX.light, globalData.getLightFormEXP());
@@ -141,7 +151,6 @@ public class MagicksEntityEvents {
 					playerData.getStrengthStat().removeModifier("darkness_within");
 					playerData.getMagicStat().removeModifier("darkness_within");
 				}
-
 			}
 
 		}
@@ -162,7 +171,7 @@ public class MagicksEntityEvents {
 							player.level.playSound(null, player.blockPosition(), MagicSounds.DARKSTEP2.get(), SoundSource.PLAYERS, 1F, 1F);
 						}
 						if (playerData.isAbilityEquipped(StringsX.lightStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {
-							System.out.println(player.level.isClientSide);
+							//System.out.println(player.level.isClientSide);
 							player.level.playSound(null, player.blockPosition(), MagicSounds.LIGHTSTEP2.get(), SoundSource.PLAYERS, 1F, 1F);
 						}
 					}
@@ -215,6 +224,21 @@ public class MagicksEntityEvents {
 
 			// Next Tick Based Spell Goes Below
 
+		}
+	}
+	@SubscribeEvent
+	public void onPlayerMove(MovementInputUpdateEvent event){
+		if (event.getEntity() instanceof Player){
+			Player player = (Player) event.getEntity();
+			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+			if (player.isOnGround() && player.isSprinting()){
+				if (playerData.isAbilityEquipped(StringsX.hpWalker)){
+					player.addEffect(new MobEffectInstance(MobEffects.HEAL, 10, 2));
+				}
+				if (playerData.isAbilityEquipped(StringsX.mpWalker)){
+					playerData.setMP((int) playerData.getMaxMP() * 0.01F);
+				}
+			}
 		}
 	}
 	

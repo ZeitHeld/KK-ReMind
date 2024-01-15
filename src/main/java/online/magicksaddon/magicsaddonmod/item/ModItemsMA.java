@@ -29,9 +29,11 @@ public class ModItemsMA{
         autoLifeSpell = ITEMS.register("autolife_spell", () -> new MagicSpellItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_MAGIC_TAB), MagicksAddonMod.MODID+":magic_auto-life")),
 
             // Keyblades
-        xephiroKeyblade = ITEMS.register("xephiro_keyblade", () -> new KeybladeItem(new Item.Properties())),
+        xephiroKeyblade = ITEMS.register("xephiro_keyblade", () -> new KeybladeItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_KEYBLADES_TAB))),
+        darkDesires = ITEMS.register("dark_desires", () -> new KeybladeItem(new Item.Properties())),
             // Keychains
         xephiroKeybladeChain = ITEMS.register("xephiro_keyblade_chain", () -> new KeychainItem()),
+       darkDesiresChain = ITEMS.register("dark_desires_chain", () -> new KeychainItem()),
 
             // KK Armors
         abasChain = ITEMS.register("abas_chain", () -> new KKArmorItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ARMOR_TAB).stacksTo(1),0, ImmutableMap.of(KKResistanceType.fire, 20,KKResistanceType.ice,20,KKResistanceType.lightning,20))),
@@ -64,7 +66,8 @@ public class ModItemsMA{
             // KK Accessories
         luckOfTheDraw = ITEMS.register("luck_of_the_draw", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1), 0,0,0,new String[] {Strings.luckyLucky,Strings.treasureMagnet})),
         lightHeart = ITEMS.register("light_heart", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1), 5,0,0,new String[] {StringsX.wayToLight})),
-        darkHeart = ITEMS.register("dark_heart", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1), 5,0,0,new String[] {StringsX.darkPower}));
+        darkHeart = ITEMS.register("dark_heart", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1), 5,0,0,new String[] {StringsX.darkPower})),
+        ragingHeart = ITEMS.register("raging_heart", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1), 5,0,0,new String[] {StringsX.rageAwakened}));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

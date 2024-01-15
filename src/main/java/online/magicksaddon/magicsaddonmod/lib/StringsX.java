@@ -36,6 +36,8 @@ public class StringsX {
         critical_surge = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"critical_surge",
         lightWithin = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"light_within",
         darknessWithin = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"darkness_within",
+        hpWalker = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"hp_walker",
+        mpWalker = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"mp_walker",
 
         // Shotlocks
         flameSalvo = "flame_salvo",

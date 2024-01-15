@@ -36,6 +36,9 @@ public class AddonAbilities extends ModAbilities{
         ADRENALINE = ABILITIES.register(StringsX.ABMA_Prefix+"adrenaline", () -> new Ability(new ResourceLocation(StringsX.adrenaline), 4, Ability.AbilityType.SUPPORT, order++)),
         CRITICAL_SURGE = ABILITIES.register(StringsX.ABMA_Prefix+"critical_surge", () -> new Ability(new ResourceLocation(StringsX.critical_surge), 4, Ability.AbilityType.SUPPORT, order++)),
         LIGHT_WITHIN = ABILITIES.register(StringsX.ABMA_Prefix+"light_within", () -> new Ability(new ResourceLocation(StringsX.lightWithin), 5, Ability.AbilityType.SUPPORT, order++)),
-        DARKNESS_WITHIN = ABILITIES.register(StringsX.ABMA_Prefix+"darkness_within", () -> new Ability(new ResourceLocation(StringsX.darknessWithin), 5, Ability.AbilityType.SUPPORT, order++));
+        DARKNESS_WITHIN = ABILITIES.register(StringsX.ABMA_Prefix+"darkness_within", () -> new Ability(new ResourceLocation(StringsX.darknessWithin), 5, Ability.AbilityType.SUPPORT, order++)),
+
+        HP_WALKER = ABILITIES.register(StringsX.ABMA_Prefix+"hp_walker", () -> new Ability(new ResourceLocation(StringsX.hpWalker),5,Ability.AbilityType.SUPPORT, order++)),
+        MP_WALKER = ABILITIES.register(StringsX.ABMA_Prefix+"mp_walker", () -> new Ability(new ResourceLocation(StringsX.mpWalker),5,Ability.AbilityType.SUPPORT, order++));
 
 }
