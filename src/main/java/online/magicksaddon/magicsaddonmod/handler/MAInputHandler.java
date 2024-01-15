@@ -783,8 +783,6 @@ public class MAInputHandler extends InputHandler{
 
         // Light/Dark Step Abilities
         if (qrCooldown <= 0 && (player.getDeltaMovement().x != 0 && player.getDeltaMovement().z != 0)) {
-            boolean lightStepActive = false;
-            boolean darkStepActive = false;
             if (player.isSprinting()){
 
                 //System.out.println(playerData.getActiveDriveForm());
@@ -800,7 +798,7 @@ public class MAInputHandler extends InputHandler{
                     float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
                     float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
                     double power = lightLevel;
-                    globalData.setStepTicks(10);
+                    PacketHandlerX.sendToServer(new CSSetStepTicksPacket(10));
                     //player.level.playSound(player, player.blockPosition(), MagicSounds.LIGHTSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
 
                     // Light Form
@@ -822,7 +820,7 @@ public class MAInputHandler extends InputHandler{
                     float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
                     float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
                     double power = darkLevel;
-                    globalData.setStepTicks(10);
+                    PacketHandlerX.sendToServer(new CSSetStepTicksPacket(10));
                     // Dark Mode
                     if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")){
                         player.level.playSound(player, player.blockPosition(), MagicSounds.DARKSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
