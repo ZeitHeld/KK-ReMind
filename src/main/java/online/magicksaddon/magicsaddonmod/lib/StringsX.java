@@ -4,7 +4,10 @@ import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 
 public class StringsX {
 
-
+	public static final byte
+		darkStepType = 0, 
+		lightStepType = 1;
+	
     public static final String
             // Prefixes
         ABMA_Prefix = "ability_",

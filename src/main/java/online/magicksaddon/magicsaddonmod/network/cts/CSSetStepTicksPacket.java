@@ -12,21 +12,25 @@ import java.util.function.Supplier;
 public class CSSetStepTicksPacket {
 
     private int ticks;
+    private byte type;
 
 
     public CSSetStepTicksPacket(){}
 
-    public CSSetStepTicksPacket(int ticks){
+    public CSSetStepTicksPacket(int ticks, byte type){
         this.ticks = ticks;
+        this.type = type;
     }
 
     public void encode(FriendlyByteBuf buffer) {
         buffer.writeInt(this.ticks);
+        buffer.writeByte(this.type);
     }
 
     public static CSSetStepTicksPacket decode(FriendlyByteBuf buffer) {
         CSSetStepTicksPacket msg = new CSSetStepTicksPacket();
         msg.ticks = buffer.readInt();
+        msg.type = buffer.readByte();
         return msg;
     }
 
@@ -34,7 +38,7 @@ public class CSSetStepTicksPacket {
         ctx.get().enqueueWork(() -> {
             Player player = ctx.get().getSender();
             IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
-            globalData.setStepTicks(message.ticks);
+            globalData.setStepTicks(message.ticks,message.type);
 
             PacketHandlerX.syncGlobalToAllAround(player, globalData);
         });

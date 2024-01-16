@@ -88,6 +88,7 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     private int lightFormLvl;
 
     private int stepTicks;
+    private byte stepType;
 
     //Haste
     public int getHasteLevel() {
@@ -222,8 +223,9 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     }
 
     @Override
-    public void setStepTicks(int i) {
+    public void setStepTicks(int i, byte type) {
         stepTicks = i;
+        stepType = type;
     }
 
     @Override
@@ -234,6 +236,11 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     @Override
     public int getStepTicks(){
         return stepTicks;
+    }
+    
+    @Override
+    public byte getStepType(){
+        return stepType;
     }
 
     @Override

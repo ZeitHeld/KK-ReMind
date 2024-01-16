@@ -798,7 +798,7 @@ public class MAInputHandler extends InputHandler{
                     float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
                     float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
                     double power = lightLevel;
-                    PacketHandlerX.sendToServer(new CSSetStepTicksPacket(10));
+                    PacketHandlerX.sendToServer(new CSSetStepTicksPacket(10, StringsX.lightStepType));
                     //player.level.playSound(player, player.blockPosition(), MagicSounds.LIGHTSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
 
                     // Light Form
@@ -820,7 +820,7 @@ public class MAInputHandler extends InputHandler{
                     float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
                     float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
                     double power = darkLevel;
-                    PacketHandlerX.sendToServer(new CSSetStepTicksPacket(10));
+                    PacketHandlerX.sendToServer(new CSSetStepTicksPacket(10, StringsX.darkStepType));
                     // Dark Mode
                     if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")){
                         player.level.playSound(player, player.blockPosition(), MagicSounds.DARKSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
