@@ -3,9 +3,10 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '5.1.+'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'org.spongepowered.mixin' version '0.7.+'
 }
 
-version = '1.19.4-0.6.3a'
+version = '1.19.4-0.7a'
 group = 'online.xephiro.magicksaddon' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'KK-ReMind'
 
@@ -29,7 +30,7 @@ minecraft {
     // Simply re-run your setup task after changing the mappings to update your workspace.
 	mappings channel: 'parchment', version: '1.19.3-2023.03.12-1.19.4'
 
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+    //accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
     // Default run configurations.
     // These can be tweaked, removed, or duplicated as needed.
@@ -131,6 +132,7 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.19.4-45.2.6'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     // KK Implementation
     implementation fg.deobf("kingdomkeys:kingdomkeys:1.19.4-2.3.4.0")
@@ -143,7 +145,7 @@ jar {
         attributes([
                 "Specification-Title"     : "Kingdom Keys - Re:Mind",
                 "Specification-Vendor"    : "Xephiro",
-                "Specification-Version"   : "1.19.4-0.6.3a", // We are version 1 of ourselves
+                "Specification-Version"   : "1.19.4-0.7a", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : "${version}",
                 "Implementation-Vendor"   : "Xephiro",
@@ -170,6 +172,13 @@ publishing {
         }
     }
 }
+
+mixin {
+    add sourceSets.main, "magicksaddon.refmap.json"
+    config "magicksaddon.mixins.json"
+}
+
+
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
