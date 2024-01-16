@@ -4,6 +4,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
 public class ModCreativeModTabMA {
+    /*
     public static final CreativeModeTab ADDON_MAGIC_TAB = new CreativeModeTab("addonmagictab") {
         @Override
         public ItemStack makeIcon() {
@@ -32,4 +33,5 @@ public class ModCreativeModTabMA {
         }
     };
 
+    */
 }

@@ -1,6 +1,6 @@
 package online.magicksaddon.magicsaddonmod.handler;
 
-import com.mojang.math.Vector3f;
+//import com.mojang.math.Vector3f;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -16,6 +16,7 @@ import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
 import online.magicksaddon.magicsaddonmod.sound.BerserkAuraSoundInstance;
+import org.joml.Vector3f;
 
 public class ClientEventsX {
 
