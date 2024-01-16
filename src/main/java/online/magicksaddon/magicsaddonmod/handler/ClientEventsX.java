@@ -5,20 +5,13 @@ import com.mojang.math.Vector3f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.client.event.MovementInputUpdateEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
-import online.kingdomkeys.kingdomkeys.network.PacketHandler;
-import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
@@ -35,28 +28,6 @@ public class ClientEventsX {
             }
         }
     }
-
-
-    @SubscribeEvent
-	public void onLivingUpdate(LivingEvent.LivingTickEvent event) {
-		if (event.getEntity() instanceof Player){
-			Player player = (Player) event.getEntity();
-			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-			if (player.isSprinting()){
-				if (playerData.isAbilityEquipped(StringsX.hpWalker)){
-					int hpWalkerMult = playerData.getNumberOfAbilitiesEquipped(StringsX.hpWalker);
-					player.heal(1 * hpWalkerMult);
-				}
-				if (playerData.isAbilityEquipped(StringsX.mpWalker)){
-					if (!playerData.getRecharge()) {
-						int mpWalkerMult = playerData.getNumberOfAbilitiesEquipped(StringsX.mpWalker);
-						playerData.addMP(0.5 * mpWalkerMult);
-							}
-						}
-					}
-				}
-			}
-
 
     @SubscribeEvent
 	public void RenderEntity(RenderLivingEvent.Pre event){

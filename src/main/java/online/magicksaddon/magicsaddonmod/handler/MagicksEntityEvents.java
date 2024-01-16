@@ -107,11 +107,11 @@ public class MagicksEntityEvents {
 
 	@SubscribeEvent
 	public void onLivingUpdate(LivingEvent.LivingTickEvent event) {
+		IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(event.getEntity());
+
 		if(event.getEntity() instanceof Player player) {
-			
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-			IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
-			if(playerData != null) {
+			if(playerData != null && globalData != null) {
 
 				updateDriveAbilities(player, StringsX.darkPower, MagicksAddonMod.MODID+":"+ StringsX.darkMode, globalData.getDarkModeEXP());
 				//updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm, globalData.getRageModeEXP());
@@ -124,10 +124,6 @@ public class MagicksEntityEvents {
 
 				int darknessWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsX.darknessBoost) * 0.05F);
 				int lightWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsX.lightBoost) * 0.05F);
-
-				//System.out.println("Initial Within Boost: "+boostWithin);
-				//System.out.println("Light Within Boost: "+lightWithinBoost);
-				//System.out.println("Darkness Within Boost: "+darknessWithinBoost);
 
 				if (playerData.isAbilityEquipped(StringsX.lightWithin)) {
 					playerData.getStrengthStat().addModifier("light_within", lightWithinBoost, false);
@@ -148,15 +144,13 @@ public class MagicksEntityEvents {
 
 		}
 
-		IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(event.getEntity());
 		//globalData.setBerserkTicks(100, 0);
 
 		if (globalData != null) {
 			// Spells go Down Below
-
 			if(globalData.getStepTicks() > 0) {
 				globalData.remStepTicks(1);
-				if (globalData.getStepTicks() <= 0) {
+				if (globalData.getStepTicks() <= 0) { // Step has finished, notify all the clients about it
 					PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
 					if(event.getEntity() instanceof Player player) {
 						IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
@@ -169,7 +163,6 @@ public class MagicksEntityEvents {
 						}
 					}
 				}
-
 			}
 
 			// Slow
@@ -184,8 +177,7 @@ public class MagicksEntityEvents {
 			}
 
 			// Haste
-			if (event.getEntity() instanceof Player) {
-				Player player = (Player) event.getEntity();
+			if (event.getEntity() instanceof Player player){
 				if (globalData.getHasteTicks() > 0) {
 					globalData.remHasteTicks(1);
 					// System.out.println("Haste Level: " + globalData.getHasteLevel() + " " +
@@ -197,9 +189,7 @@ public class MagicksEntityEvents {
 				}
 			}
 			// Berserk
-			if (event.getEntity() instanceof Player){
-				Player player = (Player) event.getEntity();
-
+			if (event.getEntity() instanceof Player player){
 				if (globalData.getBerserkTicks() > 0) {
 					globalData.remBerserkTicks(1);
 					//System.out.println("Berserk Level: " + globalData.getBerserkLevel() + " " + "Berserk Ticks Remaining: " + globalData.getBerserkTicks());
@@ -215,7 +205,28 @@ public class MagicksEntityEvents {
 				}
 			}
 
-			// Next Tick Based Spell Goes Below
+			// HP / MP / EXP Walker
+			if (event.getEntity() instanceof Player player) {
+				IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+				if(playerData != null) {
+					if (player.isSprinting()) {
+						if (playerData.isAbilityEquipped(StringsX.hpWalker)) {
+							int hpWalkerMult = playerData.getNumberOfAbilitiesEquipped(StringsX.hpWalker);
+							player.heal(1 * hpWalkerMult);
+						}
+						if (playerData.isAbilityEquipped(StringsX.mpWalker)) {
+							if (!playerData.getRecharge()) {
+								int mpWalkerMult = playerData.getNumberOfAbilitiesEquipped(StringsX.mpWalker);
+								playerData.addMP(0.5 * mpWalkerMult);
+							}
+						}
+						if (!player.level.isClientSide && player.tickCount % 20 == 0 && playerData.isAbilityEquipped(StringsX.expWalker)) {
+							playerData.addExperience(player, 1, false, false);
+						}
+					}
+				}
+			}
+
 
 		}
 	}
