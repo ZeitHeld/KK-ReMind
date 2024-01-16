@@ -1,19 +1,28 @@
 package online.magicksaddon.magicsaddonmod;
 
 
+import com.google.common.base.Suppliers;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.eventbus.api.Event;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
 import online.magicksaddon.magicsaddonmod.shotlock.AddonShotlocks;
 import org.slf4j.Logger;
-
+import net.minecraftforge.registries.RegistryObject;
 import com.mojang.logging.LogUtils;
-
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import online.kingdomkeys.kingdomkeys.block.ModBlocks;
+import online.kingdomkeys.kingdomkeys.item.KeybladeItem;
+import online.kingdomkeys.kingdomkeys.item.KeychainItem;
+import online.kingdomkeys.kingdomkeys.item.ModItems;
+import online.kingdomkeys.kingdomkeys.item.organization.IOrgWeapon;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -31,6 +40,10 @@ import online.magicksaddon.magicsaddonmod.handler.MAInputHandler;
 import online.magicksaddon.magicsaddonmod.handler.MagicksEntityEvents;
 import online.magicksaddon.magicsaddonmod.item.ModItemsMA;
 import online.magicksaddon.magicsaddonmod.magic.ModMagicks;
+import online.magicksaddon.magicsaddonmod.lib.StringsX;
+
+import java.util.List;
+import java.util.function.Supplier;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MagicksAddonMod.MODID)
@@ -70,9 +83,25 @@ public class MagicksAddonMod {
         AddonForms.DRIVE_FORMS.register(modEventBus);
         AddonShotlocks.SHOTLOCKS.register(modEventBus);
         modEventBus.addListener(this::setup);
+        modEventBus.addListener(this::creativeTabRegistry);
 
     }
-    
+
+    @SubscribeEvent
+    public void creativeTabRegistry(CreativeModeTabEvent.Register event) {
+        final List<ItemStack> kkItems = ModItemsMA.ITEMS.getEntries().stream().map(RegistryObject::get).map(ItemStack::new).toList();
+        final Supplier<List<ItemStack>> misc = Suppliers.memoize(() -> kkItems.stream().filter(item -> !(item.getItem() instanceof KeybladeItem) && !(item.getItem() instanceof IOrgWeapon) && !(item.getItem() instanceof KeychainItem)).toList());
+
+        event.registerCreativeModeTab(new ResourceLocation(MODID, "magicksaddontab"), builder -> {
+            builder
+                    .title(Component.translatable("itemGroup.magicksaddontab"))
+                    .icon(() -> new ItemStack(ModItemsMA.hasteSpell.get()))
+                    .displayItems(((params, output) -> {
+                        misc.get().forEach(output::accept);
+                    }));
+        });
+    }
+
     private void setup(final FMLCommonSetupEvent event){
         // Some common setup code
 		event.enqueueWork(PacketHandlerX::register);
