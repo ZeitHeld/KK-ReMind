@@ -128,16 +128,20 @@ public class MagicksEntityEvents {
 				if (playerData.isAbilityEquipped(StringsX.lightWithin)) {
 					playerData.getStrengthStat().addModifier("light_within", lightWithinBoost, false);
 					playerData.getMagicStat().addModifier("light_within", lightWithinBoost, false);
+					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 				} else {
 					playerData.getStrengthStat().removeModifier("light_within");
 					playerData.getMagicStat().removeModifier("light_within");
+					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 				}
 				if (playerData.isAbilityEquipped(StringsX.darknessWithin)){
 					playerData.getStrengthStat().addModifier("darkness_within", darknessWithinBoost, false);
 					playerData.getMagicStat().addModifier("darkness_within", darknessWithinBoost, false);
+					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 				} else {
 					playerData.getStrengthStat().removeModifier("darkness_within");
 					playerData.getMagicStat().removeModifier("darkness_within");
+					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 				}
 
 			}
@@ -210,11 +214,11 @@ public class MagicksEntityEvents {
 				IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 				if(playerData != null) {
 					if (player.isSprinting()) {
-						if (!player.level.isClientSide && player.tickCount % 40 == 0 && playerData.isAbilityEquipped(StringsX.hpWalker)) {
+						if (player.tickCount % 40 == 0 && playerData.isAbilityEquipped(StringsX.hpWalker)) {
 							int hpWalkerMult = playerData.getNumberOfAbilitiesEquipped(StringsX.hpWalker);
 							player.heal(1 * hpWalkerMult);
 						}
-						if (!player.level.isClientSide && player.tickCount % 50 == 0 && playerData.isAbilityEquipped(StringsX.mpWalker)) {
+						if (player.tickCount % 50 == 0 && playerData.isAbilityEquipped(StringsX.mpWalker)) {
 							if (!playerData.getRecharge()) {
 								int mpWalkerMult = playerData.getNumberOfAbilitiesEquipped(StringsX.mpWalker);
 								playerData.addMP(0.5 * mpWalkerMult);
