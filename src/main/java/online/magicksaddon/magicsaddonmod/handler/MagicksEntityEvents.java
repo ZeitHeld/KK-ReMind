@@ -114,7 +114,8 @@ public class MagicksEntityEvents {
 			if(playerData != null && globalData != null) {
 
 				updateDriveAbilities(player, StringsX.darkPower, MagicksAddonMod.MODID+":"+ StringsX.darkMode, globalData.getDarkModeEXP());
-				//updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm, globalData.getRageModeEXP());
+				//TODO uncomment this 
+				// updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm, globalData.getRageModeEXP());
 				updateDriveAbilities(player, StringsX.wayToLight, MagicksAddonMod.MODID+":"+ StringsX.light, globalData.getLightFormEXP());
 
 				// Additional Forms Here
@@ -128,27 +129,20 @@ public class MagicksEntityEvents {
 				if (playerData.isAbilityEquipped(StringsX.lightWithin)) {
 					playerData.getStrengthStat().addModifier("light_within", lightWithinBoost, false);
 					playerData.getMagicStat().addModifier("light_within", lightWithinBoost, false);
-					//PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 				} else {
 					playerData.getStrengthStat().removeModifier("light_within");
 					playerData.getMagicStat().removeModifier("light_within");
-					//PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 				}
 				if (playerData.isAbilityEquipped(StringsX.darknessWithin)){
 					playerData.getStrengthStat().addModifier("darkness_within", darknessWithinBoost, false);
 					playerData.getMagicStat().addModifier("darkness_within", darknessWithinBoost, false);
-					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 				} else {
 					playerData.getStrengthStat().removeModifier("darkness_within");
 					playerData.getMagicStat().removeModifier("darkness_within");
-					//PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 				}
-
 			}
 
 		}
-
-		//globalData.setBerserkTicks(100, 0);
 
 		if (globalData != null) {
 			// Spells go Down Below
@@ -197,12 +191,13 @@ public class MagicksEntityEvents {
 				if (globalData.getBerserkTicks() > 0) {
 					globalData.remBerserkTicks(1);
 					//System.out.println("Berserk Level: " + globalData.getBerserkLevel() + " " + "Berserk Ticks Remaining: " + globalData.getBerserkTicks());
-					if(!event.getEntity().level().isClientSide) {
-						if (globalData.getBerserkTicks() <= 0) {
-							IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-							playerData.getStrengthStat().removeModifier("berserk");
-							playerData.getDefenseStat().removeModifier("berserk");
-							PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player); //Sync KK stat packet
+					if (globalData.getBerserkTicks() <= 0) {
+						IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+						playerData.getStrengthStat().removeModifier("berserk");
+						playerData.getDefenseStat().removeModifier("berserk");
+						if(!event.getEntity().level().isClientSide) {
+							//I think you might not need this one I commented
+							//PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player); //Sync KK stat packet
 							PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
 						}
 					}
