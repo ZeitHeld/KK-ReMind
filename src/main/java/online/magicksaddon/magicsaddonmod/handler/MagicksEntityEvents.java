@@ -210,11 +210,11 @@ public class MagicksEntityEvents {
 				IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 				if(playerData != null) {
 					if (player.isSprinting()) {
-						if (playerData.isAbilityEquipped(StringsX.hpWalker)) {
+						if (!player.level.isClientSide && player.tickCount % 40 == 0 && playerData.isAbilityEquipped(StringsX.hpWalker)) {
 							int hpWalkerMult = playerData.getNumberOfAbilitiesEquipped(StringsX.hpWalker);
 							player.heal(1 * hpWalkerMult);
 						}
-						if (playerData.isAbilityEquipped(StringsX.mpWalker)) {
+						if (!player.level.isClientSide && player.tickCount % 50 == 0 && playerData.isAbilityEquipped(StringsX.mpWalker)) {
 							if (!playerData.getRecharge()) {
 								int mpWalkerMult = playerData.getNumberOfAbilitiesEquipped(StringsX.mpWalker);
 								playerData.addMP(0.5 * mpWalkerMult);
