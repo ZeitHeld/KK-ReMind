@@ -39,28 +39,13 @@ public class MagicksAddonMod {
     public static final String MODID = "magicksaddon";
     public static final String MODNAME = "Magicks Addon Mod";
     public static final String MODVER = "0.7a";
-    public static final String MCVER = "1.19.2";
+    public static final String MCVER = "1.19.4";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
     // Create a Deferred Register to hold Items which will all be registered under the "examplemod" namespace
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-
-    @SubscribeEvent
-	public void creativeTabRegistry(CreativeModeTabEvent.Register event) {
-		final List<ItemStack> kkItems = ModItemsMA.ITEMS.getEntries().stream().map(RegistryObject::get).map(ItemStack::new).toList();
-		final Supplier<List<ItemStack>> misc = Suppliers.memoize(() -> kkItems.stream().filter(item -> !(item.getItem() instanceof KeybladeItem) && !(item.getItem() instanceof IOrgWeapon) && !(item.getItem() instanceof KeychainItem)).toList());
-
-		event.registerCreativeModeTab(new ResourceLocation(MODID, "magicksaddontab"), builder -> {
-			builder
-				.title(Component.translatable("itemGroup.magicksaddontab"))
-				.icon(() -> new ItemStack(ModItemsMA.hasteSpell.get()))
-				.displayItems(((params, output) -> {
-					misc.get().forEach(output::accept);
-				}));
-		});
-	}
 
     
     public MagicksAddonMod(){
@@ -85,7 +70,6 @@ public class MagicksAddonMod {
         AddonForms.DRIVE_FORMS.register(modEventBus);
         AddonShotlocks.SHOTLOCKS.register(modEventBus);
         modEventBus.addListener(this::setup);
-		modEventBus.addListener(this::creativeTabRegistry);
 
     }
     
