@@ -22,7 +22,7 @@ public class magicAutoLife extends Magic {
         IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
         if (globalData != null) {
             caster.swing(InteractionHand.MAIN_HAND);
-            player.level.playSound(null, player.blockPosition(), MagicSounds.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.blockPosition(), MagicSounds.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
             globalData.setAutoLifeActive(1);
             // Auto Life status set to True
             // Test Line

@@ -803,12 +803,12 @@ public class MAInputHandler extends InputHandler{
 
                     // Light Form
                     if (playerData.getActiveDriveForm().equals("magicksaddon:form_light")){
-                        player.level.playSound(player, player.blockPosition(), MagicSounds.LIGHTSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
+                        player.level().playSound(player, player.blockPosition(), MagicSounds.LIGHTSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
                         player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
                         qrCooldown = 20;
                     } else if (playerData.isAbilityEquipped(StringsX.lightStep)) {
                         if (lightLevel > 2){
-                            player.level.playSound(player, player.blockPosition(), MagicSounds.LIGHTSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
+                            player.level().playSound(player, player.blockPosition(), MagicSounds.LIGHTSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
                             power = lightLevel - 2;
                             player.push(motionX * power, 0, motionZ * power);
                             qrCooldown = 20;
@@ -823,12 +823,12 @@ public class MAInputHandler extends InputHandler{
                     PacketHandlerX.sendToServer(new CSSetStepTicksPacket(10, StringsX.darkStepType));
                     // Dark Mode
                     if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")){
-                        player.level.playSound(player, player.blockPosition(), MagicSounds.DARKSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
+                        player.level().playSound(player, player.blockPosition(), MagicSounds.DARKSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
                         player.push(motionX * power / 1.5, 0, motionZ * power /1.5);
                         qrCooldown = 20;
                     } else if (playerData.isAbilityEquipped(StringsX.darkStep)){
                         if (darkLevel >2) {
-                            player.level.playSound(player, player.blockPosition(), MagicSounds.DARKSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
+                            player.level().playSound(player, player.blockPosition(), MagicSounds.DARKSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
                             power = darkLevel -2;
                             player.push(motionX * power, 0, motionZ * power);
                             qrCooldown = 20;

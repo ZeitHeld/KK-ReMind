@@ -20,9 +20,9 @@ public class ShotlockBubbleBlaster extends Shotlock {
     public void onUse(Player player, List<Entity> targetList) {
 
         float damage = (float) (DamageCalculation.getMagicDamage(player) * 1.25 + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.waterBoost) * 0.2F);
-        BubbleBlasterCoreEntity core = new BubbleBlasterCoreEntity(player.level, player, targetList, damage);
+        BubbleBlasterCoreEntity core = new BubbleBlasterCoreEntity(player.level(), player, targetList, damage);
         core.setPos(player.getX(), player.getY(), player.getZ());
-        player.level.addFreshEntity(core);
+        player.level().addFreshEntity(core);
 
 
 

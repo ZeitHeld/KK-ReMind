@@ -1,6 +1,6 @@
 package online.magicksaddon.magicsaddonmod;
 
-
+import net.minecraft.core.registries.Registries;
 import com.google.common.base.Suppliers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -12,7 +12,7 @@ import online.magicksaddon.magicsaddonmod.shotlock.AddonShotlocks;
 import org.slf4j.Logger;
 import net.minecraftforge.registries.RegistryObject;
 import com.mojang.logging.LogUtils;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -41,6 +41,8 @@ import online.magicksaddon.magicsaddonmod.handler.MagicksEntityEvents;
 import online.magicksaddon.magicsaddonmod.item.ModItemsMA;
 import online.magicksaddon.magicsaddonmod.magic.ModMagicks;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
+
+import static net.minecraft.world.item.CreativeModeTab.builder;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -83,24 +85,25 @@ public class MagicksAddonMod {
         AddonForms.DRIVE_FORMS.register(modEventBus);
         AddonShotlocks.SHOTLOCKS.register(modEventBus);
         modEventBus.addListener(this::setup);
-        modEventBus.addListener(this::creativeTabRegistry);
+        TABS.register(modEventBus);
 
     }
 
-    @SubscribeEvent
-    public void creativeTabRegistry(CreativeModeTabEvent.Register event) {
-        final List<ItemStack> kkItems = ModItemsMA.ITEMS.getEntries().stream().map(RegistryObject::get).map(ItemStack::new).toList();
-        final Supplier<List<ItemStack>> misc = Suppliers.memoize(() -> kkItems.stream().filter(item -> !(item.getItem() instanceof KeybladeItem) && !(item.getItem() instanceof IOrgWeapon) && !(item.getItem() instanceof KeychainItem)).toList());
+    public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-        event.registerCreativeModeTab(new ResourceLocation(MODID, "magicksaddontab"), builder -> {
-            builder
-                    .title(Component.translatable("itemGroup.magicksaddontab"))
-                    .icon(() -> new ItemStack(ModItemsMA.hasteSpell.get()))
-                    .displayItems(((params, output) -> {
-                        misc.get().forEach(output::accept);
-                    }));
-        });
-    }
+    private static final Supplier<List<ItemStack>> maItems = Suppliers.memoize(() -> ModItemsMA.ITEMS.getEntries().stream().map(RegistryObject::get).map(ItemStack::new).toList());
+//		private static final Supplier<List<ItemStack>> misc = Suppliers.memoize(() -> kkItems.get().stream().filter(item -> !(item.getItem() instanceof KeybladeItem) && !(item.getItem() instanceof IOrgWeapon) && !(item.getItem() instanceof KeychainItem)).toList());
+
+
+    public static final RegistryObject<CreativeModeTab>
+
+            misc_tab = TABS.register("magicksaddontab", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.magicksaddontab"))
+            .icon(() -> new ItemStack(ModItemsMA.hasteSpell.get()))
+            .displayItems(((params, output) -> {
+                maItems.get().forEach(output::accept);
+            }))
+            .build());
 
     private void setup(final FMLCommonSetupEvent event){
         // Some common setup code

@@ -75,7 +75,7 @@ public class BioBarrageCoreEntity extends ThrowableProjectile {
             this.remove(RemovalReason.KILLED);
         }
 
-        level.addParticle(ParticleTypes.BUBBLE, getX(), getY(), getZ(), 0, 0, 0);
+        level().addParticle(ParticleTypes.BUBBLE, getX(), getY(), getZ(), 0, 0, 0);
 
         double X = getX();
         double Y = getY()+1;
@@ -83,11 +83,11 @@ public class BioBarrageCoreEntity extends ThrowableProjectile {
 
         if (getCaster() != null && getTargets() != null) {
             if (tickCount == 1) {
-                level.playSound(null, this.blockPosition(), ModSounds.laser.get(), SoundSource.PLAYERS, 1, 1);
+                level().playSound(null, this.blockPosition(), ModSounds.laser.get(), SoundSource.PLAYERS, 1, 1);
                 for(int i = 0; i< getTargets().size();i++) {
                     Entity target = getTargets().get(i);
                     if(target != null) {
-                        BioBarrageShotEntity bullet = new BioBarrageShotEntity(level, getCaster(), target, dmg);
+                        BioBarrageShotEntity bullet = new BioBarrageShotEntity(level(), getCaster(), target, dmg);
                         bullet.setColor(41472);
                         float r = 0.3F;
                         double offset_amount = -1.5;
@@ -100,7 +100,7 @@ public class BioBarrageCoreEntity extends ThrowableProjectile {
                         bullet.setPos(x,y,z);
                         bullet.setMaxTicks(maxTicks + 20);
                         list.add(bullet);
-                        level.addFreshEntity(bullet);
+                        level().addFreshEntity(bullet);
                     }
                 }
             } else if(tickCount > 4 && tickCount < 10) {
@@ -156,7 +156,7 @@ public class BioBarrageCoreEntity extends ThrowableProjectile {
     private static final EntityDataAccessor<String> TARGETS = SynchedEntityData.defineId(BioBarrageCoreEntity.class, EntityDataSerializers.STRING);
 
     public Player getCaster() {
-        return this.getEntityData().get(OWNER).isPresent() ? this.level.getPlayerByUUID(this.getEntityData().get(OWNER).get()) : null;
+        return this.getEntityData().get(OWNER).isPresent() ? this.level().getPlayerByUUID(this.getEntityData().get(OWNER).get()) : null;
     }
 
     public void setCaster(UUID uuid) {
@@ -170,7 +170,7 @@ public class BioBarrageCoreEntity extends ThrowableProjectile {
         for(String id : ids) {
 
             if(!id.equals(""))
-                list.add(level.getEntity(Integer.parseInt(id)));
+                list.add(level().getEntity(Integer.parseInt(id)));
         }
         return list;
     }

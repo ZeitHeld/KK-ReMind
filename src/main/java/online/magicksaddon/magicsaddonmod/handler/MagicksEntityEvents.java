@@ -128,11 +128,11 @@ public class MagicksEntityEvents {
 				if (playerData.isAbilityEquipped(StringsX.lightWithin)) {
 					playerData.getStrengthStat().addModifier("light_within", lightWithinBoost, false);
 					playerData.getMagicStat().addModifier("light_within", lightWithinBoost, false);
-					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
+					//PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 				} else {
 					playerData.getStrengthStat().removeModifier("light_within");
 					playerData.getMagicStat().removeModifier("light_within");
-					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
+					//PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 				}
 				if (playerData.isAbilityEquipped(StringsX.darknessWithin)){
 					playerData.getStrengthStat().addModifier("darkness_within", darknessWithinBoost, false);
@@ -141,7 +141,7 @@ public class MagicksEntityEvents {
 				} else {
 					playerData.getStrengthStat().removeModifier("darkness_within");
 					playerData.getMagicStat().removeModifier("darkness_within");
-					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
+					//PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 				}
 
 			}
@@ -159,11 +159,11 @@ public class MagicksEntityEvents {
 					if(event.getEntity() instanceof Player player) {
 						IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 						if (playerData.isAbilityEquipped(StringsX.darkStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_dark")) {
-							player.level.playSound(null, player.blockPosition(), MagicSounds.DARKSTEP2.get(), SoundSource.PLAYERS, 1F, 1F);
+							player.level().playSound(null, player.blockPosition(), MagicSounds.DARKSTEP2.get(), SoundSource.PLAYERS, 1F, 1F);
 						}
 						if (playerData.isAbilityEquipped(StringsX.lightStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {
 							//System.out.println(player.level.isClientSide);
-							player.level.playSound(null, player.blockPosition(), MagicSounds.LIGHTSTEP2.get(), SoundSource.PLAYERS, 1F, 1F);
+							player.level().playSound(null, player.blockPosition(), MagicSounds.LIGHTSTEP2.get(), SoundSource.PLAYERS, 1F, 1F);
 						}
 					}
 				}
@@ -197,7 +197,7 @@ public class MagicksEntityEvents {
 				if (globalData.getBerserkTicks() > 0) {
 					globalData.remBerserkTicks(1);
 					//System.out.println("Berserk Level: " + globalData.getBerserkLevel() + " " + "Berserk Ticks Remaining: " + globalData.getBerserkTicks());
-					if(!event.getEntity().level.isClientSide) {
+					if(!event.getEntity().level().isClientSide) {
 						if (globalData.getBerserkTicks() <= 0) {
 							IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 							playerData.getStrengthStat().removeModifier("berserk");
@@ -224,7 +224,7 @@ public class MagicksEntityEvents {
 								playerData.addMP(0.5 * mpWalkerMult);
 							}
 						}
-						if (!player.level.isClientSide && player.tickCount % 20 == 0 && playerData.isAbilityEquipped(StringsX.expWalker)) {
+						if (!player.level().isClientSide && player.tickCount % 20 == 0 && playerData.isAbilityEquipped(StringsX.expWalker)) {
 							playerData.addExperience(player, 1, false, true);
 						}
 					}
@@ -247,7 +247,7 @@ public class MagicksEntityEvents {
 					globalData.remAutoLifeActive(1);
 					player.removeAllEffects();
 					player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 10));
-					player.level.playSound(null, player.blockPosition(), MagicSounds.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
+					player.level().playSound(null, player.blockPosition(), MagicSounds.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
 				}
 			}
 		}

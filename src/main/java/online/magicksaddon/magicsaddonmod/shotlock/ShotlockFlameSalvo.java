@@ -23,9 +23,9 @@ public class ShotlockFlameSalvo extends Shotlock {
     public void onUse(Player player, List<Entity> targetList) {
 
         float damage = (float) (DamageCalculation.getMagicDamage(player) * 1.25 + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.fireBoost) * 0.2F);
-        FlameSalvoCoreEntity core = new FlameSalvoCoreEntity(player.level, player, targetList, damage);
+        FlameSalvoCoreEntity core = new FlameSalvoCoreEntity(player.level(), player, targetList, damage);
         core.setPos(player.getX(), player.getY(), player.getZ());
-        player.level.addFreshEntity(core);
+        player.level().addFreshEntity(core);
 
 
 

@@ -30,7 +30,7 @@ public class magicBerserk extends Magic {
 		if (globalData != null) {
 			int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * ((level * 0.75) + 5));
 			caster.swing(InteractionHand.MAIN_HAND);
-			player.level.playSound(null, player.blockPosition(), MagicSounds.BERSERK.get(), SoundSource.PLAYERS, 1F, 1F);
+			player.level().playSound(null, player.blockPosition(), MagicSounds.BERSERK.get(), SoundSource.PLAYERS, 1F, 1F);
 			// Effect and Level Modifier
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			if (globalData.getBerserkTicks() <= 0) {

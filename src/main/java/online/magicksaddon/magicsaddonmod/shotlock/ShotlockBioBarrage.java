@@ -18,9 +18,9 @@ public class ShotlockBioBarrage extends Shotlock {
     public void onUse(Player player, List<Entity> targetList) {
 
         float damage = (float) (DamageCalculation.getMagicDamage(player) * 1.25);
-        BioBarrageCoreEntity core = new BioBarrageCoreEntity(player.level, player, targetList, damage);
+        BioBarrageCoreEntity core = new BioBarrageCoreEntity(player.level(), player, targetList, damage);
         core.setPos(player.getX(), player.getY(), player.getZ());
-        player.level.addFreshEntity(core);
+        player.level().addFreshEntity(core);
 
 
 

@@ -20,9 +20,9 @@ public class ShotlockMeteorShower extends Shotlock {
     public void onUse(Player player, List<Entity> targetList) {
 
         float damage = (float) (DamageCalculation.getMagicDamage(player) * 0.5 + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsX.lightBoost) * 0.2F);
-        MeteorShowerCoreEntity core = new MeteorShowerCoreEntity(player.level, player, targetList, damage);
+        MeteorShowerCoreEntity core = new MeteorShowerCoreEntity(player.level(), player, targetList, damage);
         core.setPos(player.getX(), player.getY(), player.getZ());
-        player.level.addFreshEntity(core);
+        player.level().addFreshEntity(core);
 
 
 
