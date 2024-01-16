@@ -37,7 +37,7 @@ public class AddonMenu extends MenuScreen {
         super.init();
 
         float topBarHeight = (float) height * 0.17F;
-        int start = (int)topBarHeight + 115;
+        int start = (int)topBarHeight + 135;
         int pos = 0;
 
         float buttonPosX = (float) width * 0.03F;
