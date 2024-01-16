@@ -221,7 +221,7 @@ public class MagicksEntityEvents {
 							}
 						}
 						if (!player.level.isClientSide && player.tickCount % 20 == 0 && playerData.isAbilityEquipped(StringsX.expWalker)) {
-							playerData.addExperience(player, 1, false, false);
+							playerData.addExperience(player, 1, false, true);
 						}
 					}
 				}
