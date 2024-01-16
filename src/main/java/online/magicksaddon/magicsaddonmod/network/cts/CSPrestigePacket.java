@@ -130,10 +130,10 @@ public class CSPrestigePacket {
                 playerData.addAbility(Strings.damageDrive, true);
             }
             if (globalData.getNGPGuardianCount() >= 3) {
-                playerData.addAbility(Strings.jackpot, true);
+                playerData.addAbility(StringsX.mpWalker, true);
             }
             if (globalData.getNGPGuardianCount() >= 4){
-                playerData.addAbility(Strings.itemBoost, true);
+                playerData.addAbility(StringsX.hpWalker, true);
             }
         }
 

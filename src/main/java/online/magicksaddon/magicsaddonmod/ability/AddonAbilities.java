@@ -23,8 +23,9 @@ public class AddonAbilities extends ModAbilities{
             // Action
     	DARK_PASSAGE = ABILITIES.register(StringsX.ABMA_Prefix+"dark_passage", () -> new Ability(new ResourceLocation(StringsX.darkPassage), 3, Ability.AbilityType.ACTION, order++)),
         RAGE_AWAKENED = ABILITIES.register(StringsX.ABMA_Prefix+"rage_awakened", () -> new Ability(new ResourceLocation(StringsX.rageAwakened), 5,Ability.AbilityType.ACTION, order++)),
-        WAY_TO_LIGHT = ABILITIES.register(StringsX.ABMA_Prefix+"way_to_light", () -> new Ability(new ResourceLocation(StringsX.wayToLight), 0, Ability.AbilityType.ACTION, order++)),
-        DARK_POWER = ABILITIES.register(StringsX.ABMA_Prefix+"dark_power", () -> new Ability(new ResourceLocation(StringsX.darkPower), 0, Ability.AbilityType.ACTION, order++)),
+        WAY_TO_LIGHT = ABILITIES.register(StringsX.ABMA_Prefix+"way_to_light", () -> new Ability(new ResourceLocation(StringsX.wayToLight), 5, Ability.AbilityType.ACTION, order++)),
+        DARK_POWER = ABILITIES.register(StringsX.ABMA_Prefix+"dark_power", () -> new Ability(new ResourceLocation(StringsX.darkPower), 5, Ability.AbilityType.ACTION, order++)),
+        RISKCHARGE = ABILITIES.register(StringsX.ABMA_Prefix+"riskcharge", () -> new Ability(new ResourceLocation(StringsX.riskCharge), 0, Ability.AbilityType.ACTION, order++)),
 
             // Growth
         LIGHT_STEP = ABILITIES.register(StringsX.ABMA_Prefix+"light_step", () -> new Ability(new ResourceLocation(StringsX.lightStep), 3, Ability.AbilityType.GROWTH, order++)),
@@ -38,7 +39,8 @@ public class AddonAbilities extends ModAbilities{
         LIGHT_WITHIN = ABILITIES.register(StringsX.ABMA_Prefix+"light_within", () -> new Ability(new ResourceLocation(StringsX.lightWithin), 5, Ability.AbilityType.SUPPORT, order++)),
         DARKNESS_WITHIN = ABILITIES.register(StringsX.ABMA_Prefix+"darkness_within", () -> new Ability(new ResourceLocation(StringsX.darknessWithin), 5, Ability.AbilityType.SUPPORT, order++)),
 
-        HP_WALKER = ABILITIES.register(StringsX.ABMA_Prefix+"hp_walker", () -> new Ability(new ResourceLocation(StringsX.hpWalker),5,Ability.AbilityType.SUPPORT, order++)),
-        MP_WALKER = ABILITIES.register(StringsX.ABMA_Prefix+"mp_walker", () -> new Ability(new ResourceLocation(StringsX.mpWalker),5,Ability.AbilityType.SUPPORT, order++));
+        HP_WALKER = ABILITIES.register(StringsX.ABMA_Prefix+"hp_walker", () -> new Ability(new ResourceLocation(StringsX.hpWalker),10,Ability.AbilityType.SUPPORT, order++)),
+        MP_WALKER = ABILITIES.register(StringsX.ABMA_Prefix+"mp_walker", () -> new Ability(new ResourceLocation(StringsX.mpWalker),10,Ability.AbilityType.SUPPORT, order++)),
+        EXP_WALKER = ABILITIES.register(StringsX.ABMA_Prefix+"exp_walker", () -> new Ability(new ResourceLocation(StringsX.expWalker),10,Ability.AbilityType.SUPPORT, order++));
 
 }

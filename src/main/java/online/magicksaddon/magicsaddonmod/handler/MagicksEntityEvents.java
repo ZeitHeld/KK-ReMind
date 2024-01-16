@@ -143,6 +143,7 @@ public class MagicksEntityEvents {
 					playerData.getStrengthStat().removeModifier("darkness_within");
 					playerData.getMagicStat().removeModifier("darkness_within");
 				}
+
 			}
 
 		}
@@ -232,7 +233,6 @@ public class MagicksEntityEvents {
 					player.removeAllEffects();
 					player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 10));
 					player.level.playSound(null, player.blockPosition(), MagicSounds.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
-
 				}
 			}
 		}
@@ -265,6 +265,9 @@ public class MagicksEntityEvents {
 			if (player.getHealth() + 1 >= player.getMaxHealth() / 4) {
 				PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 			}
+
+			//Protect Abilities
+
 
 		}
 	}

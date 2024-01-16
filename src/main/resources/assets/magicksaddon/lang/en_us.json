@@ -72,8 +72,10 @@
   "ability.ability_darkness_within.desc": "Empowers you with the power of Darkness! Equip Darkness Boost to increase the effect.",
   "ability.ability_hp_walker.name": "HP Walker",
   "ability.ability_mp_walker.name": "MP Walker",
-  "ability.ability_hp_walker.desc": "Recover HP as you walk or run.",
-  "ability.ability_mp_walker.desc": "Recover MP as you walk or run.",
+  "ability.ability_exp_walker.name": "EXP Walker",
+  "ability.ability_hp_walker.desc": "Recover HP as you walk or run. Stack the ability to increase the effect.",
+  "ability.ability_mp_walker.desc": "Recover MP as you walk or run. MP recharging speed remains unchanged. Stack the ability to increase the effect.",
+  "ability.ability_exp_walker.desc": "Gain EXP as you walk or run.",
 
   "shotlock.flame_salvo.name": "Flame Salvo",
   "shotlock.bubble_blaster.name": "Bubble Blaster",
@@ -116,10 +118,25 @@
   "item.magicksaddon.thundaga_trinket": "Thundaga Trinket",
   "item.magicksaddon.thundagun_trinket": "Thundagun Trinket",
 
+  "item.magicksaddon.aqua_chaplet": "Aqua Chaplet",
+  "item.magicksaddon.heros_glove": "Hero's Glove",
+  "item.magicksaddon.heros_belt": "Hero's Belt",
+  "item.magicksaddon.master_belt": "Master Belt",
+
+
   "item.magicksaddon.luck_of_the_draw": "Luck of The Draw",
   "item.magicksaddon.light_heart": "Light Heart",
   "item.magicksaddon.dark_heart": "Dark Heart",
   "item.magicksaddon.raging_heart": "Raging Heart",
+  "item.magicksaddon.forest_clasp": "Forest Clasp",
+  "item.magicksaddon.laughter_pin": "Laughter Pin",
+  "item.magicksaddon.celestriad": "Celestriad",
+  "item.magicksaddon.crystal_regalia": "Crystal Regalia",
+  "item.magicksaddon.crystal_regalia_plus": "Crystal Regalia +",
+  "item.magicksaddon.flanniversary_badge": "Flanniversary Badge",
+  "item.magicksaddon.mickey_clasp": "Mickey Clasp",
+  "item.magicksaddon.breakthrough": "Breakthrough",
+
 
   "key.categories.magicksaddon": "Re:Mind",
   "key.magicksaddon.openmenu": "Open Menu",

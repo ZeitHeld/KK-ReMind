@@ -15,6 +15,7 @@ public class StringsX {
         ARMA_Prefix = "armor_",
         ACMA_Prefix = "accessory_",
         MENU_Prefix = "menu_button",
+        RCMA_Prefix = "reactioncommand_",
 
 
         //Forms
@@ -38,6 +39,8 @@ public class StringsX {
         darknessWithin = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"darkness_within",
         hpWalker = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"hp_walker",
         mpWalker = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"mp_walker",
+        expWalker = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"exp_walker",
+        riskCharge = MagicksAddonMod.MODID+":"+ StringsX.ABMA_Prefix+"riskcharge",
 
         // Shotlocks
         flameSalvo = "flame_salvo",
@@ -46,6 +49,9 @@ public class StringsX {
         thunderStorm = "thunderstorm",
         bioBarrage = "bio_barrage",
         meteorShower = "meteor_shower",
+
+        // Reaction Commands
+        riskchargeRC = MagicksAddonMod.MODID+":"+StringsX.RCMA_Prefix+"rc_riskcharge",
 
 
         //Keyblades

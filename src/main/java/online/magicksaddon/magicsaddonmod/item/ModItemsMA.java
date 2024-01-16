@@ -33,7 +33,7 @@ public class ModItemsMA{
         darkDesires = ITEMS.register("dark_desires", () -> new KeybladeItem(new Item.Properties())),
             // Keychains
         xephiroKeybladeChain = ITEMS.register("xephiro_keyblade_chain", () -> new KeychainItem()),
-       darkDesiresChain = ITEMS.register("dark_desires_chain", () -> new KeychainItem()),
+        darkDesiresChain = ITEMS.register("dark_desires_chain", () -> new KeychainItem()),
 
             // KK Armors
         abasChain = ITEMS.register("abas_chain", () -> new KKArmorItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ARMOR_TAB).stacksTo(1),0, ImmutableMap.of(KKResistanceType.fire, 20,KKResistanceType.ice,20,KKResistanceType.lightning,20))),
@@ -63,11 +63,26 @@ public class ModItemsMA{
         thundagaTrinket = ITEMS.register("thundaga_trinket", () -> new KKArmorItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ARMOR_TAB).stacksTo(1),3, ImmutableMap.of(KKResistanceType.lightning,20))),
         thundagunTrinket = ITEMS.register("thundagun_trinket", () -> new KKArmorItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ARMOR_TAB).stacksTo(1),3, ImmutableMap.of(KKResistanceType.lightning,25))),
 
+
+        aquaChaplet = ITEMS.register("aqua_chaplet", () -> new KKArmorItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ARMOR_TAB).stacksTo(1),1, ImmutableMap.of(KKResistanceType.ice,50))),
+        herosGlove = ITEMS.register("heros_glove", () -> new KKArmorItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ARMOR_TAB).stacksTo(1),4, ImmutableMap.of(KKResistanceType.fire,20,KKResistanceType.ice,20,KKResistanceType.darkness,20))),
+        herosBelt = ITEMS.register("heros_belt", () -> new KKArmorItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ARMOR_TAB).stacksTo(1),3, ImmutableMap.of(KKResistanceType.lightning,20,KKResistanceType.ice,20,KKResistanceType.darkness,20))),
+        masterBelt = ITEMS.register("master_belt", () -> new KKArmorItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ARMOR_TAB).stacksTo(1),7, ImmutableMap.of(KKResistanceType.darkness,20))),
+
             // KK Accessories
         luckOfTheDraw = ITEMS.register("luck_of_the_draw", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1), 0,0,0,new String[] {Strings.luckyLucky,Strings.treasureMagnet})),
         lightHeart = ITEMS.register("light_heart", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1), 5,0,0,new String[] {StringsX.wayToLight})),
         darkHeart = ITEMS.register("dark_heart", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1), 5,0,0,new String[] {StringsX.darkPower})),
-        ragingHeart = ITEMS.register("raging_heart", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1), 5,0,0,new String[] {StringsX.rageAwakened}));
+        ragingHeart = ITEMS.register("raging_heart", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1), 5,0,0,new String[] {StringsX.rageAwakened})),
+        celestriad = ITEMS.register("celestriad", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1), 5,2,3,new String[] {Strings.fireBoost,Strings.blizzardBoost,Strings.thunderBoost})),
+        forestClasp = ITEMS.register("forest_clasp", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1),8,2,3,new String[] {StringsX.hpWalker})),
+        laughterPin = ITEMS.register("laughter_pin", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1),6,3,2,new String[] {StringsX.mpWalker})),
+        crystalRegalia = ITEMS.register("crystal_regalia", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1),16,5,5,new String[] {Strings.mpHastega})),
+        crystalRegaliaPlus = ITEMS.register("crystal_regalia_plus", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1),25,6,6,new String[] {Strings.mpHastega})),
+        flanniversaryBadge = ITEMS.register("flanniversary_badge", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1),0,4,4,new String[] {Strings.mpHastera,Strings.mpThrift})),
+        mickeyClasp = ITEMS.register("mickey_clasp", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1),0,3,5,new String[] {Strings.mpHastega,Strings.endlessMagic})),
+        breakthrough = ITEMS.register("breakthrough", () -> new KKAccessoryItem(new Item.Properties().tab(ModCreativeModTabMA.ADDON_ACCESSORY_TAB).stacksTo(1),15,7,0, null));
+
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
