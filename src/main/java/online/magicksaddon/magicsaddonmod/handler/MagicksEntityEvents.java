@@ -223,6 +223,7 @@ public class MagicksEntityEvents {
 				if (player.getHealth() <= 0){
 					event.setCanceled(true);
 					player.setHealth(10.0F);
+					player.invulnerableTime = 10;
 					globalData.remAutoLifeActive(1);
 					player.removeAllEffects();
 					player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 10));
