@@ -29,24 +29,6 @@ public class MagicksEntityEvents {
 	public void onJoin(PlayerLoggedInEvent e){
 		Player player = e.getEntity();
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-
-
-		// Shotlocks Gain (Temp)
-		if (playerData.getLevel() >= 1){
-			playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.flameSalvo, true);
-			playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.bubbleBlaster, true);
-		}
-		if (playerData.getLevel() >= 25){
-			playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.thunderStorm, true);
-			playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.bioBarrage, true);
-		}
-		if (playerData.getLevel() >= 50){
-			playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.meteorShower, true);
-		}
-
-
-
-
 			//if (playerData.getSoAState() == SoAState.COMPLETE){
 				/*
 				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.darkMode, 1);
@@ -94,7 +76,7 @@ public class MagicksEntityEvents {
 				playerData.setDriveFormLevel(formName, 1); //We give the form to the player
 				if(globalData.getDarkModeEXP() > 0) { //If we have some amount of exp stored in the new capability give it to the KK form so it properly gets leveled up
 					playerData.setDriveFormExp(player, formName, formEXP);
-					System.out.println("Leveled dark form with "+formEXP+"xp points");
+					//System.out.println("Leveled dark form with "+formEXP+"xp points");
 				}
 			}
 		} else { // If ability to use dark form is NOT equipped
@@ -117,6 +99,8 @@ public class MagicksEntityEvents {
 				//TODO uncomment this 
 				// updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm, globalData.getRageModeEXP());
 				updateDriveAbilities(player, StringsX.wayToLight, MagicksAddonMod.MODID+":"+ StringsX.light, globalData.getLightFormEXP());
+				//TODO Remove this line when Rage Form can get EXP
+				updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm, 0);
 
 				// Additional Forms Here
 				// Light/Darkness Within
@@ -197,7 +181,7 @@ public class MagicksEntityEvents {
 						playerData.getDefenseStat().removeModifier("berserk");
 						if(!event.getEntity().level().isClientSide) {
 							//I think you might not need this one I commented
-							//PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player); //Sync KK stat packet
+							PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player); //Sync KK stat packet
 							PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
 						}
 					}
@@ -273,6 +257,8 @@ public class MagicksEntityEvents {
 				}
 			}
 			if (player.getHealth() + 1 >= player.getMaxHealth() / 4) {
+				playerData.getStrengthStat().removeModifier("adrenaline");
+				playerData.getMagicStat().removeModifier("critical_surge");
 				PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 			}
 

@@ -12,6 +12,7 @@ import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
@@ -26,6 +27,20 @@ public class ClientEventsX {
             if (e.getLevel().isClientSide) {
                 Minecraft minecraft = Minecraft.getInstance();
                 minecraft.getSoundManager().play(new BerserkAuraSoundInstance(ent));
+
+				IPlayerCapabilities playerData = ModCapabilities.getPlayer(minecraft.player);
+
+				if (playerData.getLevel() >= 1){
+					playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.flameSalvo, true);
+					playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.bubbleBlaster, true);
+				}
+				if (playerData.getLevel() >= 25){
+					playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.thunderStorm, true);
+					playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.bioBarrage, true);
+				}
+				if (playerData.getLevel() >= 50){
+					playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.meteorShower, true);
+				}
             }
         }
     }
