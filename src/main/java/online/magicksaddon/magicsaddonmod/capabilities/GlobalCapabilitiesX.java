@@ -90,6 +90,8 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     private int stepTicks;
     private byte stepType;
 
+    private int riskchargeCount;
+
     //Haste
     public int getHasteLevel() {
 
@@ -241,6 +243,16 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     @Override
     public byte getStepType(){
         return stepType;
+    }
+
+    @Override
+    public void setRiskchargeCount(int i) {
+        riskchargeCount = i;
+    }
+
+    @Override
+    public int getRiskchargeCount() {
+        return riskchargeCount;
     }
 
     @Override

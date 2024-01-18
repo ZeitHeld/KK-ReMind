@@ -56,6 +56,10 @@ public interface IGlobalCapabilitiesX extends INBTSerializable<CompoundTag> {
     int getStepTicks();
     byte getStepType();
 
+    // Rage Form
+    void setRiskchargeCount(int i);
+    int getRiskchargeCount();
+
     //Prestige
     int getPrestigeLvl();
     void addPrestigeLvl(int i);
