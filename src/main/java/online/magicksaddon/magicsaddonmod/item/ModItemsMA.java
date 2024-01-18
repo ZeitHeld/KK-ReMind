@@ -30,10 +30,10 @@ public class ModItemsMA{
 
             // Keyblades
         xephiroKeyblade = ITEMS.register("xephiro_keyblade", () -> new KeybladeItem(new Item.Properties())),
-        darkDesires = ITEMS.register("dark_desires", () -> new KeybladeItem(new Item.Properties())),
+        pureblood = ITEMS.register("pureblood", () -> new KeybladeItem(new Item.Properties())),
             // Keychains
         xephiroKeybladeChain = ITEMS.register("xephiro_keyblade_chain", () -> new KeychainItem()),
-        darkDesiresChain = ITEMS.register("dark_desires_chain", () -> new KeychainItem()),
+        purebloodChain = ITEMS.register("pureblood_chain", () -> new KeychainItem()),
 
             // KK Armors
         abasChain = ITEMS.register("abas_chain", () -> new KKArmorItem(new Item.Properties().stacksTo(1),0, ImmutableMap.of(KKResistanceType.fire, 20,KKResistanceType.ice,20,KKResistanceType.lightning,20))),
