@@ -17,11 +17,6 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         storage.putInt("berserk_level", this.getBerserkLevel());
         storage.putInt("autolife_active", this.getAutoLifeActive());
 
-        storage.putInt("dark_mode_exp", this.getDarkModeEXP());
-        storage.putInt("light_form_exp", this.getLightFormEXP());
-        storage.putInt("rage_form_exp", this.getRageFormEXP());
-
-
         // New Game Plus NBT
         storage.putInt("prestige_level", this.getPrestigeLvl());
 
@@ -43,13 +38,6 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         this.setHasteTicks(properties.getInt("haste_ticks"), properties.getInt("haste_level"));
         this.setSlowTicks(properties.getInt("slow_ticks"), properties.getInt("slow_level"));
         this.setBerserkTicks(properties.getInt("berserk_ticks"), properties.getInt("berserk_level"));
-
-        this.setDarkModeEXP(properties.getInt("dark_mode_exp"));
-        this.setLightFormEXP(properties.getInt("light_form_exp"));
-        this.setDarkModeLvl(properties.getInt("dark_mode_lvl"));
-        this.setLightFormLvl(properties.getInt("light_form_lvl"));
-        this.setRageFormEXP(properties.getInt("rage_form_exp"));
-        this.setRageFormLvl(properties.getInt("rage_form_lvl"));
 
         this.setPrestigeLvl(properties.getInt("prestige_level"));
 
@@ -187,51 +175,6 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         return autoLifeActive;
     }
 
-    //Forms
-
-    @Override
-    public int getDarkModeEXP(){
-        return darkModeEXP;
-    }
-    @Override
-    public int getLightFormEXP(){
-        return lightFormEXP;
-    }
-    @Override
-    public int getRageFormEXP(){
-        return rageFormEXP;
-    }
-
-    @Override
-    public void setDarkModeEXP(int i){
-        darkModeEXP = i;
-    }
-
-    @Override
-    public void setLightFormEXP(int i){
-        lightFormEXP = i;
-
-    }
-    @Override
-    public void setRageFormEXP(int i){
-        rageFormEXP = i;
-    }
-    @Override
-    public void setDarkModeLvl(int i){
-        darkModeLvl = i;
-    }
-
-    @Override
-    public void setLightFormLvl(int i){
-        lightFormLvl = i;
-
-    }
-    @Override
-    public void setRageFormLvl(int i){
-        rageFormLvl = i;
-    }
-
-
     @Override
     public void setStepTicks(int i, byte type) {
         stepTicks = i;
@@ -262,19 +205,6 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     public int getRiskchargeCount() {
         return riskchargeCount;
     }
-
-    @Override
-    public int getDarkModeLvl(){
-        return darkModeLvl;
-    }
-    @Override
-    public int getLightFormLvl(){
-        return lightFormLvl;
-    }
-    @Override
-    public int getRageFormLvl(){ return rageFormLvl; }
-
-
 
     @Override
     public int getAutoLifeActive() {

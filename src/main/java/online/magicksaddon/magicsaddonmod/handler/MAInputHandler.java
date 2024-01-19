@@ -941,7 +941,7 @@ public class MAInputHandler extends InputHandler{
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(mc.player);
 
         if(playerData != null && worldData != null) {
-	        this.driveFormsMap = Utils.getSortedDriveForms(playerData.getDriveFormMap());
+	        this.driveFormsMap = Utils.getSortedDriveForms(playerData.getDriveFormMap(),playerData.getVisibleDriveForms());
 	        if(!playerData.isAbilityEquipped(Strings.darkDomination)) {
 	        	this.driveFormsMap.remove(Strings.Form_Anti);
 			}

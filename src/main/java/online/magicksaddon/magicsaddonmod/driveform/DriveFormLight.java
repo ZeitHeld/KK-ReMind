@@ -42,7 +42,7 @@ public class DriveFormLight extends DriveForm {
                 if (playerData != null && playerData.getActiveDriveForm().equals(MagicksAddonMod.MODID+":"+ StringsX.light)) {
                     double mult = Double.parseDouble(ModConfigs.driveFormXPMultiplier.get(0).split(",")[1]);
                     playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
-                    formData.setDarkModeEXP(playerData.getDriveFormExp(playerData.getActiveDriveForm()));
+                   // formData.setDarkModeEXP(playerData.getDriveFormExp(playerData.getActiveDriveForm()));
                     PacketHandlerX.syncGlobalToAllAround(player, formData);
                     PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
                 }

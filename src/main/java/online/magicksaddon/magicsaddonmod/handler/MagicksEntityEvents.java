@@ -67,22 +67,16 @@ public class MagicksEntityEvents {
 	 * @param formName ModID + StringsX.darkMode
 	 * @param formEXP getDarkModeEXP()
 	 */
-	private void updateDriveAbilities(Player player, String AbilityName, String formName, int formEXP) {
+	private void updateDriveAbilities(Player player, String AbilityName, String formName) {
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-		IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
 
 		if(playerData.isAbilityEquipped(AbilityName)) { //if ability to use dark form is equipped
 			if(!playerData.getDriveFormMap().containsKey(formName)) {
 				playerData.setDriveFormLevel(formName, 1); //We give the form to the player
-				if(globalData.getDarkModeEXP() > 0) { //If we have some amount of exp stored in the new capability give it to the KK form so it properly gets leveled up
-					playerData.setDriveFormExp(player, formName, formEXP);
-					//System.out.println("Leveled dark form with "+formEXP+"xp points");
-				}
 			}
+			playerData.addVisibleDriveForm(formName);
 		} else { // If ability to use dark form is NOT equipped
-			if(playerData.getDriveFormMap().containsKey(formName)) {
-				playerData.getDriveFormMap().remove(formName);
-			}
+			playerData.remVisibleDriveForm(formName);
 		}		
 	}
 
@@ -95,9 +89,9 @@ public class MagicksEntityEvents {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			if(playerData != null && globalData != null) {
 
-				updateDriveAbilities(player, StringsX.darkPower, MagicksAddonMod.MODID+":"+ StringsX.darkMode, globalData.getDarkModeEXP());
-				updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm, globalData.getRageFormEXP());
-				updateDriveAbilities(player, StringsX.wayToLight, MagicksAddonMod.MODID+":"+ StringsX.light, globalData.getLightFormEXP());
+				updateDriveAbilities(player, StringsX.darkPower, MagicksAddonMod.MODID+":"+ StringsX.darkMode);
+				updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm);
+				updateDriveAbilities(player, StringsX.wayToLight, MagicksAddonMod.MODID+":"+ StringsX.light);
 
 				// Riskcharge
 

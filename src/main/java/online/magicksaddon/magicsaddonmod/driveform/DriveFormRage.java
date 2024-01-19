@@ -44,7 +44,7 @@ public class DriveFormRage extends DriveForm {
                     double mult = Double.parseDouble(ModConfigs.driveFormXPMultiplier.get(formData.getRiskchargeCount() + 1).split(",")[1]);
                     playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
                     //System.out.println(playerData.getDriveFormExp(playerData.getActiveDriveForm()));
-                    formData.setRageFormEXP(playerData.getDriveFormExp(playerData.getActiveDriveForm()));
+                   // formData.setRageFormEXP(playerData.getDriveFormExp(playerData.getActiveDriveForm()));
 
 
                     PacketHandlerX.syncGlobalToAllAround(player, formData);
