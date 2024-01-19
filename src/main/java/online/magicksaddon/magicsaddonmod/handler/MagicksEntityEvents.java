@@ -102,7 +102,16 @@ public class MagicksEntityEvents {
 				//TODO Remove this line when Rage Form can get EXP
 				updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm, 0);
 
-				// Additional Forms Here
+				// Riskcharge
+
+				if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")){
+					playerData.addReactionCommand(StringsX.riskCharge, player);
+				}
+
+
+
+
+
 				// Light/Darkness Within
 
 				int boostWithin = (playerData.getStrengthStat().getStat() + playerData.getMagicStat().getStat()) / 3;

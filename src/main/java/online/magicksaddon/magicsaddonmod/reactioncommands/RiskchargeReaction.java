@@ -13,6 +13,7 @@ import online.kingdomkeys.kingdomkeys.reactioncommands.ReactionCommand;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
+import online.magicksaddon.magicsaddonmod.lib.StringsX;
 
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
 public class RiskchargeReaction extends ReactionCommand {

@@ -25,7 +25,7 @@ public class AddonReactionCommands {
 
 
     public static final RegistryObject<ReactionCommand>
-        RISKCHARGE = REACTION_COMMANDS.register(StringsX.riskCharge, () -> new RiskchargeReaction(new ResourceLocation(MagicksAddonMod.MODID + ":" + StringsX.riskchargeRC), false));
+        RISKCHARGE = REACTION_COMMANDS.register(StringsX.riskCharge, () -> new RiskchargeReaction(new ResourceLocation(MagicksAddonMod.MODID + ":" + StringsX.riskchargeRC), true));
 
 
 }
