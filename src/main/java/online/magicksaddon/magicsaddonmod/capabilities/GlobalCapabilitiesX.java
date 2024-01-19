@@ -39,7 +39,7 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         storage.putInt("NGPlus_Mystic", this.getNGPMysticCount());
         storage.putInt("NGPlus_Guardian", this.getNGPGuardianCount());
 
-
+        storage.putInt("riskcharge_count", this.getRiskchargeCount());
         return storage;
     }
 
@@ -64,6 +64,8 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         this.setNGPWarriorCount(properties.getInt("NGPlus_Warrior"));
         this.setNGPMysticCount(properties.getInt("NGPlus_Mystic"));
         this.setNGPGuardianCount(properties.getInt("NGPlus_Guardian"));
+        
+        this.setRiskchargeCount(properties.getInt("riskcharge_count"));
     }
 
     private int hasteTicks;

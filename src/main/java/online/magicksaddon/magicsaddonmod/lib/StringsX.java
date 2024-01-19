@@ -18,7 +18,7 @@ public class StringsX {
         ARMA_Prefix = "armor_",
         ACMA_Prefix = "accessory_",
         MENU_Prefix = "menu_button",
-        RCMA_Prefix = "reactioncommand_",
+        RCMA_Prefix = "rc_",
 
 
         //Forms
@@ -54,7 +54,7 @@ public class StringsX {
         meteorShower = "meteor_shower",
 
         // Reaction Commands
-        riskchargeRC = MagicksAddonMod.MODID+":"+StringsX.RCMA_Prefix+"rc_riskcharge",
+        riskchargeRC = MagicksAddonMod.MODID+":"+StringsX.RCMA_Prefix+"riskcharge",
 
 
         //Keyblades
