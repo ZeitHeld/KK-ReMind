@@ -2,12 +2,6 @@ package online.magicksaddon.magicsaddonmod.capabilities;
 
 
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.player.Player;
-import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
-import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
-import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
-import online.kingdomkeys.kingdomkeys.capability.PlayerCapabilities;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
 
 
 public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
@@ -54,6 +48,8 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         this.setLightFormEXP(properties.getInt("light_form_exp"));
         this.setDarkModeLvl(properties.getInt("dark_mode_lvl"));
         this.setLightFormLvl(properties.getInt("light_form_lvl"));
+        this.setRageFormEXP(properties.getInt("rage_form_exp"));
+        this.setRageFormLvl(properties.getInt("rage_form_lvl"));
 
         this.setPrestigeLvl(properties.getInt("prestige_level"));
 
@@ -88,6 +84,7 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     private int rageFormEXP;
     private int darkModeLvl;
     private int lightFormLvl;
+    private int rageFormLvl;
 
     private int stepTicks;
     private byte stepType;
@@ -216,6 +213,10 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
 
     }
     @Override
+    public void setRageFormEXP(int i){
+        rageFormEXP = i;
+    }
+    @Override
     public void setDarkModeLvl(int i){
         darkModeLvl = i;
     }
@@ -225,6 +226,11 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
         lightFormLvl = i;
 
     }
+    @Override
+    public void setRageFormLvl(int i){
+        rageFormLvl = i;
+    }
+
 
     @Override
     public void setStepTicks(int i, byte type) {
@@ -265,6 +271,8 @@ public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
     public int getLightFormLvl(){
         return lightFormLvl;
     }
+    @Override
+    public int getRageFormLvl(){ return rageFormLvl; }
 
 
 

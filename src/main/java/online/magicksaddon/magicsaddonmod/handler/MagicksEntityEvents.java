@@ -96,17 +96,14 @@ public class MagicksEntityEvents {
 			if(playerData != null && globalData != null) {
 
 				updateDriveAbilities(player, StringsX.darkPower, MagicksAddonMod.MODID+":"+ StringsX.darkMode, globalData.getDarkModeEXP());
-				//TODO uncomment this 
-				// updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm, globalData.getRageModeEXP());
+				updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm, globalData.getRageFormEXP());
 				updateDriveAbilities(player, StringsX.wayToLight, MagicksAddonMod.MODID+":"+ StringsX.light, globalData.getLightFormEXP());
-				//TODO Remove this line when Rage Form can get EXP
-				updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm, 0);
 
 				// Riskcharge
 
-				/*if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")){
-					playerData.addReactionCommand(StringsX.riskCharge, player);
-				}*/
+				if (!playerData.getActiveDriveForm().equals("magicksaddon:form_rage")){
+					playerData.getStrengthStat().removeModifier("Riskcharge");
+				}
 
 
 				// Light/Darkness Within

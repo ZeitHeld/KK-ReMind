@@ -1,11 +1,14 @@
 {
-  "cost": 100,
+  "cost": 200,
   "ap": 100,
-  "str_mult": 2,
+  "str_mult": 1,
   "mag_mult": 1,
   "speed_mult": 1.25,
   "level_up":[ 0, 20, 80, 152, 242, 350, 500 ],
   "abilities": [
-    "kingdomkeys:ability_form_boost","kingdomkeys:ability_form_boost","kingdomkeys:ability_form_boost","magicksaddon:ability_darkness_boost","magicksaddon:ability_dark_step","kingdomkeys:ability_high_jump", "magicksaddon:ability_riskcharge"
-  ]
+    "kingdomkeys:ability_form_boost","magicksaddon:ability_darkness_boost","magicksaddon:ability_dark_step","kingdomkeys:ability_high_jump", "magicksaddon:ability_riskcharge"
+  ],
+  "base_levelup_abilities":[ "magicksaddon:ability_adrenaline", "", "", "", "", "", "magicksaddon:ability_rage_awakened" ],
+  "driveform_levelup_abilities":[ "magicksaddon:ability_darkness_boost", "kingdomkeys:ability_high_jump", "magicksaddon:ability_darkness_boost", "magicksaddon:ability_dark_step","magicksaddon:ability_darkness_boost","magicksaddon:ability_dark_step","magicksaddon:ability_darkness_boost" ]
+
 }

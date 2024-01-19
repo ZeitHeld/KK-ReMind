@@ -25,7 +25,8 @@ public class MagicSounds {
             DARKSTEP1 = registerSound("darkstep1"),
             DARKSTEP2 = registerSound("darkstep2"),
             LIGHTSTEP1 = registerSound("lightstep1"),
-            LIGHTSTEP2 = registerSound("lightstep2");
+            LIGHTSTEP2 = registerSound("lightstep2"),
+            RISKCHARGE = registerSound("riskcharge");
 
 
     public static RegistryObject<SoundEvent> registerSound(String name) {
