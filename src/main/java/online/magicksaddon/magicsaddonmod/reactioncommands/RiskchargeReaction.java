@@ -13,14 +13,14 @@ import online.kingdomkeys.kingdomkeys.reactioncommands.ReactionCommand;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.driveform.DriveFormRage;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
 
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
-public class Riskcharge extends ReactionCommand {
-    public Riskcharge(ResourceLocation registryName, boolean constantCheck) {
-        super(registryName, constantCheck);
+public class RiskchargeReaction extends ReactionCommand {
+    public RiskchargeReaction(ResourceLocation registryName, boolean constantCheck) {
+        super(registryName, false);
     }
+
+
 
     @Override
     public void onUse(Player player, LivingEntity livingEntity, LivingEntity livingEntity1) {
@@ -43,9 +43,9 @@ public class Riskcharge extends ReactionCommand {
         IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
         if(playerData != null){
             if(playerData.getActiveDriveForm().equals("magicksaddon:form_rage")){
-                if(globalData.getRiskchargeCount() < 3){
+                //if(globalData.getRiskchargeCount() < 3){
                     return true;
-                }
+                //}
             }
         }
         return false;

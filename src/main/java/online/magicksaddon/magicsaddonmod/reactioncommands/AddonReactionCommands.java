@@ -19,13 +19,13 @@ import online.magicksaddon.magicsaddonmod.lib.StringsX;
 import java.util.function.Supplier;
 
 public class AddonReactionCommands {
-    public static DeferredRegister<ReactionCommand> REACTION_COMMANDS = DeferredRegister.create(new ResourceLocation(MagicksAddonMod.MODID, "reactioncommands"), "magicksaddon");
+    public static DeferredRegister<ReactionCommand> REACTION_COMMANDS = DeferredRegister.create(new ResourceLocation(KingdomKeys.MODID, "reactioncommands"), "magicksaddon");
 
 
 
 
     public static final RegistryObject<ReactionCommand>
-        RISKCHARGE = REACTION_COMMANDS.register(StringsX.riskCharge, () -> new ReactionAutoForm(MagicksAddonMod.MODID + ":" + StringsX.riskchargeRC, StringsX.riskCharge, StringsX.rageForm));
+        RISKCHARGE = REACTION_COMMANDS.register(StringsX.riskCharge, () -> new RiskchargeReaction(new ResourceLocation(MagicksAddonMod.MODID + ":" + StringsX.riskchargeRC), false));
 
 
 }
