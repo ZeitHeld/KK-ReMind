@@ -149,7 +149,9 @@
   "menu_button.prestigeConfirm": "New Game +",
   "menu_button.prestigeConfirm.desc": "Resets your level and choice. WARNING!!! You cannot undo this!!!",
   "menu_button.prestige.desc": "Allows you to reset your level if you meet the requirements.",
-  "menu_button.prestigeLevel": "NG+ Counter"
+  "menu_button.prestigeLevel": "NG+ Counter",
+
+  "reactioncommand.rc_riskcharge.name": "Riskcharge"
 
 
 }
