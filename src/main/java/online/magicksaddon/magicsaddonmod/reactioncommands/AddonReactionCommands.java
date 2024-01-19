@@ -21,11 +21,8 @@ import java.util.function.Supplier;
 public class AddonReactionCommands {
     public static DeferredRegister<ReactionCommand> REACTION_COMMANDS = DeferredRegister.create(new ResourceLocation(KingdomKeys.MODID, "reactioncommands"), "magicksaddon");
 
-
-
-
     public static final RegistryObject<ReactionCommand>
-        RISKCHARGE = REACTION_COMMANDS.register(StringsX.riskCharge, () -> new RiskchargeReaction(new ResourceLocation(MagicksAddonMod.MODID + ":" + StringsX.riskchargeRC), true));
+        RISKCHARGE = REACTION_COMMANDS.register(StringsX.RCMA_Prefix+"riskcharge", () -> new RiskchargeReaction(new ResourceLocation(StringsX.riskchargeRC), true));
 
 
 }

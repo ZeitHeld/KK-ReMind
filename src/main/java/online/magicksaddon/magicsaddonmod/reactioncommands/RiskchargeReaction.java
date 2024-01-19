@@ -14,11 +14,12 @@ import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
 
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
 public class RiskchargeReaction extends ReactionCommand {
     public RiskchargeReaction(ResourceLocation registryName, boolean constantCheck) {
-        super(registryName, false);
+        super(registryName, constantCheck);
     }
 
 
@@ -33,7 +34,8 @@ public class RiskchargeReaction extends ReactionCommand {
 
             player.setHealth(player.getHealth()/2);
             playerData.getStrengthStat().addModifier("Riskcharge", 5, true);
-            //globalData.setRiskchargeCount(+1);
+            globalData.setRiskchargeCount(globalData.getRiskchargeCount()+1);
+            PacketHandlerX.syncGlobalToAllAround(player, globalData);
             PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
         }
     }
@@ -43,10 +45,11 @@ public class RiskchargeReaction extends ReactionCommand {
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
         IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
         if(playerData != null){
+        	System.out.println(player.level().isClientSide+" "+ globalData.getRiskchargeCount());
             if(playerData.getActiveDriveForm().equals("magicksaddon:form_rage")){
-                //if(globalData.getRiskchargeCount() < 3){
+                if(globalData.getRiskchargeCount() < 3){
                     return true;
-                //}
+                }
             }
         }
         return false;

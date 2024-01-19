@@ -104,12 +104,9 @@ public class MagicksEntityEvents {
 
 				// Riskcharge
 
-				if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")){
+				/*if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")){
 					playerData.addReactionCommand(StringsX.riskCharge, player);
-				}
-
-
-
+				}*/
 
 
 				// Light/Darkness Within

@@ -8,6 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.Event;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
+import online.magicksaddon.magicsaddonmod.reactioncommands.AddonReactionCommands;
 import online.magicksaddon.magicsaddonmod.shotlock.AddonShotlocks;
 import org.slf4j.Logger;
 import net.minecraftforge.registries.RegistryObject;
@@ -84,6 +85,7 @@ public class MagicksAddonMod {
         AddonAbilities.ABILITIES.register(modEventBus);
         AddonForms.DRIVE_FORMS.register(modEventBus);
         AddonShotlocks.SHOTLOCKS.register(modEventBus);
+        AddonReactionCommands.REACTION_COMMANDS.register(modEventBus);
         modEventBus.addListener(this::setup);
         TABS.register(modEventBus);
 
