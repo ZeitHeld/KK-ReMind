@@ -73,16 +73,6 @@ import online.magicksaddon.magicsaddonmod.network.cts.CSSetStepTicksPacket;
 import online.magicksaddon.magicsaddonmod.network.cts.CSSyncAllClientDataXPacket;
 
 public class MAInputHandler extends InputHandler{
-	
-	List<UUID> portalCommands;
-    Map<String, int[]> driveFormsMap;
-    List<Member> targetsList;
-    List<Limit> limitsList;
-    List<String> magicList;
-    Map<Integer, ItemStack> itemsList;
-    List<String> reactionList = new ArrayList<String>();
-    
-    
     
     public void commandUp() {
         Minecraft mc = Minecraft.getInstance();
@@ -470,10 +460,11 @@ public class MAInputHandler extends InputHandler{
             if (!this.driveFormsMap.isEmpty() && playerData.getAlignment() == OrgMember.NONE) {
             	String formName = (String) driveFormsMap.keySet().toArray()[CommandMenuGui.driveSelected];
             	DriveForm driveForm = ModDriveForms.registry.get().getValue(new ResourceLocation(formName));
-            	System.out.println(driveForm.canGoAnti());
+            	System.out.println(playerData.getDriveFormMap());
             	if (playerData.getDP() >= driveForm.getDriveCost()) {
-            		//System.out.println(driveForm.canGoAnti());
+
                     if (!antiFormCheck()) {
+                    //if (!antiFormCheck((String) driveFormsMap.keySet().toArray()[CommandMenuGui.driveSelected])) {
 	                	PacketHandler.sendToServer(new CSUseDriveFormPacket(formName));
 	            		player.level().playSound(player, player.position().x(),player.position().y(),player.position().z(), ModSounds.drive.get(), SoundSource.MASTER, 1.0f, 1.0f);
                     }
@@ -568,33 +559,6 @@ public class MAInputHandler extends InputHandler{
             }
         }
     }
-
-    private void summonPortal(Player player, PortalData coords) {
-		BlockPos destination = coords.getPos();
-
-		if (player.isShiftKeyDown()) {
-			PacketHandler.sendToServer(new CSSpawnOrgPortalPacket(player.blockPosition(), destination, coords.getDimID()));
-		} else {
-			HitResult rtr = getMouseOverExtended(100);
-			if (rtr != null) {
-				if(rtr instanceof BlockHitResult) {
-					BlockHitResult brtr = (BlockHitResult)rtr;
-					double distanceSq = player.distanceToSqr(brtr.getBlockPos().getX(), brtr.getBlockPos().getY(), brtr.getBlockPos().getZ());
-					double reachSq = 100 * 100;
-					if (reachSq >= distanceSq) {
-						PacketHandler.sendToServer(new CSSpawnOrgPortalPacket(brtr.getBlockPos().above(), destination, coords.getDimID()));
-					}
-				} else if(rtr instanceof EntityHitResult) {
-					EntityHitResult ertr = (EntityHitResult)rtr;
-					double distanceSq = player.distanceToSqr(ertr.getEntity().getX(), ertr.getEntity().getY(), ertr.getEntity().getZ());
-					double reachSq = 100 * 100;
-					if (reachSq >= distanceSq) {
-						PacketHandler.sendToServer(new CSSpawnOrgPortalPacket(ertr.getEntity().blockPosition(), destination, coords.getDimID()));
-					} 
-				}
-			}
-		}
-	}
 
     @Override
     @SubscribeEvent
@@ -799,7 +763,7 @@ public class MAInputHandler extends InputHandler{
         }
     }
 
-	private Keybinds getPressedKey() {
+	public Keybinds getPressedKey() {
         for (Keybinds key : Keybinds.values())
             if (key.isPressed())
                 return key;
@@ -854,29 +818,6 @@ public class MAInputHandler extends InputHandler{
 		}
 	}
 
-	private void commandSwapReaction() {
-		loadLists();
-		if (this.reactionList != null && !this.reactionList.isEmpty()) {
-			if (CommandMenuGui.reactionSelected < this.reactionList.size() - 1) {
-				CommandMenuGui.reactionSelected++;
-			} else {
-				if (CommandMenuGui.reactionSelected >= this.reactionList.size() - 1)
-					CommandMenuGui.reactionSelected = 0;
-			}
-		}
-	}
-    
-    private void reactionCommand() {
-    	loadLists();
-    	if(!reactionList.isEmpty()) {
-    		Minecraft mc = Minecraft.getInstance();
-    		Player player = mc.player;
-			PacketHandler.sendToServer(new CSUseReactionCommandPacket(CommandMenuGui.reactionSelected, InputHandler.lockOn));
-			CommandMenuGui.reactionSelected = 0;
-			player.level().playSound(player, player.blockPosition(), ModSounds.menu_in.get(), SoundSource.MASTER, 1.0f, 1.0f);
-		}
-	}
-
 	@SubscribeEvent
     public void OnMouseWheelScroll(MouseScrollingEvent event) {
     	Minecraft mc = Minecraft.getInstance();
@@ -891,13 +832,16 @@ public class MAInputHandler extends InputHandler{
         }
     }
 
-    public void loadLists() {
+	public void loadLists() {
         Minecraft mc = Minecraft.getInstance();
         IWorldCapabilities worldData = ModCapabilities.getWorld(mc.level);
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(mc.player);
 
         if(playerData != null && worldData != null) {
-	        this.driveFormsMap = Utils.getSortedDriveForms(playerData.getDriveFormMap(),playerData.getVisibleDriveForms());
+        	System.out.println(playerData.getVisibleDriveForms());
+	        this.driveFormsMap = Utils.getSortedDriveForms(playerData.getDriveFormMap(), playerData.getVisibleDriveForms());
+        	System.out.println(driveFormsMap);
+
 	        if(!playerData.isAbilityEquipped(Strings.darkDomination)) {
 	        	this.driveFormsMap.remove(Strings.Form_Anti);
 			}
