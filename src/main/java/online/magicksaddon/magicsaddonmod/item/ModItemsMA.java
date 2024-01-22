@@ -29,7 +29,7 @@ public class ModItemsMA{
         autoLifeSpell = ITEMS.register("autolife_spell", () -> new MagicSpellItem(new Item.Properties(), MagicksAddonMod.MODID+":magic_auto-life")),
 
             // Shotlock Orbs
-        flameSalvo = ITEMS.register("flame_salvo_shotlock",() -> new ShotlockOrbItem(new Item.Properties(),MagicksAddonMod.MODID+":shotlock_flame_salvo")),
+        flameSalvo = ITEMS.register("flame_salvo_shotlock",() -> new ShotlockOrbItem(new Item.Properties(),MagicksAddonMod.MODID+":flame_salvo")),
 
             // Keyblades
         xephiroKeyblade = ITEMS.register("xephiro_keyblade", () -> new KeybladeItem(new Item.Properties())),

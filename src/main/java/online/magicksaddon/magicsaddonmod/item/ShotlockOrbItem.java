@@ -12,6 +12,7 @@ import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.shotlock.ModShotlocks;
 import online.kingdomkeys.kingdomkeys.shotlock.Shotlock;
+import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
 import online.magicksaddon.magicsaddonmod.shotlock.AddonShotlocks;
@@ -35,8 +36,7 @@ public class ShotlockOrbItem extends Item {
             if (!playerData.getShotlockList().contains(shotlocks)){
                 playerData.getShotlockList().add(shotlocks);
                 takeItem(player);
-                //
-
+				player.displayClientMessage(Component.translatable("Unlocked " + Utils.translateToLocal(shotlockInstance.getTranslationKey())), true);
             }
         }
         return InteractionResultHolder.success(player.getItemInHand(hand));
