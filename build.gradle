@@ -6,7 +6,7 @@ plugins {
     id 'org.spongepowered.mixin' version '0.7.+'
 }
 
-version = '1.20.1-0.7.3'
+version = '1.20.1-0.7.4'
 group = 'online.xephiro.magicksaddon' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'KK-ReMind'
 
@@ -144,7 +144,7 @@ jar {
         attributes([
                 "Specification-Title"     : "Kingdom Keys - Re:Mind",
                 "Specification-Vendor"    : "Xephiro",
-                "Specification-Version"   : "1.20.1-0.7.3", // We are version 1 of ourselves
+                "Specification-Version"   : "1.20.1-0.7.4", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : "${version}",
                 "Implementation-Vendor"   : "Xephiro",
