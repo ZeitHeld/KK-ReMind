@@ -10,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.kingdomkeys.kingdomkeys.shotlock.ModShotlocks;
 import online.kingdomkeys.kingdomkeys.shotlock.Shotlock;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.lib.StringsX;
@@ -28,13 +29,14 @@ public class ShotlockOrbItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand){
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-        Shotlock shotlockInstance = AddonShotlocks.registry.get().getValue(new ResourceLocation(shotlocks));
+        Shotlock shotlockInstance = ModShotlocks.registry.get().getValue(new ResourceLocation(shotlocks));
 
         if(!world.isClientSide){
             if (!playerData.getShotlockList().contains(shotlocks)){
-                playerData.addShotlockToList(shotlocks, true);
+                playerData.getShotlockList().add(shotlocks);
                 takeItem(player);
-                player.displayClientMessage(Component.translatable("Unlocked " + shotlocks, true);
+                //
+
             }
         }
         return InteractionResultHolder.success(player.getItemInHand(hand));

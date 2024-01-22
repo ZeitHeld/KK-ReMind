@@ -28,6 +28,9 @@ public class ModItemsMA{
         berserkSpell = ITEMS.register("berserk_spell",() -> new MagicSpellItem(new Item.Properties(),MagicksAddonMod.MODID+":magic_berserk")),
         autoLifeSpell = ITEMS.register("autolife_spell", () -> new MagicSpellItem(new Item.Properties(), MagicksAddonMod.MODID+":magic_auto-life")),
 
+            // Shotlock Orbs
+        flameSalvo = ITEMS.register("flame_salvo_shotlock",() -> new ShotlockOrbItem(new Item.Properties(),MagicksAddonMod.MODID+":shotlock_flame_salvo")),
+
             // Keyblades
         xephiroKeyblade = ITEMS.register("xephiro_keyblade", () -> new KeybladeItem(new Item.Properties())),
         pureblood = ITEMS.register("pureblood", () -> new KeybladeItem(new Item.Properties())),

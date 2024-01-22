@@ -14,8 +14,7 @@ import java.util.function.Supplier;
 public class AddonShotlocks {
 
     public static DeferredRegister<Shotlock> SHOTLOCKS = DeferredRegister.create(new ResourceLocation(KingdomKeys.MODID, "shotlocks"), MagicksAddonMod.MODID);
-    
-    public static Supplier<IForgeRegistry<Shotlock>> registry = SHOTLOCKS.makeRegistry(RegistryBuilder::new);
+
 
     static int order = 100;
 

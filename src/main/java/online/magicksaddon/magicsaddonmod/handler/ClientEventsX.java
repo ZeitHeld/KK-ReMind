@@ -31,7 +31,7 @@ public class ClientEventsX {
 				IPlayerCapabilities playerData = ModCapabilities.getPlayer(minecraft.player);
 
 				if (playerData.getLevel() >= 1){
-					playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.flameSalvo, true);
+					//playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.flameSalvo, true);
 					playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.bubbleBlaster, true);
 				}
 				if (playerData.getLevel() >= 25){
