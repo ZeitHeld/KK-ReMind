@@ -22,30 +22,6 @@ import org.joml.Vector3f;
 public class ClientEventsX {
 
     @SubscribeEvent
-    public void onEntityJoinWorld(EntityJoinLevelEvent e) {
-        if (e.getEntity() instanceof LivingEntity ent) {
-            if (e.getLevel().isClientSide) {
-                Minecraft minecraft = Minecraft.getInstance();
-                minecraft.getSoundManager().play(new BerserkAuraSoundInstance(ent));
-
-				IPlayerCapabilities playerData = ModCapabilities.getPlayer(minecraft.player);
-
-				if (playerData.getLevel() >= 1){
-					//playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.flameSalvo, true);
-					playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.bubbleBlaster, true);
-				}
-				if (playerData.getLevel() >= 25){
-					playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.thunderStorm, true);
-					playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.bioBarrage, true);
-				}
-				if (playerData.getLevel() >= 50){
-					playerData.addShotlockToList(MagicksAddonMod.MODID+":"+ StringsX.meteorShower, true);
-				}
-            }
-        }
-    }
-
-    @SubscribeEvent
 	public void RenderEntity(RenderLivingEvent.Pre event){
 		if (event.getEntity() != null){
 			if (event.getEntity() instanceof Player) {

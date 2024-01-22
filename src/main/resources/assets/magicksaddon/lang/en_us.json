@@ -87,6 +87,10 @@
   "shotlock.meteor_shower.name": "Meteor Shower",
 
   "item.magicksaddon.flame_salvo_shotlock": "Flame Salvo Shotlock",
+  "item.magicksaddon.bubble_blaster_shotlock": "Bubble Blaster Shotlock",
+  "item.magicksaddon.thunderstorm_shotlock": "Thunderstorm Shotlock",
+  "item.magicksaddon.bio_barrage_shotlock": "Bio Barrage Shotlock",
+  "item.magicksaddon.meteor_shower_shotlock": "Meteor Shower Shotlock",
 
   "form.form_rage.name": "Rage Form",
   "form.form_dark.name": "Dark Mode",

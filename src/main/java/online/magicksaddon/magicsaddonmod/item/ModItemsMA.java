@@ -30,6 +30,10 @@ public class ModItemsMA{
 
             // Shotlock Orbs
         flameSalvo = ITEMS.register("flame_salvo_shotlock",() -> new ShotlockOrbItem(new Item.Properties(),MagicksAddonMod.MODID+":flame_salvo")),
+        bubbleBlaster = ITEMS.register("bubble_blaster_shotlock",() -> new ShotlockOrbItem(new Item.Properties(),MagicksAddonMod.MODID+":bubble_blaster")),
+        thunderStorm = ITEMS.register("thunderstorm_shotlock",() -> new ShotlockOrbItem(new Item.Properties(),MagicksAddonMod.MODID+":thunderstorm")),
+        bioBarrage = ITEMS.register("bio_barrage_shotlock",() -> new ShotlockOrbItem(new Item.Properties(),MagicksAddonMod.MODID+":bio_barrage")),
+        meteorShower = ITEMS.register("meteor_shower_shotlock",() -> new ShotlockOrbItem(new Item.Properties(),MagicksAddonMod.MODID+":meteor_shower")),
 
             // Keyblades
         xephiroKeyblade = ITEMS.register("xephiro_keyblade", () -> new KeybladeItem(new Item.Properties())),

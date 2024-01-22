@@ -49,5 +49,4 @@ public class ShotlockOrbItem extends Item {
             player.getOffhandItem().shrink(1);
         }
     }
-
 }
