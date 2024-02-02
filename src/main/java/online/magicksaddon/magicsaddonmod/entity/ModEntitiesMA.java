@@ -20,6 +20,7 @@ import online.magicksaddon.magicsaddonmod.client.model.*;
 import online.magicksaddon.magicsaddonmod.client.render.*;
 import online.magicksaddon.magicsaddonmod.client.render.shotlock.BioShotEntityRenderer;
 import online.magicksaddon.magicsaddonmod.entity.magic.*;
+import online.magicksaddon.magicsaddonmod.entity.mob.ChirithyEntity;
 import online.magicksaddon.magicsaddonmod.entity.shotlock.*;
 
 public class ModEntitiesMA {
@@ -40,6 +41,8 @@ public class ModEntitiesMA {
     public static final RegistryObject<EntityType<ThunderstormCoreEntity>> TYPE_SHOTLOCK_THUNDERSTORM = createEntityType(ThunderstormCoreEntity::new, ThunderstormCoreEntity::new, MobCategory.MISC, "entity_shotlock_thunderstorm_core", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<BioBarrageCoreEntity>> TYPE_SHOTLOCK_BIO_BARRAGE = createEntityType(BioBarrageCoreEntity::new, BioBarrageCoreEntity::new, MobCategory.MISC, "entity_shotlock_bio_barrage_core", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<MeteorShowerCoreEntity>> TYPE_SHOTLOCK_METEOR_SHOWER = createEntityType(MeteorShowerCoreEntity::new, MeteorShowerCoreEntity::new, MobCategory.MISC, "entity_shotlock_meteor_shower_core", 0.5F, 0.5F);
+
+    public static final RegistryObject<EntityType<ChirithyEntity>> TYPE_CHIRITHY = createEntityType(ChirithyEntity::new, ChirithyEntity::new, MobCategory.MONSTER, "chirithy", 0.5F, 0.7F);
 
 
     public static <T extends Entity, M extends EntityType<T>>RegistryObject<EntityType<T>> createEntityType(EntityType.EntityFactory<T> factory, BiFunction<PlayMessages.SpawnEntity, Level, T> clientFactory, MobCategory classification, String name, float sizeX, float sizeY) {

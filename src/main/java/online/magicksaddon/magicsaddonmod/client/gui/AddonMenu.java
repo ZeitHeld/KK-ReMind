@@ -17,16 +17,17 @@ public class AddonMenu extends MenuScreen {
     }
 
     public enum buttons {
-        PRESTIGE, PANELS
+        PRESTIGE, DREAMEATER
     }
 
     final int SUBMENU_MAIN = 0, SUBMENU_ITEMS = 1;
 
-    MenuButton prestige, panels;
+    MenuButton prestige, dreamEater;
 
     protected void action(buttons buttonID){
         switch (buttonID){
             case PRESTIGE -> minecraft.setScreen(new PrestigeMenu());
+            case DREAMEATER -> minecraft.setScreen(new DreamEaterMenu());
         }
     }
 
@@ -45,16 +46,10 @@ public class AddonMenu extends MenuScreen {
 
         addRenderableWidget(prestige = new MenuButton((int) buttonPosX, start, (int) buttonWidth, (StringsX.Gui_Menu_Button_Prestige), MenuButton.ButtonType.BUTTON, true, (e) -> {
             action(buttons.PRESTIGE);
-        }));
-        /*
-        addRenderableWidget(panels = new MenuButton((int) buttonPosX, start+18, (int) buttonWidth, "Panels", MenuButton.ButtonType.BUTTON, false, (e) -> {
-            action(buttons.PANELS);
-        }));
-         */
 
+        }));
+        addRenderableWidget(dreamEater = new MenuButton((int) buttonPosX, start + 17, (int) buttonWidth, (StringsX.Gui_Menu_Button_DreamEater), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            action(buttons.DREAMEATER);
+        }));
     }
-
-
-
-
 }

@@ -103,5 +103,6 @@ public class StringsX {
         // GUI
         Gui_Menu_Button_Prestige = StringsX.MENU_Prefix + ".prestige",
         Gui_Menu_Button_PrestigeLevel = StringsX.MENU_Prefix + ".prestigeLevel",
-        Gui_Menu_Button_PrestigeConfirm = StringsX.MENU_Prefix +".prestigeConfirm";
+        Gui_Menu_Button_PrestigeConfirm = StringsX.MENU_Prefix +".prestigeConfirm",
+        Gui_Menu_Button_DreamEater = StringsX.MENU_Prefix + ".dreamEater";
 }
