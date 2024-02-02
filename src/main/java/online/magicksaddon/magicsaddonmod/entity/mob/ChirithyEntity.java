@@ -38,7 +38,7 @@ public class ChirithyEntity extends Entity {
                 .add(Attributes.MAX_HEALTH, 35.0D)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1000.0D)
                 .add(Attributes.ATTACK_KNOCKBACK, 1.0D)
-                .add(Attributes.ATTACK_DAMAGE, 6.0D);
+                .add(Attributes.ATTACK_DAMAGE, 0.5D);
     }
 
     @Override
