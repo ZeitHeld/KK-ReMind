@@ -13,11 +13,11 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.network.PlayMessages;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
 
-public class ChirithyEntity extends Entity {
+public class ChirithyEntity extends Mob {
 
     private GoalSelector goalSelector;
 
-    public ChirithyEntity(EntityType<? extends Entity> type, Level worldIn) {
+    public ChirithyEntity(EntityType<? extends Mob> type, Level worldIn) {
         super(type, worldIn);
     }
 
@@ -47,12 +47,12 @@ public class ChirithyEntity extends Entity {
     }
 
     @Override
-    protected void readAdditionalSaveData(CompoundTag pCompound) {
+    public void readAdditionalSaveData(CompoundTag pCompound) {
 
     }
 
     @Override
-    protected void addAdditionalSaveData(CompoundTag pCompound) {
+    public void addAdditionalSaveData(CompoundTag pCompound) {
 
     }
 }
