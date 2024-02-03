@@ -14,7 +14,7 @@ public class DreamEaterMenu extends MenuBackground {
         super(name, rgb);
     }
 
-    private MenuButton backButton;
+    private MenuButton backButton, bond, changeParty, createSpirit, abilityLinks;
 
     public DreamEaterMenu() {
         super("Dream Eaters", new Color(236, 85, 236));
@@ -48,7 +48,19 @@ public class DreamEaterMenu extends MenuBackground {
 
         int i = 0;
 
-        addRenderableWidget(backButton = new MenuButton((int) buttonPosX, button_statsY + 20, (int) buttonWidth, (Strings.Gui_Menu_Back), MenuButton.ButtonType.BUTTON, false, (e) -> {
+        addRenderableWidget(bond = new MenuButton((int) buttonPosX, button_statsY + 20, (int) buttonWidth, "Bond", MenuButton.ButtonType.BUTTON, false, (e) -> {
+            action(null);
+        }));
+        addRenderableWidget(changeParty = new MenuButton((int) buttonPosX, button_statsY + 40, (int) buttonWidth, "Change Party", MenuButton.ButtonType.BUTTON, false, (e) -> {
+            action(null);
+        }));
+        addRenderableWidget(createSpirit = new MenuButton((int) buttonPosX, button_statsY + 60, (int) buttonWidth, "Create Spirit", MenuButton.ButtonType.BUTTON, false, (e) -> {
+            action(null);
+        }));
+        addRenderableWidget(abilityLinks = new MenuButton((int) buttonPosX, button_statsY + 80, (int) buttonWidth, "Ability Links", MenuButton.ButtonType.BUTTON, false, (e) -> {
+            action(null);
+        }));
+        addRenderableWidget(backButton = new MenuButton((int) buttonPosX, button_statsY + 100, (int) buttonWidth, (Strings.Gui_Menu_Back), MenuButton.ButtonType.BUTTON, false, (e) -> {
             action("back");
         }));
     }
