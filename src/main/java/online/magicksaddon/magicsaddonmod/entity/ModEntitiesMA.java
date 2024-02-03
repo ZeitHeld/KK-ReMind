@@ -19,6 +19,7 @@ import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.client.model.*;
 import online.magicksaddon.magicsaddonmod.client.model.mob.chirithyModel;
 import online.magicksaddon.magicsaddonmod.client.render.*;
+import online.magicksaddon.magicsaddonmod.client.render.mob.ChirithyRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.shotlock.BioShotEntityRenderer;
 import online.magicksaddon.magicsaddonmod.entity.magic.*;
 import online.magicksaddon.magicsaddonmod.entity.mob.ChirithyEntity;
