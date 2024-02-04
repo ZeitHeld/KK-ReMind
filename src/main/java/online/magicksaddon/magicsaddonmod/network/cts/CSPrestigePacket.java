@@ -44,6 +44,7 @@ public class CSPrestigePacket {
         // Storing Old Choice For Bonus
         String oldChoice = String.valueOf(playerData.getChosen());
         System.out.println(oldChoice);
+        Utils.restartLevel(playerData, player);
         Utils.restartLevel2(playerData, player);
         playerData.setSoAState(SoAState.NONE);
         globalData.addPrestigeLvl(+1);

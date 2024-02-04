@@ -119,6 +119,11 @@ public class MagicksEntityEvents {
 					playerData.getStrengthStat().removeModifier("darkness_within");
 					playerData.getMagicStat().removeModifier("darkness_within");
 				}
+
+				if (!playerData.getActiveDriveForm().equals("magicksaddon:form_dark")) {
+					playerData.getStrengthStat().removeModifier("Riskcharge");
+				}
+
 			}
 
 		}
