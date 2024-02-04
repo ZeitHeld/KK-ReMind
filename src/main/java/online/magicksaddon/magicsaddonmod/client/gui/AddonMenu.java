@@ -16,15 +16,13 @@ public class AddonMenu extends MenuScreen {
         minecraft = Minecraft.getInstance();
     }
 
-    public enum buttons {
+    public enum RMButtons {
         PRESTIGE, DREAMEATER
     }
 
-    final int SUBMENU_MAIN = 0, SUBMENU_ITEMS = 1;
-
     MenuButton prestige, dreamEater;
 
-    protected void action(buttons buttonID){
+    protected void action(RMButtons buttonID){
         switch (buttonID){
             case PRESTIGE -> minecraft.setScreen(new PrestigeMenu());
             case DREAMEATER -> minecraft.setScreen(new DreamEaterMenu());
@@ -38,18 +36,19 @@ public class AddonMenu extends MenuScreen {
         super.init();
 
         float topBarHeight = (float) height * 0.17F;
-        int start = (int)topBarHeight + 150;
-        int pos = 0;
+        int start = (int)(topBarHeight + 5);
+        int pos = buttons.values().length - 1;
+        System.out.println(pos);
 
         float buttonPosX = (float) width * 0.03F;
         float buttonWidth = ((float) width * 0.1744F) - 22;
 
-        addRenderableWidget(prestige = new MenuButton((int) buttonPosX, start, (int) buttonWidth, (StringsX.Gui_Menu_Button_Prestige), MenuButton.ButtonType.BUTTON, true, (e) -> {
-            action(buttons.PRESTIGE);
+        addRenderableWidget(prestige = new MenuButton((int) buttonPosX, start + 18 * pos, (int) buttonWidth, (StringsX.Gui_Menu_Button_Prestige), MenuButton.ButtonType.BUTTON, true, (e) -> {
+            action(RMButtons.PRESTIGE);
 
         }));
-        addRenderableWidget(dreamEater = new MenuButton((int) buttonPosX, start + 17, (int) buttonWidth, (StringsX.Gui_Menu_Button_DreamEater), MenuButton.ButtonType.BUTTON, false, (e) -> {
-            action(buttons.DREAMEATER);
+        addRenderableWidget(dreamEater = new MenuButton((int) buttonPosX, start + 18 * ++pos, (int) buttonWidth, (StringsX.Gui_Menu_Button_DreamEater), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            action(RMButtons.DREAMEATER);
         }));
     }
 }
