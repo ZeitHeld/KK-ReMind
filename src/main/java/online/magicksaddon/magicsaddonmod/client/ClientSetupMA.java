@@ -11,6 +11,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import online.magicksaddon.magicsaddonmod.client.render.AutoLifeLayerRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.BerserkLayerRenderer;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
 import online.magicksaddon.magicsaddonmod.handler.ClientEventsX;
@@ -43,9 +44,11 @@ public class ClientSetupMA {
         }*/
         LivingEntityRenderer<Player, PlayerModel<Player>> renderer = event.getSkin("default");
         renderer.addLayer(new BerserkLayerRenderer<>(renderer, event.getEntityModels()));
+        renderer.addLayer(new AutoLifeLayerRenderer<>(renderer, event.getEntityModels()));
 
         renderer = event.getSkin("slim");
         renderer.addLayer(new BerserkLayerRenderer<>(renderer, event.getEntityModels()));
+        renderer.addLayer(new AutoLifeLayerRenderer<>(renderer, event.getEntityModels()));
     }
 
     @OnlyIn(Dist.CLIENT)
