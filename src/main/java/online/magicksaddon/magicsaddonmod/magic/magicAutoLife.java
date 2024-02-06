@@ -9,6 +9,7 @@ import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
 import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
 
 public class magicAutoLife extends Magic {
 
@@ -24,6 +25,7 @@ public class magicAutoLife extends Magic {
             caster.swing(InteractionHand.MAIN_HAND);
             player.level().playSound(null, player.blockPosition(), MagicSounds.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
             globalData.setAutoLifeActive(1);
+            PacketHandlerX.syncGlobalToAllAround(player, globalData);;
             // Auto Life status set to True
             // Test Line
             //System.out.println("Auto Life Active? " + globalData.getAutoLifeActive());

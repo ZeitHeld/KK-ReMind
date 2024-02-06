@@ -18,7 +18,7 @@ import online.magicksaddon.magicsaddonmod.client.ClientUtilsMA;
 public class SCSyncGlobalCapabilityToAllPacketX {
 
     public int id;
-    public int berserkLvl, berserkTicks, prestige, strBonus, magBonus, defBonus, NGPlusWarriorCount, NGPlusMysticCount, NGPlusGuardianCount, stepTicks, riskchargeCount;
+    public int berserkLvl, berserkTicks, prestige, strBonus, magBonus, defBonus, NGPlusWarriorCount, NGPlusMysticCount, NGPlusGuardianCount, stepTicks, riskchargeCount, autoLife;
     public byte stepType;
 
     public SCSyncGlobalCapabilityToAllPacketX() {
@@ -39,6 +39,7 @@ public class SCSyncGlobalCapabilityToAllPacketX {
         this.stepTicks = capability.getStepTicks();
         this.stepType = capability.getStepType();
         this.riskchargeCount = capability.getRiskchargeCount();
+        this.autoLife = capability.getAutoLifeActive();
     }
 
     public void encode(FriendlyByteBuf buffer){
@@ -55,6 +56,7 @@ public class SCSyncGlobalCapabilityToAllPacketX {
         buffer.writeInt(this.stepTicks);
         buffer.writeByte(this.stepType);
         buffer.writeInt(this.riskchargeCount);
+        buffer.writeInt(this.autoLife);
     }
 
     public static SCSyncGlobalCapabilityToAllPacketX decode(FriendlyByteBuf buffer){
@@ -72,6 +74,7 @@ public class SCSyncGlobalCapabilityToAllPacketX {
         msg.stepTicks = buffer.readInt();
         msg.stepType = buffer.readByte();
         msg.riskchargeCount = buffer.readInt();
+        msg.autoLife = buffer.readInt();
 
         return msg;
     }
@@ -93,6 +96,7 @@ public class SCSyncGlobalCapabilityToAllPacketX {
                     cap.setNGPGuardianCount(message.NGPlusGuardianCount);
                     cap.setStepTicks(message.stepTicks, message.stepType);
                     cap.setRiskchargeCount(message.riskchargeCount);
+                    cap.setAutoLifeActive(message.autoLife);
 				});
 			}
 		});
