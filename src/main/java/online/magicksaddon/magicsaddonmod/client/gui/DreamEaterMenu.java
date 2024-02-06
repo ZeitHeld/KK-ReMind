@@ -23,7 +23,7 @@ public class DreamEaterMenu extends MenuBackground {
 
     protected void action(String string) {
         if (string.equals("back"))
-        GuiHelper.openMenu();
+        	GUIHelperX.openAddonMenu();
     }
 
     @Override

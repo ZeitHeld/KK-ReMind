@@ -38,7 +38,7 @@ public class PrestigeMenu extends MenuBackground{
 
     protected void action(String string) {
         if (string.equals("back"))
-            GuiHelper.openMenu();
+            GUIHelperX.openAddonMenu();
         if (string.equals("confirm")){
             PacketHandlerX.sendToServer(new CSPrestigePacket());
             minecraft.setScreen(null);
