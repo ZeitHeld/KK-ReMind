@@ -51,20 +51,17 @@ public class AutoLifeLayerRenderer<T extends LivingEntity> extends RenderLayer<T
     public void renderEntity(PoseStack matrixStackIn, MultiBufferSource bufferIn, int packedLightIn, T entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         if (ModCapabilitiesX.getGlobal(entitylivingbaseIn) != null) {
             IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(entitylivingbaseIn);
-            System.out.println(globalData.getAutoLifeActive());
-            if (globalData.getAutoLifeActive() == 1) {
+            //System.out.println(globalData.getAutoLifeActive());
+            if (globalData.getAutoLifeActive() > 0) {
                 VertexConsumer vertexconsumer = bufferIn.getBuffer(RenderType.entityTranslucent(TEXTURE));
 
                 matrixStackIn.pushPose();
-                {
-	                float scale = 1;
 	                if (entitylivingbaseIn instanceof Player) {
-	                    matrixStackIn.scale(scale, scale * 1.0F, scale);
+	                    matrixStackIn.scale(1, 1, 1);
 	                    matrixStackIn.translate(0.0D, 0.0D, 0.0D);
 	                }
-            	}
-				this.box.render(matrixStackIn, vertexconsumer, packedLightIn, OverlayTexture.NO_OVERLAY);
 
+				this.box.render(matrixStackIn, vertexconsumer, packedLightIn, OverlayTexture.NO_OVERLAY);
                 matrixStackIn.popPose();
             }
         }

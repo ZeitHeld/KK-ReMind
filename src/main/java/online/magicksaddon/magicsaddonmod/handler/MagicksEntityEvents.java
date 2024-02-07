@@ -221,13 +221,14 @@ public class MagicksEntityEvents {
 			Player player = (Player) event.getEntity();
 			if (1 == globalData.getAutoLifeActive()){
 				if (player.getHealth() <= 0){
+					globalData.remAutoLifeActive(1);
 					event.setCanceled(true);
 					player.setHealth(10.0F);
 					player.invulnerableTime = 10;
-					globalData.remAutoLifeActive(1);
 					player.removeAllEffects();
 					player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 10));
 					player.level().playSound(null, player.blockPosition(), MagicSounds.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
+					System.out.println(globalData.getAutoLifeActive());
 				}
 			}
 		}

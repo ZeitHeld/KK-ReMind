@@ -25,10 +25,9 @@ public class magicAutoLife extends Magic {
             caster.swing(InteractionHand.MAIN_HAND);
             player.level().playSound(null, player.blockPosition(), MagicSounds.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
             globalData.setAutoLifeActive(1);
-            PacketHandlerX.syncGlobalToAllAround(player, globalData);;
-            // Auto Life status set to True
-            // Test Line
-            //System.out.println("Auto Life Active? " + globalData.getAutoLifeActive());
+            PacketHandlerX.syncGlobalToAllAround(player, globalData);
+
+            System.out.println(globalData.getAutoLifeActive());
         }
     }
 
