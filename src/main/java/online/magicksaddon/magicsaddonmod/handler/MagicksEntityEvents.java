@@ -222,6 +222,7 @@ public class MagicksEntityEvents {
 			if (1 == globalData.getAutoLifeActive()){
 				if (player.getHealth() <= 0){
 					globalData.remAutoLifeActive(1);
+					PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
 					event.setCanceled(true);
 					player.setHealth(10.0F);
 					player.invulnerableTime = 10;

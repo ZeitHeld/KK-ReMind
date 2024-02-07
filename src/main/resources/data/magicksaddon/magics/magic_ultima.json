@@ -1,7 +1,7 @@
 {
   "0": {
     "cost": 300,
-    "cooldown": 100,
+    "cooldown": 200,
     "dmg_mult": 3.0,
 	"magic_lock_on":true
   }

@@ -34,6 +34,7 @@ public class ModEntitiesMA {
     public static final RegistryObject<EntityType<BalloongaEntity>> TYPE_BALLOONGA = createEntityType(BalloongaEntity::new, BalloongaEntity::new, MobCategory.MISC, "entity_balloonga", 1F, 1F);
     public static final RegistryObject<EntityType<UltimaEntity>> TYPE_ULTIMA = createEntityType(UltimaEntity::new, UltimaEntity::new, MobCategory.MISC, "entity_ultima", 1F, 1F);
     public static final RegistryObject<EntityType<CometEntity>> TYPE_COMET = createEntityType(CometEntity::new, CometEntity::new, MobCategory.MISC, "entity_comet", 2F, 2F);
+    public static final RegistryObject<EntityType<OsmoseEntity>> TYPE_OSMOSE = createEntityType(OsmoseEntity::new, OsmoseEntity::new, MobCategory.MISC,"entity_osmose", 0.5F, 0.5F);
 
     public static final RegistryObject<EntityType<BioBarrageShotEntity>> TYPE_BIO_SHOT = createEntityType(BioBarrageShotEntity::new, BioBarrageShotEntity::new, MobCategory.MISC, "entity_bio_shot", 0.5F, 0.5F);
 
@@ -63,6 +64,7 @@ public class ModEntitiesMA {
         event.registerLayerDefinition(BalloongaModel.LAYER_LOCATION, BalloongaModel::createBodyLayer);
         event.registerLayerDefinition(UltimaModel.LAYER_LOCATION, UltimaModel::createBodyLayer);
         event.registerLayerDefinition(CometModel.LAYER_LOCATION, CometModel::createBodyLayer);
+        event.registerLayerDefinition(OsmoseModel.LAYER_LOCATION, OsmoseModel::createBodyLayer);
 
         event.registerLayerDefinition(BerserkAuraModel.LAYER_LOCATION, BerserkAuraModel::createBodyLayer);
 
@@ -79,17 +81,17 @@ public class ModEntitiesMA {
         event.registerEntityRenderer(TYPE_BALLOONGA.get(), BalloongaEntityRenderer::new);
         event.registerEntityRenderer(TYPE_COMET.get(), CometEntityRenderer::new);
         event.registerEntityRenderer(TYPE_ULTIMA.get(), UltimaEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_OSMOSE.get(),InvisibleEntityRenderer::new);
 
         event.registerEntityRenderer(TYPE_BIO_SHOT.get(), BioShotEntityRenderer::new);
 
-        event.registerEntityRenderer(TYPE_CHIRITHY.get(), ChirithyRenderer::new);
-
         event.registerEntityRenderer(TYPE_SHOTLOCK_FLAME_SALVO.get(), InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_SHOTLOCK_BUBBLE_BLASTER.get(), InvisibleEntityRenderer::new);
-
         event.registerEntityRenderer(TYPE_SHOTLOCK_BIO_BARRAGE.get(), InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_SHOTLOCK_THUNDERSTORM.get(), InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_SHOTLOCK_METEOR_SHOWER.get(), InvisibleEntityRenderer::new);
+
+        event.registerEntityRenderer(TYPE_CHIRITHY.get(),ChirithyRenderer::new);
 
 
     }
