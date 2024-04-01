@@ -5,7 +5,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.util.FakePlayer;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
@@ -24,7 +23,7 @@ public class PacketHandlerRM {
 
     public static void register() {
         int packetID = 0;
-System.out.println("REGISTERING PACKETS");
+        System.out.println("REGISTERING PACKETS");
         //ServerToClient
 		HANDLER.registerMessage(packetID++, SCSyncGlobalCapabilityToAllPacketRM.class, SCSyncGlobalCapabilityToAllPacketRM::encode, SCSyncGlobalCapabilityToAllPacketRM::decode, SCSyncGlobalCapabilityToAllPacketRM::handle);
 
@@ -50,7 +49,6 @@ System.out.println("REGISTERING PACKETS");
         }
 
         public static void syncGlobalToAllAround(LivingEntity entity, IGlobalCapabilitiesRM globalData) {
-        	//System.out.println("Trying to sync");
             if (!entity.level().isClientSide) {
                 for (Player playerFromList : entity.level().players()) {
                     sendTo(new SCSyncGlobalCapabilityToAllPacketRM(entity.getId(), (IGlobalCapabilitiesRM) globalData), (ServerPlayer) playerFromList);

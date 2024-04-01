@@ -34,12 +34,10 @@ public class BerserkAuraSoundInstance extends AbstractTickableSoundInstance {
 
     @Override
     public void tick() {
-    //	System.out.println("Ticking");
         if(ent.isRemoved()) {
             this.stop();
         } else {
             if (ModCapabilitiesRM.getGlobal(ent) != null) {
-            	//System.out.println(ModCapabilitiesX.getGlobal(ent).getBerserkTicks());
                 if(ModCapabilitiesRM.getGlobal(ent).getBerserkTicks() <= 0) {
                     this.volume = 0;
                 } else {
@@ -48,14 +46,6 @@ public class BerserkAuraSoundInstance extends AbstractTickableSoundInstance {
                     this.z = (double)((float)this.ent.getZ());
                     this.pitch = 1F;
                     this.volume = 1F;
-		         /*float f = (float)this.player.getDeltaMovement().horizontalDistance();
-		         if (f >= 0.01F) {
-		            this.pitch = Mth.clamp(this.pitch + 0.0025F, 0.0F, 1.0F);
-		            this.volume = Mth.lerp(Mth.clamp(f, 0.0F, 0.5F), 0.0F, 0.7F);
-		         } else {
-		            this.pitch = 0.0F;
-		            this.volume = 0.0F;
-		         }*/
                 }
             }
         }

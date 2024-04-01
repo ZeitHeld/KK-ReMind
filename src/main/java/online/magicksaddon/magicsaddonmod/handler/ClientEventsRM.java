@@ -27,7 +27,6 @@ public class ClientEventsRM {
 					if(globalData.getStepTicks() > 0){
 						event.setCanceled(true);
 						player.invulnerableTime = globalData.getStepTicks();
-						//System.out.println(globalData.getStepTicks());
 						if (globalData.getStepType() == StringsRM.darkStepType) {
 							player.level().addAlwaysVisibleParticle(ParticleTypes.SQUID_INK, player.getX() + player.level().random.nextDouble() - 0.5D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.5D, 0, 0, 0);
 							player.level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.5F,0F,0.5F),1F),player.getX() + player.level().random.nextDouble() - 0.5D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.5D, 0, 0, 0);

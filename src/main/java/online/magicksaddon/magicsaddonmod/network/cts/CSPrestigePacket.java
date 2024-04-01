@@ -8,7 +8,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
-import online.kingdomkeys.kingdomkeys.driveform.DriveFormValor;
 import online.kingdomkeys.kingdomkeys.lib.SoAState;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
@@ -50,25 +49,20 @@ public class CSPrestigePacket {
         globalData.addPrestigeLvl(+1);
 
         if (oldChoice == "WARRIOR"){
-            //System.out.println("Warrior NG+ Working");
             globalData.addNGPWarriorCount(+1);
             globalData.addSTRBonus(+2);
             System.out.println("Strength Bonus: " + globalData.getSTRBonus());
             PacketHandlerRM.syncGlobalToAllAround(player, globalData);
-
-
         }
+        
         if (oldChoice == "MYSTIC"){
-            //System.out.println("Mystic NG+ Working");
             globalData.addNGPMysticCount(+1);
             globalData.addMAGBonus(+2);
             System.out.println("Magic Bonus: " + globalData.getMAGBonus());
             PacketHandlerRM.syncGlobalToAllAround(player, globalData);
-
-
         }
+        
         if (oldChoice == "GUARDIAN"){
-            //System.out.println("Guardian NG+ Working");
             globalData.addNGPGuardianCount(+1);
             globalData.addDEFBonus(+2);
             System.out.println("Defense Bonus: " + globalData.getDEFBonus());
@@ -77,7 +71,6 @@ public class CSPrestigePacket {
 
 
         System.out.println("NG+ Counts: " + globalData.getNGPWarriorCount() + ", " + globalData.getNGPMysticCount() + ", " + globalData.getNGPGuardianCount());
-
         System.out.println("Bonus Stats: " + globalData.getSTRBonus() + ", " + globalData.getMAGBonus() + ", " + globalData.getDEFBonus());
 
         playerData.getStrengthStat().removeModifier("NG+ Bonus");

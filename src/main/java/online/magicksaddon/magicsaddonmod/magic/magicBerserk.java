@@ -57,7 +57,6 @@ public class magicBerserk extends Magic {
 
 				}
 				globalData.setBerserkTicks(time, level);
-				//System.out.println(time + " " + level);
 				PacketHandlerRM.syncGlobalToAllAround(player, globalData);
 
 			}

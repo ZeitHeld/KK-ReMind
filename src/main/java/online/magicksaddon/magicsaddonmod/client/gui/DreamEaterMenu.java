@@ -1,12 +1,11 @@
 package online.magicksaddon.magicsaddonmod.client.gui;
 
+import java.awt.Color;
+
 import net.minecraft.client.Minecraft;
-import online.kingdomkeys.kingdomkeys.client.gui.GuiHelper;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.MenuBackground;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.buttons.MenuButton;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
-
-import java.awt.*;
 
 public class DreamEaterMenu extends MenuBackground {
 

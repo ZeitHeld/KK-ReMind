@@ -9,7 +9,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -99,7 +98,6 @@ public class CometEntity extends ThrowableProjectile {
                                                 //target.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg * dmgMult);
                                                 if(this.getOwner() instanceof Player) {
                                                         List<LivingEntity> targetList = Utils.getLivingEntitiesInRadiusExcludingParty((Player) this.getOwner(), this, radius,radius,radius);
-                                                        System.out.println(targetList);
                                                         for(LivingEntity e : targetList) {
                                                                 e.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg * dmgMult);
                                                                 e.invulnerableTime = 0;
@@ -116,7 +114,6 @@ public class CometEntity extends ThrowableProjectile {
                                 if (this.getOwner() instanceof Player) {
                                         float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
                                         List<LivingEntity> targetList = Utils.getLivingEntitiesInRadiusExcludingParty((Player) this.getOwner(), this, radius, radius, radius);
-                                        System.out.println(targetList);
                                         for (LivingEntity e : targetList) {
                                                 e.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg * dmgMult);
                                                 e.invulnerableTime = 0;

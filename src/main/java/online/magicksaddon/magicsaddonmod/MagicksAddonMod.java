@@ -1,29 +1,22 @@
 package online.magicksaddon.magicsaddonmod;
 
-import net.minecraft.core.registries.Registries;
-import com.google.common.base.Suppliers;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.eventbus.api.Event;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
-import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
-import online.magicksaddon.magicsaddonmod.reactioncommands.ModReactionCommandsRM;
-import online.magicksaddon.magicsaddonmod.shotlock.ModShotlocksRM;
+import java.util.List;
+import java.util.function.Supplier;
+
 import org.slf4j.Logger;
-import net.minecraftforge.registries.RegistryObject;
+
+import com.google.common.base.Suppliers;
 import com.mojang.logging.LogUtils;
-import net.minecraft.world.item.CreativeModeTab;
+
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import online.kingdomkeys.kingdomkeys.block.ModBlocks;
-import online.kingdomkeys.kingdomkeys.item.KeybladeItem;
-import online.kingdomkeys.kingdomkeys.item.KeychainItem;
-import online.kingdomkeys.kingdomkeys.item.ModItems;
-import online.kingdomkeys.kingdomkeys.item.organization.IOrgWeapon;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -33,20 +26,19 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import online.magicksaddon.magicsaddonmod.ability.ModAbilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
 import online.magicksaddon.magicsaddonmod.driveform.ModDriveFormsRM;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
-import online.magicksaddon.magicsaddonmod.handler.InputHandlerRM;
 import online.magicksaddon.magicsaddonmod.handler.EntityEventsRM;
+import online.magicksaddon.magicsaddonmod.handler.InputHandlerRM;
 import online.magicksaddon.magicsaddonmod.item.ModItemsRM;
 import online.magicksaddon.magicsaddonmod.magic.ModMagicsRM;
-import online.magicksaddon.magicsaddonmod.lib.StringsRM;
-
-import static net.minecraft.world.item.CreativeModeTab.builder;
-
-import java.util.List;
-import java.util.function.Supplier;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
+import online.magicksaddon.magicsaddonmod.reactioncommands.ModReactionCommandsRM;
+import online.magicksaddon.magicsaddonmod.shotlock.ModShotlocksRM;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MagicksAddonMod.MODID)

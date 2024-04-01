@@ -1,12 +1,18 @@
 package online.magicksaddon.magicsaddonmod.item;
 
 import com.google.common.collect.ImmutableMap;
+
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import online.kingdomkeys.kingdomkeys.item.*;
+import online.kingdomkeys.kingdomkeys.item.KKAccessoryItem;
+import online.kingdomkeys.kingdomkeys.item.KKArmorItem;
+import online.kingdomkeys.kingdomkeys.item.KKResistanceType;
+import online.kingdomkeys.kingdomkeys.item.KeybladeItem;
+import online.kingdomkeys.kingdomkeys.item.KeychainItem;
+import online.kingdomkeys.kingdomkeys.item.MagicSpellItem;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.lib.StringsRM;

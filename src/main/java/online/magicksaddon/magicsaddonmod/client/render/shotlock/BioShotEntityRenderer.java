@@ -1,7 +1,12 @@
 package online.magicksaddon.magicsaddonmod.client.render.shotlock;
 
+import java.awt.Color;
+
+import javax.annotation.Nullable;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -12,9 +17,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import online.kingdomkeys.kingdomkeys.KingdomKeys;
 import online.kingdomkeys.kingdomkeys.client.model.entity.CubeModel;
 import online.kingdomkeys.kingdomkeys.entity.shotlock.BaseShotlockShotEntity;
-
-import javax.annotation.Nullable;
-import java.awt.*;
 
 @OnlyIn(Dist.CLIENT)
 public class BioShotEntityRenderer extends EntityRenderer<BaseShotlockShotEntity> {

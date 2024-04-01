@@ -11,11 +11,9 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
-import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
@@ -26,20 +24,6 @@ import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
 public class EntityEventsRM {
-	@SubscribeEvent
-	public void onJoin(PlayerLoggedInEvent e){
-		Player player = e.getEntity();
-		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-			//if (playerData.getSoAState() == SoAState.COMPLETE){
-				/*
-				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.darkMode, 1);
-				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.light, 1);
-				playerData.setDriveFormLevel(MagicksAddonMod.MODID+":"+ StringsX.rageForm, 1);
-				 */
-				//System.out.println(playerData.getDriveFormMap());
-
-			//}
-	}
 	
 	@SubscribeEvent
 	public void onPlayerClone(PlayerEvent.Clone event) {
@@ -89,14 +73,9 @@ public class EntityEventsRM {
 		if(event.getEntity() instanceof Player player) {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			if(playerData != null && globalData != null) {
-
 				updateDriveAbilities(player, StringsRM.darkPower, MagicksAddonMod.MODID+":"+ StringsRM.darkMode);
 				updateDriveAbilities(player, StringsRM.rageAwakened, MagicksAddonMod.MODID+":"+ StringsRM.rageForm);
 				updateDriveAbilities(player, StringsRM.wayToLight, MagicksAddonMod.MODID+":"+ StringsRM.light);
-
-
-
-
 
 				// Light/Darkness Within
 
@@ -140,7 +119,6 @@ public class EntityEventsRM {
 							player.level().playSound(null, player.blockPosition(), ModSoundsRM.DARKSTEP2.get(), SoundSource.PLAYERS, 1F, 1F);
 						}
 						if (playerData.isAbilityEquipped(StringsRM.lightStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {
-							//System.out.println(player.level.isClientSide);
 							player.level().playSound(null, player.blockPosition(), ModSoundsRM.LIGHTSTEP2.get(), SoundSource.PLAYERS, 1F, 1F);
 						}
 					}
@@ -150,8 +128,6 @@ public class EntityEventsRM {
 			// Slow
 			if (globalData.getSlowTicks() > 0) {
 				globalData.remSlowTicks(1);
-				// System.out.println("Slow Level: " + globalData.getSlowLevel() + " " + "Slow
-				// Ticks Remaining: " + globalData.getSlowTicks());
 				if (globalData.getSlowTicks() <= 0) {
 					event.getEntity().getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", 0.25 + (0.25 * globalData.getSlowLevel()), AttributeModifier.Operation.MULTIPLY_BASE));
 					event.getEntity().getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Slow", 0.25 + (0.25 * globalData.getSlowLevel()), AttributeModifier.Operation.MULTIPLY_BASE));
@@ -162,8 +138,6 @@ public class EntityEventsRM {
 			if (event.getEntity() instanceof Player player){
 				if (globalData.getHasteTicks() > 0) {
 					globalData.remHasteTicks(1);
-					// System.out.println("Haste Level: " + globalData.getHasteLevel() + " " +
-					// "Haste Ticks Remaining: " + globalData.getHasteTicks());
 					if (globalData.getHasteTicks() <= 0) {
 						player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Haste", -(0.25 + (0.25 * globalData.getHasteLevel())), AttributeModifier.Operation.MULTIPLY_BASE));
 						player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Haste", -(0.25 + (0.25 * globalData.getHasteLevel())), AttributeModifier.Operation.MULTIPLY_BASE));
@@ -174,13 +148,11 @@ public class EntityEventsRM {
 			if (event.getEntity() instanceof Player player){
 				if (globalData.getBerserkTicks() > 0) {
 					globalData.remBerserkTicks(1);
-					//System.out.println("Berserk Level: " + globalData.getBerserkLevel() + " " + "Berserk Ticks Remaining: " + globalData.getBerserkTicks());
 					if (globalData.getBerserkTicks() <= 0) {
 						IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 						playerData.getStrengthStat().removeModifier("berserk");
 						playerData.getDefenseStat().removeModifier("berserk");
 						if(!event.getEntity().level().isClientSide) {
-							//I think you might not need this one I commented
 							PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player); //Sync KK stat packet
 							PacketHandlerRM.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesRM) globalData);
 						}
@@ -229,7 +201,6 @@ public class EntityEventsRM {
 					player.removeAllEffects();
 					player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 10));
 					player.level().playSound(null, player.blockPosition(), ModSoundsRM.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
-					System.out.println(globalData.getAutoLifeActive());
 				}
 			}
 		}
@@ -237,26 +208,21 @@ public class EntityEventsRM {
 
 	@SubscribeEvent
 	public void hurtEvent(LivingHurtEvent event){
-		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(event.getEntity());
 		if(event.getEntity() instanceof Player) {
 			Player player = (Player) event.getEntity();
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			// Adrenaline
 			if (playerData.isAbilityEquipped(StringsRM.adrenaline)) {
 				if (player.getHealth() - event.getAmount() <= player.getMaxHealth() / 4){
-					//System.out.println(player.getHealth() + " / " + player.getMaxHealth());
 					playerData.getStrengthStat().addModifier("adrenaline", 5, false);
 					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
-					//System.out.println("Strength Added");
 				}
 			}
 			// Critical Surge
 			if (playerData.isAbilityEquipped(StringsRM.critical_surge)){
 				if (player.getHealth() - event.getAmount() <= player.getMaxHealth() / 4){
-					//System.out.println(player.getHealth() + " / " + player.getMaxHealth());
 					playerData.getMagicStat().addModifier("critical_surge", 5, false);
 					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
-					//System.out.println("Magic Added");
 				}
 			}
 			if (player.getHealth() + 1 >= player.getMaxHealth() / 4) {
@@ -266,8 +232,6 @@ public class EntityEventsRM {
 			}
 
 			//Protect Abilities
-
-
 		}
 	}
 

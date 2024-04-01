@@ -9,9 +9,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.common.util.LazyOptional;
-import online.magicksaddon.magicsaddonmod.capabilities.GlobalCapabilitiesRM;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 
 public class GlobalCapabilitiesRMProvider implements ICapabilityProvider, ICapabilitySerializable<CompoundTag> {
     IGlobalCapabilitiesRM instance = new GlobalCapabilitiesRM();

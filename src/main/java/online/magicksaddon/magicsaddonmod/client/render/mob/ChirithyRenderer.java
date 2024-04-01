@@ -1,12 +1,11 @@
 package online.magicksaddon.magicsaddonmod.client.render.mob;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.Entity;
 import online.kingdomkeys.kingdomkeys.entity.EntityHelper;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.client.model.mob.chirithyModel;

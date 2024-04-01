@@ -3,13 +3,10 @@ package online.magicksaddon.magicsaddonmod.shotlock;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
-import net.minecraftforge.registries.IForgeRegistry;
 import online.kingdomkeys.kingdomkeys.KingdomKeys;
 import online.kingdomkeys.kingdomkeys.shotlock.Shotlock;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.lib.StringsRM;
-
-import java.util.function.Supplier;
 
 public class ModShotlocksRM {
 

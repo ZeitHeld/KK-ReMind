@@ -1,16 +1,11 @@
 package online.magicksaddon.magicsaddonmod.newgameplus;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
-import online.kingdomkeys.kingdomkeys.lib.Strings;
-import online.kingdomkeys.kingdomkeys.network.PacketHandler;
-import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
-import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
 public class NewGamePlusBonuses {
 

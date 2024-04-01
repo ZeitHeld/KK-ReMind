@@ -1,8 +1,5 @@
 package online.magicksaddon.magicsaddonmod.item;
 
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-
 public class ModCreativeModTabRM {
     /*
     public static final CreativeModeTab ADDON_MAGIC_TAB = new CreativeModeTab("addonmagictab") {

@@ -1,5 +1,10 @@
 package online.magicksaddon.magicsaddonmod.entity.shotlock;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -11,8 +16,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
@@ -20,13 +25,6 @@ import online.kingdomkeys.kingdomkeys.client.sound.ModSounds;
 import online.kingdomkeys.kingdomkeys.entity.shotlock.VolleyShotEntity;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
-import static online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM.*;
 
 
 public class FlameSalvoCoreEntity extends ThrowableProjectile {

@@ -20,8 +20,6 @@ import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 import online.magicksaddon.magicsaddonmod.mixin.DriveFormMixin;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
-import java.awt.*;
-
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
 public class DriveFormDark extends DriveForm {
     ResourceLocation skinRL2;
@@ -44,9 +42,6 @@ public class DriveFormDark extends DriveForm {
                 if (playerData != null && playerData.getActiveDriveForm().equals(MagicksAddonMod.MODID+":"+ StringsRM.darkMode)) {
                     double mult = Double.parseDouble(ModConfigs.driveFormXPMultiplier.get(1).split(",")[1]);
                     playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
-                    //System.out.println(playerData.getDriveFormExp(playerData.getActiveDriveForm()));
-                   // formData.setRageFormEXP(playerData.getDriveFormExp(playerData.getActiveDriveForm()));
-
 
                     PacketHandlerRM.syncGlobalToAllAround(player, formData);
                     PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);

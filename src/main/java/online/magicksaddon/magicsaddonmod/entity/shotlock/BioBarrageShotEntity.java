@@ -1,5 +1,9 @@
 package online.magicksaddon.magicsaddonmod.entity.shotlock;
 
+import java.awt.Color;
+
+import org.joml.Vector3f;
+
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -13,11 +17,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.network.PlayMessages;
 import online.kingdomkeys.kingdomkeys.entity.shotlock.BaseShotlockShotEntity;
-import online.kingdomkeys.kingdomkeys.entity.shotlock.VolleyShotEntity;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
-import org.joml.Vector3f;
-
-import java.awt.*;
 
 public class BioBarrageShotEntity extends BaseShotlockShotEntity {
     public BioBarrageShotEntity(EntityType<? extends ThrowableProjectile> type, Level world) {

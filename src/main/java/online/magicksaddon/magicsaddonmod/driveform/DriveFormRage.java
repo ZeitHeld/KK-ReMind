@@ -5,8 +5,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
@@ -43,9 +41,6 @@ public class DriveFormRage extends DriveForm {
                 if (playerData != null && playerData.getActiveDriveForm().equals(MagicksAddonMod.MODID+":"+ StringsRM.rageForm)) {
                     double mult = Double.parseDouble(ModConfigs.driveFormXPMultiplier.get(formData.getRiskchargeCount() + 1).split(",")[1]);
                     playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
-                    //System.out.println(playerData.getDriveFormExp(playerData.getActiveDriveForm()));
-                   // formData.setRageFormEXP(playerData.getDriveFormExp(playerData.getActiveDriveForm()));
-
 
                     PacketHandlerRM.syncGlobalToAllAround(player, formData);
                     PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);

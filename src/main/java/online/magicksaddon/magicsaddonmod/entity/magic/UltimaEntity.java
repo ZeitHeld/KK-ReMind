@@ -10,7 +10,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -99,7 +98,6 @@ public class UltimaEntity extends ThrowableProjectile {
                  this.markHurt();
 			} else { // EXPLOOOOOSION!!!!! (And damage)
 				if(getStartingTicks() > -1) {// Start
-					//System.out.println("Entity: "+getStartingTicks());
 					float radius = (tickCount - getStartingTicks()) * 0.2f;
 					//float radius = 2;
 					for (int t = 1; t < 360; t += 20) {
@@ -117,7 +115,6 @@ public class UltimaEntity extends ThrowableProjectile {
 						playSound(ModSoundsRM.ULTIMA_EXPLOSION.get(),0.75F,1F);
 					}
 					
-					//System.out.println("Ent rad: "+radius);
 	
 					List<Entity> list = level().getEntities(getOwner(), getBoundingBox().inflate(radius));
 	
@@ -135,9 +132,7 @@ public class UltimaEntity extends ThrowableProjectile {
 						for (int i = 0; i < list.size(); i++) {
 							Entity e = (Entity) list.get(i);
 							if (e instanceof LivingEntity) {
-								//System.out.println(e);
 								if (Utils.isHostile(e) || e instanceof Slime) {
-									//System.out.println("Hostile: "+e);
 									float dmg = this.getOwner() instanceof Player ? ((LivingEntity) e).getMaxHealth() * DamageCalculation.getMagicDamage((Player) this.getOwner()) / 100 : 2;
 									dmg = Math.min(dmg, 99);
 									e.hurt(e.damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);

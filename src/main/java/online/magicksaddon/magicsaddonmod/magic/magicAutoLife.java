@@ -26,8 +26,6 @@ public class magicAutoLife extends Magic {
             player.level().playSound(null, player.blockPosition(), ModSoundsRM.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
             globalData.setAutoLifeActive(1);
             PacketHandlerRM.syncGlobalToAllAround(player, globalData);
-
-            System.out.println(globalData.getAutoLifeActive());
         }
     }
 

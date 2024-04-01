@@ -29,12 +29,8 @@ public class InputHandlerRM extends InputHandler {
 		// Light/Dark Step Abilities
 		if (qrCooldown <= 0 && (player.getDeltaMovement().x != 0 && player.getDeltaMovement().z != 0)) {
 			if (player.isSprinting()) {
-
-				// System.out.println(playerData.getActiveDriveForm());
 				int lightLevel = playerData.getDriveFormLevel("magicksaddon:form_light");
 				int darkLevel = playerData.getDriveFormLevel("magicksaddon:form_dark");
-
-				// System.out.println(globalData.getStepTicks());
 
 				// Light Step
 				if (playerData.isAbilityEquipped(StringsRM.lightStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {

@@ -5,15 +5,10 @@ import java.util.function.Supplier;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkEvent;
-import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
-import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
-import online.magicksaddon.magicsaddonmod.client.ClientUtilsRM;
 
 public class SCSyncGlobalCapabilityToAllPacketRM {
 

@@ -7,7 +7,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
-import online.kingdomkeys.kingdomkeys.client.gui.GuiHelper;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.MenuBackground;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.MenuColourBox;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.buttons.MenuButton;
@@ -52,7 +51,6 @@ public class PrestigeMenu extends MenuBackground{
         Player player;
         final IPlayerCapabilities playerData = ModCapabilities.getPlayer(minecraft.player);
         IGlobalCapabilitiesRM addedData = ModCapabilitiesRM.getGlobal(minecraft.player);
-        //System.out.println(addedData);
 
         super.init();
         this.renderables.clear();

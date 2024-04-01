@@ -2,7 +2,7 @@ package online.magicksaddon.magicsaddonmod.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.EntityModelSet;
@@ -51,7 +51,6 @@ public class AutoLifeLayerRenderer<T extends LivingEntity> extends RenderLayer<T
     public void renderEntity(PoseStack matrixStackIn, MultiBufferSource bufferIn, int packedLightIn, T entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         if (ModCapabilitiesRM.getGlobal(entitylivingbaseIn) != null) {
             IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(entitylivingbaseIn);
-            //System.out.println(globalData.getAutoLifeActive());
             if (globalData.getAutoLifeActive() > 0) {
                 VertexConsumer vertexconsumer = bufferIn.getBuffer(RenderType.entityTranslucent(TEXTURE));
 

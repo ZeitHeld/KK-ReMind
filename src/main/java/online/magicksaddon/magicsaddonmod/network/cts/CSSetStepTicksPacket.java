@@ -1,13 +1,13 @@
 package online.magicksaddon.magicsaddonmod.network.cts;
 
+import java.util.function.Supplier;
+
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
-
-import java.util.function.Supplier;
 
 public class CSSetStepTicksPacket {
 

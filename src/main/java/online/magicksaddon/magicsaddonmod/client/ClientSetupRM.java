@@ -6,7 +6,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -15,7 +14,6 @@ import online.magicksaddon.magicsaddonmod.client.render.AutoLifeLayerRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.BerserkLayerRenderer;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 import online.magicksaddon.magicsaddonmod.handler.ClientEventsRM;
-import online.magicksaddon.magicsaddonmod.handler.InputHandlerRM;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus=Mod.EventBusSubscriber.Bus.MOD)
 public class ClientSetupRM {

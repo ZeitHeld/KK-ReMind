@@ -1,13 +1,9 @@
 package online.magicksaddon.magicsaddonmod.client.gui;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.PresetFlatWorldScreen;
-import online.kingdomkeys.kingdomkeys.client.gui.elements.MenuBackground;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.buttons.MenuButton;
 import online.kingdomkeys.kingdomkeys.client.gui.menu.MenuScreen;
 import online.magicksaddon.magicsaddonmod.lib.StringsRM;
-
-import java.awt.*;
 
 public class AddonMenu extends MenuScreen {
 
@@ -38,7 +34,6 @@ public class AddonMenu extends MenuScreen {
         float topBarHeight = (float) height * 0.17F;
         int start = (int)(topBarHeight + 5);
         int pos = buttons.values().length - 1;
-        System.out.println(pos);
 
         float buttonPosX = (float) width * 0.03F;
         float buttonWidth = ((float) width * 0.1744F) - 22;
