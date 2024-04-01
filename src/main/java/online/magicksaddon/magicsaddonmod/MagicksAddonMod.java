@@ -33,7 +33,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import online.magicksaddon.magicsaddonmod.ability.AddonAbilities;
+import online.magicksaddon.magicsaddonmod.ability.ModAbilitiesRM;
 import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
 import online.magicksaddon.magicsaddonmod.driveform.ModDriveFormsRM;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
@@ -82,7 +82,7 @@ public class MagicksAddonMod {
         ModSoundsRM.SOUNDS.register(modEventBus);
         ModItemsRM.ITEMS.register(modEventBus);
         ModEntitiesRM.ENTITIES.register(modEventBus);
-        AddonAbilities.ABILITIES.register(modEventBus);
+        ModAbilitiesRM.ABILITIES.register(modEventBus);
         ModDriveFormsRM.DRIVE_FORMS.register(modEventBus);
         ModShotlocksRM.SHOTLOCKS.register(modEventBus);
         ModReactionCommandsRM.REACTION_COMMANDS.register(modEventBus);

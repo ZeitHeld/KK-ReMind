@@ -11,7 +11,7 @@ import online.kingdomkeys.kingdomkeys.ability.ModAbilities;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 
-public class AddonAbilities extends ModAbilities{
+public class ModAbilitiesRM extends ModAbilities{
 
     public static DeferredRegister<Ability> ABILITIES = DeferredRegister.create(new ResourceLocation(KingdomKeys.MODID, "abilities"), MagicksAddonMod.MODID);
 
