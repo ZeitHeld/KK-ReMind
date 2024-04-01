@@ -18,7 +18,7 @@ import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 import online.kingdomkeys.kingdomkeys.client.sound.ModSounds;
 import online.kingdomkeys.kingdomkeys.entity.shotlock.RagnarokShotEntity;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,16 +39,16 @@ public class BioBarrageCoreEntity extends ThrowableProjectile {
     }
 
     public BioBarrageCoreEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-        super(ModEntitiesMA.TYPE_SHOTLOCK_BIO_BARRAGE.get(), world);
+        super(ModEntitiesRM.TYPE_SHOTLOCK_BIO_BARRAGE.get(), world);
     }
 
     public BioBarrageCoreEntity(Level world) {
-        super(ModEntitiesMA.TYPE_SHOTLOCK_BIO_BARRAGE.get(), world);
+        super(ModEntitiesRM.TYPE_SHOTLOCK_BIO_BARRAGE.get(), world);
         this.blocksBuilding = true;
     }
 
     public BioBarrageCoreEntity(Level world, Player player, List<Entity> targets, float dmg) {
-        super(ModEntitiesMA.TYPE_SHOTLOCK_BIO_BARRAGE.get(), player, world);
+        super(ModEntitiesRM.TYPE_SHOTLOCK_BIO_BARRAGE.get(), player, world);
         setCaster(player.getUUID());
         String targetIDS = "";
         for(Entity t : targets) {

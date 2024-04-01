@@ -7,9 +7,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
 import online.magicksaddon.magicsaddonmod.entity.magic.CometEntity;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
+import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 
 
 public class magicComet extends Magic {
@@ -20,7 +20,7 @@ public class magicComet extends Magic {
 
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
-        float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsX.darknessBoost) * 0.2F;
+        float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.darknessBoost) * 0.2F;
         dmgMult *= fullMPBlastMult;
 
         switch (level) {
@@ -31,7 +31,7 @@ public class magicComet extends Magic {
                 comet.setPos(player.getX(), player.getY() + 1.8F, player.getZ());
                 player.level().addFreshEntity(comet);
                 comet.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1.5F, 0);
-                player.level().playSound(null, player.blockPosition(), MagicSounds.PLAYER_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
+                player.level().playSound(null, player.blockPosition(), ModSoundsRM.PLAYER_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
                 break;
             case 1:
                 // Meteor
@@ -42,7 +42,7 @@ public class magicComet extends Magic {
                     player.level().addFreshEntity(meteor);
                     meteor.shootFromRotation(player, player.getXRot(), player.getYRot() , 0, 1.5F, 0);
                 }
-                player.level().playSound(null, player.blockPosition(), MagicSounds.PLAYER_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
+                player.level().playSound(null, player.blockPosition(), ModSoundsRM.PLAYER_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
                 break;
         }
 

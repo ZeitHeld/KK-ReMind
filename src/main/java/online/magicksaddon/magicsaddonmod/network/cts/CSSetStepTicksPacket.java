@@ -3,9 +3,9 @@ package online.magicksaddon.magicsaddonmod.network.cts;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
 import java.util.function.Supplier;
 
@@ -37,10 +37,10 @@ public class CSSetStepTicksPacket {
     public static void handle(final CSSetStepTicksPacket message, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             Player player = ctx.get().getSender();
-            IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
+            IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
             globalData.setStepTicks(message.ticks,message.type);
 
-            PacketHandlerX.syncGlobalToAllAround(player, globalData);
+            PacketHandlerRM.syncGlobalToAllAround(player, globalData);
         });
         ctx.get().setPacketHandled(true);
     }

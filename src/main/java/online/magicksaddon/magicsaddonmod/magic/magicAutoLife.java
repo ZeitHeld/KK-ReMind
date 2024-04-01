@@ -6,10 +6,10 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
-import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
 public class magicAutoLife extends Magic {
 
@@ -20,12 +20,12 @@ public class magicAutoLife extends Magic {
 
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
-        IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
+        IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
         if (globalData != null) {
             caster.swing(InteractionHand.MAIN_HAND);
-            player.level().playSound(null, player.blockPosition(), MagicSounds.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.blockPosition(), ModSoundsRM.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
             globalData.setAutoLifeActive(1);
-            PacketHandlerX.syncGlobalToAllAround(player, globalData);
+            PacketHandlerRM.syncGlobalToAllAround(player, globalData);
 
             System.out.println(globalData.getAutoLifeActive());
         }

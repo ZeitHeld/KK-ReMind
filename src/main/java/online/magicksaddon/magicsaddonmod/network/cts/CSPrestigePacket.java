@@ -14,10 +14,10 @@ import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.kingdomkeys.kingdomkeys.util.Utils;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
-import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.lib.StringsRM;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
 public class CSPrestigePacket {
 
@@ -39,7 +39,7 @@ public class CSPrestigePacket {
         Player player = ctx.get().getSender();
 
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-        IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
+        IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
 
         // Storing Old Choice For Bonus
         String oldChoice = String.valueOf(playerData.getChosen());
@@ -54,7 +54,7 @@ public class CSPrestigePacket {
             globalData.addNGPWarriorCount(+1);
             globalData.addSTRBonus(+2);
             System.out.println("Strength Bonus: " + globalData.getSTRBonus());
-            PacketHandlerX.syncGlobalToAllAround(player, globalData);
+            PacketHandlerRM.syncGlobalToAllAround(player, globalData);
 
 
         }
@@ -63,7 +63,7 @@ public class CSPrestigePacket {
             globalData.addNGPMysticCount(+1);
             globalData.addMAGBonus(+2);
             System.out.println("Magic Bonus: " + globalData.getMAGBonus());
-            PacketHandlerX.syncGlobalToAllAround(player, globalData);
+            PacketHandlerRM.syncGlobalToAllAround(player, globalData);
 
 
         }
@@ -72,7 +72,7 @@ public class CSPrestigePacket {
             globalData.addNGPGuardianCount(+1);
             globalData.addDEFBonus(+2);
             System.out.println("Defense Bonus: " + globalData.getDEFBonus());
-            PacketHandlerX.syncGlobalToAllAround(player, globalData);
+            PacketHandlerRM.syncGlobalToAllAround(player, globalData);
         }
 
 
@@ -100,7 +100,7 @@ public class CSPrestigePacket {
         playerData.addAbility(Strings.luckyLucky, true);
 
         if (globalData.getNGPWarriorCount() >= 1) {
-            playerData.addAbility(StringsX.adrenaline, true);
+            playerData.addAbility(StringsRM.adrenaline, true);
             if (globalData.getNGPWarriorCount() >= 2) {
                 playerData.addAbility(Strings.formBoost, true);
             }
@@ -113,7 +113,7 @@ public class CSPrestigePacket {
         }
 
         if (globalData.getNGPMysticCount() >= 1) {
-            playerData.addAbility(StringsX.critical_surge, true);
+            playerData.addAbility(StringsRM.critical_surge, true);
             if (globalData.getNGPMysticCount() >= 2) {
                 playerData.addAbility(Strings.mpHastega, true);
             }
@@ -131,16 +131,16 @@ public class CSPrestigePacket {
                 playerData.addAbility(Strings.damageDrive, true);
             }
             if (globalData.getNGPGuardianCount() >= 3) {
-                playerData.addAbility(StringsX.mpWalker, true);
+                playerData.addAbility(StringsRM.mpWalker, true);
             }
             if (globalData.getNGPGuardianCount() >= 4){
-                playerData.addAbility(StringsX.hpWalker, true);
+                playerData.addAbility(StringsRM.hpWalker, true);
             }
         }
 
         PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
         //System.out.println("Prestige Level: " + globalData.getPrestigeLvl());
-        PacketHandlerX.syncGlobalToAllAround(player, globalData);
+        PacketHandlerRM.syncGlobalToAllAround(player, globalData);
         ctx.get().setPacketHandled(true);
     }
 }

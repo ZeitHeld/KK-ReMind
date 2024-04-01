@@ -9,7 +9,7 @@ import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
 import online.magicksaddon.magicsaddonmod.entity.magic.BalloonEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.BalloongaEntity;
 
@@ -25,7 +25,7 @@ public class magicBalloon extends Magic {
 		caster.swing(InteractionHand.MAIN_HAND);
 
 		// Levels
-		player.level().playSound(null, player.blockPosition(), MagicSounds.BALLOON.get(), SoundSource.PLAYERS, 1F, 1F);
+		player.level().playSound(null, player.blockPosition(), ModSoundsRM.BALLOON.get(), SoundSource.PLAYERS, 1F, 1F);
 
 		switch(level) {
 		case 0:

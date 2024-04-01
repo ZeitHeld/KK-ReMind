@@ -9,16 +9,16 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.common.util.LazyOptional;
-import online.magicksaddon.magicsaddonmod.capabilities.GlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
+import online.magicksaddon.magicsaddonmod.capabilities.GlobalCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 
-public class GlobalCapabilitiesXProvider implements ICapabilityProvider, ICapabilitySerializable<CompoundTag> {
-    IGlobalCapabilitiesX instance = new GlobalCapabilitiesX();
+public class GlobalCapabilitiesRMProvider implements ICapabilityProvider, ICapabilitySerializable<CompoundTag> {
+    IGlobalCapabilitiesRM instance = new GlobalCapabilitiesRM();
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        return ModCapabilitiesX.GLOBAL_CAPABILITIES.orEmpty(cap, LazyOptional.of(() -> instance));
+        return ModCapabilitiesRM.GLOBAL_CAPABILITIES.orEmpty(cap, LazyOptional.of(() -> instance));
     }
 
     @Override

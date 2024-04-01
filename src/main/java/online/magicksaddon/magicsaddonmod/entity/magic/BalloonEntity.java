@@ -26,8 +26,8 @@ import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.lib.Party.Member;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 
 public class BalloonEntity extends ThrowableProjectile {
     // Start
@@ -40,16 +40,16 @@ public class BalloonEntity extends ThrowableProjectile {
     }
 
     public BalloonEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-        super(ModEntitiesMA.TYPE_BALLOON.get(), world);
+        super(ModEntitiesRM.TYPE_BALLOON.get(), world);
     }
 
     public BalloonEntity(Level world) {
-        super(ModEntitiesMA.TYPE_BALLOON.get(), world);
+        super(ModEntitiesRM.TYPE_BALLOON.get(), world);
         this.blocksBuilding = true;
     }
 
     public BalloonEntity(Level world, LivingEntity player, float dmgMult) {
-        super(ModEntitiesMA.TYPE_BALLOON.get(), player, world);
+        super(ModEntitiesRM.TYPE_BALLOON.get(), player, world);
         this.dmgMult = dmgMult;
     }
 
@@ -109,7 +109,7 @@ public class BalloonEntity extends ThrowableProjectile {
                         float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
                         target.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);
                         target.invulnerableTime = 0;
-                        playSound(MagicSounds.BALLOON_BOUNCE.get(),1F,1F);
+                        playSound(ModSoundsRM.BALLOON_BOUNCE.get(),1F,1F);
                         this.remove(RemovalReason.KILLED);
                     }
                 }
@@ -140,7 +140,7 @@ public class BalloonEntity extends ThrowableProjectile {
                 	this.setDeltaMovement(x,y,-z);
                     this.markHurt();
                 }
-                playSound(MagicSounds.BALLOON_BOUNCE.get(),1F,1F);
+                playSound(ModSoundsRM.BALLOON_BOUNCE.get(),1F,1F);
 
             }
         }

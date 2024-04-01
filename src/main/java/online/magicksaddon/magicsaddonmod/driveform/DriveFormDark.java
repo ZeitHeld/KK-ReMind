@@ -14,11 +14,11 @@ import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 import online.magicksaddon.magicsaddonmod.mixin.DriveFormMixin;
-import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
 import java.awt.*;
 
@@ -39,16 +39,16 @@ public class DriveFormDark extends DriveForm {
             if (event.getSource().getEntity() instanceof Player) {
                 Player player = (Player) event.getSource().getEntity();
                 IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-                IGlobalCapabilitiesX formData = ModCapabilitiesX.getGlobal(player);
+                IGlobalCapabilitiesRM formData = ModCapabilitiesRM.getGlobal(player);
 
-                if (playerData != null && playerData.getActiveDriveForm().equals(MagicksAddonMod.MODID+":"+ StringsX.darkMode)) {
+                if (playerData != null && playerData.getActiveDriveForm().equals(MagicksAddonMod.MODID+":"+ StringsRM.darkMode)) {
                     double mult = Double.parseDouble(ModConfigs.driveFormXPMultiplier.get(1).split(",")[1]);
                     playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
                     //System.out.println(playerData.getDriveFormExp(playerData.getActiveDriveForm()));
                    // formData.setRageFormEXP(playerData.getDriveFormExp(playerData.getActiveDriveForm()));
 
 
-                    PacketHandlerX.syncGlobalToAllAround(player, formData);
+                    PacketHandlerRM.syncGlobalToAllAround(player, formData);
                     PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
                 }
             }

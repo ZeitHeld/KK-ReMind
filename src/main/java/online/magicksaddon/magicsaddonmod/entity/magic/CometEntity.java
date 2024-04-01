@@ -21,7 +21,7 @@ import online.kingdomkeys.kingdomkeys.damagesource.DarknessDamageSource;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.util.Utils;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 
 public class CometEntity extends ThrowableProjectile {
         int maxTicks = 200, radius = 2;
@@ -35,16 +35,16 @@ public class CometEntity extends ThrowableProjectile {
         }
 
         public CometEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-                super(ModEntitiesMA.TYPE_COMET.get(), world);
+                super(ModEntitiesRM.TYPE_COMET.get(), world);
         }
 
         public CometEntity(Level world) {
-                super(ModEntitiesMA.TYPE_COMET.get(), world);
+                super(ModEntitiesRM.TYPE_COMET.get(), world);
                 this.blocksBuilding = true;
         }
 
         public CometEntity(Level world, LivingEntity player, float dmgMult, int radius, int index) {
-                super(ModEntitiesMA.TYPE_COMET.get(), player, world);
+                super(ModEntitiesRM.TYPE_COMET.get(), player, world);
                 this.dmgMult = dmgMult;
                 this.radius = radius;
                 this.index = index;

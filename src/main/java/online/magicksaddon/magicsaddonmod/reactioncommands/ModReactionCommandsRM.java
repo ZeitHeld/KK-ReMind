@@ -14,15 +14,15 @@ import online.kingdomkeys.kingdomkeys.reactioncommands.ReactionAutoForm;
 import online.kingdomkeys.kingdomkeys.reactioncommands.ReactionCommand;
 import online.kingdomkeys.kingdomkeys.reactioncommands.ReactionMagic;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
+import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 
 import java.util.function.Supplier;
 
-public class AddonReactionCommands {
+public class ModReactionCommandsRM {
     public static DeferredRegister<ReactionCommand> REACTION_COMMANDS = DeferredRegister.create(new ResourceLocation(KingdomKeys.MODID, "reactioncommands"), "magicksaddon");
 
     public static final RegistryObject<ReactionCommand>
-        RISKCHARGE = REACTION_COMMANDS.register(StringsX.RCMA_Prefix+"riskcharge", () -> new RiskchargeReaction(new ResourceLocation(StringsX.riskchargeRC), true));
+        RISKCHARGE = REACTION_COMMANDS.register(StringsRM.RCMA_Prefix+"riskcharge", () -> new RiskchargeReaction(new ResourceLocation(StringsRM.riskchargeRC), true));
 
 
 }

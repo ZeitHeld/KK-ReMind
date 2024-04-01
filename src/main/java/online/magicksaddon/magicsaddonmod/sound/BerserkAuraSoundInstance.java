@@ -6,15 +6,15 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
 
 @OnlyIn(Dist.CLIENT)
 public class BerserkAuraSoundInstance extends AbstractTickableSoundInstance {
     private final LivingEntity ent;
 
     public BerserkAuraSoundInstance(LivingEntity ent) {
-        super(MagicSounds.BERSERK2.get(), SoundSource.PLAYERS, SoundInstance.createUnseededRandom());
+        super(ModSoundsRM.BERSERK2.get(), SoundSource.PLAYERS, SoundInstance.createUnseededRandom());
         this.ent = ent;
         this.looping = true;
         this.delay = 0;
@@ -38,9 +38,9 @@ public class BerserkAuraSoundInstance extends AbstractTickableSoundInstance {
         if(ent.isRemoved()) {
             this.stop();
         } else {
-            if (ModCapabilitiesX.getGlobal(ent) != null) {
+            if (ModCapabilitiesRM.getGlobal(ent) != null) {
             	//System.out.println(ModCapabilitiesX.getGlobal(ent).getBerserkTicks());
-                if(ModCapabilitiesX.getGlobal(ent).getBerserkTicks() <= 0) {
+                if(ModCapabilitiesRM.getGlobal(ent).getBerserkTicks() <= 0) {
                     this.volume = 0;
                 } else {
                     this.x = (double)((float)this.ent.getX());

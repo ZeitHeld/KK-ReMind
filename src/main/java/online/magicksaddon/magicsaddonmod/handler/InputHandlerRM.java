@@ -5,14 +5,14 @@ import net.minecraft.util.Mth;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.handler.InputHandler;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
-import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
+import online.magicksaddon.magicsaddonmod.lib.StringsRM;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 import online.magicksaddon.magicsaddonmod.network.cts.CSSetStepTicksPacket;
 
-public class MAInputHandler extends InputHandler {
+public class InputHandlerRM extends InputHandler {
 
 	@Override
 	@SubscribeEvent
@@ -22,7 +22,7 @@ public class MAInputHandler extends InputHandler {
 
 	@Override
     public void commandAction() {
-		IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
+		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
 
         // 0.13000001 - Sprint speed (Vanilla)
 
@@ -37,40 +37,40 @@ public class MAInputHandler extends InputHandler {
 				// System.out.println(globalData.getStepTicks());
 
 				// Light Step
-				if (playerData.isAbilityEquipped(StringsX.lightStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {
+				if (playerData.isAbilityEquipped(StringsRM.lightStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {
 					float yaw = player.getYRot();
 					float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
 					float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
 					double power = lightLevel;
-					PacketHandlerX.sendToServer(new CSSetStepTicksPacket(10, StringsX.lightStepType));
+					PacketHandlerRM.sendToServer(new CSSetStepTicksPacket(10, StringsRM.lightStepType));
 
 					// Light Form
 					if (playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {
-						player.level().playSound(player, player.blockPosition(), MagicSounds.LIGHTSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
+						player.level().playSound(player, player.blockPosition(), ModSoundsRM.LIGHTSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
 						player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
 						qrCooldown = 20;
-					} else if (playerData.isAbilityEquipped(StringsX.lightStep)) {
+					} else if (playerData.isAbilityEquipped(StringsRM.lightStep)) {
 						if (lightLevel > 2) {
-							player.level().playSound(player, player.blockPosition(), MagicSounds.LIGHTSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
+							player.level().playSound(player, player.blockPosition(), ModSoundsRM.LIGHTSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
 							power = lightLevel - 2;
 							player.push(motionX * power, 0, motionZ * power);
 							qrCooldown = 20;
 						}
 					}
-				} else if (playerData.isAbilityEquipped(StringsX.darkStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_dark")) {
+				} else if (playerData.isAbilityEquipped(StringsRM.darkStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_dark")) {
 					float yaw = player.getYRot();
 					float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
 					float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
 					double power = darkLevel;
-					PacketHandlerX.sendToServer(new CSSetStepTicksPacket(10, StringsX.darkStepType));
+					PacketHandlerRM.sendToServer(new CSSetStepTicksPacket(10, StringsRM.darkStepType));
 					// Dark Mode
 					if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")) {
-						player.level().playSound(player, player.blockPosition(), MagicSounds.DARKSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
+						player.level().playSound(player, player.blockPosition(), ModSoundsRM.DARKSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
 						player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
 						qrCooldown = 20;
-					} else if (playerData.isAbilityEquipped(StringsX.darkStep)) {
+					} else if (playerData.isAbilityEquipped(StringsRM.darkStep)) {
 						if (darkLevel > 2) {
-							player.level().playSound(player, player.blockPosition(), MagicSounds.DARKSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
+							player.level().playSound(player, player.blockPosition(), ModSoundsRM.DARKSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
 							power = darkLevel - 2;
 							player.push(motionX * power, 0, motionZ * power);
 							qrCooldown = 20;
@@ -80,7 +80,7 @@ public class MAInputHandler extends InputHandler {
 				} else { //If not doing adrk or light step run base KK code
 					super.commandAction();
 				}
-				PacketHandlerX.syncGlobalToAllAround(player, globalData);
+				PacketHandlerRM.syncGlobalToAllAround(player, globalData);
 				// PacketHandlerX.sendToServer(new CSSetStepTicksPacket());
 			}
 		}

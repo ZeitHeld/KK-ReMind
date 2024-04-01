@@ -6,7 +6,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import online.kingdomkeys.kingdomkeys.client.sound.ModSounds;
 
-public class GUIHelperX {
+public class GUIHelperRM {
     @OnlyIn(Dist.CLIENT)
     public static void openAddonMenu() {
         Minecraft mc = Minecraft.getInstance();

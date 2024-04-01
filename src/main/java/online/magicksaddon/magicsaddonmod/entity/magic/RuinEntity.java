@@ -23,7 +23,7 @@ import online.kingdomkeys.kingdomkeys.damagesource.DarknessDamageSource;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.util.Utils;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 
 public class RuinEntity extends ThrowableProjectile {
 
@@ -37,16 +37,16 @@ public class RuinEntity extends ThrowableProjectile {
     }
 
     public RuinEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-        super(ModEntitiesMA.TYPE_RUIN.get(), world);
+        super(ModEntitiesRM.TYPE_RUIN.get(), world);
     }
 
     public RuinEntity(Level world) {
-        super(ModEntitiesMA.TYPE_RUIN.get(), world);
+        super(ModEntitiesRM.TYPE_RUIN.get(), world);
         this.blocksBuilding = true;
     }
 
     public RuinEntity(Level world, LivingEntity player, float dmgMult, int radius) {
-        super(ModEntitiesMA.TYPE_RUIN.get(), player, world);
+        super(ModEntitiesRM.TYPE_RUIN.get(), player, world);
         this.dmgMult = dmgMult;
         this.radius = radius;
     }

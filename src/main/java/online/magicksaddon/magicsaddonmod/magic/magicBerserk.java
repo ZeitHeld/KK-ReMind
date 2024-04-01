@@ -11,10 +11,10 @@ import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
-import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
 public class magicBerserk extends Magic {
 
@@ -25,12 +25,12 @@ public class magicBerserk extends Magic {
 	@Override
 	protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
 
-		IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
+		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
 
 		if (globalData != null) {
 			int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * ((level * 0.75) + 5));
 			caster.swing(InteractionHand.MAIN_HAND);
-			player.level().playSound(null, player.blockPosition(), MagicSounds.BERSERK.get(), SoundSource.PLAYERS, 1F, 1F);
+			player.level().playSound(null, player.blockPosition(), ModSoundsRM.BERSERK.get(), SoundSource.PLAYERS, 1F, 1F);
 			// Effect and Level Modifier
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			if (globalData.getBerserkTicks() <= 0) {
@@ -58,7 +58,7 @@ public class magicBerserk extends Magic {
 				}
 				globalData.setBerserkTicks(time, level);
 				//System.out.println(time + " " + level);
-				PacketHandlerX.syncGlobalToAllAround(player, globalData);
+				PacketHandlerRM.syncGlobalToAllAround(player, globalData);
 
 			}
 		}

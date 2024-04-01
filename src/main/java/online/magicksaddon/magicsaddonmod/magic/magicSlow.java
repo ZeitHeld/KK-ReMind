@@ -17,16 +17,16 @@ import online.kingdomkeys.kingdomkeys.lib.Party.Member;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncGlobalCapabilityPacket;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
 
 public class magicSlow extends Magic {
 	public magicSlow(ResourceLocation registryName, boolean hasToSelect, int maxLevel) {
 		super(registryName, hasToSelect, maxLevel, null);
 	}
 
-	IGlobalCapabilitiesX globalData;
+	IGlobalCapabilitiesRM globalData;
 
 	@Override
 	protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
@@ -45,7 +45,7 @@ public class magicSlow extends Magic {
 				Entity e = (Entity) list.get(i);
 				if (e instanceof LivingEntity) {
 					if (globalData != null) {
-						IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal((LivingEntity) e);
+						IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal((LivingEntity) e);
 						((LivingEntity) e).getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.25 + (0.25 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
 						((LivingEntity) e).getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.25 + (0.25 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
 						int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * ((level * 0.75) + 5) + 5);
@@ -57,7 +57,7 @@ public class magicSlow extends Magic {
 				}
 			}
 			player.swing(InteractionHand.MAIN_HAND);
-			player.level().playSound(null, player.blockPosition(), MagicSounds.SLOW.get(), SoundSource.PLAYERS, 1F, 1F);
+			player.level().playSound(null, player.blockPosition(), ModSoundsRM.SLOW.get(), SoundSource.PLAYERS, 1F, 1F);
 		}
 	}
 }

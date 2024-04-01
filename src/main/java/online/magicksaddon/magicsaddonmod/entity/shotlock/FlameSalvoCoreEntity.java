@@ -19,14 +19,14 @@ import net.minecraftforge.network.PlayMessages;
 import online.kingdomkeys.kingdomkeys.client.sound.ModSounds;
 import online.kingdomkeys.kingdomkeys.entity.shotlock.VolleyShotEntity;
 import online.kingdomkeys.kingdomkeys.util.Utils;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA.*;
+import static online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM.*;
 
 
 public class FlameSalvoCoreEntity extends ThrowableProjectile {
@@ -42,16 +42,16 @@ public class FlameSalvoCoreEntity extends ThrowableProjectile {
     }
 
     public FlameSalvoCoreEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-        super((EntityType<? extends ThrowableProjectile>) ModEntitiesMA.TYPE_SHOTLOCK_FLAME_SALVO.get(), world);
+        super((EntityType<? extends ThrowableProjectile>) ModEntitiesRM.TYPE_SHOTLOCK_FLAME_SALVO.get(), world);
     }
 
     public FlameSalvoCoreEntity(Level world) {
-        super(ModEntitiesMA.TYPE_SHOTLOCK_FLAME_SALVO.get(), world);
+        super(ModEntitiesRM.TYPE_SHOTLOCK_FLAME_SALVO.get(), world);
         this.blocksBuilding = true;
     }
 
     public FlameSalvoCoreEntity(Level world, Player player, List<Entity> targets, float dmg) {
-        super(ModEntitiesMA.TYPE_SHOTLOCK_FLAME_SALVO.get(), player, world);
+        super(ModEntitiesRM.TYPE_SHOTLOCK_FLAME_SALVO.get(), player, world);
         setCaster(player.getUUID());
         String targetIDS = "";
         for(Entity t : targets) {

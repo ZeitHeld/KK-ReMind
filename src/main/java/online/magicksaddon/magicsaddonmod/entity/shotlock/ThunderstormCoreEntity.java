@@ -19,7 +19,7 @@ import net.minecraftforge.network.PlayMessages;
 import online.kingdomkeys.kingdomkeys.client.sound.ModSounds;
 import online.kingdomkeys.kingdomkeys.entity.ModEntities;
 import online.kingdomkeys.kingdomkeys.entity.shotlock.RagnarokShotEntity;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,16 +40,16 @@ public class ThunderstormCoreEntity extends ThrowableProjectile {
     }
 
     public ThunderstormCoreEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-        super(ModEntitiesMA.TYPE_SHOTLOCK_THUNDERSTORM.get(), world);
+        super(ModEntitiesRM.TYPE_SHOTLOCK_THUNDERSTORM.get(), world);
     }
 
     public ThunderstormCoreEntity(Level world) {
-        super(ModEntitiesMA.TYPE_SHOTLOCK_THUNDERSTORM.get(), world);
+        super(ModEntitiesRM.TYPE_SHOTLOCK_THUNDERSTORM.get(), world);
         this.blocksBuilding = true;
     }
 
     public ThunderstormCoreEntity(Level world, Player player, List<Entity> targets, float dmg) {
-        super(ModEntitiesMA.TYPE_SHOTLOCK_THUNDERSTORM.get(), player, world);
+        super(ModEntitiesRM.TYPE_SHOTLOCK_THUNDERSTORM.get(), player, world);
         setCaster(player.getUUID());
         String targetIDS = "";
         for(Entity t : targets) {

@@ -15,11 +15,11 @@ import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.kingdomkeys.kingdomkeys.reactioncommands.ReactionCommand;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
-import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
+import online.magicksaddon.magicsaddonmod.lib.StringsRM;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
 public class RiskchargeReaction extends ReactionCommand {
@@ -37,17 +37,17 @@ public class RiskchargeReaction extends ReactionCommand {
     public void onUse(Player player, LivingEntity livingEntity, LivingEntity livingEntity1) {
         if(conditionsToAppear(player,player)){
             IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-            IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
+            IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
             HeartEntity heart = new HeartEntity(player.level());
 
-            player.level().playSound(null, player.position().x(),player.position().y(),player.position().z(), MagicSounds.RISKCHARGE.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.position().x(),player.position().y(),player.position().z(), ModSoundsRM.RISKCHARGE.get(), SoundSource.PLAYERS, 1F, 1F);
             player.level().addFreshEntity(heart);
             heart.setPos(player.getX(),player.getY() + 1,player.getZ());
             player.setHealth(player.getHealth()/2);
             playerData.getStrengthStat().addModifier("Riskcharge", 5, true);
             playerData.addFP(50);
             globalData.setRiskchargeCount(globalData.getRiskchargeCount()+1);
-            PacketHandlerX.syncGlobalToAllAround(player, globalData);
+            PacketHandlerRM.syncGlobalToAllAround(player, globalData);
             PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
         }
     }
@@ -55,7 +55,7 @@ public class RiskchargeReaction extends ReactionCommand {
     @Override
     public boolean conditionsToAppear(Player player, LivingEntity livingEntity) {
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-        IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
+        IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
         if(playerData != null){
         	//System.out.println(player.level().isClientSide+" "+ globalData.getRiskchargeCount());
             if(playerData.getActiveDriveForm().equals("magicksaddon:form_rage")){

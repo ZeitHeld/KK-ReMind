@@ -21,8 +21,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import online.kingdomkeys.kingdomkeys.util.IDisabledAnimations;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.client.model.BerserkAuraModel;
 
 @OnlyIn(Dist.CLIENT)
@@ -50,8 +50,8 @@ public class BerserkLayerRenderer<T extends LivingEntity> extends RenderLayer<T,
     }
 
     public void renderEntity(PoseStack matrixStackIn, MultiBufferSource bufferIn, int packedLightIn, T entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-        if (ModCapabilitiesX.getGlobal(entitylivingbaseIn) != null) {
-            IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(entitylivingbaseIn);
+        if (ModCapabilitiesRM.getGlobal(entitylivingbaseIn) != null) {
+            IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(entitylivingbaseIn);
             if (globalData.getBerserkTicks() > 0) {
                 VertexConsumer vertexconsumer = bufferIn.getBuffer(RenderType.entityTranslucent(TEXTURE));
 

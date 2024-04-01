@@ -11,7 +11,7 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.PlayMessages;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 
 public class ChirithyEntity extends Mob {
 
@@ -22,7 +22,7 @@ public class ChirithyEntity extends Mob {
     }
 
     public ChirithyEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-        super(ModEntitiesMA.TYPE_CHIRITHY.get(), world);
+        super(ModEntitiesRM.TYPE_CHIRITHY.get(), world);
     }
 
     /*

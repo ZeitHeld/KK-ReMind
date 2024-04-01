@@ -5,7 +5,7 @@ import net.minecraft.client.gui.screens.PresetFlatWorldScreen;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.MenuBackground;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.buttons.MenuButton;
 import online.kingdomkeys.kingdomkeys.client.gui.menu.MenuScreen;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
+import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 
 import java.awt.*;
 
@@ -43,11 +43,11 @@ public class AddonMenu extends MenuScreen {
         float buttonPosX = (float) width * 0.03F;
         float buttonWidth = ((float) width * 0.1744F) - 22;
 
-        addRenderableWidget(prestige = new MenuButton((int) buttonPosX, start + 18 * pos, (int) buttonWidth, (StringsX.Gui_Menu_Button_Prestige), MenuButton.ButtonType.BUTTON, true, (e) -> {
+        addRenderableWidget(prestige = new MenuButton((int) buttonPosX, start + 18 * pos, (int) buttonWidth, (StringsRM.Gui_Menu_Button_Prestige), MenuButton.ButtonType.BUTTON, true, (e) -> {
             action(RMButtons.PRESTIGE);
 
         }));
-        addRenderableWidget(dreamEater = new MenuButton((int) buttonPosX, start + 18 * ++pos, (int) buttonWidth, (StringsX.Gui_Menu_Button_DreamEater), MenuButton.ButtonType.BUTTON, false, (e) -> {
+        addRenderableWidget(dreamEater = new MenuButton((int) buttonPosX, start + 18 * ++pos, (int) buttonWidth, (StringsRM.Gui_Menu_Button_DreamEater), MenuButton.ButtonType.BUTTON, false, (e) -> {
             action(RMButtons.DREAMEATER);
         }));
     }

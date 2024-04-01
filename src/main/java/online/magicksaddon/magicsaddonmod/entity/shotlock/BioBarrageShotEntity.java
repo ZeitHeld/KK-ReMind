@@ -14,7 +14,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.network.PlayMessages;
 import online.kingdomkeys.kingdomkeys.entity.shotlock.BaseShotlockShotEntity;
 import online.kingdomkeys.kingdomkeys.entity.shotlock.VolleyShotEntity;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 import org.joml.Vector3f;
 
 import java.awt.*;
@@ -26,16 +26,16 @@ public class BioBarrageShotEntity extends BaseShotlockShotEntity {
     }
 
     public BioBarrageShotEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-        super(ModEntitiesMA.TYPE_BIO_SHOT.get(), world);
+        super(ModEntitiesRM.TYPE_BIO_SHOT.get(), world);
     }
 
     public BioBarrageShotEntity(Level world) {
-        super(ModEntitiesMA.TYPE_BIO_SHOT.get(), world);
+        super(ModEntitiesRM.TYPE_BIO_SHOT.get(), world);
         this.blocksBuilding = true;
     }
 
     public BioBarrageShotEntity(Level world, LivingEntity player, Entity target, double dmg) {
-        super(ModEntitiesMA.TYPE_BIO_SHOT.get(), world, player, target, dmg);
+        super(ModEntitiesRM.TYPE_BIO_SHOT.get(), world, player, target, dmg);
     }
 
     @Override

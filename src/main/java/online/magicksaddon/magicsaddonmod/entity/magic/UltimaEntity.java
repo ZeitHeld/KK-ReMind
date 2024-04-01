@@ -31,8 +31,8 @@ import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.lib.Party.Member;
 import online.kingdomkeys.kingdomkeys.util.Utils;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 
 public class UltimaEntity extends ThrowableProjectile {
 	int maxTicks = 200;
@@ -47,16 +47,16 @@ public class UltimaEntity extends ThrowableProjectile {
 	}
 
 	public UltimaEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-		super(ModEntitiesMA.TYPE_ULTIMA.get(), world);
+		super(ModEntitiesRM.TYPE_ULTIMA.get(), world);
 	}
 
 	public UltimaEntity(Level world) {
-		super(ModEntitiesMA.TYPE_ULTIMA.get(), world);
+		super(ModEntitiesRM.TYPE_ULTIMA.get(), world);
 		this.blocksBuilding = true;
 	}
 
 	public UltimaEntity(Level world, LivingEntity player, float dmgMult) {
-		super(ModEntitiesMA.TYPE_ULTIMA.get(), player, world);
+		super(ModEntitiesRM.TYPE_ULTIMA.get(), player, world);
 		this.dmgMult = dmgMult;
 	}
 
@@ -112,9 +112,9 @@ public class UltimaEntity extends ThrowableProjectile {
 
 					}
 					if (tickCount == 50){
-						playSound(MagicSounds.ULTIMA_CAST.get(),1F,1F);
+						playSound(ModSoundsRM.ULTIMA_CAST.get(),1F,1F);
 					} if (tickCount == 140) {
-						playSound(MagicSounds.ULTIMA_EXPLOSION.get(),0.75F,1F);
+						playSound(ModSoundsRM.ULTIMA_EXPLOSION.get(),0.75F,1F);
 					}
 					
 					//System.out.println("Ent rad: "+radius);

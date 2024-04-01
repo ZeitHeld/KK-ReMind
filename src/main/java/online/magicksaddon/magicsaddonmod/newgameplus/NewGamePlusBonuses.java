@@ -1,4 +1,4 @@
-package online.magicksaddon.magicsaddonmod.newGamePlus;
+package online.magicksaddon.magicsaddonmod.newgameplus;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerPlayer;
@@ -8,16 +8,16 @@ import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
 public class NewGamePlusBonuses {
 
     public void NGPlusBonus() {
         Player player = Minecraft.getInstance().player;
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-        IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(player);
+        IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
         /*
         switch(globalData.getPrestigeLvl()){
             case 1:

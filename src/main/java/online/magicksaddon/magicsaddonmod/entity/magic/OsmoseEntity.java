@@ -21,7 +21,7 @@ import online.kingdomkeys.kingdomkeys.damagesource.DarknessDamageSource;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.util.Utils;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 import org.joml.Vector3f;
 
 import java.util.List;
@@ -40,16 +40,16 @@ public class OsmoseEntity extends ThrowableProjectile {
     }
 
     public OsmoseEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-        super(ModEntitiesMA.TYPE_OSMOSE.get(), world);
+        super(ModEntitiesRM.TYPE_OSMOSE.get(), world);
     }
 
     public OsmoseEntity(Level world) {
-        super(ModEntitiesMA.TYPE_OSMOSE.get(), world);
+        super(ModEntitiesRM.TYPE_OSMOSE.get(), world);
         this.blocksBuilding = true;
     }
 
     public OsmoseEntity(Level world, LivingEntity player, float dmgMult, LivingEntity lockOnEntity) {
-        super(ModEntitiesMA.TYPE_OSMOSE.get(), player, world);
+        super(ModEntitiesRM.TYPE_OSMOSE.get(), player, world);
         this.dmgMult = dmgMult;
         this.lockOnEntity = lockOnEntity;
     }

@@ -22,7 +22,7 @@ import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.entity.magic.MagnetEntity;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 
 public class HolyEntity extends ThrowableProjectile {
 
@@ -38,16 +38,16 @@ public class HolyEntity extends ThrowableProjectile {
 	}
 
 	public HolyEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-		super(ModEntitiesMA.TYPE_HOLY.get(), world);
+		super(ModEntitiesRM.TYPE_HOLY.get(), world);
 	}
 
 	public HolyEntity(Level world) {
-		super(ModEntitiesMA.TYPE_HOLY.get(), world);
+		super(ModEntitiesRM.TYPE_HOLY.get(), world);
 		this.blocksBuilding = true;
 	}
 
 	public HolyEntity(Level world, Player player, int index, float dmgMult) {
-		super(ModEntitiesMA.TYPE_HOLY.get(), player, world);
+		super(ModEntitiesRM.TYPE_HOLY.get(), player, world);
 		this.player = player;
 		this.dmgMult = dmgMult;
 		this.index = index;

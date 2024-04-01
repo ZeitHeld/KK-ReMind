@@ -25,7 +25,7 @@ import online.magicksaddon.magicsaddonmod.entity.magic.*;
 import online.magicksaddon.magicsaddonmod.entity.mob.ChirithyEntity;
 import online.magicksaddon.magicsaddonmod.entity.shotlock.*;
 
-public class ModEntitiesMA {
+public class ModEntitiesRM {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ENTITY_TYPES, MagicksAddonMod.MODID);
 
     public static final RegistryObject<EntityType<HolyEntity>> TYPE_HOLY = createEntityType(HolyEntity::new, HolyEntity::new, MobCategory.MISC,"entity_holy", 0.5F, 0.5F);

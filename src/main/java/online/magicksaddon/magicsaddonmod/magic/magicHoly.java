@@ -6,9 +6,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
 import online.magicksaddon.magicsaddonmod.entity.magic.HolyEntity;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
+import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 
 
 public class magicHoly extends Magic {
@@ -20,7 +20,7 @@ public class magicHoly extends Magic {
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget){
         //IGlobalCapabilitiesMA globalData = ModCapabilitiesMA.getGlobal(player);
-        float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsX.lightBoost) * 0.2F;
+        float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.lightBoost) * 0.2F;
         dmgMult *= fullMPBlastMult;
 
         switch(level) {
@@ -30,7 +30,7 @@ public class magicHoly extends Magic {
                 holy.setCaster(player.getDisplayName().getString());
                 player.level().addFreshEntity(holy);
             }
-            player.level().playSound(null, player.blockPosition(), MagicSounds.HOLY.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.blockPosition(), ModSoundsRM.HOLY.get(), SoundSource.PLAYERS, 1F, 1F);
 
         	break;
         case 1:
@@ -39,7 +39,7 @@ public class magicHoly extends Magic {
                 holy.setCaster(player.getDisplayName().getString());
                 player.level().addFreshEntity(holy);
             }
-            player.level().playSound(null, player.blockPosition(), MagicSounds.HOLY.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.blockPosition(), ModSoundsRM.HOLY.get(), SoundSource.PLAYERS, 1F, 1F);
 
         	break;
         case 2:
@@ -48,7 +48,7 @@ public class magicHoly extends Magic {
                 holy.setCaster(player.getDisplayName().getString());
                 player.level().addFreshEntity(holy);
             }
-            player.level().playSound(null, player.blockPosition(), MagicSounds.HOLY.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.blockPosition(), ModSoundsRM.HOLY.get(), SoundSource.PLAYERS, 1F, 1F);
 
         	break;
         }

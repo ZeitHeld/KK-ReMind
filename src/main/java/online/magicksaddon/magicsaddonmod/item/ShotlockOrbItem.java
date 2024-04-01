@@ -14,8 +14,8 @@ import online.kingdomkeys.kingdomkeys.shotlock.ModShotlocks;
 import online.kingdomkeys.kingdomkeys.shotlock.Shotlock;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
-import online.magicksaddon.magicsaddonmod.shotlock.AddonShotlocks;
+import online.magicksaddon.magicsaddonmod.lib.StringsRM;
+import online.magicksaddon.magicsaddonmod.shotlock.ModShotlocksRM;
 
 import static net.minecraft.world.ContainerHelper.takeItem;
 

@@ -4,7 +4,7 @@ package online.magicksaddon.magicsaddonmod.capabilities;
 import net.minecraft.nbt.CompoundTag;
 
 
-public class GlobalCapabilitiesX implements IGlobalCapabilitiesX {
+public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
 
 	@Override
     public CompoundTag serializeNBT() {

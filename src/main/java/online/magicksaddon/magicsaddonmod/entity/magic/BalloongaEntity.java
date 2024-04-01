@@ -26,8 +26,8 @@ import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.lib.Party.Member;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 
 public class BalloongaEntity extends ThrowableProjectile {
     // Start
@@ -40,16 +40,16 @@ public class BalloongaEntity extends ThrowableProjectile {
     }
 
     public BalloongaEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-        super(ModEntitiesMA.TYPE_BALLOONGA.get(), world);
+        super(ModEntitiesRM.TYPE_BALLOONGA.get(), world);
     }
 
     public BalloongaEntity(Level world) {
-        super(ModEntitiesMA.TYPE_BALLOONGA.get(), world);
+        super(ModEntitiesRM.TYPE_BALLOONGA.get(), world);
         this.blocksBuilding = true;
     }
 
     public BalloongaEntity(Level world, LivingEntity player, float dmgMult) {
-        super(ModEntitiesMA.TYPE_BALLOONGA.get(), player, world);
+        super(ModEntitiesRM.TYPE_BALLOONGA.get(), player, world);
         this.dmgMult = dmgMult;
     }
 
@@ -147,7 +147,7 @@ public class BalloongaEntity extends ThrowableProjectile {
                 	this.setDeltaMovement(x,y,-z);
                     this.markHurt();
                 }
-                playSound(MagicSounds.BALLOON_BOUNCE.get(),1F,1F);
+                playSound(ModSoundsRM.BALLOON_BOUNCE.get(),1F,1F);
 
             }
         }
@@ -155,7 +155,7 @@ public class BalloongaEntity extends ThrowableProjectile {
     }
     
     private void explodeBalloonga() {
-    	playSound(MagicSounds.BALLOON_BOUNCE.get(),1F,1F);
+    	playSound(ModSoundsRM.BALLOON_BOUNCE.get(),1F,1F);
         // The Dumb part
         for(int i = 0; i < 360; i+=45) {
             ThrowableProjectile balloon = new BalloonEntity(this.level(), (LivingEntity) getOwner(), dmgMult);

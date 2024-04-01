@@ -13,10 +13,10 @@ import online.kingdomkeys.kingdomkeys.client.gui.elements.MenuColourBox;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.buttons.MenuButton;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.util.Utils;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
-import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.lib.StringsRM;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 import online.magicksaddon.magicsaddonmod.network.cts.CSPrestigePacket;
 
 public class PrestigeMenu extends MenuBackground{
@@ -38,9 +38,9 @@ public class PrestigeMenu extends MenuBackground{
 
     protected void action(String string) {
         if (string.equals("back"))
-            GUIHelperX.openAddonMenu();
+            GUIHelperRM.openAddonMenu();
         if (string.equals("confirm")){
-            PacketHandlerX.sendToServer(new CSPrestigePacket());
+            PacketHandlerRM.sendToServer(new CSPrestigePacket());
             minecraft.setScreen(null);
         }
 
@@ -51,7 +51,7 @@ public class PrestigeMenu extends MenuBackground{
 
         Player player;
         final IPlayerCapabilities playerData = ModCapabilities.getPlayer(minecraft.player);
-        IGlobalCapabilitiesX addedData = ModCapabilitiesX.getGlobal(minecraft.player);
+        IGlobalCapabilitiesRM addedData = ModCapabilitiesRM.getGlobal(minecraft.player);
         //System.out.println(addedData);
 
         super.init();
@@ -78,7 +78,7 @@ public class PrestigeMenu extends MenuBackground{
             action("back");
         }));
         if (playerData.getLevel() >= 90) {
-            addRenderableWidget(prestige = new MenuButton((int) buttonPosX, button_statsY, (int) buttonWidth, (StringsX.Gui_Menu_Button_PrestigeConfirm), MenuButton.ButtonType.BUTTON, true, (e) -> {
+            addRenderableWidget(prestige = new MenuButton((int) buttonPosX, button_statsY, (int) buttonWidth, (StringsRM.Gui_Menu_Button_PrestigeConfirm), MenuButton.ButtonType.BUTTON, true, (e) -> {
                 action("confirm");
 
             }));
@@ -97,7 +97,7 @@ public class PrestigeMenu extends MenuBackground{
 
         // Levels
         addRenderableWidget(level = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal(Strings.Gui_Menu_Status_Level),"" + playerData.getLevel(), 0x000088));
-        addRenderableWidget(prestigeLevel = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal(StringsX.Gui_Menu_Button_PrestigeLevel),"" + addedData.getPrestigeLvl(), 0xe3ce44));
+        addRenderableWidget(prestigeLevel = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal(StringsRM.Gui_Menu_Button_PrestigeLevel),"" + addedData.getPrestigeLvl(), 0xe3ce44));
         addRenderableWidget(currentPath = new MenuColourBox(col1X, button_statsY + (c++* spacer), (int) dataWidth*2, Utils.translateToLocal("Current Path: "),"" + playerData.getChosen(), 0xe3ce44));
 
         // Stats Column

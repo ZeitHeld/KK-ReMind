@@ -11,21 +11,21 @@ import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkEvent;
 import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.client.ClientUtilsMA;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.client.ClientUtilsRM;
 
-public class SCSyncGlobalCapabilityToAllPacketX {
+public class SCSyncGlobalCapabilityToAllPacketRM {
 
     public int id;
     public int berserkLvl, berserkTicks, prestige, strBonus, magBonus, defBonus, NGPlusWarriorCount, NGPlusMysticCount, NGPlusGuardianCount, stepTicks, riskchargeCount, autoLife;
     public byte stepType;
 
-    public SCSyncGlobalCapabilityToAllPacketX() {
+    public SCSyncGlobalCapabilityToAllPacketRM() {
 
     }
 
-    public SCSyncGlobalCapabilityToAllPacketX(int id, IGlobalCapabilitiesX capability) {
+    public SCSyncGlobalCapabilityToAllPacketRM(int id, IGlobalCapabilitiesRM capability) {
         this.id = id;
         this.berserkLvl= capability.getBerserkLevel();
         this.berserkTicks = capability.getBerserkTicks();
@@ -59,8 +59,8 @@ public class SCSyncGlobalCapabilityToAllPacketX {
         buffer.writeInt(this.autoLife);
     }
 
-    public static SCSyncGlobalCapabilityToAllPacketX decode(FriendlyByteBuf buffer){
-        SCSyncGlobalCapabilityToAllPacketX msg = new SCSyncGlobalCapabilityToAllPacketX();
+    public static SCSyncGlobalCapabilityToAllPacketRM decode(FriendlyByteBuf buffer){
+        SCSyncGlobalCapabilityToAllPacketRM msg = new SCSyncGlobalCapabilityToAllPacketRM();
         msg.id = buffer.readInt();
         msg.berserkLvl = buffer.readInt();
         msg.berserkTicks = buffer.readInt();
@@ -79,12 +79,12 @@ public class SCSyncGlobalCapabilityToAllPacketX {
         return msg;
     }
 
-    public static void handle(final SCSyncGlobalCapabilityToAllPacketX message, Supplier<NetworkEvent.Context> ctx) {
+    public static void handle(final SCSyncGlobalCapabilityToAllPacketRM message, Supplier<NetworkEvent.Context> ctx) {
     	ctx.get().enqueueWork(() -> {
 			LivingEntity entity = (LivingEntity) Minecraft.getInstance().level.getEntity(message.id);
 			
 			if (entity != null) {
-				LazyOptional<IGlobalCapabilitiesX> globalData = entity.getCapability(ModCapabilitiesX.GLOBAL_CAPABILITIES);
+				LazyOptional<IGlobalCapabilitiesRM> globalData = entity.getCapability(ModCapabilitiesRM.GLOBAL_CAPABILITIES);
 				globalData.ifPresent(cap -> {
 					cap.setBerserkTicks(message.berserkTicks, message.berserkLvl);
 					cap.setPrestigeLvl(message.prestige);

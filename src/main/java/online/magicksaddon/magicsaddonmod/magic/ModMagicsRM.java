@@ -7,7 +7,7 @@ import online.kingdomkeys.kingdomkeys.KingdomKeys;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 
-public class ModMagicks {
+public class ModMagicsRM {
 
     static int order = 11;
 

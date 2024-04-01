@@ -13,20 +13,20 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import online.magicksaddon.magicsaddonmod.client.render.AutoLifeLayerRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.BerserkLayerRenderer;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
-import online.magicksaddon.magicsaddonmod.handler.ClientEventsX;
-import online.magicksaddon.magicsaddonmod.handler.MAInputHandler;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
+import online.magicksaddon.magicsaddonmod.handler.ClientEventsRM;
+import online.magicksaddon.magicsaddonmod.handler.InputHandlerRM;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus=Mod.EventBusSubscriber.Bus.MOD)
-public class ClientSetupMA {
+public class ClientSetupRM {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        ModEntitiesMA.registerRenderers(event);
+        ModEntitiesRM.registerRenderers(event);
     }
 
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        ModEntitiesMA.registerLayers(event);
+        ModEntitiesRM.registerLayers(event);
     }
 
     /*@SubscribeEvent
@@ -54,7 +54,7 @@ public class ClientSetupMA {
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public static void setupClient(FMLClientSetupEvent event) {
-		MinecraftForge.EVENT_BUS.register(new ClientEventsX());
+		MinecraftForge.EVENT_BUS.register(new ClientEventsRM());
     }
 
 

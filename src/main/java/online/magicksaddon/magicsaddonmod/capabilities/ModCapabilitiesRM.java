@@ -18,14 +18,14 @@ import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
 
 @Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ModCapabilitiesX {
+public class ModCapabilitiesRM {
 
-    public static final Capability<IGlobalCapabilitiesX> GLOBAL_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<IGlobalCapabilitiesRM> GLOBAL_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
    // public static final Capability<IPlayerCapabilitiesX> PLAYER_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
-    public static final Capability<IWorldCapabilitiesX> WORLD_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<IWorldCapabilitiesRM> WORLD_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
 
-    public static IGlobalCapabilitiesX getGlobal(LivingEntity e) {
-        LazyOptional<IGlobalCapabilitiesX> globalData = e.getCapability(ModCapabilitiesX.GLOBAL_CAPABILITIES, null);
+    public static IGlobalCapabilitiesRM getGlobal(LivingEntity e) {
+        LazyOptional<IGlobalCapabilitiesRM> globalData = e.getCapability(ModCapabilitiesRM.GLOBAL_CAPABILITIES, null);
         return globalData.orElse(null);
     }
 
@@ -40,14 +40,14 @@ public class ModCapabilitiesX {
     }*/
 
     public static IWorldCapabilities getWorld(Level w) {
-        @NotNull LazyOptional<IWorldCapabilitiesX> worldData = w.getCapability(ModCapabilitiesX.WORLD_CAPABILITIES, null);
+        @NotNull LazyOptional<IWorldCapabilitiesRM> worldData = w.getCapability(ModCapabilitiesRM.WORLD_CAPABILITIES, null);
         return (IWorldCapabilities) worldData.orElse(null);
     }
 
 
     @SubscribeEvent
     public void attachCapabilities(AttachCapabilitiesEvent<Entity> event) {
-        event.addCapability(new ResourceLocation(MagicksAddonMod.MODID, "global_capabilities"), new GlobalCapabilitiesXProvider());
+        event.addCapability(new ResourceLocation(MagicksAddonMod.MODID, "global_capabilities"), new GlobalCapabilitiesRMProvider());
     }
 }
 

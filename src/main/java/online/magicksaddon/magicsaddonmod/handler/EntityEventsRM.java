@@ -19,13 +19,13 @@ import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
-import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
+import online.magicksaddon.magicsaddonmod.lib.StringsRM;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
-public class MagicksEntityEvents {
+public class EntityEventsRM {
 	@SubscribeEvent
 	public void onJoin(PlayerLoggedInEvent e){
 		Player player = e.getEntity();
@@ -47,8 +47,8 @@ public class MagicksEntityEvents {
 		Player nPlayer = event.getEntity();
 				
 		oPlayer.reviveCaps();
-		IGlobalCapabilitiesX oldPlayerData = ModCapabilitiesX.getGlobal(oPlayer);
-		IGlobalCapabilitiesX newPlayerData = ModCapabilitiesX.getGlobal(nPlayer);
+		IGlobalCapabilitiesRM oldPlayerData = ModCapabilitiesRM.getGlobal(oPlayer);
+		IGlobalCapabilitiesRM newPlayerData = ModCapabilitiesRM.getGlobal(nPlayer);
 		
 		newPlayerData.setPrestigeLvl(oldPlayerData.getPrestigeLvl());
 		newPlayerData.setNGPWarriorCount(oldPlayerData.getNGPWarriorCount());
@@ -84,15 +84,15 @@ public class MagicksEntityEvents {
 
 	@SubscribeEvent
 	public void onLivingUpdate(LivingEvent.LivingTickEvent event) {
-		IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(event.getEntity());
+		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(event.getEntity());
 
 		if(event.getEntity() instanceof Player player) {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			if(playerData != null && globalData != null) {
 
-				updateDriveAbilities(player, StringsX.darkPower, MagicksAddonMod.MODID+":"+ StringsX.darkMode);
-				updateDriveAbilities(player, StringsX.rageAwakened, MagicksAddonMod.MODID+":"+ StringsX.rageForm);
-				updateDriveAbilities(player, StringsX.wayToLight, MagicksAddonMod.MODID+":"+ StringsX.light);
+				updateDriveAbilities(player, StringsRM.darkPower, MagicksAddonMod.MODID+":"+ StringsRM.darkMode);
+				updateDriveAbilities(player, StringsRM.rageAwakened, MagicksAddonMod.MODID+":"+ StringsRM.rageForm);
+				updateDriveAbilities(player, StringsRM.wayToLight, MagicksAddonMod.MODID+":"+ StringsRM.light);
 
 
 
@@ -102,17 +102,17 @@ public class MagicksEntityEvents {
 
 				int boostWithin = (playerData.getStrengthStat().getStat() + playerData.getMagicStat().getStat()) / 3;
 
-				int darknessWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsX.darknessBoost) * 0.05F);
-				int lightWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsX.lightBoost) * 0.05F);
+				int darknessWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.darknessBoost) * 0.05F);
+				int lightWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.lightBoost) * 0.05F);
 
-				if (playerData.isAbilityEquipped(StringsX.lightWithin)) {
+				if (playerData.isAbilityEquipped(StringsRM.lightWithin)) {
 					playerData.getStrengthStat().addModifier("light_within", lightWithinBoost, false);
 					playerData.getMagicStat().addModifier("light_within", lightWithinBoost, false);
 				} else {
 					playerData.getStrengthStat().removeModifier("light_within");
 					playerData.getMagicStat().removeModifier("light_within");
 				}
-				if (playerData.isAbilityEquipped(StringsX.darknessWithin)){
+				if (playerData.isAbilityEquipped(StringsRM.darknessWithin)){
 					playerData.getStrengthStat().addModifier("darkness_within", darknessWithinBoost, false);
 					playerData.getMagicStat().addModifier("darkness_within", darknessWithinBoost, false);
 				} else {
@@ -133,15 +133,15 @@ public class MagicksEntityEvents {
 			if(globalData.getStepTicks() > 0) {
 				globalData.remStepTicks(1);
 				if (globalData.getStepTicks() <= 0) { // Step has finished, notify all the clients about it
-					PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
+					PacketHandlerRM.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesRM) globalData);
 					if(event.getEntity() instanceof Player player) {
 						IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-						if (playerData.isAbilityEquipped(StringsX.darkStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_dark")) {
-							player.level().playSound(null, player.blockPosition(), MagicSounds.DARKSTEP2.get(), SoundSource.PLAYERS, 1F, 1F);
+						if (playerData.isAbilityEquipped(StringsRM.darkStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_dark")) {
+							player.level().playSound(null, player.blockPosition(), ModSoundsRM.DARKSTEP2.get(), SoundSource.PLAYERS, 1F, 1F);
 						}
-						if (playerData.isAbilityEquipped(StringsX.lightStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {
+						if (playerData.isAbilityEquipped(StringsRM.lightStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {
 							//System.out.println(player.level.isClientSide);
-							player.level().playSound(null, player.blockPosition(), MagicSounds.LIGHTSTEP2.get(), SoundSource.PLAYERS, 1F, 1F);
+							player.level().playSound(null, player.blockPosition(), ModSoundsRM.LIGHTSTEP2.get(), SoundSource.PLAYERS, 1F, 1F);
 						}
 					}
 				}
@@ -182,7 +182,7 @@ public class MagicksEntityEvents {
 						if(!event.getEntity().level().isClientSide) {
 							//I think you might not need this one I commented
 							PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player); //Sync KK stat packet
-							PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
+							PacketHandlerRM.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesRM) globalData);
 						}
 					}
 				}
@@ -193,17 +193,17 @@ public class MagicksEntityEvents {
 				IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 				if(playerData != null) {
 					if (player.isSprinting()) {
-						if (player.tickCount % 40 == 0 && playerData.isAbilityEquipped(StringsX.hpWalker)) {
-							int hpWalkerMult = playerData.getNumberOfAbilitiesEquipped(StringsX.hpWalker);
+						if (player.tickCount % 40 == 0 && playerData.isAbilityEquipped(StringsRM.hpWalker)) {
+							int hpWalkerMult = playerData.getNumberOfAbilitiesEquipped(StringsRM.hpWalker);
 							player.heal(1 * hpWalkerMult);
 						}
-						if (player.tickCount % 50 == 0 && playerData.isAbilityEquipped(StringsX.mpWalker)) {
+						if (player.tickCount % 50 == 0 && playerData.isAbilityEquipped(StringsRM.mpWalker)) {
 							if (!playerData.getRecharge()) {
-								int mpWalkerMult = playerData.getNumberOfAbilitiesEquipped(StringsX.mpWalker);
+								int mpWalkerMult = playerData.getNumberOfAbilitiesEquipped(StringsRM.mpWalker);
 								playerData.addMP(0.5 * mpWalkerMult);
 							}
 						}
-						if (!player.level().isClientSide && player.tickCount % 20 == 0 && playerData.isAbilityEquipped(StringsX.expWalker)) {
+						if (!player.level().isClientSide && player.tickCount % 20 == 0 && playerData.isAbilityEquipped(StringsRM.expWalker)) {
 							playerData.addExperience(player, 1, false, true);
 						}
 					}
@@ -216,19 +216,19 @@ public class MagicksEntityEvents {
 	
 	@SubscribeEvent
 	public void onDeath(LivingDeathEvent event){
-		IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(event.getEntity());
+		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(event.getEntity());
 		if (event.getEntity() instanceof Player){
 			Player player = (Player) event.getEntity();
 			if (1 == globalData.getAutoLifeActive()){
 				if (player.getHealth() <= 0){
 					globalData.remAutoLifeActive(1);
-					PacketHandlerX.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesX) globalData);
+					PacketHandlerRM.syncGlobalToAllAround((Player) event.getEntity(), (IGlobalCapabilitiesRM) globalData);
 					event.setCanceled(true);
 					player.setHealth(10.0F);
 					player.invulnerableTime = 10;
 					player.removeAllEffects();
 					player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 10));
-					player.level().playSound(null, player.blockPosition(), MagicSounds.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
+					player.level().playSound(null, player.blockPosition(), ModSoundsRM.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
 					System.out.println(globalData.getAutoLifeActive());
 				}
 			}
@@ -237,12 +237,12 @@ public class MagicksEntityEvents {
 
 	@SubscribeEvent
 	public void hurtEvent(LivingHurtEvent event){
-		IGlobalCapabilitiesX globalData = ModCapabilitiesX.getGlobal(event.getEntity());
+		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(event.getEntity());
 		if(event.getEntity() instanceof Player) {
 			Player player = (Player) event.getEntity();
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			// Adrenaline
-			if (playerData.isAbilityEquipped(StringsX.adrenaline)) {
+			if (playerData.isAbilityEquipped(StringsRM.adrenaline)) {
 				if (player.getHealth() - event.getAmount() <= player.getMaxHealth() / 4){
 					//System.out.println(player.getHealth() + " / " + player.getMaxHealth());
 					playerData.getStrengthStat().addModifier("adrenaline", 5, false);
@@ -251,7 +251,7 @@ public class MagicksEntityEvents {
 				}
 			}
 			// Critical Surge
-			if (playerData.isAbilityEquipped(StringsX.critical_surge)){
+			if (playerData.isAbilityEquipped(StringsRM.critical_surge)){
 				if (player.getHealth() - event.getAmount() <= player.getMaxHealth() / 4){
 					//System.out.println(player.getHealth() + " / " + player.getMaxHealth());
 					playerData.getMagicStat().addModifier("critical_surge", 5, false);

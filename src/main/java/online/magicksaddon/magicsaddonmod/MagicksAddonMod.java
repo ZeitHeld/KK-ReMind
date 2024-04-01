@@ -6,10 +6,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.Event;
-import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesX;
-import online.magicksaddon.magicsaddonmod.network.PacketHandlerX;
-import online.magicksaddon.magicsaddonmod.reactioncommands.AddonReactionCommands;
-import online.magicksaddon.magicsaddonmod.shotlock.AddonShotlocks;
+import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
+import online.magicksaddon.magicsaddonmod.reactioncommands.ModReactionCommandsRM;
+import online.magicksaddon.magicsaddonmod.shotlock.ModShotlocksRM;
 import org.slf4j.Logger;
 import net.minecraftforge.registries.RegistryObject;
 import com.mojang.logging.LogUtils;
@@ -34,14 +34,14 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import online.magicksaddon.magicsaddonmod.ability.AddonAbilities;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
-import online.magicksaddon.magicsaddonmod.driveform.AddonForms;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
-import online.magicksaddon.magicsaddonmod.handler.MAInputHandler;
-import online.magicksaddon.magicsaddonmod.handler.MagicksEntityEvents;
-import online.magicksaddon.magicsaddonmod.item.ModItemsMA;
-import online.magicksaddon.magicsaddonmod.magic.ModMagicks;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
+import online.magicksaddon.magicsaddonmod.driveform.ModDriveFormsRM;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
+import online.magicksaddon.magicsaddonmod.handler.InputHandlerRM;
+import online.magicksaddon.magicsaddonmod.handler.EntityEventsRM;
+import online.magicksaddon.magicsaddonmod.item.ModItemsRM;
+import online.magicksaddon.magicsaddonmod.magic.ModMagicsRM;
+import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 
 import static net.minecraft.world.item.CreativeModeTab.builder;
 
@@ -76,16 +76,16 @@ public class MagicksAddonMod {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.register(new MagicksEntityEvents());
-        ModMagicks.MAGIC.register(modEventBus);
-        MinecraftForge.EVENT_BUS.register(new ModCapabilitiesX());
-        MagicSounds.SOUNDS.register(modEventBus);
-        ModItemsMA.ITEMS.register(modEventBus);
-        ModEntitiesMA.ENTITIES.register(modEventBus);
+        MinecraftForge.EVENT_BUS.register(new EntityEventsRM());
+        ModMagicsRM.MAGIC.register(modEventBus);
+        MinecraftForge.EVENT_BUS.register(new ModCapabilitiesRM());
+        ModSoundsRM.SOUNDS.register(modEventBus);
+        ModItemsRM.ITEMS.register(modEventBus);
+        ModEntitiesRM.ENTITIES.register(modEventBus);
         AddonAbilities.ABILITIES.register(modEventBus);
-        AddonForms.DRIVE_FORMS.register(modEventBus);
-        AddonShotlocks.SHOTLOCKS.register(modEventBus);
-        AddonReactionCommands.REACTION_COMMANDS.register(modEventBus);
+        ModDriveFormsRM.DRIVE_FORMS.register(modEventBus);
+        ModShotlocksRM.SHOTLOCKS.register(modEventBus);
+        ModReactionCommandsRM.REACTION_COMMANDS.register(modEventBus);
         modEventBus.addListener(this::setup);
         TABS.register(modEventBus);
 
@@ -93,7 +93,7 @@ public class MagicksAddonMod {
 
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-    private static final Supplier<List<ItemStack>> maItems = Suppliers.memoize(() -> ModItemsMA.ITEMS.getEntries().stream().map(RegistryObject::get).map(ItemStack::new).toList());
+    private static final Supplier<List<ItemStack>> maItems = Suppliers.memoize(() -> ModItemsRM.ITEMS.getEntries().stream().map(RegistryObject::get).map(ItemStack::new).toList());
 //		private static final Supplier<List<ItemStack>> misc = Suppliers.memoize(() -> kkItems.get().stream().filter(item -> !(item.getItem() instanceof KeybladeItem) && !(item.getItem() instanceof IOrgWeapon) && !(item.getItem() instanceof KeychainItem)).toList());
 
 
@@ -101,7 +101,7 @@ public class MagicksAddonMod {
 
             misc_tab = TABS.register("magicksaddontab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.magicksaddontab"))
-            .icon(() -> new ItemStack(ModItemsMA.hasteSpell.get()))
+            .icon(() -> new ItemStack(ModItemsRM.hasteSpell.get()))
             .displayItems(((params, output) -> {
                 maItems.get().forEach(output::accept);
             }))
@@ -109,7 +109,7 @@ public class MagicksAddonMod {
 
     private void setup(final FMLCommonSetupEvent event){
         // Some common setup code
-		event.enqueueWork(PacketHandlerX::register);
+		event.enqueueWork(PacketHandlerRM::register);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -128,7 +128,7 @@ public class MagicksAddonMod {
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             // Some client setup code
-    		MinecraftForge.EVENT_BUS.register(new MAInputHandler());
+    		MinecraftForge.EVENT_BUS.register(new InputHandlerRM());
 
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());

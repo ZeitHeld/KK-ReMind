@@ -20,7 +20,7 @@ import net.minecraftforge.network.PlayMessages;
 import online.kingdomkeys.kingdomkeys.client.sound.ModSounds;
 import online.kingdomkeys.kingdomkeys.entity.shotlock.VolleyShotEntity;
 import online.kingdomkeys.kingdomkeys.util.Utils;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,16 +40,16 @@ public class BubbleBlasterCoreEntity extends ThrowableProjectile {
     }
 
     public BubbleBlasterCoreEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-        super((EntityType<? extends ThrowableProjectile>) ModEntitiesMA.TYPE_SHOTLOCK_BUBBLE_BLASTER.get(), world);
+        super((EntityType<? extends ThrowableProjectile>) ModEntitiesRM.TYPE_SHOTLOCK_BUBBLE_BLASTER.get(), world);
     }
 
     public BubbleBlasterCoreEntity(Level world) {
-        super(ModEntitiesMA.TYPE_SHOTLOCK_BUBBLE_BLASTER.get(), world);
+        super(ModEntitiesRM.TYPE_SHOTLOCK_BUBBLE_BLASTER.get(), world);
         this.blocksBuilding = true;
     }
 
     public BubbleBlasterCoreEntity(Level world, Player player, List<Entity> targets, float dmg) {
-        super(ModEntitiesMA.TYPE_SHOTLOCK_BUBBLE_BLASTER.get(), player, world);
+        super(ModEntitiesRM.TYPE_SHOTLOCK_BUBBLE_BLASTER.get(), player, world);
         setCaster(player.getUUID());
         String targetIDS = "";
         for(Entity t : targets) {

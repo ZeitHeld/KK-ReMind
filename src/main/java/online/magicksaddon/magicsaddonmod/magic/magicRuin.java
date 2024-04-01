@@ -7,9 +7,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
-import online.magicksaddon.magicsaddonmod.client.sound.MagicSounds;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
 import online.magicksaddon.magicsaddonmod.entity.magic.RuinEntity;
-import online.magicksaddon.magicsaddonmod.lib.StringsX;
+import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 
 public class magicRuin extends Magic {
 
@@ -20,7 +20,7 @@ public class magicRuin extends Magic {
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget){
         // dmg
-        float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsX.darknessBoost) * 0.2F;
+        float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.darknessBoost) * 0.2F;
         dmgMult *= fullMPBlastMult;
 
         switch (level) {
@@ -28,19 +28,19 @@ public class magicRuin extends Magic {
 			ThrowableProjectile ruin = new RuinEntity(player.level(), player, dmgMult, 2);
             player.level().addFreshEntity(ruin);
             ruin.shootFromRotation(player, player.getXRot(), player.getYRot(),0,2F,0);
-            player.level().playSound(null, player.blockPosition(), MagicSounds.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.blockPosition(), ModSoundsRM.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
 			break;
 		case 1:
             ThrowableProjectile ruinra = new RuinEntity(player.level(), player, dmgMult * 1.5F, 3);
             player.level().addFreshEntity(ruinra);
             ruinra.shootFromRotation(player, player.getXRot(), player.getYRot(),0,2F,0);
-            player.level().playSound(null, player.blockPosition(), MagicSounds.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.blockPosition(), ModSoundsRM.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
 			break;
 		case 2:
             ThrowableProjectile ruinaga = new RuinEntity(player.level(), player, dmgMult * 2.5F, 4);
             player.level().addFreshEntity(ruinaga);
             ruinaga.shootFromRotation(player, player.getXRot(), player.getYRot(),0,2F,0);
-            player.level().playSound(null, player.blockPosition(), MagicSounds.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
+            player.level().playSound(null, player.blockPosition(), ModSoundsRM.RUIN.get(), SoundSource.PLAYERS, 1F, 1F);
 			break;
         }    
     }

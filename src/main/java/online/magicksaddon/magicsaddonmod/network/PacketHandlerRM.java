@@ -11,13 +11,13 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
-import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesX;
+import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.network.cts.CSPrestigePacket;
 import online.magicksaddon.magicsaddonmod.network.cts.CSSetStepTicksPacket;
-import online.magicksaddon.magicsaddonmod.network.cts.CSSyncAllClientDataXPacket;
-import online.magicksaddon.magicsaddonmod.network.stc.SCSyncGlobalCapabilityToAllPacketX;
+import online.magicksaddon.magicsaddonmod.network.cts.CSSyncAllClientDataPacketRM;
+import online.magicksaddon.magicsaddonmod.network.stc.SCSyncGlobalCapabilityToAllPacketRM;
 
-public class PacketHandlerX {
+public class PacketHandlerRM {
     private static final String PROTOCOL_VERSION = Integer.toString(1);
 
 	private static final SimpleChannel HANDLER = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(MagicksAddonMod.MODID, "main_channel")).clientAcceptedVersions(PROTOCOL_VERSION::equals).serverAcceptedVersions(PROTOCOL_VERSION::equals).networkProtocolVersion(() -> PROTOCOL_VERSION).simpleChannel();
@@ -26,11 +26,11 @@ public class PacketHandlerX {
         int packetID = 0;
 System.out.println("REGISTERING PACKETS");
         //ServerToClient
-		HANDLER.registerMessage(packetID++, SCSyncGlobalCapabilityToAllPacketX.class, SCSyncGlobalCapabilityToAllPacketX::encode, SCSyncGlobalCapabilityToAllPacketX::decode, SCSyncGlobalCapabilityToAllPacketX::handle);
+		HANDLER.registerMessage(packetID++, SCSyncGlobalCapabilityToAllPacketRM.class, SCSyncGlobalCapabilityToAllPacketRM::encode, SCSyncGlobalCapabilityToAllPacketRM::decode, SCSyncGlobalCapabilityToAllPacketRM::handle);
 
         // ClientToServer
         HANDLER.registerMessage(packetID++, CSPrestigePacket.class, CSPrestigePacket::encode, CSPrestigePacket::decode, CSPrestigePacket::handle);
-        HANDLER.registerMessage(packetID++, CSSyncAllClientDataXPacket.class, CSSyncAllClientDataXPacket::encode, CSSyncAllClientDataXPacket::decode, CSSyncAllClientDataXPacket::handle);
+        HANDLER.registerMessage(packetID++, CSSyncAllClientDataPacketRM.class, CSSyncAllClientDataPacketRM::encode, CSSyncAllClientDataPacketRM::decode, CSSyncAllClientDataPacketRM::handle);
         HANDLER.registerMessage(packetID++,CSSetStepTicksPacket.class,CSSetStepTicksPacket::encode,CSSetStepTicksPacket::decode,CSSetStepTicksPacket::handle);
     }
 
@@ -49,11 +49,11 @@ System.out.println("REGISTERING PACKETS");
             HANDLER.send(PacketDistributor.ALL.noArg(), msg);
         }
 
-        public static void syncGlobalToAllAround(LivingEntity entity, IGlobalCapabilitiesX globalData) {
+        public static void syncGlobalToAllAround(LivingEntity entity, IGlobalCapabilitiesRM globalData) {
         	//System.out.println("Trying to sync");
             if (!entity.level().isClientSide) {
                 for (Player playerFromList : entity.level().players()) {
-                    sendTo(new SCSyncGlobalCapabilityToAllPacketX(entity.getId(), (IGlobalCapabilitiesX) globalData), (ServerPlayer) playerFromList);
+                    sendTo(new SCSyncGlobalCapabilityToAllPacketRM(entity.getId(), (IGlobalCapabilitiesRM) globalData), (ServerPlayer) playerFromList);
                 }
             }
         }

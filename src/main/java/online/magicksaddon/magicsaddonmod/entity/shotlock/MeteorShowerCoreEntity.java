@@ -19,7 +19,7 @@ import net.minecraftforge.network.PlayMessages;
 import online.kingdomkeys.kingdomkeys.client.sound.ModSounds;
 import online.kingdomkeys.kingdomkeys.entity.shotlock.VolleyShotEntity;
 import online.kingdomkeys.kingdomkeys.util.Utils;
-import online.magicksaddon.magicsaddonmod.entity.ModEntitiesMA;
+import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,16 +39,16 @@ public class MeteorShowerCoreEntity extends ThrowableProjectile {
     }
 
     public MeteorShowerCoreEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-        super((EntityType<? extends ThrowableProjectile>) ModEntitiesMA.TYPE_SHOTLOCK_METEOR_SHOWER.get(), world);
+        super((EntityType<? extends ThrowableProjectile>) ModEntitiesRM.TYPE_SHOTLOCK_METEOR_SHOWER.get(), world);
     }
 
     public MeteorShowerCoreEntity(Level world) {
-        super(ModEntitiesMA.TYPE_SHOTLOCK_METEOR_SHOWER.get(), world);
+        super(ModEntitiesRM.TYPE_SHOTLOCK_METEOR_SHOWER.get(), world);
         this.blocksBuilding = true;
     }
 
     public MeteorShowerCoreEntity(Level world, Player player, List<Entity> targets, float dmg) {
-        super(ModEntitiesMA.TYPE_SHOTLOCK_METEOR_SHOWER.get(), player, world);
+        super(ModEntitiesRM.TYPE_SHOTLOCK_METEOR_SHOWER.get(), player, world);
         setCaster(player.getUUID());
         String targetIDS = "";
         for(Entity t : targets) {
