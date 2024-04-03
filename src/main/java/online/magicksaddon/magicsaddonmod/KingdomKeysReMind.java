@@ -45,9 +45,6 @@ import online.magicksaddon.magicsaddonmod.shotlock.ModShotlocksRM;
 public class KingdomKeysReMind {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "magicksaddon";
-    public static final String MODNAME = "Magicks Addon Mod";
-    public static final String MODVER = "0.8";
-    public static final String MCVER = "1.20.1";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace
