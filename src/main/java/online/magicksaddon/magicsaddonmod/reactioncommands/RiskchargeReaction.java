@@ -12,13 +12,13 @@ import online.kingdomkeys.kingdomkeys.entity.HeartEntity;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.kingdomkeys.kingdomkeys.reactioncommands.ReactionCommand;
-import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
-@Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
+@Mod.EventBusSubscriber(modid = KingdomKeysReMind.MODID)
 public class RiskchargeReaction extends ReactionCommand {
 
 

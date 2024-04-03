@@ -13,14 +13,14 @@ import online.kingdomkeys.kingdomkeys.config.ModConfigs;
 import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
-import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 import online.magicksaddon.magicsaddonmod.mixin.DriveFormMixin;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
-@Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID)
+@Mod.EventBusSubscriber(modid = KingdomKeysReMind.MODID)
 public class DriveFormLight extends DriveForm {
 	ResourceLocation skinRL2;
 
@@ -39,7 +39,7 @@ public class DriveFormLight extends DriveForm {
                 IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
                 IGlobalCapabilitiesRM formData = ModCapabilitiesRM.getGlobal(player);
 
-                if (playerData != null && playerData.getActiveDriveForm().equals(MagicksAddonMod.MODID+":"+ StringsRM.light)) {
+                if (playerData != null && playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID+":"+ StringsRM.light)) {
                     double mult = Double.parseDouble(ModConfigs.driveFormXPMultiplier.get(0).split(",")[1]);
                     playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
                    // formData.setDarkModeEXP(playerData.getDriveFormExp(playerData.getActiveDriveForm()));

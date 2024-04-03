@@ -20,14 +20,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import online.kingdomkeys.kingdomkeys.util.IDisabledAnimations;
-import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.client.model.AutoLifeModel;
 
 @OnlyIn(Dist.CLIENT)
 public class AutoLifeLayerRenderer<T extends LivingEntity> extends RenderLayer<T, PlayerModel<T>> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation(MagicksAddonMod.MODID, "textures/entity/models/auto-life.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(KingdomKeysReMind.MODID, "textures/entity/models/auto-life.png");
     public static final String BOX = "box";
     private final ModelPart box;
 

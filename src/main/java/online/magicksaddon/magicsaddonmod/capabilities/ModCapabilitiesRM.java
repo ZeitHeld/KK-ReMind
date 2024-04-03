@@ -15,9 +15,9 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
-import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 
-@Mod.EventBusSubscriber(modid = MagicksAddonMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = KingdomKeysReMind.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModCapabilitiesRM {
 
     public static final Capability<IGlobalCapabilitiesRM> GLOBAL_CAPABILITIES = CapabilityManager.get(new CapabilityToken<>() {});
@@ -47,7 +47,7 @@ public class ModCapabilitiesRM {
 
     @SubscribeEvent
     public void attachCapabilities(AttachCapabilitiesEvent<Entity> event) {
-        event.addCapability(new ResourceLocation(MagicksAddonMod.MODID, "global_capabilities"), new GlobalCapabilitiesRMProvider());
+        event.addCapability(new ResourceLocation(KingdomKeysReMind.MODID, "global_capabilities"), new GlobalCapabilitiesRMProvider());
     }
 }
 

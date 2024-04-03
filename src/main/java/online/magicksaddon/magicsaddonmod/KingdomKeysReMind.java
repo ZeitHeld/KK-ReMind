@@ -41,8 +41,8 @@ import online.magicksaddon.magicsaddonmod.reactioncommands.ModReactionCommandsRM
 import online.magicksaddon.magicsaddonmod.shotlock.ModShotlocksRM;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(MagicksAddonMod.MODID)
-public class MagicksAddonMod {
+@Mod(KingdomKeysReMind.MODID)
+public class KingdomKeysReMind {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "magicksaddon";
     public static final String MODNAME = "Magicks Addon Mod";
@@ -56,7 +56,7 @@ public class MagicksAddonMod {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
 
     
-    public MagicksAddonMod(){
+    public KingdomKeysReMind(){
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the commonSetup method for modloading

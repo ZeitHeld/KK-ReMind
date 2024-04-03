@@ -14,10 +14,10 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 
 public class AutoLifeModel<T extends Entity> extends EntityModel<T> {
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(MagicksAddonMod.MODID, "autolife"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(KingdomKeysReMind.MODID, "autolife"), "main");
 	private final ModelPart Base;
 
 	public AutoLifeModel(ModelPart root) {

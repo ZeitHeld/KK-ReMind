@@ -15,6 +15,7 @@ import online.kingdomkeys.kingdomkeys.lib.SoAState;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.cts.CSSyncAllClientDataPacket;
 import online.kingdomkeys.kingdomkeys.world.dimension.ModDimensions;
+import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.client.gui.GUIHelperRM;
@@ -46,7 +47,7 @@ public class InputHandlerRM {
 					// System.out.println(globalData.getStepTicks());
 
 					// Light Step
-					if (playerData.isAbilityEquipped(StringsRM.lightStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {
+					if (playerData.isAbilityEquipped(StringsRM.lightStep) || playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID+":form_light")) {
 						float yaw = player.getYRot();
 						float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
 						float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
@@ -54,7 +55,7 @@ public class InputHandlerRM {
 						PacketHandlerRM.sendToServer(new CSSetStepTicksPacket(10, StringsRM.lightStepType));
 
 						// Light Form
-						if (playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {
+						if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID+":form_light")) {
 							player.level().playSound(player, player.blockPosition(), ModSoundsRM.LIGHTSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
 							player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
 							InputHandler.qrCooldown = 20;
@@ -67,14 +68,14 @@ public class InputHandlerRM {
 							}
 						}
 						event.setCanceled(true);
-					} else if (playerData.isAbilityEquipped(StringsRM.darkStep) || playerData.getActiveDriveForm().equals("magicksaddon:form_dark")) {
+					} else if (playerData.isAbilityEquipped(StringsRM.darkStep) || playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID+":form_dark")) {
 						float yaw = player.getYRot();
 						float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
 						float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
 						double power = darkLevel;
 						PacketHandlerRM.sendToServer(new CSSetStepTicksPacket(10, StringsRM.darkStepType));
 						// Dark Mode
-						if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")) {
+						if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID+":form_dark")) {
 							player.level().playSound(player, player.blockPosition(), ModSoundsRM.DARKSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
 							player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
 							InputHandler.qrCooldown = 20;

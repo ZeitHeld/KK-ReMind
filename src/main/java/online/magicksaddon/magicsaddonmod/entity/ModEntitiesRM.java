@@ -15,7 +15,7 @@ import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import online.kingdomkeys.kingdomkeys.client.render.magic.InvisibleEntityRenderer;
-import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.client.model.AutoLifeModel;
 import online.magicksaddon.magicsaddonmod.client.model.BalloonModel;
 import online.magicksaddon.magicsaddonmod.client.model.BalloongaModel;
@@ -52,7 +52,7 @@ import online.magicksaddon.magicsaddonmod.entity.shotlock.MeteorShowerCoreEntity
 import online.magicksaddon.magicsaddonmod.entity.shotlock.ThunderstormCoreEntity;
 
 public class ModEntitiesRM {
-    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ENTITY_TYPES, MagicksAddonMod.MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ENTITY_TYPES, KingdomKeysReMind.MODID);
 
     public static final RegistryObject<EntityType<HolyEntity>> TYPE_HOLY = createEntityType(HolyEntity::new, HolyEntity::new, MobCategory.MISC,"entity_holy", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<RuinEntity>> TYPE_RUIN = createEntityType(RuinEntity::new, RuinEntity::new, MobCategory.MISC,"entity_ruin", 0.5F, 0.5F);

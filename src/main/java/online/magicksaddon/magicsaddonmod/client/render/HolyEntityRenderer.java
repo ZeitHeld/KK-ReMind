@@ -12,11 +12,11 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
-import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.client.model.HolyModel;
 
 public class HolyEntityRenderer extends EntityRenderer<ThrowableProjectile> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation(MagicksAddonMod.MODID,"textures/entity/models/holy.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(KingdomKeysReMind.MODID,"textures/entity/models/holy.png");
     HolyModel holyModel;
 
     public HolyEntityRenderer(EntityRendererProvider.Context context){

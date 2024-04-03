@@ -12,12 +12,12 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
-import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.client.model.BalloonModel;
 import online.magicksaddon.magicsaddonmod.client.model.BalloongaModel;
 
 public class BalloongaEntityRenderer extends EntityRenderer<ThrowableProjectile> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation(MagicksAddonMod.MODID,"textures/entity/models/balloonga.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(KingdomKeysReMind.MODID,"textures/entity/models/balloonga.png");
     BalloongaModel balloongaModel;
 
     public BalloongaEntityRenderer(EntityRendererProvider.Context context){

@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import online.kingdomkeys.kingdomkeys.entity.EntityHelper;
-import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.client.model.mob.chirithyModel;
 import online.magicksaddon.magicsaddonmod.entity.mob.ChirithyEntity;
 
@@ -34,7 +34,7 @@ public class ChirithyRenderer extends MobRenderer<ChirithyEntity, chirithyModel<
         matrixStackIn.popPose();
     }
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(MagicksAddonMod.MODID, "textures/entity/mob/chirithy.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(KingdomKeysReMind.MODID, "textures/entity/mob/chirithy.png");
 
     @Override
     public ResourceLocation getTextureLocation(ChirithyEntity entity){

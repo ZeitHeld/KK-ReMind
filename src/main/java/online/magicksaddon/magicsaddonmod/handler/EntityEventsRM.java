@@ -16,7 +16,7 @@ import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
-import online.magicksaddon.magicsaddonmod.MagicksAddonMod;
+import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
@@ -73,9 +73,9 @@ public class EntityEventsRM {
 		if(event.getEntity() instanceof Player player) {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			if(playerData != null && globalData != null) {
-				updateDriveAbilities(player, StringsRM.darkPower, MagicksAddonMod.MODID+":"+ StringsRM.darkMode);
-				updateDriveAbilities(player, StringsRM.rageAwakened, MagicksAddonMod.MODID+":"+ StringsRM.rageForm);
-				updateDriveAbilities(player, StringsRM.wayToLight, MagicksAddonMod.MODID+":"+ StringsRM.light);
+				updateDriveAbilities(player, StringsRM.darkPower, KingdomKeysReMind.MODID+":"+ StringsRM.darkMode);
+				updateDriveAbilities(player, StringsRM.rageAwakened, KingdomKeysReMind.MODID+":"+ StringsRM.rageForm);
+				updateDriveAbilities(player, StringsRM.wayToLight, KingdomKeysReMind.MODID+":"+ StringsRM.light);
 
 				// Light/Darkness Within
 
