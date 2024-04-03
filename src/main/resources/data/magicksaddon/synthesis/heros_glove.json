@@ -19,7 +19,7 @@
     }
   ],
   "output": {
-    "type": "armor",
+    "type": "item",
     "item": "magicksaddon:heros_glove",
     "quantity": 1
   },

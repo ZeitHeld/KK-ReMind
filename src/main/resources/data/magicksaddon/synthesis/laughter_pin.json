@@ -15,7 +15,7 @@
     }
   ],
   "output": {
-    "type": "accessory",
+    "type": "item",
     "item": "magicksaddon:laughter_pin",
     "quantity": 1
   },

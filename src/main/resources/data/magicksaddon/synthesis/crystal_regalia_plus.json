@@ -19,7 +19,7 @@
     }
   ],
   "output": {
-    "type": "accessory",
+    "type": "item",
     "item": "magicksaddon:crystal_regalia_plus",
     "quantity": 1
   },

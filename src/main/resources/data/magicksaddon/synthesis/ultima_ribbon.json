@@ -35,7 +35,7 @@
     }
   ],
   "output": {
-    "type": "armor",
+    "type": "item",
     "item": "magicksaddon:ultima_ribbon",
     "quantity": 1
   },

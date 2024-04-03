@@ -19,7 +19,7 @@
     }
   ],
   "output": {
-    "type": "armor",
+    "type": "item",
     "item": "magicksaddon:heros_belt",
     "quantity": 1
   },
