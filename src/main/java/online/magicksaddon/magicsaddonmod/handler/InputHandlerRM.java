@@ -1,19 +1,28 @@
 package online.magicksaddon.magicsaddonmod.handler;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.api.client.KKInputEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
+import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.kingdomkeys.kingdomkeys.client.gui.menu.NoChoiceMenuPopup;
 import online.kingdomkeys.kingdomkeys.handler.InputHandler;
+import online.kingdomkeys.kingdomkeys.lib.SoAState;
+import online.kingdomkeys.kingdomkeys.network.PacketHandler;
+import online.kingdomkeys.kingdomkeys.network.cts.CSSyncAllClientDataPacket;
+import online.kingdomkeys.kingdomkeys.world.dimension.ModDimensions;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.client.gui.GUIHelperRM;
 import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
 import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 import online.magicksaddon.magicsaddonmod.network.cts.CSSetStepTicksPacket;
+import online.magicksaddon.magicsaddonmod.network.cts.CSSyncAllClientDataPacketRM;
 
 public class InputHandlerRM {
 
@@ -83,6 +92,20 @@ public class InputHandlerRM {
 					// PacketHandlerRM.sendToServer(new CSSetStepTicksPacket());
 				}
 			}
+		} else if(event.getKeybind() == InputHandler.Keybinds.OPENMENU) {
+            PacketHandler.sendToServer(new CSSyncAllClientDataPacket());
+            PacketHandlerRM.sendToServer(new CSSyncAllClientDataPacketRM());
+            LocalPlayer player = Minecraft.getInstance().player;
+            if (ModCapabilities.getPlayer(player).getSoAState() != SoAState.COMPLETE) {
+                if (player.level().dimension() != ModDimensions.DIVE_TO_THE_HEART) {
+                    Minecraft.getInstance().setScreen(new NoChoiceMenuPopup());
+                }
+            } else {
+                GUIHelperRM.openAddonMenu();
+                //return;
+            }
+
+			event.setCanceled(true);
 		}
 	}
 }
