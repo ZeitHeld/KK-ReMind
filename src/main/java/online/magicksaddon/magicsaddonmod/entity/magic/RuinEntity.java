@@ -66,7 +66,7 @@ public class RuinEntity extends ThrowableProjectile {
         }
 
         //world.addParticle(ParticleTypes.ENTITY_EFFECT, getPosX(), getPosY(), getPosZ(), 1, 1, 0);
-        if(tickCount > 2)
+        if(tickCount > 0)
             level().addParticle(ParticleTypes.SQUID_INK, getX(), getY(), getZ(), 0, 0, 0);
 
         super.tick();

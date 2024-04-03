@@ -16,16 +16,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import online.kingdomkeys.kingdomkeys.client.render.magic.InvisibleEntityRenderer;
 import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
-import online.magicksaddon.magicsaddonmod.client.model.AutoLifeModel;
-import online.magicksaddon.magicsaddonmod.client.model.BalloonModel;
-import online.magicksaddon.magicsaddonmod.client.model.BalloongaModel;
-import online.magicksaddon.magicsaddonmod.client.model.BerserkAuraModel;
-import online.magicksaddon.magicsaddonmod.client.model.CometModel;
-import online.magicksaddon.magicsaddonmod.client.model.HolyModel;
-import online.magicksaddon.magicsaddonmod.client.model.OsmoseModel;
-import online.magicksaddon.magicsaddonmod.client.model.RuinModel;
-import online.magicksaddon.magicsaddonmod.client.model.UltimaModel;
-import online.magicksaddon.magicsaddonmod.client.model.DrainModel;
+import online.magicksaddon.magicsaddonmod.client.model.*;
 import online.magicksaddon.magicsaddonmod.client.model.mob.chirithyModel;
 import online.magicksaddon.magicsaddonmod.client.render.BalloonEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.BalloongaEntityRenderer;
@@ -43,6 +34,7 @@ import online.magicksaddon.magicsaddonmod.entity.magic.OsmoseEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.DrainEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.RuinEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.UltimaEntity;
+import online.magicksaddon.magicsaddonmod.entity.magic.SilenceEntity;
 import online.magicksaddon.magicsaddonmod.entity.mob.ChirithyEntity;
 import online.magicksaddon.magicsaddonmod.entity.shotlock.BioBarrageCoreEntity;
 import online.magicksaddon.magicsaddonmod.entity.shotlock.BioBarrageShotEntity;
@@ -62,6 +54,7 @@ public class ModEntitiesRM {
     public static final RegistryObject<EntityType<CometEntity>> TYPE_COMET = createEntityType(CometEntity::new, CometEntity::new, MobCategory.MISC, "entity_comet", 2F, 2F);
     public static final RegistryObject<EntityType<OsmoseEntity>> TYPE_OSMOSE = createEntityType(OsmoseEntity::new, OsmoseEntity::new, MobCategory.MISC,"entity_osmose", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<DrainEntity>> TYPE_DRAIN = createEntityType(DrainEntity::new, DrainEntity::new, MobCategory.MISC,"entity_drain", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<SilenceEntity>> TYPE_SILENCE = createEntityType(SilenceEntity::new, SilenceEntity::new, MobCategory.MISC,"entity_silence", 0.5F, 0.5F);
 
     public static final RegistryObject<EntityType<BioBarrageShotEntity>> TYPE_BIO_SHOT = createEntityType(BioBarrageShotEntity::new, BioBarrageShotEntity::new, MobCategory.MISC, "entity_bio_shot", 0.5F, 0.5F);
 
@@ -93,6 +86,7 @@ public class ModEntitiesRM {
         event.registerLayerDefinition(CometModel.LAYER_LOCATION, CometModel::createBodyLayer);
         event.registerLayerDefinition(OsmoseModel.LAYER_LOCATION, OsmoseModel::createBodyLayer);
         event.registerLayerDefinition(DrainModel.LAYER_LOCATION, DrainModel::createBodyLayer);
+        event.registerLayerDefinition(SilenceModel.LAYER_LOCATION, SilenceModel::createBodyLayer);
 
         event.registerLayerDefinition(BerserkAuraModel.LAYER_LOCATION, BerserkAuraModel::createBodyLayer);
 
@@ -111,6 +105,7 @@ public class ModEntitiesRM {
         event.registerEntityRenderer(TYPE_ULTIMA.get(), UltimaEntityRenderer::new);
         event.registerEntityRenderer(TYPE_OSMOSE.get(),InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_DRAIN.get(),InvisibleEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_SILENCE.get(),InvisibleEntityRenderer::new);
 
         event.registerEntityRenderer(TYPE_BIO_SHOT.get(), BioShotEntityRenderer::new);
 

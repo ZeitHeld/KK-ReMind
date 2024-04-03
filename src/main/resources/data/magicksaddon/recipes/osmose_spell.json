@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NTN",
+    "TOT",
+    "NTN"
+  ],
+  "key": {
+    "O": {
+      "item": "magicksaddon:drain_spell"
+    },
+    "T": {
+      "item": "kingdomkeys:ether"
+    },
+    "N": {
+      "item": "kingdomkeys:hi_ether"
+    }
+    },
+      "result": {
+        "item": "magicksaddon:osmose_spell"
+      }
+  }

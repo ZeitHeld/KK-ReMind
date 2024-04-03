@@ -3,6 +3,7 @@ package online.magicksaddon.magicsaddonmod;
 import java.util.List;
 import java.util.function.Supplier;
 
+import online.magicksaddon.magicsaddonmod.effect.ModEffects;
 import org.slf4j.Logger;
 
 import com.google.common.base.Suppliers;
@@ -74,6 +75,7 @@ public class KingdomKeysReMind {
         ModAbilitiesRM.ABILITIES.register(modEventBus);
         ModDriveFormsRM.DRIVE_FORMS.register(modEventBus);
         ModShotlocksRM.SHOTLOCKS.register(modEventBus);
+        ModEffects.MOB_EFFECTS.register(modEventBus);
         ModReactionCommandsRM.REACTION_COMMANDS.register(modEventBus);
         modEventBus.addListener(this::setup);
         TABS.register(modEventBus);

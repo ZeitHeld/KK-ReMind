@@ -36,6 +36,9 @@
   "magic.magicksaddon.magic_drain0.name": "Drain",
   "magic.magicksaddon.magic_drain1.name": "Drainra",
   "magic.magicksaddon.magic_drain2.name": "Drainga",
+  "magic.magicksaddon.magic_silence0.name": "Silence",
+  "magic.magicksaddon.magic_silence1.name": "Silencera",
+  "magic.magicksaddon.magic_silence2.name": "Silencega",
 
 
   "item.magicksaddon.balloon_spell": "Balloon Spell",
@@ -47,7 +50,9 @@
   "item.magicksaddon.ultima_spell": "Ultima Spell",
   "item.magicksaddon.berserk_spell": "Berserk Spell",
   "item.magicksaddon.autolife_spell": "Auto-Life Spell",
-
+  "item.magicksaddon.drain_spell": "Drain Spell",
+  "item.magicksaddon.osmose_spell": "Osmose Spell",
+  "item.magicksaddon.silence_spell": "Silence Spell (WIP)",
 
   "ability.ability_dark_passage.name": "Dark Passage",
   "ability.ability_dark_passage.desc": "Allows you to use Organization Portals without being apart of the Organization.",
