@@ -25,7 +25,8 @@ public class ModMagicsRM {
             COMET = MAGIC.register("magic_comet", () -> new magicComet(new ResourceLocation(MagicksAddonMod.MODID, "magic_comet"), false, 2, null)),
             BERSERK = MAGIC.register("magic_berserk", () -> new magicBerserk(new ResourceLocation(MagicksAddonMod.MODID, "magic_berserk"), true, 3)),
             AUTO_LIFE = MAGIC.register("magic_auto-life",() -> new magicAutoLife(new ResourceLocation(MagicksAddonMod.MODID,"magic_auto-life"), true, 1)),
-            OSMOSE = MAGIC.register("magic_osmose",() -> new magicOsmose(new ResourceLocation(MagicksAddonMod.MODID,"magic_osmose"), true, 3));
+            OSMOSE = MAGIC.register("magic_osmose",() -> new magicOsmose(new ResourceLocation(MagicksAddonMod.MODID,"magic_osmose"), false, 3)),
+            DRAIN = MAGIC.register("magic_drain",() -> new magicDrain(new ResourceLocation(MagicksAddonMod.MODID,"magic_drain"), false, 3));
 
 
 

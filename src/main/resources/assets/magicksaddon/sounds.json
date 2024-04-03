@@ -83,5 +83,15 @@
         "sounds": [
           "magicksaddon:riskcharge"
         ]
+      },
+      "drain": {
+        "sounds": [
+          "magicksaddon:drain"
+        ]
+      },
+      "osmose": {
+        "sounds": [
+          "magicksaddon:osmose"
+        ]
       }
   }

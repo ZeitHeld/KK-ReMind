@@ -1,13 +1,9 @@
 package online.magicksaddon.magicsaddonmod.entity.magic;
 
-import net.minecraft.server.level.ServerPlayer;
-import online.kingdomkeys.kingdomkeys.network.PacketHandler;
-import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
-import org.joml.Vector3f;
-
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -23,9 +19,12 @@ import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
+import online.kingdomkeys.kingdomkeys.network.PacketHandler;
+import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
+import org.joml.Vector3f;
 
-public class OsmoseEntity extends ThrowableProjectile {
+public class DrainEntity extends ThrowableProjectile {
 
     IWorldCapabilities worldData = ModCapabilities.getWorld(level());
 
@@ -33,22 +32,22 @@ public class OsmoseEntity extends ThrowableProjectile {
     float dmgMult = 1;
     LivingEntity lockOnEntity;
 
-    public OsmoseEntity(EntityType<? extends ThrowableProjectile> type, Level world) {
+    public DrainEntity(EntityType<? extends ThrowableProjectile> type, Level world) {
         super(type, world);
         this.blocksBuilding = true;
     }
 
-    public OsmoseEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-        super(ModEntitiesRM.TYPE_OSMOSE.get(), world);
+    public DrainEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
+        super(ModEntitiesRM.TYPE_DRAIN.get(), world);
     }
 
-    public OsmoseEntity(Level world) {
-        super(ModEntitiesRM.TYPE_OSMOSE.get(), world);
+    public DrainEntity(Level world) {
+        super(ModEntitiesRM.TYPE_DRAIN.get(), world);
         this.blocksBuilding = true;
     }
 
-    public OsmoseEntity(Level world, LivingEntity player, float dmgMult, LivingEntity lockOnEntity) {
-        super(ModEntitiesRM.TYPE_OSMOSE.get(), player, world);
+    public DrainEntity(Level world, LivingEntity player, float dmgMult, LivingEntity lockOnEntity) {
+        super(ModEntitiesRM.TYPE_DRAIN.get(), player, world);
         this.dmgMult = dmgMult;
         this.lockOnEntity = lockOnEntity;
     }
@@ -77,9 +76,9 @@ public class OsmoseEntity extends ThrowableProjectile {
         //world.addParticle(ParticleTypes.ENTITY_EFFECT, getPosX(), getPosY(), getPosZ(), 1, 1, 0);
         if(tickCount > 0)
             //level().addParticle(ParticleTypes.SQUID_INK, getX(), getY(), getZ(), 0, 0, 0);
-            level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0F,0F,1F),1F),getX(), getY(), getZ(), 0, 0, 0);
-            level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.2F,0F,1F),1F),getX() + level().random.nextDouble() - 0.5D, getY(), getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
-            level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0F,0F,1.5F),1F),getX() + level().random.nextDouble() - 0.5D, getY(), getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
+            level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(1F,0F,0F),1F),getX(), getY(), getZ(), 0, 0, 0);
+            level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.2F,0F,0F),1F),getX() + level().random.nextDouble() - 0.5D, getY(), getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
+            level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(1.5F,0F,0F),1F),getX() + level().random.nextDouble() - 0.5D, getY(), getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
 
 
         super.tick();
@@ -111,13 +110,15 @@ public class OsmoseEntity extends ThrowableProjectile {
                     }
                     if(p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { //If caster is not in a party || the party doesn't have the target in it || the party has FF on
                         float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
-                        dmg = (float) Math.max(dmg*dmgMult,targetData.getMP());
+                        dmg = (float) Math.max(dmg*dmgMult,targetData.getMaxHP());
                         if(this.getOwner() instanceof Player) {
-                            // MP Drain
-                            targetData.remMP(dmg);
-                            PacketHandler.sendTo(new SCSyncCapabilityPacket(targetData), (ServerPlayer) target);
-                            //MP Give to Caster
-                            casterData.addMP(dmg);
+                            // HP & Hunger Drain
+                            target.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg);
+                            ((Player) target).getFoodData().eat(-5,0);
+
+                            // HP & Hunger Give to Caster
+                            ((Player) getOwner()).heal(dmg);
+                            ((Player) getOwner()).getFoodData().eat(5,5);
                             PacketHandler.sendTo(new SCSyncCapabilityPacket(casterData), (ServerPlayer) getOwner());
                         }
                     }
@@ -125,8 +126,10 @@ public class OsmoseEntity extends ThrowableProjectile {
             } else {
                         float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
                         if(this.getOwner() instanceof Player) {
-                            //MP Give to Caster
-                            casterData.addMP(dmg*dmgMult);
+                            // HP & Hunger Give to Caster
+                            target.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg);
+                            ((Player) getOwner()).heal(dmg);
+                            ((Player) getOwner()).getFoodData().eat(5,5);
                             PacketHandler.sendTo(new SCSyncCapabilityPacket(casterData), (ServerPlayer) getOwner());
                         }
                 }
