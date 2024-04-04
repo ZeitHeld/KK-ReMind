@@ -23,22 +23,22 @@ public class magicSilence extends Magic {
 
         lockOnTarget = getMagicLockOn(level) ? lockOnTarget : null;
         caster.swing(InteractionHand.MAIN_HAND);
-        //player.level().playSound(null, player.blockPosition(), ModSoundsRM.SILENCE.get(), SoundSource.PLAYERS, 1F, 1F);
+        player.level().playSound(null, player.blockPosition(), ModSoundsRM.PLAYER_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
         switch(level) {
             case 0:
                 ThrowableProjectile silence = new SilenceEntity(player.level(), player, silenceTime,lockOnTarget);
                 player.level().addFreshEntity(silence);
-                silence.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2F, 0);
+                silence.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1F, 0);
                 break;
             case 1:
                 ThrowableProjectile silencera = new SilenceEntity(player.level(), player, silenceTime,lockOnTarget);
                 player.level().addFreshEntity(silencera);
-                silencera.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2.5F, 0);
+                silencera.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1.5F, 0);
                 break;
             case 2:
                 ThrowableProjectile silencega = new SilenceEntity(player.level(), player, silenceTime,lockOnTarget);
                 player.level().addFreshEntity(silencega);
-                silencega.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 3F, 0);
+                silencega.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2F, 0);
                 break;
         }
     }

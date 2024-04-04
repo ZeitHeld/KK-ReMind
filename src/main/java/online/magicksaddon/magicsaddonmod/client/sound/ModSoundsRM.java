@@ -29,7 +29,8 @@ public class ModSoundsRM {
             LIGHTSTEP2 = registerSound("lightstep2"),
             RISKCHARGE = registerSound("riskcharge"),
             DRAIN = registerSound("drain"),
-            OSMOSE = registerSound("osmose");
+            OSMOSE = registerSound("osmose"),
+            SILENCEHIT = registerSound("silencehit");
 
 
     public static RegistryObject<SoundEvent> registerSound(String name) {

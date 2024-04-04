@@ -93,5 +93,11 @@
         "sounds": [
           "magicksaddon:osmose"
         ]
+      },
+      "silencehit": {
+        "sounds": [
+          "magicksaddon:silencehit"
+        ]
       }
+
   }
