@@ -119,6 +119,7 @@ public class SilenceEntity extends ThrowableProjectile {
                                 // Silence (Add Magic CD)
                                 //targetData.remMP(dmg);
                                 targetData.setMagicCooldownTicks((int) time);
+                                targetData.setLimitCooldownTicks((int) time);
                                 playSound(ModSoundsRM.SILENCEHIT.get(),1F,1F);
                                 PacketHandler.sendTo(new SCSyncCapabilityPacket(targetData), (ServerPlayer) target);
                                 }

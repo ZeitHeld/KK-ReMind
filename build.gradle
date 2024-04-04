@@ -146,7 +146,7 @@ jar {
         attributes([
                 "Specification-Title"     : "Kingdom Keys - Re:Mind",
                 "Specification-Vendor"    : "Xephiro",
-                "Specification-Version"   : "1.20.1-0.8", // We are version 1 of ourselves
+                "Specification-Version"   : "1.20.1-0.8.1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : "${version}",
                 "Implementation-Vendor"   : "Xephiro",
