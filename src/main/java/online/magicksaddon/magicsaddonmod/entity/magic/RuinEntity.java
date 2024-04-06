@@ -95,7 +95,11 @@ public class RuinEntity extends ThrowableProjectile {
                         p = ModCapabilities.getWorld(getOwner().level()).getPartyFromMember(getOwner().getUUID());
                     }
                     if(p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { //If caster is not in a party || the party doesn't have the target in it || the party has FF on
-                        float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
+                        float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) / 4F : 2;
+                        /*
+                        System.out.println("Spell Damage (Before Mult): "+ dmg);
+                        System.out.println("Spell Damage (After Mult): "+ dmg*dmgMult);
+                         */
                         //target.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg * dmgMult);
                         if(this.getOwner() instanceof Player) {
 	                        List<LivingEntity> targetList = Utils.getLivingEntitiesInRadiusExcludingParty((Player) this.getOwner(), this, radius,radius,radius);
@@ -114,7 +118,11 @@ public class RuinEntity extends ThrowableProjectile {
 
 			if (brtResult != null) {
 				if (this.getOwner() instanceof Player) {
-					float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
+					float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) / 6F : 2;
+                        /*
+                        System.out.println("Spell Damage - Splash (Before Mult): "+ dmg);
+                        System.out.println("Spell Damage - Splash (After Mult): "+ dmg*dmgMult);
+                         */
 					List<LivingEntity> targetList = Utils.getLivingEntitiesInRadiusExcludingParty((Player) this.getOwner(), this, radius, radius, radius);
 					for (LivingEntity e : targetList) {
 						e.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg * dmgMult);

@@ -34,7 +34,7 @@ import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 
 public class UltimaEntity extends ThrowableProjectile {
-	int maxTicks = 200;
+	int maxTicks = 160;
 	Player player;
 	String caster;
 	float dmgMult = 1;
@@ -85,14 +85,14 @@ public class UltimaEntity extends ThrowableProjectile {
 				return;
 			}
 
-			this.hurtMarked = true;
+			this.hurtMarked = false;
 			double X = getX();
 			double Y = getY();
 			double Z = getZ();
 			if (tickCount <= 1) {
-			} else if (tickCount < 25) { // Ultima being dropped to target
+			} else if (tickCount < 15) { // Ultima being dropped to target
 				// Start
-			} else if (tickCount == 25) {
+			} else if (tickCount == 15) {
 				 setPos(new Vec3(getX(), getY(+20), getZ()));
                  this.setDeltaMovement(0,-1,0);
                  this.markHurt();
@@ -100,8 +100,8 @@ public class UltimaEntity extends ThrowableProjectile {
 				if(getStartingTicks() > -1) {// Start
 					float radius = (tickCount - getStartingTicks()) * 0.2f;
 					//float radius = 2;
-					for (int t = 1; t < 360; t += 20) {
-						for (int s = 1; s < 360 ; s += 20) {
+					for (int t = 1; t < 360; t += 40) {
+						for (int s = 1; s < 360 ; s += 40) {
 							double x = X + (radius * Math.cos(Math.toRadians(s)) * Math.sin(Math.toRadians(t)));
 							double z = Z + (radius * Math.sin(Math.toRadians(s)) * Math.sin(Math.toRadians(t)));
 							double y = Y + (radius * Math.cos(Math.toRadians(t)));
@@ -109,7 +109,7 @@ public class UltimaEntity extends ThrowableProjectile {
 						}
 
 					}
-					if (tickCount == 50){
+					if (tickCount == 40){
 						playSound(ModSoundsRM.ULTIMA_CAST.get(),1F,1F);
 					} if (tickCount == 140) {
 						playSound(ModSoundsRM.ULTIMA_EXPLOSION.get(),0.75F,1F);
@@ -133,7 +133,7 @@ public class UltimaEntity extends ThrowableProjectile {
 							Entity e = (Entity) list.get(i);
 							if (e instanceof LivingEntity) {
 								if (Utils.isHostile(e) || e instanceof Slime) {
-									float dmg = this.getOwner() instanceof Player ? ((LivingEntity) e).getMaxHealth() * DamageCalculation.getMagicDamage((Player) this.getOwner()) / 100 : 2;
+									float dmg = this.getOwner() instanceof Player ? (DamageCalculation.getMagicDamage((Player) this.getOwner()) / 5F) : 2;
 									dmg = Math.min(dmg, 99);
 									e.hurt(e.damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);
 								}
@@ -172,7 +172,7 @@ public class UltimaEntity extends ThrowableProjectile {
 						if (p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { // If caster is not in a party || the party doesn't have the target in it || the
 																											// party has FF on
 							float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
-							target.invulnerableTime = 0;
+							target.invulnerableTime = 1;
 							target.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);
 						}
 					}

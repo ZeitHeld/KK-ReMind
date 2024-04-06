@@ -103,7 +103,11 @@ public class BalloonEntity extends ThrowableProjectile {
                         p = ModCapabilities.getWorld(getOwner().level()).getPartyFromMember(getOwner().getUUID());
                     }
                     if(p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { //If caster is not in a party || the party doesn't have the target in it || the party has FF on
-                        float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
+                        float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) / 2F : 2;
+                        /*
+                        System.out.println("Spell Damage (Before Mult): "+ dmg);
+                        System.out.println("Spell Damage (After Mult): "+ dmg*dmgMult);
+                         */
                         target.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);
                         target.invulnerableTime = 0;
                         playSound(ModSoundsRM.BALLOON_BOUNCE.get(),1F,1F);

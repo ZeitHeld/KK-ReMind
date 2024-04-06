@@ -110,8 +110,11 @@ public class OsmoseEntity extends ThrowableProjectile {
                         p = ModCapabilities.getWorld(getOwner().level()).getPartyFromMember(getOwner().getUUID());
                     }
                     if(p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { //If caster is not in a party || the party doesn't have the target in it || the party has FF on
-                        float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
-                        dmg = (float) Math.max(dmg*dmgMult,targetData.getMP());
+                        float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) / 2F : 2;
+                        //dmg = (float) Math.max(dmg*dmgMult,targetData.getMP());
+
+                        System.out.println("MP Stolen: "+ dmg*dmgMult);
+
                         if(this.getOwner() instanceof Player) {
                             // MP Drain
                             targetData.remMP(dmg);
@@ -123,7 +126,8 @@ public class OsmoseEntity extends ThrowableProjectile {
                     }
                 }
             } else {
-                        float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
+                        float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) / 2.5F : 2;
+                        System.out.println("MP Stolen: "+ dmg*dmgMult);
                         if(this.getOwner() instanceof Player) {
                             //MP Give to Caster
                             casterData.addMP(dmg*dmgMult);
@@ -135,7 +139,7 @@ public class OsmoseEntity extends ThrowableProjectile {
 
             if (brtResult != null) {
                 if (this.getOwner() instanceof Player) {
-                    float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
+                    float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) / 2.5F : 2;
                     }
                 }
 
