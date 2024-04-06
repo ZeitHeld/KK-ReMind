@@ -38,7 +38,7 @@ public class AddonMenu extends MenuScreen {
         float buttonPosX = (float) width * 0.03F;
         float buttonWidth = ((float) width * 0.1744F) - 22;
 
-        addRenderableWidget(prestige = new MenuButton((int) buttonPosX, start + 18 * pos, (int) buttonWidth, (StringsRM.Gui_Menu_Button_Prestige), MenuButton.ButtonType.BUTTON, true, (e) -> {
+        addRenderableWidget(prestige = new MenuButton((int) buttonPosX, start + 18 * ++pos, (int) buttonWidth, (StringsRM.Gui_Menu_Button_Prestige), MenuButton.ButtonType.BUTTON, true, (e) -> {
             action(RMButtons.PRESTIGE);
 
         }));
