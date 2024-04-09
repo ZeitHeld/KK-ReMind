@@ -31,7 +31,8 @@ public class ModSoundsRM {
             DRAIN = registerSound("drain"),
             OSMOSE = registerSound("osmose"),
             SILENCEHIT = registerSound("silencehit"),
-            WARPHITPLAYER = registerSound("warp_hit_player");
+            WARPHITPLAYER = registerSound("warp_hit_player"),
+            ESUNA = registerSound("esuna");
 
 
     public static RegistryObject<SoundEvent> registerSound(String name) {

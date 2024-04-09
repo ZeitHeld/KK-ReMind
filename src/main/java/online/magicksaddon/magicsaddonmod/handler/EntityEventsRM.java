@@ -138,6 +138,7 @@ public class EntityEventsRM {
 			if (event.getEntity() instanceof Player player){
 				if (globalData.getHasteTicks() > 0) {
 					globalData.remHasteTicks(1);
+					System.out.println(globalData.getHasteTicks());
 					if (globalData.getHasteTicks() <= 0) {
 						player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Haste", -(0.25 + (0.25 * globalData.getHasteLevel())), AttributeModifier.Operation.MULTIPLY_BASE));
 						player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Haste", -(0.25 + (0.25 * globalData.getHasteLevel())), AttributeModifier.Operation.MULTIPLY_BASE));

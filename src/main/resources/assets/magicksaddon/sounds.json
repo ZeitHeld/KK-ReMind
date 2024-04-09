@@ -103,6 +103,11 @@
         "sounds": [
           "magicksaddon:warp_hit_player"
         ]
+      },
+      "esuna": {
+        "sounds":[
+          "magicksaddon:esuna"
+        ]
       }
 
   }
