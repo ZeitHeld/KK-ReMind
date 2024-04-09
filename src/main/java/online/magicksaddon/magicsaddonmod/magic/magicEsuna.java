@@ -6,6 +6,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffects;
@@ -33,7 +34,14 @@ public class magicEsuna extends Magic {
             caster.swing(InteractionHand.MAIN_HAND);
             ((ServerLevel) player.level()).sendParticles(ParticleTypes.SONIC_BOOM.getType(), player.getX(), player.getY()+2.3D, player.getZ(), 5, 0D, 0D, 0D, 0D);
             player.level().playSound(null, player.blockPosition(), ModSoundsRM.ESUNA.get(), SoundSource.PLAYERS, 1F, 1F);
-            player.removeEffect(MobEffects.BAD_OMEN);
+
+            for(MobEffectInstance e : player.getActiveEffects()) {
+            	if(e.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
+            		player.removeEffect(e.getEffect());
+            	}
+            }
+            
+            /*player.removeEffect(MobEffects.BAD_OMEN);
             player.removeEffect(MobEffects.POISON);
             player.removeEffect(MobEffects.HUNGER);
             player.removeEffect(MobEffects.WITHER);
@@ -42,7 +50,7 @@ public class magicEsuna extends Magic {
             player.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
             player.removeEffect(MobEffects.CONFUSION);
             player.removeEffect(MobEffects.WEAKNESS);
-            player.removeEffect(MobEffects.UNLUCK);
+            player.removeEffect(MobEffects.UNLUCK);*/
 
             // KK & ReMind Effects
             globalData.setSlowTicks(0,level);
