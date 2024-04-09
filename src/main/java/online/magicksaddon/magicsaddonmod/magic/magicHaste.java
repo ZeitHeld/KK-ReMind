@@ -51,6 +51,9 @@ public class magicHaste extends Magic {
 
                         break;
                     case 2:
+                        player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
+                        player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
+
                         if(worldData.getPartyFromMember(player.getUUID()) != null) {
                             Party party = worldData.getPartyFromMember(player.getUUID());
                             List<Party.Member> list = party.getMembers();
@@ -62,8 +65,6 @@ public class magicHaste extends Magic {
                                             IGlobalCapabilitiesRM globalData2 = ModCapabilitiesRM.getGlobal(e);
                                             e.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
                                             e.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
-                                            player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
-                                            player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
                                             globalData2.setHasteTicks(time, level);
                                             }
                                         }

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NTN",
+    "TOT",
+    "NTN"
+  ],
+  "key": {
+    "O": {
+      "item": "kingdomkeys:spellcure"
+    },
+    "T": {
+      "item": "minecraft:milk_bucket"
+    },
+    "N": {
+      "item": "minecraft:milk_bucket"
+    }
+    },
+      "result": {
+        "item": "magicksaddon:esuna_spell"
+      }
+  }

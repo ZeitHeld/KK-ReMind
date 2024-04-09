@@ -31,9 +31,10 @@ public class magicSlow extends Magic {
 	@Override
 	protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
 
-		float radius = 2 + (level * 1.5F);
+		float radius = 2 + (level);
 		List<Entity> list = player.level().getEntities(player, player.getBoundingBox().inflate(radius, radius, radius));
 		Party casterParty = ModCapabilities.getWorld(player.level()).getPartyFromMember(player.getUUID());
+
 		if (casterParty != null && !casterParty.getFriendlyFire()) {
 			for (Member m : casterParty.getMembers()) {
 				list.remove(player.level().getPlayerByUUID(m.getUUID()));
