@@ -59,12 +59,12 @@ public class magicHaste extends Magic {
                                     if(player.level().getPlayerByUUID(list.get(i).getUUID()) != null && player.distanceTo(player.level().getPlayerByUUID(list.get(i).getUUID())) < ModConfigs.partyRangeLimit) {
                                         LivingEntity e = player.level().getPlayerByUUID(list.get(i).getUUID());
                                         if (e != null && Utils.isEntityInParty(party, e) && e != player) {
+                                            IGlobalCapabilitiesRM globalData2 = ModCapabilitiesRM.getGlobal(e);
                                             e.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
                                             e.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
                                             player.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
                                             player.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Haste", 0.25 + (0.25 * level), AttributeModifier.Operation.MULTIPLY_BASE));
-
-
+                                            globalData2.setHasteTicks(time, level);
                                             }
                                         }
                                     }
