@@ -1,0 +1,8 @@
+{
+  "0": {
+    "cost": 0,
+    "cooldown": 0,
+    "dmg_mult": 0,
+	"magic_lock_on":true
+  }
+}

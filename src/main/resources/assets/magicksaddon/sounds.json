@@ -98,6 +98,11 @@
         "sounds": [
           "magicksaddon:silencehit"
         ]
+      },
+      "warp_hit_player": {
+        "sounds": [
+          "magicksaddon:warp_hit_player"
+        ]
       }
 
   }

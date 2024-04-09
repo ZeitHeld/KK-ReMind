@@ -27,7 +27,8 @@ public class ModMagicsRM {
             AUTO_LIFE = MAGIC.register("magic_auto-life",() -> new magicAutoLife(new ResourceLocation(KingdomKeysReMind.MODID,"magic_auto-life"), true, 1)),
             OSMOSE = MAGIC.register("magic_osmose",() -> new magicOsmose(new ResourceLocation(KingdomKeysReMind.MODID,"magic_osmose"), false, 3)),
             DRAIN = MAGIC.register("magic_drain",() -> new magicDrain(new ResourceLocation(KingdomKeysReMind.MODID,"magic_drain"), false, 3)),
-            SILENCE = MAGIC.register("magic_silence", () -> new magicSilence(new ResourceLocation(KingdomKeysReMind.MODID,"magic_silence"), false,3));
+            SILENCE = MAGIC.register("magic_silence", () -> new magicSilence(new ResourceLocation(KingdomKeysReMind.MODID,"magic_silence"), false,3)),
+            WARP = MAGIC.register("magic_warp", () -> new magicWarp(new ResourceLocation(KingdomKeysReMind.MODID,"magic_warp"), false, 1, null));
 
 
 

@@ -25,7 +25,7 @@
   "magic.magicksaddon.magic_comet0.name": "Comet",
   "magic.magicksaddon.magic_comet1.name": "Meteor",
   "magic.magicksaddon.magic_ultima0.name": "Ultima",
-  "magic.magicksaddon.magic_ultima1.name": "Ultima II",
+  "magic.magicksaddon.magic_ultima1.name": "Altima",
   "magic.magicksaddon.magic_berserk0.name": "Berserk",
   "magic.magicksaddon.magic_berserk1.name": "Berserkera",
   "magic.magicksaddon.magic_berserk2.name": "Berserkega",
@@ -39,6 +39,7 @@
   "magic.magicksaddon.magic_silence0.name": "Silence",
   "magic.magicksaddon.magic_silence1.name": "Silencera",
   "magic.magicksaddon.magic_silence2.name": "Silencega",
+  "magic.magicksaddon.magic_warp0.name": "Warp",
 
 
   "item.magicksaddon.balloon_spell": "Balloon Spell",

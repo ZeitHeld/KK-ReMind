@@ -30,7 +30,8 @@ public class ModSoundsRM {
             RISKCHARGE = registerSound("riskcharge"),
             DRAIN = registerSound("drain"),
             OSMOSE = registerSound("osmose"),
-            SILENCEHIT = registerSound("silencehit");
+            SILENCEHIT = registerSound("silencehit"),
+            WARPHITPLAYER = registerSound("warp_hit_player");
 
 
     public static RegistryObject<SoundEvent> registerSound(String name) {
