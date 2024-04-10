@@ -29,7 +29,8 @@ public class ModMagicsRM {
             DRAIN = MAGIC.register("magic_drain",() -> new magicDrain(new ResourceLocation(KingdomKeysReMind.MODID,"magic_drain"), false, 3)),
             SILENCE = MAGIC.register("magic_silence", () -> new magicSilence(new ResourceLocation(KingdomKeysReMind.MODID,"magic_silence"), false,3)),
             WARP = MAGIC.register("magic_warp", () -> new magicWarp(new ResourceLocation(KingdomKeysReMind.MODID,"magic_warp"), false, 1, null)),
-            ESUNA = MAGIC.register("magic_esuna", () -> new magicEsuna(new ResourceLocation(KingdomKeysReMind.MODID,"magic_esuna"), true, 1));
+            ESUNA = MAGIC.register("magic_esuna", () -> new magicEsuna(new ResourceLocation(KingdomKeysReMind.MODID,"magic_esuna"), true, 1)),
+            DISPEL = MAGIC.register("magic_dispel", () -> new magicDispel(new ResourceLocation(KingdomKeysReMind.MODID,"magic_dispel"), false, 1));
 
 
 
