@@ -33,15 +33,11 @@ public class magicDispel extends Magic {
 
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnEntity) {
-
-        Entity target = lockOnEntity;
-
-        System.out.println(target);
-
-
-
-
-
+    	if(lockOnEntity != null) {
+    		//If target is locked and magic lock on ability is on
+    	} else {
+    		//IDK do some area of effect or something like slow or haste
+    	}
 
 
     }
