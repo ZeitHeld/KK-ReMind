@@ -57,7 +57,7 @@ public class magicEsuna extends Magic {
             player.removeEffect(MobEffects.UNLUCK);*/
 
             // KK & ReMind Effects
-            if (globalData.getSlowTicks() > 0) {
+            if (globalData.getSlowTicks() > 1) {
                 globalData.setSlowTicks(1, level);
             }
             globalData2.setStoppedTicks(0);

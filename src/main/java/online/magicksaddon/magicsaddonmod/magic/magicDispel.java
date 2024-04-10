@@ -51,7 +51,9 @@ public class magicDispel extends Magic {
                 }
             }
             globalData2.setAeroTicks(1,level);
-            globalData.setHasteTicks(1, level);
+            if (globalData.getHasteTicks() >1) {
+                globalData.setHasteTicks(1, level);
+            }
             globalData.setBerserkTicks(1,level);
 
             PacketHandlerRM.syncGlobalToAllAround(lockOnEntity, globalData);
@@ -80,7 +82,9 @@ public class magicDispel extends Magic {
                         lEntity.removeEffect(MobEffects.FIRE_RESISTANCE);
 
                         globalData2.setAeroTicks(1,level);
-                        globalData.setHasteTicks(1, level);
+                        if (globalData.getHasteTicks() >1) {
+                            globalData.setHasteTicks(1, level);
+                        }
                         globalData.setBerserkTicks(1,level);
 
                         PacketHandlerRM.syncGlobalToAllAround(lEntity, globalData);
