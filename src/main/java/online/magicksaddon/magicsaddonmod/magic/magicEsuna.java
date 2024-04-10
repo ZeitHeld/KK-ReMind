@@ -13,7 +13,10 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
+import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
+import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
+import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
@@ -29,6 +32,7 @@ public class magicEsuna extends Magic {
     @Override
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
+        IGlobalCapabilities globalData2 = ModCapabilities.getGlobal(player);
 
         if (globalData != null) {
             caster.swing(InteractionHand.MAIN_HAND);
@@ -53,9 +57,12 @@ public class magicEsuna extends Magic {
             player.removeEffect(MobEffects.UNLUCK);*/
 
             // KK & ReMind Effects
-            globalData.setSlowTicks(0,level);
+            if (globalData.getSlowTicks() > 0) {
+                globalData.setSlowTicks(1, level);
+            }
+            globalData2.setStoppedTicks(0);
 
-
+            PacketHandler.syncToAllAround(player, globalData2);
             PacketHandlerRM.syncGlobalToAllAround(player, globalData);
         }
     }
