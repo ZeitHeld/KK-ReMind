@@ -6,6 +6,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -48,13 +50,18 @@ public class magicSlow extends Magic {
 				if (e instanceof LivingEntity) {
 					if (globalData != null) {
 						if (e instanceof Mob) {
-							//IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal((LivingEntity) e);
-							((Mob) e).getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.25 + (0.25 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
-							((Mob) e).getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.25 + (0.25 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
+							IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal((LivingEntity) e);
+							//((Mob) e).getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.25 + (0.25 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
+							//((Mob) e).getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.25 + (0.25 * level)), AttributeModifier.Operation.MULTIPLY_BASE));
+							((Mob) e).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,time, level + 1));
+							((Mob) e).addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN,time, level + 1));
 						}
 						globalData.setSlowTicks(time, level); // Slow Time
 						globalData.setSlowCaster(player.getDisplayName().getString());
 						if (e instanceof ServerPlayer) {
+							IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal((LivingEntity) e);
+							((ServerPlayer) e).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,time, level + 1));
+							((ServerPlayer) e).addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN,time, level + 1));
 							//PacketHandler.sendTo(new SCSyncGlobalCapabilityPacket(), (ServerPlayer) e);
 						}
 					}
