@@ -41,25 +41,21 @@ public class magicDispel extends Magic {
     protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnEntity) {
 
         if (lockOnEntity != null) {
-
+            IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(lockOnEntity);
+            IGlobalCapabilities globalData2 = ModCapabilities.getGlobal(lockOnEntity);
 
             //If target is locked and magic lock on ability is on
             for (MobEffectInstance e : lockOnEntity.getActiveEffects()) {
-                IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(lockOnEntity);
-                IGlobalCapabilities globalData2 = ModCapabilities.getGlobal(lockOnEntity);
                 if (e.getEffect().getCategory() == MobEffectCategory.BENEFICIAL) {
                     lockOnEntity.removeEffect(e.getEffect());
-
-                    globalData2.setAeroTicks(0,level);
-                    if (globalData.getHasteTicks() > 0) {
-                        globalData.setHasteTicks(0, level);
-                    }
-                    globalData.setBerserkTicks(0,level);
-
-                    PacketHandlerRM.syncGlobalToAllAround(lockOnEntity, globalData);
-                    PacketHandler.syncToAllAround(lockOnEntity, globalData2);
                 }
             }
+            globalData2.setAeroTicks(1,level);
+            globalData.setHasteTicks(1, level);
+            globalData.setBerserkTicks(1,level);
+
+            PacketHandlerRM.syncGlobalToAllAround(lockOnEntity, globalData);
+            PacketHandler.syncToAllAround(lockOnEntity, globalData2);
         } else {
             //IDK do some area of effect or something like slow or haste
             float radius = 16;
@@ -83,11 +79,9 @@ public class magicDispel extends Magic {
                         lEntity.removeEffect(MobEffects.DAMAGE_RESISTANCE);
                         lEntity.removeEffect(MobEffects.FIRE_RESISTANCE);
 
-                        globalData2.setAeroTicks(0,level);
-                        if (globalData.getHasteTicks() > 0) {
-                            globalData.setHasteTicks(0, level);
-                        }
-                        globalData.setBerserkTicks(0,level);
+                        globalData2.setAeroTicks(1,level);
+                        globalData.setHasteTicks(1, level);
+                        globalData.setBerserkTicks(1,level);
 
                         PacketHandlerRM.syncGlobalToAllAround(lEntity, globalData);
                         PacketHandler.syncToAllAround(lEntity, globalData2);
