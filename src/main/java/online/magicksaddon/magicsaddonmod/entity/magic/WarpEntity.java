@@ -14,6 +14,9 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
+import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
@@ -24,6 +27,7 @@ import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.kingdomkeys.kingdomkeys.entity.mob.MarluxiaEntity;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
@@ -137,11 +141,17 @@ public class WarpEntity extends ThrowableProjectile {
                                         e.kill();
                                         e.shouldRender(0,0,0);
                                         e.level().playSound(null, e.blockPosition(), ModSoundsRM.WARPHITPLAYER.get(), SoundSource.PLAYERS,1F,1F);
+                                    } else if (rand < 45 && rand > 5 ) {
+                                        e.teleportRelative((Math.floor(Math.random()*100)),50,(Math.floor(Math.random()*100)));
                                     }
+                                } else if (e instanceof MarluxiaEntity || e instanceof EnderDragon || e instanceof WitherBoss || e instanceof Warden) {
+                                    list.remove(e);
                                 } else {
                                     if(rand >= 40 || rand <= 20) {
                                         e.kill();
-                                        }
+                                        } else {
+                                        e.teleportRelative((Math.floor(Math.random()*100)),50,(Math.floor(Math.random()*100)));
+                                    }
                                 }
                             }
 
