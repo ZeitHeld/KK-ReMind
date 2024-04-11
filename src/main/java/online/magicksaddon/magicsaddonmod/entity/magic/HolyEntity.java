@@ -2,6 +2,7 @@ package online.magicksaddon.magicsaddonmod.entity.magic;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.TagType;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -9,16 +10,23 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
+import net.minecraftforge.registries.ForgeRegistries;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.kingdomkeys.kingdomkeys.entity.EntityHelper;
 import online.kingdomkeys.kingdomkeys.entity.magic.MagnetEntity;
+import online.kingdomkeys.kingdomkeys.entity.mob.IKHMob;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
@@ -116,7 +124,22 @@ public class HolyEntity extends ThrowableProjectile {
 					if (p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { // If caster is not in a party || the party doesn't have the target in it || the
 																										// party has FF on
 						float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) / 5.75F : 2;
-						target.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);
+
+						if (target.getMobType() == MobType.UNDEAD) {
+							target.hurt(damageSources().indirectMagic(this, this.getOwner()), (dmg * dmgMult)*1.15F);
+							System.out.println((dmg * dmgMult)*1.15F);
+						} else if (target instanceof IKHMob ikhMob) {
+							if(ikhMob.getKHMobType() == EntityHelper.MobType.HEARTLESS_PUREBLOOD || ikhMob.getKHMobType() == EntityHelper.MobType.HEARTLESS_EMBLEM){
+								target.hurt(damageSources().indirectMagic(this, this.getOwner()), (dmg * dmgMult)*1.15F);
+								System.out.println((dmg * dmgMult)*1.15F);
+							} else {
+								target.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);
+								System.out.println((dmg * dmgMult));
+							}
+						} else {
+							target.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);
+							System.out.println(dmg * dmgMult);
+						}
 						target.invulnerableTime = 0;
 						remove(RemovalReason.KILLED);
 					}
