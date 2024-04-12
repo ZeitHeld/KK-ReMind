@@ -2,6 +2,7 @@
   "0": {
     "cost": 300,
     "cooldown": 300,
+    "casttime": 20,
     "dmg_mult": 0,
 	"magic_lock_on":true
   }
