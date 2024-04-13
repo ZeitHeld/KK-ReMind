@@ -12,36 +12,38 @@ import online.magicksaddon.magicsaddonmod.entity.magic.OsmoseEntity;
 
 public class magicOsmose extends Magic {
 
-    public magicOsmose(ResourceLocation registryName, boolean hasToSelect, int maxLevel) {
-        super(registryName, hasToSelect, maxLevel, null);
-    }
+	public magicOsmose(ResourceLocation registryName, boolean hasToSelect, int maxLevel) {
+		super(registryName, hasToSelect, maxLevel, null);
+	}
 
-    @Override
-    protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnEntity) {
-        float mpTaken = getDamageMult(level);
-        mpTaken *= fullMPBlastMult;
+	@Override
+	public void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnEntity) {
+		float mpTaken = getDamageMult(level);
+		mpTaken *= fullMPBlastMult;
 
-        lockOnEntity = getMagicLockOn(level) ? lockOnEntity : null;
-        caster.swing(InteractionHand.MAIN_HAND);
-        player.level().playSound(null, player.blockPosition(), ModSoundsRM.OSMOSE.get(), SoundSource.PLAYERS, 1F, 1F);
-        switch(level) {
-            case 0:
-                ThrowableProjectile osmose = new OsmoseEntity(player.level(), player, mpTaken,lockOnEntity);
-                player.level().addFreshEntity(osmose);
-                osmose.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2F, 0);
-                break;
-            case 1:
-                ThrowableProjectile osmosera = new OsmoseEntity(player.level(), player, mpTaken,lockOnEntity);
-                player.level().addFreshEntity(osmosera);
-                osmosera.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2.5F, 0);
-                break;
-            case 2:
-                ThrowableProjectile osmosega = new OsmoseEntity(player.level(), player, mpTaken,lockOnEntity);
-                player.level().addFreshEntity(osmosega);
-                osmosega.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 3F, 0);
-                break;
-        }
+		lockOnEntity = getMagicLockOn(level) ? lockOnEntity : null;
+		caster.swing(InteractionHand.MAIN_HAND);
+		switch (level) {
+		case 0:
+			ThrowableProjectile osmose = new OsmoseEntity(player.level(), player, mpTaken, lockOnEntity);
+			player.level().addFreshEntity(osmose);
+			osmose.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2F, 0);
+			break;
+		case 1:
+			ThrowableProjectile osmosera = new OsmoseEntity(player.level(), player, mpTaken, lockOnEntity);
+			player.level().addFreshEntity(osmosera);
+			osmosera.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2.5F, 0);
+			break;
+		case 2:
+			ThrowableProjectile osmosega = new OsmoseEntity(player.level(), player, mpTaken, lockOnEntity);
+			player.level().addFreshEntity(osmosega);
+			osmosega.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 3F, 0);
+			break;
+		}
+	}
 
-
-    }
+	@Override
+	protected void playMagicCastSound(Player player, Player caster, int level) {
+		player.level().playSound(null, player.blockPosition(), ModSoundsRM.OSMOSE.get(), SoundSource.PLAYERS, 1F, 1F);
+	}
 }

@@ -23,14 +23,13 @@ public class magicBerserk extends Magic {
 	}
 
 	@Override
-	protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
+	public void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
 
 		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
 
 		if (globalData != null) {
 			int time = (int) (ModCapabilities.getPlayer(caster).getMaxMP() * ((level * 0.75) + 5));
 			caster.swing(InteractionHand.MAIN_HAND);
-			player.level().playSound(null, player.blockPosition(), ModSoundsRM.BERSERK.get(), SoundSource.PLAYERS, 1F, 1F);
 			// Effect and Level Modifier
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			if (globalData.getBerserkTicks() <= 0) {
@@ -63,4 +62,8 @@ public class magicBerserk extends Magic {
 		}
 	}
 
+	@Override
+	protected void playMagicCastSound(Player player, Player caster, int level) {
+		player.level().playSound(null, player.blockPosition(), ModSoundsRM.BERSERK.get(), SoundSource.PLAYERS, 1F, 1F);
+	}
 }

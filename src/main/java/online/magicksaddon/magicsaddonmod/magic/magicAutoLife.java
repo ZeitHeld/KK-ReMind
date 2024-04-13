@@ -19,15 +19,19 @@ public class magicAutoLife extends Magic {
     }
 
     @Override
-    protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
+	public void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
         if (globalData != null) {
             caster.swing(InteractionHand.MAIN_HAND);
-            player.level().playSound(null, player.blockPosition(), ModSoundsRM.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
             globalData.setAutoLifeActive(1);
             PacketHandlerRM.syncGlobalToAllAround(player, globalData);
         }
     }
+
+	@Override
+	protected void playMagicCastSound(Player player, Player caster, int level) {
+		player.level().playSound(null, player.blockPosition(), ModSoundsRM.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
+	}
 
 
 }

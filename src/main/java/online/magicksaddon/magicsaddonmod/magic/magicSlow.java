@@ -27,7 +27,7 @@ public class magicSlow extends Magic {
 	}
 
 	@Override
-	protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
+	public void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
 
 		float radius = 2 + (level);
 		List<Entity> list = player.level().getEntities(player, player.getBoundingBox().inflate(radius, radius, radius));
@@ -45,8 +45,10 @@ public class magicSlow extends Magic {
 				if (e instanceof LivingEntity lEntity) {
 					IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(lEntity);
 					if (globalData != null) {
-						//lEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,time, level + 1));
-						//lEntity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN,time, level + 1));
+						// lEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,time,
+						// level + 1));
+						// lEntity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN,time, level +
+						// 1));
 						lEntity.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.25 + (0.25 * globalData.getSlowLevel())), AttributeModifier.Operation.MULTIPLY_BASE));
 						lEntity.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier("Slow", -(0.25 + (0.25 * globalData.getSlowLevel())), AttributeModifier.Operation.MULTIPLY_BASE));
 
@@ -56,7 +58,11 @@ public class magicSlow extends Magic {
 				}
 			}
 			player.swing(InteractionHand.MAIN_HAND);
-			player.level().playSound(null, player.blockPosition(), ModSoundsRM.SLOW.get(), SoundSource.PLAYERS, 1F, 1F);
 		}
+	}
+
+	@Override
+	protected void playMagicCastSound(Player player, Player caster, int level) {
+		player.level().playSound(null, player.blockPosition(), ModSoundsRM.SLOW.get(), SoundSource.PLAYERS, 1F, 1F);
 	}
 }

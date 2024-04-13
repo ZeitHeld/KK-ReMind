@@ -12,35 +12,38 @@ import online.magicksaddon.magicsaddonmod.entity.magic.OsmoseEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.SilenceEntity;
 
 public class magicSilence extends Magic {
-    public magicSilence(ResourceLocation registryName, boolean hasToSelect, int maxLevel) {
-        super(registryName, hasToSelect, maxLevel, null);
-    }
+	public magicSilence(ResourceLocation registryName, boolean hasToSelect, int maxLevel) {
+		super(registryName, hasToSelect, maxLevel, null);
+	}
 
-    @Override
-    protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
-        float silenceTime = getDamageMult(level);
-        silenceTime *= fullMPBlastMult;
+	@Override
+	public void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
+		float silenceTime = getDamageMult(level);
+		silenceTime *= fullMPBlastMult;
 
-        lockOnTarget = getMagicLockOn(level) ? lockOnTarget : null;
-        caster.swing(InteractionHand.MAIN_HAND);
-        player.level().playSound(null, player.blockPosition(), ModSoundsRM.PLAYER_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
-        switch(level) {
-            case 0:
-                ThrowableProjectile silence = new SilenceEntity(player.level(), player, silenceTime,lockOnTarget);
-                player.level().addFreshEntity(silence);
-                silence.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1F, 0);
-                break;
-            case 1:
-                ThrowableProjectile silencera = new SilenceEntity(player.level(), player, silenceTime,lockOnTarget);
-                player.level().addFreshEntity(silencera);
-                silencera.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1.5F, 0);
-                break;
-            case 2:
-                ThrowableProjectile silencega = new SilenceEntity(player.level(), player, silenceTime,lockOnTarget);
-                player.level().addFreshEntity(silencega);
-                silencega.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2F, 0);
-                break;
-        }
-    }
+		lockOnTarget = getMagicLockOn(level) ? lockOnTarget : null;
+		caster.swing(InteractionHand.MAIN_HAND);
+		switch (level) {
+		case 0:
+			ThrowableProjectile silence = new SilenceEntity(player.level(), player, silenceTime, lockOnTarget);
+			player.level().addFreshEntity(silence);
+			silence.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1F, 0);
+			break;
+		case 1:
+			ThrowableProjectile silencera = new SilenceEntity(player.level(), player, silenceTime, lockOnTarget);
+			player.level().addFreshEntity(silencera);
+			silencera.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1.5F, 0);
+			break;
+		case 2:
+			ThrowableProjectile silencega = new SilenceEntity(player.level(), player, silenceTime, lockOnTarget);
+			player.level().addFreshEntity(silencega);
+			silencega.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2F, 0);
+			break;
+		}
+	}
 
+	@Override
+	protected void playMagicCastSound(Player player, Player caster, int level) {
+		player.level().playSound(null, player.blockPosition(), ModSoundsRM.PLAYER_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
+	}
 }

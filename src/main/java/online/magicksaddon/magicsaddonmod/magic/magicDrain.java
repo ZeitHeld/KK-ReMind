@@ -12,37 +12,39 @@ import online.magicksaddon.magicsaddonmod.entity.magic.DrainEntity;
 
 public class magicDrain extends Magic {
 
-    public magicDrain(ResourceLocation registryName, boolean hasToSelect, int maxLevel) {
-        super(registryName, hasToSelect, maxLevel, null);
-    }
+	public magicDrain(ResourceLocation registryName, boolean hasToSelect, int maxLevel) {
+		super(registryName, hasToSelect, maxLevel, null);
+	}
 
-    @Override
-    protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnEntity) {
-        float hpTaken = getDamageMult(level);
-        hpTaken *= fullMPBlastMult;
+	@Override
+	public void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnEntity) {
+		float hpTaken = getDamageMult(level);
+		hpTaken *= fullMPBlastMult;
 
-        lockOnEntity = getMagicLockOn(level) ? lockOnEntity : null;
-        caster.swing(InteractionHand.MAIN_HAND);
-        player.level().playSound(null, player.blockPosition(), ModSoundsRM.DRAIN.get(), SoundSource.PLAYERS, 1F, 1F);
+		lockOnEntity = getMagicLockOn(level) ? lockOnEntity : null;
+		caster.swing(InteractionHand.MAIN_HAND);
 
-        switch(level) {
-            case 0:
-                ThrowableProjectile drain = new DrainEntity(player.level(), player, hpTaken,lockOnEntity);
-                player.level().addFreshEntity(drain);
-                drain.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2F, 0);
-                break;
-            case 1:
-                ThrowableProjectile drainra = new DrainEntity(player.level(), player, hpTaken,lockOnEntity);
-                player.level().addFreshEntity(drainra);
-                drainra.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2.5F, 0);
-                break;
-            case 2:
-                ThrowableProjectile drainga = new DrainEntity(player.level(), player, hpTaken,lockOnEntity);
-                player.level().addFreshEntity(drainga);
-                drainga.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 3F, 0);
-                break;
-        }
+		switch (level) {
+		case 0:
+			ThrowableProjectile drain = new DrainEntity(player.level(), player, hpTaken, lockOnEntity);
+			player.level().addFreshEntity(drain);
+			drain.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2F, 0);
+			break;
+		case 1:
+			ThrowableProjectile drainra = new DrainEntity(player.level(), player, hpTaken, lockOnEntity);
+			player.level().addFreshEntity(drainra);
+			drainra.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 2.5F, 0);
+			break;
+		case 2:
+			ThrowableProjectile drainga = new DrainEntity(player.level(), player, hpTaken, lockOnEntity);
+			player.level().addFreshEntity(drainga);
+			drainga.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 3F, 0);
+			break;
+		}
+	}
 
-
-    }
+	@Override
+	protected void playMagicCastSound(Player player, Player caster, int level) {
+		player.level().playSound(null, player.blockPosition(), ModSoundsRM.DRAIN.get(), SoundSource.PLAYERS, 1F, 1F);
+	}
 }

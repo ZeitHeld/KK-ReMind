@@ -24,48 +24,51 @@ import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
 public class magicEsuna extends Magic {
 
+	public magicEsuna(ResourceLocation registryName, boolean hasToSelect, int maxLevel) {
+		super(registryName, hasToSelect, maxLevel, null);
+	}
 
-    public magicEsuna(ResourceLocation registryName, boolean hasToSelect, int maxLevel) {
-        super(registryName, hasToSelect, maxLevel, null);
-    }
+	@Override
+	public void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
+		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
+		IGlobalCapabilities globalData2 = ModCapabilities.getGlobal(player);
 
-    @Override
-    protected void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnTarget) {
-        IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
-        IGlobalCapabilities globalData2 = ModCapabilities.getGlobal(player);
+		if (globalData != null) {
+			caster.swing(InteractionHand.MAIN_HAND);
+			((ServerLevel) player.level()).sendParticles(ParticleTypes.SONIC_BOOM.getType(), player.getX(), player.getY() + 2.3D, player.getZ(), 5, 0D, 0D, 0D, 0D);
 
-        if (globalData != null) {
-            caster.swing(InteractionHand.MAIN_HAND);
-            ((ServerLevel) player.level()).sendParticles(ParticleTypes.SONIC_BOOM.getType(), player.getX(), player.getY()+2.3D, player.getZ(), 5, 0D, 0D, 0D, 0D);
-            player.level().playSound(null, player.blockPosition(), ModSoundsRM.ESUNA.get(), SoundSource.PLAYERS, 1F, 1F);
+			for (MobEffectInstance e : player.getActiveEffects()) {
+				if (e.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
+					player.removeEffect(e.getEffect());
+				}
+			}
 
-            for(MobEffectInstance e : player.getActiveEffects()) {
-            	if(e.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
-            		player.removeEffect(e.getEffect());
-            	}
-            }
-            
-            /*player.removeEffect(MobEffects.BAD_OMEN);
-            player.removeEffect(MobEffects.POISON);
-            player.removeEffect(MobEffects.HUNGER);
-            player.removeEffect(MobEffects.WITHER);
-            player.removeEffect(MobEffects.DIG_SLOWDOWN);
-            player.removeEffect(MobEffects.BLINDNESS);
-            player.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
-            player.removeEffect(MobEffects.CONFUSION);
-            player.removeEffect(MobEffects.WEAKNESS);
-            player.removeEffect(MobEffects.UNLUCK);*/
+			/*
+			 * player.removeEffect(MobEffects.BAD_OMEN);
+			 * player.removeEffect(MobEffects.POISON);
+			 * player.removeEffect(MobEffects.HUNGER);
+			 * player.removeEffect(MobEffects.WITHER);
+			 * player.removeEffect(MobEffects.DIG_SLOWDOWN);
+			 * player.removeEffect(MobEffects.BLINDNESS);
+			 * player.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
+			 * player.removeEffect(MobEffects.CONFUSION);
+			 * player.removeEffect(MobEffects.WEAKNESS);
+			 * player.removeEffect(MobEffects.UNLUCK);
+			 */
 
-            // KK & ReMind Effects
-            if (globalData.getSlowTicks() > 1) {
-                globalData.setSlowTicks(1, level);
-            }
-            globalData2.setStoppedTicks(0);
+			// KK & ReMind Effects
+			if (globalData.getSlowTicks() > 1) {
+				globalData.setSlowTicks(1, level);
+			}
+			globalData2.setStoppedTicks(0);
 
-            PacketHandler.syncToAllAround(player, globalData2);
-            PacketHandlerRM.syncGlobalToAllAround(player, globalData);
-        }
-    }
+			PacketHandler.syncToAllAround(player, globalData2);
+			PacketHandlerRM.syncGlobalToAllAround(player, globalData);
+		}
+	}
 
-
+	@Override
+	protected void playMagicCastSound(Player player, Player caster, int level) {
+		player.level().playSound(null, player.blockPosition(), ModSoundsRM.ESUNA.get(), SoundSource.PLAYERS, 1F, 1F);
+	}
 }
