@@ -2,12 +2,14 @@
   "0": {
     "cost": 25,
     "cooldown": 50,
+    "casttime": 10,
     "dmg_mult": 2.0,
 	"magic_lock_on":true
   },
   "1": {
     "cost": 50,
     "cooldown": 50,
+    "casttime": 20,
     "dmg_mult": 2.5,
 	"magic_lock_on":true
   }
