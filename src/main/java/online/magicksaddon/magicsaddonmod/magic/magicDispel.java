@@ -85,6 +85,7 @@ public class magicDispel extends Magic {
 							globalData.setHasteTicks(1, level);
 						}
 						globalData.setBerserkTicks(1, level);
+						globalData.setAutoLifeActive(0);
 
 						PacketHandlerRM.syncGlobalToAllAround(lEntity, globalData);
 						PacketHandler.syncToAllAround(lEntity, globalData2);
@@ -97,7 +98,7 @@ public class magicDispel extends Magic {
 
 	@Override
 	protected void playMagicCastSound(Player player, Player caster, int level) {
-		// player.level().playSound(null, player.blockPosition(), ModSoundsRM.?.get(),
-		// SoundSource.PLAYERS, 1F, 1F);
+		 player.level().playSound(null, player.blockPosition(), ModSoundsRM.DISPEL.get(),
+		 SoundSource.PLAYERS, 1F, 1F);
 	}
 }

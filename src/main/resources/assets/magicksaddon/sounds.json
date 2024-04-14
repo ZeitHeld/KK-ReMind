@@ -108,6 +108,11 @@
         "sounds":[
           "magicksaddon:esuna"
         ]
+      },
+      "dispel": {
+        "sounds": [
+          "magicksaddon:dispel"
+        ]
       }
 
   }
