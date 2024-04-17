@@ -136,12 +136,12 @@ public class InputHandlerRM {
 								CommandMenuGui.selected = CommandMenuGui.ATTACK;
 								world.playSound(player, player.blockPosition(), ModSounds.error.get(), SoundSource.MASTER, 1.0f, 1.0f);
 							}
-
+							event.setCanceled(true);
 						}
 					}
+
 					break;
 			}
-			event.setCanceled(true);
 		}
 
 
