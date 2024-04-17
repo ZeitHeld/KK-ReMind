@@ -5,15 +5,20 @@ import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.api.client.KKInputEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
+import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.client.gui.menu.NoChoiceMenuPopup;
+import online.kingdomkeys.kingdomkeys.client.gui.overlay.CommandMenuGui;
+import online.kingdomkeys.kingdomkeys.client.sound.ModSounds;
 import online.kingdomkeys.kingdomkeys.handler.InputHandler;
 import online.kingdomkeys.kingdomkeys.lib.SoAState;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.cts.CSSyncAllClientDataPacket;
+import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.kingdomkeys.kingdomkeys.world.dimension.ModDimensions;
 import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
@@ -105,8 +110,44 @@ public class InputHandlerRM {
                 GUIHelperRM.openAddonMenu();
                 //return;
             }
+			event.setCanceled(true);
+		} else if (event.getKeybind() == InputHandler.Keybinds.ENTER){
+			Minecraft mc = Minecraft.getInstance();
+			Level world = mc.level;
+			Player player = mc.player;
 
+
+
+			//ExtendedWorldData worldData = ExtendedWorldData.get(world);
+			IWorldCapabilities worldData = ModCapabilities.getWorld(world);
+			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+			event.getHandler().portalCommands = worldData.getAllPortalsFromOwnerID(mc.player.getUUID());
+
+			switch (CommandMenuGui.selected) {
+				case CommandMenuGui.ATTACK:
+					if (playerData.getAlignment() != Utils.OrgMember.NONE || playerData.isAbilityEquipped(StringsRM.darkPassage)) {
+						// Submenu of the portals
+						if (CommandMenuGui.submenu == CommandMenuGui.SUB_MAIN) {
+							if (!event.getHandler().portalCommands.isEmpty() && !playerData.getRecharge()) {
+								CommandMenuGui.submenu = CommandMenuGui.SUB_PORTALS;
+								CommandMenuGui.portalSelected = 0;
+								world.playSound(player, player.blockPosition(), ModSounds.menu_in.get(), SoundSource.MASTER, 1.0f, 1.0f);
+							} else {
+								CommandMenuGui.selected = CommandMenuGui.ATTACK;
+								world.playSound(player, player.blockPosition(), ModSounds.error.get(), SoundSource.MASTER, 1.0f, 1.0f);
+							}
+
+						}
+					}
+					break;
+			}
 			event.setCanceled(true);
 		}
+
+
+
 	}
+
+
+
 }
