@@ -11,7 +11,8 @@ public class ModReactionCommandsRM {
     public static DeferredRegister<ReactionCommand> REACTION_COMMANDS = DeferredRegister.create(new ResourceLocation(KingdomKeys.MODID, "reactioncommands"), "magicksaddon");
 
     public static final RegistryObject<ReactionCommand>
-        RISKCHARGE = REACTION_COMMANDS.register(StringsRM.RCMA_Prefix+"riskcharge", () -> new RiskchargeReaction(new ResourceLocation(StringsRM.riskchargeRC), true));
+        RISKCHARGE = REACTION_COMMANDS.register(StringsRM.RCMA_Prefix+"riskcharge", () -> new RiskchargeReaction(new ResourceLocation(StringsRM.riskchargeRC), true)),
+        TEST_ORG = REACTION_COMMANDS.register(StringsRM.RCMA_Prefix+"test", () -> new TestReaction(new ResourceLocation(StringsRM.testRC),true));
 
 
 }

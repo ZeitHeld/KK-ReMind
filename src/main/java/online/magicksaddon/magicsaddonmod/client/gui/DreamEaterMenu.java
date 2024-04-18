@@ -3,6 +3,8 @@ package online.magicksaddon.magicsaddonmod.client.gui;
 import java.awt.Color;
 
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.client.event.sound.PlaySoundEvent;
+import net.minecraftforge.client.event.sound.SoundEvent;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.MenuBackground;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.buttons.MenuButton;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
@@ -23,6 +25,10 @@ public class DreamEaterMenu extends MenuBackground {
     protected void action(String string) {
         if (string.equals("back"))
         	GUIHelperRM.openAddonMenu();
+    }
+
+    protected void menuMusic(){
+        return;
     }
 
     @Override
