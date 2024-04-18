@@ -55,7 +55,6 @@ public class StringsRM {
 
         // Reaction Commands
         riskchargeRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"riskcharge",
-        testRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"test",
 
 
         //Keyblades
@@ -105,6 +104,5 @@ public class StringsRM {
         Gui_Menu_Button_Prestige = StringsRM.MENU_Prefix + ".prestige",
         Gui_Menu_Button_PrestigeLevel = StringsRM.MENU_Prefix + ".prestigeLevel",
         Gui_Menu_Button_PrestigeConfirm = StringsRM.MENU_Prefix +".prestigeConfirm",
-        Gui_Menu_Button_DreamEater = StringsRM.MENU_Prefix + ".dreamEater",
-        Gui_Menu_Button_Credits = StringsRM.MENU_Prefix + ".creditsScreen";
+        Gui_Menu_Button_DreamEater = StringsRM.MENU_Prefix + ".dreamEater";
 }
