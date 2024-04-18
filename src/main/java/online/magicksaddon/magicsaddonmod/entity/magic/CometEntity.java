@@ -105,7 +105,7 @@ public class CometEntity extends ThrowableProjectile {
                                                                 e.invulnerableTime = 0;
                                                         }
                                                 }
-                                                this.level().explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, Level.ExplosionInteraction.NONE);
+                                                level().explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, Level.ExplosionInteraction.NONE);
                                                 remove(RemovalReason.KILLED);
 
                                         }
