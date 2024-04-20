@@ -65,7 +65,7 @@ public class DarkMineEntity extends ThrowableProjectile {
     @Override
     public void tick() {
         if (this.tickCount > maxTicks) {
-            level().explode(this, this.blockPosition().getX(),this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), 3,false, Level.ExplosionInteraction.NONE);
+            level().explode(this.getOwner(), this.blockPosition().getX(),this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), 3,false, Level.ExplosionInteraction.NONE);
             this.remove(RemovalReason.KILLED);
         }
 
@@ -76,7 +76,7 @@ public class DarkMineEntity extends ThrowableProjectile {
             level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.5F,0F,0.5F),1F),getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
             level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.5F,0F,1F),1F),getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
             level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.2F,0F,0F),1F),getX() + level().random.nextDouble() - 0.55D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.55D, 0, 0, 0);
-        if(tickCount > 7){
+        if(tickCount > 8){
             setDeltaMovement(0,0,0);
         }
 
@@ -117,7 +117,7 @@ public class DarkMineEntity extends ThrowableProjectile {
                                 e.invulnerableTime = 0;
                             }
                         }
-                        this.level().explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, Level.ExplosionInteraction.NONE);
+                        level().explode(this.getOwner(), this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, Level.ExplosionInteraction.NONE);
 
                         remove(RemovalReason.KILLED);
 
@@ -126,17 +126,7 @@ public class DarkMineEntity extends ThrowableProjectile {
             }
 
             if (brtResult != null) {
-                if (this.getOwner() instanceof Player) {
-                    float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.2F : 2;
-                    List<LivingEntity> targetList = Utils.getLivingEntitiesInRadiusExcludingParty((Player) this.getOwner(), this, radius, radius, radius);
-                    System.out.println(targetList);
-                    for (LivingEntity e : targetList) {
-                        e.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg);
-                    }
-                }
-                this.level().explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, Level.ExplosionInteraction.NONE);
-
-                remove(RemovalReason.KILLED);
+                setDeltaMovement(0,0,0);
             }
         }
 

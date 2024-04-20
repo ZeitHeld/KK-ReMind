@@ -108,7 +108,7 @@ public class RuinEntity extends ThrowableProjectile {
 	                            e.invulnerableTime = 0;
 	                        }
                         }
-                        this.level().explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, ExplosionInteraction.NONE);
+                        this.level().explode(this.getOwner(), this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, ExplosionInteraction.NONE);
 
                         remove(RemovalReason.KILLED);
 
@@ -129,7 +129,7 @@ public class RuinEntity extends ThrowableProjectile {
 						e.invulnerableTime = 0;
 					}
 				}
-                this.level().explode(this, this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, ExplosionInteraction.NONE);
+                this.level().explode(this.getOwner(), this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, ExplosionInteraction.NONE);
 
 				remove(RemovalReason.KILLED);
 			}
