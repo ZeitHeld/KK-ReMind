@@ -38,7 +38,7 @@ public class LightBeamRC extends ReactionCommand {
             float dmgmult = ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.lightBoost) * 0.2F;
 
 
-            playerData.remFP(10);
+            playerData.setFP(playerData.getFP() - 40);
 
             globalData.setRCCooldownTicks(40);
             player.level().playSound(null, player.blockPosition(), ModSoundsRM.LIGHT_BEAM.get(), SoundSource.PLAYERS, 1F, 1F);
