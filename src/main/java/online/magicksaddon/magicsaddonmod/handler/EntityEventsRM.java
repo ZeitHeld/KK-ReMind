@@ -8,6 +8,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -23,6 +24,8 @@ import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
 import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
+import online.magicksaddon.magicsaddonmod.network.stc.SCSyncGlobalCapabilityToAllPacketRM;
+import org.apache.logging.log4j.core.jmx.Server;
 
 public class EntityEventsRM {
 	
@@ -109,6 +112,16 @@ public class EntityEventsRM {
 		}
 
 		if (globalData != null) {
+
+			// RC Cooldown mechanic
+
+			if (globalData.getRCCooldownTicks() > 0){
+				globalData.setRCCooldownTicks(globalData.getRCCooldownTicks() - 1);
+				//if (globalData.getRCCooldownTicks() <= 0){
+
+				//}
+			}
+
 			// Spells go Down Below
 			if(globalData.getStepTicks() > 0) {
 				globalData.remStepTicks(1);
@@ -191,6 +204,8 @@ public class EntityEventsRM {
 
 		}
 	}
+
+
 	
 	@SubscribeEvent
 	public void onDeath(LivingDeathEvent event){

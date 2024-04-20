@@ -18,6 +18,8 @@ import online.kingdomkeys.kingdomkeys.client.render.magic.InvisibleEntityRendere
 import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.client.model.*;
 import online.magicksaddon.magicsaddonmod.client.model.mob.chirithyModel;
+import online.magicksaddon.magicsaddonmod.client.model.reactioncommand.DarkMineModel;
+import online.magicksaddon.magicsaddonmod.client.model.reactioncommand.LightBeamModel;
 import online.magicksaddon.magicsaddonmod.client.render.BalloonEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.BalloongaEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.CometEntityRenderer;
@@ -25,9 +27,13 @@ import online.magicksaddon.magicsaddonmod.client.render.HolyEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.RuinEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.UltimaEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.mob.ChirithyRenderer;
+import online.magicksaddon.magicsaddonmod.client.render.reactioncommand.LightBeamEntityRenderer;
+import online.magicksaddon.magicsaddonmod.client.render.reactioncommand.DarkMineEntityRenderer;
 import online.magicksaddon.magicsaddonmod.client.render.shotlock.BioShotEntityRenderer;
 import online.magicksaddon.magicsaddonmod.entity.magic.*;
 import online.magicksaddon.magicsaddonmod.entity.mob.ChirithyEntity;
+import online.magicksaddon.magicsaddonmod.entity.reactioncommand.DarkMineEntity;
+import online.magicksaddon.magicsaddonmod.entity.reactioncommand.LightBeamEntity;
 import online.magicksaddon.magicsaddonmod.entity.shotlock.BioBarrageCoreEntity;
 import online.magicksaddon.magicsaddonmod.entity.shotlock.BioBarrageShotEntity;
 import online.magicksaddon.magicsaddonmod.entity.shotlock.BubbleBlasterCoreEntity;
@@ -38,6 +44,7 @@ import online.magicksaddon.magicsaddonmod.entity.shotlock.ThunderstormCoreEntity
 public class ModEntitiesRM {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ENTITY_TYPES, KingdomKeysReMind.MODID);
 
+    // Magic
     public static final RegistryObject<EntityType<HolyEntity>> TYPE_HOLY = createEntityType(HolyEntity::new, HolyEntity::new, MobCategory.MISC,"entity_holy", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<RuinEntity>> TYPE_RUIN = createEntityType(RuinEntity::new, RuinEntity::new, MobCategory.MISC,"entity_ruin", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<BalloonEntity>> TYPE_BALLOON = createEntityType(BalloonEntity::new, BalloonEntity::new, MobCategory.MISC, "entity_balloon", 0.5F, 0.5F);
@@ -49,6 +56,7 @@ public class ModEntitiesRM {
     public static final RegistryObject<EntityType<SilenceEntity>> TYPE_SILENCE = createEntityType(SilenceEntity::new, SilenceEntity::new, MobCategory.MISC,"entity_silence", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<WarpEntity>> TYPE_WARP = createEntityType(WarpEntity::new, WarpEntity::new, MobCategory.MISC,"entity_warp", 0.5F, 0.5F);
 
+    // Shotlocks
     public static final RegistryObject<EntityType<BioBarrageShotEntity>> TYPE_BIO_SHOT = createEntityType(BioBarrageShotEntity::new, BioBarrageShotEntity::new, MobCategory.MISC, "entity_bio_shot", 0.5F, 0.5F);
 
     public static final RegistryObject<EntityType<FlameSalvoCoreEntity>> TYPE_SHOTLOCK_FLAME_SALVO = createEntityType(FlameSalvoCoreEntity::new, FlameSalvoCoreEntity::new, MobCategory.MISC, "entity_shotlock_flame_salvo_core", 0.5F, 0.5F);
@@ -57,6 +65,11 @@ public class ModEntitiesRM {
     public static final RegistryObject<EntityType<BioBarrageCoreEntity>> TYPE_SHOTLOCK_BIO_BARRAGE = createEntityType(BioBarrageCoreEntity::new, BioBarrageCoreEntity::new, MobCategory.MISC, "entity_shotlock_bio_barrage_core", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<MeteorShowerCoreEntity>> TYPE_SHOTLOCK_METEOR_SHOWER = createEntityType(MeteorShowerCoreEntity::new, MeteorShowerCoreEntity::new, MobCategory.MISC, "entity_shotlock_meteor_shower_core", 0.5F, 0.5F);
 
+    // Reaction Commands
+    public static final RegistryObject<EntityType<LightBeamEntity>> TYPE_LIGHT_BEAM = createEntityType(LightBeamEntity::new, LightBeamEntity::new, MobCategory.MISC, "entity_rc_light_beam", 1.5F,4F);
+    public static final RegistryObject<EntityType<DarkMineEntity>> TYPE_DARK_MINE = createEntityType(DarkMineEntity::new, DarkMineEntity::new, MobCategory.MISC, "entity_rc_dark_mine", 1.75F,2.5F);
+
+    // Dream Eaters
     public static final RegistryObject<EntityType<ChirithyEntity>> TYPE_CHIRITHY = createEntityType(ChirithyEntity::new, ChirithyEntity::new, MobCategory.MONSTER, "chirithy", 0.5F, 0.7F);
 
 
@@ -83,9 +96,13 @@ public class ModEntitiesRM {
         event.registerLayerDefinition(WarpModel.LAYER_LOCATION, WarpModel::createBodyLayer);
 
         event.registerLayerDefinition(BerserkAuraModel.LAYER_LOCATION, BerserkAuraModel::createBodyLayer);
+        event.registerLayerDefinition(AutoLifeModel.LAYER_LOCATION, AutoLifeModel::createBodyLayer);
+
+        event.registerLayerDefinition(LightBeamModel.LAYER_LOCATION, LightBeamModel::createBodyLayer);
+        event.registerLayerDefinition(DarkMineModel.LAYER_LOCATION, DarkMineModel::createBodyLayer);
 
         event.registerLayerDefinition(chirithyModel.LAYER_LOCATION, chirithyModel::createBodyLayer);
-        event.registerLayerDefinition(AutoLifeModel.LAYER_LOCATION, AutoLifeModel::createBodyLayer);
+
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -109,6 +126,9 @@ public class ModEntitiesRM {
         event.registerEntityRenderer(TYPE_SHOTLOCK_BIO_BARRAGE.get(), InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_SHOTLOCK_THUNDERSTORM.get(), InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_SHOTLOCK_METEOR_SHOWER.get(), InvisibleEntityRenderer::new);
+
+        event.registerEntityRenderer(TYPE_LIGHT_BEAM.get(), LightBeamEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_DARK_MINE.get(), DarkMineEntityRenderer::new);
 
         event.registerEntityRenderer(TYPE_CHIRITHY.get(),ChirithyRenderer::new);
 

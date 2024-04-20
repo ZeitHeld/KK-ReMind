@@ -1,5 +1,6 @@
 package online.magicksaddon.magicsaddonmod.handler;
 
+import net.minecraft.core.Direction;
 import org.joml.Vector3f;
 
 import net.minecraft.core.particles.DustParticleOptions;
@@ -49,6 +50,11 @@ public class ClientEventsRM {
 	
 						}
 					}
+
+					// When I can get particles in other hand
+					//if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")){
+						//player.level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.5F,0F,0.5F),1F),player.getX(), player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.5D, 0, 0, 0);
+					//}
 				}
 			}
 		}

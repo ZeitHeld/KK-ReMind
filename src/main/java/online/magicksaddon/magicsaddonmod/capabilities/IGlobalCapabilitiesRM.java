@@ -74,5 +74,9 @@ public interface IGlobalCapabilitiesRM extends INBTSerializable<CompoundTag> {
     void addNGPMysticCount(int i);
     void addNGPGuardianCount(int i);
 
+    int getRCCooldownTicks();
+    void setRCCooldownTicks(int ticks);
+    void remRCCooldownTicks(int ticks);
+
 
 }

@@ -77,6 +77,8 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
     private int stepTicks;
     private byte stepType;
 
+    private int RCCooldown;
+
     private int riskchargeCount;
 
     //Haste
@@ -319,6 +321,21 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
             NGPlusGuardianCount += i;
         }
 
+    @Override
+    public int getRCCooldownTicks() {
+        return this.RCCooldown;
+    }
+
+    @Override
+    public void setRCCooldownTicks(int ticks) {
+        this.RCCooldown = ticks;
+    }
+
+    @Override
+    public void remRCCooldownTicks(int ticks) {
+        this.RCCooldown = Math.max(RCCooldown - ticks, 0);
+
+    }
 
 
 }
