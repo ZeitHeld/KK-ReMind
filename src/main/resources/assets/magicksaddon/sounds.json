@@ -113,6 +113,20 @@
         "sounds": [
           "magicksaddon:dispel"
         ]
+      },
+      "light_beam": {
+        "sounds": [
+          "magicksaddon:light_beam"
+        ]
+      },
+      "dark_mine": {
+        "sounds": [
+          "magicksaddon:dark_mine"
+        ]
+      },
+      "dark_mine_alive": {
+        "sounds": [
+          "magicksaddon:dark_mine_alive"
+          ]
       }
-
   }

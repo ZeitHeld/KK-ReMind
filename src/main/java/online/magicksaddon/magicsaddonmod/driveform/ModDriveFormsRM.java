@@ -19,6 +19,6 @@ public class ModDriveFormsRM {
 
         // Forms list
             RAGE = DRIVE_FORMS.register(StringsRM.DFMA_Prefix + "rage", () -> new DriveFormRage(KingdomKeysReMind.MODID + ":"+ StringsRM.DFMA_Prefix + "rage", order++, new ResourceLocation(KingdomKeysReMind.MODID, "textures/models/armor/rage.png"), false, false)),
-            DARK = DRIVE_FORMS.register(StringsRM.DFMA_Prefix + "dark", () -> new DriveFormDark(KingdomKeysReMind.MODID + ":"+ StringsRM.DFMA_Prefix + "dark", order++, new ResourceLocation(KingdomKeysReMind.MODID, "textures/models/armor/dark_mode.png"), false, false)),
-            LIGHT = DRIVE_FORMS.register(StringsRM.DFMA_Prefix + "light", () -> new DriveFormLight(KingdomKeysReMind.MODID + ":"+ StringsRM.DFMA_Prefix + "light", order++, new ResourceLocation(KingdomKeysReMind.MODID, "textures/models/armor/light.png"), false, false));
+            DARK = DRIVE_FORMS.register(StringsRM.DFMA_Prefix + "dark", () -> new DriveFormDark(KingdomKeysReMind.MODID + ":"+ StringsRM.DFMA_Prefix + "dark", order++, new ResourceLocation(KingdomKeysReMind.MODID, "textures/models/armor/dark_mode.png"), false, true)),
+            LIGHT = DRIVE_FORMS.register(StringsRM.DFMA_Prefix + "light", () -> new DriveFormLight(KingdomKeysReMind.MODID + ":"+ StringsRM.DFMA_Prefix + "light", order++, new ResourceLocation(KingdomKeysReMind.MODID, "textures/models/armor/light.png"), false, true));
 }

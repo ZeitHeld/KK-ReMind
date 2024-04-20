@@ -34,7 +34,10 @@ public class ModSoundsRM {
             WARPHITPLAYER = registerSound("warp_hit_player"),
             ESUNA = registerSound("esuna"),
 
-            DISPEL = registerSound("dispel");
+            DISPEL = registerSound("dispel"),
+            LIGHT_BEAM = registerSound("light_beam"),
+            DARK_MINE = registerSound("dark_mine"),
+            DARK_MINE_ALIVE = registerSound("dark_mine_alive");
 
 
     public static RegistryObject<SoundEvent> registerSound(String name) {
