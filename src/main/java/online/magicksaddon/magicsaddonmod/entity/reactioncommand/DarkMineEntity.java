@@ -15,6 +15,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
+import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.damagesource.DarknessDamageSource;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
@@ -112,6 +113,7 @@ public class DarkMineEntity extends ThrowableProjectile {
                     }
                     if(p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { //If caster is not in a party || the party doesn't have the target in it || the party has FF on
                         float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) : 2;
+                        Player player = (Player) this.getOwner();
                         //target.hurt(DarknessDamageSource.getDarknessDamage(this, this.getOwner()), dmg * dmgMult);
                         if(this.getOwner() instanceof Player) {
                             List<LivingEntity> targetList = Utils.getLivingEntitiesInRadiusExcludingParty((Player) this.getOwner(), this, radius,radius,radius);
@@ -121,6 +123,9 @@ public class DarkMineEntity extends ThrowableProjectile {
                             }
                         }
                         level().explode(this.getOwner(), this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, Level.ExplosionInteraction.NONE);
+                        IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+                        playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (2)));
+
 
                         remove(RemovalReason.KILLED);
 

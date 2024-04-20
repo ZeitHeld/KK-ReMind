@@ -14,6 +14,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
+import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
@@ -93,7 +94,7 @@ public class LightBeamEntity extends ThrowableProjectile {
 
             if (ertResult != null && ertResult.getEntity() instanceof LivingEntity) {
                 LivingEntity target = (LivingEntity) ertResult.getEntity();
-
+                Player player = (Player) this.getOwner();
                 if (target != getOwner()) {
                     Party p = null;
                     if (getOwner() != null) {
@@ -101,9 +102,11 @@ public class LightBeamEntity extends ThrowableProjectile {
                     }
                     if (p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())) { //If caster is not in a party || the party doesn't have the target in it || the party has FF on
                         float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) : 2;
-                        System.out.println(dmg);
+
                         target.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg);
                     }
+                    IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+                    playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (2)));
 
                 }
             }
