@@ -68,7 +68,7 @@
   "ability.ability_darkness_boost.name": "Darkness Boost",
   "ability.ability_darkness_boost.desc": "Increases damage done with dark-based attacks.",
   "ability.ability_dark_power.name": "Dark Power",
-  "ability.ability_dark_power.desc": "Allows you to embrace the power of Darkness and access Dark Mode.",
+  "ability.ability_dark_power.desc": "Allows you to embrace the power of Darkness and access Dark Form.",
   "ability.ability_way_to_light.name": "Way to Light",
   "ability.ability_way_to_light.desc": "Allows you to embrace the power of Light and access Light Form.",
   "ability.ability_light_boost.name": "Light Boost",
@@ -111,7 +111,7 @@
   "item.magicksaddon.meteor_shower_shotlock": "Meteor Shower Shotlock",
 
   "form.form_rage.name": "Rage Form",
-  "form.form_dark.name": "Dark Mode",
+  "form.form_dark.name": "Dark Form",
   "form.form_light.name": "Light Form",
 
   "item.magicksaddon.xephiro_keyblade": "Sanguine Gaze",
