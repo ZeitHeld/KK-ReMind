@@ -25,12 +25,14 @@ public class StringsRM {
         rageForm = StringsRM.DFMA_Prefix+"rage",
         darkMode = StringsRM.DFMA_Prefix+"dark",
         light = StringsRM.DFMA_Prefix+"light",
+        twilight = StringsRM.DFMA_Prefix+"twilight",
 
 
         //Ability List
         darkPassage = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"dark_passage",
         darknessBoost = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"darkness_boost",
         lightBoost = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"light_boost",
+        mpBoost = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"mp_boost",
         rageAwakened = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"rage_awakened",
         darkPower = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"dark_power",
         wayToLight = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"way_to_light",
@@ -43,6 +45,7 @@ public class StringsRM {
         hpWalker = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"hp_walker",
         mpWalker = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"mp_walker",
         expWalker = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"exp_walker",
+        mpShield = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"mp_shield",
         riskCharge = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"riskcharge",
 
         // Shotlocks
@@ -58,6 +61,7 @@ public class StringsRM {
         testRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"test",
         LightBeamRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"light_beam",
         DarkMineRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"dark_mine",
+        TwilightRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"twilight",
         XemnasRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"xemnas",
         XaldinRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"xaldin",
         XigbarRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"xigbar",

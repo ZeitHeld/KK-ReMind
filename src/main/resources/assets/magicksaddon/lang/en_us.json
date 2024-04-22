@@ -95,6 +95,10 @@
   "ability.ability_hp_walker.desc": "Recover HP as you walk or run. Stack the ability to increase the effect.",
   "ability.ability_mp_walker.desc": "Recover MP as you walk or run. MP recharging speed remains unchanged. Stack the ability to increase the effect.",
   "ability.ability_exp_walker.desc": "Gain EXP as you walk or run.",
+  "ability.ability_mp_shield.name": "Mana Shield",
+  "ability.ability_mp_shield.desc": "When you take damage, you will lose MP instead unless you're in MP Recharge.",
+  "ability.ability_mp_boost.name": "MP Boost",
+  "ability.ability_mp_boost.desc": "I wonder what it does...",
   "ability.ability_riskcharge.name": "Riskcharge",
   "ability.ability_riskcharge.desc": "Unleashes fighting spirit by pressing your Reaction Command button, consuming HP in the process. This empowers your strength.",
 
@@ -113,6 +117,7 @@
   "form.form_rage.name": "Rage Form",
   "form.form_dark.name": "Dark Form",
   "form.form_light.name": "Light Form",
+  "form.form_twilight.name": "Twilight Form",
 
   "item.magicksaddon.xephiro_keyblade": "Sanguine Gaze",
   "item.magicksaddon.pureblood": "Pureblood",
@@ -155,6 +160,7 @@
   "reactioncommand.rc_riskcharge.name": "Riskcharge",
   "reactioncommand.rc_light_beam.name": "Light Charge",
   "reactioncommand.rc_dark_mine.name": "Dark Mine",
+  "reactioncommand.rc_twilight.name": "????",
   "reactioncommand.rc_test.name": "Does nothing"
 
 

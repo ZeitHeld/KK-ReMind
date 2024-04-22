@@ -16,8 +16,10 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
+import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
@@ -28,7 +30,9 @@ import online.magicksaddon.magicsaddonmod.network.stc.SCSyncGlobalCapabilityToAl
 import org.apache.logging.log4j.core.jmx.Server;
 
 public class EntityEventsRM {
-	
+
+	public int ticks;
+
 	@SubscribeEvent
 	public void onPlayerClone(PlayerEvent.Clone event) {
 		Player oPlayer = event.getOriginal();
@@ -69,6 +73,13 @@ public class EntityEventsRM {
 		}		
 	}
 
+	private void updateEquippedAbilities(Player player){
+		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+
+	}
+
+
+
 
 	@SubscribeEvent
 	public void onLivingUpdate(LivingEvent.LivingTickEvent event) {
@@ -106,6 +117,12 @@ public class EntityEventsRM {
 				if (!playerData.getActiveDriveForm().equals("magicksaddon:form_dark")) {
 					playerData.getStrengthStat().removeModifier("Riskcharge");
 				}
+
+				// MP Boost
+
+
+
+
 
 			}
 
@@ -253,6 +270,28 @@ public class EntityEventsRM {
 			}
 
 			//Protect Abilities
+
+			// MP Shield
+			if (playerData.isAbilityEquipped(StringsRM.mpShield) && playerData.getMP() > 0 && !playerData.getRecharge()){
+				float DMGTaken = event.getAmount();
+
+				System.out.println(DMGTaken);
+
+				event.setCanceled(true);
+				playerData.remMP(DMGTaken);
+				float mpRageModifier = DMGTaken / (1+ playerData.getNumberOfAbilitiesEquipped(Strings.mpRage));
+				if (playerData.isAbilityEquipped(Strings.mpRage) && playerData.getMP() > 10){
+					//playerData.addMP(DMGTaken / (1+ playerData.getNumberOfAbilitiesEquipped(Strings.mpRage)));
+					playerData.addMP(mpRageModifier);
+					System.out.println(mpRageModifier);
+					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
+				}
+				if (playerData.isAbilityEquipped(Strings.damageDrive)){
+					playerData.addDP((DMGTaken * 0.2F) * playerData.getNumberOfAbilitiesEquipped(Strings.damageDrive));
+					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
+				}
+
+			}
 		}
 	}
 
