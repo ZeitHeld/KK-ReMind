@@ -135,8 +135,8 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     // KK Implementation
-	implementation fg.deobf("curse.maven:kingdom-keys-re-coded-242862:5260721")
-   // implementation fg.deobf("kingdomkeys:kingdomkeys:1.20.1-2.3.8.1")
+	//implementation fg.deobf("curse.maven:kingdom-keys-re-coded-242862:5260721")
+    implementation fg.deobf("kingdomkeys:kingdomkeys:1.20.1-2.3.9.2")
    
     
 }
