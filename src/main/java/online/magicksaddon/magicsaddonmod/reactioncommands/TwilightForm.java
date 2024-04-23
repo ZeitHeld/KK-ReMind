@@ -10,11 +10,13 @@ import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
 import online.kingdomkeys.kingdomkeys.item.ModItems;
+import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.reactioncommands.ReactionCommand;
 import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
+import online.magicksaddon.magicsaddonmod.driveform.DriveFormTwilight;
 import online.magicksaddon.magicsaddonmod.entity.reactioncommand.DarkMineEntity;
 import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
@@ -34,6 +36,7 @@ public class TwilightForm extends ReactionCommand {
             IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
             IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
             playerData.setActiveDriveForm("magicksaddon:form_twilight");
+
         }
     }
 
@@ -43,17 +46,20 @@ public class TwilightForm extends ReactionCommand {
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
         if (playerData != null) {
-            if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark") || playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {
-                if (playerData.getDriveFormLevel("magicksaddon:form_dark") == 7 && playerData.getDriveFormLevel("magicksaddon:form_light") == 7) {
-                        playerData.addVisibleDriveForm("magicksaddon:form_twilight");
-                        playerData.remDP(400);
-                        
-
-                        return false;
+            if (playerData.getDriveFormLevel("magicksaddon:form_dark") == 7 && playerData.getDriveFormLevel("magicksaddon:form_light") == 7) {
+                //System.out.println(playerData.getEquippedKeychain(DriveForm.NONE));
+                //System.out.println(playerData.getEquippedKeychain(DriveForm.SYNCH_BLADE));
+                if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")) {
+                    if (playerData.getEquippedKeychain(DriveForm.NONE).equals("kingdomkeys:oblivion_chain")){
+                        return true;
+                    }
+                } else if (playerData.getActiveDriveForm().equals("magicksaddon:form_light")) {
+                    if (playerData.getEquippedKeychain(DriveForm.NONE).equals("kingdomkeys:oathkeeper_chain")){
+                        return true;
                     }
                 }
             }
-            playerData.remVisibleDriveForm("magicksaddon:form_twilight");
+        }
             return false;
         }
     }

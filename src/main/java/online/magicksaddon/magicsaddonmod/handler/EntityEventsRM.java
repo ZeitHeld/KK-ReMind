@@ -70,7 +70,11 @@ public class EntityEventsRM {
 			playerData.addVisibleDriveForm(formName);
 		} else { // If ability to use dark form is NOT equipped
 			playerData.remVisibleDriveForm(formName);
-		}		
+		}
+
+		if(playerData.getDriveFormLevel("magicksaddon:form_dark") == 7 && playerData.getDriveFormLevel("magicksaddon:form_light") == 7){
+			playerData.setDriveFormLevel("magicksaddon:form_twilight", 1);
+		}
 	}
 
 	private void updateEquippedAbilities(Player player){
