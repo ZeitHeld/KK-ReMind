@@ -39,10 +39,10 @@ public class TwilightForm extends ReactionCommand {
             IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
             playerData.setActiveDriveForm(KingdomKeysReMind.MODID + ":" + StringsRM.twilight);
             if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.oblivionChain.get()) {
-                playerData.setNewKeychain(KingdomKeysReMind.MODID + ":" + StringsRM.twilight, ModItems.oathkeeperChain.get());
+                playerData.setNewKeychain(new ResourceLocation(KingdomKeysReMind.MODID + ":" + StringsRM.twilight), ModItems.oathkeeperChain.get());
             }
             if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.oathkeeperChain.get()) {
-                playerData.setNewKeychain(KingdomKeysReMind.MODID + ":" + StringsRM.twilight, ModItems.oblivionChain.get());
+                playerData.setNewKeychain(new ResourceLocation(KingdomKeysReMind.MODID + ":" + StringsRM.twilight), ModItems.oblivionChain.get());
             }
         }
     }
