@@ -60,10 +60,8 @@ public class LightBeamRC extends ReactionCommand {
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
         if(playerData != null){
-            if(playerData.getActiveDriveForm().equals("magicksaddon:form_light") && globalData.getRCCooldownTicks() == 0){
-
+            if(playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.light) && globalData.getRCCooldownTicks() == 0){
                     return true;
-
             }
         }
         return false;

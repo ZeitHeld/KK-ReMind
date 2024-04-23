@@ -45,4 +45,7 @@ public class ModAbilitiesRM extends ModAbilities{
         MP_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"mp_walker", () -> new Ability(new ResourceLocation(StringsRM.mpWalker),10,Ability.AbilityType.SUPPORT, order++)),
         EXP_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"exp_walker", () -> new Ability(new ResourceLocation(StringsRM.expWalker),10,Ability.AbilityType.SUPPORT, order++));
 
+        // Twilight (Double) Form Exclusive Abilities
+
+
 }

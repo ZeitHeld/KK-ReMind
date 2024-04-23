@@ -114,9 +114,9 @@
   "item.magicksaddon.bio_barrage_shotlock": "Bio Barrage Shotlock",
   "item.magicksaddon.meteor_shower_shotlock": "Meteor Shower Shotlock",
 
-  "form.form_rage.name": "Rage Form",
-  "form.form_dark.name": "Dark Form",
-  "form.form_light.name": "Light Form",
+  "form.form_rage.name": "Rage",
+  "form.form_dark.name": "Dark",
+  "form.form_light.name": "Light",
   "form.form_twilight.name": "Twilight Form",
 
   "item.magicksaddon.xephiro_keyblade": "Sanguine Gaze",
@@ -160,7 +160,8 @@
   "reactioncommand.rc_riskcharge.name": "Riskcharge",
   "reactioncommand.rc_light_beam.name": "Light Charge",
   "reactioncommand.rc_dark_mine.name": "Dark Mine",
-  "reactioncommand.rc_twilight.name": "????",
+  "reactioncommand.rc_twilight.name": "Twilight's Embrace",
+  "reactioncommand.rc_dual_shot.name": "Dual Shot",
   "reactioncommand.rc_test.name": "Does nothing"
 
 

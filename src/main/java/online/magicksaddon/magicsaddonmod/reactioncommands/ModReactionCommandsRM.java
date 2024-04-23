@@ -15,6 +15,7 @@ public class ModReactionCommandsRM {
         TEST_ORG = REACTION_COMMANDS.register(StringsRM.RCMA_Prefix+"test", () -> new TestReaction(new ResourceLocation(StringsRM.testRC),false)),
         LIGHT_BEAM = REACTION_COMMANDS.register(StringsRM.RCMA_Prefix+"light_beam", () -> new LightBeamRC(new ResourceLocation(StringsRM.LightBeamRC), true)),
         DARK_MINE_RC = REACTION_COMMANDS.register(StringsRM.RCMA_Prefix+"dark_mine", () -> new DarkMineRC(new ResourceLocation(StringsRM.DarkMineRC),true)),
+        DUAL_SHOT_RC = REACTION_COMMANDS.register(StringsRM.RCMA_Prefix+"dual_shot", () -> new DualShotRC(new ResourceLocation(StringsRM.DualShotRC),true)),
         TWILIGHT_FORM = REACTION_COMMANDS.register(StringsRM.RCMA_Prefix+"twilight", () -> new TwilightFormRC(new ResourceLocation(StringsRM.TwilightRC),true)),
         XEMNAS_RC = REACTION_COMMANDS.register(StringsRM.RCMA_Prefix+"xemnas", () -> new XemnasRC(new ResourceLocation(StringsRM.XemnasRC),true));
 
