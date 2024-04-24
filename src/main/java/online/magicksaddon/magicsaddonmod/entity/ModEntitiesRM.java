@@ -33,6 +33,7 @@ import online.magicksaddon.magicsaddonmod.client.render.shotlock.BioShotEntityRe
 import online.magicksaddon.magicsaddonmod.entity.magic.*;
 import online.magicksaddon.magicsaddonmod.entity.mob.ChirithyEntity;
 import online.magicksaddon.magicsaddonmod.entity.reactioncommand.DarkMineEntity;
+import online.magicksaddon.magicsaddonmod.entity.reactioncommand.DualShotEntity;
 import online.magicksaddon.magicsaddonmod.entity.reactioncommand.LightBeamEntity;
 import online.magicksaddon.magicsaddonmod.entity.shotlock.BioBarrageCoreEntity;
 import online.magicksaddon.magicsaddonmod.entity.shotlock.BioBarrageShotEntity;
@@ -68,6 +69,7 @@ public class ModEntitiesRM {
     // Reaction Commands
     public static final RegistryObject<EntityType<LightBeamEntity>> TYPE_LIGHT_BEAM = createEntityType(LightBeamEntity::new, LightBeamEntity::new, MobCategory.MISC, "entity_rc_light_beam", 1.5F,4F);
     public static final RegistryObject<EntityType<DarkMineEntity>> TYPE_DARK_MINE = createEntityType(DarkMineEntity::new, DarkMineEntity::new, MobCategory.MISC, "entity_rc_dark_mine", 1.75F,2.5F);
+    public static final RegistryObject<EntityType<DualShotEntity>> TYPE_DUAL_SHOT = createEntityType(DualShotEntity::new, DualShotEntity::new, MobCategory.MISC, "entity_rc_dual_shot", 1.5F,1.5F);
 
     // Dream Eaters
     public static final RegistryObject<EntityType<ChirithyEntity>> TYPE_CHIRITHY = createEntityType(ChirithyEntity::new, ChirithyEntity::new, MobCategory.MONSTER, "chirithy", 0.5F, 0.7F);
@@ -129,6 +131,7 @@ public class ModEntitiesRM {
 
         event.registerEntityRenderer(TYPE_LIGHT_BEAM.get(), LightBeamEntityRenderer::new);
         event.registerEntityRenderer(TYPE_DARK_MINE.get(), DarkMineEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_DUAL_SHOT.get(),InvisibleEntityRenderer::new);
 
         event.registerEntityRenderer(TYPE_CHIRITHY.get(),ChirithyRenderer::new);
 
