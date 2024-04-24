@@ -13,9 +13,11 @@ import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 import org.joml.Vector3f;
 
 public class DualShotEntity extends ThrowableProjectile {
-    int maxTicks = 100;
+    int maxTicks = 40;
     float dmgMult = 1;
-    static double a = 0;
+
+    static int ticks = 0;
+    static double a = 3600;
     LivingEntity lockOnEntity;
     public DualShotEntity(EntityType<? extends ThrowableProjectile> type, Level world) {
         super(type, world);
@@ -55,37 +57,45 @@ public class DualShotEntity extends ThrowableProjectile {
     public void tick() {
         if (this.tickCount > maxTicks) {
             this.remove(RemovalReason.KILLED);
+            a = 3600;
         }
 
 
         if(tickCount > 0) {
 
             // Rotate
+            ticks++;
+            if (a > 0) {
 
-            //while (a < 0) {
-                a = 1800;
-                double r = 0.7D;
 
-                double cx = getX() + 1;
+                double r = 0.5D;
+
+                double cx = getX() + 0.2;
                 double cy = getY() + 1;
-                double cz = getZ() + 1;
+                double cz = getZ() + 0.2;
 
-                a -= 5;
+                a -= 9;
                 double x = cx + (r * Math.cos(Math.toRadians(a)));
+                double y = cy + (r * Math.cos(Math.toRadians(a)));
                 double z = cz + (r * Math.sin(Math.toRadians(a)));
 
-                double y = cy + (r * Math.sin(Math.toRadians(a)));
-                double y2 = cy + (r * Math.sin(Math.toRadians(-a)));
+
+
+
 
                 double x2 = cx + (r * Math.cos(Math.toRadians(-a)));
+                double y2 = cy + -(r * Math.cos(Math.toRadians(-a)));
                 double z2 = cz + (r * Math.sin(Math.toRadians(-a)));
 
+                //Light Particles
+                //level().addParticle(new DustParticleOptions(new Vector3f(1F,1F,1F), 1F), getX() + 0.5D, getY(), getZ() + 0.5D, 0, 1,0);
+                level().addParticle(new DustParticleOptions(new Vector3f(1F,1F,1F), 1F), x, y, z, 0, 0,0);
 
-                level().addParticle(new DustParticleOptions(new Vector3f(1F,1F,1F), 1F), x, y + level().random.nextDouble() - 0.2D, z, 0, 1,0);
-                level().addParticle(new DustParticleOptions(new Vector3f(0.25F,0F,0.45F), 1F), x2, y2, z2, 0, 1, 0);
-                //level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(1F, 1F, 1F), 1F), getX() + level().random.nextDouble() - 0.5D, getY(), getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
-                //level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.2F, 0.2F, 0.2F), 1F), getX() + level().random.nextDouble() - 0.5D, getY(), getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
-            //}
+                //Dark Particles
+                //level().addParticle(new DustParticleOptions(new Vector3f(0.25F,0F,0.45F), 1F), getX() - 0.5D, getY(), getZ() - 0.5D, 0, 1, 0);
+                level().addParticle(new DustParticleOptions(new Vector3f(0.25F,0F,0.45F), 1F), x2, y2, z2, 0, 0, 0);
+
+            }
             super.tick();
         }
     }
