@@ -70,9 +70,9 @@ public class DualShotEntity extends ThrowableProjectile {
 
                 double r = 0.5D;
 
-                double cx = getX() + 0.2;
-                double cy = getY() + 1;
-                double cz = getZ() + 0.2;
+                double cx = getX();
+                double cy = getY() + 0.5;
+                double cz = getZ();
 
                 a -= 9;
                 double x = cx + (r * Math.cos(Math.toRadians(a)));
