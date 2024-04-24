@@ -128,5 +128,15 @@
         "sounds": [
           "magicksaddon:dark_mine_alive"
           ]
+      },
+      "twilight_step": {
+        "sounds": [
+          "magicsaddon:twilight_step"
+        ]
+      },
+      "dual_shot": {
+        "sounds": [
+          "magicksaddon:dual_shot"
+        ]
       }
   }

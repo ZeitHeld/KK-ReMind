@@ -1,6 +1,7 @@
 package online.magicksaddon.magicsaddonmod.reactioncommands;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -12,6 +13,7 @@ import online.kingdomkeys.kingdomkeys.reactioncommands.ReactionCommand;
 import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
 import online.magicksaddon.magicsaddonmod.entity.reactioncommand.DualShotEntity;
 import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
@@ -27,8 +29,8 @@ public class DualShotRC extends ReactionCommand {
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
         float dmgmult = (ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.darknessBoost) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.lightBoost))  * 0.2F;
-        globalData.setRCCooldownTicks(40);
-        //playerData.setFP(playerData.getFP() - 40);
+        globalData.setRCCooldownTicks(60);
+        playerData.setFP(playerData.getFP() + 40);
 
         // Fire Dual Shot
 
@@ -36,11 +38,12 @@ public class DualShotRC extends ReactionCommand {
 
 
 
+
         ThrowableProjectile dualShot = new DualShotEntity(player.level(), player,dmgmult,lockOnEntity);
         dualShot.setPos(player.getX(), player.getY()+0.75,player.getZ());
         player.level().addFreshEntity(dualShot);
         dualShot.shootFromRotation(player, player.getXRot(),player.getYRot(),0,1.25F, 0);
-
+        player.level().playSound(null, player.blockPosition(), ModSoundsRM.DUAL_SHOT.get(), SoundSource.PLAYERS, 1F, 1F);
         // Sync Packet
         PacketHandlerRM.syncGlobalToAllAround(player, globalData);
 

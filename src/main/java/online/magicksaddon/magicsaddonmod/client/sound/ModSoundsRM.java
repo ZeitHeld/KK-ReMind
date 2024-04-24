@@ -37,7 +37,9 @@ public class ModSoundsRM {
             DISPEL = registerSound("dispel"),
             LIGHT_BEAM = registerSound("light_beam"),
             DARK_MINE = registerSound("dark_mine"),
-            DARK_MINE_ALIVE = registerSound("dark_mine_alive");
+            DARK_MINE_ALIVE = registerSound("dark_mine_alive"),
+            TWILIGHT_STEP = registerSound("twilight_step"),
+            DUAL_SHOT = registerSound("dual_shot");
 
 
     public static RegistryObject<SoundEvent> registerSound(String name) {

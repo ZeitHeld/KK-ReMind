@@ -61,7 +61,7 @@ public class InputHandlerRM {
 						player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
 						InputHandler.qrCooldown = 20;
 						//Insert Sound Here
-
+						 player.level().playSound(player, player.blockPosition(), ModSoundsRM.TWILIGHT_STEP.get(), SoundSource.PLAYERS, 1F, 1F);
 						event.setCanceled(true);
 					}
 					// Light Step
