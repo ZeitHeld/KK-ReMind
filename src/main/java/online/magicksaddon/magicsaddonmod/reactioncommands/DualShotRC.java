@@ -32,7 +32,7 @@ public class DualShotRC extends ReactionCommand {
 
         // Fire Dual Shot
         player.swing(InteractionHand.MAIN_HAND);
-        player.swing(InteractionHand.OFF_HAND);
+
 
         ThrowableProjectile dualShot = new DualShotEntity(player.level(), player,dmgmult,lockOnEntity);
         player.level().addFreshEntity(dualShot);

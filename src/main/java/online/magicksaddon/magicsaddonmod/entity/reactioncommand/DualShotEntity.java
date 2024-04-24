@@ -23,16 +23,16 @@ public class DualShotEntity extends ThrowableProjectile {
     }
 
     public DualShotEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-        super(ModEntitiesRM.TYPE_DRAIN.get(), world);
+        super(ModEntitiesRM.TYPE_DUAL_SHOT.get(), world);
     }
 
     public DualShotEntity(Level world) {
-        super(ModEntitiesRM.TYPE_DRAIN.get(), world);
+        super(ModEntitiesRM.TYPE_DUAL_SHOT.get(), world);
         this.blocksBuilding = true;
     }
 
     public DualShotEntity(Level world, LivingEntity player, float dmgMult, LivingEntity lockOnEntity) {
-        super(ModEntitiesRM.TYPE_DRAIN.get(), player, world);
+        super(ModEntitiesRM.TYPE_DUAL_SHOT.get(), player, world);
         this.dmgMult = dmgMult;
         this.lockOnEntity = lockOnEntity;
     }
