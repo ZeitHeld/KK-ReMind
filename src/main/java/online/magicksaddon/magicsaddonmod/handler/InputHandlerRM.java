@@ -50,17 +50,29 @@ public class InputHandlerRM {
 					int darkLevel = playerData.getDriveFormLevel("magicksaddon:form_dark");
 
 					// System.out.println(globalData.getStepTicks());
+					// Twilight Step
+					 if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.twilight)){
+						float yaw = player.getYRot();
+						float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
+						float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
+						double power = 7;
+						PacketHandlerRM.sendToServer(new CSSetStepTicksPacket(10, StringsRM.twilightStepType));
+						//
+						player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
+						InputHandler.qrCooldown = 20;
+						//Insert Sound Here
 
+						event.setCanceled(true);
+					}
 					// Light Step
-					if (playerData.isAbilityEquipped(StringsRM.lightStep) || playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID+":form_light")) {
+					else if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.light) || playerData.isAbilityEquipped(StringsRM.lightStep)  && !playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.darkMode) && !playerData.isAbilityEquipped(StringsRM.darkStep)) {
 						float yaw = player.getYRot();
 						float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
 						float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
 						double power = lightLevel;
 						PacketHandlerRM.sendToServer(new CSSetStepTicksPacket(10, StringsRM.lightStepType));
-
 						// Light Form
-						if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID+":form_light")) {
+						if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.light)) {
 							player.level().playSound(player, player.blockPosition(), ModSoundsRM.LIGHTSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
 							player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
 							InputHandler.qrCooldown = 20;
@@ -78,9 +90,10 @@ public class InputHandlerRM {
 						float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
 						float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
 						double power = darkLevel;
+
 						PacketHandlerRM.sendToServer(new CSSetStepTicksPacket(10, StringsRM.darkStepType));
 						// Dark Mode
-						if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID+":form_dark")) {
+						if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.darkMode)) {
 							player.level().playSound(player, player.blockPosition(), ModSoundsRM.DARKSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
 							player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
 							InputHandler.qrCooldown = 20;

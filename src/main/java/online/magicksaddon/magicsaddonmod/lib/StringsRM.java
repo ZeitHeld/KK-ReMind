@@ -6,7 +6,8 @@ public class StringsRM {
 
 	public static final byte
 		darkStepType = 0, 
-		lightStepType = 1;
+		lightStepType = 1,
+        twilightStepType = 2;
 	
     public static final String
             // Prefixes

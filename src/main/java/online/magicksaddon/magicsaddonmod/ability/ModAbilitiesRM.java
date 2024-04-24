@@ -41,6 +41,7 @@ public class ModAbilitiesRM extends ModAbilities{
         LIGHT_WITHIN = ABILITIES.register(StringsRM.ABMA_Prefix+"light_within", () -> new Ability(new ResourceLocation(StringsRM.lightWithin), 5, Ability.AbilityType.SUPPORT, order++)),
         DARKNESS_WITHIN = ABILITIES.register(StringsRM.ABMA_Prefix+"darkness_within", () -> new Ability(new ResourceLocation(StringsRM.darknessWithin), 5, Ability.AbilityType.SUPPORT, order++)),
 
+
         HP_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"hp_walker", () -> new Ability(new ResourceLocation(StringsRM.hpWalker),10,Ability.AbilityType.SUPPORT, order++)),
         MP_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"mp_walker", () -> new Ability(new ResourceLocation(StringsRM.mpWalker),10,Ability.AbilityType.SUPPORT, order++)),
         EXP_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"exp_walker", () -> new Ability(new ResourceLocation(StringsRM.expWalker),10,Ability.AbilityType.SUPPORT, order++));
