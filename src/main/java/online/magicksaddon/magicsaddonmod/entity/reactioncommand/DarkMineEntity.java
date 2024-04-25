@@ -1,10 +1,13 @@
 package online.magicksaddon.magicsaddonmod.entity.reactioncommand;
 
+import java.util.List;
+
+import org.joml.Vector3f;
+
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -21,11 +24,7 @@ import online.kingdomkeys.kingdomkeys.damagesource.DarknessDamageSource;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.util.Utils;
-import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
-import org.joml.Vector3f;
-
-import java.util.List;
 
 public class DarkMineEntity extends ThrowableProjectile {
     int maxTicks = 120;

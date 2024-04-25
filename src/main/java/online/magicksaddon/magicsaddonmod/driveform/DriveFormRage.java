@@ -17,49 +17,42 @@ import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.lib.StringsRM;
-import online.magicksaddon.magicsaddonmod.mixin.DriveFormMixin;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
 @Mod.EventBusSubscriber(modid = KingdomKeysReMind.MODID)
 public class DriveFormRage extends DriveForm {
-    ResourceLocation skinRL2;
 
-    public DriveFormRage(String registeryName, int order, ResourceLocation skinRL, boolean hasKeychain, boolean baseGrowthAbilities) {
-        super(registeryName, order, hasKeychain, baseGrowthAbilities);
-        ((DriveFormMixin) this).setColor(new float[]{0.5F, 0F, 0F});
-        skinRL2 = skinRL;
-    }
+	public DriveFormRage(String registeryName, int order, ResourceLocation skinRL, boolean hasKeychain, boolean baseGrowthAbilities) {
+		super(registeryName, order, hasKeychain, baseGrowthAbilities);
+		this.color = new float[] { 0.5F, 0F, 0F };
+		this.skinRL = skinRL;
+	}
 
-    @SubscribeEvent
-    public static void getRageFormXP(LivingAttackEvent event) {
-        if (!event.getEntity().level().isClientSide && event.getEntity() instanceof Monster) {
-            if (event.getSource().getEntity() instanceof Player) {
-                Player player = (Player) event.getSource().getEntity();
-                IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-                IGlobalCapabilitiesRM formData = ModCapabilitiesRM.getGlobal(player);
+	@SubscribeEvent
+	public static void getRageFormXP(LivingAttackEvent event) {
+		if (!event.getEntity().level().isClientSide && event.getEntity() instanceof Monster) {
+			if (event.getSource().getEntity() instanceof Player) {
+				Player player = (Player) event.getSource().getEntity();
+				IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+				IGlobalCapabilitiesRM formData = ModCapabilitiesRM.getGlobal(player);
 
-                if (playerData != null && playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID+":"+ StringsRM.rageForm)) {
-                    double mult = Double.parseDouble(ModConfigs.driveFormXPMultiplier.get(formData.getRiskchargeCount() + 1).split(",")[1]);
-                    playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
+				if (playerData != null && playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.rageForm)) {
+					double mult = Double.parseDouble(ModConfigs.driveFormXPMultiplier.get(formData.getRiskchargeCount() + 1).split(",")[1]);
+					playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
 
-                    PacketHandlerRM.syncGlobalToAllAround(player, formData);
-                    PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
-                }
-            }
-        }
-    }
+					PacketHandlerRM.syncGlobalToAllAround(player, formData);
+					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
+				}
+			}
+		}
+	}
 
-        @Override
-        public ResourceLocation getTextureLocation () {
-            return skinRL2;
-        }
-
-        @Override
-        public void initDrive (Player player) {
-            IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
-            globalData.setRiskchargeCount(0);
-            PacketHandlerRM.syncGlobalToAllAround(player, globalData);
-            super.initDrive(player);
-        }
+	@Override
+	public void initDrive(Player player) {
+		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
+		globalData.setRiskchargeCount(0);
+		PacketHandlerRM.syncGlobalToAllAround(player, globalData);
+		super.initDrive(player);
+	}
 
 }

@@ -3,7 +3,6 @@ package online.magicksaddon.magicsaddonmod;
 import java.util.List;
 import java.util.function.Supplier;
 
-import online.magicksaddon.magicsaddonmod.effect.ModEffects;
 import org.slf4j.Logger;
 
 import com.google.common.base.Suppliers;
@@ -32,6 +31,7 @@ import online.magicksaddon.magicsaddonmod.ability.ModAbilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
 import online.magicksaddon.magicsaddonmod.driveform.ModDriveFormsRM;
+import online.magicksaddon.magicsaddonmod.effect.ModEffects;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 import online.magicksaddon.magicsaddonmod.handler.EntityEventsRM;
 import online.magicksaddon.magicsaddonmod.handler.InputHandlerRM;

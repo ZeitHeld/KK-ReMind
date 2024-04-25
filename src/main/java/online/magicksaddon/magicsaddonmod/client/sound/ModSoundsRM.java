@@ -5,7 +5,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
-import online.magicksaddon.magicsaddonmod.entity.magic.DrainEntity;
 
 public class ModSoundsRM {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, KingdomKeysReMind.MODID);

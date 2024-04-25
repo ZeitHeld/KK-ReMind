@@ -25,6 +25,7 @@ import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.client.gui.GUIHelperRM;
 import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
+import online.magicksaddon.magicsaddonmod.driveform.ModDriveFormsRM;
 import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 import online.magicksaddon.magicsaddonmod.network.cts.CSSetStepTicksPacket;
@@ -46,8 +47,8 @@ public class InputHandlerRM {
 				if (player.isSprinting()) {
 
 					// System.out.println(playerData.getActiveDriveForm());
-					int lightLevel = playerData.getDriveFormLevel("magicksaddon:form_light");
-					int darkLevel = playerData.getDriveFormLevel("magicksaddon:form_dark");
+					int lightLevel = playerData.getDriveFormLevel(ModDriveFormsRM.LIGHT.get().getRegistryName().toString());
+					int darkLevel = playerData.getDriveFormLevel(ModDriveFormsRM.DARK.get().getRegistryName().toString());
 
 					// System.out.println(globalData.getStepTicks());
 					// Twilight Step
@@ -55,11 +56,11 @@ public class InputHandlerRM {
 						float yaw = player.getYRot();
 						float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
 						float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
-						double power = 7;
+						double power = 3;
 						PacketHandlerRM.sendToServer(new CSSetStepTicksPacket(10, StringsRM.twilightStepType));
 						//
 						player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
-						InputHandler.qrCooldown = 20;
+						InputHandler.qrCooldown = 10;
 						//Insert Sound Here
 						 player.level().playSound(player, player.blockPosition(), ModSoundsRM.TWILIGHT_STEP.get(), SoundSource.PLAYERS, 1F, 1F);
 						event.setCanceled(true);

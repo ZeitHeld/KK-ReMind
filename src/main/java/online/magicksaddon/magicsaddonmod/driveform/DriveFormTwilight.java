@@ -12,20 +12,14 @@ import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 
 @Mod.EventBusSubscriber(modid = KingdomKeysReMind.MODID)
 public class DriveFormTwilight extends DriveForm {
-    ResourceLocation skinRL2;
     public DriveFormTwilight(String registeryName, int order, ResourceLocation skinRL, boolean hasKeychain, boolean baseGrowthAbilities) {
         super(registeryName, order, hasKeychain, baseGrowthAbilities);
         this.color = new float[] {0.25F,0.25F,0.25F};
-        skinRL2 = skinRL;
+        this.skinRL = skinRL;
     }
 
     // Twilight Form EXP Gain
 
-    @Override
-    public ResourceLocation getTextureLocation() {
-        return skinRL2;
-    }
-    
     @Override
     public boolean isSlotVisible(Player player) {
     	IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);

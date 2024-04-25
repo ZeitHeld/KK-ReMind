@@ -1,5 +1,7 @@
 package online.magicksaddon.magicsaddonmod.magic;
 
+import java.util.List;
+
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -16,8 +18,6 @@ import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
-
-import java.util.List;
 
 public class magicHaste extends Magic {
 

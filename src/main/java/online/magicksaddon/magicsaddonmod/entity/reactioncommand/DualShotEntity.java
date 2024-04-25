@@ -1,11 +1,13 @@
 package online.magicksaddon.magicsaddonmod.entity.reactioncommand;
 
+import java.util.List;
+
+import org.joml.Vector3f;
+
 import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -22,9 +24,6 @@ import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
-import org.joml.Vector3f;
-
-import java.util.List;
 
 public class DualShotEntity extends ThrowableProjectile {
     int maxTicks = 40;
@@ -135,8 +134,6 @@ public class DualShotEntity extends ThrowableProjectile {
                     ((ServerLevel) level()).sendParticles(new DustParticleOptions(new Vector3f(1F,1F,0.7F), 3F), x, y + 1, z, 1, 0, -0.25, 0, 0);
                     ((ServerLevel) level()).sendParticles(new DustParticleOptions(new Vector3f(0F,0F,0F), 2F), x, y + 1, z, 1, 0, -0.50,0 , 0);
                     ((ServerLevel) level()).sendParticles(new DustParticleOptions(new Vector3f(1F,1F,0.8F), 3F), x, y + 1, z, 1, 0, -0.75, 0, 0);
-
-
                 }
             }
 

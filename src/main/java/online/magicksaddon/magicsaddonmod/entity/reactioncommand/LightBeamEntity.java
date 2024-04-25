@@ -1,5 +1,7 @@
 package online.magicksaddon.magicsaddonmod.entity.reactioncommand;
 
+import org.joml.Vector3f;
+
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
@@ -18,11 +20,7 @@ import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
-import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
-import org.joml.Vector3f;
-
-import java.util.List;
 
 public class LightBeamEntity extends ThrowableProjectile {
     int maxTicks = 10;

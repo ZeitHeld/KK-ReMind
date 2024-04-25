@@ -17,18 +17,15 @@ import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.lib.StringsRM;
-import online.magicksaddon.magicsaddonmod.mixin.DriveFormMixin;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
 @Mod.EventBusSubscriber(modid = KingdomKeysReMind.MODID)
 public class DriveFormDark extends DriveForm {
-    ResourceLocation skinRL2;
-
 
     public DriveFormDark(String registeryName, int order, ResourceLocation skinRL, boolean hasKeychain, boolean baseGrowthAbilities) {
         super(registeryName, order, hasKeychain, baseGrowthAbilities);
-        ((DriveFormMixin) this).setColor(new float[] {0.25F,0F,0.25F});
-        skinRL2 = skinRL;
+        this.color = new float[] {0.25F,0F,0.25F};
+        this.skinRL = skinRL;
     }
 
     @SubscribeEvent
@@ -49,10 +46,4 @@ public class DriveFormDark extends DriveForm {
             }
         }
     }
-    
-    @Override
-    public ResourceLocation getTextureLocation() {
-    	return skinRL2;
-    }
-
 }

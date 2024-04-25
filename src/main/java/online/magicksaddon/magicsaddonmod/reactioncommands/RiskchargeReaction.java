@@ -16,6 +16,7 @@ import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
+import online.magicksaddon.magicsaddonmod.driveform.ModDriveFormsRM;
 import online.magicksaddon.magicsaddonmod.network.PacketHandlerRM;
 
 @Mod.EventBusSubscriber(modid = KingdomKeysReMind.MODID)
@@ -55,7 +56,7 @@ public class RiskchargeReaction extends ReactionCommand {
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
         if(playerData != null){
-            if(playerData.getActiveDriveForm().equals("magicksaddon:form_rage")){
+            if(playerData.getActiveDriveForm().equals(ModDriveFormsRM.RAGE.get().getRegistryName().toString())){
                 if(globalData.getRiskchargeCount() < 3 && globalData.getRCCooldownTicks() == 0){
                     return true;
                 }

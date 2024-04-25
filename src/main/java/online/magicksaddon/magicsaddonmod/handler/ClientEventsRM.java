@@ -1,7 +1,5 @@
 package online.magicksaddon.magicsaddonmod.handler;
 
-import net.minecraft.core.Direction;
-import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import org.joml.Vector3f;
 
 import net.minecraft.core.particles.DustParticleOptions;
@@ -11,8 +9,10 @@ import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.magicksaddon.magicsaddonmod.KingdomKeysReMind;
 import online.magicksaddon.magicsaddonmod.capabilities.IGlobalCapabilitiesRM;
 import online.magicksaddon.magicsaddonmod.capabilities.ModCapabilitiesRM;
+import online.magicksaddon.magicsaddonmod.driveform.ModDriveFormsRM;
 import online.magicksaddon.magicsaddonmod.lib.StringsRM;
 
 public class ClientEventsRM {
@@ -45,9 +45,9 @@ public class ClientEventsRM {
 							player.level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(1F,1F,0.7F),1F),player.getX() + player.level().random.nextDouble() - 0.55D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.55D, 0, 0, 0);
 						}
 					}
-				
+				System.out.println(ModDriveFormsRM.RAGE.get().getRegistryName().toString());
 					// Rage Form Active and Walk particles
-					if (playerData.getActiveDriveForm().equals("magicksaddon:form_rage")){
+					if (playerData.getActiveDriveForm().equals(ModDriveFormsRM.RAGE.get().getRegistryName().toString())){
 						player.level().addParticle(new DustParticleOptions(new Vector3f(0.1F,0F,0F),1F),player.getX() + player.level().random.nextDouble() - 0.55D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.55D, 0, 0, 0);
 	
 						if (player.onGround()){
@@ -57,14 +57,14 @@ public class ClientEventsRM {
 					}
 
 					// Twilight Form Active
-					if (playerData.getActiveDriveForm().equals("magicksaddon:form_twilight")){
+					if (playerData.getActiveDriveForm().equals(ModDriveFormsRM.TWILIGHT.get().getRegistryName().toString())){
 						player.level().addParticle(new DustParticleOptions(new Vector3f(0.45F,0.45F,0.45F),0.25F),player.getX() + player.level().random.nextDouble() - 0.45D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
 						player.level().addParticle(new DustParticleOptions(new Vector3f(0.55F,0.55F,0.55F),0.25F),player.getX() + player.level().random.nextDouble() - 0.45D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
 
 					}
 
 					// When I can get particles in other hand
-					//if (playerData.getActiveDriveForm().equals("magicksaddon:form_dark")){
+					//if (playerData.getActiveDriveForm().equals(ModDriveFormsRM.DARK.get().getRegistryName().toString())){
 						//player.level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.5F,0F,0.5F),1F),player.getX(), player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.5D, 0, 0, 0);
 					//}
 				}

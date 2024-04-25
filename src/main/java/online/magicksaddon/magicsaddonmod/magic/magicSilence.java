@@ -8,7 +8,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.magicksaddon.magicsaddonmod.client.sound.ModSoundsRM;
-import online.magicksaddon.magicsaddonmod.entity.magic.OsmoseEntity;
 import online.magicksaddon.magicsaddonmod.entity.magic.SilenceEntity;
 
 public class magicSilence extends Magic {
