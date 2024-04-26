@@ -1,7 +1,6 @@
 package online.magicksaddon.magicsaddonmod.entity.reactioncommand;
 
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.joml.Vector3f;
 
@@ -9,9 +8,7 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -23,7 +20,6 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
-import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
@@ -31,8 +27,6 @@ import online.kingdomkeys.kingdomkeys.damagesource.DarknessDamageSource;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.lib.Party.Member;
-import online.kingdomkeys.kingdomkeys.network.PacketHandler;
-import online.kingdomkeys.kingdomkeys.network.stc.SCRecalculateEyeHeight;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 
@@ -44,7 +38,7 @@ public class DarkMineEntity extends ThrowableProjectile {
 
     @Override
     protected float getGravity() {
-        return 0F;
+        return tickCount > 8 && closest == null ? 0.25F : 0F;
     }
 
     public DarkMineEntity(EntityType<? extends ThrowableProjectile> type, Level world) {
@@ -84,19 +78,23 @@ public class DarkMineEntity extends ThrowableProjectile {
         }
 
         //world.addParticle(ParticleTypes.ENTITY_EFFECT, getPosX(), getPosY(), getPosZ(), 1, 1, 0);
-        if(tickCount > 0)
+        if(tickCount > 0) {
             level().addParticle(ParticleTypes.SQUID_INK, getX(), getY() + 1, getZ(), 0, 0, 0);
             level().addAlwaysVisibleParticle(ParticleTypes.SQUID_INK, getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
             level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.5F,0F,0.5F),1F),getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
             level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.5F,0F,1F),1F),getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
             level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.2F,0F,0F),1F),getX() + level().random.nextDouble() - 0.55D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.55D, 0, 0, 0);
-        if(tickCount > 8){
+        } 
+        if(tickCount > 8 && tickCount < 16) {
+			setDeltaMovement(0, 0, 0);
+        }
+        if(tickCount > 16){
         	
         	IWorldCapabilities worldData = ModCapabilities.getWorld(level());
         	if(worldData == null || getOwner() == null)
         		return;
         	
-        	int radius = 6;
+        	int radius = 4;
         	List<Entity> list = level().getEntities(this, getBoundingBox().inflate(radius));
 			Party casterParty = worldData.getPartyFromMember(getOwner().getUUID());
 
@@ -121,8 +119,6 @@ public class DarkMineEntity extends ThrowableProjectile {
 	
 				}
 			}
-			if(closest != null)
-			System.out.println(closest);
 
 			if (closest == null) {
 				setDeltaMovement(0, 0, 0);
@@ -184,7 +180,7 @@ public class DarkMineEntity extends ThrowableProjectile {
                 }
             }
 
-            if (brtResult != null && tickCount < 8) {
+            if (brtResult != null) {
                 setDeltaMovement(0,0,0);
             }
         }
