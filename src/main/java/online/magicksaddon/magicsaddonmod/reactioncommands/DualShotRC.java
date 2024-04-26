@@ -41,6 +41,7 @@ public class DualShotRC extends ReactionCommand {
 
         ThrowableProjectile dualShot = new DualShotEntity(player.level(), player,dmgmult,lockOnEntity);
         dualShot.setPos(player.getX(), player.getY()+0.75,player.getZ());
+        dualShot.setOwner(player);
         player.level().addFreshEntity(dualShot);
         dualShot.shootFromRotation(player, player.getXRot(),player.getYRot(),0,1.25F, 0);
         player.level().playSound(null, player.blockPosition(), ModSoundsRM.DUAL_SHOT.get(), SoundSource.PLAYERS, 1F, 1F);

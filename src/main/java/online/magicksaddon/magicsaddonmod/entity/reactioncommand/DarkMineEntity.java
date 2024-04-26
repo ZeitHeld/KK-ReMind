@@ -1,6 +1,7 @@
 package online.magicksaddon.magicsaddonmod.entity.reactioncommand;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.joml.Vector3f;
 
@@ -8,6 +9,9 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -16,19 +20,27 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
+import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
+import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.damagesource.DarknessDamageSource;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
+import online.kingdomkeys.kingdomkeys.lib.Party.Member;
+import online.kingdomkeys.kingdomkeys.network.PacketHandler;
+import online.kingdomkeys.kingdomkeys.network.stc.SCRecalculateEyeHeight;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.magicksaddon.magicsaddonmod.entity.ModEntitiesRM;
 
 public class DarkMineEntity extends ThrowableProjectile {
     int maxTicks = 120;
     float dmg;
+
+	LivingEntity closest = null;
 
     @Override
     protected float getGravity() {
@@ -79,7 +91,49 @@ public class DarkMineEntity extends ThrowableProjectile {
             level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.5F,0F,1F),1F),getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
             level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0.2F,0F,0F),1F),getX() + level().random.nextDouble() - 0.55D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.55D, 0, 0, 0);
         if(tickCount > 8){
-            setDeltaMovement(0,0,0);
+        	
+        	IWorldCapabilities worldData = ModCapabilities.getWorld(level());
+        	if(worldData == null || getOwner() == null)
+        		return;
+        	
+        	int radius = 6;
+        	List<Entity> list = level().getEntities(this, getBoundingBox().inflate(radius));
+			Party casterParty = worldData.getPartyFromMember(getOwner().getUUID());
+
+			if(casterParty != null && !casterParty.getFriendlyFire()) {
+				for(Member m : casterParty.getMembers()) {
+					list.remove(level().getPlayerByUUID(m.getUUID()));
+				}
+			} else {
+				list.remove(getOwner());
+			}
+
+			double d0 = -1.0D;
+
+			if(closest == null) {
+				for (Entity t1 : list) {
+					double d1 = t1.distanceToSqr(getX(), getY(), getZ());
+					if (d0 == -1.0D || d1 < d0) {
+						d0 = d1;
+						if (t1 instanceof LivingEntity le)
+							closest = le;
+					}
+	
+				}
+			}
+			if(closest != null)
+			System.out.println(closest);
+
+			if (closest == null) {
+				setDeltaMovement(0, 0, 0);
+			} else {
+				Vec3 vec3d = new Vec3(closest.getX() - this.getX(), closest.getY() - this.getY(), closest.getZ() - this.getZ());
+				double d1 = vec3d.lengthSqr();
+				double d2 = 1.0D - Math.sqrt(d1) / 6;
+				this.setDeltaMovement(this.getDeltaMovement().add(vec3d.normalize().scale(d2*d2*0.1F))); //d2*d2*0.1F
+			}
+				
+			
             //level().playSound(null, this.getX(),this.getY(),this.getZ(), ModSoundsRM.DARK_MINE_ALIVE.get(), SoundSource.NEUTRAL,1F,1F);
         }
 
@@ -123,16 +177,14 @@ public class DarkMineEntity extends ThrowableProjectile {
                         }
                         level().explode(this.getOwner(), this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, Level.ExplosionInteraction.NONE);
                         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-                        playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (2)));
-
-
+                        playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), playerData.getDriveFormExp(playerData.getActiveDriveForm()) + 2);
                         remove(RemovalReason.KILLED);
 
                     }
                 }
             }
 
-            if (brtResult != null) {
+            if (brtResult != null && tickCount < 8) {
                 setDeltaMovement(0,0,0);
             }
         }

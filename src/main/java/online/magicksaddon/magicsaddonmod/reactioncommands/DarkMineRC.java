@@ -39,6 +39,7 @@ public class DarkMineRC extends ReactionCommand {
             for (int i = -90; i <= 225; i += 45) {
                 ThrowableProjectile DarkMine = new DarkMineEntity(player.level(), player, dmgmult);
                 DarkMine.setPos(player.getX(),player.getY(),player.getZ());
+                DarkMine.setOwner(player);
                 player.level().addFreshEntity(DarkMine);
                 DarkMine.shootFromRotation(player, 0, player.getYRot() + i, 0, 1.25F, 0);
             }
