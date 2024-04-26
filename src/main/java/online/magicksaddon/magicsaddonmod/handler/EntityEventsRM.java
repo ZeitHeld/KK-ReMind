@@ -14,6 +14,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.kingdomkeys.kingdomkeys.lib.SoAState;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
@@ -114,9 +115,41 @@ public class EntityEventsRM {
 					playerData.getMagicStat().removeModifier("darkness_within");
 				}
 
-				if (!playerData.getActiveDriveForm().equals(ModDriveFormsRM.DARK.get().getRegistryName().toString())) {
+				if (!playerData.getActiveDriveForm().equals(ModDriveFormsRM.RAGE.get().getRegistryName().toString())) {
 					playerData.getStrengthStat().removeModifier("Riskcharge");
 				}
+
+				// Vehemence
+
+
+				if (playerData.isAbilityEquipped(StringsRM.vehemence)) {
+
+					int vehemenceSTR = (int) (playerData.getStrengthStat().getStat() * 0.25F);
+					int vehemenceDEF = (int) (playerData.getDefenseStat().getStat() * 0.25F);
+					int vehemenceMAG = (int) (playerData.getMagicStat().getStat() * 0.25F);
+
+					if (playerData.getChosen() == SoAState.WARRIOR){
+						playerData.getStrengthStat().addModifier("Vehemence", vehemenceSTR,false);
+						playerData.getMagicStat().addModifier("Vehemence", -(vehemenceSTR/2), false);
+						playerData.getDefenseStat().addModifier("Vehemence", -(vehemenceSTR/2),false);
+					}
+					if (playerData.getChosen() == SoAState.MYSTIC){
+						playerData.getStrengthStat().addModifier("Vehemence", -(vehemenceMAG/2),false);
+						playerData.getMagicStat().addModifier("Vehemence", vehemenceMAG,false);
+						playerData.getDefenseStat().addModifier("Vehemence", -(vehemenceMAG/2),false);
+					}
+					if (playerData.getChosen() == SoAState.GUARDIAN){
+						playerData.getStrengthStat().addModifier("Vehemence", -(vehemenceDEF/2),false);
+						playerData.getDefenseStat().addModifier("Vehemence", vehemenceDEF,false);
+						playerData.getStrengthStat().addModifier("Vehemence", -(vehemenceDEF/2),false);
+					}
+				} else if (!playerData.isAbilityEquipped(StringsRM.vehemence)) {
+					playerData.getStrengthStat().removeModifier("Vehemence");
+					playerData.getMagicStat().removeModifier("Vehemence");
+					playerData.getDefenseStat().removeModifier("Vehemence");
+				}
+
+
 
 				// MP Boost
 

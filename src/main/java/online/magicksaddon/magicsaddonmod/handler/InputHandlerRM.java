@@ -40,8 +40,6 @@ public class InputHandlerRM {
 			IPlayerCapabilities playerData = event.getHandler().playerData;
 			IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
 
-			// 0.13000001 - Sprint speed (Vanilla)
-
 			// Light/Dark Step Abilities
 			if (InputHandler.qrCooldown <= 0 && (player.getDeltaMovement().x != 0 && player.getDeltaMovement().z != 0)) {
 				if (player.isSprinting()) {

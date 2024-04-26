@@ -97,6 +97,8 @@
   "ability.ability_exp_walker.desc": "Gain EXP as you walk or run.",
   "ability.ability_mp_shield.name": "Mana Shield",
   "ability.ability_mp_shield.desc": "When you take damage, you will lose MP instead unless you're in MP Recharge.",
+  "ability.ability_vehemence.name": "Vehemence",
+  "ability.ability_vehemence.desc": "A sacrifice is made in exchange for more power. The effect differs depending on your chosen path.",
   "ability.ability_mp_boost.name": "MP Boost",
   "ability.ability_mp_boost.desc": "I wonder what it does...",
   "ability.ability_riskcharge.name": "Riskcharge",
@@ -117,7 +119,7 @@
   "form.form_rage.name": "Rage",
   "form.form_dark.name": "Dark",
   "form.form_light.name": "Light",
-  "form.form_twilight.name": "Twilight Form",
+  "form.form_twilight.name": "Twilight",
 
   "item.magicksaddon.xephiro_keyblade": "Sanguine Gaze",
   "item.magicksaddon.pureblood": "Pureblood",
