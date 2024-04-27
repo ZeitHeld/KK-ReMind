@@ -20,10 +20,10 @@ import online.remind.remind.driveform.ModDriveFormsRM;
 import online.remind.remind.network.PacketHandlerRM;
 
 @Mod.EventBusSubscriber(modid = KingdomKeysReMind.MODID)
-public class RiskchargeReaction extends ReactionCommand {
+public class RagingBurstRC extends ReactionCommand {
 
 
-    public RiskchargeReaction(ResourceLocation registryName, boolean constantCheck) {
+    public RagingBurstRC(ResourceLocation registryName, boolean constantCheck) {
         super(registryName, constantCheck);
     }
 
@@ -36,19 +36,10 @@ public class RiskchargeReaction extends ReactionCommand {
         if(conditionsToAppear(player,player)){
             IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
             IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
-            HeartEntity heart = new HeartEntity(player.level());
 
-            player.level().playSound(null, player.position().x(),player.position().y(),player.position().z(), ModSoundsRM.RISKCHARGE.get(), SoundSource.PLAYERS, 1F, 1F);
-            player.level().addFreshEntity(heart);
-            heart.setPos(player.getX(),player.getY() + 1,player.getZ());
-            player.setHealth(player.getHealth()/2);
-            globalData.setRCCooldownTicks(25);
-            player.invulnerableTime = 2;
-            playerData.getStrengthStat().addModifier("Riskcharge", 5, true);
-            playerData.addFP(50);
-            globalData.setRiskchargeCount(globalData.getRiskchargeCount()+1);
-            PacketHandlerRM.syncGlobalToAllAround(player, globalData);
-            PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
+
+            playerData.addFP(-1000);
+            globalData.setRCCooldownTicks(20);
         }
     }
 
@@ -58,7 +49,7 @@ public class RiskchargeReaction extends ReactionCommand {
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
         if(playerData != null){
             if(playerData.getActiveDriveForm().equals(ModDriveFormsRM.RAGE.get().getRegistryName().toString())){
-                if(globalData.getRiskchargeCount() < 3 && globalData.getRCCooldownTicks() == 0){
+                if(globalData.getRiskchargeCount() == 3 && globalData.getRCCooldownTicks() == 0){
                     return true;
                 }
             }

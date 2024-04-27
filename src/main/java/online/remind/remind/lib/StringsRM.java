@@ -7,7 +7,8 @@ public class StringsRM {
 	public static final byte
 		darkStepType = 0, 
 		lightStepType = 1,
-        twilightStepType = 2;
+        twilightStepType = 2,
+        rageStepType = 3;
 	
     public static final String
             // Prefixes
@@ -60,6 +61,7 @@ public class StringsRM {
 
         // Reaction Commands
         riskchargeRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"riskcharge",
+        ragingBurst = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"raging_burst",
         testRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"test",
         LightBeamRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"light_beam",
         DarkMineRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"dark_mine",
