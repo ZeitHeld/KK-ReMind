@@ -131,11 +131,11 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.20.1-47.2.23'
+    minecraft 'net.minecraftforge:forge:1.20.1-47.2.30'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     // KK Implementation
-    implementation fg.deobf("curse.maven:kingdom-keys-re-coded-242862:5288258")
+	implementation fg.deobf("curse.maven:kingdom-keys-re-coded-242862:5295118")
     //implementation fg.deobf("kingdomkeys:kingdomkeys:1.20.1-2.3.9.2")
    
     
