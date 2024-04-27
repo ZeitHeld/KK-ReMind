@@ -160,6 +160,7 @@
   "menu_button.creditsScreen": "Credits (Re:Mind)",
 
   "reactioncommand.rc_riskcharge.name": "Riskcharge",
+  "reactioncommand.rc_raging_burst.name": "Raging Burst",
   "reactioncommand.rc_light_beam.name": "Light Charge",
   "reactioncommand.rc_dark_mine.name": "Dark Mine",
   "reactioncommand.rc_twilight.name": "Twilight's Embrace",

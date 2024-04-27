@@ -12,6 +12,7 @@ public class ModReactionCommandsRM {
 
     public static final RegistryObject<ReactionCommand>
         RISKCHARGE = REACTION_COMMANDS.register(StringsRM.RCMA_Prefix+"riskcharge", () -> new RiskchargeReaction(new ResourceLocation(StringsRM.riskchargeRC), true)),
+        RAGING_BURST = REACTION_COMMANDS.register(StringsRM.RCMA_Prefix+"raging_burst", () -> new RagingBurstRC(new ResourceLocation(StringsRM.ragingBurst), true)),
         TEST_ORG = REACTION_COMMANDS.register(StringsRM.RCMA_Prefix+"test", () -> new TestReaction(new ResourceLocation(StringsRM.testRC),false)),
         LIGHT_BEAM = REACTION_COMMANDS.register(StringsRM.RCMA_Prefix+"light_beam", () -> new LightBeamRC(new ResourceLocation(StringsRM.LightBeamRC), true)),
         DARK_MINE_RC = REACTION_COMMANDS.register(StringsRM.RCMA_Prefix+"dark_mine", () -> new DarkMineRC(new ResourceLocation(StringsRM.DarkMineRC),true)),
