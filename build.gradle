@@ -36,6 +36,7 @@ minecraft {
     // These can be tweaked, removed, or duplicated as needed.
     runs {
         client {
+            taskName '[Remind] Client'
             workingDirectory project.file('run')
 
             // Recommended logging data for a userdev environment
@@ -61,6 +62,7 @@ minecraft {
         }
 
         server {
+       		taskName '[Remind] Server'
             workingDirectory project.file('run')
 
             property 'forge.logging.markers', 'REGISTRIES'
@@ -80,6 +82,7 @@ minecraft {
         // By default, the server will crash when no gametests are provided.
         // The gametest system is also enabled by default for other run configs under the /test command.
         gameTestServer {
+        	taskName '[Remind] TestServer'
             workingDirectory project.file('run')
 
             property 'forge.logging.markers', 'REGISTRIES'
@@ -96,6 +99,7 @@ minecraft {
         }
 
         data {
+        	taskName '[Remind] Datagen'
             workingDirectory project.file('run')
 
             property 'forge.logging.markers', 'REGISTRIES'
