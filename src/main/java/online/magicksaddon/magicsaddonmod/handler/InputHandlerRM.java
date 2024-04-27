@@ -44,7 +44,7 @@ public class InputHandlerRM {
 			if (InputHandler.qrCooldown <= 0 && (player.getDeltaMovement().x != 0 && player.getDeltaMovement().z != 0)) {
 				if (player.isSprinting()) {
 
-					// System.out.println(playerData.getActiveDriveForm());
+
 					int lightLevel = playerData.getDriveFormLevel(ModDriveFormsRM.LIGHT.get().getRegistryName().toString());
 					int darkLevel = playerData.getDriveFormLevel(ModDriveFormsRM.DARK.get().getRegistryName().toString());
 
@@ -68,7 +68,7 @@ public class InputHandlerRM {
 						float yaw = player.getYRot();
 						float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
 						float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
-						double power = lightLevel;
+						double power = lightLevel + 1;
 						PacketHandlerRM.sendToServer(new CSSetStepTicksPacket(10, StringsRM.lightStepType));
 						// Light Form
 						if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.light)) {
@@ -88,7 +88,7 @@ public class InputHandlerRM {
 						float yaw = player.getYRot();
 						float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
 						float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
-						double power = darkLevel;
+						double power = darkLevel + 1;
 
 						PacketHandlerRM.sendToServer(new CSSetStepTicksPacket(10, StringsRM.darkStepType));
 						// Dark Mode

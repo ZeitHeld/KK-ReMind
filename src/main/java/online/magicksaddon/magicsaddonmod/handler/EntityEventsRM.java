@@ -121,7 +121,6 @@ public class EntityEventsRM {
 
 				// Vehemence
 
-
 				if (playerData.isAbilityEquipped(StringsRM.vehemence)) {
 
 					int vehemenceSTR = (int) (playerData.getStrengthStat().getStat() * 0.25F);
@@ -167,12 +166,9 @@ public class EntityEventsRM {
 
 			if (globalData.getRCCooldownTicks() > 0){
 				globalData.setRCCooldownTicks(globalData.getRCCooldownTicks() - 1);
-				//if (globalData.getRCCooldownTicks() <= 0){
-
-				//}
 			}
 
-			// Spells go Down Below
+			// Step Ticks
 			if(globalData.getStepTicks() > 0) {
 				globalData.remStepTicks(1);
 				if (globalData.getStepTicks() <= 0) { // Step has finished, notify all the clients about it
@@ -185,9 +181,12 @@ public class EntityEventsRM {
 						if (playerData.isAbilityEquipped(StringsRM.lightStep) || playerData.getActiveDriveForm().equals(ModDriveFormsRM.LIGHT.get().getRegistryName().toString())) {
 							player.level().playSound(null, player.blockPosition(), ModSoundsRM.LIGHTSTEP2.get(), SoundSource.PLAYERS, 1F, 1F);
 						}
+						player.invulnerableTime = 4;
 					}
 				}
 			}
+
+			// Spells go Down Below
 
 			// Slow
 			if (globalData.getSlowTicks() > 0) {
