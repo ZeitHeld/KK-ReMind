@@ -65,10 +65,10 @@ public class InputHandlerRM {
 						 float yaw = player.getYRot();
 						 float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
 						 float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
-						 double power = 2;
+						 double power = 0.75 + (globalData.getRiskchargeCount());
 						 PacketHandlerRM.sendToServer(new CSSetStepTicksPacket(10, StringsRM.rageStepType));
 						 player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
-						 InputHandler.qrCooldown = 15;
+						 InputHandler.qrCooldown = 15 - globalData.getRiskchargeCount();
 						 //Insert Sound Here
 						 //player.level().playSound(player, player.blockPosition(), ModSoundsRM.TWILIGHT_STEP.get(), SoundSource.PLAYERS, 1F, 1F);
 						 event.setCanceled(true);
