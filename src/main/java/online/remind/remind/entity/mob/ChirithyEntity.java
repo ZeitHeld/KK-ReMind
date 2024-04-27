@@ -1,6 +1,7 @@
 package online.remind.remind.entity.mob;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -22,6 +23,10 @@ public class ChirithyEntity extends Mob {
         super(ModEntitiesRM.TYPE_CHIRITHY.get(), world);
     }
 
+    public ChirithyEntity(Level world){
+        this(ModEntitiesRM.TYPE_CHIRITHY.get(), world);
+    }
+
     /*
     @Override
     protected void registerGoals(){
@@ -36,6 +41,16 @@ public class ChirithyEntity extends Mob {
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1000.0D)
                 .add(Attributes.ATTACK_KNOCKBACK, 1.0D)
                 .add(Attributes.ATTACK_DAMAGE, 0.5D);
+    }
+
+    @Override
+    public int getMaxSpawnClusterSize() {
+        return 1;
+    }
+
+    @Override
+    public boolean causeFallDamage(float pFallDistance, float pMultiplier, DamageSource pSource) {
+        return false;
     }
 
     @Override

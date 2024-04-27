@@ -7,10 +7,15 @@ import java.util.function.BiFunction;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -62,7 +67,7 @@ public class ModEntitiesRM {
     public static final RegistryObject<EntityType<DualShotEntity>> TYPE_DUAL_SHOT = createEntityType(DualShotEntity::new, DualShotEntity::new, MobCategory.MISC, "entity_rc_dual_shot", 1.5F,1.5F);
 
     // Dream Eaters
-    public static final RegistryObject<EntityType<ChirithyEntity>> TYPE_CHIRITHY = createEntityType(ChirithyEntity::new, ChirithyEntity::new, MobCategory.MONSTER, "chirithy", 0.5F, 0.7F);
+    public static final RegistryObject<EntityType<ChirithyEntity>> TYPE_CHIRITHY = createEntityType(ChirithyEntity::new, ChirithyEntity::new, MobCategory.MONSTER, "chirithy", 1F, 1F);
 
 
     public static <T extends Entity, M extends EntityType<T>>RegistryObject<EntityType<T>> createEntityType(EntityType.EntityFactory<T> factory, BiFunction<PlayMessages.SpawnEntity, Level, T> clientFactory, MobCategory classification, String name, float sizeX, float sizeY) {
@@ -126,6 +131,15 @@ public class ModEntitiesRM {
         event.registerEntityRenderer(TYPE_CHIRITHY.get(),ChirithyRenderer::new);
 
 
+    }
+
+    @SubscribeEvent
+    public static void registerAttributes(EntityAttributeCreationEvent event){
+        event.put(TYPE_CHIRITHY.get(), ChirithyEntity.registerAttributes().build());
+    }
+
+    public static void registerPlacements() {
+        SpawnPlacements.register(TYPE_CHIRITHY.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules);
     }
 
 

@@ -28,6 +28,8 @@ public class magicUltima extends Magic {
 			ultima.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 0.75F, 0);
 			break;
 		case 1:
+			// Apocalypse
+			
 
 			break;
 		}
