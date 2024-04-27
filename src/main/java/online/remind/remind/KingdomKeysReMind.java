@@ -3,6 +3,7 @@ package online.remind.remind;
 import java.util.List;
 import java.util.function.Supplier;
 
+import online.kingdomkeys.kingdomkeys.entity.ModEntities;
 import org.slf4j.Logger;
 
 import com.google.common.base.Suppliers;
@@ -101,6 +102,7 @@ public class KingdomKeysReMind {
     private void setup(final FMLCommonSetupEvent event){
         // Some common setup code
 		event.enqueueWork(PacketHandlerRM::register);
+        event.enqueueWork(ModEntitiesRM::registerPlacements);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

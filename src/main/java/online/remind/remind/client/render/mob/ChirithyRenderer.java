@@ -21,20 +21,20 @@ public class ChirithyRenderer extends MobRenderer<ChirithyEntity, chirithyModel<
     public void render(ChirithyEntity entityIn, float entityYaw, float partialTicks, PoseStack matrixStackIn, MultiBufferSource bufferIn, int packedLightIn){
         matrixStackIn.pushPose();
         {
-            if (EntityHelper.getState(entityIn) == 1) {
+            /*if (EntityHelper.getState(entityIn) == 1) {
                 matrixStackIn.translate(0, -1.5F, 0);
             } else if(EntityHelper.getState(entityIn) == 2){
                 matrixStackIn.translate(0, 0.3F, 0);
                 if(entityIn.tickCount % 10 == 0) {
                     matrixStackIn.scale(1.2F, 1.2F, 1.2F);
                 }
-            }
+            }*/
             super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
         }
         matrixStackIn.popPose();
     }
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(KingdomKeysReMind.MODID, "textures/entity/mob/chirithy.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(KingdomKeysReMind.MODID, "textures/entity/models/mobs/spirit.png");
 
     @Override
     public ResourceLocation getTextureLocation(ChirithyEntity entity){
@@ -43,7 +43,7 @@ public class ChirithyRenderer extends MobRenderer<ChirithyEntity, chirithyModel<
 
     @Override
     protected void scale(ChirithyEntity entitylivingbaseIn, PoseStack matrixStackIn, float partialTickTime) {
-        matrixStackIn.scale(2,2,2);
+        matrixStackIn.scale(1,1,1);
         super.scale(entitylivingbaseIn, matrixStackIn, partialTickTime);
     }
 }

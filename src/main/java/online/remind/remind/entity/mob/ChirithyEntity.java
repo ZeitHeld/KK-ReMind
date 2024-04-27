@@ -55,16 +55,7 @@ public class ChirithyEntity extends Mob {
 
     @Override
     protected void defineSynchedData() {
-
+        super.defineSynchedData();
     }
 
-    @Override
-    public void readAdditionalSaveData(CompoundTag pCompound) {
-
-    }
-
-    @Override
-    public void addAdditionalSaveData(CompoundTag pCompound) {
-
-    }
 }
