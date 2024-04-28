@@ -13,8 +13,18 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.PlayMessages;
 import online.remind.remind.entity.ModEntitiesRM;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.Animation;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
 
-public class ChirithyEntity extends Mob {
+public class ChirithyEntity extends Mob{
+
 
     private GoalSelector goalSelector;
 
@@ -62,18 +72,21 @@ public class ChirithyEntity extends Mob {
         this(ModEntitiesRM.TYPE_CHIRITHY.get(), world);
     }
 
-/*
+
     @Override
     protected void registerGoals(){
 
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-
-        this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 3F));
-
+        this.goalSelector.addGoal(1, new FloatGoal(this));
+        this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 3F));
+        // Follow Owner
+        // Heal Owner
+        // Buff Owner
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
 
+        // Targeting
+
     }
- */
+
 
     public static AttributeSupplier.Builder registerAttributes() {
         return Mob.createLivingAttributes()
@@ -99,5 +112,4 @@ public class ChirithyEntity extends Mob {
     protected void defineSynchedData() {
         super.defineSynchedData();
     }
-
 }
