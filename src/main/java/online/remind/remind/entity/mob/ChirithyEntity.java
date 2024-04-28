@@ -26,7 +26,7 @@ import software.bernie.geckolib.core.object.PlayState;
 public class ChirithyEntity extends Mob{
 
 
-    private GoalSelector goalSelector;
+
 
     public ChirithyEntity(EntityType<? extends Mob> type, Level worldIn) {
         super(type, worldIn);
@@ -77,13 +77,15 @@ public class ChirithyEntity extends Mob{
     protected void registerGoals(){
 
         this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 3F));
-        // Follow Owner
+        this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 5F));
+        //this.goalSelector.addGoal(3, new FollowOwnerGoal(this,1,this.getOwner()));
+        //this.goalSelector.addGoal(4, new RandomStrollGoal(this,1.1D));
         // Heal Owner
         // Buff Owner
-        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
 
         // Targeting
+        //this.targetSelector.addGoal(1);
 
     }
 
