@@ -165,7 +165,9 @@
   "reactioncommand.rc_dark_mine.name": "Dark Mine",
   "reactioncommand.rc_twilight.name": "Twilight's Embrace",
   "reactioncommand.rc_dual_shot.name": "Dual Shot",
-  "reactioncommand.rc_test.name": "Does nothing"
+  "reactioncommand.rc_test.name": "Does nothing",
+
+  "entity.magicksaddon.chirithy": "Chirithy"
 
 
 }
