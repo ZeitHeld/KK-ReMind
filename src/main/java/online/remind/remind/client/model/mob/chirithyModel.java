@@ -6,23 +6,30 @@ package online.remind.remind.client.model.mob;// Made with Blockbench 4.9.3
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
+import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.Entity;
 import online.remind.remind.KingdomKeysReMind;
+import online.remind.remind.animations.chirithyAnimations;
+import online.remind.remind.entity.mob.ChirithyEntity;
 
 public class chirithyModel<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(KingdomKeysReMind.MODID, "chirithy"), "main");
-	private final ModelPart Main;
+	private final ModelPart chirithy;
+	private final ModelPart head;
 
 	public chirithyModel(ModelPart root) {
-		this.Main = root.getChild("Main");
-	}
+		this.chirithy = root.getChild("Main");
+        this.head = chirithy.getChild("head");
+    }
 
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
@@ -63,11 +70,36 @@ public class chirithyModel<T extends Entity> extends EntityModel<T> {
 
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		this.root().getAllParts().forEach(ModelPart::resetPose);
+		this.applyHeadRotation(netHeadYaw, headPitch, ageInTicks);
+
+		this.animateWalk(chirithyAnimations.walk, limbSwing, limbSwingAmount,2f, 2.5f);
+		this.animate(((ChirithyEntity) entity).idleAnimationState, chirithyAnimations.idle, ageInTicks, 1f);
+	}
+
+	private void animate(AnimationState idleAnimationState, AnimationDefinition idle, float ageInTicks, float v) {
+	}
+
+	private void animateWalk(AnimationDefinition walk, float limbSwing, float limbSwingAmount, float v, float v1) {
+		
+	}
+
+	private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch, float pAgeInTicks){
+		pNetHeadYaw = Mth.clamp(pNetHeadYaw,-30.0F,30.0F);
+		pHeadPitch = Mth.clamp(pHeadPitch, -25.0F,45.0F);
+
+		this.head.yRot = pNetHeadYaw * ((float)Math.PI / 180F);
+		this.head.xRot = pHeadPitch * ((float)Math.PI / 180F);
 
 	}
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		Main.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		chirithy.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	}
+
+
+	public ModelPart root(){
+		return chirithy;
 	}
 }

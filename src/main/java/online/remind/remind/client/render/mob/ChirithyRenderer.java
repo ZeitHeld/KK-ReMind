@@ -34,11 +34,12 @@ public class ChirithyRenderer extends MobRenderer<ChirithyEntity, chirithyModel<
         matrixStackIn.popPose();
     }
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(KingdomKeysReMind.MODID, "textures/entity/models/mobs/spirit.png");
+    private static final ResourceLocation SPIRIT_TEXTURE = new ResourceLocation(KingdomKeysReMind.MODID, "textures/entity/models/mobs/chirithy-spirit.png");
+    private static final ResourceLocation NIGHTMARE_TEXTURE = new ResourceLocation(KingdomKeysReMind.MODID, "textures/entity/models/mobs/chirithy-nightmare.png");
 
     @Override
     public ResourceLocation getTextureLocation(ChirithyEntity entity){
-        return TEXTURE;
+        return SPIRIT_TEXTURE;
     }
 
     @Override
