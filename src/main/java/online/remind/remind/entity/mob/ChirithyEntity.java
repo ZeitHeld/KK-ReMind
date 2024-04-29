@@ -2,16 +2,17 @@ package online.remind.remind.entity.mob;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AnimationState;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.PlayMessages;
+import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
+import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
+import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.remind.remind.entity.ModEntitiesRM;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
@@ -23,12 +24,26 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 
-public class ChirithyEntity extends Mob{
+public class ChirithyEntity extends PathfinderMob {
+    
+    Player owner;
+    /*
+        if (owner != null) {
+        IPlayerCapabilities ownerData = ModCapabilities.getPlayer((owner));
+
+
+        // Attribute Scaling
+        float hp = 20 + (ownerData.getMaxHP() / 2F);
+        float str = 2 + (ownerData.getStrengthStat().getStat() / 5F);
+        float mag = 5 + (ownerData.getMagicStat().getStat() / 0.8F);
+        float def = 2 + (ownerData.getDefenseStat().getStat() / 2F);
+    }
+
+     */
 
 
 
-
-    public ChirithyEntity(EntityType<? extends Mob> type, Level worldIn) {
+    public ChirithyEntity(EntityType<? extends PathfinderMob> type, Level worldIn) {
         super(type, worldIn);
     }
 
@@ -78,8 +93,8 @@ public class ChirithyEntity extends Mob{
 
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 5F));
-        //this.goalSelector.addGoal(3, new FollowOwnerGoal(this,1,this.getOwner()));
-        //this.goalSelector.addGoal(4, new RandomStrollGoal(this,1.1D));
+        //this.goalSelector.addGoal(3, new FollowOwnerGoal(this,1.0D,2F));
+        this.goalSelector.addGoal(4, new RandomStrollGoal(this,2D));
         // Heal Owner
         // Buff Owner
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
@@ -93,7 +108,7 @@ public class ChirithyEntity extends Mob{
     public static AttributeSupplier.Builder registerAttributes() {
         return Mob.createLivingAttributes()
                 .add(Attributes.FOLLOW_RANGE, 50.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.15D)
+                .add(Attributes.MOVEMENT_SPEED, 2D)
                 .add(Attributes.MAX_HEALTH, 35.0D)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1000.0D)
                 .add(Attributes.ATTACK_KNOCKBACK, 1.0D)

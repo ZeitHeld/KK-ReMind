@@ -6,6 +6,8 @@ import net.minecraft.client.Minecraft;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.MenuBackground;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.buttons.MenuButton;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
+import online.remind.remind.client.gui.dreameaters.ChangeSpirit;
+import online.remind.remind.client.gui.dreameaters.CreateSpirit;
 
 public class DreamEaterMenu extends MenuBackground {
 
@@ -13,7 +15,7 @@ public class DreamEaterMenu extends MenuBackground {
         super(name, rgb);
     }
 
-    private MenuButton backButton, bond, changeParty, createSpirit, abilityLinks;
+    private MenuButton backButton, changeSpirit, createSpirit, abilityLinks;
 
     public DreamEaterMenu() {
         super("Dream Eaters", new Color(236, 85, 236));
@@ -21,8 +23,15 @@ public class DreamEaterMenu extends MenuBackground {
     }
 
     protected void action(String string) {
-        if (string.equals("back"))
-        	GUIHelperRM.openAddonMenu();
+        if (string.equals("back")) {
+            GUIHelperRM.openAddonMenu();
+        }
+        if (string.equals("changeSpirit")){
+            minecraft.setScreen(new ChangeSpirit());
+        }
+        if (string.equals("createSpirit")){
+            minecraft.setScreen(new CreateSpirit());
+        }
     }
 
     @Override
@@ -47,19 +56,16 @@ public class DreamEaterMenu extends MenuBackground {
 
         int i = 0;
 
-        addRenderableWidget(bond = new MenuButton((int) buttonPosX, button_statsY + 20, (int) buttonWidth, "Bond", MenuButton.ButtonType.BUTTON, false, (e) -> {
+        addRenderableWidget(changeSpirit = new MenuButton((int) buttonPosX, button_statsY, (int) buttonWidth, "Change Spirit", MenuButton.ButtonType.BUTTON, false, (e) -> {
+            action("changeSpirit");
+        }));
+        addRenderableWidget(createSpirit = new MenuButton((int) buttonPosX, button_statsY + 20, (int) buttonWidth, "Create Spirit", MenuButton.ButtonType.BUTTON, false, (e) -> {
+            action("createSpirit");
+        }));
+        addRenderableWidget(abilityLinks = new MenuButton((int) buttonPosX, button_statsY +40, (int) buttonWidth, "Ability Links", MenuButton.ButtonType.BUTTON, true, (e) -> {
             action(null);
         }));
-        addRenderableWidget(changeParty = new MenuButton((int) buttonPosX, button_statsY + 40, (int) buttonWidth, "Change Party", MenuButton.ButtonType.BUTTON, false, (e) -> {
-            action(null);
-        }));
-        addRenderableWidget(createSpirit = new MenuButton((int) buttonPosX, button_statsY + 60, (int) buttonWidth, "Create Spirit", MenuButton.ButtonType.BUTTON, false, (e) -> {
-            action(null);
-        }));
-        addRenderableWidget(abilityLinks = new MenuButton((int) buttonPosX, button_statsY + 80, (int) buttonWidth, "Ability Links", MenuButton.ButtonType.BUTTON, false, (e) -> {
-            action(null);
-        }));
-        addRenderableWidget(backButton = new MenuButton((int) buttonPosX, button_statsY + 100, (int) buttonWidth, (Strings.Gui_Menu_Back), MenuButton.ButtonType.BUTTON, false, (e) -> {
+        addRenderableWidget(backButton = new MenuButton((int) buttonPosX, button_statsY +60, (int) buttonWidth, (Strings.Gui_Menu_Back), MenuButton.ButtonType.BUTTON, false, (e) -> {
             action("back");
         }));
     }

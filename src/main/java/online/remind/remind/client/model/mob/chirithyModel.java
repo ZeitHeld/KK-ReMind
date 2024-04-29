@@ -17,7 +17,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.Entity;
 import online.remind.remind.KingdomKeysReMind;
-import online.remind.remind.animations.chirithyAnimations;
+import online.remind.remind.animations.ModAnimationDefinitions;
 import online.remind.remind.entity.mob.ChirithyEntity;
 
 public class chirithyModel<T extends Entity> extends EntityModel<T> {
@@ -73,16 +73,21 @@ public class chirithyModel<T extends Entity> extends EntityModel<T> {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
 		this.applyHeadRotation(netHeadYaw, headPitch, ageInTicks);
 
-		this.animateWalk(chirithyAnimations.walk, limbSwing, limbSwingAmount,2f, 2.5f);
-		this.animate(((ChirithyEntity) entity).idleAnimationState, chirithyAnimations.idle, ageInTicks, 1f);
+		this.animateWalk(ModAnimationDefinitions.CHIRITHY_WALK, limbSwing, limbSwingAmount,2f, 2.5f);
+		this.animate(((ChirithyEntity) entity).idleAnimationState, ModAnimationDefinitions.CHIRITHY_IDLE, ageInTicks, 1f);
+		this.animateCast(((ChirithyEntity) entity).attackAnim, ModAnimationDefinitions.CHIRITHY_CAST, ageInTicks, 1f);
+	}
+
+	private void animateWalk(AnimationDefinition chirithyWalk, float limbSwing, float limbSwingAmount, float v, float v1) {
+	}
+
+	private void animateCast(float attackAnim, AnimationDefinition cast, float ageInTicks, float v) {
 	}
 
 	private void animate(AnimationState idleAnimationState, AnimationDefinition idle, float ageInTicks, float v) {
+
 	}
 
-	private void animateWalk(AnimationDefinition walk, float limbSwing, float limbSwingAmount, float v, float v1) {
-		
-	}
 
 	private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch, float pAgeInTicks){
 		pNetHeadYaw = Mth.clamp(pNetHeadYaw,-30.0F,30.0F);

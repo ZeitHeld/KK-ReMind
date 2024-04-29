@@ -5,13 +5,9 @@ import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.client.animation.Keyframe;
 import net.minecraft.client.animation.KeyframeAnimations;
 
-/**
- * Made with Blockbench 4.9.3
- * Exported for Minecraft version 1.19 or later with Mojang mappings
- * @author Xephiro
- */
-public class chirithyAnimations {
-	public static final AnimationDefinition idle = AnimationDefinition.Builder.withLength(36.68F)
+
+public class ModAnimationDefinitions {
+	public static final AnimationDefinition CHIRITHY_IDLE = AnimationDefinition.Builder.withLength(36.68F).looping()
 			.addAnimation("head", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 					new Keyframe(6.84F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR)
 			))
@@ -28,7 +24,7 @@ public class chirithyAnimations {
 			))
 			.build();
 
-	public static final AnimationDefinition walk = AnimationDefinition.Builder.withLength(1.44F)
+	public static final AnimationDefinition CHIRITHY_WALK = AnimationDefinition.Builder.withLength(1.44F).looping()
 			.addAnimation("RLeg", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 					new Keyframe(0.0F, KeyframeAnimations.degreeVec(0.0F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
 					new Keyframe(0.4F, KeyframeAnimations.degreeVec(27.5F, 0.0F, 0.0F), AnimationChannel.Interpolations.LINEAR),
@@ -43,7 +39,7 @@ public class chirithyAnimations {
 			))
 			.build();
 
-	public static final AnimationDefinition attack = AnimationDefinition.Builder.withLength(0.28F)
+	public static final AnimationDefinition CHIRITHY_CAST = AnimationDefinition.Builder.withLength(0.28F)
 			.addAnimation("LArm", new AnimationChannel(AnimationChannel.Targets.ROTATION,
 					new Keyframe(0.0F, KeyframeAnimations.degreeVec(166.6304F, -6.8638F, -26.6946F), AnimationChannel.Interpolations.LINEAR),
 					new Keyframe(0.12F, KeyframeAnimations.degreeVec(84.1304F, -6.8638F, -26.6946F), AnimationChannel.Interpolations.CATMULLROM),

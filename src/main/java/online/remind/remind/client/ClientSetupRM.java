@@ -6,6 +6,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -14,6 +15,7 @@ import online.remind.remind.client.render.AutoLifeLayerRenderer;
 import online.remind.remind.client.render.BerserkLayerRenderer;
 import online.remind.remind.entity.ModEntitiesRM;
 import online.remind.remind.handler.ClientEventsRM;
+import online.remind.remind.handler.InputHandlerRM;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus=Mod.EventBusSubscriber.Bus.MOD)
 public class ClientSetupRM {
@@ -27,11 +29,11 @@ public class ClientSetupRM {
         ModEntitiesRM.registerLayers(event);
     }
 
-    /*@SubscribeEvent
+    @SubscribeEvent
     public static void registerKeyBinding(RegisterKeyMappingsEvent event) {
-        for (MAInputHandler.Keybinds key : MAInputHandler.Keybinds.values())
+        for (InputHandlerRM.Keybinds key : InputHandlerRM.Keybinds.values())
             event.register(key.getKeybind());
-    }*/
+    }
 
     @SubscribeEvent
     public static void addLayers(EntityRenderersEvent.AddLayers event) {

@@ -78,5 +78,9 @@ public interface IGlobalCapabilitiesRM extends INBTSerializable<CompoundTag> {
     void setRCCooldownTicks(int ticks);
     void remRCCooldownTicks(int ticks);
 
+    // Dream Eater Stuff
+
+
+
 
 }

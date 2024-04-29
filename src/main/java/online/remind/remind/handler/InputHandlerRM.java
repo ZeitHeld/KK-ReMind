@@ -1,5 +1,6 @@
 package online.remind.remind.handler;
 
+import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -29,7 +30,9 @@ import online.remind.remind.driveform.ModDriveFormsRM;
 import online.remind.remind.lib.StringsRM;
 import online.remind.remind.network.PacketHandlerRM;
 import online.remind.remind.network.cts.CSSetStepTicksPacket;
+import online.remind.remind.network.cts.CSSummonSpirit;
 import online.remind.remind.network.cts.CSSyncAllClientDataPacketRM;
+import org.lwjgl.glfw.GLFW;
 
 public class InputHandlerRM {
 
@@ -165,9 +168,36 @@ public class InputHandlerRM {
 					break;
 			}
 		}
+	}
 
+	public void summonSpirit(){
+		PacketHandlerRM.sendToServer(new CSSummonSpirit());
+	}
 
+	public enum Keybinds {
+		SUMMONSPIRIT("key.remind.summonspirit", GLFW.GLFW_KEY_Y);
 
+		public final KeyMapping keybinding;
+		Keybinds(String name, int defaultKey){
+			keybinding = new KeyMapping(name, defaultKey, "key.categories.remind");
+		}
+
+		public KeyMapping getKeybind(){
+			return keybinding;
+		}
+
+		private boolean isPressed(){
+			return keybinding.consumeClick();
+		}
+	}
+
+	private Keybinds getPressedKey(){
+		for (Keybinds key : Keybinds.values()){
+			if (key.isPressed()){
+				return key;
+			}
+		}
+		return null;
 	}
 
 

@@ -158,6 +158,7 @@
   "menu_button.dreamEater": "Dream Eaters",
   "menu_button.dreamEater.desc": "A WIP MENU! Will crash you!",
   "menu_button.creditsScreen": "Credits (Re:Mind)",
+  "Ability Links.desc": "THIS BUTTON WILL CRASH YOU!",
 
   "reactioncommand.rc_riskcharge.name": "Riskcharge",
   "reactioncommand.rc_raging_burst.name": "Raging Burst",
@@ -166,6 +167,10 @@
   "reactioncommand.rc_twilight.name": "Twilight's Embrace",
   "reactioncommand.rc_dual_shot.name": "Dual Shot",
   "reactioncommand.rc_test.name": "Does nothing",
+
+  "key.categories.remind": "Kingdom Keys - Re:Mind",
+
+  "key.remind.summonspirit": "Summon Spirit",
 
   "entity.magicksaddon.chirithy": "Chirithy"
 
