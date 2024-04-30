@@ -30,7 +30,7 @@ public class DualShotRC extends ReactionCommand {
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
         float dmgmult = (ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.darknessBoost) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.lightBoost))  * 0.2F;
         globalData.setRCCooldownTicks(60);
-        playerData.setFP(playerData.getFP() + 40);
+        playerData.setFP(playerData.getFP() - 40);
 
         // Fire Dual Shot
 
