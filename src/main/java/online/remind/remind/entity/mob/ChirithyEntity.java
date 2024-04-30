@@ -94,7 +94,7 @@ public class ChirithyEntity extends PathfinderMob {
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 5F));
         //this.goalSelector.addGoal(3, new FollowOwnerGoal(this,1.0D,2F));
-        this.goalSelector.addGoal(4, new RandomStrollGoal(this,2D));
+        this.goalSelector.addGoal(4, new RandomStrollGoal(this,0.25D));
         // Heal Owner
         // Buff Owner
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
@@ -108,11 +108,19 @@ public class ChirithyEntity extends PathfinderMob {
     public static AttributeSupplier.Builder registerAttributes() {
         return Mob.createLivingAttributes()
                 .add(Attributes.FOLLOW_RANGE, 50.0D)
-                .add(Attributes.MOVEMENT_SPEED, 2D)
+                .add(Attributes.MOVEMENT_SPEED, 0.25D)
                 .add(Attributes.MAX_HEALTH, 35.0D)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1000.0D)
                 .add(Attributes.ATTACK_KNOCKBACK, 1.0D)
                 .add(Attributes.ATTACK_DAMAGE, 0.5D);
+    }
+
+    public int getMagic(){
+        return 10;
+    }
+
+    public int getDefence(){
+        return 10;
     }
 
     @Override

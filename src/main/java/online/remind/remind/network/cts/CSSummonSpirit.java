@@ -44,6 +44,8 @@ public class CSSummonSpirit {
         ctx.get().enqueueWork(() -> {
             Player owner = ctx.get().getSender();
 
+            System.out.println(owner);
+
 
             Entity chirithy = new ChirithyEntity(owner.level());
             owner.level().addFreshEntity(chirithy);
