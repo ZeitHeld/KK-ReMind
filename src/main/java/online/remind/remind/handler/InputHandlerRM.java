@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.api.client.KKInputEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
@@ -30,7 +31,7 @@ import online.remind.remind.driveform.ModDriveFormsRM;
 import online.remind.remind.lib.StringsRM;
 import online.remind.remind.network.PacketHandlerRM;
 import online.remind.remind.network.cts.CSSetStepTicksPacket;
-import online.remind.remind.network.cts.CSSummonSpirit;
+import online.remind.remind.network.cts.CSSummonSpiritPacket;
 import online.remind.remind.network.cts.CSSyncAllClientDataPacketRM;
 import org.lwjgl.glfw.GLFW;
 
@@ -164,14 +165,24 @@ public class InputHandlerRM {
 							event.setCanceled(true);
 						}
 					}
-
 					break;
 			}
 		}
 	}
 
+	@SubscribeEvent
+	public void handleKeyInputEvent(InputEvent.Key event) {
+		InputHandlerRM.Keybinds key = getPressedKey();
+
+		if (key != null) {
+			switch (key) {
+				case SUMMONSPIRIT -> summonSpirit();
+			}
+		}
+	}
+
 	public void summonSpirit(){
-		PacketHandlerRM.sendToServer(new CSSummonSpirit());
+		PacketHandlerRM.sendToServer(new CSSummonSpiritPacket());
 	}
 
 	public enum Keybinds {
