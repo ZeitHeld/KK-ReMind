@@ -27,24 +27,27 @@ import software.bernie.geckolib.core.object.PlayState;
 public class ChirithyEntity extends PathfinderMob {
     
     Player owner;
-    /*
-        if (owner != null) {
-        IPlayerCapabilities ownerData = ModCapabilities.getPlayer((owner));
-
-
-        // Attribute Scaling
-        float hp = 20 + (ownerData.getMaxHP() / 2F);
-        float str = 2 + (ownerData.getStrengthStat().getStat() / 5F);
-        float mag = 5 + (ownerData.getMagicStat().getStat() / 0.8F);
-        float def = 2 + (ownerData.getDefenseStat().getStat() / 2F);
-    }
-
-     */
-
-
 
     public ChirithyEntity(EntityType<? extends PathfinderMob> type, Level worldIn) {
         super(type, worldIn);
+
+    }
+    public ChirithyEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
+        super(ModEntitiesRM.TYPE_CHIRITHY.get(), world);
+    }
+
+    public ChirithyEntity(Level worldIn, Player owner){
+        this(ModEntitiesRM.TYPE_CHIRITHY.get(),worldIn);
+        if (owner != null) {
+            this.owner = owner;
+            IPlayerCapabilities ownerData = ModCapabilities.getPlayer(owner);
+
+            // Attribute Scaling
+            float hp = 20 + (ownerData.getMaxHP() / 2F);
+            float str = 2 + (ownerData.getStrengthStat().getStat() / 5F);
+            float mag = 5 + (ownerData.getMagicStat().getStat() / 0.8F);
+            float def = 2 + (ownerData.getDefenseStat().getStat() / 2F);
+        }
     }
 
     public final AnimationState idleAnimationState = new AnimationState();
@@ -79,13 +82,7 @@ public class ChirithyEntity extends PathfinderMob {
     }
 
 
-    public ChirithyEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
-        super(ModEntitiesRM.TYPE_CHIRITHY.get(), world);
-    }
 
-    public ChirithyEntity(Level world){
-        this(ModEntitiesRM.TYPE_CHIRITHY.get(), world);
-    }
 
 
     @Override
