@@ -11,10 +11,7 @@ import java.util.function.Supplier;
 
 public class CSSummonSpiritPacket {
 
-
-    public CSSummonSpiritPacket(){
-
-    }
+    public CSSummonSpiritPacket(){}
 
     public void encode(FriendlyByteBuf buffer) {
     }
@@ -24,7 +21,7 @@ public class CSSummonSpiritPacket {
         return msg;
     }
 
-    public static void handle(CSSummonSpiritPacket message, final Supplier<NetworkEvent.Context> ctx){
+    public static void handle(final CSSummonSpiritPacket message, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             Player owner = ctx.get().getSender();
 
@@ -33,11 +30,10 @@ public class CSSummonSpiritPacket {
                 return;
 
             //if(playerData.summonedDreamEater)
-
             ChirithyEntity chirithy = new ChirithyEntity(owner.level(),owner);
             owner.level().addFreshEntity(chirithy);
             chirithy.setPos(owner.getX(),owner.getY()+2,owner.getZ());
-            return;
         });
+        ctx.get().setPacketHandled(true);
     }
 }

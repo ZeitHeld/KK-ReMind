@@ -1,6 +1,7 @@
 package online.remind.remind.entity.mob;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -14,6 +15,7 @@ import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.remind.remind.entity.ModEntitiesRM;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -24,23 +26,25 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 
-public class ChirithyEntity extends PathfinderMob {
+import java.util.UUID;
+
+public class ChirithyEntity extends PathfinderMob{
     
     Player owner;
 
     public ChirithyEntity(EntityType<? extends PathfinderMob> type, Level worldIn) {
         super(type, worldIn);
-    }
 
+    }
     public ChirithyEntity(PlayMessages.SpawnEntity spawnEntity, Level world) {
         super(ModEntitiesRM.TYPE_CHIRITHY.get(), world);
     }
 
-    public ChirithyEntity(Level world, Player owner){
-        this(ModEntitiesRM.TYPE_CHIRITHY.get(), world);
+    public ChirithyEntity(Level worldIn, Player owner){
+        this(ModEntitiesRM.TYPE_CHIRITHY.get(),worldIn);
         if (owner != null) {
             this.owner = owner;
-            IPlayerCapabilities ownerData = ModCapabilities.getPlayer((owner));
+            IPlayerCapabilities ownerData = ModCapabilities.getPlayer(owner);
 
             // Attribute Scaling
             float hp = 20 + (ownerData.getMaxHP() / 2F);
@@ -80,6 +84,10 @@ public class ChirithyEntity extends PathfinderMob {
         }
         this.walkAnimation.update(f, 0.2f);
     }
+
+
+
+
 
     @Override
     protected void registerGoals(){
@@ -129,5 +137,8 @@ public class ChirithyEntity extends PathfinderMob {
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
+    }
+
+    public void setOwnerUUID(UUID uuid) {
     }
 }

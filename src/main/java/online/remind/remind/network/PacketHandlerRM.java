@@ -31,7 +31,7 @@ public class PacketHandlerRM {
         // ClientToServer
         HANDLER.registerMessage(packetID++, CSPrestigePacket.class, CSPrestigePacket::encode, CSPrestigePacket::decode, CSPrestigePacket::handle);
         HANDLER.registerMessage(packetID++, CSSyncAllClientDataPacketRM.class, CSSyncAllClientDataPacketRM::encode, CSSyncAllClientDataPacketRM::decode, CSSyncAllClientDataPacketRM::handle);
-        HANDLER.registerMessage(packetID++,CSSetStepTicksPacket.class,CSSetStepTicksPacket::encode,CSSetStepTicksPacket::decode,CSSetStepTicksPacket::handle);
+        HANDLER.registerMessage(packetID++, CSSetStepTicksPacket.class,CSSetStepTicksPacket::encode,CSSetStepTicksPacket::decode,CSSetStepTicksPacket::handle);
         HANDLER.registerMessage(packetID++, CSSummonSpiritPacket.class,CSSummonSpiritPacket::encode,CSSummonSpiritPacket::decode,CSSummonSpiritPacket::handle);
     }
 

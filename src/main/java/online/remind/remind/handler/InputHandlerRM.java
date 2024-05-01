@@ -47,12 +47,9 @@ public class InputHandlerRM {
 			// Light/Dark Step Abilities
 			if (InputHandler.qrCooldown <= 0 && (player.getDeltaMovement().x != 0 && player.getDeltaMovement().z != 0)) {
 				if (player.isSprinting()) {
-
-
 					int lightLevel = playerData.getDriveFormLevel(ModDriveFormsRM.LIGHT.get().getRegistryName().toString());
 					int darkLevel = playerData.getDriveFormLevel(ModDriveFormsRM.DARK.get().getRegistryName().toString());
 
-					// System.out.println(globalData.getStepTicks());
 					// Twilight Step
 					 if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.twilight)){
 						float yaw = player.getYRot();
@@ -142,9 +139,6 @@ public class InputHandlerRM {
 			Level world = mc.level;
 			Player player = mc.player;
 
-
-
-			//ExtendedWorldData worldData = ExtendedWorldData.get(world);
 			IWorldCapabilities worldData = ModCapabilities.getWorld(world);
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			event.getHandler().portalCommands = worldData.getAllPortalsFromOwnerID(mc.player.getUUID());
@@ -165,6 +159,7 @@ public class InputHandlerRM {
 							event.setCanceled(true);
 						}
 					}
+
 					break;
 			}
 		}
@@ -173,13 +168,15 @@ public class InputHandlerRM {
 	@SubscribeEvent
 	public void handleKeyInputEvent(InputEvent.Key event) {
 		InputHandlerRM.Keybinds key = getPressedKey();
-
-		if (key != null) {
+		if(key != null) {
 			switch (key) {
 				case SUMMONSPIRIT -> summonSpirit();
 			}
+
 		}
+
 	}
+
 
 	public void summonSpirit(){
 		PacketHandlerRM.sendToServer(new CSSummonSpiritPacket());
