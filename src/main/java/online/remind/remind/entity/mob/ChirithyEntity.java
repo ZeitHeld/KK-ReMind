@@ -1,7 +1,6 @@
 package online.remind.remind.entity.mob;
 
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -15,7 +14,6 @@ import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.remind.remind.entity.ModEntitiesRM;
-import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -26,9 +24,7 @@ import software.bernie.geckolib.core.animation.AnimationController;
 import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.core.object.PlayState;
 
-import java.util.UUID;
-
-public class ChirithyEntity extends PathfinderMob{
+public class ChirithyEntity extends PathfinderMob {
     
     Player owner;
     /*
@@ -140,8 +136,5 @@ public class ChirithyEntity extends PathfinderMob{
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-    }
-
-    public void setOwnerUUID(UUID uuid) {
     }
 }

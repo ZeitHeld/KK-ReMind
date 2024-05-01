@@ -9,32 +9,34 @@ import net.minecraftforge.network.NetworkEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.remind.remind.capabilities.IGlobalCapabilitiesRM;
 import online.remind.remind.capabilities.ModCapabilitiesRM;
-import online.remind.remind.entity.ModEntitiesRM;
 import online.remind.remind.entity.mob.ChirithyEntity;
-
-import java.util.UUID;
 
 public class CSSummonSpirit {
 
     ResourceLocation spirit;
+    boolean hasSpirit;
 
     public CSSummonSpirit(){
-        ;
+        hasSpirit = false;
     }
 
     public CSSummonSpirit(ResourceLocation spirit){
-        this.spirit = spirit;
-
+        this.spirit= spirit;
+        hasSpirit = true;
     }
 
     public void encode(FriendlyByteBuf buffer) {
+        buffer.writeBoolean(hasSpirit);
         if (spirit != null)
             buffer.writeResourceLocation(spirit);
     }
 
     public static CSSummonSpirit decode(FriendlyByteBuf buffer) {
         CSSummonSpirit msg = new CSSummonSpirit();
-        msg.spirit = buffer.readResourceLocation();
+        msg.hasSpirit = buffer.readBoolean();
+
+        if (msg.hasSpirit)
+            msg.spirit = buffer.readResourceLocation();
         return msg;
     }
 
@@ -44,10 +46,9 @@ public class CSSummonSpirit {
 
             System.out.println(owner);
 
-            UUID uuid = owner.getUUID();
-            ChirithyEntity chirithy = new ChirithyEntity(owner.level());
-            chirithy.setOwnerUUID(uuid);
-            chirithy.level().addFreshEntity(chirithy);
+
+            Entity chirithy = new ChirithyEntity(owner.level());
+            owner.level().addFreshEntity(chirithy);
             chirithy.setPos(owner.getX(),owner.getY()+2,owner.getZ());
             return;
         });
