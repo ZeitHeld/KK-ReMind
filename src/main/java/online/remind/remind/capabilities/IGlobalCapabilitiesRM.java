@@ -80,7 +80,12 @@ public interface IGlobalCapabilitiesRM extends INBTSerializable<CompoundTag> {
 
     // Dream Eater Stuff
 
+    boolean hasDreamEaterSummoned();
+    void setHasDreamEaterSummoned(boolean val);
 
+    String getDreamEaterUUID();
+
+    void setDreamEaterUUID();
 
 
 }

@@ -29,6 +29,13 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
         storage.putInt("NGPlus_Guardian", this.getNGPGuardianCount());
 
         storage.putInt("riskcharge_count", this.getRiskchargeCount());
+
+        // Dream Eater
+
+        storage.putBoolean("dreamEaterSummoned", this.hasDreamEaterSummoned());
+        storage.putString("dreamEaterUUID", this.getDreamEaterUUID());
+
+
         return storage;
     }
 
@@ -80,6 +87,8 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
     private int RCCooldown;
 
     private int riskchargeCount;
+
+    private boolean dreamEaterSummoned = false;
 
     //Haste
     public int getHasteLevel() {
@@ -334,6 +343,27 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
     @Override
     public void remRCCooldownTicks(int ticks) {
         this.RCCooldown = Math.max(RCCooldown - ticks, 0);
+
+    }
+
+    @Override
+    public boolean hasDreamEaterSummoned() {
+        return dreamEaterSummoned;
+    }
+
+    @Override
+    public void setHasDreamEaterSummoned(boolean val) {
+        this.dreamEaterSummoned = val;
+    }
+
+    @Override
+    public String getDreamEaterUUID() {
+
+        return null;
+    }
+
+    @Override
+    public void setDreamEaterUUID() {
 
     }
 

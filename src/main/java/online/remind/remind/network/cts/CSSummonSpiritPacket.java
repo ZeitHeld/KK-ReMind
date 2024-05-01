@@ -11,6 +11,7 @@ import java.util.function.Supplier;
 
 public class CSSummonSpiritPacket {
 
+
     public CSSummonSpiritPacket(){}
 
     public void encode(FriendlyByteBuf buffer) {
@@ -21,18 +22,28 @@ public class CSSummonSpiritPacket {
         return msg;
     }
 
+
     public static void handle(final CSSummonSpiritPacket message, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             Player owner = ctx.get().getSender();
 
             IGlobalCapabilitiesRM playerData = ModCapabilitiesRM.getGlobal(owner);
-            if(playerData == null)
+            if (playerData == null)
+
                 return;
 
-            //if(playerData.summonedDreamEater)
-            ChirithyEntity chirithy = new ChirithyEntity(owner.level(),owner);
-            owner.level().addFreshEntity(chirithy);
-            chirithy.setPos(owner.getX(),owner.getY()+2,owner.getZ());
+            if(!playerData.hasDreamEaterSummoned()) {
+            ChirithyEntity dreamEater = new ChirithyEntity(owner.level(), owner);
+            owner.level().addFreshEntity(dreamEater);
+            dreamEater.setPos(owner.getX(), owner.getY() + 2, owner.getZ());
+            dreamEater.getUUID();
+            playerData.setHasDreamEaterSummoned(true);
+            System.out.println(playerData.hasDreamEaterSummoned());
+            }else {
+                
+                playerData.setHasDreamEaterSummoned(false);
+                System.out.println(playerData.hasDreamEaterSummoned());
+            }
         });
         ctx.get().setPacketHandled(true);
     }

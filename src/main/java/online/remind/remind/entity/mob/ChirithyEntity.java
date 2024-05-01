@@ -32,6 +32,7 @@ public class ChirithyEntity extends PathfinderMob{
     
     Player owner;
 
+
     public ChirithyEntity(EntityType<? extends PathfinderMob> type, Level worldIn) {
         super(type, worldIn);
 
@@ -47,10 +48,10 @@ public class ChirithyEntity extends PathfinderMob{
             IPlayerCapabilities ownerData = ModCapabilities.getPlayer(owner);
 
             // Attribute Scaling
-            float hp = 20 + (ownerData.getMaxHP() / 2F);
-            float str = 2 + (ownerData.getStrengthStat().getStat() / 5F);
-            float mag = 5 + (ownerData.getMagicStat().getStat() / 0.8F);
-            float def = 2 + (ownerData.getDefenseStat().getStat() / 2F);
+            double hp = 20 + (ownerData.getMaxHP() / 2D);
+            double str = 2 + (ownerData.getStrengthStat().getStat() / 5D);
+            double mag = 5 + (ownerData.getMagicStat().getStat() / 0.8D);
+            double def = 2 + (ownerData.getDefenseStat().getStat() / 2D);
         }
     }
 
