@@ -6,6 +6,7 @@ import net.minecraftforge.network.NetworkEvent;
 import online.remind.remind.capabilities.IGlobalCapabilitiesRM;
 import online.remind.remind.capabilities.ModCapabilitiesRM;
 import online.remind.remind.entity.mob.ChirithyEntity;
+import online.remind.remind.network.PacketHandlerRM;
 
 import java.util.function.Supplier;
 
@@ -39,9 +40,14 @@ public class CSSummonSpiritPacket {
             dreamEater.getUUID();
             playerData.setHasDreamEaterSummoned(true);
             System.out.println(playerData.hasDreamEaterSummoned());
-            }else {
-                
+            playerData.setDreamEaterSummonedID(+1);
+            PacketHandlerRM.syncGlobalToAllAround(owner, playerData);
+            }
+            else if (playerData.hasDreamEaterSummoned()){
+
                 playerData.setHasDreamEaterSummoned(false);
+                playerData.setDreamEaterSummonedID(-1);
+                PacketHandlerRM.syncGlobalToAllAround(owner, playerData);
                 System.out.println(playerData.hasDreamEaterSummoned());
             }
         });

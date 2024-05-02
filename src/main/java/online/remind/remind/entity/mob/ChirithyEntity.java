@@ -14,6 +14,8 @@ import net.minecraftforge.network.PlayMessages;
 import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.remind.remind.capabilities.IGlobalCapabilitiesRM;
+import online.remind.remind.capabilities.ModCapabilitiesRM;
 import online.remind.remind.entity.ModEntitiesRM;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -84,6 +86,13 @@ public class ChirithyEntity extends PathfinderMob{
             f = 0f;
         }
         this.walkAnimation.update(f, 0.2f);
+    }
+
+    protected void update(int i){
+        IGlobalCapabilitiesRM playerData = ModCapabilitiesRM.getGlobal(owner);
+        if (playerData.getDreamEaterSummonedID() == -1){
+            this.remove(RemovalReason.KILLED);
+        }
     }
 
 
