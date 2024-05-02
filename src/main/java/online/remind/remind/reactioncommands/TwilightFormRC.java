@@ -46,14 +46,13 @@ public class TwilightFormRC extends ReactionCommand {
 	@Override
 	public boolean conditionsToAppear(Player player, LivingEntity livingEntity) {
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
 		if (playerData != null) {
 			if (playerData.getDriveFormLevel(KingdomKeysReMind.MODID + ":" + StringsRM.darkMode) == 7 && playerData.getDriveFormLevel(KingdomKeysReMind.MODID + ":" + StringsRM.light) == 7) {
 				if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.darkMode))
-					return playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.oblivionChain.get() && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.get().getRegistryName()).getItem() == ModItems.oathkeeperChain.get();
+					return playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.oblivionChain.get() && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.get().getRegistryName()) != null && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.get().getRegistryName()).getItem() == ModItems.oathkeeperChain.get();
 				
 				if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.light))
-					return playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.oathkeeperChain.get() && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.get().getRegistryName()).getItem() == ModItems.oblivionChain.get();
+					return playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.oathkeeperChain.get() && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.get().getRegistryName()) != null && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.get().getRegistryName()).getItem() == ModItems.oblivionChain.get();
 			}
 		}
 		return false;
