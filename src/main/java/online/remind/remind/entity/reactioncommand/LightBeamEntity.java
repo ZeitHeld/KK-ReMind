@@ -1,5 +1,8 @@
 package online.remind.remind.entity.reactioncommand;
 
+import net.minecraft.server.level.ServerPlayer;
+import online.remind.remind.KingdomKeysReMind;
+import online.remind.remind.lib.StringsRM;
 import org.joml.Vector3f;
 
 import net.minecraft.core.particles.DustParticleOptions;
@@ -104,7 +107,7 @@ public class LightBeamEntity extends ThrowableProjectile {
                         target.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg);
                     }
                     IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-                    playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (2)));
+                    playerData.addDriveFormExperience(KingdomKeysReMind.MODID + ":" + StringsRM.lightForm,(ServerPlayer) player, 2);
 
                 }
             }

@@ -2,6 +2,9 @@ package online.remind.remind.entity.reactioncommand;
 
 import java.util.List;
 
+import net.minecraft.server.level.ServerPlayer;
+import online.remind.remind.KingdomKeysReMind;
+import online.remind.remind.lib.StringsRM;
 import org.joml.Vector3f;
 
 import net.minecraft.core.particles.DustParticleOptions;
@@ -173,7 +176,7 @@ public class DarkMineEntity extends ThrowableProjectile {
                         }
                         level().explode(this.getOwner(), this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, Level.ExplosionInteraction.NONE);
                         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-                        playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), playerData.getDriveFormExp(playerData.getActiveDriveForm()) + 2);
+                        playerData.addDriveFormExperience(KingdomKeysReMind.MODID + ":" + StringsRM.darkForm,(ServerPlayer) player, 2);
                         remove(RemovalReason.KILLED);
 
                     }

@@ -61,7 +61,7 @@ public class LightBeamRC extends ReactionCommand {
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
         if(playerData != null){
             if(playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.lightForm) && globalData.getRCCooldownTicks() == 0){
-                    return true;
+                return true;
             }
         }
         return false;
