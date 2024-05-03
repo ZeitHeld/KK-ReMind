@@ -26,33 +26,21 @@ public class TwilightFormRC extends ReactionCommand {
 	@Override
 	public void onUse(Player player, LivingEntity livingEntity, LivingEntity livingEntity1) {
 		if (conditionsToAppear(player, player)) {
-			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-			IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
-			/*if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.oblivionChain.get()) {				
-				playerData.setNewKeychain(new ResourceLocation(KingdomKeysReMind.MODID + ":" + StringsRM.twilight), oathkeeper);
-			}
-			if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.oathkeeperChain.get()) {
-				playerData.setNewKeychain(new ResourceLocation(KingdomKeysReMind.MODID + ":" + StringsRM.twilight), new ItemStack(ModItems.oblivionChain.get()));
-			}*/
-			//PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
-			
 			DriveForm twilightForm = ModDriveForms.registry.get().getValue(new ResourceLocation(KingdomKeysReMind.MODID + ":" + StringsRM.twilight));
 			twilightForm.initDrive(player);
-			//playerData.setActiveDriveForm(KingdomKeysReMind.MODID + ":" + StringsRM.twilight);
-
 		}
 	}
 
 	@Override
 	public boolean conditionsToAppear(Player player, LivingEntity livingEntity) {
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-		if (playerData != null) {
-			if (playerData.getDriveFormLevel(KingdomKeysReMind.MODID + ":" + StringsRM.darkMode) == 7 && playerData.getDriveFormLevel(KingdomKeysReMind.MODID + ":" + StringsRM.light) == 7) {
-				if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.darkMode))
-					return playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.oblivionChain.get() && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.get().getRegistryName()) != null && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.get().getRegistryName()).getItem() == ModItems.oathkeeperChain.get();
+		if (playerData != null && playerData.getEquippedKeychain(DriveForm.NONE) != null && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.get().getRegistryName()) != null) {
+			if (playerData.getDriveFormLevel(KingdomKeysReMind.MODID + ":" + StringsRM.darkForm) == 7 && playerData.getDriveFormLevel(KingdomKeysReMind.MODID + ":" + StringsRM.lightForm) == 7) {
+				if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.darkForm))
+					return playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.oblivionChain.get() && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.get().getRegistryName()).getItem() == ModItems.oathkeeperChain.get();
 				
-				if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.light))
-					return playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.oathkeeperChain.get() && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.get().getRegistryName()) != null && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.get().getRegistryName()).getItem() == ModItems.oblivionChain.get();
+				if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.lightForm))
+					return playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.oathkeeperChain.get() && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.get().getRegistryName()).getItem() == ModItems.oblivionChain.get();
 			}
 		}
 		return false;

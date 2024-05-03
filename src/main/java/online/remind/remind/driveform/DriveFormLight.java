@@ -36,7 +36,7 @@ public class DriveFormLight extends DriveForm {
                 IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
                 IGlobalCapabilitiesRM formData = ModCapabilitiesRM.getGlobal(player);
 
-                if (playerData != null && playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID+":"+ StringsRM.light)) {
+                if (playerData != null && playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID+":"+ StringsRM.lightForm)) {
                     double mult = Double.parseDouble(ModConfigs.driveFormXPMultiplier.get(0).split(",")[1]);
                     playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
                    // formData.setDarkModeEXP(playerData.getDriveFormExp(playerData.getActiveDriveForm()));

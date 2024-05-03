@@ -75,14 +75,14 @@ public class InputHandlerRM {
 						 event.setCanceled(true);
 					}
 					// Light Step
-					else if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.light) || playerData.isAbilityEquipped(StringsRM.lightStep)  && !playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.darkMode) && !playerData.isAbilityEquipped(StringsRM.darkStep)) {
+					else if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.lightForm) || playerData.isAbilityEquipped(StringsRM.lightStep)  && !playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.darkForm) && !playerData.isAbilityEquipped(StringsRM.darkStep)) {
 						float yaw = player.getYRot();
 						float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
 						float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
 						double power = lightLevel + 1;
 						PacketHandlerRM.sendToServer(new CSSetStepTicksPacket(10, StringsRM.lightStepType));
 						// Light Form
-						if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.light)) {
+						if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.lightForm)) {
 							player.level().playSound(player, player.blockPosition(), ModSoundsRM.LIGHTSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
 							player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
 							InputHandler.qrCooldown = 20;
@@ -103,7 +103,7 @@ public class InputHandlerRM {
 
 						PacketHandlerRM.sendToServer(new CSSetStepTicksPacket(10, StringsRM.darkStepType));
 						// Dark Mode
-						if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.darkMode)) {
+						if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.darkForm)) {
 							player.level().playSound(player, player.blockPosition(), ModSoundsRM.DARKSTEP1.get(), SoundSource.PLAYERS, 1F, 1F);
 							player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
 							InputHandler.qrCooldown = 20;

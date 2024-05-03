@@ -25,8 +25,8 @@ public class StringsRM {
 
         //Forms
         rageForm = StringsRM.DFMA_Prefix+"rage",
-        darkMode = StringsRM.DFMA_Prefix+"dark",
-        light = StringsRM.DFMA_Prefix+"light",
+        darkForm = StringsRM.DFMA_Prefix+"dark",
+        lightForm = StringsRM.DFMA_Prefix+"light",
         twilight = StringsRM.DFMA_Prefix+"twilight",
 
 

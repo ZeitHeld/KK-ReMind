@@ -55,7 +55,7 @@ public class DarkMineRC extends ReactionCommand {
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
         if(playerData != null){
-            if(playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.darkMode) && globalData.getRCCooldownTicks() == 0){
+            if(playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.darkForm) && globalData.getRCCooldownTicks() == 0){
                     return true;
             }
         }
