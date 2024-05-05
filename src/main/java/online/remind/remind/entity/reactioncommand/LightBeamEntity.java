@@ -107,7 +107,7 @@ public class LightBeamEntity extends ThrowableProjectile {
                         target.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg);
                     }
                     IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-                    playerData.addDriveFormExperience(KingdomKeysReMind.MODID + ":" + StringsRM.lightForm,(ServerPlayer) player, 2);
+                    playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), playerData.getDriveFormExp(playerData.getActiveDriveForm()) + 2);
 
                 }
             }

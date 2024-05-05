@@ -176,7 +176,7 @@ public class DarkMineEntity extends ThrowableProjectile {
                         }
                         level().explode(this.getOwner(), this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, Level.ExplosionInteraction.NONE);
                         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-                        playerData.addDriveFormExperience(KingdomKeysReMind.MODID + ":" + StringsRM.darkForm,(ServerPlayer) player, 2);
+                        playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), playerData.getDriveFormExp(playerData.getActiveDriveForm()) + 20);
                         remove(RemovalReason.KILLED);
 
                     }
