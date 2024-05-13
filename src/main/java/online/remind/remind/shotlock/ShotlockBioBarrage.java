@@ -14,6 +14,7 @@ public class ShotlockBioBarrage extends Shotlock {
         super(registeryName,order,cooldown,max);
     }
 
+    /*
     @Override
     public void onUse(Player player, List<Entity> targetList) {
 
@@ -24,5 +25,17 @@ public class ShotlockBioBarrage extends Shotlock {
 
 
 
+    }*/
+
+    @Override
+    public void doPartialShotlock(Player player, List<Entity> targetList) {
+        BioBarrageCoreEntity core = new BioBarrageCoreEntity(player.level(), player, targetList, getDamage(player));
+        core.setPos(player.getX(), player.getY(), player.getZ());
+        player.level().addFreshEntity(core);
+    }
+
+    @Override
+    public void doFullShotlock(Player player, List<Entity> targetList) {
+        doPartialShotlock(player,targetList);
     }
 }

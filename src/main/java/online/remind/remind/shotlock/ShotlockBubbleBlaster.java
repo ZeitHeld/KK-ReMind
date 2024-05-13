@@ -19,12 +19,22 @@ public class ShotlockBubbleBlaster extends Shotlock {
     @Override
     public void onUse(Player player, List<Entity> targetList) {
 
-        float damage = (float) (DamageCalculation.getMagicDamage(player) * 1.25 + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.waterBoost) * 0.2F);
+        float damage = getDamage(player) + (ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.waterBoost) * 0.2F);
         BubbleBlasterCoreEntity core = new BubbleBlasterCoreEntity(player.level(), player, targetList, damage);
         core.setPos(player.getX(), player.getY(), player.getZ());
         player.level().addFreshEntity(core);
 
 
+
+    }
+
+    @Override
+    public void doPartialShotlock(Player player, List<Entity> list) {
+
+    }
+
+    @Override
+    public void doFullShotlock(Player player, List<Entity> list) {
 
     }
 }
