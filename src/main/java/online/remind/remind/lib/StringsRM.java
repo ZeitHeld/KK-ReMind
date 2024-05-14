@@ -59,6 +59,8 @@ public class StringsRM {
         bioBarrage = "bio_barrage",
         meteorShower = "meteor_shower",
 
+        heartlessAngel = "heartless_angel",
+
         // Reaction Commands
         riskchargeRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"riskcharge",
         ragingBurst = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"raging_burst",

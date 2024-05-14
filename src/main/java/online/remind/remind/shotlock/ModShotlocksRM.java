@@ -16,11 +16,13 @@ public class ModShotlocksRM {
     static int order = 100;
 
     public static final RegistryObject<Shotlock>
+            // BBS Shotlocks
     	FLAME_SALVO = SHOTLOCKS.register(StringsRM.flameSalvo, () -> new ShotlockFlameSalvo(KingdomKeysReMind.MODID + ":" + StringsRM.flameSalvo, order++, 2, 15)),
         BUBBLE_BLASTER = SHOTLOCKS.register(StringsRM.bubbleBlaster, () -> new ShotlockBubbleBlaster(KingdomKeysReMind.MODID + ":" + StringsRM.bubbleBlaster, order++, 2, 15)),
         THUNDERSTORM = SHOTLOCKS.register(StringsRM.thunderStorm, () -> new ShotlockThunderstorm(KingdomKeysReMind.MODID + ":" + StringsRM.thunderStorm, order++, 2, 5)),
         BIO_BARRAGE = SHOTLOCKS.register(StringsRM.bioBarrage, () -> new ShotlockBioBarrage(KingdomKeysReMind.MODID + ":" + StringsRM.bioBarrage, order++, 2,8)),
-        METEOR_SHOWER = SHOTLOCKS.register(StringsRM.meteorShower, () -> new ShotlockMeteorShower(KingdomKeysReMind.MODID + ":" + StringsRM.meteorShower, order++, 2,30));
+        METEOR_SHOWER = SHOTLOCKS.register(StringsRM.meteorShower, () -> new ShotlockMeteorShower(KingdomKeysReMind.MODID + ":" + StringsRM.meteorShower, order++, 2,30)),
 
-
+            // Original Shotlocks
+    HEARTLESS_ANGEL = SHOTLOCKS.register(StringsRM.heartlessAngel, () -> new ShotlockHeartlessAngel(KingdomKeysReMind.MODID + ":" + StringsRM.heartlessAngel, order++, 110,1));
 }

@@ -138,5 +138,10 @@
         "sounds": [
           "magicksaddon:dual_shot"
         ]
+      },
+      "heartless_angel": {
+        "sounds": [
+          "magicksaddon:heartless_angel"
+        ]
       }
   }
