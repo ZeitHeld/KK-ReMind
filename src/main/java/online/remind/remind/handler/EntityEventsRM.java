@@ -279,6 +279,9 @@ public class EntityEventsRM {
 		if(event.getEntity() instanceof Player) {
 			Player player = (Player) event.getEntity();
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+			if(playerData == null)
+				return;
+
 			// Adrenaline
 			if (playerData.isAbilityEquipped(StringsRM.adrenaline)) {
 				if (player.getHealth() - event.getAmount() <= player.getMaxHealth() / 4){

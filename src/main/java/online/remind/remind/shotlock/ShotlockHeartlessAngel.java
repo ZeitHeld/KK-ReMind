@@ -36,8 +36,6 @@ public class ShotlockHeartlessAngel extends Shotlock {
             targetData.remMP(targetData.getMaxMP());
             targetData.remFocus(100);
             targetData.remDP(1000);
-            int damage = targetData.getMaxHP();
-            ((Player) target).setHealth(2);
         }
         if (target instanceof LivingEntity le) {
             le.setHealth(2);
