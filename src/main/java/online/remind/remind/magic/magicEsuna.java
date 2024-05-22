@@ -18,6 +18,9 @@ import online.remind.remind.capabilities.ModCapabilitiesRM;
 import online.remind.remind.client.sound.ModSoundsRM;
 import online.remind.remind.network.PacketHandlerRM;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class magicEsuna extends Magic {
 
 	public magicEsuna(ResourceLocation registryName, boolean hasToSelect, int maxLevel) {
@@ -33,33 +36,28 @@ public class magicEsuna extends Magic {
 			caster.swing(InteractionHand.MAIN_HAND);
 			((ServerLevel) player.level()).sendParticles(ParticleTypes.SONIC_BOOM.getType(), player.getX(), player.getY() + 2.3D, player.getZ(), 5, 0D, 0D, 0D, 0D);
 
+			List<MobEffectInstance> effectsList = new ArrayList<>();
 			for (MobEffectInstance e : player.getActiveEffects()) {
 				if (e.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
-					player.removeEffect(e.getEffect());
+					effectsList.add(e);
 				}
 			}
 
-			/*
-			 * player.removeEffect(MobEffects.BAD_OMEN);
-			 * player.removeEffect(MobEffects.POISON);
-			 * player.removeEffect(MobEffects.HUNGER);
-			 * player.removeEffect(MobEffects.WITHER);
-			 * player.removeEffect(MobEffects.DIG_SLOWDOWN);
-			 * player.removeEffect(MobEffects.BLINDNESS);
-			 * player.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
-			 * player.removeEffect(MobEffects.CONFUSION);
-			 * player.removeEffect(MobEffects.WEAKNESS);
-			 * player.removeEffect(MobEffects.UNLUCK);
-			 */
+			for(MobEffectInstance badEffect: effectsList){
+				player.removeEffect(badEffect.getEffect());
+			}
 
 			// KK & ReMind Effects
 			if (globalData.getSlowTicks() > 1) {
 				globalData.setSlowTicks(1, level);
 			}
-			globalData2.setStoppedTicks(0);
+			if (globalData2.getStoppedTicks() > 1) {
+				globalData2.setStoppedTicks(0);
+			}
 
 			PacketHandler.syncToAllAround(player, globalData2);
 			PacketHandlerRM.syncGlobalToAllAround(player, globalData);
+
 		}
 	}
 

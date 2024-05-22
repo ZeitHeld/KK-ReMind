@@ -1,5 +1,6 @@
 package online.remind.remind.magic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.resources.ResourceLocation;
@@ -34,11 +35,17 @@ public class magicDispel extends Magic {
 			IGlobalCapabilities globalData2 = ModCapabilities.getGlobal(lockOnEntity);
 
 			// If target is locked and magic lock on ability is on
+			List<MobEffectInstance> effectsList = new ArrayList<>();
 			for (MobEffectInstance e : lockOnEntity.getActiveEffects()) {
 				if (e.getEffect().getCategory() == MobEffectCategory.BENEFICIAL) {
-					lockOnEntity.removeEffect(e.getEffect());
+					effectsList.add(e);
 				}
 			}
+
+			for(MobEffectInstance goodEffect: effectsList){
+				lockOnEntity.removeEffect(goodEffect.getEffect());
+			}
+
 			globalData2.setAeroTicks(1, level);
 			if (globalData.getHasteTicks() > 1) {
 				globalData.setHasteTicks(1, level);
