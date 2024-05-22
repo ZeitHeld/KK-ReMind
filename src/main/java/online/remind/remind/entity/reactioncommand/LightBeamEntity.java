@@ -114,11 +114,6 @@ public class LightBeamEntity extends ThrowableProjectile {
         }
     }
 
-
-
-
-
-
     @Override
     protected void defineSynchedData() {
 
