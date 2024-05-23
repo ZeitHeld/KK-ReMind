@@ -170,7 +170,7 @@ public class InputHandlerRM {
 		InputHandlerRM.Keybinds key = getPressedKey();
 		if(key != null) {
 			switch (key) {
-				case SUMMONSPIRIT -> summonSpirit();
+				//case SUMMONSPIRIT -> summonSpirit();
 			}
 
 		}
