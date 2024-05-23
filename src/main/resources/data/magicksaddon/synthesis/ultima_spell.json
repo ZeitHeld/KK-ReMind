@@ -2,11 +2,11 @@
   "cost": 50000,
   "ingredients": [
     {
-      "material": "kingdomkeys:mat_pulsing_crystal",
+      "material": "kingdomkeys:mat_lucid_crystal",
       "quantity": "9"
     },
     {
-      "material": "kingdomkeys:mat_lucid_crystal",
+      "material": "kingdomkeys:mat_twilight_crystal",
       "quantity": "9"
     },
     {
@@ -31,12 +31,12 @@
     },
     {
       "material": "kingdomkeys:mat_orichalcumplus",
-      "quantity": "9"
+      "quantity": "10"
     }
   ],
   "output": {
     "type": "item",
-    "item": "magicksaddon:ultima_ribbon",
+    "item": "magicksaddon:ultima_spell",
     "quantity": 1
   },
   "tier": 7
