@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import online.kingdomkeys.kingdomkeys.entity.ModEntities;
+import online.kingdomkeys.kingdomkeys.lib.Lists;
 import org.slf4j.Logger;
 
 import com.google.common.base.Suppliers;
@@ -103,6 +104,10 @@ public class KingdomKeysReMind {
         // Some common setup code
 		event.enqueueWork(PacketHandlerRM::register);
         event.enqueueWork(ModEntitiesRM::registerPlacements);
+
+        //TODO Either remove this or do it
+        //Lists.Axel.add(11, ModItemsRM.aquaChaplet.get());
+
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

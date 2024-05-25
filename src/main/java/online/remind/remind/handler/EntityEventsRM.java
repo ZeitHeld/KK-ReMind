@@ -276,9 +276,8 @@ public class EntityEventsRM {
 
 	@SubscribeEvent
 	public void hurtEvent(LivingHurtEvent event){
-		if(event.getEntity() instanceof Player) {
-			Player player = (Player) event.getEntity();
-			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+		if(event.getEntity() instanceof Player player) {
+            IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			if(playerData == null)
 				return;
 
