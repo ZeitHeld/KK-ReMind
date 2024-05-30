@@ -308,7 +308,7 @@ public class EntityEventsRM {
 			if (playerData.isAbilityEquipped(StringsRM.mpShield) && playerData.getMP() > 0 && !playerData.getRecharge()){
 				float DMGTaken = event.getAmount();
 
-				System.out.println(DMGTaken);
+				//System.out.println(DMGTaken);
 
 				event.setCanceled(true);
 				playerData.remMP(DMGTaken);
@@ -316,7 +316,7 @@ public class EntityEventsRM {
 				if (playerData.isAbilityEquipped(Strings.mpRage) && playerData.getMP() > 10){
 					//playerData.addMP(DMGTaken / (1+ playerData.getNumberOfAbilitiesEquipped(Strings.mpRage)));
 					playerData.addMP(mpRageModifier);
-					System.out.println(mpRageModifier);
+					//System.out.println(mpRageModifier);
 					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 				}
 				if (playerData.isAbilityEquipped(Strings.damageDrive)){

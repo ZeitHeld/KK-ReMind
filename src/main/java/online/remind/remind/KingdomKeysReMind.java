@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import online.kingdomkeys.kingdomkeys.entity.ModEntities;
+import online.remind.remind.particle.ReMindParticles;
 import org.slf4j.Logger;
 
 import com.google.common.base.Suppliers;
@@ -77,6 +78,7 @@ public class KingdomKeysReMind {
         ModDriveFormsRM.DRIVE_FORMS.register(modEventBus);
         ModShotlocksRM.SHOTLOCKS.register(modEventBus);
         ModEffects.MOB_EFFECTS.register(modEventBus);
+        ReMindParticles.PARTICLE_TYPES.register(modEventBus);
         ModReactionCommandsRM.REACTION_COMMANDS.register(modEventBus);
         modEventBus.addListener(this::setup);
         TABS.register(modEventBus);
