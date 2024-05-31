@@ -33,6 +33,7 @@ import online.remind.remind.client.render.mob.ChirithyRenderer;
 import online.remind.remind.client.render.reactioncommand.DarkMineEntityRenderer;
 import online.remind.remind.client.render.reactioncommand.LightBeamEntityRenderer;
 import online.remind.remind.client.render.shotlock.BioShotEntityRenderer;
+import online.remind.remind.client.render.shotlock.DarkShotEntityRenderer;
 import online.remind.remind.entity.magic.*;
 import online.remind.remind.entity.mob.ChirithyEntity;
 import online.remind.remind.entity.reactioncommand.DarkFiragaEntity;
@@ -65,6 +66,10 @@ public class ModEntitiesRM {
     public static final RegistryObject<EntityType<ThunderstormCoreEntity>> TYPE_SHOTLOCK_THUNDERSTORM = createEntityType(ThunderstormCoreEntity::new, ThunderstormCoreEntity::new, MobCategory.MISC, "entity_shotlock_thunderstorm_core", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<BioBarrageCoreEntity>> TYPE_SHOTLOCK_BIO_BARRAGE = createEntityType(BioBarrageCoreEntity::new, BioBarrageCoreEntity::new, MobCategory.MISC, "entity_shotlock_bio_barrage_core", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<MeteorShowerCoreEntity>> TYPE_SHOTLOCK_METEOR_SHOWER = createEntityType(MeteorShowerCoreEntity::new, MeteorShowerCoreEntity::new, MobCategory.MISC, "entity_shotlock_meteor_shower_core", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<DarkFiragaCoreEntity>> TYPE_SHOTLOCK_DARK_FIRAGA = createEntityType(DarkFiragaCoreEntity::new, DarkFiragaCoreEntity::new, MobCategory.MISC, "entity_shotlock_dark_firaga_core", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<DarkDivideCoreEntity>> TYPE_SHOTLOCK_DARK_DIVIDE = createEntityType(DarkDivideCoreEntity::new, DarkDivideCoreEntity::new, MobCategory.MISC, "entity_shotlock_dark_divide_core", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<DarkDivideShotEntity>> TYPE_SHOTLOCK_DARK_DIVIDE_SHOT = createEntityType(DarkDivideShotEntity::new, DarkDivideShotEntity::new, MobCategory.MISC, "entity_shotlock_dark_divide_shot", 0.5F, 0.5F);
+    public static final RegistryObject<EntityType<DarkFiragaShotEntity>> TYPE_SHOTLOCK_DARK_FIRAGA_SHOT = createEntityType(DarkFiragaShotEntity::new, DarkFiragaShotEntity::new, MobCategory.MISC, "entity_shotlock_dark_firaga_shot", 0.5F, 0.5F);
 
     // Reaction Commands
     public static final RegistryObject<EntityType<LightBeamEntity>> TYPE_LIGHT_BEAM = createEntityType(LightBeamEntity::new, LightBeamEntity::new, MobCategory.MISC, "entity_rc_light_beam", 1.5F,4F);
@@ -128,12 +133,16 @@ public class ModEntitiesRM {
         event.registerEntityRenderer(TYPE_WARP.get(),InvisibleEntityRenderer::new);
 
         event.registerEntityRenderer(TYPE_BIO_SHOT.get(), BioShotEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_SHOTLOCK_DARK_FIRAGA_SHOT.get(), BioShotEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_SHOTLOCK_DARK_DIVIDE_SHOT.get(), BioShotEntityRenderer::new);
 
         event.registerEntityRenderer(TYPE_SHOTLOCK_FLAME_SALVO.get(), InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_SHOTLOCK_BUBBLE_BLASTER.get(), InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_SHOTLOCK_BIO_BARRAGE.get(), InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_SHOTLOCK_THUNDERSTORM.get(), InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_SHOTLOCK_METEOR_SHOWER.get(), InvisibleEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_SHOTLOCK_DARK_FIRAGA.get(), InvisibleEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_SHOTLOCK_DARK_DIVIDE.get(), InvisibleEntityRenderer::new);
 
         event.registerEntityRenderer(TYPE_LIGHT_BEAM.get(), LightBeamEntityRenderer::new);
         event.registerEntityRenderer(TYPE_DARK_MINE.get(), DarkMineEntityRenderer::new);

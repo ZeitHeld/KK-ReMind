@@ -4,6 +4,8 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -66,15 +68,16 @@ public class DarkFiragaEntity extends ThrowableProjectile {
 
         //world.addParticle(ParticleTypes.ENTITY_EFFECT, getPosX(), getPosY(), getPosZ(), 1, 1, 0);
         if(tickCount > 0) {
-            float radius = 0.8F;
+            float radius = 0.5F;
             for (int t = 1; t < 360; t += 30) {
-                for (int s = 1; s < 360; s += 30) {
+                for (int s = 20; s < 360; s += 30) {
                     double x = getX() + (radius * Math.cos(Math.toRadians(s)) * Math.sin(Math.toRadians(t)));
                     double z = getZ() + (radius * Math.sin(Math.toRadians(s)) * Math.sin(Math.toRadians(t)));
                     double y = getY() + (radius * Math.cos(Math.toRadians(t)));
                     level().addParticle(ParticleTypes.SOUL_FIRE_FLAME, x, y, z, 0, 0, 0);
-                    level().addAlwaysVisibleParticle(ParticleTypes.SQUID_INK, getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
+                    //level().addAlwaysVisibleParticle(ParticleTypes.SQUID_INK, getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
                     level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(1F, 1F, 1F), 1F), getX(), getY(), getZ(), 0, 0, 0);
+                    level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0F, 0F, 0F), 1F), x, y, z, 0, 0, 0);
 
                 }
             }
@@ -108,6 +111,8 @@ public class DarkFiragaEntity extends ThrowableProjectile {
                         float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) : 2;
 
                         target.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg);
+                        target.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 160,3));
+                        target.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 160,3));
                         remove(RemovalReason.KILLED);
                     }
                 }

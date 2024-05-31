@@ -23,6 +23,9 @@ public class ModShotlocksRM {
         BIO_BARRAGE = SHOTLOCKS.register(StringsRM.bioBarrage, () -> new ShotlockBioBarrage(KingdomKeysReMind.MODID + ":" + StringsRM.bioBarrage, order++, 2,8)),
         METEOR_SHOWER = SHOTLOCKS.register(StringsRM.meteorShower, () -> new ShotlockMeteorShower(KingdomKeysReMind.MODID + ":" + StringsRM.meteorShower, order++, 2,30)),
 
+            // Series Shotlocks
+            DARK_DIVIDE = SHOTLOCKS.register(StringsRM.darkDivide, () -> new ShotlockDarkDivide(KingdomKeysReMind.MODID + ":" + StringsRM.darkDivide, order++, 2,28)),
+
             // Original Shotlocks
-    HEARTLESS_ANGEL = SHOTLOCKS.register(StringsRM.heartlessAngel, () -> new ShotlockHeartlessAngel(KingdomKeysReMind.MODID + ":" + StringsRM.heartlessAngel, order++, 110,1));
+        HEARTLESS_ANGEL = SHOTLOCKS.register(StringsRM.heartlessAngel, () -> new ShotlockHeartlessAngel(KingdomKeysReMind.MODID + ":" + StringsRM.heartlessAngel, order++, 110,1));
 }

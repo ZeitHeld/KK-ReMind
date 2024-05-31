@@ -58,6 +58,7 @@ public class StringsRM {
         thunderStorm = "thunderstorm",
         bioBarrage = "bio_barrage",
         meteorShower = "meteor_shower",
+        darkDivide = "dark_divide",
 
         heartlessAngel = "heartless_angel",
 

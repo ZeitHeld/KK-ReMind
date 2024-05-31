@@ -32,28 +32,19 @@ public class magicBerserk extends Magic {
 			caster.swing(InteractionHand.MAIN_HAND);
 			// Effect and Level Modifier
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-			if (globalData.getBerserkTicks() <= 0) {
+            float strBonus = (playerData.getStrengthStat().getStat() * 0.15F) * (level + 1);
+			float defDebuff = (playerData.getDefenseStat().getStat() * 0.15F) * (level + 1);
+			System.out.println(strBonus);
+            if (globalData.getBerserkTicks() <= 0) {
 
 				// Future color change line below
 				// Levels 0 - 2
 				switch (level) {
-				case 0:
-					playerData.getStrengthStat().addModifier("berserk", +3, false);
-					playerData.getDefenseStat().addModifier("berserk", -3, false);
+				case 0, 1, 2:
+					playerData.getStrengthStat().addModifier("berserk", (int) strBonus, false);
+					playerData.getDefenseStat().addModifier("berserk", (int) -defDebuff, false);
 					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 					break;
-				case 1:
-					playerData.getStrengthStat().addModifier("berserk", +6, false);
-					playerData.getDefenseStat().addModifier("berserk", -6, false);
-					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
-
-					break;
-				case 2:
-					playerData.getStrengthStat().addModifier("berserk", +9, false);
-					playerData.getDefenseStat().addModifier("berserk", -9, false);
-					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
-					break;
-
 				}
 				globalData.setBerserkTicks(time, level);
 				PacketHandlerRM.syncGlobalToAllAround(player, globalData);

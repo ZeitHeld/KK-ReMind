@@ -109,6 +109,7 @@
   "shotlock.thunderstorm.name": "Thunderstorm",
   "shotlock.bio_barrage.name": "Bio Barrage",
   "shotlock.meteor_shower.name": "Meteor Shower",
+  "shotlock.dark_divide.name": "Dark Divide",
   "shotlock.heartless_angel.name": "Heartless Angel",
 
   "item.magicksaddon.flame_salvo_shotlock": "Flame Salvo Shotlock",
@@ -116,6 +117,7 @@
   "item.magicksaddon.thunderstorm_shotlock": "Thunderstorm Shotlock",
   "item.magicksaddon.bio_barrage_shotlock": "Bio Barrage Shotlock",
   "item.magicksaddon.meteor_shower_shotlock": "Meteor Shower Shotlock",
+  "item.magicksaddon.dark_divide_shotlock": "Dark Divide Shotlock",
 
   "form.form_rage.name": "Rage",
   "form.form_dark.name": "Dark",
@@ -167,6 +169,7 @@
   "reactioncommand.rc_dark_mine.name": "Dark Mine",
   "reactioncommand.rc_twilight.name": "Twilight's Embrace",
   "reactioncommand.rc_dual_shot.name": "Dual Shot",
+  "reactioncommand.rc_dark_firaga.name": "Dark Firaga",
   "reactioncommand.rc_test.name": "Does nothing",
 
   "key.categories.remind": "Kingdom Keys - Re:Mind",
