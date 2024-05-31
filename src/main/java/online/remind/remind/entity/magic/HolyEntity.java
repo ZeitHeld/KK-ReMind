@@ -136,7 +136,6 @@ public class HolyEntity extends ThrowableProjectile {
 							System.out.println(dmg * dmgMult);
 						}
 						target.invulnerableTime = 0;
-						remove(RemovalReason.KILLED);
 					}
 				}
 			}

@@ -76,7 +76,7 @@ public class CreditsScreen extends MenuBackground {
         // Donators
 
         addRenderableWidget(donators = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth*2, Utils.translateToLocal("Donators:"),"", 0x0b0fff));
-        addRenderableWidget(donators = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth*2, Utils.translateToLocal(""),"", 0x0b0fff));
+        addRenderableWidget(donators = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth*2, Utils.translateToLocal("RealRegen"),"", 0x0b0fff));
 
 
 

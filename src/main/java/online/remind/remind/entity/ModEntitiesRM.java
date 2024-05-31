@@ -35,6 +35,7 @@ import online.remind.remind.client.render.reactioncommand.LightBeamEntityRendere
 import online.remind.remind.client.render.shotlock.BioShotEntityRenderer;
 import online.remind.remind.entity.magic.*;
 import online.remind.remind.entity.mob.ChirithyEntity;
+import online.remind.remind.entity.reactioncommand.DarkFiragaEntity;
 import online.remind.remind.entity.reactioncommand.DarkMineEntity;
 import online.remind.remind.entity.reactioncommand.DualShotEntity;
 import online.remind.remind.entity.reactioncommand.LightBeamEntity;
@@ -59,7 +60,6 @@ public class ModEntitiesRM {
 
     // Shotlocks
     public static final RegistryObject<EntityType<BioBarrageShotEntity>> TYPE_BIO_SHOT = createEntityType(BioBarrageShotEntity::new, BioBarrageShotEntity::new, MobCategory.MISC, "entity_bio_shot", 0.5F, 0.5F);
-
     public static final RegistryObject<EntityType<FlameSalvoCoreEntity>> TYPE_SHOTLOCK_FLAME_SALVO = createEntityType(FlameSalvoCoreEntity::new, FlameSalvoCoreEntity::new, MobCategory.MISC, "entity_shotlock_flame_salvo_core", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<BubbleBlasterCoreEntity>> TYPE_SHOTLOCK_BUBBLE_BLASTER = createEntityType(BubbleBlasterCoreEntity::new, BubbleBlasterCoreEntity::new, MobCategory.MISC, "entity_shotlock_bubble_blaster_core", 0.5F, 0.5F);
     public static final RegistryObject<EntityType<ThunderstormCoreEntity>> TYPE_SHOTLOCK_THUNDERSTORM = createEntityType(ThunderstormCoreEntity::new, ThunderstormCoreEntity::new, MobCategory.MISC, "entity_shotlock_thunderstorm_core", 0.5F, 0.5F);
@@ -70,6 +70,9 @@ public class ModEntitiesRM {
     public static final RegistryObject<EntityType<LightBeamEntity>> TYPE_LIGHT_BEAM = createEntityType(LightBeamEntity::new, LightBeamEntity::new, MobCategory.MISC, "entity_rc_light_beam", 1.5F,4F);
     public static final RegistryObject<EntityType<DarkMineEntity>> TYPE_DARK_MINE = createEntityType(DarkMineEntity::new, DarkMineEntity::new, MobCategory.MISC, "entity_rc_dark_mine", 1.75F,2.5F);
     public static final RegistryObject<EntityType<DualShotEntity>> TYPE_DUAL_SHOT = createEntityType(DualShotEntity::new, DualShotEntity::new, MobCategory.MISC, "entity_rc_dual_shot", 1.5F,1.5F);
+
+    // Misc
+    public static final RegistryObject<EntityType<DarkFiragaEntity>> TYPE_DARK_FIRAGA = createEntityType(DarkFiragaEntity::new, DarkFiragaEntity::new, MobCategory.MISC,"entity_dark_firaga", 1f, 1f);
 
     // Dream Eaters
     public static final Item.Properties PROPERTIES = new Item.Properties();
@@ -135,6 +138,8 @@ public class ModEntitiesRM {
         event.registerEntityRenderer(TYPE_LIGHT_BEAM.get(), LightBeamEntityRenderer::new);
         event.registerEntityRenderer(TYPE_DARK_MINE.get(), DarkMineEntityRenderer::new);
         event.registerEntityRenderer(TYPE_DUAL_SHOT.get(),InvisibleEntityRenderer::new);
+
+        event.registerEntityRenderer(TYPE_DARK_FIRAGA.get(),InvisibleEntityRenderer::new);
 
         event.registerEntityRenderer(TYPE_CHIRITHY.get(),ChirithyRenderer::new);
 
