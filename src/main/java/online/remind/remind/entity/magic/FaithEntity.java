@@ -116,6 +116,8 @@ public class FaithEntity extends ThrowableProjectile {
                 list.remove(this);
             }
             if (tickCount % 6 == 1){
+                float dmg = this.getOwner() instanceof Player player ? DamageCalculation.getMagicDamage(player) * 0.055F :3;
+
                 if (!list.isEmpty()) { //If it detects entities either around the caster or around the locked on entity
                     int i = level().random.nextInt(list.size());
                     Entity e = list.get(i);
@@ -123,18 +125,16 @@ public class FaithEntity extends ThrowableProjectile {
                         if(!e.isAlive()){
                             list.remove(e);
                         }
-                        float dmg = this.getOwner() instanceof Player player ? DamageCalculation.getMagicDamage(player) * 0.055F :3;
-                        LightBeamEntity shot = new LightBeamEntity(getCaster().level(), getCaster(), dmg * dmgMult, e.getX(), e.getY(), e.getZ());
-                        shot.level().playSound(null,shot.blockPosition(), ModSoundsRM.LIGHT_BEAM.get(), SoundSource.PLAYERS,1,1);
+                        LightBeamEntity shot = new LightBeamEntity(getCaster().level(), getCaster(), dmg * dmgMult, e.getX(), e.getY()+20, e.getZ(), true);
+                        level().playSound(null,shot.blockPosition().below(20), ModSoundsRM.LIGHT_BEAM.get(), SoundSource.PLAYERS,1,1);
                         level().addFreshEntity(shot);
                     }
                 } else { //Random around player
                     int posX = (int) (getCaster().getX() + level().random.nextInt((int) (radius*2)) - radius / 2)-1;
                     int posZ = (int) (getCaster().getZ() + level().random.nextInt((int) (radius*2)) - radius / 2)-1;
 
-                    float dmg = this.getOwner() instanceof Player player ? DamageCalculation.getMagicDamage(player) * 0.055F :3;
-                    LightBeamEntity shot = new LightBeamEntity(level(), getCaster(), dmg * dmgMult, posX, level().getHeight(Types.WORLD_SURFACE, posX, posZ), posZ);
-                    level().playSound(null,shot.blockPosition(), ModSoundsRM.LIGHT_BEAM.get(), SoundSource.PLAYERS,1,1);
+                    LightBeamEntity shot = new LightBeamEntity(level(), getCaster(), dmg * dmgMult, posX, level().getHeight(Types.WORLD_SURFACE, posX, posZ)+20, posZ, true);
+                    level().playSound(null,shot.blockPosition().below(20), ModSoundsRM.LIGHT_BEAM.get(), SoundSource.PLAYERS,1,1);
                     level().addFreshEntity(shot);
                 }
             }

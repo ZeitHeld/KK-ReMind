@@ -42,7 +42,7 @@ public class LightBeamRC extends ReactionCommand {
             globalData.setRCCooldownTicks(40);
             player.level().playSound(null, player.blockPosition(), ModSoundsRM.LIGHT_BEAM.get(), SoundSource.PLAYERS, 1F, 1F);
             for (int i = -90; i <= 225; i += 45) {
-                ThrowableProjectile LightBeam = new LightBeamEntity(player.level(), player, dmgmult);
+                ThrowableProjectile LightBeam = new LightBeamEntity(player.level(), player, dmgmult, false);
                 LightBeam.setOwner(player);
                 LightBeam.setPos(player.getX(),player.getY(),player.getZ());
                 player.level().addFreshEntity(LightBeam);

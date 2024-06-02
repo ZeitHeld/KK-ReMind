@@ -36,6 +36,7 @@ import java.util.UUID;
 public class LightBeamEntity extends ThrowableProjectile {
     int maxTicks = 10;
     float dmg;
+    boolean faith;
 
     @Override
     protected float getGravity() {
@@ -51,8 +52,8 @@ public class LightBeamEntity extends ThrowableProjectile {
         super(ModEntitiesRM.TYPE_LIGHT_BEAM.get(), world);
     }
 
-    public LightBeamEntity(Level world, LivingEntity player, float damage, double x, double y, double z) {
-        this(world, player,  damage);
+    public LightBeamEntity(Level world, LivingEntity player, float damage, double x, double y, double z, boolean faith) {
+        this(world, player, damage, faith);
         this.setPos(x,y,z);
     }
 
@@ -61,14 +62,15 @@ public class LightBeamEntity extends ThrowableProjectile {
         this.blocksBuilding = true;
     }
 
-    public LightBeamEntity(Level world, LivingEntity player, float damage) {
+    public LightBeamEntity(Level world, LivingEntity player, float damage, boolean faith) {
         super(ModEntitiesRM.TYPE_LIGHT_BEAM.get(), player, world);
         this.dmg = damage;
+        this.faith = faith;
     }
 
     @Override
     public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return (Packet<ClientGamePacketListener>) NetworkHooks.getEntitySpawningPacket(this);
+        return NetworkHooks.getEntitySpawningPacket(this);
     }
 
     @Override
@@ -85,14 +87,9 @@ public class LightBeamEntity extends ThrowableProjectile {
         level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0F,0.9F,0.9F),1F),getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
         level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(1F,1F,0.7F),1F),getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
 
-        if(getOwner() != null) {
-            List<LivingEntity> list = Utils.getLivingEntitiesInRadius(this, 1);
-            for (LivingEntity livingEntity : list) {
-                livingEntity.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg);
-                livingEntity.invulnerableTime = 5;
-                this.tickCount = maxTicks - 5;
-            }
-        }
+        if(faith)
+            this.setDeltaMovement(this.getDeltaMovement().add(0, -0.5, 0));
+
         super.tick();
     }
 
@@ -110,8 +107,7 @@ public class LightBeamEntity extends ThrowableProjectile {
                 brtResult = (BlockHitResult) rtRes;
             }
 
-            if (ertResult != null && ertResult.getEntity() instanceof LivingEntity) {
-                LivingEntity target = (LivingEntity) ertResult.getEntity();
+            if (ertResult != null && ertResult.getEntity() instanceof LivingEntity target) {
                 Player player = (Player) this.getOwner();
                 if (target != getOwner()) {
                     Party p = null;
