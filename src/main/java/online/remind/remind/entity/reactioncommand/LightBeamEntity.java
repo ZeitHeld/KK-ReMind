@@ -25,6 +25,9 @@ import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.remind.remind.entity.ModEntitiesRM;
 
+import java.util.Optional;
+import java.util.UUID;
+
 public class LightBeamEntity extends ThrowableProjectile {
     int maxTicks = 10;
     float dmg;

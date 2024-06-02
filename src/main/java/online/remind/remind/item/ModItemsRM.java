@@ -34,6 +34,7 @@ public class ModItemsRM{
         esunaSpell = ITEMS.register("esuna_spell", () -> new MagicSpellItem(new Item.Properties(), KingdomKeysReMind.MODID+":magic_esuna")),
         dispelSpell = ITEMS.register("dispel_spell", () -> new MagicSpellItem(new Item.Properties(), KingdomKeysReMind.MODID+":magic_dispel")),
         warpSpell = ITEMS.register("warp_spell", () -> new MagicSpellItem(new Item.Properties(), KingdomKeysReMind.MODID+":magic_warp")),
+        faithSpell = ITEMS.register("faith_spell", () -> new MagicSpellItem(new Item.Properties(), KingdomKeysReMind.MODID+":magic_faith")),
 
             // Shotlock Orbs
         flameSalvo = ITEMS.register("flame_salvo_shotlock",() -> new ShotlockOrbItem(new Item.Properties(),KingdomKeysReMind.MODID+":flame_salvo")),
