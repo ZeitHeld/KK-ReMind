@@ -90,7 +90,7 @@ public class FaithEntity extends ThrowableProjectile {
         this.entityData.set(OWNER, Optional.of(uuid));
     }
 
-    List<LivingEntity> list = new ArrayList<LivingEntity>();
+    List<LivingEntity> list = new ArrayList<>();
 
     @Override
     public void tick() {
@@ -108,15 +108,15 @@ public class FaithEntity extends ThrowableProjectile {
         if (!level().isClientSide && getCaster() != null) { // Only calculate and spawn lightning bolts server side
             if (tickCount == 1) {
                 if (lockedOnEntity != null) {
-                    list = Utils.getLivingEntitiesInRadiusExcludingParty(getCaster(), lockedOnEntity, radius, radius, radius);
+                    list = Utils.getLivingEntitiesInRadiusExcludingParty(getCaster(), lockedOnEntity, radius,radius,radius); //This method removes the second param entity from the list returned, so we add it back
+                    list.add(lockedOnEntity);
                 } else {
                     list = Utils.getLivingEntitiesInRadiusExcludingParty(getCaster(), radius);
                 }
                 list.remove(this);
             }
-            System.out.println(list);
             if (tickCount % 6 == 1){
-                if (!list.isEmpty()) {
+                if (!list.isEmpty()) { //If it detects entities either around the caster or around the locked on entity
                     int i = level().random.nextInt(list.size());
                     Entity e = list.get(i);
                     if (e instanceof LivingEntity) {
@@ -126,28 +126,15 @@ public class FaithEntity extends ThrowableProjectile {
                         float dmg = this.getOwner() instanceof Player player ? DamageCalculation.getMagicDamage(player) * 0.055F :3;
                         LightBeamEntity shot = new LightBeamEntity(getCaster().level(), getCaster(), dmg * dmgMult, e.getX(), e.getY(), e.getZ());
                         shot.level().playSound(null,shot.blockPosition(), ModSoundsRM.LIGHT_BEAM.get(), SoundSource.PLAYERS,1,1);
-                        e.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);
-                        e.invulnerableTime = 0;
                         level().addFreshEntity(shot);
                     }
-                } else {
-                    int x,z;
-                    if(lockedOnEntity != null) {
-                        x = (int) lockedOnEntity.getX();
-                        z = (int) lockedOnEntity.getZ();
-                    } else {
-                        x = (int) getCaster().getX();
-                        z = (int) getCaster().getZ();
-                    }
-                    int posX = (int) (x + getCaster().level().random.nextInt((int) (radius*2)) - radius / 2)-1;
-                    int posZ = (int) (z + getCaster().level().random.nextInt((int) (radius*2)) - radius / 2)-1;
+                } else { //Random around player
+                    int posX = (int) (getCaster().getX() + level().random.nextInt((int) (radius*2)) - radius / 2)-1;
+                    int posZ = (int) (getCaster().getZ() + level().random.nextInt((int) (radius*2)) - radius / 2)-1;
 
-                    float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.055F :3;
-                    LightBeamEntity shot = new LightBeamEntity(getCaster().level(), getCaster(), posX, getCaster().level().getHeight(Types.WORLD_SURFACE, posX, posZ), posZ, dmg * dmgMult);
-                    shot.level().playSound(null,shot.blockPosition(), ModSoundsRM.LIGHT_BEAM.get(), SoundSource.PLAYERS,1,1);
-                    lockedOnEntity.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);
-                    lockedOnEntity.invulnerableTime = 0;
-
+                    float dmg = this.getOwner() instanceof Player player ? DamageCalculation.getMagicDamage(player) * 0.055F :3;
+                    LightBeamEntity shot = new LightBeamEntity(level(), getCaster(), dmg * dmgMult, posX, level().getHeight(Types.WORLD_SURFACE, posX, posZ), posZ);
+                    level().playSound(null,shot.blockPosition(), ModSoundsRM.LIGHT_BEAM.get(), SoundSource.PLAYERS,1,1);
                     level().addFreshEntity(shot);
                 }
             }

@@ -1,7 +1,11 @@
 package online.remind.remind.entity.reactioncommand;
 
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
+import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.remind.remind.KingdomKeysReMind;
+import online.remind.remind.client.sound.ModSoundsRM;
 import online.remind.remind.lib.StringsRM;
 import org.joml.Vector3f;
 
@@ -25,6 +29,7 @@ import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.remind.remind.entity.ModEntitiesRM;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -75,10 +80,19 @@ public class LightBeamEntity extends ThrowableProjectile {
         //world.addParticle(ParticleTypes.ENTITY_EFFECT, getPosX(), getPosY(), getPosZ(), 1, 1, 0);
         if(tickCount > 0)
             level().addParticle(ParticleTypes.END_ROD, getX(), getY(), getZ(), 0, 0, 0);
-            level().addAlwaysVisibleParticle(ParticleTypes.CLOUD, getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
-            level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0F,0.9F,0.9F),1F),getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
-            level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(1F,1F,0.7F),1F),getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
 
+        level().addAlwaysVisibleParticle(ParticleTypes.CLOUD, getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
+        level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0F,0.9F,0.9F),1F),getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
+        level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(1F,1F,0.7F),1F),getX() + level().random.nextDouble() - 0.5D, getY()+ level().random.nextDouble() *2D, getZ() + level().random.nextDouble() - 0.5D, 0, 0, 0);
+
+        if(getOwner() != null) {
+            List<LivingEntity> list = Utils.getLivingEntitiesInRadius(this, 1);
+            for (LivingEntity livingEntity : list) {
+                livingEntity.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg);
+                livingEntity.invulnerableTime = 5;
+                this.tickCount = maxTicks - 5;
+            }
+        }
         super.tick();
     }
 
