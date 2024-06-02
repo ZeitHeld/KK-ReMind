@@ -1,10 +1,16 @@
 package online.remind.remind.magic;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.kingdomkeys.kingdomkeys.client.sound.ModSounds;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
+import online.remind.remind.client.sound.ModSoundsRM;
+import online.remind.remind.entity.magic.CometEntity;
+import online.remind.remind.entity.magic.FaithEntity;
 import online.remind.remind.lib.StringsRM;
 
 public class magicFaith extends Magic {
@@ -21,15 +27,18 @@ public class magicFaith extends Magic {
 
         // Casting Faith go here
         switch(level){
-            case 0:
-
-                break;
+            case 0-> {
+                FaithEntity faith = new FaithEntity(player.level(), player, dmgMult, lockOnEntity);
+                faith.setOwner(caster);
+                faith.setPos(player.getX(), player.getY() + 1.8F, player.getZ());
+                player.level().addFreshEntity(faith);
+            }
         }
 
     }
 
     @Override
     protected void playMagicCastSound(Player player, Player player1, int i) {
-
+        player.level().playSound(null,player.blockPosition(), ModSoundsRM.BALLOON.get(), SoundSource.PLAYERS,1,1);
     }
 }

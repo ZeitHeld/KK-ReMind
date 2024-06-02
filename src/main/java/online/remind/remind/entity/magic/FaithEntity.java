@@ -14,6 +14,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
@@ -29,11 +30,12 @@ import net.minecraftforge.network.PlayMessages;
 import online.kingdomkeys.kingdomkeys.entity.ModEntities;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.util.Utils;
+import online.remind.remind.client.sound.ModSoundsRM;
 import online.remind.remind.entity.ModEntitiesRM;
 import online.remind.remind.entity.reactioncommand.LightBeamEntity;
 
 public class FaithEntity extends ThrowableProjectile {
-    int maxTicks = 20;
+    int maxTicks = 80;
     float dmgMult = 1;
     LivingEntity lockedOnEntity;
 
@@ -101,7 +103,7 @@ public class FaithEntity extends ThrowableProjectile {
             return;
         }
 
-        float radius = 2.5F;
+        float radius = 5F;
 
         if (!level().isClientSide && getCaster() != null) { // Only calculate and spawn lightning bolts server side
             if (tickCount == 1) {
@@ -112,27 +114,20 @@ public class FaithEntity extends ThrowableProjectile {
                 }
                 list.remove(this);
             }
-
-            if (tickCount % 10 == 1){
+            System.out.println(list);
+            if (tickCount % 6 == 1){
                 if (!list.isEmpty()) {
                     int i = level().random.nextInt(list.size());
-                    Entity e = (Entity) list.get(i);
+                    Entity e = list.get(i);
                     if (e instanceof LivingEntity) {
                         if(!e.isAlive()){
                             list.remove(e);
                         }
-                        float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.05F :2;
+                        float dmg = this.getOwner() instanceof Player player ? DamageCalculation.getMagicDamage(player) * 0.05F :2;
                         LightBeamEntity shot = new LightBeamEntity(getCaster().level(), getCaster(), dmg * dmgMult, e.getX(), e.getY(), e.getZ());
+                        shot.level().playSound(null,shot.blockPosition(), ModSoundsRM.BALLOON_BOUNCE.get(), SoundSource.PLAYERS,1,1);
 
                         level().addFreshEntity(shot);
-
-                        LightningBolt LightBeamEntity = ModEntitiesRM.TYPE_LIGHT_BEAM.create(this.level());
-                        LightBeamEntity.setVisualOnly(true);
-                        LightBeamEntity.moveTo(Vec3.atBottomCenterOf(e.blockPosition()));
-                        LightBeamEntity.setCause(getCaster() instanceof ServerPlayer ? (ServerPlayer) getCaster() : null);
-                        this.level().addFreshEntity(LightBeamEntity);
-
-
                     }
                 } else {
                     int x,z;
@@ -148,16 +143,9 @@ public class FaithEntity extends ThrowableProjectile {
 
                     float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.05F :2;
                     LightBeamEntity shot = new LightBeamEntity(getCaster().level(), getCaster(), posX, getCaster().level().getHeight(Types.WORLD_SURFACE, posX, posZ), posZ, dmg * dmgMult);
+                    shot.level().playSound(null,shot.blockPosition(), ModSoundsRM.BALLOON_BOUNCE.get(), SoundSource.PLAYERS,1,1);
 
                     level().addFreshEntity(shot);
-
-                    BlockPos pos = new BlockPos(posX, getCaster().level().getHeight(Types.WORLD_SURFACE, posX, posZ), posZ);
-                    LightningBolt LightBeamEntity = ModEntitiesRM.TYPE_LIGHT_BEAM.create(this.level());
-                    LightBeamEntity.moveTo(Vec3.atBottomCenterOf(pos));
-                    LightBeamEntity.setVisualOnly(true);
-                    LightBeamEntity.setCause(getCaster() instanceof ServerPlayer ? (ServerPlayer) getCaster() : null);
-                    this.level().addFreshEntity(LightBeamEntity);
-
                 }
             }
         }
