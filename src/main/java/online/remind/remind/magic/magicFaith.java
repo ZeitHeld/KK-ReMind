@@ -22,7 +22,7 @@ public class magicFaith extends Magic {
     @Override
     public void magicUse(Player player, Player caster, int level, float fullMPBlastMult, LivingEntity lockOnEntity){
 
-        float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.lightBoost) * 0.2F;
+        float dmgMult = getDamageMult(level) + ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.lightBoost) * 0.25F;
         dmgMult *= fullMPBlastMult;
 
         // Casting Faith go here

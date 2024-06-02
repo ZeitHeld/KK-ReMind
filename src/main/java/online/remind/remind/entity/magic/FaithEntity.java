@@ -123,10 +123,11 @@ public class FaithEntity extends ThrowableProjectile {
                         if(!e.isAlive()){
                             list.remove(e);
                         }
-                        float dmg = this.getOwner() instanceof Player player ? DamageCalculation.getMagicDamage(player) * 0.05F :2;
+                        float dmg = this.getOwner() instanceof Player player ? DamageCalculation.getMagicDamage(player) * 0.055F :3;
                         LightBeamEntity shot = new LightBeamEntity(getCaster().level(), getCaster(), dmg * dmgMult, e.getX(), e.getY(), e.getZ());
-                        shot.level().playSound(null,shot.blockPosition(), ModSoundsRM.BALLOON_BOUNCE.get(), SoundSource.PLAYERS,1,1);
-
+                        shot.level().playSound(null,shot.blockPosition(), ModSoundsRM.LIGHT_BEAM.get(), SoundSource.PLAYERS,1,1);
+                        e.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);
+                        e.invulnerableTime = 0;
                         level().addFreshEntity(shot);
                     }
                 } else {
@@ -141,9 +142,11 @@ public class FaithEntity extends ThrowableProjectile {
                     int posX = (int) (x + getCaster().level().random.nextInt((int) (radius*2)) - radius / 2)-1;
                     int posZ = (int) (z + getCaster().level().random.nextInt((int) (radius*2)) - radius / 2)-1;
 
-                    float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.05F :2;
+                    float dmg = this.getOwner() instanceof Player ? DamageCalculation.getMagicDamage((Player) this.getOwner()) * 0.055F :3;
                     LightBeamEntity shot = new LightBeamEntity(getCaster().level(), getCaster(), posX, getCaster().level().getHeight(Types.WORLD_SURFACE, posX, posZ), posZ, dmg * dmgMult);
-                    shot.level().playSound(null,shot.blockPosition(), ModSoundsRM.BALLOON_BOUNCE.get(), SoundSource.PLAYERS,1,1);
+                    shot.level().playSound(null,shot.blockPosition(), ModSoundsRM.LIGHT_BEAM.get(), SoundSource.PLAYERS,1,1);
+                    lockedOnEntity.hurt(damageSources().indirectMagic(this, this.getOwner()), dmg * dmgMult);
+                    lockedOnEntity.invulnerableTime = 0;
 
                     level().addFreshEntity(shot);
                 }
@@ -151,6 +154,11 @@ public class FaithEntity extends ThrowableProjectile {
         }
 
         super.tick();
+    }
+
+    @Override
+    protected void onHit(HitResult result){
+
     }
 
 
