@@ -126,7 +126,7 @@ public class FaithEntity extends ThrowableProjectile {
                             list.remove(e);
                         }
                         LightBeamEntity shot = new LightBeamEntity(getCaster().level(), getCaster(), dmg * dmgMult, e.getX(), e.getY()+20, e.getZ(), true);
-                        level().playSound(null,shot.blockPosition().below(20), ModSoundsRM.LIGHT_BEAM.get(), SoundSource.PLAYERS,1,1);
+                        level().playSound(null,shot.blockPosition().below(15), ModSoundsRM.LIGHT_BEAM.get(), SoundSource.PLAYERS,1,1);
                         level().addFreshEntity(shot);
                     }
                 } else { //Random around player
@@ -134,7 +134,7 @@ public class FaithEntity extends ThrowableProjectile {
                     int posZ = (int) (getCaster().getZ() + level().random.nextInt((int) (radius*2)) - radius / 2)-1;
 
                     LightBeamEntity shot = new LightBeamEntity(level(), getCaster(), dmg * dmgMult, posX, level().getHeight(Types.WORLD_SURFACE, posX, posZ)+20, posZ, true);
-                    level().playSound(null,shot.blockPosition().below(20), ModSoundsRM.LIGHT_BEAM.get(), SoundSource.PLAYERS,1,1);
+                    level().playSound(null,shot.blockPosition().below(15), ModSoundsRM.LIGHT_BEAM.get(), SoundSource.PLAYERS,1,1);
                     level().addFreshEntity(shot);
                 }
             }

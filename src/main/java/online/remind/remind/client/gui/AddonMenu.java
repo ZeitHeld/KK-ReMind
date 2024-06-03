@@ -33,20 +33,20 @@ public class AddonMenu extends MenuScreen {
         super.init();
 
         float topBarHeight = (float) height * 0.17F;
-        int start = (int)(topBarHeight + 5);
-        int pos = buttons.values().length - 1;
+        int start = (int)(topBarHeight) +5;
+        int pos = 0;
 
-        float buttonPosX = (float) width * 0.03F;
+        float buttonPosX = (float) width * 0.80F;
         float buttonWidth = ((float) width * 0.1744F) - 22;
 
-        addRenderableWidget(prestige = new MenuButton((int) buttonPosX, start + 18 * ++pos, (int) buttonWidth, (StringsRM.Gui_Menu_Button_Prestige), MenuButton.ButtonType.BUTTON, true, (e) -> {
+        addRenderableWidget(prestige = new MenuButton((int) buttonPosX, start, (int) buttonWidth, (StringsRM.Gui_Menu_Button_Prestige), MenuButton.ButtonType.BUTTON, true, (e) -> {
             action(RMButtons.PRESTIGE);
 
         }));
         addRenderableWidget(dreamEater = new MenuButton((int) buttonPosX, start + 18 * ++pos, (int) buttonWidth, (StringsRM.Gui_Menu_Button_DreamEater), MenuButton.ButtonType.BUTTON, true, (e) -> {
             action(RMButtons.DREAMEATER);
         }));
-        addRenderableWidget(credits = new MenuButton((int) buttonPosX, start + 18 * ++pos, (int) buttonWidth, (StringsRM.Gui_Menu_Button_Credits), MenuButton.ButtonType.BUTTON, false, (e) -> {
+        addRenderableWidget(credits = new MenuButton((int) buttonPosX, start + 18  * ++pos, (int) buttonWidth, (StringsRM.Gui_Menu_Button_Credits), MenuButton.ButtonType.BUTTON, false, (e) -> {
             action(RMButtons.CREDITS);
         }));
     }

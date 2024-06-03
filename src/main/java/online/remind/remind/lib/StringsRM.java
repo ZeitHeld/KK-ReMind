@@ -46,10 +46,13 @@ public class StringsRM {
         darknessWithin = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"darkness_within",
         hpWalker = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"hp_walker",
         mpWalker = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"mp_walker",
+        focusWalker = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"focus_walker",
+        heartWalker = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"heart_walker",
         expWalker = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"exp_walker",
         mpShield = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"mp_shield",
         vehemence = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"vehemence",
         riskCharge = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"riskcharge",
+        attackHaste = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"attack_haste",
 
         // Shotlocks
         flameSalvo = "flame_salvo",
@@ -85,32 +88,8 @@ public class StringsRM {
 
         // KK Armor
 
-        abasChain = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"abas_chain",
-        acrisius = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"acrisius",
-        acrisiusPlus = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"acrisius_plus",
-        aegisChain = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"aegis_chain",
-        blizzagaArmlet = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"blizzaga_armlet",
-        blizzagunArmlet = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"blizzagun_armlet",
-        blizzaraArmlet = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"blizzara_armlet",
-        busterBand = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"buster_band",
-        championBelt = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"champion_belt",
-        chaosAnklet = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"chaos_anklet",
-        cosmicBelt = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"cosmic_belt",
-        cosmicChain = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"cosmic_chain",
-        darkAnklet = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"dark_anklet",
-        divineBandanna = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"divine_bandanna",
-        elvenBandanna = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"elven_bandanna",
-        firaBangle = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"fira_bangle",
-        firagaBangle = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"firaga_bangle",
-        firagunBangle = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"firagun_bangle",
-        gaiaBelt = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"gaia_belt",
-        midnightAnklet = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"midnight_anklet",
-        shadowAnklet = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"shadow_anklet",
-        shockCharm = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"shock_charm",
-        shockCharmPlus = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"shock_charm_plus",
-        thundaraTrinket = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"thundara_trinket",
-        thundagaTrinket = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"thundaga_trinket",
-        thundagunTrinket = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"thundagun_trinket",
+        //abasChain = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"abas_chain",
+
 
 
 

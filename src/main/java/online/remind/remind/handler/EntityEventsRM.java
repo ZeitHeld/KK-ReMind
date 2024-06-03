@@ -2,6 +2,7 @@ package online.remind.remind.handler;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -25,6 +26,8 @@ import online.remind.remind.client.sound.ModSoundsRM;
 import online.remind.remind.driveform.ModDriveFormsRM;
 import online.remind.remind.lib.StringsRM;
 import online.remind.remind.network.PacketHandlerRM;
+
+import java.util.UUID;
 
 public class EntityEventsRM {
 
@@ -148,9 +151,18 @@ public class EntityEventsRM {
 					playerData.getDefenseStat().removeModifier("Vehemence");
 				}
 
+				// Attack Haste Ability
+				if (!player.level().isClientSide && playerData.isAbilityEquipped(StringsRM.attackHaste)) {
+					double attackSpeedBonus = 1.25 * playerData.getNumberOfAbilitiesEquipped(StringsRM.attackHaste);
+					player.getAttribute(Attributes.ATTACK_SPEED).setBaseValue(4 + attackSpeedBonus);
+				} else if (!playerData.isAbilityEquipped(StringsRM.attackHaste)) {
+					player.getAttribute(Attributes.ATTACK_SPEED).setBaseValue(4);
+				}
+
 
 
 				// MP Boost
+
 
 
 
@@ -235,7 +247,7 @@ public class EntityEventsRM {
 					if (player.isSprinting()) {
 						if (player.tickCount % 40 == 0 && playerData.isAbilityEquipped(StringsRM.hpWalker)) {
 							int hpWalkerMult = playerData.getNumberOfAbilitiesEquipped(StringsRM.hpWalker);
-							player.heal(1 * hpWalkerMult);
+							player.heal(hpWalkerMult);
 						}
 						if (player.tickCount % 50 == 0 && playerData.isAbilityEquipped(StringsRM.mpWalker)) {
 							if (!playerData.getRecharge()) {
@@ -244,7 +256,16 @@ public class EntityEventsRM {
 							}
 						}
 						if (!player.level().isClientSide && player.tickCount % 20 == 0 && playerData.isAbilityEquipped(StringsRM.expWalker)) {
-							playerData.addExperience(player, 1, false, true);
+							playerData.addExperience(player, 5 * playerData.getNumberOfAbilitiesEquipped(StringsRM.expWalker), false, true);
+						}
+						if (!player.level().isClientSide && player.tickCount % 20 == 0 && playerData.isAbilityEquipped(StringsRM.heartWalker)) {
+							playerData.addHearts(5* playerData.getNumberOfAbilitiesEquipped(StringsRM.heartWalker));
+						}
+						if (player.tickCount % 50 == 0 && playerData.isAbilityEquipped(StringsRM.focusWalker)) {
+							if (!playerData.getRecharge()) {
+								int focusWalkerMult = playerData.getNumberOfAbilitiesEquipped(StringsRM.focusWalker);
+								playerData.addFocus(0.5 * focusWalkerMult);
+							}
 						}
 					}
 				}
@@ -311,7 +332,7 @@ public class EntityEventsRM {
 
 				event.setCanceled(true);
 				playerData.remMP(DMGTaken);
-				float mpRageModifier = DMGTaken / (1+ playerData.getNumberOfAbilitiesEquipped(Strings.mpRage));
+				float mpRageModifier = DMGTaken * (0.1f * playerData.getNumberOfAbilitiesEquipped(Strings.mpRage));
 				if (playerData.isAbilityEquipped(Strings.mpRage) && playerData.getMP() > 10){
 					//playerData.addMP(DMGTaken / (1+ playerData.getNumberOfAbilitiesEquipped(Strings.mpRage)));
 					playerData.addMP(mpRageModifier);
@@ -319,7 +340,7 @@ public class EntityEventsRM {
 					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 				}
 				if (playerData.isAbilityEquipped(Strings.damageDrive)){
-					playerData.addDP((DMGTaken * 0.2F) * playerData.getNumberOfAbilitiesEquipped(Strings.damageDrive));
+					playerData.addDP(DMGTaken * (0.1F * playerData.getNumberOfAbilitiesEquipped(Strings.damageDrive)));
 					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 				}
 

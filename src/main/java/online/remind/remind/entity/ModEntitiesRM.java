@@ -74,8 +74,8 @@ public class ModEntitiesRM {
     public static final RegistryObject<EntityType<DarkFiragaShotEntity>> TYPE_SHOTLOCK_DARK_FIRAGA_SHOT = createEntityType(DarkFiragaShotEntity::new, DarkFiragaShotEntity::new, MobCategory.MISC, "entity_shotlock_dark_firaga_shot", 0.5F, 0.5F);
 
     // Reaction Commands
-    public static final RegistryObject<EntityType<LightBeamEntity>> TYPE_LIGHT_BEAM = createEntityType(LightBeamEntity::new, LightBeamEntity::new, MobCategory.MISC, "entity_rc_light_beam", 1.5F,4F);
-    public static final RegistryObject<EntityType<DarkMineEntity>> TYPE_DARK_MINE = createEntityType(DarkMineEntity::new, DarkMineEntity::new, MobCategory.MISC, "entity_rc_dark_mine", 1.75F,2.5F);
+    public static final RegistryObject<EntityType<LightBeamEntity>> TYPE_LIGHT_BEAM = createEntityType(LightBeamEntity::new, LightBeamEntity::new, MobCategory.MISC, "entity_rc_light_beam", 3F,4F);
+    public static final RegistryObject<EntityType<DarkMineEntity>> TYPE_DARK_MINE = createEntityType(DarkMineEntity::new, DarkMineEntity::new, MobCategory.MISC, "entity_rc_dark_mine", 2F,2.5F);
     public static final RegistryObject<EntityType<DualShotEntity>> TYPE_DUAL_SHOT = createEntityType(DualShotEntity::new, DualShotEntity::new, MobCategory.MISC, "entity_rc_dual_shot", 1.5F,1.5F);
 
     // Misc

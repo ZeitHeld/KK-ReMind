@@ -6,7 +6,7 @@ plugins {
     id 'org.spongepowered.mixin' version '0.7.+'
 }
 
-version = '1.20.1-0.8.4.6'
+version = '1.20.1-0.8.4.8'
 group = 'online.xephiro.magicksaddon' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'KK-ReMind'
 
@@ -139,8 +139,11 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     // KK Implementation
-	implementation fg.deobf("curse.maven:kingdom-keys-re-coded-242862:5341373")
+    implementation fg.deobf("curse.maven:kingdom-keys-re-coded-242862:5392648")
     //implementation fg.deobf("kingdomkeys:kingdomkeys:1.20.1-2.3.9.2")
+
+    // So I can test with other mods
+    implementation fg.deobf("curse.maven:epic-fight-mod-405076:5159623")
 
     // GeckoLib Implementation
     implementation fg.deobf("curse.maven:geckolib-388172:5188427")

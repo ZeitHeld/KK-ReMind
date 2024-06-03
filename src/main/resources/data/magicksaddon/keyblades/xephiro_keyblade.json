@@ -137,7 +137,7 @@
         }
       ],
       "str": 18,
-      "ability": "kingdomkeys:ability_critical_boost"
+      "ability": "magicksaddon:ability_attack_haste"
     },
     {
       "mag": 12,
@@ -175,6 +175,140 @@
       ],
       "str": 23,
       "ability": "kingdomkeys:ability_critical_boost"
+    },
+    {
+      "str": 23,
+      "mag": 16,
+      "ability": "magicksaddon:ability_attack_haste",
+      "recipe": [
+        {
+          "material": "kingdomkeys:mat_electrum",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_orichalcum",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_orichalcumplus",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_wellspring_crystal",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_writhing_crystal",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "str": 23,
+      "mag": 17,
+      "ability": "magicksaddon:ability_darkness_boost",
+      "recipe": [
+        {
+          "material": "kingdomkeys:mat_electrum",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_orichalcum",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_orichalcumplus",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_wellspring_crystal",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_writhing_crystal",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "str": 24,
+      "mag": 18,
+      "ability": "magicksaddon:ability_attack_haste",
+      "recipe": [
+        {
+          "material": "kingdomkeys:mat_electrum",
+          "quantity": 3
+        },
+        {
+          "material": "kingdomkeys:mat_orichalcum",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_orichalcumplus",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_wellspring_crystal",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_writhing_crystal",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "str": 24,
+      "mag": 19,
+      "recipe": [
+        {
+          "material": "kingdomkeys:mat_electrum",
+          "quantity": 3
+        },
+        {
+          "material": "kingdomkeys:mat_orichalcum",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_orichalcumplus",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_wellspring_crystal",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_writhing_crystal",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "str": 25,
+      "mag": 20,
+      "ability": "kingdomkeys:ability_lucky_lucky",
+      "recipe": [
+        {
+          "material": "kingdomkeys:mat_electrum",
+          "quantity": 3
+        },
+        {
+          "material": "kingdomkeys:mat_orichalcum",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_orichalcumplus",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_wellspring_crystal",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:mat_writhing_crystal",
+          "quantity": 2
+        }
+      ]
     }
   ],
   "reach": 5.0

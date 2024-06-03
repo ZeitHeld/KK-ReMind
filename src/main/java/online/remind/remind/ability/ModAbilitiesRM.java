@@ -46,9 +46,14 @@ public class ModAbilitiesRM extends ModAbilities{
 
         HP_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"hp_walker", () -> new Ability(new ResourceLocation(StringsRM.hpWalker),10,Ability.AbilityType.SUPPORT, order++)),
         MP_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"mp_walker", () -> new Ability(new ResourceLocation(StringsRM.mpWalker),10,Ability.AbilityType.SUPPORT, order++)),
-        EXP_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"exp_walker", () -> new Ability(new ResourceLocation(StringsRM.expWalker),10,Ability.AbilityType.SUPPORT, order++));
+        FOCUS_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"focus_walker", () -> new Ability(new ResourceLocation(StringsRM.focusWalker),10,Ability.AbilityType.SUPPORT, order++)),
+        HEART_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"heart_walker", () -> new Ability(new ResourceLocation(StringsRM.heartWalker),10,Ability.AbilityType.SUPPORT, order++)),
+        EXP_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"exp_walker", () -> new Ability(new ResourceLocation(StringsRM.expWalker),10,Ability.AbilityType.SUPPORT, order++)),
 
-        // Twilight (Double) Form Exclusive Abilities
+        ATTACK_HASTE = ABILITIES.register(StringsRM.ABMA_Prefix+"attack_haste", () -> new Ability(new ResourceLocation(StringsRM.attackHaste),3,Ability.AbilityType.SUPPORT, order++));
+
+
+    // Twilight (Double) Form Exclusive Abilities
 
 
 }

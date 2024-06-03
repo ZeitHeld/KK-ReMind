@@ -47,7 +47,7 @@ public class DarkFiragaRC extends ReactionCommand {
 	public boolean conditionsToAppear(Player player, LivingEntity livingEntity) {
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
-		if (playerData != null ) {
+		if (playerData != null && playerData.getEquippedKeychain(DriveForm.NONE) != null) {
 			if (globalData.getRCCooldownTicks() == 0 && playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.soulEaterChain.get() || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.keybladeOfPeoplesHeartsChain.get() ) {
 				if (playerData.getFocus() >= 15) {
 					return true;

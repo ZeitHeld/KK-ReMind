@@ -61,6 +61,7 @@
   "item.magicksaddon.esuna_spell": "Esuna Spell",
   "item.magicksaddon.dispel_spell": "Dispel Spell",
   "item.magicksaddon.warp_spell": "Warp Spell",
+  "item.magicksaddon.faith_spell": "Faith Spell",
 
   "ability.ability_dark_passage.name": "Dark Passage",
   "ability.ability_dark_passage.desc": "Allows you to use Dark Corridors without being apart of the Organization.",
@@ -93,9 +94,13 @@
   "ability.ability_hp_walker.name": "HP Walker",
   "ability.ability_mp_walker.name": "MP Walker",
   "ability.ability_exp_walker.name": "EXP Walker",
-  "ability.ability_hp_walker.desc": "Recover HP as you walk or run. Stack the ability to increase the effect.",
-  "ability.ability_mp_walker.desc": "Recover MP as you walk or run. MP recharging speed remains unchanged. Stack the ability to increase the effect.",
-  "ability.ability_exp_walker.desc": "Gain EXP as you walk or run.",
+  "ability.ability_focus_walker.name": "Focus Walker",
+  "ability.ability_heart_walker.name": "Heart Walker",
+  "ability.ability_hp_walker.desc": "Recover HP as you run. Equip more to increase the effect.",
+  "ability.ability_mp_walker.desc": "Recover MP as you run. MP recharging speed remains unchanged. Equip more to increase the effect.",
+  "ability.ability_exp_walker.desc": "Gain EXP as you run. Equip more to increase the effect.",
+  "ability.ability_focus_walker.desc": "Recover Focus as you run. Equip more to increase the effect.",
+  "ability.ability_heart_walker.desc": "Gain Hearts as you run. Equip more to increase the effect.",
   "ability.ability_mp_shield.name": "Mana Shield",
   "ability.ability_mp_shield.desc": "When you take damage, you will lose MP instead unless you're in MP Recharge.",
   "ability.ability_vehemence.name": "Vehemence",
@@ -104,6 +109,8 @@
   "ability.ability_mp_boost.desc": "I wonder what it does...",
   "ability.ability_riskcharge.name": "Riskcharge",
   "ability.ability_riskcharge.desc": "Unleashes fighting spirit by pressing your Reaction Command button, consuming HP in the process. This empowers your strength.",
+  "ability.ability_attack_haste.name": "Attack Haste",
+  "ability.ability_attack_haste.desc": "Increases attack speed. Equip more to increase the effect.",
 
   "shotlock.flame_salvo.name": "Flame Salvo",
   "shotlock.bubble_blaster.name": "Bubble Blaster",
@@ -150,6 +157,11 @@
   "item.magicksaddon.flanniversary_badge": "Flanniversary Badge",
   "item.magicksaddon.mickey_clasp": "Mickey Clasp",
   "item.magicksaddon.breakthrough": "Breakthrough",
+
+  "item.magicksaddon.exp_ring": "EXP Ring",
+  "item.magicksaddon.focus_sash": "Focus Sash",
+  "item.magicksaddon.heart_locket": "Heart Locket",
+  "item.magicksaddon.haste_bracer": "Haste Bracer",
 
 
   "key.categories.magicksaddon": "Re:Mind",

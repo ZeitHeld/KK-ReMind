@@ -1,5 +1,5 @@
 {
-  "cost": 0,
+  "cost": 100000,
   "ingredients": [
     {
       "material": "kingdomkeys:mat_writhing_crystal",
@@ -15,7 +15,7 @@
     },
     {
       "material": "kingdomkeys:mat_sinister_shard",
-      "quantity": "2"
+      "quantity": "6"
     },
     {
       "material": "kingdomkeys:mat_sinister_stone",
@@ -31,7 +31,7 @@
     },
     {
       "material": "kingdomkeys:mat_mythril_crystal",
-      "quantity": "2"
+      "quantity": "4"
     },
     {
       "material": "kingdomkeys:mat_orichalcumplus",
@@ -43,7 +43,7 @@
     },
     {
       "material": "kingdomkeys:mat_writhing_crystal",
-      "quantity": "2"
+      "quantity": "4"
     }
   ],
   "output": {

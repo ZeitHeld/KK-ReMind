@@ -39,6 +39,6 @@ public class magicFaith extends Magic {
 
     @Override
     protected void playMagicCastSound(Player player, Player player1, int i) {
-        player.level().playSound(null,player.blockPosition(), ModSoundsRM.BALLOON.get(), SoundSource.PLAYERS,1,1);
+        player.level().playSound(null,player.blockPosition(), ModSoundsRM.PLAYER_CAST.get(), SoundSource.PLAYERS,1,1);
     }
 }
