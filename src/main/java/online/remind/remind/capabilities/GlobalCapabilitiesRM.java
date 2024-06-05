@@ -86,7 +86,7 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
 
     private int RCCooldown;
 
-    private int MPBoost;
+    private int MPOG;
 
     private int riskchargeCount;
 
@@ -350,12 +350,12 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
     }
 
     @Override
-    public double getMPBoost() {
-        return MPBoost;
+    public double getMPOG() {
+        return MPOG;
     }
     @Override
-    public void setMPBoost(int i) {
-        this.MPBoost = i;
+    public void setMPOG(int i) {
+        this.MPOG = i;
     }
 
     @Override

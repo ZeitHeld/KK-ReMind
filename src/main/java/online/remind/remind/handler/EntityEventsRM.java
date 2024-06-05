@@ -90,15 +90,21 @@ public class EntityEventsRM {
 	public void equipAbility(AbilityEvent.Equip event){
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(event.getPlayer());
 		IGlobalCapabilitiesRM playerData2 = ModCapabilitiesRM.getGlobal(event.getPlayer());
-		playerData2.setMPBoost((int) (playerData.getMaxMP() * (ModCapabilities.getPlayer(event.getPlayer()).getNumberOfAbilitiesEquipped(StringsRM.mpBoost) * 0.2f)));
+		playerData2.setMPOG((int) playerData.getMaxMP());
+		float mpBoost = playerData.getMagicStat().get();
 			if (event.getAbility().equals(ModAbilitiesRM.MP_BOOST.get())) {
-				playerData.addMaxMP(10);
+				//System.out.println("Original MP: "+playerData2.getMPOG());
+				//System.out.println("Boost: " + mpBoost);
+				//playerData.addMaxMP(mpBoost);
+				playerData.addMaxMP(12.5);
 			}
 
 			if (event.getAbility().equals(ModAbilitiesRM.HP_BOOST.get())) {
-				//playerData.addMaxHP(10);
-
+				playerData.addMaxHP(15);
+				event.getPlayer().setHealth(playerData.getMaxHP());
+				event.getPlayer().getAttribute(Attributes.MAX_HEALTH).setBaseValue(playerData.getMaxHP());
 			}
+
 	}
 
 	@SubscribeEvent
@@ -106,12 +112,14 @@ public class EntityEventsRM {
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(event.getPlayer());
 		IGlobalCapabilitiesRM playerData2 = ModCapabilitiesRM.getGlobal(event.getPlayer());
 			if (event.getAbility().equals(ModAbilitiesRM.MP_BOOST.get())) {
-				playerData.addMaxMP(-10);
-				
+				//playerData.setMaxMP(playerData2.getMPOG());
+				playerData.addMaxMP(-12.5);
 			}
 
 			if (event.getAbility().equals(ModAbilitiesRM.HP_BOOST.get())) {
-				//playerData.addMaxHP(-10);
+				playerData.addMaxHP(-15);
+				event.getPlayer().setHealth(playerData.getMaxHP());
+				event.getPlayer().getAttribute(Attributes.MAX_HEALTH).setBaseValue(playerData.getMaxHP());
 			}
 	}
 

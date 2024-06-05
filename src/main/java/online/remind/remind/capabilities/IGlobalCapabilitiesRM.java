@@ -78,8 +78,8 @@ public interface IGlobalCapabilitiesRM extends INBTSerializable<CompoundTag> {
     void setRCCooldownTicks(int ticks);
     void remRCCooldownTicks(int ticks);
 
-    double getMPBoost();
-    void setMPBoost(int i);
+    double getMPOG();
+    void setMPOG(int i);
 
 
 
