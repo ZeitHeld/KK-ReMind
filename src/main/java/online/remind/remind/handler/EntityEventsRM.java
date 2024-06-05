@@ -90,7 +90,7 @@ public class EntityEventsRM {
 	public void equipAbility(AbilityEvent.Equip event){
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(event.getPlayer());
 		IGlobalCapabilitiesRM playerData2 = ModCapabilitiesRM.getGlobal(event.getPlayer());
-		playerData2.setMPBoost((int) (playerData.getMaxMP() * (ModCapabilities.getPlayer(event.getPlayer()).getNumberOfAbilitiesEquipped(StringsRM.darknessBoost) * 0.2f)));
+		playerData2.setMPBoost((int) (playerData.getMaxMP() * (ModCapabilities.getPlayer(event.getPlayer()).getNumberOfAbilitiesEquipped(StringsRM.mpBoost) * 0.2f)));
 			if (event.getAbility().equals(ModAbilitiesRM.MP_BOOST.get())) {
 				playerData.addMaxMP(10);
 			}
