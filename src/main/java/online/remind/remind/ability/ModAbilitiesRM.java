@@ -35,6 +35,7 @@ public class ModAbilitiesRM extends ModAbilities{
         DARKNESS_BOOST = ABILITIES.register(StringsRM.ABMA_Prefix+"darkness_boost", () -> new Ability(new ResourceLocation(StringsRM.darknessBoost), 3, Ability.AbilityType.SUPPORT, order++)),
         LIGHT_BOOST = ABILITIES.register(StringsRM.ABMA_Prefix+"light_boost", () -> new Ability(new ResourceLocation(StringsRM.lightBoost), 3, Ability.AbilityType.SUPPORT, order++)),
         MP_BOOST = ABILITIES.register(StringsRM.ABMA_Prefix+"mp_boost", () -> new Ability(new ResourceLocation(StringsRM.mpBoost), 10, Ability.AbilityType.SUPPORT, order++)),
+        HP_BOOST = ABILITIES.register(StringsRM.ABMA_Prefix+"hp_boost", () -> new Ability(new ResourceLocation(StringsRM.hpBoost), 10, Ability.AbilityType.SUPPORT, order++)),
         MP_SHIELD = ABILITIES.register(StringsRM.ABMA_Prefix+"mp_shield", () -> new Ability(new ResourceLocation(StringsRM.mpShield), 5, Ability.AbilityType.SUPPORT, order++)),
         VEHEMENCE = ABILITIES.register(StringsRM.ABMA_Prefix+"vehemence", () -> new Ability(new ResourceLocation(StringsRM.vehemence), 5, Ability.AbilityType.SUPPORT, order++)),
         ADRENALINE = ABILITIES.register(StringsRM.ABMA_Prefix+"adrenaline", () -> new Ability(new ResourceLocation(StringsRM.adrenaline), 4, Ability.AbilityType.SUPPORT, order++)),

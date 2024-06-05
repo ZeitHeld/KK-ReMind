@@ -13,13 +13,17 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import online.kingdomkeys.kingdomkeys.api.ability.AbilityEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.SoAState;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
+import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.remind.remind.KingdomKeysReMind;
+import online.remind.remind.ability.ModAbilitiesRM;
+import online.remind.remind.capabilities.GlobalCapabilitiesRM;
 import online.remind.remind.capabilities.IGlobalCapabilitiesRM;
 import online.remind.remind.capabilities.ModCapabilitiesRM;
 import online.remind.remind.client.sound.ModSoundsRM;
@@ -80,6 +84,35 @@ public class EntityEventsRM {
 	private void updateEquippedAbilities(Player player){
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 
+	}
+
+	@SubscribeEvent
+	public void equipAbility(AbilityEvent.Equip event){
+		IPlayerCapabilities playerData = ModCapabilities.getPlayer(event.getPlayer());
+		IGlobalCapabilitiesRM playerData2 = ModCapabilitiesRM.getGlobal(event.getPlayer());
+		playerData2.setMPBoost((int) (playerData.getMaxMP() * (ModCapabilities.getPlayer(event.getPlayer()).getNumberOfAbilitiesEquipped(StringsRM.darknessBoost) * 0.2f)));
+			if (event.getAbility().equals(ModAbilitiesRM.MP_BOOST.get())) {
+				playerData.addMaxMP(10);
+			}
+
+			if (event.getAbility().equals(ModAbilitiesRM.HP_BOOST.get())) {
+				//playerData.addMaxHP(10);
+
+			}
+	}
+
+	@SubscribeEvent
+	public void unequipAbility(AbilityEvent.Unequip event){
+		IPlayerCapabilities playerData = ModCapabilities.getPlayer(event.getPlayer());
+		IGlobalCapabilitiesRM playerData2 = ModCapabilitiesRM.getGlobal(event.getPlayer());
+			if (event.getAbility().equals(ModAbilitiesRM.MP_BOOST.get())) {
+				playerData.addMaxMP(-10);
+				
+			}
+
+			if (event.getAbility().equals(ModAbilitiesRM.HP_BOOST.get())) {
+				//playerData.addMaxHP(-10);
+			}
 	}
 
 
@@ -158,16 +191,6 @@ public class EntityEventsRM {
 				} else if (!playerData.isAbilityEquipped(StringsRM.attackHaste)) {
 					player.getAttribute(Attributes.ATTACK_SPEED).setBaseValue(4);
 				}
-
-
-
-				// MP Boost
-
-
-
-
-
-
 			}
 
 		}

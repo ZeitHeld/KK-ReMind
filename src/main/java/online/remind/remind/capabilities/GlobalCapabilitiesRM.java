@@ -86,6 +86,8 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
 
     private int RCCooldown;
 
+    private int MPBoost;
+
     private int riskchargeCount;
 
     private boolean dreamEaterSummoned = false;
@@ -345,6 +347,15 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
     public void remRCCooldownTicks(int ticks) {
         this.RCCooldown = Math.max(RCCooldown - ticks, 0);
 
+    }
+
+    @Override
+    public double getMPBoost() {
+        return MPBoost;
+    }
+    @Override
+    public void setMPBoost(int i) {
+        this.MPBoost = i;
     }
 
     @Override

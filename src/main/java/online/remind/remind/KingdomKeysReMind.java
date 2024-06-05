@@ -81,6 +81,7 @@ public class KingdomKeysReMind {
         ReMindParticles.PARTICLE_TYPES.register(modEventBus);
         ModReactionCommandsRM.REACTION_COMMANDS.register(modEventBus);
         modEventBus.addListener(this::setup);
+
         TABS.register(modEventBus);
 
     }

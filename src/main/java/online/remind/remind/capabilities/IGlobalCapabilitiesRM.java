@@ -78,7 +78,13 @@ public interface IGlobalCapabilitiesRM extends INBTSerializable<CompoundTag> {
     void setRCCooldownTicks(int ticks);
     void remRCCooldownTicks(int ticks);
 
+    double getMPBoost();
+    void setMPBoost(int i);
+
+
+
     // Dream Eater Stuff
+
 
     boolean hasDreamEaterSummoned();
     void setHasDreamEaterSummoned(boolean val);
