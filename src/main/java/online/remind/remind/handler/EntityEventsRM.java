@@ -1,5 +1,6 @@
 package online.remind.remind.handler;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
@@ -16,6 +17,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.api.ability.AbilityEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
+import online.kingdomkeys.kingdomkeys.item.ModItems;
 import online.kingdomkeys.kingdomkeys.lib.SoAState;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
@@ -28,6 +31,7 @@ import online.remind.remind.capabilities.IGlobalCapabilitiesRM;
 import online.remind.remind.capabilities.ModCapabilitiesRM;
 import online.remind.remind.client.sound.ModSoundsRM;
 import online.remind.remind.driveform.ModDriveFormsRM;
+import online.remind.remind.item.ModItemsRM;
 import online.remind.remind.lib.StringsRM;
 import online.remind.remind.network.PacketHandlerRM;
 
@@ -129,6 +133,26 @@ public class EntityEventsRM {
 	@SubscribeEvent
 	public void onLivingUpdate(LivingEvent.LivingTickEvent event) {
 		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(event.getEntity());
+
+		// Xephiro Keyblade Debuff
+
+
+		if(event.getEntity() instanceof Player player) {
+			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+			if (playerData != null && playerData.getEquippedKeychain(DriveForm.NONE) != null) {
+				if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItemsRM.xephiroKeybladeChain.get() && !player.getUUID().toString().equals("70b48fbd-b67f-4f3e-9369-09cef36d51a3")) {
+					//System.out.println("Sanguine Gaze Equipped by NOT Xephiro!");
+					//System.out.println(player.getUUID().toString());
+					playerData.getStrengthStat().addModifier("Not Xephiro", -200, false);
+					playerData.getMagicStat().addModifier("Not Xephiro", -200, false);
+					playerData.getDefenseStat().addModifier("Not Xephiro", -200, false);
+				} else {
+					playerData.getStrengthStat().removeModifier("Not Xephiro");
+					playerData.getMagicStat().removeModifier("Not Xephiro");
+					playerData.getDefenseStat().removeModifier("Not Xephiro");
+				}
+			}
+		}
 
 		if(event.getEntity() instanceof Player player) {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);

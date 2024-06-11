@@ -136,9 +136,15 @@
 
   "item.magicksaddon.xephiro_keyblade": "Sanguine Gaze",
   "item.magicksaddon.pureblood": "Pureblood",
+  "item.magicksaddon.elemental_crescendo": "Elemental Crescendo",
+  "item.magicksaddon.gazing_omen": "Gazing Omen",
+  "item.magicksaddon.crystals_light": "Crystal's Light",
 
   "item.magicksaddon.xephiro_keyblade_chain": "Sanguine Gaze Chain",
   "item.magicksaddon.pureblood_chain": "Pureblood Chain",
+  "item.magicksaddon.elemental_crescendo_chain": "Elemental Crescendo Chain",
+  "item.magicksaddon.gazing_omen_chain": "Gazing Omen Chain",
+  "item.magicksaddon.crystals_light_chain": "Crystal's Light Chain",
 
   "item.magicksaddon.aqua_chaplet": "Aqua Chaplet",
   "item.magicksaddon.heros_glove": "Hero's Glove",
