@@ -1,15 +1,7 @@
 package online.remind.remind;
 
-import java.util.List;
-import java.util.function.Supplier;
-
-import online.kingdomkeys.kingdomkeys.entity.ModEntities;
-import online.remind.remind.particle.ReMindParticles;
-import org.slf4j.Logger;
-
 import com.google.common.base.Suppliers;
 import com.mojang.logging.LogUtils;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -40,8 +32,13 @@ import online.remind.remind.handler.InputHandlerRM;
 import online.remind.remind.item.ModItemsRM;
 import online.remind.remind.magic.ModMagicsRM;
 import online.remind.remind.network.PacketHandlerRM;
+import online.remind.remind.particle.ReMindParticles;
 import online.remind.remind.reactioncommands.ModReactionCommandsRM;
 import online.remind.remind.shotlock.ModShotlocksRM;
+import org.slf4j.Logger;
+
+import java.util.List;
+import java.util.function.Supplier;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(KingdomKeysReMind.MODID)

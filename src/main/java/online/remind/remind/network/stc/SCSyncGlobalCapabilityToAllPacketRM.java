@@ -1,7 +1,5 @@
 package online.remind.remind.network.stc;
 
-import java.util.function.Supplier;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.LivingEntity;
@@ -9,6 +7,8 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.network.NetworkEvent;
 import online.remind.remind.capabilities.IGlobalCapabilitiesRM;
 import online.remind.remind.capabilities.ModCapabilitiesRM;
+
+import java.util.function.Supplier;
 
 public class SCSyncGlobalCapabilityToAllPacketRM {
 

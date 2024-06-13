@@ -1,9 +1,5 @@
 package online.remind.remind.entity.reactioncommand;
 
-import java.util.List;
-
-import org.joml.Vector3f;
-
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -24,6 +20,9 @@ import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.remind.remind.entity.ModEntitiesRM;
+import org.joml.Vector3f;
+
+import java.util.List;
 
 public class DualShotEntity extends ThrowableProjectile {
     int maxTicks = 40;

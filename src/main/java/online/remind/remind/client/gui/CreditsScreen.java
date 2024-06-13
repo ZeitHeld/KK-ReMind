@@ -1,13 +1,13 @@
 package online.remind.remind.client.gui;
 
-import java.awt.Color;
-
 import net.minecraft.client.Minecraft;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.MenuBackground;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.MenuColourBox;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.buttons.MenuButton;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.util.Utils;
+
+import java.awt.*;
 
 public class CreditsScreen extends MenuBackground {
 

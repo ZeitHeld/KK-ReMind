@@ -1,9 +1,7 @@
 package online.remind.remind.handler;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -18,15 +16,12 @@ import online.kingdomkeys.kingdomkeys.api.ability.AbilityEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
-import online.kingdomkeys.kingdomkeys.item.ModItems;
 import online.kingdomkeys.kingdomkeys.lib.SoAState;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
-import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.ability.ModAbilitiesRM;
-import online.remind.remind.capabilities.GlobalCapabilitiesRM;
 import online.remind.remind.capabilities.IGlobalCapabilitiesRM;
 import online.remind.remind.capabilities.ModCapabilitiesRM;
 import online.remind.remind.client.sound.ModSoundsRM;
@@ -34,8 +29,6 @@ import online.remind.remind.driveform.ModDriveFormsRM;
 import online.remind.remind.item.ModItemsRM;
 import online.remind.remind.lib.StringsRM;
 import online.remind.remind.network.PacketHandlerRM;
-
-import java.util.UUID;
 
 public class EntityEventsRM {
 
@@ -66,7 +59,6 @@ public class EntityEventsRM {
 	 * @param player
 	 * @param AbilityName StringsX.darkPower
 	 * @param formName ModID + StringsX.darkMode
-	 * @param formEXP getDarkModeEXP()
 	 */
 	private void updateDriveAbilities(Player player, String AbilityName, String formName) {
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);

@@ -1,8 +1,5 @@
 package online.remind.remind.client.gui;
 
-import java.awt.Color;
-
-//import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
@@ -17,6 +14,8 @@ import online.remind.remind.capabilities.ModCapabilitiesRM;
 import online.remind.remind.lib.StringsRM;
 import online.remind.remind.network.PacketHandlerRM;
 import online.remind.remind.network.cts.CSPrestigePacket;
+
+import java.awt.*;
 
 public class PrestigeMenu extends MenuBackground{
 

@@ -5,7 +5,6 @@ package online.remind.remind.client.model.mob;// Made with Blockbench 4.9.3
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-
 import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;

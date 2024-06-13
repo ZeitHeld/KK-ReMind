@@ -1,14 +1,13 @@
 package online.remind.remind.shotlock;
 
-import java.util.List;
-
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
-import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.shotlock.Shotlock;
 import online.remind.remind.entity.shotlock.BubbleBlasterCoreEntity;
+
+import java.util.List;
 
 public class ShotlockBubbleBlaster extends Shotlock {
 

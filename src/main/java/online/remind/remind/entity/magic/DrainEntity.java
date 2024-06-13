@@ -1,7 +1,5 @@
 package online.remind.remind.entity.magic;
 
-import org.joml.Vector3f;
-
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -24,6 +22,7 @@ import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.remind.remind.entity.ModEntitiesRM;
+import org.joml.Vector3f;
 
 public class DrainEntity extends ThrowableProjectile {
 

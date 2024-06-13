@@ -1,9 +1,5 @@
 package online.remind.remind.entity.magic;
 
-import java.util.List;
-
-import org.joml.Vector3f;
-
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -27,6 +23,9 @@ import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.remind.remind.client.sound.ModSoundsRM;
 import online.remind.remind.entity.ModEntitiesRM;
+import org.joml.Vector3f;
+
+import java.util.List;
 
 public class SilenceEntity extends ThrowableProjectile {
     int maxTicks = 100, radius = 2;

@@ -1,10 +1,7 @@
 package online.remind.remind.client.render;
 
-import javax.annotation.Nullable;
-
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.culling.Frustum;
@@ -18,6 +15,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.client.model.UltimaModel;
 import online.remind.remind.entity.magic.UltimaEntity;
+
+import javax.annotation.Nullable;
 
 @OnlyIn(Dist.CLIENT)
 public class UltimaEntityRenderer extends EntityRenderer<UltimaEntity> {

@@ -1,9 +1,5 @@
 package online.remind.remind.entity;
 
-import static net.minecraftforge.registries.ForgeRegistries.ENTITY_TYPES;
-
-import java.util.function.BiFunction;
-
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -33,16 +29,18 @@ import online.remind.remind.client.render.mob.ChirithyRenderer;
 import online.remind.remind.client.render.reactioncommand.DarkMineEntityRenderer;
 import online.remind.remind.client.render.reactioncommand.LightBeamEntityRenderer;
 import online.remind.remind.client.render.shotlock.BioShotEntityRenderer;
-import online.remind.remind.client.render.shotlock.DarkShotEntityRenderer;
 import online.remind.remind.entity.magic.*;
 import online.remind.remind.entity.mob.ChirithyEntity;
 import online.remind.remind.entity.reactioncommand.DarkFiragaEntity;
 import online.remind.remind.entity.reactioncommand.DarkMineEntity;
 import online.remind.remind.entity.reactioncommand.DualShotEntity;
 import online.remind.remind.entity.reactioncommand.LightBeamEntity;
-import online.remind.remind.entity.magic.FaithEntity;
 import online.remind.remind.entity.shotlock.*;
 import online.remind.remind.item.ModItemsRM;
+
+import java.util.function.BiFunction;
+
+import static net.minecraftforge.registries.ForgeRegistries.ENTITY_TYPES;
 
 @Mod.EventBusSubscriber(modid = KingdomKeysReMind.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEntitiesRM {

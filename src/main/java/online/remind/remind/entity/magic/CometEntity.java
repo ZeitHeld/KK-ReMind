@@ -1,7 +1,5 @@
 package online.remind.remind.entity.magic;
 
-import java.util.List;
-
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -21,6 +19,8 @@ import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.remind.remind.entity.ModEntitiesRM;
+
+import java.util.List;
 
 public class CometEntity extends ThrowableProjectile {
         int maxTicks = 200, radius = 2;

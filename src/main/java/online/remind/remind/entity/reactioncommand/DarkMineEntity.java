@@ -1,12 +1,5 @@
 package online.remind.remind.entity.reactioncommand;
 
-import java.util.List;
-
-import net.minecraft.server.level.ServerPlayer;
-import online.remind.remind.KingdomKeysReMind;
-import online.remind.remind.lib.StringsRM;
-import org.joml.Vector3f;
-
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
@@ -32,6 +25,9 @@ import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.lib.Party.Member;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.remind.remind.entity.ModEntitiesRM;
+import org.joml.Vector3f;
+
+import java.util.List;
 
 public class DarkMineEntity extends ThrowableProjectile {
     int maxTicks = 120;

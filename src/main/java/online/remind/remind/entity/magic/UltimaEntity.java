@@ -1,7 +1,5 @@
 package online.remind.remind.entity.magic;
 
-import java.util.List;
-
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -32,6 +30,8 @@ import online.kingdomkeys.kingdomkeys.lib.Party.Member;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.remind.remind.client.sound.ModSoundsRM;
 import online.remind.remind.entity.ModEntitiesRM;
+
+import java.util.List;
 
 public class UltimaEntity extends ThrowableProjectile {
 	int maxTicks = 160;

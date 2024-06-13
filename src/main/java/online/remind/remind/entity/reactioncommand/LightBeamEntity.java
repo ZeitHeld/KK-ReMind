@@ -1,14 +1,5 @@
 package online.remind.remind.entity.reactioncommand;
 
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.Entity;
-import online.kingdomkeys.kingdomkeys.util.Utils;
-import online.remind.remind.KingdomKeysReMind;
-import online.remind.remind.client.sound.ModSoundsRM;
-import online.remind.remind.lib.StringsRM;
-import org.joml.Vector3f;
-
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
@@ -27,11 +18,10 @@ import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
+import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.entity.ModEntitiesRM;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import online.remind.remind.lib.StringsRM;
+import org.joml.Vector3f;
 
 public class LightBeamEntity extends ThrowableProjectile {
     int maxTicks = 10;

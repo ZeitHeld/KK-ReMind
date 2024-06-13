@@ -1,7 +1,6 @@
 package online.remind.remind.item;
 
 import com.google.common.collect.ImmutableMap;
-
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

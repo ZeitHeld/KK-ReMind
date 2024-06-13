@@ -1,7 +1,5 @@
 package online.remind.remind.entity.magic;
 
-import java.util.List;
-
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
@@ -26,6 +24,8 @@ import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.lib.Party.Member;
 import online.remind.remind.client.sound.ModSoundsRM;
 import online.remind.remind.entity.ModEntitiesRM;
+
+import java.util.List;
 
 public class BalloongaEntity extends ThrowableProjectile {
     // Start

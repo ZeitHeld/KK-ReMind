@@ -1,10 +1,5 @@
 package online.remind.remind.entity.shotlock;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -25,6 +20,11 @@ import online.kingdomkeys.kingdomkeys.client.sound.ModSounds;
 import online.kingdomkeys.kingdomkeys.entity.shotlock.VolleyShotEntity;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.remind.remind.entity.ModEntitiesRM;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 public class MeteorShowerCoreEntity extends ThrowableProjectile {
 

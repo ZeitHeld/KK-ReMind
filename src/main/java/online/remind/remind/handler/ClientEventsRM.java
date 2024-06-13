@@ -1,7 +1,5 @@
 package online.remind.remind.handler;
 
-import org.joml.Vector3f;
-
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.player.Player;
@@ -14,6 +12,7 @@ import online.remind.remind.capabilities.IGlobalCapabilitiesRM;
 import online.remind.remind.capabilities.ModCapabilitiesRM;
 import online.remind.remind.driveform.ModDriveFormsRM;
 import online.remind.remind.lib.StringsRM;
+import org.joml.Vector3f;
 
 public class ClientEventsRM {
 

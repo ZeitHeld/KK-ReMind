@@ -4,10 +4,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import online.kingdomkeys.kingdomkeys.KingdomKeys;
-//KK Imports
 import online.kingdomkeys.kingdomkeys.ability.Ability;
 import online.kingdomkeys.kingdomkeys.ability.ModAbilities;
-//Misc Imports
 import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.lib.StringsRM;
 

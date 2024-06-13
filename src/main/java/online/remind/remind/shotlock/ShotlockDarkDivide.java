@@ -5,7 +5,6 @@ import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.shotlock.Shotlock;
-import online.remind.remind.entity.shotlock.BioBarrageCoreEntity;
 import online.remind.remind.entity.shotlock.DarkDivideCoreEntity;
 import online.remind.remind.entity.shotlock.DarkFiragaCoreEntity;
 import online.remind.remind.lib.StringsRM;

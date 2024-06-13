@@ -3,10 +3,8 @@ package online.remind.remind.client.gui.dreameaters;
 import net.minecraft.client.Minecraft;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.MenuBackground;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.buttons.MenuButton;
-import online.kingdomkeys.kingdomkeys.client.gui.menu.MenuScreen;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.remind.remind.client.gui.DreamEaterMenu;
-import online.remind.remind.client.gui.GUIHelperRM;
 
 import java.awt.*;
 

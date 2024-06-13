@@ -11,8 +11,6 @@ import online.kingdomkeys.kingdomkeys.driveform.ModDriveForms;
 import online.kingdomkeys.kingdomkeys.item.ModItems;
 import online.kingdomkeys.kingdomkeys.reactioncommands.ReactionCommand;
 import online.remind.remind.KingdomKeysReMind;
-import online.remind.remind.capabilities.IGlobalCapabilitiesRM;
-import online.remind.remind.capabilities.ModCapabilitiesRM;
 import online.remind.remind.driveform.ModDriveFormsRM;
 import online.remind.remind.lib.StringsRM;
 

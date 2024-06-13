@@ -1,7 +1,5 @@
 package online.remind.remind.magic;
 
-import java.util.List;
-
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -18,6 +16,8 @@ import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.remind.remind.capabilities.IGlobalCapabilitiesRM;
 import online.remind.remind.capabilities.ModCapabilitiesRM;
 import online.remind.remind.client.sound.ModSoundsRM;
+
+import java.util.List;
 
 public class magicHaste extends Magic {
 

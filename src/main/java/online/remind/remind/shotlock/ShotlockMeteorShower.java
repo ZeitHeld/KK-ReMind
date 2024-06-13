@@ -1,14 +1,13 @@
 package online.remind.remind.shotlock;
 
-import java.util.List;
-
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
-import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.shotlock.Shotlock;
 import online.remind.remind.entity.shotlock.MeteorShowerCoreEntity;
 import online.remind.remind.lib.StringsRM;
+
+import java.util.List;
 
 public class ShotlockMeteorShower extends Shotlock {
 

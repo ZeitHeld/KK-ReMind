@@ -1,10 +1,7 @@
 package online.remind.remind.client.render.reactioncommand;
 
-import javax.annotation.Nullable;
-
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -15,6 +12,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.client.model.reactioncommand.DarkMineModel;
+
+import javax.annotation.Nullable;
 
 public class DarkMineEntityRenderer extends EntityRenderer<ThrowableProjectile> {
     public static final ResourceLocation TEXTURE = new ResourceLocation(KingdomKeysReMind.MODID,"textures/entity/models/reactioncommand/dark_mine.png");

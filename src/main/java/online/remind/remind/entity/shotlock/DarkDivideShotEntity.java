@@ -15,7 +15,6 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.network.PlayMessages;
 import online.kingdomkeys.kingdomkeys.entity.ModEntities;
 import online.kingdomkeys.kingdomkeys.entity.shotlock.BaseShotlockShotEntity;
-import online.remind.remind.entity.ModEntitiesRM;
 import org.joml.Vector3f;
 
 import java.awt.*;

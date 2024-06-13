@@ -1,7 +1,5 @@
 package online.remind.remind.capabilities;
 
-import org.jetbrains.annotations.NotNull;
-
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,6 +14,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import online.remind.remind.KingdomKeysReMind;
+import org.jetbrains.annotations.NotNull;
 
 @Mod.EventBusSubscriber(modid = KingdomKeysReMind.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModCapabilitiesRM {

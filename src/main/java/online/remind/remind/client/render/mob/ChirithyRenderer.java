@@ -1,12 +1,10 @@
 package online.remind.remind.client.render.mob;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import online.kingdomkeys.kingdomkeys.entity.EntityHelper;
 import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.client.model.mob.chirithyModel;
 import online.remind.remind.entity.mob.ChirithyEntity;
