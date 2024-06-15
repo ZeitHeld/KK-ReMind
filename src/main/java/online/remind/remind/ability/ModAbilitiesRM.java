@@ -41,9 +41,12 @@ public class ModAbilitiesRM extends ModAbilities{
         LIGHT_WITHIN = ABILITIES.register(StringsRM.ABMA_Prefix+"light_within", () -> new Ability(new ResourceLocation(StringsRM.lightWithin), 5, Ability.AbilityType.SUPPORT, order++)),
         DARKNESS_WITHIN = ABILITIES.register(StringsRM.ABMA_Prefix+"darkness_within", () -> new Ability(new ResourceLocation(StringsRM.darknessWithin), 5, Ability.AbilityType.SUPPORT, order++)),
 
+        DEDICATION = ABILITIES.register(StringsRM.ABMA_Prefix+"dedication", () -> new Ability(new ResourceLocation(StringsRM.dedication), 0, Ability.AbilityType.SUPPORT, order++)),
 
 
-        HP_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"hp_walker", () -> new Ability(new ResourceLocation(StringsRM.hpWalker),10,Ability.AbilityType.SUPPORT, order++)),
+
+
+    HP_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"hp_walker", () -> new Ability(new ResourceLocation(StringsRM.hpWalker),10,Ability.AbilityType.SUPPORT, order++)),
         MP_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"mp_walker", () -> new Ability(new ResourceLocation(StringsRM.mpWalker),10,Ability.AbilityType.SUPPORT, order++)),
         FOCUS_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"focus_walker", () -> new Ability(new ResourceLocation(StringsRM.focusWalker),10,Ability.AbilityType.SUPPORT, order++)),
         HEART_WALKER = ABILITIES.register(StringsRM.ABMA_Prefix+"heart_walker", () -> new Ability(new ResourceLocation(StringsRM.heartWalker),10,Ability.AbilityType.SUPPORT, order++)),

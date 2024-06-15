@@ -32,8 +32,8 @@ public class magicBerserk extends Magic {
 			caster.swing(InteractionHand.MAIN_HAND);
 			// Effect and Level Modifier
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-            float strBonus = (playerData.getStrengthStat().getStat() * 0.15F) * (level + 1);
-			float defDebuff = (playerData.getDefenseStat().getStat() * 0.15F) * (level + 1);
+            double strBonus = (playerData.getStrengthStat().getStat() * 0.15F) * (level + 1);
+			double defDebuff = (playerData.getDefenseStat().getStat() * 0.15F) * (level + 1);
 			System.out.println(strBonus);
             if (globalData.getBerserkTicks() <= 0) {
 
@@ -41,8 +41,8 @@ public class magicBerserk extends Magic {
 				// Levels 0 - 2
 				switch (level) {
 				case 0, 1, 2:
-					playerData.getStrengthStat().addModifier("berserk", (int) strBonus, false);
-					playerData.getDefenseStat().addModifier("berserk", (int) -defDebuff, false);
+					playerData.getStrengthStat().addModifier("berserk", strBonus, false, false);
+					playerData.getDefenseStat().addModifier("berserk", -defDebuff, false, false);
 					PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
 					break;
 				}

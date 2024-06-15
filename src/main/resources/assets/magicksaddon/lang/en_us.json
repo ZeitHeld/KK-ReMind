@@ -91,6 +91,8 @@
   "ability.ability_light_within.desc": "Empowers you with the power of Light! Equip Light Boost to increase the effect.",
   "ability.ability_darkness_within.name": "Darkness Within",
   "ability.ability_darkness_within.desc": "Empowers you with the power of Darkness! Equip Darkness Boost to increase the effect.",
+  "ability.ability_dedication.name": "Dedication",
+  "ability.ability_dedication.desc": "Gain bonus stats every level you get depending on what path you chose.",
   "ability.ability_hp_walker.name": "HP Walker",
   "ability.ability_mp_walker.name": "MP Walker",
   "ability.ability_exp_walker.name": "EXP Walker",

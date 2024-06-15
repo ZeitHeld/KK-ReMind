@@ -45,6 +45,7 @@ public class StringsRM {
         critical_surge = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"critical_surge",
         lightWithin = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"light_within",
         darknessWithin = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"darkness_within",
+        dedication = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"dedication",
         hpWalker = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"hp_walker",
         mpWalker = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"mp_walker",
         focusWalker = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"focus_walker",

@@ -81,9 +81,9 @@ public class CSPrestigePacket {
         playerData.getDefenseStat().removeModifier("sacrifice");
 
 
-        playerData.getStrengthStat().addModifier("NG+ Bonus", globalData.getSTRBonus(), true);
-        playerData.getMagicStat().addModifier("NG+ Bonus",globalData.getMAGBonus(), true);
-        playerData.getDefenseStat().addModifier("NG+ Bonus",globalData.getDEFBonus(), true);
+        playerData.getStrengthStat().addModifier("NG+ Bonus", globalData.getSTRBonus(), true, false);
+        playerData.getMagicStat().addModifier("NG+ Bonus",globalData.getMAGBonus(), true, false);
+        playerData.getDefenseStat().addModifier("NG+ Bonus",globalData.getDEFBonus(), true, false);
         playerData.addMaxHP(2 * globalData.getPrestigeLvl());
         playerData.addMaxMP(2 * globalData.getPrestigeLvl());
 
@@ -91,6 +91,8 @@ public class CSPrestigePacket {
 
         playerData.addAbility(Strings.experienceBoost, true);
         playerData.addAbility(Strings.luckyLucky, true);
+        playerData.addAbility(StringsRM.dedication, true);
+
 
         if (globalData.getNGPWarriorCount() >= 1) {
             playerData.addAbility(StringsRM.adrenaline, true);

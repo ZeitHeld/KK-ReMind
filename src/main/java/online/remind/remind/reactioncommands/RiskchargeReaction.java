@@ -44,7 +44,7 @@ public class RiskchargeReaction extends ReactionCommand {
             player.setHealth(player.getHealth()/2);
             globalData.setRCCooldownTicks(25);
             player.invulnerableTime = 2;
-            playerData.getStrengthStat().addModifier("Riskcharge", 5, true);
+            playerData.getStrengthStat().addModifier("Riskcharge", 5.5, true, true);
             playerData.addFP(50);
             globalData.setRiskchargeCount(globalData.getRiskchargeCount()+1);
             PacketHandlerRM.syncGlobalToAllAround(player, globalData);
