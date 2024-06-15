@@ -123,8 +123,8 @@ public class EntityEventsRM {
 			playerData.getStrengthStat().removeModifier("Dedication");
 			playerData.getMagicStat().removeModifier("Dedication");
 			playerData.getDefenseStat().removeModifier("Dedication");
-
 		}
+		
 	}
 
 
