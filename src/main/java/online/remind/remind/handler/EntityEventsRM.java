@@ -124,7 +124,7 @@ public class EntityEventsRM {
 			playerData.getMagicStat().removeModifier("Dedication");
 			playerData.getDefenseStat().removeModifier("Dedication");
 		}
-		
+
 	}
 
 

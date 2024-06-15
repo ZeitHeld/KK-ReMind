@@ -22,7 +22,7 @@
       "str": 14
     },
     {
-      "mag": 6,
+      "mag": 5,
       "recipe": [
         {
           "material": "kingdomkeys:mat_fluorite",
@@ -36,7 +36,7 @@
       "str": 14
     },
     {
-      "mag": 7,
+      "mag": 5,
       "recipe": [
         {
           "material": "kingdomkeys:mat_fluorite",
@@ -51,7 +51,7 @@
       "ability": "magicksaddon:ability_darkness_boost"
     },
     {
-      "mag": 8,
+      "mag": 5,
       "recipe": [
         {
           "material": "kingdomkeys:mat_damascus",
@@ -65,7 +65,7 @@
       "str": 15
     },
     {
-      "mag": 8,
+      "mag": 5,
       "recipe": [
         {
           "material": "kingdomkeys:mat_damascus",
@@ -84,7 +84,7 @@
       "ability": "kingdomkeys:ability_hp_gain"
     },
     {
-      "mag": 9,
+      "mag": 5,
       "recipe": [
         {
           "material": "kingdomkeys:mat_damascus",
@@ -102,7 +102,7 @@
       "str": 16
     },
     {
-      "mag": 10,
+      "mag": 6,
       "recipe": [
         {
           "material": "kingdomkeys:mat_adamantite",
@@ -121,7 +121,7 @@
       "ability": "magicksaddon:ability_dark_power"
     },
     {
-      "mag": 11,
+      "mag": 8,
       "recipe": [
         {
           "material": "kingdomkeys:mat_adamantite",
@@ -140,7 +140,7 @@
       "ability": "magicksaddon:ability_attack_haste"
     },
     {
-      "mag": 12,
+      "mag": 9,
       "recipe": [
         {
           "material": "kingdomkeys:mat_adamantite",
@@ -158,7 +158,7 @@
       "str": 20
     },
     {
-      "mag": 15,
+      "mag": 10,
       "recipe": [
         {
           "material": "kingdomkeys:mat_electrum",
@@ -177,8 +177,8 @@
       "ability": "kingdomkeys:ability_critical_boost"
     },
     {
-      "str": 23,
-      "mag": 16,
+      "str": 24,
+      "mag": 10,
       "ability": "magicksaddon:ability_attack_haste",
       "recipe": [
         {
@@ -204,8 +204,8 @@
       ]
     },
     {
-      "str": 23,
-      "mag": 17,
+      "str": 24,
+      "mag": 11,
       "ability": "magicksaddon:ability_darkness_boost",
       "recipe": [
         {
@@ -232,7 +232,7 @@
     },
     {
       "str": 24,
-      "mag": 18,
+      "mag": 11,
       "ability": "magicksaddon:ability_attack_haste",
       "recipe": [
         {
@@ -259,7 +259,7 @@
     },
     {
       "str": 24,
-      "mag": 19,
+      "mag": 12,
       "recipe": [
         {
           "material": "kingdomkeys:mat_electrum",
@@ -285,7 +285,7 @@
     },
     {
       "str": 25,
-      "mag": 20,
+      "mag": 12,
       "ability": "kingdomkeys:ability_lucky_lucky",
       "recipe": [
         {
