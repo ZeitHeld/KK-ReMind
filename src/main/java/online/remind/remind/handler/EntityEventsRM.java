@@ -164,10 +164,10 @@ public class EntityEventsRM {
 
 				// Light/Darkness Within
 
-				double boostWithin = (playerData.getStrengthStat().getStat() + playerData.getMagicStat().getStat()) / 3;
+				double boostWithin = (playerData.getStrengthStat().getStat() + playerData.getMagicStat().getStat()) / 5;
 
-				int darknessWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.darknessBoost) * 0.05F);
-				int lightWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.lightBoost) * 0.05F);
+				int darknessWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.darknessBoost) * 0.055F);
+				int lightWithinBoost = (int) (boostWithin * ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.lightBoost) * 0.055F);
 
 				if (playerData.isAbilityEquipped(StringsRM.lightWithin)) {
 					playerData.getStrengthStat().addModifier("light_within", lightWithinBoost, false, false);
@@ -219,13 +219,13 @@ public class EntityEventsRM {
 
 				if (playerData.isAbilityEquipped(StringsRM.dedication)) {
 					if (playerData.getChosen() == SoAState.WARRIOR){
-						playerData.getStrengthStat().addModifier("Dedication", (playerData.getLevel()),false, false);
+						playerData.getStrengthStat().addModifier("Dedication", (double) (playerData.getLevel()) /2,false, true);
 					}
 					if (playerData.getChosen() == SoAState.MYSTIC){
-						playerData.getMagicStat().addModifier("Dedication", playerData.getLevel(),false, false);
+						playerData.getMagicStat().addModifier("Dedication", (double) playerData.getLevel() /2,false, true);
 					}
 					if (playerData.getChosen() == SoAState.GUARDIAN){
-						playerData.getDefenseStat().addModifier("Dedication", playerData.getLevel(),false, false);
+						playerData.getDefenseStat().addModifier("Dedication", (double) playerData.getLevel() /2,false, true);
 					}
 				}
 
