@@ -1,0 +1,54 @@
+{
+  "parent": "forge:item/default",
+  "loader": "forge:obj",
+  "flip_v" : "true",
+  "model": "magicksaddon:models/item/keyblade/gazing_omen.obj",
+  "textures": {
+    "layer0": "magicksaddon:textures/item/keyblades/gazing_omen"
+  },
+  "display": {
+    "firstperson_righthand": {
+      "rotation": [0.0, 0, 0.0 ],
+      "translation": [0.5, -5.5, 4.5],
+      "scale": [0.2, 0.2, 0.2]
+    },
+    "thirdperson_righthand": {
+      "rotation": [0.0, 0, 0.0 ],
+      "translation": [1.5, 13, 1.5],
+      "scale": [0.2, 0.2, 0.2]
+    },
+    "firstperson_lefthand": {
+      "rotation": [0.0, 0.0, 0.0 ],
+      "translation": [1.5, 13, 1.5],
+      "scale": [0.15, 0.15, 0.15]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [0.0, 0.0, 0.0 ],
+      "translation": [1.5, 13, 1.5],
+      "scale": [0.2, 0.2, 0.2]
+    },
+    "gui": {
+      "rotation": [0, 90.0, 0.0 ],
+      "translation": [0.0, -5.0, 0.0 ],
+      "scale": [0.5, 0.5, 0.5]
+    },
+    "ground": {
+      "rotation": [0, 90.0, 0.0 ],
+      "translation": [0.0, 0.0, 0.0 ],
+      "scale": [0.65, 0.75, 0.75]
+    },
+    "fixed": {
+      "rotation": [0.0, 90.0, 0.0 ],
+      "translation": [0.0, 0.0, 0.0 ],
+      "scale": [0.5, 0.5, 0.5]
+    }
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "item/generated",
+      "textures": {
+        "layer0": "magicksaddon:textures/item/keyblades/xephiro_keyblade"
+      }
+    }
+  }
+}
