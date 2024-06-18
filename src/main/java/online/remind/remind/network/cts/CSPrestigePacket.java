@@ -43,8 +43,10 @@ public class CSPrestigePacket {
         // Storing Old Choice For Bonus
         String oldChoice = String.valueOf(playerData.getChosen());
         System.out.println(oldChoice);
-        Utils.restartLevel(playerData, player);
-        Utils.restartLevel2(playerData, player);
+        playerData.setLevel(1);
+        playerData.setExperience(1);
+        //Utils.restartLevel(playerData, player);
+        //Utils.restartLevel2(playerData, player);
         playerData.setSoAState(SoAState.NONE);
         globalData.addPrestigeLvl(+1);
 
@@ -105,6 +107,9 @@ public class CSPrestigePacket {
             if (globalData.getNGPWarriorCount() >= 4) {
                 playerData.addAbility(Strings.driveBoost, true);
             }
+            if (globalData.getNGPWarriorCount() >= 5){
+                playerData.addAbility(StringsRM.attackHaste, true);
+            }
         }
 
         if (globalData.getNGPMysticCount() >= 1) {
@@ -118,6 +123,9 @@ public class CSPrestigePacket {
             if (globalData.getNGPMysticCount() >= 4){
                 playerData.addAbility(Strings.grandMagicHaste, true);
             }
+            if (globalData.getNGPMysticCount() >= 5){
+                playerData.addAbility(StringsRM.mpBoost, true);
+            }
         }
 
         if (globalData.getNGPGuardianCount() >= 1) {
@@ -130,6 +138,9 @@ public class CSPrestigePacket {
             }
             if (globalData.getNGPGuardianCount() >= 4){
                 playerData.addAbility(StringsRM.hpWalker, true);
+            }
+            if (globalData.getNGPGuardianCount() >= 5){
+                playerData.addAbility(StringsRM.hpBoost, true);
             }
         }
 

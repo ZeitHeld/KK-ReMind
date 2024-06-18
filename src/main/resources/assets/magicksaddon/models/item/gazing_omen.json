@@ -29,18 +29,18 @@
     },
     "gui": {
       "rotation": [0, 90.0, 0.0 ],
-      "translation": [0.0, -5.0, 0.0 ],
-      "scale": [0.5, 0.5, 0.5]
+      "translation": [0.0, 0.0, 0.0 ],
+      "scale": [0.075, 0.075, 0.075]
     },
     "ground": {
       "rotation": [0, 90.0, 0.0 ],
       "translation": [0.0, 0.0, 0.0 ],
-      "scale": [0.65, 0.75, 0.75]
+      "scale": [0.15, 0.15, 0.15]
     },
     "fixed": {
       "rotation": [0.0, 90.0, 0.0 ],
       "translation": [0.0, 0.0, 0.0 ],
-      "scale": [0.5, 0.5, 0.5]
+      "scale": [0.15, 0.15, 0.15]
     }
   },
   "perspectives": {

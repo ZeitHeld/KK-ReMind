@@ -57,6 +57,10 @@ public class ModItemsRM{
         gazingOmenChain = ITEMS.register("gazing_omen_chain", () -> new KeychainItem()),
         crystalsLightChain = ITEMS.register("crystals_light_chain", () -> new KeychainItem()),
 
+            // Org Weapons
+
+
+
             // KK Armors
         aquaChaplet = ITEMS.register("aqua_chaplet", () -> new KKArmorItem(new Item.Properties().stacksTo(1),1, ImmutableMap.of(KKResistanceType.ice,50))),
         herosGlove = ITEMS.register("heros_glove", () -> new KKArmorItem(new Item.Properties().stacksTo(1),4, ImmutableMap.of(KKResistanceType.fire,20,KKResistanceType.ice,20,KKResistanceType.darkness,20))),

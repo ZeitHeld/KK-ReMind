@@ -90,11 +90,6 @@ public class StringsRM {
 
         // KK Armor
 
-        //abasChain = KingdomKeysReMind.MODID+":"+ StringsRM.ARMA_Prefix+"abas_chain",
-
-
-
-
 
         // KK Accessories
         luckOfTheDraw = KingdomKeysReMind.MODID+":"+ StringsRM.ACMA_Prefix+"luck_of_the_draw",

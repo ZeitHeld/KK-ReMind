@@ -21,6 +21,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import online.kingdomkeys.kingdomkeys.lib.Lists;
 import online.remind.remind.ability.ModAbilitiesRM;
 import online.remind.remind.capabilities.ModCapabilitiesRM;
 import online.remind.remind.client.sound.ModSoundsRM;
@@ -30,6 +31,7 @@ import online.remind.remind.entity.ModEntitiesRM;
 import online.remind.remind.handler.EntityEventsRM;
 import online.remind.remind.handler.InputHandlerRM;
 import online.remind.remind.item.ModItemsRM;
+import online.remind.remind.lib.ListsRM;
 import online.remind.remind.magic.ModMagicsRM;
 import online.remind.remind.network.PacketHandlerRM;
 import online.remind.remind.particle.ReMindParticles;
@@ -102,6 +104,10 @@ public class KingdomKeysReMind {
         // Some common setup code
 		event.enqueueWork(PacketHandlerRM::register);
         event.enqueueWork(ModEntitiesRM::registerPlacements);
+
+
+        // Org Weapons
+        ListsRM.loadAddonOrgWeapons();
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -109,7 +115,7 @@ public class KingdomKeysReMind {
     public void onServerStarting(ServerStartingEvent event)
     {
         // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        LOGGER.info("Kingdom Keys Re:Mind Enabled!");
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -122,7 +128,7 @@ public class KingdomKeysReMind {
             // Some client setup code
     		MinecraftForge.EVENT_BUS.register(new InputHandlerRM());
 
-            LOGGER.info("HELLO FROM CLIENT SETUP");
+            LOGGER.info("Kingdom Keys Re:Mind Enabled!");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
 
