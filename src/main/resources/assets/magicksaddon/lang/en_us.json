@@ -115,6 +115,10 @@
   "ability.ability_riskcharge.desc": "Unleashes fighting spirit by pressing your Reaction Command button, consuming HP in the process. This empowers your strength.",
   "ability.ability_attack_haste.name": "Attack Haste",
   "ability.ability_attack_haste.desc": "Increases attack speed. Equip more to increase the effect.",
+  "ability.ability_hearts_power.name": "Hearts Are Power",
+  "ability.ability_hearts_power.desc": "ORGANIZATION XIII ONLY! The fleeting hearts you've collected are granting you power. This effect scales with Hearts obtained.",
+  "ability.ability_friends_power.name": "Friends Are Power",
+  "ability.ability_friends_power.desc": "Gain a bonus scaling with the amount of party members you have.",
 
   "shotlock.flame_salvo.name": "Flame Salvo",
   "shotlock.bubble_blaster.name": "Bubble Blaster",

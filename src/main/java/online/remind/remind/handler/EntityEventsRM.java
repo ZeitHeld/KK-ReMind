@@ -14,12 +14,15 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.api.event.AbilityEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
+import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
+import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.lib.SoAState;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
+import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.ability.ModAbilitiesRM;
 import online.remind.remind.capabilities.IGlobalCapabilitiesRM;
@@ -86,6 +89,9 @@ public class EntityEventsRM {
 	public void equipAbility(AbilityEvent.Equip event){
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(event.getPlayer());
 		IGlobalCapabilitiesRM playerData2 = ModCapabilitiesRM.getGlobal(event.getPlayer());
+		IWorldCapabilities worldData = ModCapabilities.getWorld(event.getPlayer().level());
+
+
 		playerData2.setMPOG((int) playerData.getMaxMP());
 		float mpBoost = (float) playerData.getMagicStat().get();
 			if (event.getAbility().equals(ModAbilitiesRM.MP_BOOST.get())) {
@@ -100,6 +106,22 @@ public class EntityEventsRM {
 				event.getPlayer().setHealth(playerData.getMaxHP());
 				event.getPlayer().getAttribute(Attributes.MAX_HEALTH).setBaseValue(playerData.getMaxHP());
 			}
+
+			if (event.getAbility().equals(ModAbilitiesRM.FRIEND_POWER.get())){
+				/*
+				Party party = worldData.getPartyFromMember(event.getPlayer().getUUID());
+				if (party != null){
+					float friendBoost = party.getMembers().size();
+					System.out.println(friendBoost);
+					playerData.getStrengthStat().addModifier("Friendship", friendBoost, false, true);
+					playerData.getMagicStat().addModifier("Friendship", friendBoost, false, true);
+					playerData.getDefenseStat().addModifier("Friendship", friendBoost, false, true);
+				}
+
+				 */
+			}
+
+
 			
 	}
 
@@ -125,6 +147,12 @@ public class EntityEventsRM {
 			playerData.getDefenseStat().removeModifier("Dedication");
 		}
 
+		if (event.getAbility().equals(ModAbilitiesRM.FRIEND_POWER.get())){
+			playerData.getStrengthStat().removeModifier("Friendship");
+			playerData.getMagicStat().removeModifier("Friendship");
+			playerData.getDefenseStat().removeModifier("Friendship");
+		}
+
 	}
 
 
@@ -136,7 +164,7 @@ public class EntityEventsRM {
 
 		// Xephiro Keyblade Debuff
 
-		/*
+
 		if(event.getEntity() instanceof Player player) {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			if (playerData != null && playerData.getEquippedKeychain(DriveForm.NONE) != null) {
@@ -153,10 +181,26 @@ public class EntityEventsRM {
 				}
 			}
 		}
-		 */
+
+
+		// Org Passives
+		if(event.getEntity() instanceof Player player) {
+			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+			if(playerData.getAlignment() != Utils.OrgMember.NONE){
+				//playerData.addAbility(StringsRM.darknessBoost,true);
+				playerData.getStrengthStat().addModifier("Organization",5,false,true);
+				playerData.getMagicStat().addModifier("Organization",5,false,true);
+				playerData.getDefenseStat().addModifier("Organization",5,false,true);
+			} else {
+				playerData.getStrengthStat().removeModifier("Organization");
+				playerData.getMagicStat().removeModifier("Organization");
+				playerData.getDefenseStat().removeModifier("Organization");
+			}
+		}
 
 		if(event.getEntity() instanceof Player player) {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+			IWorldCapabilities worldData = ModCapabilities.getWorld(player.level());
 			if(playerData != null && globalData != null) {
 				updateDriveAbilities(player, StringsRM.darkPower, KingdomKeysReMind.MODID+":"+ StringsRM.darkForm);
 				updateDriveAbilities(player, StringsRM.rageAwakened, KingdomKeysReMind.MODID+":"+ StringsRM.rageForm);
@@ -227,6 +271,46 @@ public class EntityEventsRM {
 					if (playerData.getChosen() == SoAState.GUARDIAN){
 						playerData.getDefenseStat().addModifier("Dedication", (double) playerData.getLevel() /2,false, true);
 					}
+				} else {
+					playerData.getStrengthStat().removeModifier("Dedication");
+					playerData.getMagicStat().removeModifier("Dedication");
+					playerData.getDefenseStat().removeModifier("Dedication");
+				}
+
+				// Hearts Are Power Ability
+
+				if (playerData.isAbilityEquipped(StringsRM.heartsPower) && playerData.getAlignment() != Utils.OrgMember.NONE){
+					float heartsBoost = (playerData.getHearts() * 0.001F);
+					System.out.println(heartsBoost);
+					if (heartsBoost >= 50){
+						playerData.getStrengthStat().addModifier("Hearts Are Power",50,false,true);
+						playerData.getMagicStat().addModifier("Hearts Are Power",50,false,true);
+						playerData.getDefenseStat().addModifier("Hearts Are Power",50,false,true);
+					} else {
+					playerData.getStrengthStat().addModifier("Hearts Are Power",heartsBoost,false,true);
+					playerData.getMagicStat().addModifier("Hearts Are Power",heartsBoost,false,true);
+					playerData.getDefenseStat().addModifier("Hearts Are Power",heartsBoost,false,true);
+					}
+				}
+				else {
+					playerData.getStrengthStat().removeModifier("Hearts Are Power");
+					playerData.getMagicStat().removeModifier("Hearts Are Power");
+					playerData.getDefenseStat().removeModifier("Hearts Are Power");
+				}
+
+				// My Friends Are My Power
+				if (playerData.isAbilityEquipped(StringsRM.friendsPower)){
+					Party party = worldData.getPartyFromMember(player.getUUID());
+					if (party != null){
+						int friendBoost = 5 * (party.getMembers().size() - 1);
+						playerData.getStrengthStat().addModifier("Friendship", friendBoost, false, true);
+						playerData.getMagicStat().addModifier("Friendship", friendBoost, false, true);
+						playerData.getDefenseStat().addModifier("Friendship", friendBoost, false, true);
+					}
+				} else {
+					playerData.getStrengthStat().removeModifier("Friendship");
+					playerData.getMagicStat().removeModifier("Friendship");
+					playerData.getDefenseStat().removeModifier("Friendship");
 				}
 
 				// Attack Haste Ability

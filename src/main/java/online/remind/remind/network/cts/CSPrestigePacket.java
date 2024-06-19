@@ -2,6 +2,7 @@ package online.remind.remind.network.cts;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
@@ -43,10 +44,31 @@ public class CSPrestigePacket {
         // Storing Old Choice For Bonus
         String oldChoice = String.valueOf(playerData.getChosen());
         System.out.println(oldChoice);
+
+        // Until Arclight Fix is Found
         playerData.setLevel(1);
-        playerData.setExperience(1);
+        playerData.setExperience(0);
+        playerData.setMaxHP(20);
+        player.setHealth(playerData.getMaxHP());
+        player.getAttribute(Attributes.MAX_HEALTH).setBaseValue(playerData.getMaxHP());
+        playerData.setMaxMP(0);
+        playerData.setMP(playerData.getMaxMP());
+        playerData.setStrength(1);
+        playerData.setMagic(1);
+        playerData.setDefense(1);
+        playerData.setMaxAP(0);
+        playerData.setMaxAccessories(0);
+        playerData.setMaxArmors(0);
+
+        playerData.clearAbilities();
+        SoAState.applyStatsForChoices(player, playerData, false);
+
+        playerData.setEquippedShotlock("");
+
         //Utils.restartLevel(playerData, player);
-        //Utils.restartLevel2(playerData, player);
+        Utils.restartLevel2(playerData, player);
+
+
         playerData.setSoAState(SoAState.NONE);
         globalData.addPrestigeLvl(+1);
 

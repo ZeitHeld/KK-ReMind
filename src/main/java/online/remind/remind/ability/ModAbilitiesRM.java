@@ -31,17 +31,18 @@ public class ModAbilitiesRM extends ModAbilities{
 
             // Support
         DARKNESS_BOOST = ABILITIES.register(StringsRM.ABMA_Prefix+"darkness_boost", () -> new Ability(new ResourceLocation(StringsRM.darknessBoost), 3, Ability.AbilityType.SUPPORT, order++)),
+        DARKNESS_WITHIN = ABILITIES.register(StringsRM.ABMA_Prefix+"darkness_within", () -> new Ability(new ResourceLocation(StringsRM.darknessWithin), 5, Ability.AbilityType.SUPPORT, order++)),
         LIGHT_BOOST = ABILITIES.register(StringsRM.ABMA_Prefix+"light_boost", () -> new Ability(new ResourceLocation(StringsRM.lightBoost), 3, Ability.AbilityType.SUPPORT, order++)),
-        MP_BOOST = ABILITIES.register(StringsRM.ABMA_Prefix+"mp_boost", () -> new Ability(new ResourceLocation(StringsRM.mpBoost), 10, Ability.AbilityType.SUPPORT, order++)),
+        LIGHT_WITHIN = ABILITIES.register(StringsRM.ABMA_Prefix+"light_within", () -> new Ability(new ResourceLocation(StringsRM.lightWithin), 5, Ability.AbilityType.SUPPORT, order++)),
         HP_BOOST = ABILITIES.register(StringsRM.ABMA_Prefix+"hp_boost", () -> new Ability(new ResourceLocation(StringsRM.hpBoost), 10, Ability.AbilityType.SUPPORT, order++)),
+        MP_BOOST = ABILITIES.register(StringsRM.ABMA_Prefix+"mp_boost", () -> new Ability(new ResourceLocation(StringsRM.mpBoost), 10, Ability.AbilityType.SUPPORT, order++)),
         MP_SHIELD = ABILITIES.register(StringsRM.ABMA_Prefix+"mp_shield", () -> new Ability(new ResourceLocation(StringsRM.mpShield), 5, Ability.AbilityType.SUPPORT, order++)),
         VEHEMENCE = ABILITIES.register(StringsRM.ABMA_Prefix+"vehemence", () -> new Ability(new ResourceLocation(StringsRM.vehemence), 5, Ability.AbilityType.SUPPORT, order++)),
         ADRENALINE = ABILITIES.register(StringsRM.ABMA_Prefix+"adrenaline", () -> new Ability(new ResourceLocation(StringsRM.adrenaline), 4, Ability.AbilityType.SUPPORT, order++)),
         CRITICAL_SURGE = ABILITIES.register(StringsRM.ABMA_Prefix+"critical_surge", () -> new Ability(new ResourceLocation(StringsRM.critical_surge), 4, Ability.AbilityType.SUPPORT, order++)),
-        LIGHT_WITHIN = ABILITIES.register(StringsRM.ABMA_Prefix+"light_within", () -> new Ability(new ResourceLocation(StringsRM.lightWithin), 5, Ability.AbilityType.SUPPORT, order++)),
-        DARKNESS_WITHIN = ABILITIES.register(StringsRM.ABMA_Prefix+"darkness_within", () -> new Ability(new ResourceLocation(StringsRM.darknessWithin), 5, Ability.AbilityType.SUPPORT, order++)),
-
         DEDICATION = ABILITIES.register(StringsRM.ABMA_Prefix+"dedication", () -> new Ability(new ResourceLocation(StringsRM.dedication), 0, Ability.AbilityType.SUPPORT, order++)),
+        HEARTS_POWER = ABILITIES.register(StringsRM.ABMA_Prefix+"hearts_power", () -> new Ability(new ResourceLocation(StringsRM.heartsPower), 0, Ability.AbilityType.SUPPORT, order++)),
+        FRIEND_POWER = ABILITIES.register(StringsRM.ABMA_Prefix+"friends_power", () -> new Ability(new ResourceLocation(StringsRM.friendsPower), 3, Ability.AbilityType.SUPPORT, order++)),
 
 
 
