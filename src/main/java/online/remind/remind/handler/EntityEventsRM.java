@@ -108,17 +108,14 @@ public class EntityEventsRM {
 			}
 
 			if (event.getAbility().equals(ModAbilitiesRM.FRIEND_POWER.get())){
-				/*
+
 				Party party = worldData.getPartyFromMember(event.getPlayer().getUUID());
 				if (party != null){
-					float friendBoost = party.getMembers().size();
+					float friendBoost = party.getMembers().size() - 1;
 					System.out.println(friendBoost);
-					playerData.getStrengthStat().addModifier("Friendship", friendBoost, false, true);
-					playerData.getMagicStat().addModifier("Friendship", friendBoost, false, true);
-					playerData.getDefenseStat().addModifier("Friendship", friendBoost, false, true);
 				}
 
-				 */
+
 			}
 
 
