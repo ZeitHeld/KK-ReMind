@@ -4,6 +4,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -32,6 +33,10 @@ import online.remind.remind.driveform.ModDriveFormsRM;
 import online.remind.remind.item.ModItemsRM;
 import online.remind.remind.lib.StringsRM;
 import online.remind.remind.network.PacketHandlerRM;
+import yesman.epicfight.skill.SkillContainer;
+import yesman.epicfight.skill.guard.GuardSkill;
+import yesman.epicfight.world.capabilities.item.CapabilityItem;
+import yesman.epicfight.world.entity.eventlistener.HurtEvent;
 
 public class EntityEventsRM {
 
@@ -277,7 +282,7 @@ public class EntityEventsRM {
 				// Hearts Are Power Ability
 
 				if (playerData.isAbilityEquipped(StringsRM.heartsPower) && playerData.getAlignment() != Utils.OrgMember.NONE){
-					float heartsBoost = (playerData.getHearts() * 0.001F);
+					float heartsBoost = (playerData.getHearts() * 0.00001F);
 					System.out.println(heartsBoost);
 					if (heartsBoost >= 50){
 						playerData.getStrengthStat().addModifier("Hearts Are Power",50,false,true);
@@ -290,6 +295,12 @@ public class EntityEventsRM {
 					}
 				}
 				else {
+					playerData.getStrengthStat().removeModifier("Hearts Are Power");
+					playerData.getMagicStat().removeModifier("Hearts Are Power");
+					playerData.getDefenseStat().removeModifier("Hearts Are Power");
+				}
+
+				if (playerData.getAlignment() == Utils.OrgMember.NONE){
 					playerData.getStrengthStat().removeModifier("Hearts Are Power");
 					playerData.getMagicStat().removeModifier("Hearts Are Power");
 					playerData.getDefenseStat().removeModifier("Hearts Are Power");
@@ -442,6 +453,9 @@ public class EntityEventsRM {
 				}
 			}
 		}
+		// Dream Eater Death Event
+
+
 	}
 
 	@SubscribeEvent
@@ -498,6 +512,22 @@ public class EntityEventsRM {
 
 			}
 		}
+
+		// Life Steal Test
+		if (event.getSource().getEntity() instanceof Player player){
+			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+			if(playerData != null) {
+				System.out.println("Entity Hit: "+event.getEntity());
+				System.out.println("Attacker: "+event.getSource().getEntity());
+
+				
+			}
+		}
 	}
+
+	// EFM Stuff Below
+
+
+
 
 }

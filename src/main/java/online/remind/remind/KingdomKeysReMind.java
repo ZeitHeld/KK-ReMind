@@ -14,6 +14,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -54,6 +55,8 @@ public class KingdomKeysReMind {
     // Create a Deferred Register to hold Items which will all be registered under the "examplemod" namespace
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
 
+    public static boolean efmLoaded = false;
+
     
     public KingdomKeysReMind(){
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -83,6 +86,9 @@ public class KingdomKeysReMind {
 
         TABS.register(modEventBus);
 
+        if (ModList.get().isLoaded("epicfight")) {
+            efmLoaded = true;
+        }
     }
 
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);

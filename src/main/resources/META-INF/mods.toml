@@ -18,3 +18,9 @@ mandatory=true
 versionRange="[1.20.1-2.3.10.3,)"
 ordering="AFTER"
 side="BOTH"
+[[dependencies.magicksaddon]]
+modId="epicfight"
+mandatory=false
+versionRange="[18.3,)"
+ordering="AFTER"
+side="BOTH"
