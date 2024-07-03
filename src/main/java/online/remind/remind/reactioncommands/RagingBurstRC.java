@@ -1,7 +1,9 @@
 package online.remind.remind.reactioncommands;
 
 import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.fml.common.Mod;
@@ -33,11 +35,16 @@ public class RagingBurstRC extends ReactionCommand {
 
 
 
+
     @Override
     public void onUse(Player player, LivingEntity livingEntity, LivingEntity livingEntity1) {
         if(conditionsToAppear(player,player)){
             IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
             IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
+
+            double X = player.getX();
+            double Y = player.getY();
+            double Z = player.getZ();
 
 
             playerData.addFP(-1000);
@@ -55,7 +62,21 @@ public class RagingBurstRC extends ReactionCommand {
                 e.hurt(DarknessDamageSource.getDarknessDamage(e, player), dmg);
                 playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1)));
                 player.level().addParticle(new DustParticleOptions(new Vector3f(0.1F,0F,0F),1F),e.getX() + e.level().random.nextDouble() - 0.55D, e.getY()+ e.level().random.nextDouble() *2D, e.getZ() + e.level().random.nextDouble() - 0.55D, 0, 0, 0);
+                player.heal(dmg * 0.01F);
+            }
+            player.invulnerableTime = 20;
+            //player.heal(dmg * 0.01F);
 
+            for (int t = 1; t < 360; t += 20) {
+                for (int s = 1; s < 360 ; s += 20) {
+                    double x = X + (radius * Math.cos(Math.toRadians(s)) * Math.sin(Math.toRadians(t)));
+                    double z = Z + (radius * Math.sin(Math.toRadians(s)) * Math.sin(Math.toRadians(t)));
+                    double y = Y + (radius * Math.cos(Math.toRadians(t)));
+                    ((ServerLevel) player.level()).sendParticles(new DustParticleOptions(new Vector3f(0F,0F,0F),6F),x,y+1 ,z,1,0,0,0,0);
+                    ((ServerLevel) player.level()).sendParticles(new DustParticleOptions(new Vector3f(0.1F,0F,0F),6F),x,y+1 ,z,1,0,0,0,0);
+                    ((ServerLevel) player.level()).sendParticles(new DustParticleOptions(new Vector3f(0.2F,0F,0F),6F),x,y+1 ,z,1,0,0,0,0);
+
+                }
             }
         }
     }
