@@ -18,6 +18,7 @@ import online.remind.remind.capabilities.IGlobalCapabilitiesRM;
 import online.remind.remind.capabilities.ModCapabilitiesRM;
 import online.remind.remind.entity.reactioncommand.DarkFiragaEntity;
 import online.remind.remind.lib.StringsRM;
+import online.remind.remind.network.PacketHandlerRM;
 
 @Mod.EventBusSubscriber(modid = KingdomKeysReMind.MODID)
 public class DarkFiragaRC extends ReactionCommand {
@@ -31,8 +32,10 @@ public class DarkFiragaRC extends ReactionCommand {
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
 		float dmgMult = (ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.darknessBoost) * 0.3F) + (ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.fireBoost) * 0.3F);
-		globalData.setRCCooldownTicks(40);
+		globalData.setRCCooldownTicks(60);
+		System.out.println(globalData.getRCCooldownTicks());
 		playerData.remFocus(15);
+		PacketHandlerRM.syncGlobalToAllAround(player, globalData);
 
 		player.level().playSound(null, player.position().x(), player.position().y(), player.position().z(), ModSounds.firaga.get(), SoundSource.PLAYERS, 1F, 0.7F);
 		ThrowableProjectile darkFiraga = new DarkFiragaEntity(player.level(), player, dmgMult);
@@ -46,7 +49,7 @@ public class DarkFiragaRC extends ReactionCommand {
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
 		if (playerData != null && playerData.getEquippedKeychain(DriveForm.NONE) != null) {
-			if (globalData.getRCCooldownTicks() == 0 && playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.soulEaterChain.get() || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.keybladeOfPeoplesHeartsChain.get() ) {
+			if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.soulEaterChain.get() && globalData.getRCCooldownTicks() == 0 || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.keybladeOfPeoplesHeartsChain.get() && globalData.getRCCooldownTicks() == 0) {
 				if (playerData.getFocus() >= 15) {
 					return true;
 				}

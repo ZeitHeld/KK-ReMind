@@ -170,7 +170,7 @@ public class EntityEventsRM {
 		if(event.getEntity() instanceof Player player) {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			if (playerData != null && playerData.getEquippedKeychain(DriveForm.NONE) != null) {
-				if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItemsRM.xephiroKeybladeChain.get() && !player.getUUID().toString().equals("70b48fbd-b67f-4f3e-9369-09cef36d51a3")) {
+				if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItemsRM.xephiroKeybladeChain.get() && player.getUUID().toString().equals("70b48fbd-b67f-4f3e-9369-09cef36d51a3")) {
 					//System.out.println("Sanguine Gaze Equipped by NOT Xephiro!");
 					//System.out.println(player.getUUID().toString());
 					playerData.getStrengthStat().addModifier("Not Xephiro", -25, false, true);
@@ -517,10 +517,16 @@ public class EntityEventsRM {
 		if (event.getSource().getEntity() instanceof Player player){
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			if(playerData != null) {
+				/*
+				double LifeStealAmount = (float) (playerData.getStrengthStat().getStat() * 0.15F);
 				System.out.println("Entity Hit: "+event.getEntity());
 				System.out.println("Attacker: "+event.getSource().getEntity());
+				System.out.println(LifeStealAmount);
+				if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItemsRM.xephiroKeybladeChain.get() || player.getUUID().toString().equals("70b48fbd-b67f-4f3e-9369-09cef36d51a3")) {
+					player.heal((int) LifeStealAmount);
+				}
+				 */
 
-				
 			}
 		}
 	}
