@@ -31,6 +31,7 @@ import online.remind.remind.effect.ModEffects;
 import online.remind.remind.entity.ModEntitiesRM;
 import online.remind.remind.handler.EntityEventsRM;
 import online.remind.remind.handler.InputHandlerRM;
+import online.remind.remind.integration.epicfight.skills.KKRMSkills;
 import online.remind.remind.item.ModItemsRM;
 import online.remind.remind.lib.ListsRM;
 import online.remind.remind.magic.ModMagicsRM;
@@ -88,6 +89,8 @@ public class KingdomKeysReMind {
 
         if (ModList.get().isLoaded("epicfight")) {
             efmLoaded = true;
+            MinecraftForge.EVENT_BUS.register(new KKRMSkills());
+
         }
     }
 
