@@ -21,7 +21,7 @@ public class KKRMSkills{
         SkillBuildEvent.ModRegistryWorker modRegistry = event.createRegistryWorker(KingdomKeysReMind.MODID);
 
         renewalBlock = modRegistry.build("renewal_block", RenewalBlock::new, Skill.createBuilder().setCategory(SkillCategories.GUARD).setResource(Skill.Resource.NONE));
-        focusBlock = modRegistry.build( "focus_block", FocusBlock::new, Skill.createBuilder().setCategory(SkillCategories.GUARD).setResource(Skill.Resource.NONE));
+        //focusBlock = modRegistry.build("focus_block");
     }
 
 }
