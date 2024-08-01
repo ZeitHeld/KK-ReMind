@@ -22,6 +22,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import online.kingdomkeys.kingdomkeys.integration.epicfight.init.EpicKKWeapons;
+import online.kingdomkeys.kingdomkeys.integration.epicfight.init.KKAnimations;
+import online.kingdomkeys.kingdomkeys.integration.epicfight.skills.KKSkills;
 import online.kingdomkeys.kingdomkeys.lib.Lists;
 import online.remind.remind.ability.ModAbilitiesRM;
 import online.remind.remind.capabilities.ModCapabilitiesRM;
@@ -31,6 +34,7 @@ import online.remind.remind.effect.ModEffects;
 import online.remind.remind.entity.ModEntitiesRM;
 import online.remind.remind.handler.EntityEventsRM;
 import online.remind.remind.handler.InputHandlerRM;
+import online.remind.remind.integration.epicfight.skills.KKRMSkills;
 import online.remind.remind.item.ModItemsRM;
 import online.remind.remind.lib.ListsRM;
 import online.remind.remind.magic.ModMagicsRM;
@@ -88,6 +92,8 @@ public class KingdomKeysReMind {
 
         if (ModList.get().isLoaded("epicfight")) {
             efmLoaded = true;
+            MinecraftForge.EVENT_BUS.register(new KKRMSkills());
+            KKRMSkills.register();
         }
     }
 
