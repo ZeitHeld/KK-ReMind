@@ -121,6 +121,10 @@
   "ability.ability_hearts_power.desc": "ORGANIZATION XIII ONLY! The fleeting hearts you've collected are granting you power. This effect scales with Hearts obtained.",
   "ability.ability_friends_power.name": "Friends Are Power",
   "ability.ability_friends_power.desc": "Gain a bonus scaling with the amount of party members you have.",
+  "ability.ability_renewal_block.name": "Renewal Block",
+  "ability.ability_renewal_block.desc": "Upon a successful guard, restore a small amount of HP. Requires EFM Guard Skill.",
+  "ability.ability_focus_block.name": "Focus Block",
+  "ability.ability_focus_block.desc": "Upon a successful guard, restore a small amount of Focus. Requires EFM Guard Skill.",
 
   "shotlock.flame_salvo.name": "Flame Salvo",
   "shotlock.bubble_blaster.name": "Bubble Blaster",

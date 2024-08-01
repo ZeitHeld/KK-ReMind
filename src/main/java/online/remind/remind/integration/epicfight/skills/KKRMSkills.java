@@ -8,6 +8,7 @@ import yesman.epicfight.api.data.reloader.SkillManager;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillCategories;
+import yesman.epicfight.skill.guard.GuardSkill;
 
 public class KKRMSkills {
     public static Skill renewalBlock;
@@ -15,7 +16,7 @@ public class KKRMSkills {
 
     public static void register()
     {
-        //SkillManager.register(RenewalBlock::new, Skill.createBuilder().setCategory(SkillCategories.GUARD).setResource(Skill.Resource.NONE), KingdomKeysReMind.MODID, "renewal_block");
+        SkillManager.register(RenewalBlock::new, GuardSkill.createGuardBuilder(), KingdomKeysReMind.MODID, "renewal_block");
     }
 
     @SubscribeEvent

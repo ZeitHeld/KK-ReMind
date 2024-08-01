@@ -57,6 +57,8 @@ public class StringsRM {
         attackHaste = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"attack_haste",
         heartsPower = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"hearts_power",
         friendsPower = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"friends_power",
+        renewalBlock = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"renewal_block",
+        focusBlock = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"focus_block",
 
         // Shotlocks
         flameSalvo = "flame_salvo",

@@ -25,6 +25,11 @@ public class ModAbilitiesRM extends ModAbilities{
         DARK_POWER = ABILITIES.register(StringsRM.ABMA_Prefix+"dark_power", () -> new Ability(new ResourceLocation(StringsRM.darkPower), 5, Ability.AbilityType.ACTION, order++)),
         RISKCHARGE = ABILITIES.register(StringsRM.ABMA_Prefix+"riskcharge", () -> new Ability(new ResourceLocation(StringsRM.riskCharge), 0, Ability.AbilityType.ACTION, order++)),
 
+            // Action - EFM
+        RENEWAL_BLOCK = ABILITIES.register(StringsRM.ABMA_Prefix+"renewal_block", () -> new Ability(new ResourceLocation(StringsRM.renewalBlock), 3, Ability.AbilityType.ACTION, order++)),
+        FOCUS_BLOCK = ABILITIES.register(StringsRM.ABMA_Prefix+"focus_block", () -> new Ability(new ResourceLocation(StringsRM.focusBlock), 3, Ability.AbilityType.ACTION, order++)),
+
+
             // Growth
         LIGHT_STEP = ABILITIES.register(StringsRM.ABMA_Prefix+"light_step", () -> new Ability(new ResourceLocation(StringsRM.lightStep), 3, Ability.AbilityType.GROWTH, order++)),
         DARK_STEP = ABILITIES.register(StringsRM.ABMA_Prefix+"dark_step", () -> new Ability(new ResourceLocation(StringsRM.darkStep), 3, Ability.AbilityType.GROWTH, order++)),

@@ -35,6 +35,7 @@ import online.remind.remind.lib.StringsRM;
 import online.remind.remind.network.PacketHandlerRM;
 import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.skill.guard.GuardSkill;
+import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.entity.eventlistener.HurtEvent;
 
@@ -188,12 +189,12 @@ public class EntityEventsRM {
 		// Org Passives
 		if(event.getEntity() instanceof Player player) {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-			if(playerData.getAlignment() != Utils.OrgMember.NONE){
+			if(playerData != null && playerData.getAlignment() != Utils.OrgMember.NONE){
 				//playerData.addAbility(StringsRM.darknessBoost,true);
 				playerData.getStrengthStat().addModifier("Organization",5,false,true);
 				playerData.getMagicStat().addModifier("Organization",5,false,true);
 				playerData.getDefenseStat().addModifier("Organization",5,false,true);
-			} else {
+			} else if (playerData != null && playerData.getAlignment() == Utils.OrgMember.NONE) {
 				playerData.getStrengthStat().removeModifier("Organization");
 				playerData.getMagicStat().removeModifier("Organization");
 				playerData.getDefenseStat().removeModifier("Organization");
@@ -532,6 +533,7 @@ public class EntityEventsRM {
 	}
 
 	// EFM Stuff Below
+
 
 
 
