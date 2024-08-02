@@ -124,9 +124,17 @@ public class EntityEventsRM {
 					float friendBoost = party.getMembers().size() - 1;
 					System.out.println(friendBoost);
 				}
-
-
 			}
+
+			if(event.getAbility().equals(ModAbilitiesRM.RENEWAL_BLOCK.get()) && playerData.isAbilityEquipped(StringsRM.focusBlock)){
+				playerData.unequipAbility(StringsRM.focusBlock,0);
+			}
+
+			if(event.getAbility().equals(ModAbilitiesRM.FOCUS_BLOCK.get()) && playerData.isAbilityEquipped(StringsRM.renewalBlock)){
+				playerData.unequipAbility(StringsRM.renewalBlock,0);
+			}
+
+
 
 
 			
@@ -435,16 +443,6 @@ public class EntityEventsRM {
 					}
 				}
 			}
-		}
-	}
-
-
-	@SubscribeEvent
-	public static void checkSkill(TickEvent.PlayerTickEvent event) {
-		PlayerPatch playerpatch = EpicFightCapabilities.getEntityPatch(event.player, PlayerPatch.class);
-		System.out.println(event.player.level().isClientSide() +" "+ playerpatch);
-		if (playerpatch != null) {
-			System.out.println( playerpatch.getSkill(SkillSlots.GUARD).getSkill() );
 		}
 	}
 
