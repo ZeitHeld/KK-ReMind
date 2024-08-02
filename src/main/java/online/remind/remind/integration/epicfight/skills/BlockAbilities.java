@@ -69,6 +69,10 @@ public class BlockAbilities extends GuardSkill {
         Player player = playerpatch.getOriginal();
         IPlayerCapabilities playerCapabilities = ModCapabilities.getPlayer(player);
 
+
+        // Block Abilities Effects
+
+
         if(playerCapabilities.isAbilityEquipped(StringsRM.renewalBlock)) {
             player.heal(player.getMaxHealth() * 0.05F);
             System.out.println("Healed on Block!");
@@ -80,6 +84,7 @@ public class BlockAbilities extends GuardSkill {
             System.out.println("Focus Restored on Block!");
 
         }
+        
     }
 
     @Override

@@ -8,6 +8,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -34,8 +35,11 @@ import online.remind.remind.item.ModItemsRM;
 import online.remind.remind.lib.StringsRM;
 import online.remind.remind.network.PacketHandlerRM;
 import yesman.epicfight.skill.SkillContainer;
+import yesman.epicfight.skill.SkillSlots;
 import yesman.epicfight.skill.guard.GuardSkill;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
+import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.entity.eventlistener.HurtEvent;
 
@@ -435,12 +439,30 @@ public class EntityEventsRM {
 	}
 
 
+	@SubscribeEvent
+	public static void checkSkill(TickEvent.PlayerTickEvent event) {
+		PlayerPatch playerpatch = EpicFightCapabilities.getEntityPatch(event.player, PlayerPatch.class);
+		System.out.println(event.player.level().isClientSide() +" "+ playerpatch);
+		if (playerpatch != null) {
+			System.out.println( playerpatch.getSkill(SkillSlots.GUARD).getSkill() );
+		}
+	}
+
+
 	
 	@SubscribeEvent
 	public void onDeath(LivingDeathEvent event){
 		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(event.getEntity());
 		if (event.getEntity() instanceof Player){
 			Player player = (Player) event.getEntity();
+
+			PlayerPatch playerpatch = EpicFightCapabilities.getEntityPatch(player, PlayerPatch.class);
+			System.out.println(player.level().isClientSide() +" "+ playerpatch);
+			if (playerpatch != null) {
+				System.out.println( playerpatch.getSkill(SkillSlots.GUARD).getSkill() );
+			}
+
+
 			if (1 == globalData.getAutoLifeActive()){
 				if (player.getHealth() <= 0){
 					globalData.remAutoLifeActive(1);
@@ -453,6 +475,8 @@ public class EntityEventsRM {
 					player.level().playSound(null, player.blockPosition(), ModSoundsRM.AUTOLIFE.get(), SoundSource.PLAYERS, 1F, 1F);
 				}
 			}
+
+
 		}
 		// Dream Eater Death Event
 
