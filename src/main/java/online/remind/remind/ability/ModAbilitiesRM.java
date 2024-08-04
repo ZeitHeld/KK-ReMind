@@ -29,6 +29,7 @@ public class ModAbilitiesRM extends ModAbilities{
         RENEWAL_BLOCK = ABILITIES.register(StringsRM.ABMA_Prefix+"renewal_block", () -> new Ability(new ResourceLocation(StringsRM.renewalBlock), 0, Ability.AbilityType.ACTION, order++)),
         FOCUS_BLOCK = ABILITIES.register(StringsRM.ABMA_Prefix+"focus_block", () -> new Ability(new ResourceLocation(StringsRM.focusBlock), 0, Ability.AbilityType.ACTION, order++)),
         COUNTER_HAMMER = ABILITIES.register(StringsRM.ABMA_Prefix+"counter_hammer", () -> new Ability(new ResourceLocation(StringsRM.counterHammer), 0, Ability.AbilityType.ACTION, order++)),
+        COUNTER_BLAST = ABILITIES.register(StringsRM.ABMA_Prefix+"counter_blast", () -> new Ability(new ResourceLocation(StringsRM.counterBlast), 0, Ability.AbilityType.ACTION, order++)),
 
 
             // Growth

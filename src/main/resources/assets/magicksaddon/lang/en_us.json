@@ -127,6 +127,8 @@
   "ability.ability_focus_block.desc": "Upon a successful guard, restore a small amount of Focus. Requires EFM Guard Skill.",
   "ability.ability_counter_hammer.name": "Counter Hammer",
   "ability.ability_counter_hammer.desc": "Upon a successful guard, counter attack with a shockwave! Damage and Radius scales with Critical Boost!",
+  "ability.ability_counter_blast.name": "Counter Blast",
+  "ability.ability_counter_blast.desc": "Upon a successful guard, counter attack with a burst!",
 
   "shotlock.flame_salvo.name": "Flame Salvo",
   "shotlock.bubble_blaster.name": "Bubble Blaster",
@@ -210,7 +212,11 @@
   "reactioncommand.rc_twilight.name": "Twilight's Embrace",
   "reactioncommand.rc_dual_shot.name": "Dual Shot",
   "reactioncommand.rc_dark_firaga.name": "Dark Firaga",
+
+
   "reactioncommand.rc_counter_hammer.name": "Counter Hammer",
+  "reactioncommand.rc_counter_blast.name": "Counter Blast",
+
   "reactioncommand.rc_test.name": "Does nothing",
 
   "key.categories.remind": "Kingdom Keys - Re:Mind",

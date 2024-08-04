@@ -4,6 +4,7 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.event.RenderLivingEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
@@ -15,6 +16,7 @@ import online.remind.remind.lib.StringsRM;
 import org.joml.Vector3f;
 
 public class ClientEventsRM {
+	
 
     @SubscribeEvent
 	public void RenderEntity(RenderLivingEvent.Pre event){

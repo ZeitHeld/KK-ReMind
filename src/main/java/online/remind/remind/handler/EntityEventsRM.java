@@ -134,9 +134,15 @@ public class EntityEventsRM {
 				playerData.unequipAbility(StringsRM.renewalBlock,0);
 			}
 
-		if (event.getAbility().equals(ModAbilitiesRM.COUNTER_HAMMER.get())){
-			playerData2.setCanCounter(0);
-		}
+			if (event.getAbility().equals(ModAbilitiesRM.COUNTER_HAMMER.get()) && playerData.isAbilityEquipped(StringsRM.counterBlast)){
+				playerData2.setCanCounter(0);
+				playerData.unequipAbility(StringsRM.counterBlast,0);
+			}
+
+			if (event.getAbility().equals(ModAbilitiesRM.COUNTER_BLAST.get()) && playerData.isAbilityEquipped(StringsRM.counterHammer)){
+				playerData2.setCanCounter(0);
+				playerData.unequipAbility(StringsRM.counterHammer,0);
+			}
 
 
 
@@ -172,7 +178,7 @@ public class EntityEventsRM {
 			playerData.getDefenseStat().removeModifier("Friendship");
 		}
 
-		if (event.getAbility().equals(ModAbilitiesRM.COUNTER_HAMMER.get())){
+		if (event.getAbility().equals(ModAbilitiesRM.COUNTER_HAMMER.get()) || event.getAbility().equals(ModAbilitiesRM.COUNTER_BLAST.get())){
 			playerData2.remCanCounter(1);
 			PacketHandlerRM.syncGlobalToAllAround(event.getPlayer(), playerData2);
 		}

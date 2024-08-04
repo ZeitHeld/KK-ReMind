@@ -48,11 +48,13 @@ public class GuardSkillMixin {
 
         }
 
-        if (playerCapabilities.isAbilityEquipped(StringsRM.counterHammer)){
+        if (playerCapabilities.isAbilityEquipped(StringsRM.counterHammer) || playerCapabilities.isAbilityEquipped(StringsRM.counterBlast)){
             globalData.setCanCounter(1);
             System.out.println("Can Counter! " + globalData.getCanCounter());
             PacketHandlerRM.syncGlobalToAllAround(player, globalData);
         }
+
+
 
     }
 }
