@@ -16,6 +16,7 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
         storage.putInt("berserk_ticks",this.getBerserkTicks());
         storage.putInt("berserk_level", this.getBerserkLevel());
         storage.putInt("autolife_active", this.getAutoLifeActive());
+        storage.putInt("can_counter", this.getCanCounter());
 
         // New Game Plus NBT
         storage.putInt("prestige_level", this.getPrestigeLvl());
@@ -57,6 +58,8 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
         this.setNGPGuardianCount(properties.getInt("NGPlus_Guardian"));
         
         this.setRiskchargeCount(properties.getInt("riskcharge_count"));
+
+        this.setCanCounter(properties.getInt("can_counter"));
     }
 
     private int hasteTicks;
@@ -85,6 +88,7 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
     private byte stepType;
 
     private int RCCooldown;
+    private int CanCounter;
 
     private int MPOG;
 
@@ -356,6 +360,21 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
     @Override
     public void setMPOG(int i) {
         this.MPOG = i;
+    }
+
+    @Override
+    public int getCanCounter() {
+        return CanCounter;
+    }
+
+    @Override
+    public void setCanCounter(int i) {
+        CanCounter = i;
+    }
+
+    @Override
+    public void remCanCounter(int use) {
+        CanCounter -= use;
     }
 
     @Override

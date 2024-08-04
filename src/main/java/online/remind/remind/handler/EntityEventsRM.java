@@ -134,6 +134,10 @@ public class EntityEventsRM {
 				playerData.unequipAbility(StringsRM.renewalBlock,0);
 			}
 
+		if (event.getAbility().equals(ModAbilitiesRM.COUNTER_HAMMER.get())){
+			playerData2.setCanCounter(0);
+		}
+
 
 
 
@@ -168,6 +172,11 @@ public class EntityEventsRM {
 			playerData.getDefenseStat().removeModifier("Friendship");
 		}
 
+		if (event.getAbility().equals(ModAbilitiesRM.COUNTER_HAMMER.get())){
+			playerData2.remCanCounter(1);
+			PacketHandlerRM.syncGlobalToAllAround(event.getPlayer(), playerData2);
+		}
+
 	}
 
 
@@ -195,6 +204,9 @@ public class EntityEventsRM {
 					playerData.getDefenseStat().removeModifier("Not Xephiro");
 				}
 			}
+
+
+
 		}
 
 
@@ -353,6 +365,13 @@ public class EntityEventsRM {
 				globalData.setRCCooldownTicks(globalData.getRCCooldownTicks() - 1);
 			}
 
+			/*
+			if (globalData.getBlockedTicks() > 0){
+				globalData.setBlockedTicks(globalData.getBlockedTicks() - 1);
+				System.out.println(globalData.getBlockedTicks());
+			}
+			*/
+
 			// Step Ticks
 			if(globalData.getStepTicks() > 0) {
 				globalData.remStepTicks(1);
@@ -412,6 +431,8 @@ public class EntityEventsRM {
 					}
 				}
 			}
+
+
 
 			// HP / MP / EXP Walker
 			if (event.getEntity() instanceof Player player) {

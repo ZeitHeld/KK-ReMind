@@ -81,6 +81,10 @@ public interface IGlobalCapabilitiesRM extends INBTSerializable<CompoundTag> {
     double getMPOG();
     void setMPOG(int i);
 
+    int getCanCounter();
+    void setCanCounter(int i);
+    void remCanCounter(int use);
+
 
 
     // Dream Eater Stuff
