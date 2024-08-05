@@ -27,7 +27,7 @@ public class GuardSkillMixin {
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
 
         globalData.setCanCounter(1);
-        System.out.println("Can Counter! " + globalData.getCanCounter());
+        //System.out.println("Can Counter! " + globalData.getCanCounter());
         PacketHandlerRM.syncGlobalToAllAround(player, globalData);
 
 
@@ -37,24 +37,14 @@ public class GuardSkillMixin {
         if(playerCapabilities.isAbilityEquipped(StringsRM.renewalBlock)) {
             player.heal(player.getMaxHealth() * 0.05F);
             player.getFoodData().eat(3,3);
-            System.out.println("Healed for "+ player.getMaxHealth() * 0.05F +" on Block!");
-
-
-
+            //System.out.println("Healed for "+ player.getMaxHealth() * 0.05F +" on Block!");
         }
 
         if(playerCapabilities.isAbilityEquipped(StringsRM.focusBlock)) {
             playerCapabilities.addFocus(10);
-            System.out.println("Focus Restored on Block!");
-            System.out.println(event.getDamageSource().getEntity());
-
+            //System.out.println("Focus Restored on Block!");
+            //System.out.println(event.getDamageSource().getEntity());
         }
-
-        /*if (playerCapabilities.isAbilityEquipped(StringsRM.counterHammer) || playerCapabilities.isAbilityEquipped(StringsRM.counterBlast)){
-            globalData.setCanCounter(1);
-            System.out.println("Can Counter! " + globalData.getCanCounter());
-            PacketHandlerRM.syncGlobalToAllAround(player, globalData);
-        }*/
 
 
 

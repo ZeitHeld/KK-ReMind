@@ -31,10 +31,7 @@ import online.remind.remind.client.render.reactioncommand.LightBeamEntityRendere
 import online.remind.remind.client.render.shotlock.BioShotEntityRenderer;
 import online.remind.remind.entity.magic.*;
 import online.remind.remind.entity.mob.ChirithyEntity;
-import online.remind.remind.entity.reactioncommand.DarkFiragaEntity;
-import online.remind.remind.entity.reactioncommand.DarkMineEntity;
-import online.remind.remind.entity.reactioncommand.DualShotEntity;
-import online.remind.remind.entity.reactioncommand.LightBeamEntity;
+import online.remind.remind.entity.reactioncommand.*;
 import online.remind.remind.entity.shotlock.*;
 import online.remind.remind.item.ModItemsRM;
 
@@ -78,6 +75,8 @@ public class ModEntitiesRM {
 
     // Misc
     public static final RegistryObject<EntityType<DarkFiragaEntity>> TYPE_DARK_FIRAGA = createEntityType(DarkFiragaEntity::new, DarkFiragaEntity::new, MobCategory.MISC,"entity_dark_firaga", 1f, 1f);
+
+    public static final RegistryObject<EntityType<CounterRushCore>> TYPE_COUNTER_RUSH = createEntityType(CounterRushCore::new, CounterRushCore::new, MobCategory.MISC,"entity_counter_rush", 1f, 1f);
 
     // Dream Eaters
     public static final Item.Properties PROPERTIES = new Item.Properties();
@@ -150,6 +149,7 @@ public class ModEntitiesRM {
         event.registerEntityRenderer(TYPE_DUAL_SHOT.get(),InvisibleEntityRenderer::new);
 
         event.registerEntityRenderer(TYPE_DARK_FIRAGA.get(),InvisibleEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_COUNTER_RUSH.get(),InvisibleEntityRenderer::new);
 
         event.registerEntityRenderer(TYPE_CHIRITHY.get(),ChirithyRenderer::new);
 
