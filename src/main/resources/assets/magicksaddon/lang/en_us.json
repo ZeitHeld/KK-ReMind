@@ -128,7 +128,9 @@
   "ability.ability_counter_hammer.name": "Counter Hammer",
   "ability.ability_counter_hammer.desc": "Upon a successful guard, counter attack with a shockwave! Damage and Radius scales with Critical Boost!",
   "ability.ability_counter_blast.name": "Counter Blast",
-  "ability.ability_counter_blast.desc": "Upon a successful guard, counter attack with a burst!",
+  "ability.ability_counter_blast.desc": "Upon a successful guard, counter attack with a burst! Scales with Max MP!",
+  "ability.ability_counter_rush.name": "Counter Rush",
+  "ability.ability_counter_rush.desc": "Upon a successful guard, counter attack with a flurry of blows! Scales with Attack Haste!",
 
   "shotlock.flame_salvo.name": "Flame Salvo",
   "shotlock.bubble_blaster.name": "Bubble Blaster",
@@ -216,6 +218,7 @@
 
   "reactioncommand.rc_counter_hammer.name": "Counter Hammer",
   "reactioncommand.rc_counter_blast.name": "Counter Blast",
+  "reactioncommand.rc_counter_rush.name": "Counter Rush",
 
   "reactioncommand.rc_test.name": "Does nothing",
 

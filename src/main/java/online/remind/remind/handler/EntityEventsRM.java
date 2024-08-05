@@ -134,15 +134,29 @@ public class EntityEventsRM {
 				playerData.unequipAbility(StringsRM.renewalBlock,0);
 			}
 
-			if (event.getAbility().equals(ModAbilitiesRM.COUNTER_HAMMER.get()) && playerData.isAbilityEquipped(StringsRM.counterBlast)){
-				playerData2.setCanCounter(0);
-				playerData.unequipAbility(StringsRM.counterBlast,0);
+			if (event.getAbility().equals(ModAbilitiesRM.COUNTER_HAMMER.get())) {
+				if (playerData.isAbilityEquipped(StringsRM.counterBlast) || playerData.isAbilityEquipped(StringsRM.counterRush)) {
+					playerData2.setCanCounter(0);
+					playerData.unequipAbility(StringsRM.counterBlast, 0);
+					playerData.unequipAbility(StringsRM.counterRush, 0);
+				}
 			}
 
-			if (event.getAbility().equals(ModAbilitiesRM.COUNTER_BLAST.get()) && playerData.isAbilityEquipped(StringsRM.counterHammer)){
+			if (event.getAbility().equals(ModAbilitiesRM.COUNTER_BLAST.get())){
+			if (playerData.isAbilityEquipped(StringsRM.counterHammer) || playerData.isAbilityEquipped(StringsRM.counterRush)) {
+				playerData2.setCanCounter(0);
+				playerData.unequipAbility(StringsRM.counterHammer, 0);
+				playerData.unequipAbility(StringsRM.counterRush, 0);
+			}
+		}
+
+		if (event.getAbility().equals(ModAbilitiesRM.COUNTER_RUSH.get())){
+			if (playerData.isAbilityEquipped(StringsRM.counterHammer) || playerData.isAbilityEquipped(StringsRM.counterBlast)){
 				playerData2.setCanCounter(0);
 				playerData.unequipAbility(StringsRM.counterHammer,0);
+				playerData.unequipAbility(StringsRM.counterBlast,0);
 			}
+		}
 
 
 

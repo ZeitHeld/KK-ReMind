@@ -64,6 +64,7 @@ public class StringsRM {
 
         counterHammer = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"counter_hammer",
         counterBlast = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"counter_blast",
+        counterRush = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"counter_rush",
 
         // Shotlocks
         flameSalvo = "flame_salvo",
@@ -92,6 +93,7 @@ public class StringsRM {
 
         CounterHammerRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"counter_hammer",
         CounterBlastRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"counter_blast",
+        CounterRushRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"counter_rush",
 
 
         //Keyblades

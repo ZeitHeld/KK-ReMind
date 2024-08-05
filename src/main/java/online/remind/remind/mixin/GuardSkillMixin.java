@@ -26,7 +26,9 @@ public class GuardSkillMixin {
         IPlayerCapabilities playerCapabilities = ModCapabilities.getPlayer(player);
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
 
-
+        globalData.setCanCounter(1);
+        System.out.println("Can Counter! " + globalData.getCanCounter());
+        PacketHandlerRM.syncGlobalToAllAround(player, globalData);
 
 
         // Block Abilities Effects
@@ -48,11 +50,11 @@ public class GuardSkillMixin {
 
         }
 
-        if (playerCapabilities.isAbilityEquipped(StringsRM.counterHammer) || playerCapabilities.isAbilityEquipped(StringsRM.counterBlast)){
+        /*if (playerCapabilities.isAbilityEquipped(StringsRM.counterHammer) || playerCapabilities.isAbilityEquipped(StringsRM.counterBlast)){
             globalData.setCanCounter(1);
             System.out.println("Can Counter! " + globalData.getCanCounter());
             PacketHandlerRM.syncGlobalToAllAround(player, globalData);
-        }
+        }*/
 
 
 
