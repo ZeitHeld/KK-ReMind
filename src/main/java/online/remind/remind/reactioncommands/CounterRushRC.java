@@ -35,6 +35,7 @@ public class CounterRushRC extends ReactionCommand {
     }
     int ticks = 0;
     int tickCount = 120;
+
     @Override
     public void onUse(Player player, LivingEntity target, LivingEntity lockedOnEntity) {
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
@@ -75,12 +76,12 @@ public class CounterRushRC extends ReactionCommand {
             }
         }*/
 
-        /*
-        CounterRushCore core = new CounterRushCore(player.level(), player, targetList, dmg);
+
+        CounterRushCore core = new CounterRushCore(player, player.level(), targetList, dmg);
         core.setPos(player.getX(), player.getY(), player.getZ());
         player.level().addFreshEntity(core);
-        }*/
-        }
+
+    }
 
     @Override
     public boolean conditionsToAppear(Player player, LivingEntity livingEntity) {

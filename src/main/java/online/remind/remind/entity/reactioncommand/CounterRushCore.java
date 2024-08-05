@@ -30,8 +30,7 @@ import java.util.UUID;
 public class CounterRushCore extends ThrowableProjectile {
 
     int maxTicks = 100;
-    List<CounterRushCore> list = new ArrayList<CounterRushCore>();
-    List<Entity> targetList = new ArrayList<Entity>();
+    List<LivingEntity> targetList = new ArrayList<LivingEntity>();
     float dmg;
 
     float radius= 3;
@@ -45,12 +44,7 @@ public class CounterRushCore extends ThrowableProjectile {
         super((EntityType<? extends ThrowableProjectile>) ModEntitiesRM.TYPE_COUNTER_RUSH.get(), world);
     }
 
-    public CounterRushCore(Level world, Player player, List<LivingEntity> targetList, float dmg) {
-        super(ModEntitiesRM.TYPE_COUNTER_RUSH.get(), world);
-        this.blocksBuilding = true;
-    }
-
-    private CounterRushCore(Player player, Level world, List<Entity> targets, float dmg) {
+    public CounterRushCore(Player player, Level world, List<LivingEntity> targets, float dmg) {
         super(ModEntitiesRM.TYPE_COUNTER_RUSH.get(), player, world);
         setCaster(player.getUUID());
         String targetIDS = "";
@@ -60,10 +54,6 @@ public class CounterRushCore extends ThrowableProjectile {
         setTarget(targetIDS.substring(1));
         this.targetList = targets;
         this.dmg = dmg;
-    }
-
-    public static CounterRushCore createCounterRushCore(Level world, Player player, List<Entity> targets, float dmg) {
-        return new CounterRushCore(player, world, targets, dmg);
     }
 
     @Override
@@ -88,24 +78,17 @@ public class CounterRushCore extends ThrowableProjectile {
         double Y = getY();
         double Z = getZ();
 
-        if (getCaster() != null && getTargets() != null && !getTargets().isEmpty() && getTargets().size() > i) {
-            IPlayerCapabilities playerData = ModCapabilities.getPlayer((Player) getOwner());
-            if (tickCount >= 0 && tickCount % 5 == 1) {
-                Entity target = getTargets().get(i++);
+        if (getCaster() != null && targetList != null && !targetList.isEmpty() && targetList.size() > i) {
+            IPlayerCapabilities playerData = ModCapabilities.getPlayer(getCaster());
+            if (tickCount % 5 == 0) {
+                Entity target = targetList.get(i++);
                 if(target != null) {
-                    if (!list.isEmpty()) {
-                        for (int i = 0; i < list.size(); i++) {
-                            Entity e = (Entity) list.get(i);
-                            if (e instanceof LivingEntity) {
-                                    float dmg = (float) (playerData.getStrengthStat().get() * 0.015f);
-                                    e.hurt(e.damageSources().indirectMagic(this, this.getOwner()), dmg);
-                            }
-                        }
-                    }
+                    float dmg = (float) (playerData.getStrengthStat().get() * 0.015f);
+                    target.hurt(target.damageSources().indirectMagic(this, this.getOwner()), dmg);
                 }
             }
 
-            if(getTargets().size() <= i) {
+            if(targetList.size() <= i) {
                 this.remove(RemovalReason.KILLED);
             }
         }
@@ -152,7 +135,7 @@ public class CounterRushCore extends ThrowableProjectile {
         this.entityData.set(OWNER, Optional.of(uuid));
     }
 
-    public List<Entity> getTargets() {
+   /* public List<Entity> getTargets() {
         List<Entity> list = new ArrayList<Entity>();
         String[] ids = this.getEntityData().get(TARGETS).split(",");
 
@@ -162,7 +145,7 @@ public class CounterRushCore extends ThrowableProjectile {
                 list.add(level().getEntity(Integer.parseInt(id)));
         }
         return list;
-    }
+    }*/
 
     public void setTarget(String lists) {
         this.entityData.set(TARGETS, lists);
