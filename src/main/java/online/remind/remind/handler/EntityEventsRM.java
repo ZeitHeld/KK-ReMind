@@ -1,5 +1,6 @@
 package online.remind.remind.handler;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -15,10 +16,12 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.api.event.AbilityEvent;
+import online.kingdomkeys.kingdomkeys.capability.IGlobalCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.IWorldCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
+import online.kingdomkeys.kingdomkeys.integration.epicfight.PatchedDriveLayerRenderer;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.lib.SoAState;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
@@ -48,11 +51,41 @@ public class EntityEventsRM {
 	public int ticks;
 
 	@SubscribeEvent
+	public void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent e){
+		Player player = e.getEntity();
+		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+
+		if (playerData != null){
+			if (!playerData.getAbilityMap().containsKey(StringsRM.renewalBlock)) {
+				playerData.addAbility(StringsRM.renewalBlock, true);
+			}
+
+			if (!playerData.getAbilityMap().containsKey(StringsRM.focusBlock)) {
+				playerData.addAbility(StringsRM.focusBlock, true);
+			}
+
+			if (!playerData.getAbilityMap().containsKey(StringsRM.counterHammer)) {
+				playerData.addAbility(StringsRM.counterHammer, true);
+			}
+
+			if (!playerData.getAbilityMap().containsKey(StringsRM.counterBlast)) {
+				playerData.addAbility(StringsRM.counterBlast, true);
+			}
+
+			if (!playerData.getAbilityMap().containsKey(StringsRM.counterRush)) {
+				playerData.addAbility(StringsRM.counterRush, true);
+			}
+		}
+	}
+
+	@SubscribeEvent
 	public void onPlayerClone(PlayerEvent.Clone event) {
 		Player oPlayer = event.getOriginal();
 		Player nPlayer = event.getEntity();
+
 				
 		oPlayer.reviveCaps();
+
 		IGlobalCapabilitiesRM oldPlayerData = ModCapabilitiesRM.getGlobal(oPlayer);
 		IGlobalCapabilitiesRM newPlayerData = ModCapabilitiesRM.getGlobal(nPlayer);
 		
@@ -63,6 +96,10 @@ public class EntityEventsRM {
 		newPlayerData.setSTRBonus(oldPlayerData.getSTRBonus());
 		newPlayerData.setMAGBonus(oldPlayerData.getMAGBonus());
 		newPlayerData.setDEFBonus(oldPlayerData.getDEFBonus());
+
+
+
+
 
 		oPlayer.invalidateCaps();
 	}

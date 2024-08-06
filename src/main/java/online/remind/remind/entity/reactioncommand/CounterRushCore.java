@@ -6,6 +6,7 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,6 +22,9 @@ import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
 import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.remind.remind.entity.ModEntitiesRM;
+import online.remind.remind.lib.StringsRM;
+import yesman.epicfight.particle.EpicFightParticles;
+import yesman.epicfight.particle.HitParticleType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +33,12 @@ import java.util.UUID;
 
 public class CounterRushCore extends ThrowableProjectile {
 
-    int maxTicks = 100;
+    int maxTicks = 300;
     List<LivingEntity> targetList = new ArrayList<LivingEntity>();
     float dmg;
 
-    float radius= 3;
+
+    float radius= 5;
 
     public CounterRushCore(EntityType<? extends ThrowableProjectile> type, Level world){
         super(type, world);
@@ -74,19 +79,30 @@ public class CounterRushCore extends ThrowableProjectile {
             this.remove(RemovalReason.KILLED);
         }
 
+        if (tickCount >= 0){
+            double t = tickCount * 5;
+        }
+
         double X = getX();
         double Y = getY();
         double Z = getZ();
-
+        float hits = 4 + (ModCapabilities.getPlayer(getCaster()).getNumberOfAbilitiesEquipped(StringsRM.attackHaste) * 0.25f);
+        System.out.println("Hits: " + hits);
         if (getCaster() != null && targetList != null && !targetList.isEmpty() && targetList.size() > i) {
             IPlayerCapabilities playerData = ModCapabilities.getPlayer(getCaster());
-            if (tickCount % 5 == 0) {
+            //if (tickCount % 20 == 0) {
+            //if (i = 0; i < hits) {
                 Entity target = targetList.get(i++);
-                if(target != null) {
-                    float dmg = (float) (playerData.getStrengthStat().get() * 0.015f);
-                    target.hurt(target.damageSources().indirectMagic(this, this.getOwner()), dmg);
+                    if (target != null) {
+                    for (int h = 0; h < hits; h++ ) {
+                            System.out.println(h);
+                            float dmg = (float) (playerData.getStrengthStat().get() * 1.5f);
+                            target.hurt(target.damageSources().indirectMagic(this, this.getOwner()), dmg);
+                            target.invulnerableTime = 0;
+                            EpicFightParticles.HIT_BLADE.get().spawnParticleWithArgument(((ServerLevel) target.level()), HitParticleType.RANDOM_WITHIN_BOUNDING_BOX, HitParticleType.ZERO, target, target);
+                    }
                 }
-            }
+
 
             if(targetList.size() <= i) {
                 this.remove(RemovalReason.KILLED);
