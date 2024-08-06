@@ -49,9 +49,11 @@ public class DarkFiragaRC extends ReactionCommand {
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
 		if (playerData != null && playerData.getEquippedKeychain(DriveForm.NONE) != null) {
-			if (playerData.getActiveDriveForm().equals(DriveForm.NONE) && playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.soulEaterChain.get() && globalData.getRCCooldownTicks() == 0 || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.keybladeOfPeoplesHeartsChain.get() && globalData.getRCCooldownTicks() == 0) {
-				if (playerData.getFocus() >= 15) {
-					return true;
+			if (playerData.getActiveDriveForm().equals(DriveForm.NONE)) {
+				if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.soulEaterChain.get() && globalData.getRCCooldownTicks() == 0 || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.keybladeOfPeoplesHeartsChain.get() && globalData.getRCCooldownTicks() == 0) {
+					if (playerData.getFocus() >= 15) {
+						return true;
+					}
 				}
 			}
 		}

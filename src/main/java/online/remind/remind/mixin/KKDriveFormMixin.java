@@ -19,11 +19,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class KKDriveFormMixin {
 
     @Inject(method = "initDrive", at = @At("TAIL"), remap = false)
-    public void initDriveInject(Player player, CallbackInfo ci){
+    public void initDriveInject(Player player, CallbackInfo ci) {
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-        if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.darkForm)){
-            if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.soulEaterChain.get() || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.keybladeOfPeoplesHeartsChain.get()) {
-                player.level().playSound(null, player.blockPosition(), ModSoundsRM.DARK_MODE.get(), SoundSource.MASTER, 1.0f, 1.0f);
+        if (playerData != null && playerData.getEquippedKeychain(DriveForm.NONE) != null) {
+            if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.darkForm)) {
+                if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.soulEaterChain.get() || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.keybladeOfPeoplesHeartsChain.get()) {
+                    player.level().playSound(null, player.blockPosition(), ModSoundsRM.DARK_MODE.get(), SoundSource.MASTER, 1.0f, 1.0f);
+                }
             }
         }
     }
