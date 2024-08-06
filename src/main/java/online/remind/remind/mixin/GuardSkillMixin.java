@@ -19,6 +19,9 @@ import yesman.epicfight.world.entity.eventlistener.HurtEvent;
 @Mixin(GuardSkill.class)
 public class GuardSkillMixin {
 
+    int maxTicks = 200;
+    int ticks;
+
     @Inject(method = "dealEvent", at = @At("TAIL"), remap = false)
     public void dealEventInject(PlayerPatch<?> playerpatch, HurtEvent.Pre event, boolean advanced, CallbackInfo ci) {
 
@@ -45,6 +48,7 @@ public class GuardSkillMixin {
             //System.out.println("Focus Restored on Block!");
             //System.out.println(event.getDamageSource().getEntity());
         }
+
 
 
 

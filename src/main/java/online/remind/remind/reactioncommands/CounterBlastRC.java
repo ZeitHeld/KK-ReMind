@@ -3,6 +3,7 @@ package online.remind.remind.reactioncommands;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -19,6 +20,7 @@ import online.remind.remind.capabilities.ModCapabilitiesRM;
 import online.remind.remind.lib.StringsRM;
 import online.remind.remind.network.PacketHandlerRM;
 import org.joml.Vector3f;
+import yesman.epicfight.gameasset.EpicFightSounds;
 
 import java.util.List;
 
@@ -43,6 +45,9 @@ public class CounterBlastRC extends ReactionCommand {
         globalData.remCanCounter(1);
         player.swing(InteractionHand.MAIN_HAND);
         PacketHandlerRM.syncGlobalToAllAround(player, globalData);
+
+        target.level().playSound(null, target.blockPosition(), EpicFightSounds.LASER_BLAST.get(), SoundSource.PLAYERS, 1F, 1F);
+
 
         List<LivingEntity> targetList = Utils.getLivingEntitiesInRadiusExcludingParty((player), player, radius, radius, radius);
         for (LivingEntity e : targetList) {

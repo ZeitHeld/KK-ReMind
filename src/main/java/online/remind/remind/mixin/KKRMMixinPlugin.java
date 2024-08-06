@@ -16,7 +16,8 @@ public class KKRMMixinPlugin implements IMixinConfigPlugin {
     private static final Supplier<Boolean> EFMLOADED = () -> LoadingModList.get().getModFileById("epicfight") != null;
 
     private static final Map<String, Supplier<Boolean>> CONDITIONS = ImmutableMap.of(
-            "online.remind.remind.mixin.GuardSkillMixin",EFMLOADED
+            "online.remind.remind.mixin.GuardSkillMixin",EFMLOADED,
+            "online.remind.remind.mixin.KKDriveFormMixin",null
     );
     @Override
     public void onLoad(String s) {

@@ -5,7 +5,8 @@
   "refmap": "magicksaddon.refmap.json",
   "plugin": "online.remind.remind.mixin.KKRMMixinPlugin",
   "mixins": [
-    "GuardSkillMixin"
+    "GuardSkillMixin",
+    "KKDriveFormMixin"
   ],
   "client": [],
   "minVersion": "0.8"

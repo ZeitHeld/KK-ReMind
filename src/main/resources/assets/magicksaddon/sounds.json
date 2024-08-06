@@ -143,5 +143,10 @@
         "sounds": [
           "magicksaddon:heartless_angel"
         ]
+      },
+      "darkness": {
+        "sounds": [
+          "magicksaddon:darkness"
+        ]
       }
   }
