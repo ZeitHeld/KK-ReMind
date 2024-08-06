@@ -33,7 +33,7 @@ public class DarkFiragaRC extends ReactionCommand {
 		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
 		float dmgMult = (ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(StringsRM.darknessBoost) * 0.3F) + (ModCapabilities.getPlayer(player).getNumberOfAbilitiesEquipped(Strings.fireBoost) * 0.3F);
 		globalData.setRCCooldownTicks(60);
-		System.out.println(globalData.getRCCooldownTicks());
+		//System.out.println(globalData.getRCCooldownTicks());
 		playerData.remFocus(15);
 		PacketHandlerRM.syncGlobalToAllAround(player, globalData);
 
@@ -49,7 +49,7 @@ public class DarkFiragaRC extends ReactionCommand {
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
 		if (playerData != null && playerData.getEquippedKeychain(DriveForm.NONE) != null) {
-			if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.soulEaterChain.get() && globalData.getRCCooldownTicks() == 0 || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.keybladeOfPeoplesHeartsChain.get() && globalData.getRCCooldownTicks() == 0) {
+			if (playerData.getActiveDriveForm().equals(DriveForm.NONE) && playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.soulEaterChain.get() && globalData.getRCCooldownTicks() == 0 || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.keybladeOfPeoplesHeartsChain.get() && globalData.getRCCooldownTicks() == 0) {
 				if (playerData.getFocus() >= 15) {
 					return true;
 				}
