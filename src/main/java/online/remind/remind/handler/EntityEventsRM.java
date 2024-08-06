@@ -50,6 +50,8 @@ public class EntityEventsRM {
 
 	public int ticks;
 
+	int maxTicks;
+
 	@SubscribeEvent
 	public void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent e){
 		Player player = e.getEntity();
@@ -229,7 +231,7 @@ public class EntityEventsRM {
 			playerData.getDefenseStat().removeModifier("Friendship");
 		}
 
-		if (event.getAbility().equals(ModAbilitiesRM.COUNTER_HAMMER.get()) || event.getAbility().equals(ModAbilitiesRM.COUNTER_BLAST.get())){
+		if (event.getAbility().equals(ModAbilitiesRM.COUNTER_HAMMER.get()) || event.getAbility().equals(ModAbilitiesRM.COUNTER_BLAST.get()) || event.getAbility().equals(ModAbilitiesRM.COUNTER_RUSH.get())){
 			playerData2.remCanCounter(1);
 			PacketHandlerRM.syncGlobalToAllAround(event.getPlayer(), playerData2);
 		}
@@ -261,10 +263,23 @@ public class EntityEventsRM {
 					playerData.getDefenseStat().removeModifier("Not Xephiro");
 				}
 			}
-
-
-
 		}
+
+		if(event.getEntity() instanceof Player player) {
+			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+			if (globalData.getCanCounter() == 1){
+				maxTicks = 200;
+				if (ticks <= maxTicks){
+					ticks += 5;
+					System.out.println(ticks);
+				} else {
+					globalData.setCanCounter(0);
+					ticks = 0;
+				}
+			}
+		}
+
+
 
 
 		// Org Passives
