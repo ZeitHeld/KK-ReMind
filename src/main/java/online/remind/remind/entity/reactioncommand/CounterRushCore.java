@@ -71,40 +71,35 @@ public class CounterRushCore extends ThrowableProjectile {
         return 0F;
     }
 
-    int i = 0;
+    float hits = 0;
 
     @Override
     public void tick() {
         if (this.tickCount > maxTicks || getCaster() == null) {
             this.remove(RemovalReason.KILLED);
+            hits = 0;
         }
 
-        if (tickCount >= 0){
-            double t = tickCount * 5;
-        }
+        //Since this is a temporary entity we can do the hits as a field here, otherwise we would need a capability for it
+        if(hits <= 0) //This is to prevent in every tick to refill the hits before it finishes
+            hits = 4 + (ModCapabilities.getPlayer(getCaster()).getNumberOfAbilitiesEquipped(StringsRM.attackHaste) * 0.25f);
 
-        double X = getX();
-        double Y = getY();
-        double Z = getZ();
-        float hits = 4 + (ModCapabilities.getPlayer(getCaster()).getNumberOfAbilitiesEquipped(StringsRM.attackHaste) * 0.25f);
-        System.out.println("Hits: " + hits);
-        if (getCaster() != null && targetList != null && !targetList.isEmpty() && targetList.size() > i) {
+        if (getCaster() != null && targetList != null && !targetList.isEmpty() && hits > 0) {
             IPlayerCapabilities playerData = ModCapabilities.getPlayer(getCaster());
-            //if (tickCount % 20 == 0) {
-            //if (i = 0; i < hits) {
-                Entity target = targetList.get(i++);
-                    if (target != null) {
-                    for (int h = 0; h < hits; h++ ) {
-                            System.out.println(h);
-                            float dmg = (float) (playerData.getStrengthStat().get() * 1.5f);
-                            target.hurt(target.damageSources().indirectMagic(this, this.getOwner()), dmg);
-                            target.invulnerableTime = 0;
-                            EpicFightParticles.HIT_BLADE.get().spawnParticleWithArgument(((ServerLevel) target.level()), HitParticleType.RANDOM_WITHIN_BOUNDING_BOX, HitParticleType.ZERO, target, target);
-                    }
+            if (tickCount % 5 == 0 && hits > 0) { //Every 0.25s deal a hit if there are hits available
+                int index = Utils.randomWithRange(0,targetList.size()-1); //Get a random mob from the list
+                Entity target = targetList.get(index);
+                if (target != null) {
+                    float dmg = (float) (playerData.getStrengthStat().get() * 1.5f);
+                    target.invulnerableTime = 0;
+                    target.hurt(target.damageSources().indirectMagic(this, this.getOwner()), dmg);
+                    EpicFightParticles.HIT_BLADE.get().spawnParticleWithArgument(((ServerLevel) target.level()), HitParticleType.RANDOM_WITHIN_BOUNDING_BOX, HitParticleType.ZERO, target, target);
+                    hits--; //Marks as that single hit being performed
                 }
+            }
 
 
-            if(targetList.size() <= i) {
+            if(hits <= 0) { //Once reaches 0 despawn the entity as it's job it's over
                 this.remove(RemovalReason.KILLED);
             }
         }
