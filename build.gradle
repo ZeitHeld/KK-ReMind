@@ -145,11 +145,10 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     // KK Implementation
-    implementation fg.deobf("curse.maven:kingdom-keys-re-coded-242862:5603140")
+    implementation fg.deobf("kingdomkeys:kingdomkeys:1.20.1-2.5.1")
 
     // EFM
     implementation fg.deobf("curse.maven:epic-fight-mod-405076:5601221")
-
 
     // GeckoLib Implementation
     implementation fg.deobf("curse.maven:geckolib-388172:5188427")
