@@ -84,7 +84,8 @@ public class CounterRushCore extends ThrowableProjectile {
         }
 
         //Since this is a temporary entity we can do the hits as a field here, otherwise we would need a capability for it
-        if(hits <= 0) //This is to prevent in every tick to refill the hits before it finishes
+        if(hits <= 0 && getCaster() != null) //This is to prevent in every tick to refill the hits before it finishes
+
             hits = 4 + (ModCapabilities.getPlayer(getCaster()).getNumberOfAbilitiesEquipped(StringsRM.attackHaste) * 0.5f);
 
 
