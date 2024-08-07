@@ -37,14 +37,6 @@ import online.remind.remind.driveform.ModDriveFormsRM;
 import online.remind.remind.item.ModItemsRM;
 import online.remind.remind.lib.StringsRM;
 import online.remind.remind.network.PacketHandlerRM;
-import yesman.epicfight.skill.SkillContainer;
-import yesman.epicfight.skill.SkillSlots;
-import yesman.epicfight.skill.guard.GuardSkill;
-import yesman.epicfight.world.capabilities.EpicFightCapabilities;
-import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
-import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
-import yesman.epicfight.world.capabilities.item.CapabilityItem;
-import yesman.epicfight.world.entity.eventlistener.HurtEvent;
 
 public class EntityEventsRM {
 
@@ -548,13 +540,6 @@ public class EntityEventsRM {
 		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(event.getEntity());
 		if (event.getEntity() instanceof Player){
 			Player player = (Player) event.getEntity();
-
-			PlayerPatch playerpatch = EpicFightCapabilities.getEntityPatch(player, PlayerPatch.class);
-			System.out.println(player.level().isClientSide() +" "+ playerpatch);
-			if (playerpatch != null) {
-				System.out.println( playerpatch.getSkill(SkillSlots.GUARD).getSkill() );
-			}
-
 
 			if (1 == globalData.getAutoLifeActive()){
 				if (player.getHealth() <= 0){
