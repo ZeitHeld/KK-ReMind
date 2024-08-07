@@ -60,7 +60,7 @@ public class CounterBlastRC extends ReactionCommand {
                     ((ServerLevel) player.level()).sendParticles(new DustParticleOptions(new Vector3f(0.6F,0.7F,1F),1F),x,y -0.25,z,1,0,0,0,0);
                     ((ServerLevel) player.level()).sendParticles(new DustParticleOptions(new Vector3f(0.25F,0.25F,1F),1F),x,y -0.5,z,1,0,0,0,0);
                     e.knockback(0.5, -e.getX(),-e.getZ());
-                    e.hurt(e.damageSources().generic(), dmg * dmgMult);
+                    e.hurt(e.damageSources().indirectMagic(e, player), dmg * dmgMult);
                 }
             }
         }

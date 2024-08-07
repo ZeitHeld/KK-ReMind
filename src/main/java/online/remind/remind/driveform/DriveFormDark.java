@@ -52,14 +52,15 @@ public class DriveFormDark extends DriveForm {
     public ResourceLocation getTextureLocation(Player player) {
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 
-
-
-        if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.soulEaterChain.get() || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.keybladeOfPeoplesHeartsChain.get()) {
-            this.skinRL = new ResourceLocation(KingdomKeysReMind.MODID, "textures/models/armor/dark_mode.png");
-        } else {
-            this.skinRL = new ResourceLocation(KingdomKeysReMind.MODID, "textures/models/armor/dark.png");
+        if (playerData != null && playerData.getEquippedKeychain(DriveForm.NONE) != null) {
+            if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.soulEaterChain.get() || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.keybladeOfPeoplesHeartsChain.get()) {
+                this.skinRL = new ResourceLocation(KingdomKeysReMind.MODID, "textures/models/armor/dark_mode.png");
+            } else {
+                this.skinRL = new ResourceLocation(KingdomKeysReMind.MODID, "textures/models/armor/dark.png");
+            }
         }
             return super.getTextureLocation(player);
-    }
+        }
+
 }
 

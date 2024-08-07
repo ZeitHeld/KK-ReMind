@@ -267,14 +267,16 @@ public class EntityEventsRM {
 
 		if(event.getEntity() instanceof Player player) {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
-			if (globalData.getCanCounter() == 1){
-				maxTicks = 200;
-				if (ticks <= maxTicks){
-					ticks += 5;
-					System.out.println(ticks);
-				} else {
-					globalData.setCanCounter(0);
-					ticks = 0;
+			if (playerData != null) {
+				if (globalData.getCanCounter() == 1) {
+					maxTicks = 200;
+					if (ticks <= maxTicks) {
+						ticks += 5;
+						System.out.println(ticks);
+					} else {
+						globalData.setCanCounter(0);
+						ticks = 0;
+					}
 				}
 			}
 		}
