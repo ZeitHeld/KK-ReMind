@@ -92,8 +92,7 @@ public class KingdomKeysReMind {
 
         if (ModList.get().isLoaded("epicfight")) {
             efmLoaded = true;
-            MinecraftForge.EVENT_BUS.register(new KKRMSkills());
-            KKRMSkills.register();
+            KKRMSkills.SKILLS.register(modEventBus);
         }
     }
 
