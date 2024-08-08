@@ -14,6 +14,6 @@ import yesman.epicfight.skill.guard.GuardSkill;
 
 public class KKRMSkills {
     public static final DeferredRegister<Skill> SKILLS = DeferredRegister.create(new ResourceLocation(EpicFightMod.MODID, "skill"), KingdomKeysReMind.MODID);
-    public static final RegistryObject<Skill> renewalBlock = SKILLS.register("renewal_block", () -> new BlockAbilities(GuardSkill.createGuardBuilder()));
-    public static final RegistryObject<Skill> focusBlock = SKILLS.register("focus_block", () -> new BlockAbilities(GuardSkill.createGuardBuilder()));
+    //public static final RegistryObject<Skill> renewalBlock = SKILLS.register("renewal_block", () -> new BlockAbilities(GuardSkill.createGuardBuilder()));
+    //public static final RegistryObject<Skill> focusBlock = SKILLS.register("focus_block", () -> new BlockAbilities(GuardSkill.createGuardBuilder()));
 }

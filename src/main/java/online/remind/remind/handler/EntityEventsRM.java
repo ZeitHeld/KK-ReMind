@@ -264,7 +264,7 @@ public class EntityEventsRM {
 					maxTicks = 200;
 					if (ticks <= maxTicks) {
 						ticks += 5;
-						System.out.println(ticks);
+						//System.out.println(ticks);
 					} else {
 						globalData.setCanCounter(0);
 						ticks = 0;
@@ -274,6 +274,13 @@ public class EntityEventsRM {
 		}
 
 
+		// Form Shotlock Change Test
+		if(event.getEntity() instanceof Player player) {
+			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+			if (playerData != null && playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.darkForm)) {
+				//playerData.setEquippedShotlock(StringsRM.darkDivide);
+			}
+		}
 
 
 		// Org Passives
