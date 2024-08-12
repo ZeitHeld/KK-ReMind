@@ -49,6 +49,15 @@ public class DriveFormDark extends DriveForm {
     }
 
     @Override
+    public void endDrive(Player player) {
+        super.endDrive(player);
+        IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+        playerData.setEquippedShotlock("");
+    }
+
+
+
+    @Override
     public ResourceLocation getTextureLocation(Player player) {
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 

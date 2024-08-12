@@ -13,9 +13,11 @@ import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
 import online.kingdomkeys.kingdomkeys.item.ModItems;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.reactioncommands.ReactionCommand;
+import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.capabilities.IGlobalCapabilitiesRM;
 import online.remind.remind.capabilities.ModCapabilitiesRM;
+import online.remind.remind.driveform.ModDriveFormsRM;
 import online.remind.remind.entity.reactioncommand.DarkFiragaEntity;
 import online.remind.remind.lib.StringsRM;
 import online.remind.remind.network.PacketHandlerRM;
@@ -48,9 +50,14 @@ public class DarkFiragaRC extends ReactionCommand {
 	public boolean conditionsToAppear(Player player, LivingEntity livingEntity) {
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
-		if (playerData != null && playerData.getEquippedKeychain(DriveForm.NONE) != null) {
-			if (playerData.getActiveDriveForm().equals(DriveForm.NONE)) {
-				if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.soulEaterChain.get() && globalData.getRCCooldownTicks() == 0 || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.keybladeOfPeoplesHeartsChain.get() && globalData.getRCCooldownTicks() == 0) {
+		if (playerData != null && playerData.getEquippedKeychain(DriveForm.NONE) != null && playerData.getAlignment() == Utils.OrgMember.NONE) {
+			if(playerData.getActiveDriveForm().equals(DriveForm.NONE.toString())){
+				if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.soulEaterChain.get() && globalData.getRCCooldownTicks() == 0) {
+					if (playerData.getFocus() >= 15) {
+						return true;
+					}
+				}
+				if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.keybladeOfPeoplesHeartsChain.get() && globalData.getRCCooldownTicks() == 0) {
 					if (playerData.getFocus() >= 15) {
 						return true;
 					}

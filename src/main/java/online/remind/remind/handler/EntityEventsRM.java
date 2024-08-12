@@ -233,6 +233,7 @@ public class EntityEventsRM {
 
 
 
+
 	@SubscribeEvent
 	public void onLivingUpdate(LivingEvent.LivingTickEvent event) {
 		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(event.getEntity());
@@ -243,12 +244,12 @@ public class EntityEventsRM {
 		if(event.getEntity() instanceof Player player) {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			if (playerData != null && playerData.getEquippedKeychain(DriveForm.NONE) != null) {
-				if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItemsRM.xephiroKeybladeChain.get() && player.getUUID().toString().equals("70b48fbd-b67f-4f3e-9369-09cef36d51a3")) {
-					//System.out.println("Sanguine Gaze Equipped by NOT Xephiro!");
-					//System.out.println(player.getUUID().toString());
-					playerData.getStrengthStat().addModifier("Not Xephiro", -25, false, true);
-					playerData.getMagicStat().addModifier("Not Xephiro", -25, false, true);
-					playerData.getDefenseStat().addModifier("Not Xephiro", -25, false, true);
+				if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItemsRM.xephiroKeybladeChain.get() && !player.getUUID().equals("70b48fbd-b67f-4f3e-9369-09cef36d51a3")) {
+					System.out.println("Sanguine Gaze Equipped by NOT Xephiro!");
+					System.out.println(player.getUUID());
+					//playerData.getStrengthStat().addModifier("Not Xephiro", -25, false, true);
+					//playerData.getMagicStat().addModifier("Not Xephiro", -25, false, true);
+					//playerData.getDefenseStat().addModifier("Not Xephiro", -25, false, true);
 				} else {
 					playerData.getStrengthStat().removeModifier("Not Xephiro");
 					playerData.getMagicStat().removeModifier("Not Xephiro");
@@ -278,7 +279,10 @@ public class EntityEventsRM {
 		if(event.getEntity() instanceof Player player) {
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			if (playerData != null && playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.darkForm)) {
-				//playerData.setEquippedShotlock(StringsRM.darkDivide);
+				//playerData.setEquippedShotlock(KingdomKeysReMind.MODID + ":" + StringsRM.darkDivide);
+				//System.out.println(playerData.getEquippedShotlock());
+			} else {
+				//System.out.println(playerData.getEquippedShotlock());
 			}
 		}
 
@@ -380,12 +384,14 @@ public class EntityEventsRM {
 				// Hearts Are Power Ability
 
 				if (playerData.isAbilityEquipped(StringsRM.heartsPower) && playerData.getAlignment() != Utils.OrgMember.NONE){
-					float heartsBoost = (playerData.getHearts() * 0.00001F);
-					System.out.println(heartsBoost);
+					float heartsBoost = (playerData.getHearts() * 0.0002f);
+					System.out.println(playerData.getHearts() + " > " + heartsBoost);
+					float overBoost = heartsBoost * 0.025f;
+					System.out.println(overBoost);
 					if (heartsBoost >= 50){
-						playerData.getStrengthStat().addModifier("Hearts Are Power",50,false,true);
-						playerData.getMagicStat().addModifier("Hearts Are Power",50,false,true);
-						playerData.getDefenseStat().addModifier("Hearts Are Power",50,false,true);
+						playerData.getStrengthStat().addModifier("Hearts Are Power",50 + overBoost,false,true);
+						playerData.getMagicStat().addModifier("Hearts Are Power",50 + overBoost,false,true);
+						playerData.getDefenseStat().addModifier("Hearts Are Power",50 + overBoost,false,true);
 					} else {
 					playerData.getStrengthStat().addModifier("Hearts Are Power",heartsBoost,false,true);
 					playerData.getMagicStat().addModifier("Hearts Are Power",heartsBoost,false,true);

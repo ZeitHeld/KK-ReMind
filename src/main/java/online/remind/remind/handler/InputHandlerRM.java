@@ -50,6 +50,21 @@ public class InputHandlerRM {
 					int lightLevel = playerData.getDriveFormLevel(ModDriveFormsRM.LIGHT.get().getRegistryName().toString());
 					int darkLevel = playerData.getDriveFormLevel(ModDriveFormsRM.DARK.get().getRegistryName().toString());
 
+					//Org Quick Step
+					if (playerData.getAlignment() != Utils.OrgMember.NONE){
+						float yaw = player.getYRot();
+						float motionX = -Mth.sin(yaw / 180.0f * (float) Math.PI);
+						float motionZ = Mth.cos(yaw / 180.0f * (float) Math.PI);
+						double power = 8;
+
+						PacketHandlerRM.sendToServer(new CSSetStepTicksPacket(15, StringsRM.orgStepType));
+
+						player.push(motionX * power / 1.5, 0, motionZ * power / 1.5);
+						InputHandler.qrCooldown = 15;
+
+						event.setCanceled(true);
+					}
+
 					// Twilight Step
 					 if (playerData.getActiveDriveForm().equals(KingdomKeysReMind.MODID + ":" + StringsRM.twilight)){
 						float yaw = player.getYRot();

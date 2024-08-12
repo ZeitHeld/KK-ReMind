@@ -8,7 +8,8 @@ public class StringsRM {
 		darkStepType = 0, 
 		lightStepType = 1,
         twilightStepType = 2,
-        rageStepType = 3;
+        rageStepType = 3,
+        orgStepType = 4;
 	
     public static final String
             // Prefixes
