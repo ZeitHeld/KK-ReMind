@@ -6,6 +6,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
@@ -20,7 +21,7 @@ import org.joml.Vector3f;
 public class ClientEventsRM {
 	
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void RenderEntity(RenderLivingEvent.Pre event){
 		if (event.getEntity() != null){
 			if (event.getEntity() instanceof Player) {
@@ -75,6 +76,7 @@ public class ClientEventsRM {
 								player.level().addAlwaysVisibleParticle(ParticleTypes.DRIPPING_WATER, player.getX() + player.level().random.nextDouble() - 0.5D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ()  + player.level().random.nextDouble() - 0.5D, 0,0,0);
 							}
 							if (playerData.getAlignment().equals(Utils.OrgMember.LUXORD)){
+								player.level().addAlwaysVisibleParticle(new DustParticleOptions(new Vector3f(0F,0F,0F),1F),player.getX() + player.level().random.nextDouble() - 0.5D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.5D, 0, 0, 0);
 								player.level().addAlwaysVisibleParticle(ParticleTypes.ENCHANT, player.getX() + player.level().random.nextDouble() - 0.5D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ()  + player.level().random.nextDouble() - 0.5D, 0,0,0);
 							}
 							if (playerData.getAlignment().equals(Utils.OrgMember.MARLUXIA)){
