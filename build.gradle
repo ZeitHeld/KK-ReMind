@@ -6,7 +6,7 @@ plugins {
     id 'org.spongepowered.mixin' version '0.7.+'
 }
 
-version = '1.20.1-0.8.5.2'
+version = '1.20.1-0.8.5.2.1'
 group = 'online.xephiro.magicksaddon' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'KK-ReMind'
 
@@ -141,7 +141,8 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.20.1-47.3.7'
+    //minecraft 'net.minecraftforge:forge:1.20.1-47.3.7'
+    minecraft 'net.minecraftforge:forge:1.20.1-47.2.30'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
     // KK Implementation

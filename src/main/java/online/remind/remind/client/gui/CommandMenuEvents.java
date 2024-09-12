@@ -2,6 +2,7 @@ package online.remind.remind.client.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import online.kingdomkeys.kingdomkeys.KingdomKeys;
@@ -12,7 +13,7 @@ import online.kingdomkeys.kingdomkeys.client.gui.elements.CommandMenuItem;
 import online.kingdomkeys.kingdomkeys.client.gui.overlay.CommandMenuGui;
 import online.remind.remind.lib.StringsRM;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(value= Dist.CLIENT)
 public class CommandMenuEvents {
 
     @SubscribeEvent
