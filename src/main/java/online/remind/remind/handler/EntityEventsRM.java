@@ -432,6 +432,20 @@ public class EntityEventsRM {
 				} else if (!playerData.isAbilityEquipped(StringsRM.attackHaste)) {
 					player.getAttribute(Attributes.ATTACK_SPEED).setBaseValue(4);
 				}
+
+				// Tidus Keyblade
+				if (!player.level().isClientSide && playerData.isAbilityEquipped(StringsRM.Tidus)) {
+					if (player.isUnderWater()){
+						playerData.getStrengthStat().addModifier("Tidus", 5, false, false);
+						player.addEffect(new MobEffectInstance(MobEffects.DOLPHINS_GRACE, 10, 1));
+						player.addEffect(new MobEffectInstance(MobEffects.CONDUIT_POWER, 10, 0));
+					}
+					else if (!player.isUnderWater()){
+						playerData.getStrengthStat().removeModifier("Tidus");
+					}
+				} else if (!player.level().isClientSide && !playerData.isAbilityEquipped(StringsRM.Tidus)){
+					playerData.getStrengthStat().removeModifier("Tidus");
+				}
 			}
 
 		}
@@ -629,7 +643,7 @@ public class EntityEventsRM {
 			}
 		}
 
-		// Life Steal Test
+		// On Hit Effects
 		if (event.getSource().getEntity() instanceof Player player){
 			IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
 			if(playerData != null) {
@@ -642,6 +656,14 @@ public class EntityEventsRM {
 					player.heal((int) LifeStealAmount);
 				}
 				 */
+
+				int crtBoosts = playerData.getNumberOfAbilitiesEquipped(Strings.criticalBoost);
+				float addDmg = (float) (crtBoosts * 3);
+				if (playerData.isAbilityEquipped(StringsRM.Jecht)){
+					System.out.println(addDmg);
+					event.getEntity().hurt(event.getEntity().damageSources().magic(), addDmg);
+					event.getEntity().invulnerableTime = 0;
+				}
 
 			}
 		}

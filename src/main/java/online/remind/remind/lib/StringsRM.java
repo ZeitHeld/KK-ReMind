@@ -61,6 +61,10 @@ public class StringsRM {
         renewalBlock = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"renewal_block",
         focusBlock = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"focus_block",
 
+        // FF Keyblade Abilities
+        Tidus = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"tidus",
+        Jecht = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"jecht",
+
         // Reprisals
 
         counterHammer = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"counter_hammer",
