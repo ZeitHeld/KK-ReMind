@@ -120,5 +120,7 @@ public class StringsRM {
         Gui_Menu_Button_PrestigeLevel = StringsRM.MENU_Prefix + ".prestigeLevel",
         Gui_Menu_Button_PrestigeConfirm = StringsRM.MENU_Prefix +".prestigeConfirm",
         Gui_Menu_Button_DreamEater = StringsRM.MENU_Prefix + ".dreamEater",
+        Gui_Menu_Button_Panel = StringsRM.MENU_Prefix + ".panel",
+        Gui_Menu_Button_Wiki = StringsRM.MENU_Prefix + ".wiki",
         Gui_Menu_Button_Credits = StringsRM.MENU_Prefix + ".creditsScreen";
 }

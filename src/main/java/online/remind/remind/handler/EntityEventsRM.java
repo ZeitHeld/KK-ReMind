@@ -446,6 +446,13 @@ public class EntityEventsRM {
 				} else if (!player.level().isClientSide && !playerData.isAbilityEquipped(StringsRM.Tidus)){
 					playerData.getStrengthStat().removeModifier("Tidus");
 				}
+
+				// Panel System
+				if (!player.level().isClientSide && playerData.getAlignment() != Utils.OrgMember.NONE){
+					playerData.getStrengthStat().addModifier("Panel", globalData.getSTRPanel(), false, false);
+					playerData.getMagicStat().addModifier("Panel", globalData.getMAGPanel(), false, false);
+					playerData.getDefenseStat().addModifier("Panel", globalData.getDEFPanel(), false, false);
+				}
 			}
 
 		}

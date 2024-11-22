@@ -215,6 +215,11 @@
   "menu_button.creditsScreen": "Credits (Re:Mind)",
   "Ability Links.desc": "THIS BUTTON WILL CRASH YOU!",
 
+  "menu_button.panels": "Panel System",
+  "menu_button.panels.desc": "ORGANIZATION XIII ONLY! Boost your stats further at the cost of Hearts!",
+  "menu_button.wiki": "Journal - Re:Mind",
+  "menu_button.wiki.desc": "{WIP} A Section that informs you about what Re:Mind has to offer!",
+
   "reactioncommand.rc_riskcharge.name": "Riskcharge",
   "reactioncommand.rc_raging_burst.name": "Raging Burst",
   "reactioncommand.rc_light_beam.name": "Light Charge",
