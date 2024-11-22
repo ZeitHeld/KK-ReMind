@@ -40,34 +40,35 @@ public class PanelsMenu extends MenuBackground {
         Player player;
         final IPlayerCapabilities playerData = ModCapabilities.getPlayer(minecraft.player);
         IGlobalCapabilitiesRM choice = ModCapabilitiesRM.getGlobal(minecraft.player);
+        if (choice.getPanelChoice() != null && playerData != null) {
+            if (string.equals("back"))
+                GUIHelperRM.openAddonMenu();
 
-        if (string.equals("back"))
-            GUIHelperRM.openAddonMenu();
+            //Stat Boosts
+            if (string.equals("strUp")) {
 
-        //Stat Boosts
-        if (string.equals("strUp")){
+                //playerData.getStrengthStat().addModifier("Panel", 1, true, false);
+                choice.setPanelChoice("STR");
+                PacketHandlerRM.sendToServer(new CSPanelPacket());
+            }
+            if (string.equals("defUp")) {
 
-            //playerData.getStrengthStat().addModifier("Panel", 1, true, false);
-            choice.setPanelChoice("STR");
-            PacketHandlerRM.sendToServer(new CSPanelPacket());
-        }
-        if (string.equals("defUp")){
+                //playerData.getDefenseStat().addModifier("Panel", 1, true, false);
+                choice.setPanelChoice("DEF");
+                PacketHandlerRM.sendToServer(new CSPanelPacket());
+            }
+            if (string.equals("magUp")) {
 
-            //playerData.getDefenseStat().addModifier("Panel", 1, true, false);
-            choice.setPanelChoice("DEF");
-            PacketHandlerRM.sendToServer(new CSPanelPacket());
-        }
-        if (string.equals("magUp")){
-
-            //playerData.getMagicStat().addModifier("Panel", 1, true, false);
-            choice.setPanelChoice("MAG");
-            PacketHandlerRM.sendToServer(new CSPanelPacket());
-        }
-        if (string.equals("apUp")){
-            //
-            playerData.addHearts(-1000);
-            playerData.addMaxAP(2);
-            PacketHandlerRM.sendToServer(new CSPanelPacket());
+                //playerData.getMagicStat().addModifier("Panel", 1, true, false);
+                choice.setPanelChoice("MAG");
+                PacketHandlerRM.sendToServer(new CSPanelPacket());
+            }
+            if (string.equals("apUp")) {
+                //
+                playerData.addHearts(-1000);
+                playerData.addMaxAP(2);
+                PacketHandlerRM.sendToServer(new CSPanelPacket());
+            }
         }
 
 

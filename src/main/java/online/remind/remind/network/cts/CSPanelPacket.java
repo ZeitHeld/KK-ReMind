@@ -37,7 +37,7 @@ public class CSPanelPacket {
 
         playerData.addHearts(-1000);
 
-        if (globalData.getPanelChoice() != null) {
+        if (globalData.getPanelChoice() != null ) {
 
             // Boost Area
             if (globalData.getPanelChoice().equals("STR")) {
