@@ -48,6 +48,7 @@ public class EntityEventsRM {
 	public void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent e){
 		Player player = e.getEntity();
 		IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
+		IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
 
 		if (playerData != null){
 			if (!playerData.getAbilityMap().containsKey(StringsRM.renewalBlock)) {
@@ -69,6 +70,8 @@ public class EntityEventsRM {
 			if (!playerData.getAbilityMap().containsKey(StringsRM.counterRush)) {
 				playerData.addAbility(StringsRM.counterRush, true);
 			}
+
+			globalData.setPanelChoice("none");
 		}
 	}
 

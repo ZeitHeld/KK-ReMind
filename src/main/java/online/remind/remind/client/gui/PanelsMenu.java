@@ -39,28 +39,28 @@ public class PanelsMenu extends MenuBackground {
 
         Player player;
         final IPlayerCapabilities playerData = ModCapabilities.getPlayer(minecraft.player);
-        IGlobalCapabilitiesRM choice = ModCapabilitiesRM.getGlobal(minecraft.player);
-        if (choice.getPanelChoice() != null && playerData != null) {
+        IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(minecraft.player);
+
             if (string.equals("back"))
                 GUIHelperRM.openAddonMenu();
-
+        if (globalData.getPanelChoice() != null && playerData != null) {
             //Stat Boosts
             if (string.equals("strUp")) {
 
                 //playerData.getStrengthStat().addModifier("Panel", 1, true, false);
-                choice.setPanelChoice("STR");
+                globalData.setPanelChoice("STR");
                 PacketHandlerRM.sendToServer(new CSPanelPacket());
             }
             if (string.equals("defUp")) {
 
                 //playerData.getDefenseStat().addModifier("Panel", 1, true, false);
-                choice.setPanelChoice("DEF");
+                globalData.setPanelChoice("DEF");
                 PacketHandlerRM.sendToServer(new CSPanelPacket());
             }
             if (string.equals("magUp")) {
 
                 //playerData.getMagicStat().addModifier("Panel", 1, true, false);
-                choice.setPanelChoice("MAG");
+                globalData.setPanelChoice("MAG");
                 PacketHandlerRM.sendToServer(new CSPanelPacket());
             }
             if (string.equals("apUp")) {

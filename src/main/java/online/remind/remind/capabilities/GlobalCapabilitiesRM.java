@@ -35,7 +35,7 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
         storage.putInt("Panels_DEF", this.getDEFPanel());
         storage.putInt("Panels_MAG", this.getMAGPanel());
 
-        storage.putString("Panels_Choice",this.getPanelChoice());
+        storage.putString("Panels_Choice",this.getPanelChoice().toString());
 
         storage.putInt("riskcharge_count", this.getRiskchargeCount());
 
@@ -73,7 +73,8 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
 
         this.setCanCounter(properties.getInt("can_counter"));
 
-        this.setPanelChoice(properties.getString("Panels_Choice"));
+        //this.setPanelChoice(properties.getString("Panels_Choice"));
+        this.setPanelChoice(nbt.getString("Panels_Choice"));
     }
 
     private int hasteTicks;
@@ -372,10 +373,6 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
 
     }
 
-    @Override
-    public String getPanelChoice(String i) {
-        return panelChoice;
-    }
 
     @Override
     public int getSTRPanel() {
@@ -438,14 +435,18 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
     }
 
     @Override
+    public void setPanelChoice(String choice){
+        choice = panelChoice;
+    }
+
+    @Override
     public String getPanelChoice(){
         return panelChoice;
     }
 
-    @Override
-    public String setPanelChoice(String i){
-        return panelChoice;
-    }
+
+
+
 
     @Override
     public double getMPOG() {
