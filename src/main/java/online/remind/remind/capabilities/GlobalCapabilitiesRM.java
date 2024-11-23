@@ -434,15 +434,16 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
         return defPanel;
     }
 
+
     @Override
     public void setPanelChoice(String choice){
-        choice = panelChoice;
+        panelChoice = choice;
     }
-
     @Override
     public String getPanelChoice(){
         return panelChoice;
     }
+
 
 
 

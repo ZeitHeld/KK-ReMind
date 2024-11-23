@@ -36,6 +36,7 @@ public class CSPanelPacket {
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
 
         playerData.addHearts(-1000);
+        System.out.println(globalData.getPanelChoice());
 
         if (globalData.getPanelChoice() != null ) {
 

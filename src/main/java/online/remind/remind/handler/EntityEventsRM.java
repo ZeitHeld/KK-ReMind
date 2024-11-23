@@ -71,7 +71,6 @@ public class EntityEventsRM {
 				playerData.addAbility(StringsRM.counterRush, true);
 			}
 
-			globalData.setPanelChoice("none");
 		}
 	}
 

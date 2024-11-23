@@ -43,25 +43,26 @@ public class PanelsMenu extends MenuBackground {
 
             if (string.equals("back"))
                 GUIHelperRM.openAddonMenu();
-        if (globalData.getPanelChoice() != null && playerData != null) {
+
             //Stat Boosts
             if (string.equals("strUp")) {
-
-                //playerData.getStrengthStat().addModifier("Panel", 1, true, false);
-                globalData.setPanelChoice("STR");
-                PacketHandlerRM.sendToServer(new CSPanelPacket());
+                    //playerData.getStrengthStat().addModifier("Panel", 1, true, false);
+                    globalData.setPanelChoice("STR");
+                    System.out.println(globalData.getPanelChoice());
+                    PacketHandlerRM.sendToServer(new CSPanelPacket());
             }
             if (string.equals("defUp")) {
 
-                //playerData.getDefenseStat().addModifier("Panel", 1, true, false);
-                globalData.setPanelChoice("DEF");
-                PacketHandlerRM.sendToServer(new CSPanelPacket());
+                    //playerData.getDefenseStat().addModifier("Panel", 1, true, false);
+                    globalData.setPanelChoice("DEF");
+                    PacketHandlerRM.sendToServer(new CSPanelPacket());
+
             }
             if (string.equals("magUp")) {
 
-                //playerData.getMagicStat().addModifier("Panel", 1, true, false);
-                globalData.setPanelChoice("MAG");
-                PacketHandlerRM.sendToServer(new CSPanelPacket());
+                    //playerData.getMagicStat().addModifier("Panel", 1, true, false);
+                    globalData.setPanelChoice("MAG");
+                    PacketHandlerRM.sendToServer(new CSPanelPacket());
             }
             if (string.equals("apUp")) {
                 //
@@ -69,10 +70,6 @@ public class PanelsMenu extends MenuBackground {
                 playerData.addMaxAP(2);
                 PacketHandlerRM.sendToServer(new CSPanelPacket());
             }
-        }
-
-
-
     }
 
     @Override
