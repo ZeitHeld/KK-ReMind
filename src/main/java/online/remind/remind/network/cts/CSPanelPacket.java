@@ -45,23 +45,20 @@ public class CSPanelPacket {
         playerData.addHearts(-1000);
         System.out.println(globalData.getPanelChoice());
 
-        if (message.choice > 0) {
-            switch(message.choice){
-                case 0:
-                    System.out.println("This shouldn't happen");
-                    break;
-                case 1:
-                    globalData.addSTRPanel(1);
-                    System.out.println(globalData.getSTRPanel());
-                    break;
-                case 2:
-                    globalData.addMAGPanel(1);
-                    break;
-                case 3:
-                    globalData.addDEFPanel(1);
-                    break;
-
-            }
+        switch(message.choice){
+            case 0:
+                System.out.println("This shouldn't happen");
+                break;
+            case 1:
+                globalData.addSTRPanel(1);
+                System.out.println(globalData.getSTRPanel());
+                break;
+            case 2:
+                globalData.addMAGPanel(1);
+                break;
+            case 3:
+                globalData.addDEFPanel(1);
+                break;
 
         }
 

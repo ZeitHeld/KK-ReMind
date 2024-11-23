@@ -73,8 +73,8 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
 
         this.setCanCounter(properties.getInt("can_counter"));
 
-        //this.setPanelChoice(properties.getString("Panels_Choice"));
-        this.setPanelChoice(nbt.getString("Panels_Choice"));
+        this.setPanelChoice(properties.getString("Panels_Choice"));
+
     }
 
     private int hasteTicks;
