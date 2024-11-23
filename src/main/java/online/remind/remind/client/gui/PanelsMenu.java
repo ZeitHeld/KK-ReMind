@@ -36,9 +36,7 @@ public class PanelsMenu extends MenuBackground {
     }
 
     protected void action(String string) {
-
-        Player player;
-        final IPlayerCapabilities playerData = ModCapabilities.getPlayer(minecraft.player);
+        IPlayerCapabilities playerData = ModCapabilities.getPlayer(minecraft.player);
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(minecraft.player);
 
             if (string.equals("back"))
@@ -49,26 +47,26 @@ public class PanelsMenu extends MenuBackground {
                     //playerData.getStrengthStat().addModifier("Panel", 1, true, false);
                     globalData.setPanelChoice("STR");
                     System.out.println(globalData.getPanelChoice());
-                    PacketHandlerRM.sendToServer(new CSPanelPacket());
+                    PacketHandlerRM.sendToServer(new CSPanelPacket(1));
             }
             if (string.equals("defUp")) {
 
                     //playerData.getDefenseStat().addModifier("Panel", 1, true, false);
                     globalData.setPanelChoice("DEF");
-                    PacketHandlerRM.sendToServer(new CSPanelPacket());
+                    PacketHandlerRM.sendToServer(new CSPanelPacket(2));
 
             }
             if (string.equals("magUp")) {
 
                     //playerData.getMagicStat().addModifier("Panel", 1, true, false);
                     globalData.setPanelChoice("MAG");
-                    PacketHandlerRM.sendToServer(new CSPanelPacket());
+                    PacketHandlerRM.sendToServer(new CSPanelPacket(3));
             }
             if (string.equals("apUp")) {
                 //
                 playerData.addHearts(-1000);
                 playerData.addMaxAP(2);
-                PacketHandlerRM.sendToServer(new CSPanelPacket());
+                PacketHandlerRM.sendToServer(new CSPanelPacket(4));
             }
     }
 

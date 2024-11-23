@@ -13,21 +13,26 @@ import online.remind.remind.capabilities.ModCapabilitiesRM;
 import online.remind.remind.client.gui.PanelsMenu;
 import online.remind.remind.network.PacketHandlerRM;
 
+import java.sql.SQLOutput;
 import java.util.function.Supplier;
 
 public class CSPanelPacket {
+    // 0 = none (default), 1 = str, 2 = mag, 3 = def...
+    private int choice;
 
     public CSPanelPacket(){}
 
-    private int choice;
+    public CSPanelPacket(int choice){
+        this.choice = choice;
+    }
 
     public void encode(FriendlyByteBuf buffer) {
-
+        buffer.writeInt(this.choice);
     }
 
     public static CSPanelPacket decode(FriendlyByteBuf buffer) {
         CSPanelPacket msg = new CSPanelPacket();
-
+        msg.choice = buffer.readInt();
         return msg;
     }
 
@@ -40,19 +45,24 @@ public class CSPanelPacket {
         playerData.addHearts(-1000);
         System.out.println(globalData.getPanelChoice());
 
-        if (globalData.getPanelChoice() != null ) {
+        if (message.choice > 0) {
+            switch(message.choice){
+                case 0:
+                    System.out.println("This shouldn't happen");
+                    break;
+                case 1:
+                    globalData.addSTRPanel(1);
+                    System.out.println(globalData.getSTRPanel());
+                    break;
+                case 2:
+                    globalData.addMAGPanel(1);
+                    break;
+                case 3:
+                    globalData.addDEFPanel(1);
+                    break;
 
-            // Boost Area
-            if (globalData.getPanelChoice().equals("STR")) {
-                globalData.addSTRPanel(1);
-                System.out.println(globalData.getSTRPanel());
             }
-            if (globalData.getPanelChoice().equals("MAG")) {
-                globalData.addMAGPanel(1);
-            }
-            if (globalData.getPanelChoice().equals("DEF")) {
-                globalData.addDEFPanel(1);
-            }
+
         }
 
         PacketHandler.sendTo(new SCSyncCapabilityPacket(playerData), (ServerPlayer) player);
