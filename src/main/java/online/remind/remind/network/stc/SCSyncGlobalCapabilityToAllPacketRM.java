@@ -1,6 +1,7 @@
 package online.remind.remind.network.stc;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.common.util.LazyOptional;
@@ -8,12 +9,14 @@ import net.minecraftforge.network.NetworkEvent;
 import online.remind.remind.capabilities.IGlobalCapabilitiesRM;
 import online.remind.remind.capabilities.ModCapabilitiesRM;
 
+import java.util.Iterator;
+import java.util.Map;
 import java.util.function.Supplier;
 
 public class SCSyncGlobalCapabilityToAllPacketRM {
 
     public int id;
-    public int berserkLvl, berserkTicks, prestige, strBonus, magBonus, defBonus, NGPlusWarriorCount, NGPlusMysticCount, NGPlusGuardianCount, stepTicks, riskchargeCount, autoLife, rcCooldown, CanCounter;
+    public int berserkLvl, berserkTicks, prestige, strBonus, magBonus, defBonus, NGPlusWarriorCount, NGPlusMysticCount, NGPlusGuardianCount, stepTicks, riskchargeCount, autoLife, rcCooldown, CanCounter, panelChoice;
     public byte stepType;
 
     public SCSyncGlobalCapabilityToAllPacketRM() {
@@ -37,6 +40,7 @@ public class SCSyncGlobalCapabilityToAllPacketRM {
         this.autoLife = capability.getAutoLifeActive();
         this.rcCooldown = capability.getRCCooldownTicks();
         this.CanCounter = capability.getCanCounter();
+        this.panelChoice = Integer.parseInt(capability.getPanelChoice());
     }
 
     public void encode(FriendlyByteBuf buffer){
@@ -56,6 +60,7 @@ public class SCSyncGlobalCapabilityToAllPacketRM {
         buffer.writeInt(this.autoLife);
         buffer.writeInt(this.rcCooldown);
         buffer.writeInt(this.CanCounter);
+
     }
 
     public static SCSyncGlobalCapabilityToAllPacketRM decode(FriendlyByteBuf buffer){
@@ -76,6 +81,8 @@ public class SCSyncGlobalCapabilityToAllPacketRM {
         msg.autoLife = buffer.readInt();
         msg.rcCooldown = buffer.readInt();
         msg.CanCounter = buffer.readInt();
+
+
 
         return msg;
     }
@@ -100,6 +107,7 @@ public class SCSyncGlobalCapabilityToAllPacketRM {
                     cap.setAutoLifeActive(message.autoLife);
                     cap.setRCCooldownTicks(message.rcCooldown);
                     cap.setCanCounter(message.CanCounter);
+
 				});
 			}
 		});

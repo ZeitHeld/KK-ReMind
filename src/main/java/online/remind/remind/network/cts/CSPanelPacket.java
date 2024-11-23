@@ -19,6 +19,8 @@ public class CSPanelPacket {
 
     public CSPanelPacket(){}
 
+    private int choice;
+
     public void encode(FriendlyByteBuf buffer) {
 
     }
