@@ -71,6 +71,7 @@ public class EntityEventsRM {
 				playerData.addAbility(StringsRM.counterRush, true);
 			}
 
+			globalData.setPanelChoice("0");
 		}
 	}
 
@@ -454,6 +455,10 @@ public class EntityEventsRM {
 					playerData.getStrengthStat().addModifier("Panel", globalData.getSTRPanel(), false, false);
 					playerData.getMagicStat().addModifier("Panel", globalData.getMAGPanel(), false, false);
 					playerData.getDefenseStat().addModifier("Panel", globalData.getDEFPanel(), false, false);
+				} else {
+					playerData.getStrengthStat().removeModifier("Panel");
+					playerData.getMagicStat().removeModifier("Panel");
+					playerData.getDefenseStat().removeModifier("Panel");
 				}
 			}
 

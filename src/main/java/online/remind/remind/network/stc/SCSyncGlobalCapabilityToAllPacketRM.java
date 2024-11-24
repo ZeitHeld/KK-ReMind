@@ -16,7 +16,7 @@ import java.util.function.Supplier;
 public class SCSyncGlobalCapabilityToAllPacketRM {
 
     public int id;
-    public int berserkLvl, berserkTicks, prestige, strBonus, magBonus, defBonus, NGPlusWarriorCount, NGPlusMysticCount, NGPlusGuardianCount, stepTicks, riskchargeCount, autoLife, rcCooldown, CanCounter, panelChoice;
+    public int berserkLvl, berserkTicks, prestige, strBonus, magBonus, defBonus, NGPlusWarriorCount, NGPlusMysticCount, NGPlusGuardianCount, stepTicks, riskchargeCount, autoLife, rcCooldown, CanCounter, panelChoice, strPanel, magPanel, defPanel;
     public byte stepType;
 
     public SCSyncGlobalCapabilityToAllPacketRM() {
@@ -41,6 +41,9 @@ public class SCSyncGlobalCapabilityToAllPacketRM {
         this.rcCooldown = capability.getRCCooldownTicks();
         this.CanCounter = capability.getCanCounter();
         this.panelChoice = Integer.parseInt(capability.getPanelChoice());
+        this.strPanel = capability.getSTRPanel();
+        this.magPanel = capability.getMAGPanel();
+        this.defPanel = capability.getDEFPanel();
     }
 
     public void encode(FriendlyByteBuf buffer){
@@ -60,6 +63,9 @@ public class SCSyncGlobalCapabilityToAllPacketRM {
         buffer.writeInt(this.autoLife);
         buffer.writeInt(this.rcCooldown);
         buffer.writeInt(this.CanCounter);
+        buffer.writeInt(this.strPanel);
+        buffer.writeInt(this.magPanel);
+        buffer.writeInt(this.defPanel);
 
     }
 
@@ -81,6 +87,9 @@ public class SCSyncGlobalCapabilityToAllPacketRM {
         msg.autoLife = buffer.readInt();
         msg.rcCooldown = buffer.readInt();
         msg.CanCounter = buffer.readInt();
+        msg.strPanel = buffer.readInt();
+        msg.magPanel = buffer.readInt();
+        msg.defPanel = buffer.readInt();
 
 
 
@@ -107,6 +116,11 @@ public class SCSyncGlobalCapabilityToAllPacketRM {
                     cap.setAutoLifeActive(message.autoLife);
                     cap.setRCCooldownTicks(message.rcCooldown);
                     cap.setCanCounter(message.CanCounter);
+
+                    cap.setSTRPanel(message.strPanel);
+                    cap.setMAGPanel(message.magPanel);
+                    cap.setDEFPanel(message.defPanel);
+
 
 				});
 			}

@@ -20,7 +20,7 @@ import java.awt.*;
 
 public class PanelsMenu extends MenuBackground {
 
-    private MenuButton backButton, strUp, magUp, defUp, apUp, giveAbility;
+    private MenuButton backButton, strUp, magUp, defUp, apUp, giveAbility, req0, req1, req2, req3, valorUp, wisdomUp, limitUp, masterUp, finalUp, reqV, reqW, reqL, reqM, reqF;
 
     MenuColourBox str, mag, def, ap;
 
@@ -39,35 +39,61 @@ public class PanelsMenu extends MenuBackground {
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(minecraft.player);
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(minecraft.player);
 
-            if (string.equals("back"))
-                GUIHelperRM.openAddonMenu();
+        if (string.equals("back"))
+            GUIHelperRM.openAddonMenu();
 
-            //Stat Boosts
-            if (string.equals("strUp")) {
-                    //playerData.getStrengthStat().addModifier("Panel", 1, true, false);
-                    globalData.setPanelChoice("STR");
-                    System.out.println(globalData.getPanelChoice());
-                    PacketHandlerRM.sendToServer(new CSPanelPacket(1));
-            }
-            if (string.equals("defUp")) {
+        //Stat Boosts
+        if (string.equals("strUp")) {
+            //playerData.getStrengthStat().addModifier("Panel", 1, true, false);
+            globalData.setPanelChoice("STR");
+            PacketHandlerRM.sendToServer(new CSPanelPacket(1));
+            GUIHelperRM.openAddonMenu();
+        }
+        if (string.equals("defUp")) {
 
-                    //playerData.getDefenseStat().addModifier("Panel", 1, true, false);
-                    globalData.setPanelChoice("DEF");
-                    PacketHandlerRM.sendToServer(new CSPanelPacket(2));
+            //playerData.getDefenseStat().addModifier("Panel", 1, true, false);
+            globalData.setPanelChoice("DEF");
+            PacketHandlerRM.sendToServer(new CSPanelPacket(3));
+            GUIHelperRM.openAddonMenu();
 
-            }
-            if (string.equals("magUp")) {
+        }
+        if (string.equals("magUp")) {
 
-                    //playerData.getMagicStat().addModifier("Panel", 1, true, false);
-                    globalData.setPanelChoice("MAG");
-                    PacketHandlerRM.sendToServer(new CSPanelPacket(3));
-            }
-            if (string.equals("apUp")) {
-                //
-                playerData.addHearts(-1000);
-                playerData.addMaxAP(2);
-                PacketHandlerRM.sendToServer(new CSPanelPacket(4));
-            }
+            //playerData.getMagicStat().addModifier("Panel", 1, true, false);
+            globalData.setPanelChoice("MAG");
+            PacketHandlerRM.sendToServer(new CSPanelPacket(2));
+            GUIHelperRM.openAddonMenu();
+        }
+        if (string.equals("apUp")) {
+            //
+            PacketHandlerRM.sendToServer(new CSPanelPacket(4));
+            GUIHelperRM.openAddonMenu();
+        }
+        if (string.equals("valorUp")) {
+            //
+            PacketHandlerRM.sendToServer(new CSPanelPacket(5));
+            GUIHelperRM.openAddonMenu();
+        }
+        if (string.equals("wisdomUp")) {
+            //
+            PacketHandlerRM.sendToServer(new CSPanelPacket(6));
+            GUIHelperRM.openAddonMenu();
+        }
+        if (string.equals("limitUp")) {
+            //
+            PacketHandlerRM.sendToServer(new CSPanelPacket(7));
+            GUIHelperRM.openAddonMenu();
+        }
+        if (string.equals("masterUp")) {
+            //
+            PacketHandlerRM.sendToServer(new CSPanelPacket(8));
+            GUIHelperRM.openAddonMenu();
+        }
+        if (string.equals("finalUp")) {
+            //
+            PacketHandlerRM.sendToServer(new CSPanelPacket(9));
+            GUIHelperRM.openAddonMenu();
+        }
     }
 
     @Override
@@ -87,30 +113,78 @@ public class PanelsMenu extends MenuBackground {
         float buttonPosX = (float) width * 0.03F;
         float subButtonPosX = buttonPosX + 10;
 
-        float buttonWidth = ((float) width * 0.1744F)- 20;
+        float buttonWidth = ((float) width * 0.1744F) - 20;
         float subButtonWidth = buttonWidth - 10;
 
 
-        float dataWidth = ((float) width * 0.1744F)-10;
+        float dataWidth = ((float) width * 0.1744F) - 10;
 
-        int col1X = (int) (subButtonPosX + buttonWidth + 10), col2X=(int) (col1X + dataWidth * 2)+5 ;
+        int col1X = (int) (subButtonPosX + buttonWidth + 10), col2X = (int) (col1X + dataWidth * 2) + 5;
 
         int i = 0;
 
-
-        addRenderableWidget(strUp = new MenuButton((int) buttonPosX, button_statsY, (int) buttonWidth, ("STR +"), MenuButton.ButtonType.BUTTON, false, (e) -> {
-            action("strUp");
-        }));
-        addRenderableWidget(magUp = new MenuButton((int) buttonPosX, button_statsY + 20, (int) buttonWidth, ("MAG +"), MenuButton.ButtonType.BUTTON, false, (e) -> {
-            action("magUp");
-        }));
-        addRenderableWidget(defUp = new MenuButton((int) buttonPosX, button_statsY + 40, (int) buttonWidth, ("DEF +"), MenuButton.ButtonType.BUTTON, false, (e) -> {
-            action("defUp");
-        }));
-        addRenderableWidget(apUp = new MenuButton((int) buttonPosX, button_statsY + 60, (int) buttonWidth, ("AP +"), MenuButton.ButtonType.BUTTON, false, (e) -> {
-            action("apUp");
-        }));
-        addRenderableWidget(backButton = new MenuButton((int) buttonPosX, button_statsY + 120, (int) buttonWidth, (Strings.Gui_Menu_Back), MenuButton.ButtonType.BUTTON, false, (e) -> {
+        if (playerData.getHearts() >= 1000 * addedData.getSTRPanel()) {
+            addRenderableWidget(strUp = new MenuButton((int) buttonPosX, button_statsY, (int) buttonWidth, ("STR +"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                action("strUp");
+            }));
+        } else {
+            addRenderableWidget(req0 = new MenuButton((int) buttonPosX, button_statsY, (int) buttonWidth, "Hearts Needed: " + ((1000 * addedData.getSTRPanel()) - playerData.getHearts()), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                action("req");
+            }));
+        }
+        if (playerData.getHearts() >= 1000 * addedData.getMAGPanel()) {
+            addRenderableWidget(magUp = new MenuButton((int) buttonPosX, button_statsY + 20, (int) buttonWidth, ("MAG +"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                action("magUp");
+            }));
+        } else {
+            addRenderableWidget(req1 = new MenuButton((int) buttonPosX, button_statsY + 20, (int) buttonWidth, "Hearts Needed: " + ((1000 * addedData.getMAGPanel()) - playerData.getHearts()), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                action("req");
+            }));
+        }
+        if (playerData.getHearts() >= 1000 * addedData.getMAGPanel()) {
+                addRenderableWidget(defUp = new MenuButton((int) buttonPosX, button_statsY + 40, (int) buttonWidth, ("DEF +"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                    action("defUp");
+                }));
+        } else {
+            addRenderableWidget(req2 = new MenuButton((int) buttonPosX, button_statsY + 40, (int) buttonWidth, "Hearts Needed: " + ((1000 * addedData.getDEFPanel()) - playerData.getHearts()), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                action("req");
+            }));
+        }
+        if (playerData.getHearts() >= 1000) {
+            addRenderableWidget(apUp = new MenuButton((int) buttonPosX, button_statsY + 60, (int) buttonWidth, ("AP +"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                action("apUp");
+            }));
+        } else {
+            addRenderableWidget(req3 = new MenuButton((int) buttonPosX, button_statsY + 60, (int) buttonWidth, "Hearts Needed: " + (1000 - playerData.getHearts()), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                action("req");
+            }));
+        }
+        if (playerData.getDriveFormLevel(Strings.Form_Valor) < 7 && playerData.getHearts() >= 10000) {
+            addRenderableWidget(valorUp = new MenuButton((int) buttonPosX, button_statsY + 80, (int) buttonWidth, ("Valor Form EXP Up"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                action("valorUp");
+            }));
+        }
+        if (playerData.getDriveFormLevel(Strings.Form_Wisdom) < 7 && playerData.getHearts() >= 10000) {
+            addRenderableWidget(wisdomUp = new MenuButton((int) buttonPosX, button_statsY + 100, (int) buttonWidth, ("Wisdom Form EXP Up"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                action("wisdomUp");
+            }));
+        }
+        if (playerData.getDriveFormLevel(Strings.Form_Limit) < 7 && playerData.getHearts() >= 10000) {
+            addRenderableWidget(limitUp = new MenuButton((int) buttonPosX, button_statsY + 120, (int) buttonWidth, ("Limit Form EXP Up"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                action("limitUp");
+            }));
+        }
+        if (playerData.getDriveFormLevel(Strings.Form_Master) < 7 && playerData.getHearts() >= 10000) {
+            addRenderableWidget(masterUp = new MenuButton((int) buttonPosX, button_statsY + 140, (int) buttonWidth, ("Master Form EXP Up"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                action("masterUp");
+            }));
+        }
+        if (playerData.getDriveFormLevel(Strings.Form_Final) < 7 && playerData.getHearts() >= 10000) {
+            addRenderableWidget(finalUp = new MenuButton((int) buttonPosX, button_statsY + 160, (int) buttonWidth, ("Final Form EXP Up"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                action("finalUp");
+            }));
+        }
+        addRenderableWidget(backButton = new MenuButton((int) buttonPosX, button_statsY + 180, (int) buttonWidth, (Strings.Gui_Menu_Back), MenuButton.ButtonType.BUTTON, false, (e) -> {
             action("back");
         }));
 
@@ -124,9 +198,9 @@ public class PanelsMenu extends MenuBackground {
         //addRenderableWidget(gainedMP = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth*2, Utils.translateToLocal("Gained Max MP: "), "" + addedData.getPrestigeLvl() * 2, 0x3ECE44));
 
 
-        addRenderableWidget(str = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth, Utils.translateToLocal("Granted STR: "), "" + addedData.getSTRPanel(), 0xaa190f));
-        addRenderableWidget(mag = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth, Utils.translateToLocal("Granted MAG: "), "" + addedData.getMAGPanel(), 0xaa190f));
-        addRenderableWidget(def = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth, Utils.translateToLocal("Granted DEF: "), "" + addedData.getDEFPanel(), 0xaa190f));
+        addRenderableWidget(str = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth, Utils.translateToLocal("Panel STR: "), "" + addedData.getSTRPanel(), 0xaa190f));
+        addRenderableWidget(mag = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth, Utils.translateToLocal("Panel MAG: "), "" + addedData.getMAGPanel(), 0xaa190f));
+        addRenderableWidget(def = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth, Utils.translateToLocal("Panel DEF: "), "" + addedData.getDEFPanel(), 0xaa190f));
         addRenderableWidget(ap = new MenuColourBox(col2X, button_statsY + (d++* spacer), (int) dataWidth, Utils.translateToLocal("AP: "), "" + playerData.getMaxAPStat().getStat(), 0xaa190f));
     }
 }
