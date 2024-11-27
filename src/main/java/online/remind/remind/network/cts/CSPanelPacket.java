@@ -1,11 +1,14 @@
 package online.remind.remind.network.cts;
 
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
 import online.kingdomkeys.kingdomkeys.capability.IPlayerCapabilities;
 import online.kingdomkeys.kingdomkeys.capability.ModCapabilities;
+import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
+import online.kingdomkeys.kingdomkeys.driveform.ModDriveForms;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncCapabilityPacket;
@@ -20,6 +23,9 @@ import java.util.function.Supplier;
 public class CSPanelPacket {
     // 0 = none (default), 1 = str, 2 = mag, 3 = def...
     private int choice;
+    String formName;
+
+
     private static int driveLvl;
 
     public CSPanelPacket(){}
@@ -43,6 +49,12 @@ public class CSPanelPacket {
 
         IPlayerCapabilities playerData = ModCapabilities.getPlayer(player);
         IGlobalCapabilitiesRM globalData = ModCapabilitiesRM.getGlobal(player);
+
+
+        //
+        int level;
+        int xpGain;
+        int i;
 
 
         //System.out.println(globalData.getPanelChoice());
@@ -69,34 +81,50 @@ public class CSPanelPacket {
                 playerData.addHearts(-1000);
                 break;
             case 5:
-                //playerData.addDriveFormExperience(Strings.Form_Valor, (ServerPlayer) player, 100);
-                playerData.addDriveFormExperience(Strings.Form_Valor, player, 100);
-                playerData.addHearts(-10000);
+                level = playerData.getDriveFormLevel(Strings.Form_Valor);
+                xpGain = level * 10;
+
+                playerData.addDriveFormExperience(Strings.Form_Valor, player, xpGain);
+                playerData.addHearts(-5000);
                 PacketHandler.sendTo(new SCSyncCapabilityPacket(ModCapabilities.getPlayer(player)), (ServerPlayer) player);
                 break;
             case 6:
-                //playerData.addDriveFormExperience(Strings.Form_Valor, (ServerPlayer) player, 100);
-                playerData.addDriveFormExperience(Strings.Form_Wisdom, player, 100);
-                playerData.addHearts(-10000);
+                level = playerData.getDriveFormLevel(Strings.Form_Wisdom);
+                xpGain = level * 4;
+
+                playerData.addDriveFormExperience(Strings.Form_Wisdom, player, xpGain);
+                playerData.addHearts(-5000);
                 PacketHandler.sendTo(new SCSyncCapabilityPacket(ModCapabilities.getPlayer(player)), (ServerPlayer) player);
                 break;
             case 7:
-                //playerData.addDriveFormExperience(Strings.Form_Valor, (ServerPlayer) player, 100);
-                playerData.addDriveFormExperience(Strings.Form_Limit, player, 100);
-                playerData.addHearts(-10000);
+                level = playerData.getDriveFormLevel(Strings.Form_Limit);
+                xpGain = level * 2;
+
+                playerData.addDriveFormExperience(Strings.Form_Limit, player, xpGain);
+                playerData.addHearts(-5000);
                 PacketHandler.sendTo(new SCSyncCapabilityPacket(ModCapabilities.getPlayer(player)), (ServerPlayer) player);
                 break;
             case 8:
-                //playerData.addDriveFormExperience(Strings.Form_Valor, (ServerPlayer) player, 100);
-                playerData.addDriveFormExperience(Strings.Form_Master, player, 100);
-                playerData.addHearts(-10000);
+                level = playerData.getDriveFormLevel(Strings.Form_Master);
+                xpGain = level * 8;
+
+                playerData.addDriveFormExperience(Strings.Form_Master, player, xpGain);
+                playerData.addHearts(-5000);
                 PacketHandler.sendTo(new SCSyncCapabilityPacket(ModCapabilities.getPlayer(player)), (ServerPlayer) player);
                 break;
             case 9:
-                //playerData.addDriveFormExperience(Strings.Form_Valor, (ServerPlayer) player, 100);
-                playerData.addDriveFormExperience(Strings.Form_Final, player, 100);
-                playerData.addHearts(-10000);
+                level = playerData.getDriveFormLevel(Strings.Form_Final);
+                xpGain = level * 4;
+
+                playerData.addDriveFormExperience(Strings.Form_Final, player, xpGain);
+                playerData.addHearts(-5000);
                 PacketHandler.sendTo(new SCSyncCapabilityPacket(ModCapabilities.getPlayer(player)), (ServerPlayer) player);
+                break;
+            case 10:
+                playerData.addHearts(-10000 * playerData.getLevel());
+                xpGain = playerData.getExpNeeded(playerData.getLevel(), 0) - playerData.getExperience();
+                //System.out.println(playerData.getExpNeeded(playerData.getLevel(),0)- playerData.getExperience());
+                playerData.addExperience(player, xpGain, false, true);
                 break;
         }
 

@@ -20,7 +20,7 @@ import java.awt.*;
 
 public class PanelsMenu extends MenuBackground {
 
-    private MenuButton backButton, strUp, magUp, defUp, apUp, giveAbility, req0, req1, req2, req3, valorUp, wisdomUp, limitUp, masterUp, finalUp, reqV, reqW, reqL, reqM, reqF;
+    private MenuButton backButton, strUp, magUp, defUp, apUp, giveAbility, lvl, req0, valorUp, wisdomUp, limitUp, masterUp, finalUp, reqV, reqW, reqL, reqM, reqF;
 
     MenuColourBox str, mag, def, ap;
 
@@ -94,6 +94,10 @@ public class PanelsMenu extends MenuBackground {
             PacketHandlerRM.sendToServer(new CSPanelPacket(9));
             GUIHelperRM.openAddonMenu();
         }
+        if (string.equals("lvl")){
+            PacketHandlerRM.sendToServer(new CSPanelPacket(10));
+            GUIHelperRM.openAddonMenu();
+        }
     }
 
     @Override
@@ -113,7 +117,7 @@ public class PanelsMenu extends MenuBackground {
         float buttonPosX = (float) width * 0.03F;
         float subButtonPosX = buttonPosX + 10;
 
-        float buttonWidth = ((float) width * 0.1744F) - 20;
+        float buttonWidth = ((float) width * 0.1744F) - 40;
         float subButtonWidth = buttonWidth - 10;
 
 
@@ -124,7 +128,7 @@ public class PanelsMenu extends MenuBackground {
         int i = 0;
 
         if (playerData.getHearts() >= 1000 * addedData.getSTRPanel()) {
-            addRenderableWidget(strUp = new MenuButton((int) buttonPosX, button_statsY, (int) buttonWidth, ("STR +"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(strUp = new MenuButton((int) buttonPosX, button_statsY, (int) buttonWidth, ("STR +  Cost: "+ (1000 * addedData.getSTRPanel())), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("strUp");
             }));
         } else {
@@ -133,60 +137,73 @@ public class PanelsMenu extends MenuBackground {
             }));
         }
         if (playerData.getHearts() >= 1000 * addedData.getMAGPanel()) {
-            addRenderableWidget(magUp = new MenuButton((int) buttonPosX, button_statsY + 20, (int) buttonWidth, ("MAG +"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(magUp = new MenuButton((int) buttonPosX, button_statsY + 20, (int) buttonWidth, ("MAG +  Cost: "+ (1000 * addedData.getMAGPanel())), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("magUp");
             }));
         } else {
-            addRenderableWidget(req1 = new MenuButton((int) buttonPosX, button_statsY + 20, (int) buttonWidth, "Hearts Needed: " + ((1000 * addedData.getMAGPanel()) - playerData.getHearts()), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(req0 = new MenuButton((int) buttonPosX, button_statsY + 20, (int) buttonWidth, "Hearts Needed: " + ((1000 * addedData.getMAGPanel()) - playerData.getHearts()), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("req");
             }));
         }
         if (playerData.getHearts() >= 1000 * addedData.getMAGPanel()) {
-                addRenderableWidget(defUp = new MenuButton((int) buttonPosX, button_statsY + 40, (int) buttonWidth, ("DEF +"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                addRenderableWidget(defUp = new MenuButton((int) buttonPosX, button_statsY + 40, (int) buttonWidth, ("DEF +  Cost: "+ (1000 * addedData.getDEFPanel())), MenuButton.ButtonType.BUTTON, false, (e) -> {
                     action("defUp");
                 }));
         } else {
-            addRenderableWidget(req2 = new MenuButton((int) buttonPosX, button_statsY + 40, (int) buttonWidth, "Hearts Needed: " + ((1000 * addedData.getDEFPanel()) - playerData.getHearts()), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(req0 = new MenuButton((int) buttonPosX, button_statsY + 40, (int) buttonWidth, "Hearts Needed: " + ((1000 * addedData.getDEFPanel()) - playerData.getHearts()), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("req");
             }));
         }
         if (playerData.getHearts() >= 1000) {
-            addRenderableWidget(apUp = new MenuButton((int) buttonPosX, button_statsY + 60, (int) buttonWidth, ("AP +"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(apUp = new MenuButton((int) buttonPosX, button_statsY + 60, (int) buttonWidth, ("AP +  Cost: 1000"), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("apUp");
             }));
         } else {
-            addRenderableWidget(req3 = new MenuButton((int) buttonPosX, button_statsY + 60, (int) buttonWidth, "Hearts Needed: " + (1000 - playerData.getHearts()), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(req0 = new MenuButton((int) buttonPosX, button_statsY + 60, (int) buttonWidth, "Hearts Needed: " + (1000 - playerData.getHearts()), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("req");
             }));
         }
         if (playerData.getDriveFormLevel(Strings.Form_Valor) < 7 && playerData.getHearts() >= 10000) {
-            addRenderableWidget(valorUp = new MenuButton((int) buttonPosX, button_statsY + 80, (int) buttonWidth, ("Valor Form EXP Up"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(valorUp = new MenuButton((int) buttonPosX, button_statsY + 80, (int) buttonWidth, ("Valor EXP Up"), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("valorUp");
             }));
         }
         if (playerData.getDriveFormLevel(Strings.Form_Wisdom) < 7 && playerData.getHearts() >= 10000) {
-            addRenderableWidget(wisdomUp = new MenuButton((int) buttonPosX, button_statsY + 100, (int) buttonWidth, ("Wisdom Form EXP Up"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(wisdomUp = new MenuButton((int) buttonPosX, button_statsY + 100, (int) buttonWidth, ("Wisdom EXP Up"), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("wisdomUp");
             }));
         }
         if (playerData.getDriveFormLevel(Strings.Form_Limit) < 7 && playerData.getHearts() >= 10000) {
-            addRenderableWidget(limitUp = new MenuButton((int) buttonPosX, button_statsY + 120, (int) buttonWidth, ("Limit Form EXP Up"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(limitUp = new MenuButton((int) buttonPosX, button_statsY + 120, (int) buttonWidth, ("Limit EXP Up"), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("limitUp");
             }));
         }
         if (playerData.getDriveFormLevel(Strings.Form_Master) < 7 && playerData.getHearts() >= 10000) {
-            addRenderableWidget(masterUp = new MenuButton((int) buttonPosX, button_statsY + 140, (int) buttonWidth, ("Master Form EXP Up"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(masterUp = new MenuButton((int) buttonPosX, button_statsY + 140, (int) buttonWidth, ("Master EXP Up"), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("masterUp");
             }));
         }
         if (playerData.getDriveFormLevel(Strings.Form_Final) < 7 && playerData.getHearts() >= 10000) {
-            addRenderableWidget(finalUp = new MenuButton((int) buttonPosX, button_statsY + 160, (int) buttonWidth, ("Final Form EXP Up"), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(finalUp = new MenuButton((int) buttonPosX, button_statsY + 160, (int) buttonWidth, ("Final EXP Up"), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("finalUp");
             }));
         }
-        addRenderableWidget(backButton = new MenuButton((int) buttonPosX, button_statsY + 180, (int) buttonWidth, (Strings.Gui_Menu_Back), MenuButton.ButtonType.BUTTON, false, (e) -> {
+        if (playerData.getHearts() >= 10000 * playerData.getLevel() && playerData.getLevel() < 100) {
+            addRenderableWidget(lvl = new MenuButton((int) buttonPosX + 180, button_statsY, (int) buttonWidth, ("Level Up  Cost: "+ 10000 * playerData.getLevel()), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                action("lvl");
+            }));
+        } else {
+            addRenderableWidget(req0 = new MenuButton((int) buttonPosX + 180, button_statsY, (int) buttonWidth, "Hearts Needed: " + (10000 * playerData.getLevel() - playerData.getHearts()), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                action("req");
+            }));
+        }
+
+        addRenderableWidget(backButton = new MenuButton((int) buttonPosX, button_statsY + 200, (int) buttonWidth, (Strings.Gui_Menu_Back), MenuButton.ButtonType.BUTTON, false, (e) -> {
             action("back");
         }));
+
+        // 2.0 Ability Planning.
+
 
         //Stats
         int c = 0;
