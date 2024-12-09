@@ -55,6 +55,8 @@ public class CSPanelPacket {
         int level;
         int xpGain;
         int i;
+        int totalBoost;
+        float heartsRegained;
 
 
         //System.out.println(globalData.getPanelChoice());
@@ -75,6 +77,7 @@ public class CSPanelPacket {
             case 3:
                 playerData.addHearts(-1000 * globalData.getDEFPanel());
                 globalData.addDEFPanel(1);
+                System.out.println(globalData.getDEFPanel());
                 break;
             case 4:
                 playerData.addMaxAP(2);
@@ -125,6 +128,25 @@ public class CSPanelPacket {
                 xpGain = playerData.getExpNeeded(playerData.getLevel(), 0) - playerData.getExperience();
                 //System.out.println(playerData.getExpNeeded(playerData.getLevel(),0)- playerData.getExperience());
                 playerData.addExperience(player, xpGain, false, true);
+                break;
+            case 11:
+
+                totalBoost = globalData.getDEFPanel() + globalData.getSTRPanel() + globalData.getMAGPanel();
+
+                heartsRegained = (totalBoost * 1000) * 0.75f;
+
+                globalData.setSTRPanel(0);
+                globalData.setMAGPanel(0);
+                globalData.setDEFPanel(0);
+
+                playerData.getStrengthStat().removeModifier("Panel");
+                playerData.getMagicStat().removeModifier("Panel");
+                playerData.getDefenseStat().removeModifier("Panel");
+
+                playerData.addHearts((int)heartsRegained);
+
+                System.out.println(totalBoost);
+                System.out.println(heartsRegained);
                 break;
         }
 

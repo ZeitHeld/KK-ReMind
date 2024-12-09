@@ -22,7 +22,7 @@ import java.awt.*;
 
 public class PanelsMenu extends MenuBackground {
 
-    private MenuButton backButton, strUp, magUp, defUp, apUp, giveAbility, lvl, req0, valorUp, wisdomUp, limitUp, masterUp, finalUp, reqV, reqW, reqL, reqM, reqF;
+    private MenuButton backButton, strUp, magUp, defUp, apUp, giveAbility, lvl, req0, valorUp, wisdomUp, limitUp, masterUp, finalUp, reqV, reqW, reqL, reqM, reqF, reset;
 
     MenuColourBox str, mag, def, ap;
 
@@ -118,6 +118,10 @@ public class PanelsMenu extends MenuBackground {
             PacketHandlerRM.sendToServer(new CSPanelPacket(10));
             GUIHelperRM.openAddonMenu();
         }
+        if (string.equals("reset")){
+            PacketHandlerRM.sendToServer(new CSPanelPacket(11));
+            GUIHelperRM.openAddonMenu();
+        }
     }
 
     @Override
@@ -148,29 +152,29 @@ public class PanelsMenu extends MenuBackground {
         int i = 0;
 
         if (playerData.getHearts() >= 1000 * addedData.getSTRPanel()) {
-            addRenderableWidget(strUp = new MenuButton((int) buttonPosX, button_statsY, (int) buttonWidth,("STR +  -  Cost: "+ ChatFormatting.GREEN + (1000 * addedData.getSTRPanel())), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(strUp = new MenuButton((int) buttonPosX, button_statsY, (int) buttonWidth,("STR +  -  Cost: "+ ChatFormatting.GREEN + (1000 * (addedData.getSTRPanel()+1))), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("strUp");
             }));
         } else {
-            addRenderableWidget(req0 = new MenuButton((int) buttonPosX, button_statsY, (int) buttonWidth, "STR +  -  Cost: "+ ChatFormatting.DARK_RED + (1000 * addedData.getSTRPanel()), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(req0 = new MenuButton((int) buttonPosX, button_statsY, (int) buttonWidth, "STR +  -  Cost: "+ ChatFormatting.DARK_RED + (1000 * (addedData.getSTRPanel()+1)), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("req");
             }));
         }
         if (playerData.getHearts() >= 1000 * addedData.getMAGPanel()) {
-            addRenderableWidget(magUp = new MenuButton((int) buttonPosX, button_statsY + 20, (int) buttonWidth, ("MAG +  -  Cost: "+ ChatFormatting.GREEN +  (1000 * addedData.getMAGPanel())), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(magUp = new MenuButton((int) buttonPosX, button_statsY + 20, (int) buttonWidth, ("MAG +  -  Cost: "+ ChatFormatting.GREEN +  (1000 * (addedData.getMAGPanel() +1))), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("magUp");
             }));
         } else {
-            addRenderableWidget(req0 = new MenuButton((int) buttonPosX, button_statsY + 20, (int) buttonWidth, "MAG +  -  Cost: " + ChatFormatting.DARK_RED +  (1000 * addedData.getMAGPanel()), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(req0 = new MenuButton((int) buttonPosX, button_statsY + 20, (int) buttonWidth, "MAG +  -  Cost: " + ChatFormatting.DARK_RED +  (1000 * (addedData.getMAGPanel()+1)), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("req");
             }));
         }
         if (playerData.getHearts() >= 1000 * addedData.getMAGPanel()) {
-                addRenderableWidget(defUp = new MenuButton((int) buttonPosX, button_statsY + 40, (int) buttonWidth, ("DEF +  -  Cost: "+ ChatFormatting.GREEN + (1000 * addedData.getDEFPanel())), MenuButton.ButtonType.BUTTON, false, (e) -> {
+                addRenderableWidget(defUp = new MenuButton((int) buttonPosX, button_statsY + 40, (int) buttonWidth, ("DEF +  -  Cost: "+ ChatFormatting.GREEN + (1000 * (addedData.getDEFPanel()+1))), MenuButton.ButtonType.BUTTON, false, (e) -> {
                     action("defUp");
                 }));
         } else {
-            addRenderableWidget(req0 = new MenuButton((int) buttonPosX, button_statsY + 40, (int) buttonWidth, "DEF +  -  Cost: "+ ChatFormatting.DARK_RED + (1000 * addedData.getDEFPanel()), MenuButton.ButtonType.BUTTON, false, (e) -> {
+            addRenderableWidget(req0 = new MenuButton((int) buttonPosX, button_statsY + 40, (int) buttonWidth, "DEF +  -  Cost: "+ ChatFormatting.DARK_RED + (1000 * (addedData.getDEFPanel() +1)), MenuButton.ButtonType.BUTTON, false, (e) -> {
                 action("req");
             }));
         }
@@ -218,7 +222,11 @@ public class PanelsMenu extends MenuBackground {
             }));
         }
 
-        addRenderableWidget(backButton = new MenuButton((int) buttonPosX, button_statsY + 200, (int) buttonWidth, (Strings.Gui_Menu_Back), MenuButton.ButtonType.BUTTON, false, (e) -> {
+        addRenderableWidget(backButton = new MenuButton((int) buttonPosX, button_statsY + 200, (int) buttonWidth, "Reset", MenuButton.ButtonType.BUTTON, true, (e) -> {
+            action("reset");
+        }));
+
+        addRenderableWidget(backButton = new MenuButton((int) buttonPosX, button_statsY + 220, (int) buttonWidth, (Strings.Gui_Menu_Back), MenuButton.ButtonType.BUTTON, false, (e) -> {
             action("back");
         }));
 

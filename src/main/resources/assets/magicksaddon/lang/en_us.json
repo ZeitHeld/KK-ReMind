@@ -217,6 +217,7 @@
 
   "menu_button.panel": "Panel System",
   "menu_button.panel.desc": "ORGANIZATION XIII ONLY! Boost your stats further at the cost of Hearts!",
+  "Reset.desc": "Will reset your panel boost, but will give you SOME hearts back!",
   "menu_button.wiki": "Journal - Re:Mind",
   "menu_button.wiki.desc": "{WIP} A Section that informs you about what Re:Mind has to offer!",
 

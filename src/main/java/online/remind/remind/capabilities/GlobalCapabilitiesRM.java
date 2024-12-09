@@ -35,7 +35,7 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
         storage.putInt("Panels_DEF", this.getDEFPanel());
         storage.putInt("Panels_MAG", this.getMAGPanel());
 
-        storage.putString("Panels_Choice",this.getPanelChoice().toString());
+        //storage.putString("Panels_Choice",this.getPanelChoice().toString());
 
         storage.putInt("riskcharge_count", this.getRiskchargeCount());
 
@@ -417,21 +417,6 @@ public class GlobalCapabilitiesRM implements IGlobalCapabilitiesRM {
     @Override
     public void addDEFPanel(int i) {
         defPanel += i;
-    }
-
-    @Override
-    public int getSTRPanel(int i) {
-        return strPanel;
-    }
-
-    @Override
-    public int getMAGPanel(int i) {
-        return magPanel;
-    }
-
-    @Override
-    public int getDEFPanel(int i) {
-        return defPanel;
     }
 
 
