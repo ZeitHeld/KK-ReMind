@@ -11,6 +11,7 @@
 - Tonberry (Spirit) now emits light like it's hostile counterpart.
 - Tonberry should (hopefully) remove light sources it places upon death.
 - Changed 'Darkness Boost' to 'Dark Boost'
+- The 'Walker' abilities no longer require you to sprint to activate.
 
 ### New Spell
 

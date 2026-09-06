@@ -1846,7 +1846,7 @@ public class EntityEventsRM {
 				if (event.getEntity() instanceof Player player) {
 					PlayerData playerData = PlayerData.get(player);
 					if (playerData != null) {
-						if (player.isSprinting()) {
+						if (player.getDeltaMovement().horizontalDistanceSqr() > 0.001D) {
 							if (player.tickCount % 40 == 0 && playerData.isAbilityEquipped(ModAbilitiesRM.HP_WALKER)) {
 								int hpWalkerMult = playerData.getNumberOfAbilitiesEquipped(ModAbilitiesRM.HP_WALKER);
 								player.heal(hpWalkerMult);

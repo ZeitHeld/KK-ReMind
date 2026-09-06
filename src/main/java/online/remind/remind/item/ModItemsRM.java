@@ -158,6 +158,7 @@ public class ModItemsRM{
         lyric2025Tournament = ITEMS.register("lyric_2025_tournament", () -> new KeybladeItem(new Item.Properties())),
         voidlight = ITEMS.register("voidlight", () -> new KeybladeItem(new Item.Properties())),
         fortuna = ITEMS.register("fortuna", () -> new KeybladeItem(new Item.Properties())),
+        nebulaRecords = ITEMS.register("nebula_records", () -> new KeybladeItem(new Item.Properties())),
 
         kaliKeyblade = ITEMS.register("kali_keyblade", () -> new KeybladeItem(new Item.Properties())),
 
@@ -177,6 +178,7 @@ public class ModItemsRM{
         lyric2025TournamentChain = ITEMS.register("lyric_2025_tournament_chain", () -> new KeychainItem()),
         voidlightChain = ITEMS.register("voidlight_chain", () -> new KeychainItem()),
         fortunaChain = ITEMS.register("fortuna_chain", () -> new KeychainItem()),
+        nebulaRecordsChain = ITEMS.register("nebula_records_chain", () -> new KeychainItem()),
 
         kaliKeybladeChain = ITEMS.register("kali_keyblade_chain", () -> new KeychainItem()),
 
