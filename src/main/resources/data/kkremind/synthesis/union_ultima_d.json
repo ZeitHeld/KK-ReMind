@@ -1,0 +1,31 @@
+{
+  "cost": 0,
+  "ingredients": [
+    {
+      "material": "kingdomkeys:pulsing_crystal",
+      "quantity": "3"
+    },
+    {
+      "material": "kingdomkeys:lucid_crystal",
+      "quantity": "3"
+    },
+    {
+      "material": "kingdomkeys:writhing_crystal",
+      "quantity": "3"
+    },
+    {
+      "material": "kingdomkeys:orichalcumplus",
+      "quantity": "1"
+    },
+    {
+      "material": "kingdomkeys:orichalcum",
+      "quantity": "1"
+    }
+  ],
+  "output": {
+    "type": "item",
+    "item": "kkremind:union_ultima_d_chain",
+    "quantity": 1
+  },
+  "tier": 6
+}
