@@ -10,309 +10,233 @@ import online.remind.remind.entity.magic.ZettaflareBeamEntity;
 
 public class magicZettaflare extends Magic {
 
-    // ============================================================
-    // EASTER EGG DATA
-    // ============================================================
+	// ============================================================
+	// EASTER EGG DATA
+	// ============================================================
 
-    private static final String VARIANT_TAG =
-            "kkremind_zettaflare_variant";
+	private static final String VARIANT_TAG = "kkremind_zettaflare_variant";
 
 
-    public magicZettaflare(
-            ResourceLocation registryName,
-            boolean hasToSelect,
-            int tier,
-            ResourceLocation gmAbility
-    ) {
-        super(registryName, hasToSelect, gmAbility);
-        setTier(tier);
-    }
+	public magicZettaflare(ResourceLocation registryName, boolean hasToSelect, int tier, ResourceLocation gmAbility) {
+		super(registryName, hasToSelect, gmAbility);
+		setTier(tier);
+	}
 
 
-    // ============================================================
-    // MAGIC USE
-    // ============================================================
+	// ============================================================
+	// MAGIC USE
+	// ============================================================
 
-    @Override
-    public void magicUse(
-            LivingEntity player,
-            Player caster,
-            float fullMPBlastMult,
-            LivingEntity lockOnTarget
-    ) {
+	@Override
+	public void magicUse(LivingEntity player, LivingEntity caster, float fullMPBlastMult, LivingEntity lockOnTarget) {
+		if (!(caster instanceof Player casterPlayer)) {
+			return;
+		}
 
-        float dmgMult =
-                getDamageMult();
 
-        dmgMult *=
-                fullMPBlastMult;
+		float dmgMult = getDamageMult();
 
+		dmgMult *= fullMPBlastMult;
 
-        switch (getTier()) {
 
-            case 0:
+		switch (getTier()) {
 
-                // ====================================================
-                // GET VARIANT THAT WAS CHOSEN AT CAST START
-                // ====================================================
+			case 0:
 
-                int variant;
+				// ====================================================
+				// GET VARIANT THAT WAS CHOSEN AT CAST START
+				// ====================================================
 
+				int variant;
 
-                if (
-                        caster.getPersistentData()
-                                .contains(VARIANT_TAG)
-                ) {
 
-                    variant =
-                            caster.getPersistentData()
-                                    .getInt(VARIANT_TAG);
+				if (caster.getPersistentData().contains(VARIANT_TAG)) {
 
-                } else {
+					variant = caster.getPersistentData().getInt(VARIANT_TAG);
 
-                    /*
-                     * Failsafe.
-                     *
-                     * Normally playMagicCastSound() will already
-                     * have chosen the variant.
-                     */
-                    variant =
-                            rollVariant(player);
-                }
+				} else {
 
+					/*
+					 * Failsafe.
+					 *
+					 * Normally playMagicCastSound() will already
+					 * have chosen the variant.
+					 */
+					variant = rollVariant(player);
+				}
 
-                // ====================================================
-                // CREATE BEAM
-                // ====================================================
 
-                ZettaflareBeamEntity beam =
-                        new ZettaflareBeamEntity(
-                                player.level(),
-                                player,
-                                caster,
-                                dmgMult
-                        );
+				// ====================================================
+				// CREATE BEAM
+				// ====================================================
 
+				ZettaflareBeamEntity beam = new ZettaflareBeamEntity(player.level(), player, casterPlayer, dmgMult);
 
-                beam.setBeamVariant(
-                        variant
-                );
 
+				beam.setBeamVariant(variant);
 
-                // ====================================================
-                // DEBUG
-                // ====================================================
 
-                switch (variant) {
+				// ====================================================
+				// DEBUG
+				// ====================================================
 
-                    case ZettaflareBeamEntity.VARIANT_FINAL_FLASH ->
+				switch (variant) {
 
-                            System.out.println(
-                                    "Zettaflare fired: FINAL FLASH"
-                            );
+					case ZettaflareBeamEntity.VARIANT_FINAL_FLASH -> System.out.println("Zettaflare fired: FINAL FLASH");
 
 
-                    case ZettaflareBeamEntity.VARIANT_KAMEHAMEHA ->
+					case ZettaflareBeamEntity.VARIANT_KAMEHAMEHA -> System.out.println("Zettaflare fired: KAMEHAMEHA");
 
-                            System.out.println(
-                                    "Zettaflare fired: KAMEHAMEHA"
-                            );
 
+					default -> System.out.println("Zettaflare fired: ZETTAFLARE");
+				}
 
-                    default ->
 
-                            System.out.println(
-                                    "Zettaflare fired: ZETTAFLARE"
-                            );
-                }
+				// ====================================================
+				// SPAWN
+				// ====================================================
 
+				player.level().addFreshEntity(beam);
 
-                // ====================================================
-                // SPAWN
-                // ====================================================
 
-                player.level().addFreshEntity(
-                        beam
-                );
+				// ====================================================
+				// CLEAN UP
+				// ====================================================
 
+				/*
+				 * This cast is finished.
+				 *
+				 * Remove it so the next cast gets a fresh roll.
+				 */
+				caster.getPersistentData().remove(VARIANT_TAG);
 
-                // ====================================================
-                // CLEAN UP
-                // ====================================================
 
-                /*
-                 * This cast is finished.
-                 *
-                 * Remove it so the next cast gets a fresh roll.
-                 */
-                caster.getPersistentData()
-                        .remove(VARIANT_TAG);
+				break;
+		}
+	}
 
 
-                break;
-        }
-    }
+	// ============================================================
+	// CAST SOUND
+	// ============================================================
 
+	@Override
+	public void playMagicCastSound(LivingEntity player, LivingEntity caster) {
 
-    // ============================================================
-    // CAST SOUND
-    // ============================================================
+		/*
+		 * THIS happens at the beginning of the cast.
+		 *
+		 * Therefore this is where we choose the variant.
+		 */
+		int variant = rollVariant(player);
 
-    @Override
-    public void playMagicCastSound(
-            LivingEntity player,
-            Player caster
-    ) {
 
-        /*
-         * THIS happens at the beginning of the cast.
-         *
-         * Therefore this is where we choose the variant.
-         */
-        int variant =
-                rollVariant(player);
+		/*
+		 * Save it so magicUse() gets the EXACT SAME result later.
+		 */
+		caster.getPersistentData().putInt(VARIANT_TAG, variant);
 
 
-        /*
-         * Save it so magicUse() gets the EXACT SAME result later.
-         */
-        caster.getPersistentData()
-                .putInt(
-                        VARIANT_TAG,
-                        variant
-                );
+		// ========================================================
+		// IMMEDIATE CAST SOUND
+		// ========================================================
 
+		switch (variant) {
 
-        // ========================================================
-        // IMMEDIATE CAST SOUND
-        // ========================================================
 
-        switch (variant) {
+			// ====================================================
+			// FINAL FLASH
+			// ====================================================
 
+			case ZettaflareBeamEntity.VARIANT_FINAL_FLASH -> {
 
-            // ====================================================
-            // FINAL FLASH
-            // ====================================================
+				System.out.println("Zettaflare cast started: FINAL FLASH");
 
-            case ZettaflareBeamEntity.VARIANT_FINAL_FLASH -> {
 
-                System.out.println(
-                        "Zettaflare cast started: FINAL FLASH"
-                );
+				player.level().playSound(null, player.blockPosition(),
 
+						ModSoundsRM.FINAL_FLASH.get(),
 
-                player.level().playSound(
-                        null,
-                        player.blockPosition(),
+						SoundSource.PLAYERS,
 
-                        ModSoundsRM.FINAL_FLASH.get(),
+						2.0F, 1.0F);
+			}
 
-                        SoundSource.PLAYERS,
 
-                        2.0F,
-                        1.0F
-                );
-            }
+			// ====================================================
+			// KAMEHAMEHA
+			// ====================================================
 
+			case ZettaflareBeamEntity.VARIANT_KAMEHAMEHA -> {
 
-            // ====================================================
-            // KAMEHAMEHA
-            // ====================================================
+				System.out.println("Zettaflare cast started: KAMEHAMEHA");
 
-            case ZettaflareBeamEntity.VARIANT_KAMEHAMEHA -> {
 
-                System.out.println(
-                        "Zettaflare cast started: KAMEHAMEHA"
-                );
+				player.level().playSound(null, player.blockPosition(),
 
+						ModSoundsRM.KAMEHAMEHA.get(),
 
-                player.level().playSound(
-                        null,
-                        player.blockPosition(),
+						SoundSource.PLAYERS,
 
-                        ModSoundsRM.KAMEHAMEHA.get(),
+						2.0F, 1.0F);
+			}
 
-                        SoundSource.PLAYERS,
 
-                        2.0F,
-                        1.0F
-                );
-            }
+			// ====================================================
+			// ZETTAFLARE
+			// ====================================================
 
+			default -> {
 
-            // ====================================================
-            // ZETTAFLARE
-            // ====================================================
+				System.out.println("Zettaflare cast started: ZETTAFLARE");
 
-            default -> {
 
-                System.out.println(
-                        "Zettaflare cast started: ZETTAFLARE"
-                );
+				player.level().playSound(null, player.blockPosition(),
 
+						ModSoundsRM.ZETTAFLARE.get(),
 
-                player.level().playSound(
-                        null,
-                        player.blockPosition(),
+						SoundSource.PLAYERS,
 
-                        ModSoundsRM.ZETTAFLARE.get(),
+						1.0F, 1.0F);
+			}
+		}
+	}
 
-                        SoundSource.PLAYERS,
 
-                        1.0F,
-                        1.0F
-                );
-            }
-        }
-    }
+	// ============================================================
+	// VARIANT ROLL
+	// ============================================================
 
+	private int rollVariant(LivingEntity player) {
 
-    // ============================================================
-    // VARIANT ROLL
-    // ============================================================
+		float roll = player.getRandom().nextFloat();
 
-    private int rollVariant(
-            LivingEntity player
-    ) {
 
-        float roll =
-                player.getRandom()
-                        .nextFloat();
+		System.out.println("Zettaflare roll: " + roll);
 
 
-        System.out.println(
-                "Zettaflare roll: " + roll
-        );
+		/*
+		 * TESTING:
+		 *
+		 * 0.90F = 90% easter egg chance.
+		 *
+		 * Change this to 0.01F when you're done testing.
+		 */
+		if (roll < 0.01F) {
 
 
-        /*
-         * TESTING:
-         *
-         * 0.90F = 90% easter egg chance.
-         *
-         * Change this to 0.01F when you're done testing.
-         */
-        if (roll < 0.01F) {
+			// 50 / 50 once easter egg succeeds
+			if (player.getRandom().nextBoolean()) {
 
+				return ZettaflareBeamEntity.VARIANT_FINAL_FLASH;
 
-            // 50 / 50 once easter egg succeeds
-            if (
-                    player.getRandom()
-                            .nextBoolean()
-            ) {
+			} else {
 
-                return ZettaflareBeamEntity
-                        .VARIANT_FINAL_FLASH;
+				return ZettaflareBeamEntity.VARIANT_KAMEHAMEHA;
+			}
+		}
 
-            } else {
 
-                return ZettaflareBeamEntity
-                        .VARIANT_KAMEHAMEHA;
-            }
-        }
-
-
-        return ZettaflareBeamEntity
-                .VARIANT_ZETTAFLARE;
-    }
+		return ZettaflareBeamEntity.VARIANT_ZETTAFLARE;
+	}
 }

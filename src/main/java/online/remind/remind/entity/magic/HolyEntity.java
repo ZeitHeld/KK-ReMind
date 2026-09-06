@@ -27,7 +27,7 @@ import online.remind.remind.entity.ModEntitiesRM;
 public class HolyEntity extends ThrowableProjectile {
 
 	int maxTicks = 100;
-	Player player;
+	LivingEntity player;
 	String caster;
 	float dmgMult = 1;
 	int index = 0;
@@ -42,7 +42,7 @@ public class HolyEntity extends ThrowableProjectile {
 		this.blocksBuilding = true;
 	}
 
-	public HolyEntity(Level world, Player player, int index, float dmgMult) {
+	public HolyEntity(Level world, LivingEntity player, int index, float dmgMult) {
 		super(ModEntitiesRM.TYPE_HOLY.get(), player, world);
 		this.player = player;
 		this.dmgMult = dmgMult;

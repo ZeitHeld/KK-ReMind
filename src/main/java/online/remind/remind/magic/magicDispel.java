@@ -9,7 +9,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.data.GlobalData;
 import online.kingdomkeys.kingdomkeys.data.WorldData;
 import online.kingdomkeys.kingdomkeys.effects.ModMobEffects;
@@ -31,12 +30,8 @@ setTier(tier);
 	}
 
 	@Override
-	public void magicUse(LivingEntity player, Player caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
-
+	public void magicUse(LivingEntity player, LivingEntity caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
 		if (lockOnEntity != null) {
-			GlobalDataRM globalData = ModDataRM.getGlobal(lockOnEntity);
-			GlobalData globalData2 = GlobalData.get(lockOnEntity);
-
 			// If target is locked and magic lock on ability is on
 			List<MobEffectInstance> effectsList = new ArrayList<>();
 			for (MobEffectInstance e : lockOnEntity.getActiveEffects()) {
@@ -77,11 +72,8 @@ setTier(tier);
 			}
 
 			if (!list.isEmpty()) {
-				for (int i = 0; i < list.size(); i++) {
-					Entity e = list.get(i);
+				for (Entity e : list) {
 					if (e instanceof LivingEntity lEntity) {
-						GlobalDataRM globalData = ModDataRM.getGlobal(lEntity);
-						GlobalData globalData2 = GlobalData.get(lEntity);
 						lEntity.removeEffect(MobEffects.DAMAGE_BOOST);
 						lEntity.removeEffect(MobEffects.MOVEMENT_SPEED);
 						lEntity.removeEffect(MobEffects.DAMAGE_RESISTANCE);
@@ -101,7 +93,7 @@ setTier(tier);
 	}
 
 	@Override
-	public void playMagicCastSound(LivingEntity player, Player caster) {
+	public void playMagicCastSound(LivingEntity player, LivingEntity caster) {
 		 player.level().playSound(null, player.getX(), player.getY(), player.getZ(), ModSoundsRM.DISPEL.get(),
 		 SoundSource.PLAYERS, 1F, 1F);
 	}

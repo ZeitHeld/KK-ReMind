@@ -5,7 +5,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.entity.attacks.SlotEdgeCollider;
@@ -19,18 +18,14 @@ setTier(tier);
     }
 
     @Override
-    public void magicUse(LivingEntity player, Player caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
-        PlayerData playerData = PlayerData.get(caster);
+    public void magicUse(LivingEntity player, LivingEntity caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
 
-        if (playerData == null) {
-            return;
-        }
 
         float dmg = switch (getTier()) {
-            case 0 -> playerData.getStrength(true) * 0.85F;
-            case 1 -> playerData.getStrength(true) * 1.0F;
-            case 2 -> playerData.getStrength(true) * 1.15F;
-            default -> playerData.getStrength(true) * 0.85F;
+            case 0 -> casterStrengthStat(caster) * 0.85F;
+            case 1 -> casterStrengthStat(caster) * 1.0F;
+            case 2 -> casterStrengthStat(caster) * 1.15F;
+            default -> casterStrengthStat(caster) * 0.85F;
         };
 
         dmg *= fullMPBlastMult;
@@ -46,10 +41,13 @@ setTier(tier);
 
         caster.level().addFreshEntity(slotEdge);
 
-        RMIntegrationHooks.playHeavyCommandAnimation(caster, "slot_edge", 0);
+        // Epic Fight only animates players
+        if (caster instanceof Player p) {
+            RMIntegrationHooks.playHeavyCommandAnimation(p, "slot_edge", 0);
+        }
     }
 
-    private void launchSlotEdgeDash(Player caster, int chainStep) {
+    private void launchSlotEdgeDash(LivingEntity caster, int chainStep) {
         double speed = switch (chainStep) {
             case 0 -> 1.55D;
             case 1 -> 1.75D;
@@ -73,7 +71,7 @@ setTier(tier);
     }
 
     @Override
-    public void playMagicCastSound(LivingEntity player, Player caster) {
+    public void playMagicCastSound(LivingEntity player, LivingEntity caster) {
         player.level().playSound(
                 null,
                 player.getX(),

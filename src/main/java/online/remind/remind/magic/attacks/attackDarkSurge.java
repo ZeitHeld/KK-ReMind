@@ -4,8 +4,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.remind.remind.ability.ModAbilitiesRM;
 import online.remind.remind.client.sound.ModSoundsRM;
@@ -20,19 +18,18 @@ public class attackDarkSurge extends Magic {
 setTier(tier);
     }
 
-    public void magicUse(LivingEntity player, Player caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
-        PlayerData playerData = PlayerData.get(caster);
+    public void magicUse(LivingEntity player, LivingEntity caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
         float dmg = 0;
 
         switch(getTier()){
             case 0:
-                dmg = playerData.getStrength(true) * (playerData.getNumberOfAbilitiesEquipped(ModAbilitiesRM.DARKNESS_BOOST) * 0.1f);
+                dmg = casterStrengthStat(caster) * (abilityStacks(caster, ModAbilitiesRM.DARKNESS_BOOST) * 0.1f);
                 break;
             case 1:
-                dmg = (playerData.getStrength(true) * 1.1f) * (playerData.getNumberOfAbilitiesEquipped(ModAbilitiesRM.DARKNESS_BOOST) * 0.1f);
+                dmg = (casterStrengthStat(caster) * 1.1f) * (abilityStacks(caster, ModAbilitiesRM.DARKNESS_BOOST) * 0.1f);
                 break;
             case 2:
-                dmg = (playerData.getStrength(true) * 1.25f) * (playerData.getNumberOfAbilitiesEquipped(ModAbilitiesRM.DARKNESS_BOOST) * 0.1f);
+                dmg = (casterStrengthStat(caster) * 1.25f) * (abilityStacks(caster, ModAbilitiesRM.DARKNESS_BOOST) * 0.1f);
                 break;
         }
 
@@ -57,7 +54,7 @@ setTier(tier);
     }
 
         @Override
-    public void playMagicCastSound(LivingEntity player, Player caster) {
+    public void playMagicCastSound(LivingEntity player, LivingEntity caster) {
             player.level().playSound(null, player.blockPosition(), ModSoundsRM.DARK_MINE.get(), SoundSource.PLAYERS, 1F, 1F);
     }
 }

@@ -116,6 +116,7 @@ public class KingdomKeysReMind {
         }
 
         modContainer.registerConfig(ModConfig.Type.COMMON, ModConfigs.COMMON_SPEC);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, ModConfigs.CLIENT_SPEC);
     }
 
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);

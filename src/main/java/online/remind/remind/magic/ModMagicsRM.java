@@ -38,9 +38,9 @@ public class ModMagicsRM {
 		RUINGA = register("magic_ruinga", () -> new magicRuin(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_ruinga"), false, 2, null)),
 
 		// Balloon
-		BALLOON = register("magic_balloon", () -> new magicBalloon(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_balloon"), false, 0, null)),
-		BALLOONRA = register("magic_balloonra", () -> new magicBalloon(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_balloonra"), false, 1, null)),
-		BALLOONGA = register("magic_balloonga", () -> new magicBalloon(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_balloonga"), false, 2, null)),
+		BALLOON = register("magic_balloon", () -> new magicPorted(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_balloon"), false, 0, null)),
+		BALLOONRA = register("magic_balloonra", () -> new magicPorted(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_balloonra"), false, 1, null)),
+		BALLOONGA = register("magic_balloonga", () -> new magicPorted(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_balloonga"), false, 2, null)),
 
 		ULTIMA = register("magic_ultima", () -> new magicUltima(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_ultima"), false, 0, null)),
 
@@ -69,10 +69,10 @@ public class ModMagicsRM {
 		SILENCERA = register("magic_silencera", () -> new magicSilence(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_silencera"), false, 1, null)),
 		SILENCEGA = register("magic_silencega", () -> new magicSilence(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_silencega"), false, 2, null)),
 
-		WARP = register("magic_warp", () -> new magicWarp(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_warp"), false, 0, null)),
+		WARP = register("magic_warp", () -> new magicPorted(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_warp"), false, 0, null)),
 
-		ESUNA = register("magic_esuna", () -> new magicEsuna(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_esuna"), true, 0, null)),
-		GROUP_ESUNA = register("magic_group_esuna", () -> new magicEsuna(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_group_esuna"), true, 1, null)),
+		ESUNA = register("magic_esuna", () -> new magicPorted(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_esuna"), true, 0, null)),
+		GROUP_ESUNA = register("magic_group_esuna", () -> new magicPorted(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_group_esuna"), true, 1, null)),
 
 		DISPEL = register("magic_dispel", () -> new magicDispel(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "magic_dispel"), false, 0, null)),
 

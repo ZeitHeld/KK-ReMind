@@ -4,8 +4,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.entity.attacks.quickBlitzCollider;
@@ -24,18 +22,17 @@ setTier(tier);
     float dmg;
 
     @Override
-    public void magicUse(LivingEntity player, Player caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
-        PlayerData playerData = PlayerData.get(caster);
+    public void magicUse(LivingEntity player, LivingEntity caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
 
         switch(getTier()){
             case 0:
-                dmg = playerData.getStrength(true) * 0.7f;
+                dmg = casterStrengthStat(caster) * 0.7f;
                 break;
             case 1:
-                dmg = playerData.getStrength(true) * 0.85f;
+                dmg = casterStrengthStat(caster) * 0.85f;
                 break;
             case 2:
-                dmg = playerData.getStrength(true);
+                dmg = casterStrengthStat(caster);
                 break;
         }
 
@@ -60,7 +57,7 @@ setTier(tier);
     }
 
     @Override
-    public void playMagicCastSound(LivingEntity player, Player caster) {
+    public void playMagicCastSound(LivingEntity player, LivingEntity caster) {
         player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 1F, 1F);
 
     }

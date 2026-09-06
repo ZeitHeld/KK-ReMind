@@ -15,5 +15,6 @@ public class DataGeneration {
         PackOutput output = generator.getPackOutput();
         generator.addProvider(event.includeServer(), new MagicDataProviderRM(output));
         generator.addProvider(event.includeServer(), new ShotlockDataProviderRM(output));
+        generator.addProvider(event.includeServer(), new AbilityDataProviderRM(output));
     }
 }
