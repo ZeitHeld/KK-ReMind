@@ -382,6 +382,7 @@
   "item.kkremind.lyric_2025_tournament": "Wrongful Inheritor",
   "item.kkremind.voidlight": "Voidlight",
   "item.kkremind.fortuna": "Fortuna",
+  "item.kkremind.nebula_records": "Nebula Records",
   "item.kkremind.kali_keyblade": "Guardian's Hope",
   "item.kkremind.union_ultima_l": "Union Ultima Weapon (Upright)",
   "item.kkremind.union_ultima_d": "Union Ultima Weapon (Reversed)",
@@ -397,6 +398,8 @@
   "item.kkremind.lyric_2025_tournament_chain": "Wrongful Inheritor Chain",
   "item.kkremind.voidlight_chain": "Voidlight Chain",
   "item.kkremind.fortuna_chain": "Fortuna Chain",
+  "item.kkremind.nebula_records_chain": "Nebula Records Chain",
+
   "item.kkremind.kali_keyblade_chain": "Guardian's Hope Chain",
   "item.kkremind.union_ultima_l_chain": "Union Ultima Weapon (Upright) Chain",
   "item.kkremind.union_ultima_d_chain": "Union Ultima Weapon (Reversed) Chain",
