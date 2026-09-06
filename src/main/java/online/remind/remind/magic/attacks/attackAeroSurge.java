@@ -5,9 +5,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.ability.ModAbilities;
-import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.remind.remind.entity.attacks.aeroSurgeCollider;
@@ -19,23 +17,15 @@ public class attackAeroSurge extends Magic {
 setTier(tier);
     }
 
-    public void magicUse(LivingEntity player, Player caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
-        PlayerData playerData = PlayerData.get(caster);
-        float dmg = 0;
+    public void magicUse(LivingEntity player, LivingEntity caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
+        float dmg = switch (getTier()) {
+	        case 0 -> casterStrengthStat(caster) * (abilityStacks(caster, ModAbilities.THUNDER_BOOST) * 0.1f);
+	        case 1 -> (casterStrengthStat(caster) * 1.1f) * (abilityStacks(caster, ModAbilities.THUNDER_BOOST) * 0.1f);
+	        case 2 -> (casterStrengthStat(caster) * 1.25f) * (abilityStacks(caster, ModAbilities.THUNDER_BOOST) * 0.1f);
+	        default -> 0;
+        };
 
-        switch(getTier()){
-            case 0:
-                dmg = playerData.getStrength(true) * (playerData.getNumberOfAbilitiesEquipped(ModAbilities.THUNDER_BOOST) * 0.1f);
-                break;
-            case 1:
-                dmg = (playerData.getStrength(true) * 1.1f) * (playerData.getNumberOfAbilitiesEquipped(ModAbilities.THUNDER_BOOST) * 0.1f);
-                break;
-            case 2:
-                dmg = (playerData.getStrength(true) * 1.25f) * (playerData.getNumberOfAbilitiesEquipped(ModAbilities.THUNDER_BOOST) * 0.1f);
-                break;
-        }
-
-        float radius = 1.5f + (0.5f * getTier());
+	    float radius = 1.5f + (0.5f * getTier());
 
         double speed = 0.75;
 
@@ -56,7 +46,7 @@ setTier(tier);
     }
 
     @Override
-    public void playMagicCastSound(LivingEntity player, Player caster) {
+    public void playMagicCastSound(LivingEntity player, LivingEntity caster) {
             player.level().playSound(null, player.blockPosition(), SoundEvents.VEX_CHARGE, SoundSource.PLAYERS, 1F, 1F);
     }
 }

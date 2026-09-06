@@ -22,7 +22,7 @@ import java.util.List;
 
 public class darkSurgeCollider extends ThrowableProjectile {
 
-    private Player caster;
+    private LivingEntity caster;
     private float damage;
     private int maxTicks = 10;
     private double radius = 1.5;
@@ -41,7 +41,7 @@ public class darkSurgeCollider extends ThrowableProjectile {
 
     }
 
-    public darkSurgeCollider(Level level, Player caster, float damage){
+    public darkSurgeCollider(Level level, LivingEntity caster, float damage){
         this(ModEntitiesRM.TYPE_QUICK_BLITZ.get(),level);
         this.caster = caster;
         this.damage = damage;
@@ -68,7 +68,7 @@ public class darkSurgeCollider extends ThrowableProjectile {
                         getX() + radius, getY() + 1, getZ() + radius),
                 e -> e != caster && e.isAlive());
 
-        PlayerData playerData = PlayerData.get(caster);
+        PlayerData playerData = caster instanceof Player p ? PlayerData.get(p) : null;
         if (playerData != null) {
             damage = playerData.getStrength(true) * 0.2f;
             double dmgMult = (playerData.getNumberOfAbilitiesEquipped(ModAbilitiesRM.DARKNESS_BOOST)) * 0.5f;

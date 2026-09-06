@@ -8,8 +8,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.data.WorldData;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.lib.Party.Member;
@@ -28,7 +26,7 @@ public class magicSlow extends Magic {
 	}
 
 	@Override
-	public void magicUse(LivingEntity player, Player caster, float fullMPBlastMult, LivingEntity lockOnTarget) {
+	public void magicUse(LivingEntity player, LivingEntity caster, float fullMPBlastMult, LivingEntity lockOnTarget) {
 
 		float radius = 3 + (getTier());
 		List<Entity> list = player.level().getEntities(player, player.getBoundingBox().inflate(radius, radius, radius));
@@ -53,7 +51,7 @@ public class magicSlow extends Magic {
 
 		}
 
-		int time = (int) (PlayerData.get(caster).getMaxMP() * ((getTier() * 0.75) + 5) + 5);
+		int time = (int) (casterMagicPool(caster) * ((getTier() * 0.75) + 5) + 5);
 		if (!list.isEmpty()) {
 			for (Entity entity : list) {
 				if (entity instanceof LivingEntity lEntity) {
@@ -70,7 +68,7 @@ public class magicSlow extends Magic {
 	}
 
 	@Override
-	public void playMagicCastSound(LivingEntity player, Player caster) {
+	public void playMagicCastSound(LivingEntity player, LivingEntity caster) {
 		player.level().playSound(null, player.blockPosition(), ModSoundsRM.SLOW.get(), SoundSource.PLAYERS, 1F, 1F);
 	}
 }

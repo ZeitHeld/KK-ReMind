@@ -567,7 +567,11 @@
 
 
   "dreameater.dreameater_cactuar.name": "Cactuar",
-  "dreameater.dreameater_tonberry.name": "Tonberry"
+  "dreameater.dreameater_tonberry.name": "Tonberry",
+
+  "kkremind.config.dream_eater_hud_data": "Summoned Dream Eater HUD Data",
+
+  "magic.kkremind.ported.notice": "This magic has now been ported to Kingdom Keys, unequip it to get the new spell."
 
 
 }

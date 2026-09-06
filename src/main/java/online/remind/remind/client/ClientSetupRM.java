@@ -94,6 +94,8 @@ public class ClientSetupRM {
     public static void setupClient(FMLClientSetupEvent event) {
 		NeoForge.EVENT_BUS.register(new ClientEventsRM());
         NeoForge.EVENT_BUS.register(new StylesHUD());
+
+        ClientUtilsRM.initHUD();
     }
 
 

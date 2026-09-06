@@ -34,10 +34,12 @@ public class magicSteal extends Magic {
     }
 
     @Override
-    public void magicUse(LivingEntity player, Player caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
+    public void magicUse(LivingEntity player, LivingEntity caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
+        if (!(caster instanceof Player casterPlayer))
+            return;
         if (lockOnEntity == null || caster.level().isClientSide || !(lockOnEntity instanceof Mob mobTarget)) return;
 
-        PlayerData casterData = PlayerData.get(caster);
+        PlayerData casterData = PlayerData.get(casterPlayer);
 
         // Chance roll based on caster's magic stat
         //double chance = (double) (casterData.getMagic(true) + casterData.getStrength(true)) /2;
@@ -67,8 +69,8 @@ public class magicSteal extends Magic {
                 .withParameter(LootContextParams.THIS_ENTITY, mobTarget)
                 .withParameter(LootContextParams.ORIGIN, mobTarget.position())
                 .withOptionalParameter(LootContextParams.ATTACKING_ENTITY, caster)
-                .withOptionalParameter(LootContextParams.DAMAGE_SOURCE, player.damageSources().playerAttack(caster))
-                .withLuck(caster.getLuck());
+                .withOptionalParameter(LootContextParams.DAMAGE_SOURCE, player.damageSources().playerAttack(casterPlayer))
+                .withLuck(casterPlayer.getLuck());
 
         LootParams lootParams = lootBuilder.create(LootContextParamSets.ENTITY);
 
@@ -86,7 +88,7 @@ public class magicSteal extends Magic {
         // Give all items to caster or drop if inventory full
         for (ItemStack stolen : nonEmpty) {
             stolen = stolen.copy(); // copy to prevent modifying original
-            if (!caster.getInventory().add(stolen)) {
+            if (!casterPlayer.getInventory().add(stolen)) {
                 caster.level().addFreshEntity(new ItemEntity(caster.level(), caster.getX(), caster.getY() + 0.5, caster.getZ(), stolen));
             }
             caster.sendSystemMessage(Component.literal("You stole an item!"));
@@ -103,7 +105,7 @@ public class magicSteal extends Magic {
     }
 
     @Override
-    public void playMagicCastSound(LivingEntity player, Player caster) {
+    public void playMagicCastSound(LivingEntity player, LivingEntity caster) {
         //player.level().playSound(null, player.getX(), player.getY(), player.getZ(), ModSoundsRM.DEATH_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
     }
 }

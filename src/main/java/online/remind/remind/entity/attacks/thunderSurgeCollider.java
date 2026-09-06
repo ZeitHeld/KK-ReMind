@@ -22,7 +22,7 @@ import java.util.List;
 
 public class thunderSurgeCollider extends ThrowableProjectile {
 
-    private Player caster;
+    private LivingEntity caster;
     private float damage;
     private int maxTicks = 10;
     private double radius = 1.5;
@@ -42,7 +42,7 @@ public class thunderSurgeCollider extends ThrowableProjectile {
 
     }
 
-    public thunderSurgeCollider(Level level, Player caster, float damage){
+    public thunderSurgeCollider(Level level, LivingEntity caster, float damage){
         this(ModEntitiesRM.TYPE_QUICK_BLITZ.get(),level);
         this.caster = caster;
         this.damage = damage;
@@ -84,7 +84,7 @@ public class thunderSurgeCollider extends ThrowableProjectile {
                         getX() + radius, getY() + 1, getZ() + radius),
                 e -> e != caster && e.isAlive());
 
-        PlayerData playerData = PlayerData.get(caster);
+        PlayerData playerData = caster instanceof Player p ? PlayerData.get(p) : null;
         if (playerData != null) {
             damage = playerData.getStrength(true) * 0.2f;
             double dmgMult = (playerData.getNumberOfAbilitiesEquipped(ModAbilities.THUNDER_BOOST)) * 0.5f;

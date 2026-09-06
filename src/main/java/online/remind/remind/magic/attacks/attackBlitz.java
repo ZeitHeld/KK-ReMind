@@ -4,8 +4,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.entity.attacks.BlitzCollider;
@@ -18,18 +16,14 @@ setTier(tier);
     }
 
     @Override
-    public void magicUse(LivingEntity player, Player caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
-        PlayerData playerData = PlayerData.get(caster);
+    public void magicUse(LivingEntity player, LivingEntity caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
 
-        if (playerData == null) {
-            return;
-        }
 
         float dmg = switch (getTier()) {
-            case 0 -> playerData.getStrength(true) * 1.1F;
-            case 1 -> playerData.getStrength(true) * 1.3F;
-            case 2 -> playerData.getStrength(true) * 1.5F;
-            default -> playerData.getStrength(true);
+            case 0 -> casterStrengthStat(caster) * 1.1F;
+            case 1 -> casterStrengthStat(caster) * 1.3F;
+            case 2 -> casterStrengthStat(caster) * 1.5F;
+            default -> casterStrengthStat(caster);
         };
 
         dmg *= fullMPBlastMult;
@@ -46,7 +40,7 @@ setTier(tier);
         caster.level().addFreshEntity(blitz);
     }
 
-    private void launchBlitzDash(Player caster, int chainStep) {
+    private void launchBlitzDash(LivingEntity caster, int chainStep) {
         double speed = switch (chainStep) {
             case 0 -> 1.65D;
             case 1 -> 1.85D;
@@ -70,7 +64,7 @@ setTier(tier);
     }
 
     @Override
-    public void playMagicCastSound(LivingEntity player, Player caster) {
+    public void playMagicCastSound(LivingEntity player, LivingEntity caster) {
         player.level().playSound(
                 null,
                 player.getX(),

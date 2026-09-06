@@ -9,7 +9,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.KingdomKeys;
-import online.kingdomkeys.kingdomkeys.client.ClientUtils;
+import online.kingdomkeys.kingdomkeys.client.gui.elements.HUD.HUDElement;
 import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.remind.remind.KingdomKeysReMind;
@@ -66,19 +66,16 @@ public class DreamEaterHUD extends OverlayBaseRM {
         int screenWidth = minecraft.getWindow().getGuiScaledWidth();
         int screenHeight = minecraft.getWindow().getGuiScaledHeight();
 
-        float scale = 1F;
+        HUDElement element = ClientUtilsRM.DREAM_EATER_ELEMENT;
 
-        PoseStack poseStack = guiGraphics.pose();
-
-        poseStack.pushPose();
+        element.applyTransform(guiGraphics, screenWidth, screenHeight);
         {
-            poseStack.translate(ClientUtils.PARTY_ELEMENT.x - 70, ClientUtils.PARTY_ELEMENT.y - 20, 0);
-            renderDreamEater(guiGraphics, dreamEater, screenWidth, screenHeight, scale);
+            renderDreamEater(guiGraphics, dreamEater);
         }
-        poseStack.popPose();
+        element.endTransform(guiGraphics);
     }
 
-    private void renderDreamEater(GuiGraphics gui, DreamEater dreamEater, int screenWidth, int screenHeight, float scale) {
+    private void renderDreamEater(GuiGraphics gui, DreamEater dreamEater) {
         Player player = minecraft.player;
 
         if (player == null) {
@@ -108,10 +105,7 @@ public class DreamEaterHUD extends OverlayBaseRM {
         boolean isOrg = playerData.getAlignment() != Utils.OrgMember.NONE;
         int variant = isOrg ? 1 : 0;
 
-        ResourceLocation skin = ResourceLocation.fromNamespaceAndPath(
-                KingdomKeysReMind.MODID,
-                "textures/entity/models/mobs/icons/" + dreamEater.getName() + variant + ".png"
-        );
+        ResourceLocation skin = ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "textures/entity/models/mobs/icons/" + dreamEater.getName() + variant + ".png");
 
         int headWidth = 32;
         int headHeight = 32;
@@ -121,14 +115,11 @@ public class DreamEaterHUD extends OverlayBaseRM {
         // Face
         matrixStack.pushPose();
         {
-            matrixStack.translate(screenWidth - headWidth, screenHeight - headHeight, 0);
-            matrixStack.scale(scale, scale, scale);
             this.blit(gui, skin, 0, 0, 0, 0, headWidth, headHeight);
         }
         matrixStack.popPose();
 
-        scale = 0.5F;
-        matrixStack.translate(screenWidth - headWidth, screenHeight - headHeight, 0);
+        float scale = 0.5F;
 
         // Name
         matrixStack.pushPose();

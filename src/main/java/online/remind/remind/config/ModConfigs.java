@@ -7,24 +7,40 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 import online.remind.remind.KingdomKeysReMind;
 import org.apache.commons.lang3.tuple.Pair;
 
+import java.util.List;
+
 @EventBusSubscriber(modid = KingdomKeysReMind.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class ModConfigs {
     private static CommonConfig COMMON;
+    private static ClientConfigRM CLIENT;
     //public static ServerConfig SERVER;
 
     public static final ModConfigSpec COMMON_SPEC;
+    public static final ModConfigSpec CLIENT_SPEC;
     //public static final ModConfigSpec SERVER_SPEC;
-
 
     static {
         {
             final Pair<CommonConfig, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(CommonConfig::new);
             COMMON = specPair.getLeft();
             COMMON_SPEC = specPair.getRight();
-
         }
 
+        {
+            final Pair<ClientConfigRM, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(ClientConfigRM::new);
+            CLIENT = specPair.getLeft();
+            CLIENT_SPEC = specPair.getRight();
+        }
+    }
 
+    // HUD, read and written by Kingdom Keys' HUD editor through DreamEaterHUD's HUDDataStorage
+    public static List<? extends Float> getDreamEaterHUDData() {
+        return CLIENT.dreamEaterHUDData.get();
+    }
+
+    public static void setDreamEaterHUDData(List<? extends Float> data) {
+        CLIENT.dreamEaterHUDData.set(data);
+        CLIENT.dreamEaterHUDData.save();
     }
 
     public static void bakeCommon(){

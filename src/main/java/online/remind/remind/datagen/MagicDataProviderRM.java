@@ -71,6 +71,15 @@ public class MagicDataProviderRM implements DataProvider {
 		magics.put(ResourceLocation.parse(StringsRM.Magic_Faith).getPath(), new MagicBuilder().cost(50).castTime(30).cooldown(60).damageMultiplier(2.5F, 6F).lockOn(false).maxExp(3200).maxExpLevel(4).spellType(MagicData.SpellType.MAGIC).build());
 		magics.put(ResourceLocation.parse(StringsRM.Magic_Death).getPath(), new MagicBuilder().cost(50).castTime(40).cooldown(60).damageMultiplier(2.5F, 6F).lockOn(true).maxExp(3200).maxExpLevel(4).spellType(MagicData.SpellType.MAGIC).build());
 		magics.put(ResourceLocation.parse(StringsRM.Magic_Ultima).getPath(), new MagicBuilder().cost(300).castTime(40).cooldown(300).damageMultiplier(3F, 6F).lockOn(false).maxExp(9999).maxExpLevel(5).spellType(MagicData.SpellType.MAGIC).build());
+		magics.put(ResourceLocation.parse(StringsRM.Magic_Zettaflare).getPath(), new MagicBuilder().cost(300).castTime(60).cooldown(400).damageMultiplier(4F, 8F).lockOn(false).maxExp(9999).maxExpLevel(5).spellType(MagicData.SpellType.MAGIC).build());
+		magics.put(ResourceLocation.parse(StringsRM.Magic_Recall).getPath(), new MagicBuilder().cost(50).castTime(20).cooldown(200).damageMultiplier(1F, 1F).lockOn(false).maxExp(4200).maxExpLevel(3).spellType(MagicData.SpellType.MAGIC).build());
+
+		// Kingdom Keys owns these now and they cast as magicPorted stubs, but they are still registered,
+		// so they still need data - anything reading the registry
+		magics.put(ResourceLocation.parse(StringsRM.Magic_Balloon).getPath(), new MagicBuilder().cost(12).castTime(10).cooldown(20).damageMultiplier(0.3F, 0.4F).lockOn(false).maxExp(1800).maxExpLevel(3).spellType(MagicData.SpellType.MAGIC).build());
+		magics.put(ResourceLocation.parse(StringsRM.Magic_Balloonra).getPath(), new MagicBuilder().cost(12).castTime(10).cooldown(20).damageMultiplier(0.35F, 0.45F).lockOn(false).maxExp(2400).maxExpLevel(4).spellType(MagicData.SpellType.MAGIC).build());
+		magics.put(ResourceLocation.parse(StringsRM.Magic_Balloonga).getPath(), new MagicBuilder().cost(12).castTime(10).cooldown(20).damageMultiplier(0.4F, 0.45F).lockOn(false).maxExp(4200).maxExpLevel(4).spellType(MagicData.SpellType.MAGIC).build());
+		magics.put(ResourceLocation.parse(StringsRM.Magic_Warp).getPath(), new MagicBuilder().cost(12).castTime(10).cooldown(20).damageMultiplier(0.2F, 0.6F).lockOn(false).maxExp(8600).maxExpLevel(5).spellType(MagicData.SpellType.MAGIC).build());
 
 		// Attacks
 		magics.put(ResourceLocation.parse(StringsRM.Attack_Quick_Blitz).getPath(), new MagicBuilder().cost(5).castTime(5).cooldown(20).damageMultiplier(2F, 2.2F).lockOn(false).maxExp(200).maxExpLevel(3).spellType(MagicData.SpellType.PHYSICAL).build());

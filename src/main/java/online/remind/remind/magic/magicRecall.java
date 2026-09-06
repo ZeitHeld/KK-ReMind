@@ -6,7 +6,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -21,10 +20,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
 
-@EventBusSubscriber(
-        modid = KingdomKeysReMind.MODID,
-        bus = EventBusSubscriber.Bus.GAME
-)
+@EventBusSubscriber(modid = KingdomKeysReMind.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class magicRecall extends Magic {
 
     private static final int RECALL_CAST_TICKS = 14;
@@ -53,13 +49,7 @@ public class magicRecall extends Magic {
     // ============================================================
 
     @Override
-    public void magicUse(
-            LivingEntity player,
-            Player caster,
-            float fullMPBlastMult,
-            LivingEntity lockOnTarget
-    ) {
-
+    public void magicUse(LivingEntity player, LivingEntity caster, float fullMPBlastMult, LivingEntity lockOnTarget) {
         if (!(caster instanceof ServerPlayer serverPlayer)) {
             return;
         }
@@ -656,7 +646,7 @@ public class magicRecall extends Magic {
     @Override
     public void playMagicCastSound(
             LivingEntity player,
-            Player caster
+            LivingEntity caster
     ) {
 
         player.level().playSound(

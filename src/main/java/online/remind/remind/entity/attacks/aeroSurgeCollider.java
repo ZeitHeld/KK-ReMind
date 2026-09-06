@@ -23,7 +23,7 @@ import java.util.List;
 
 public class aeroSurgeCollider extends ThrowableProjectile {
 
-    private Player caster;
+    private LivingEntity caster;
     private float damage;
     private int maxTicks = 10;
     private double radius = 1.5;
@@ -42,7 +42,7 @@ public class aeroSurgeCollider extends ThrowableProjectile {
 
     }
 
-    public aeroSurgeCollider(Level level, Player caster, float damage){
+    public aeroSurgeCollider(Level level, LivingEntity caster, float damage){
         this(ModEntitiesRM.TYPE_AERO_SURGE.get(),level);
         this.caster = caster;
         this.damage = damage;
@@ -69,7 +69,7 @@ public class aeroSurgeCollider extends ThrowableProjectile {
                         getX() + radius, getY() + 1, getZ() + radius),
                 e -> e != caster && e.isAlive());
 
-        PlayerData playerData = PlayerData.get(caster);
+        PlayerData playerData = caster instanceof Player p ? PlayerData.get(p) : null;
         if (playerData != null) {
             damage = playerData.getStrength(true) * 0.2f;
             double dmgMult = (playerData.getNumberOfAbilitiesEquipped(ModAbilities.THUNDER_BOOST)) * 0.5f;

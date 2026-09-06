@@ -86,6 +86,15 @@ public class StringsRM {
         Magic_Meteor = StringsRM.MAMA_Prefix+"meteor",
         Magic_Faith = StringsRM.MAMA_Prefix+"faith",
         Magic_Ultima= StringsRM.MAMA_Prefix+"ultima",
+        Magic_Zettaflare = StringsRM.MAMA_Prefix+"zettaflare",
+        Magic_Recall = StringsRM.MAMA_Prefix+"recall",
+
+        Magic_Balloon = StringsRM.MAMA_Prefix+"balloon",
+        Magic_Balloonra = StringsRM.MAMA_Prefix+"balloonra",
+        Magic_Balloonga = StringsRM.MAMA_Prefix+"balloonga",
+        Magic_Warp = StringsRM.MAMA_Prefix+"warp",
+
+        Magic_Ported_Notice = "magic.kkremind.ported.notice",
 
         // Attacks
         Attack_Quick_Blitz = StringsRM.ATMA_Prefix+"quick_blitz",

@@ -20,8 +20,8 @@ public class magicDeath extends Magic {
 setTier(tier);
     }
     @Override
-    public void magicUse(LivingEntity player, Player caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
-        PlayerData casterData = PlayerData.get(caster);
+    public void magicUse(LivingEntity player, LivingEntity caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
+        PlayerData casterData = caster instanceof Player p ? PlayerData.get(p) : null;
         int crisisLv = 0;
 
         float casterHPPercent = ((caster.getMaxHealth() - caster.getHealth()) / caster.getMaxHealth()) *100f;
@@ -41,7 +41,7 @@ setTier(tier);
             if (lockOnEntity instanceof Player){
                 PlayerData target = PlayerData.get((Player) lockOnEntity);
                 int targetLevel = target.getLevel();
-                double chance = ((double) casterData.getMagic(true) / 4) - ((double) target.getDefense(true) / 4);
+                double chance = ((double) casterMagicStat(caster) / 4) - ((double) target.getDefense(true) / 4);
                 float remaningHP = ((lockOnEntity.getMaxHealth() - lockOnEntity.getHealth()) / lockOnEntity.getMaxHealth()) * 100F;
                 double chanceBoost = remaningHP;
 
@@ -120,7 +120,7 @@ setTier(tier);
             } else {
                 GlobalData mobData = GlobalData.get(lockOnEntity);
                 int mobLvl = mobData.getLevel();
-                double chance = (casterData.getMagicStat().getStat() / 4);
+                double chance = ((casterData != null ? casterData.getMagicStat().getStat() : casterMagicStat(caster)) / 4);
                 double roll = Math.random() * 100;
                 switch(crisisLv){
                     case 0: // Death Lv4
@@ -177,15 +177,12 @@ setTier(tier);
                         }
                         break;
                 }
-
-
             }
         }
-
     }
 
     @Override
-    public void playMagicCastSound(LivingEntity player, Player caster) {
+    public void playMagicCastSound(LivingEntity player, LivingEntity caster) {
         player.level().playSound(null, player.getX(), player.getY(), player.getZ(), ModSoundsRM.DEATH_CAST.get(), SoundSource.PLAYERS, 1F, 1F);
     }
 }

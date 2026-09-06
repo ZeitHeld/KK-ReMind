@@ -12,7 +12,6 @@ import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -23,7 +22,7 @@ import java.util.Map;
 
 public class ravenousSaberCollider extends ThrowableProjectile {
 
-    private Player caster;
+    private LivingEntity caster;
     private float damage;
     private int maxTicks = 40;
     private int ticks = 0;
@@ -59,7 +58,7 @@ public class ravenousSaberCollider extends ThrowableProjectile {
 
     }
 
-    public ravenousSaberCollider(Level level, Player caster, float damage){
+    public ravenousSaberCollider(Level level, LivingEntity caster, float damage){
         this(ModEntitiesRM.TYPE_RAVE_SABER.get(),level);
         this.caster = caster;
         this.damage = damage;

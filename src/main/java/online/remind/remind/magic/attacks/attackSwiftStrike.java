@@ -5,8 +5,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.client.sound.ModSoundsRM;
@@ -24,8 +22,7 @@ setTier(tier);
     int level;
 
     @Override
-    public void magicUse(LivingEntity player, Player caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
-        PlayerData playerData = PlayerData.get(caster);
+    public void magicUse(LivingEntity player, LivingEntity caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
 
         if (lockOnEntity != null){
             lockOnEntity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0));
@@ -60,7 +57,7 @@ setTier(tier);
     }
 
     @Override
-    public void playMagicCastSound(LivingEntity player, Player caster) {
+    public void playMagicCastSound(LivingEntity player, LivingEntity caster) {
         double rand = Math.floor(Math.random() * 100);
         if (rand >= 50) {
             player.level().playSound(null, player.getX(), player.getY(), player.getZ(), ModSoundsRM.SWIFT_STRIKE.get(), SoundSource.PLAYERS, 1F, 1F);
