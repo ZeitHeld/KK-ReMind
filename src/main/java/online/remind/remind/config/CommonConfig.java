@@ -28,6 +28,7 @@ public class CommonConfig {
     public ModConfigSpec.DoubleValue xpMulti;
 
 
+
     // UW Ability
     public ModConfigSpec.IntValue ultimaPositiveSTR;
     public ModConfigSpec.IntValue ultimaNegativeSTR;
@@ -125,6 +126,7 @@ public class CommonConfig {
                 .comment("Sets the Serverside EXP Multi for Dream Eaters.")
                 .comment("Default: 1.0, Setting this to 0 WILL DISABLE DREAM EATERS LEVELING UP!")
                 .defineInRange("Dream Eater EXP Multiplier", 1.0, 0, 1000);
+
 
         builder.pop();
         builder.push("Ultima Weapon Ability");

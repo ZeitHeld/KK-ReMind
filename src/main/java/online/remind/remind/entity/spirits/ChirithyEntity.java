@@ -533,7 +533,9 @@ public class ChirithyEntity extends BaseDreamEaterEntity implements GeoEntity {
             );
         }
 
-        owner.sendSystemMessage(Component.literal("<Chirithy> " + spellName + "!"));
+        if (ModConfigs.chirithySpellFeedback) {
+            owner.sendSystemMessage(Component.literal("<Chirithy> " + spellName + "!"));
+        }
         this.startCasting();
 
         ownerCureCooldown = emergencyOnly ? 20 * 20 : 30 * 20;
@@ -605,9 +607,11 @@ public class ChirithyEntity extends BaseDreamEaterEntity implements GeoEntity {
                 1F
         );
 
-        owner.sendSystemMessage(
-                Component.literal("<Chirithy> " + spellName + "! Winds guard you!")
-        );
+        if (ModConfigs.chirithySpellFeedback) {
+            owner.sendSystemMessage(
+                    Component.literal("<Chirithy> " + spellName + "! Winds guard you!")
+            );
+        }
 
         this.startCasting();
 
@@ -654,7 +658,9 @@ public class ChirithyEntity extends BaseDreamEaterEntity implements GeoEntity {
                 1F
         );
 
-        owner.sendSystemMessage(Component.literal("<Chirithy> No more ailments!"));
+        if (ModConfigs.chirithySpellFeedback) {
+            owner.sendSystemMessage(Component.literal("<Chirithy> No more ailments!"));
+        }
 
         if (owner.level() instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(
@@ -731,9 +737,11 @@ public class ChirithyEntity extends BaseDreamEaterEntity implements GeoEntity {
                 1F
         );
 
-        owner.sendSystemMessage(
-                Component.literal("<Chirithy> Not gonna let you die! Auto-Life!")
-        );
+        if (ModConfigs.chirithySpellFeedback) {
+            owner.sendSystemMessage(
+                    Component.literal("<Chirithy> Not gonna let you die! Auto-Life!")
+            );
+        }
 
         this.startCasting();
 
@@ -783,8 +791,9 @@ public class ChirithyEntity extends BaseDreamEaterEntity implements GeoEntity {
                 1F
         );
 
-        owner.sendSystemMessage(Component.literal("<Chirithy> Gotta patch myself up!"));
-
+        if (ModConfigs.chirithySpellFeedback) {
+            owner.sendSystemMessage(Component.literal("<Chirithy> Gotta patch myself up!"));
+        }
         this.startCasting();
 
         selfCureCooldown = 300;

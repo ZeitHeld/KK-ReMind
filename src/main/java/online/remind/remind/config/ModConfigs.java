@@ -65,6 +65,7 @@ public class ModConfigs {
         spiritsEnabled = COMMON.spiritsEnabled.get();
         autoLifeCD = COMMON.autoLifeCD.get();
         xpMulti = COMMON.xpMulti.get();
+        chirithySpellFeedback = ClientConfigRM.chirithySpellFeedback.get();
 
         // Ultima Weapon Ability Configs
         ultimaPositiveSTR = COMMON.ultimaPositiveSTR.get();
@@ -107,6 +108,7 @@ public class ModConfigs {
     public static boolean spiritsEnabled;
     public static double autoLifeCD;
     public static double xpMulti;
+    public static boolean chirithySpellFeedback;
 
     // Ultima Weapon Ability
     public static int ultimaPositiveSTR;
