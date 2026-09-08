@@ -26,13 +26,14 @@
 
 - Guardian's Light, a gift for ***KaliArchon***
   - Base Stats: 8/8
-  - Base Ability: 
+  - Base Ability: Way to Light
 - Nebula Records, commissioned by DogofTheRoad
+  - Description: A very musically themed Keyblade with high emphasis on casting and the rhythm of casting.
   - Base Stats: 8/10
-  - Base Ability: 
+  - Base Ability: MP Walker
 - Dragon's Nebula, commissioned by ConstellationDragon
   - Base Stats: 
-  - Base Ability:
+  - Base Ability: 
 - Maddening Corruption, commissioned by TheFeralKitsune
   - Base Stats: 13/6
   - Base Ability: Dark Infusion
