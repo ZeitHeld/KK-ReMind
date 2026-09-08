@@ -1,10 +1,14 @@
 package online.remind.remind.magic;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
+import online.remind.remind.capabilities.GlobalDataRM;
+import online.remind.remind.capabilities.ModDataRM;
 import online.remind.remind.client.sound.ModSoundsRM;
 import online.remind.remind.entity.magic.ZettaflareBeamEntity;
 
@@ -15,6 +19,8 @@ public class magicZettaflare extends Magic {
 	// ============================================================
 
 	private static final String VARIANT_TAG = "kkremind_zettaflare_variant";
+
+	private static boolean cast = false;
 
 
 	public magicZettaflare(ResourceLocation registryName, boolean hasToSelect, int tier, ResourceLocation gmAbility) {
@@ -33,85 +39,114 @@ public class magicZettaflare extends Magic {
 			return;
 		}
 
+		GlobalDataRM globalData = ModDataRM.getGlobal(casterPlayer);
+		PlayerData playerData = PlayerData.get(casterPlayer);
 
-		float dmgMult = getDamageMult();
+		if (playerData == null){
+			return;
+		}
 
-		dmgMult *= fullMPBlastMult;
+		if (globalData == null){
+			return;
+		}
+
+		if (playerData.getFocus() == 100 && playerData.getDP() == 1000) {
+
+			cast = true;
+
+			float dmgMult = getDamageMult();
+
+			dmgMult *= fullMPBlastMult;
 
 
-		switch (getTier()) {
+			switch (getTier()) {
 
-			case 0:
+				case 0:
 
-				// ====================================================
-				// GET VARIANT THAT WAS CHOSEN AT CAST START
-				// ====================================================
+					// ====================================================
+					// GET VARIANT THAT WAS CHOSEN AT CAST START
+					// ====================================================
 
-				int variant;
+					int variant;
 
 
-				if (caster.getPersistentData().contains(VARIANT_TAG)) {
+					if (caster.getPersistentData().contains(VARIANT_TAG)) {
 
-					variant = caster.getPersistentData().getInt(VARIANT_TAG);
+						variant = caster.getPersistentData().getInt(VARIANT_TAG);
 
-				} else {
+					} else {
+
+						/*
+						 * Failsafe.
+						 *
+						 * Normally playMagicCastSound() will already
+						 * have chosen the variant.
+						 */
+						variant = rollVariant(player);
+					}
+
+
+					// ====================================================
+					// CREATE BEAM
+					// ====================================================
+
+					ZettaflareBeamEntity beam = new ZettaflareBeamEntity(player.level(), player, casterPlayer, dmgMult);
+
+
+					beam.setBeamVariant(variant);
+
+					playerData.setDP(0);
+					playerData.setFocus(0);
+
+
+					// ====================================================
+					// DEBUG
+					// ====================================================
+
+					switch (variant) {
+
+						case ZettaflareBeamEntity.VARIANT_FINAL_FLASH ->
+								System.out.println("Zettaflare fired: FINAL FLASH");
+
+
+						case ZettaflareBeamEntity.VARIANT_KAMEHAMEHA ->
+								System.out.println("Zettaflare fired: KAMEHAMEHA");
+
+
+						default -> System.out.println("Zettaflare fired: ZETTAFLARE");
+					}
+
+
+					// ====================================================
+					// SPAWN
+					// ====================================================
+
+					player.level().addFreshEntity(beam);
+
+
+					// ====================================================
+					// CLEAN UP
+					// ====================================================
 
 					/*
-					 * Failsafe.
+					 * This cast is finished.
 					 *
-					 * Normally playMagicCastSound() will already
-					 * have chosen the variant.
+					 * Remove it so the next cast gets a fresh roll.
 					 */
-					variant = rollVariant(player);
-				}
+					caster.getPersistentData().remove(VARIANT_TAG);
 
 
-				// ====================================================
-				// CREATE BEAM
-				// ====================================================
+					break;
+			}
+		} else {
+			if (playerData.getFocus() < 100){
+				player.sendSystemMessage(Component.literal("Not enough Focus to cast Zettaflare!"));
+			}
+			if (playerData.getDP() < 1000){
+				player.sendSystemMessage(Component.literal("Not enough Drive to cast Zettaflare!"));
+			}
 
-				ZettaflareBeamEntity beam = new ZettaflareBeamEntity(player.level(), player, casterPlayer, dmgMult);
-
-
-				beam.setBeamVariant(variant);
-
-
-				// ====================================================
-				// DEBUG
-				// ====================================================
-
-				switch (variant) {
-
-					case ZettaflareBeamEntity.VARIANT_FINAL_FLASH -> System.out.println("Zettaflare fired: FINAL FLASH");
-
-
-					case ZettaflareBeamEntity.VARIANT_KAMEHAMEHA -> System.out.println("Zettaflare fired: KAMEHAMEHA");
-
-
-					default -> System.out.println("Zettaflare fired: ZETTAFLARE");
-				}
-
-
-				// ====================================================
-				// SPAWN
-				// ====================================================
-
-				player.level().addFreshEntity(beam);
-
-
-				// ====================================================
-				// CLEAN UP
-				// ====================================================
-
-				/*
-				 * This cast is finished.
-				 *
-				 * Remove it so the next cast gets a fresh roll.
-				 */
-				caster.getPersistentData().remove(VARIANT_TAG);
-
-
-				break;
+			cast = false;
 		}
 	}
 
@@ -122,84 +157,86 @@ public class magicZettaflare extends Magic {
 
 	@Override
 	public void playMagicCastSound(LivingEntity player, LivingEntity caster) {
-
-		/*
-		 * THIS happens at the beginning of the cast.
-		 *
-		 * Therefore this is where we choose the variant.
-		 */
-		int variant = rollVariant(player);
-
-
-		/*
-		 * Save it so magicUse() gets the EXACT SAME result later.
-		 */
-		caster.getPersistentData().putInt(VARIANT_TAG, variant);
+		if (cast) {
+			/*
+			 * THIS happens at the beginning of the cast.
+			 *
+			 * Therefore this is where we choose the variant.
+			 */
+			int variant = rollVariant(player);
 
 
-		// ========================================================
-		// IMMEDIATE CAST SOUND
-		// ========================================================
-
-		switch (variant) {
-
-
-			// ====================================================
-			// FINAL FLASH
-			// ====================================================
-
-			case ZettaflareBeamEntity.VARIANT_FINAL_FLASH -> {
-
-				System.out.println("Zettaflare cast started: FINAL FLASH");
+			/*
+			 * Save it so magicUse() gets the EXACT SAME result later.
+			 */
+			caster.getPersistentData().putInt(VARIANT_TAG, variant);
 
 
-				player.level().playSound(null, player.blockPosition(),
+			// ========================================================
+			// IMMEDIATE CAST SOUND
+			// ========================================================
 
-						ModSoundsRM.FINAL_FLASH.get(),
-
-						SoundSource.PLAYERS,
-
-						2.0F, 1.0F);
-			}
+			switch (variant) {
 
 
-			// ====================================================
-			// KAMEHAMEHA
-			// ====================================================
+				// ====================================================
+				// FINAL FLASH
+				// ====================================================
 
-			case ZettaflareBeamEntity.VARIANT_KAMEHAMEHA -> {
+				case ZettaflareBeamEntity.VARIANT_FINAL_FLASH -> {
 
-				System.out.println("Zettaflare cast started: KAMEHAMEHA");
-
-
-				player.level().playSound(null, player.blockPosition(),
-
-						ModSoundsRM.KAMEHAMEHA.get(),
-
-						SoundSource.PLAYERS,
-
-						2.0F, 1.0F);
-			}
+					System.out.println("Zettaflare cast started: FINAL FLASH");
 
 
-			// ====================================================
-			// ZETTAFLARE
-			// ====================================================
+					player.level().playSound(null, player.blockPosition(),
 
-			default -> {
+							ModSoundsRM.FINAL_FLASH.get(),
 
-				System.out.println("Zettaflare cast started: ZETTAFLARE");
+							SoundSource.PLAYERS,
+
+							2.0F, 1.0F);
+				}
 
 
-				player.level().playSound(null, player.blockPosition(),
+				// ====================================================
+				// KAMEHAMEHA
+				// ====================================================
 
-						ModSoundsRM.ZETTAFLARE.get(),
+				case ZettaflareBeamEntity.VARIANT_KAMEHAMEHA -> {
 
-						SoundSource.PLAYERS,
+					System.out.println("Zettaflare cast started: KAMEHAMEHA");
 
-						1.0F, 1.0F);
+
+					player.level().playSound(null, player.blockPosition(),
+
+							ModSoundsRM.KAMEHAMEHA.get(),
+
+							SoundSource.PLAYERS,
+
+							2.0F, 1.0F);
+				}
+
+
+				// ====================================================
+				// ZETTAFLARE
+				// ====================================================
+
+				default -> {
+
+					System.out.println("Zettaflare cast started: ZETTAFLARE");
+
+
+					player.level().playSound(null, player.blockPosition(),
+
+							ModSoundsRM.ZETTAFLARE.get(),
+
+							SoundSource.PLAYERS,
+
+							1.0F, 1.0F);
+				}
 			}
 		}
+		// possible alt cast sound for if fail?
 	}
 
 

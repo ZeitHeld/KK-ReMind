@@ -12,6 +12,7 @@
 - Tonberry should (hopefully) remove light sources it places upon death.
 - Changed 'Darkness Boost' to 'Dark Boost'
 - The 'Walker' abilities no longer require you to sprint to activate.
+- Zettaflare now requires and consumes Max Drive and Max Focus to cast. Otherwise, cast fails.
 
 ### New Spell
 
