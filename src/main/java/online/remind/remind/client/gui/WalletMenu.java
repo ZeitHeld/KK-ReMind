@@ -178,6 +178,11 @@ public class WalletMenu extends MenuFilterable {
                     continue;
                 }
 
+                // Only show lux coins if alignment is NONE
+                if (Objects.equals(type, "lux") && playerData.getAlignment() != Utils.OrgMember.NONE) {
+                    continue;
+                }
+
                 ItemStack coinStack = new ItemStack(item, 1);
                 items.add(coinStack);
             }
@@ -188,9 +193,13 @@ public class WalletMenu extends MenuFilterable {
         items.sort(Comparator.comparing((ItemStack stack) -> {
             Item item = stack.getItem();
             if (item instanceof RMCoinItem coin) {
-                return coin.getCoinType().equals("munny") ? 0 : 1; // 'munny' first, 'hearts' after
+                String coinType = coin.getCoinType();
+                if (coinType.equals("munny")) return 0;      // munny first
+                if (coinType.equals("hearts")) return 1;     // hearts second
+                if (coinType.equals("lux")) return 2;        // lux third
+                return Integer.MAX_VALUE;
             }
-            return Integer.MAX_VALUE; // fallback if not an RMCoinItem
+            return Integer.MAX_VALUE;
         }).thenComparing(stack -> {
             Item item = stack.getItem();
             if (item instanceof RMCoinItem coin) {
@@ -236,6 +245,7 @@ public class WalletMenu extends MenuFilterable {
                     int maxAffordable = switch (coinType) {
                         case "munny" -> playerData.getMunny() / coinValue;
                         case "hearts" -> playerData.getAlignment() != Utils.OrgMember.NONE ? playerData.getHearts() / coinValue : 0;
+                        case "lux" -> playerData.getAlignment() == Utils.OrgMember.NONE ? playerData.getLux() / coinValue : 0;
                         default -> 0;
                     };
 
@@ -311,6 +321,7 @@ public class WalletMenu extends MenuFilterable {
             boolean canTake = switch (type) {
                 case "munny" -> playerData.getMunny() >= value * amount;
                 case "hearts" -> playerData.getAlignment() != Utils.OrgMember.NONE && playerData.getHearts() >= value * amount;
+                case "lux" -> playerData.getAlignment() == Utils.OrgMember.NONE && playerData.getLux() >= value * amount;
                 default -> false;
             };
 

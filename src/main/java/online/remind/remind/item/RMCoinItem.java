@@ -67,6 +67,14 @@ public class RMCoinItem extends Item implements IItemCategory,ICreativeTabRM{
                                 true
                         );
                     }
+                    case "lux" -> {
+                        playerData.addLux(valueGained);
+                        player.displayClientMessage(
+                                Component.translatable("message.received.lux", valueGained)
+                                        .withStyle(ChatFormatting.YELLOW),
+                                true
+                        );
+                    }
                 }
 
                 PacketHandler.sendTo(new SCSyncPlayerData(player), (ServerPlayer) player);

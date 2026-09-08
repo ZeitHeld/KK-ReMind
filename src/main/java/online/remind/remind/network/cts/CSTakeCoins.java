@@ -66,10 +66,18 @@ public record CSTakeCoins(ItemStack stack) implements CustomPacketPayload{
                         }
                     } else if (Objects.equals(type, "hearts") && playerData.getAlignment() != Utils.OrgMember.NONE) {
                         if (playerData.getHearts() >= totalCost) {
-                            playerData.setHearts(playerData.getHearts() - totalCost);
+                            playerData.removeHearts(totalCost);
                             player.getInventory().add(message.stack.copy());
                         } else {
                             //System.out.println("[CSTakeCoins] Denied: Not enough Hearts");
+                            return;
+                        }
+                    } else if (Objects.equals(type, "lux") && playerData.getAlignment() == Utils.OrgMember.NONE) {
+                        if (playerData.getLux() >= totalCost) {
+                            playerData.addLux(-totalCost);
+                            player.getInventory().add(message.stack.copy());
+                        } else {
+                            //System.out.println("[CSTakeCoins] Denied: Not enough Lux");
                             return;
                         }
                     }

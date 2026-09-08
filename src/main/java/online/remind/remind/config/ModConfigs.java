@@ -82,6 +82,7 @@ public class ModConfigs {
         netheriteCoinValue = COMMON.netheriteCoinValue.get();
         amethystCoinValue = COMMON.amethystCoinValue.get();
         heartCoinValue = COMMON.heartCoinValue.get();
+        luxCoinValue = COMMON.luxCoinValue.get();
 
     }
 
@@ -125,6 +126,7 @@ public class ModConfigs {
     public static int netheriteCoinValue;
     public static int amethystCoinValue;
     public static int heartCoinValue;
+    public static int luxCoinValue;
 
 
     @SubscribeEvent
