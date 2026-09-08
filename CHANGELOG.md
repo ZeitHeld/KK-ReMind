@@ -20,11 +20,20 @@
 #### **Recall** - *Re:Mind Original*
 - Cost: ALL
 - Teleports you to your respawn point.
+- Meld Recipe: Warp + Curaga
+
+### New Ability
+
+#### **Silence Heart**
+- Cost: N/A
+- Description: On-hit, afflict the victim with the Silence status effect.
+- How to Obtain: Equip *Dragon's Nebula* keychain. (See below)
 
 
 ### New Keyblades
 
 - Guardian's Light, a gift for ***KaliArchon***
+  - Description: 
   - Base Stats: 8/8
   - Base Ability: Way to Light
 - Nebula Records, commissioned by DogofTheRoad
@@ -32,12 +41,16 @@
   - Base Stats: 8/10
   - Base Ability: MP Walker
 - Dragon's Nebula, commissioned by ConstellationDragon
-  - Base Stats: 
-  - Base Ability: 
+  - Description: 
+  - Base Stats: -/-
+  - Base Ability: **NEW** Silence Heart
 - Maddening Corruption, commissioned by TheFeralKitsune
+  - Description: 
   - Base Stats: 13/6
   - Base Ability: Dark Infusion
+    
 
+#### What-If Keyblades
 *Inspired by and based on Marduk-Kurios's Designs*
 - Union Ultima (Upright)
   - Description: “A supreme Keyblade born from bonds united as one. Its radiant edge carries the strength of every heart that refuses to stand alone.”

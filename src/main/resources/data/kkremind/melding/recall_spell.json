@@ -1,0 +1,11 @@
+{
+  "cost": 0,
+  "ingredient1": "kingdomkeys:spellwarp",
+  "ingredient2": "kingdomkeys:spellcuraga",
+  "output": {
+    "type": "item",
+    "item": "kkremind:recall_spell",
+    "quantity": 1
+  },
+  "tier": 5
+}
