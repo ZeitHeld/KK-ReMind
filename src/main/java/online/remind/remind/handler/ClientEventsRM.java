@@ -314,7 +314,14 @@ public class ClientEventsRM {
 						player.level().addParticle(new DustParticleOptions(new Vector3f(0.95f,0f,0f),0.5f),player.getX() + player.level().random.nextDouble() - 0.45D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
 						player.level().addParticle(new DustParticleOptions(new Vector3f(0.25f,0f,0f),0.65f),player.getX() + player.level().random.nextDouble() - 0.45D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
 						player.level().addParticle(new DustParticleOptions(new Vector3f(0.5f,0f,0f),0.35f),player.getX() + player.level().random.nextDouble() - 0.45D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+					}
 
+					// Draconic Liberation Active
+					if (playerData.isFormActive(ModDriveFormsRM.DRACONIC_LIBERATION)){
+						player.level().addParticle(new DustParticleOptions(new Vector3f(0.75f,0f,0.75f),0.5f),player.getX() + player.level().random.nextDouble() - 0.45D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+						player.level().addParticle(new DustParticleOptions(new Vector3f(0f,0f,0f),0.65f),player.getX() + player.level().random.nextDouble() - 0.45D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+						player.level().addParticle(new DustParticleOptions(new Vector3f(0.25f,0f,0.25f),0.35f),player.getX() + player.level().random.nextDouble() - 0.45D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+						player.level().addParticle(new DustParticleOptions(new Vector3f(1f,1f,1f),0.35f),player.getX() + player.level().random.nextDouble() - 0.45D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
 					}
 
 

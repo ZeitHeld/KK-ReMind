@@ -26,8 +26,8 @@
 
 #### **Silence Heart**
 - Cost: N/A
-- Description: On-hit, afflict the victim with the Silence status effect.
-- How to Obtain: Equip *Dragon's Nebula* keychain. (See below)
+- Description: On-hit, afflict the victim with the Silence status effect. *Scales with Critical Boost*
+- How to Obtain: Equip *Entropy's Requiem* keychain. (See below)
 
 
 ### New Keyblades
@@ -40,10 +40,11 @@
   - Description: A very musically themed Keyblade with high emphasis on casting and the rhythm of casting.
   - Base Stats: 8/10
   - Base Ability: MP Walker
-- Dragon's Nebula, commissioned by ConstellationDragon
+- Entropy's Requiem, commissioned by ConstellationDragon
   - Description: 
-  - Base Stats: -/-
+  - Base Stats: 10/10
   - Base Ability: **NEW** Silence Heart
+  - Custom Form: 
 - Maddening Corruption, commissioned by TheFeralKitsune
   - Description: 
   - Base Stats: 13/6

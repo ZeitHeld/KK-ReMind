@@ -43,6 +43,7 @@ public class StringsRM {
         bloodlust = StringsRM.DFMA_Prefix+"bloodlust",
 
         regenForm = StringsRM.DFMA_Prefix+"regen",
+        draconicLiberation = StringsRM.DFMA_Prefix+"draconic_liberation",
 
         // Magic
         Magic_Haste = StringsRM.MAMA_Prefix+"haste",
@@ -215,6 +216,7 @@ public class StringsRM {
 
         Regen = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"regen",
         Exceed = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"exceed",
+        SilenceHeart = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"silence_heart",
 
         // Reprisals
         counterHammer = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"counter_hammer",

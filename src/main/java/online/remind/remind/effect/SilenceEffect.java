@@ -16,8 +16,8 @@ public class SilenceEffect extends MobEffect {
         if (pLivingEntity instanceof Player player) {
             PlayerData playerData = PlayerData.get(player);
 
-            playerData.setMagicCooldownTicks(20);
-            playerData.setLimitCooldownTicks(20);
+            playerData.setMagicCooldownTicks(10);
+            playerData.setLimitCooldownTicks(10);
         }
 
 

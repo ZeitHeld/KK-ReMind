@@ -12,12 +12,10 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import online.kingdomkeys.kingdomkeys.ability.ModAbilities;
 import online.kingdomkeys.kingdomkeys.item.*;
-import online.kingdomkeys.kingdomkeys.lib.Strings;
 import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.ability.ModAbilitiesRM;
 import online.remind.remind.capabilities.GlobalDataRM;
 import online.remind.remind.config.ModConfigs;
-import online.remind.remind.lib.StringsRM;
 import online.remind.remind.magic.ModMagicsRM;
 import online.remind.remind.shotlock.ModShotlocksRM;
 
@@ -159,6 +157,8 @@ public class ModItemsRM{
         voidlight = ITEMS.register("voidlight", () -> new KeybladeItem(new Item.Properties())),
         fortuna = ITEMS.register("fortuna", () -> new KeybladeItem(new Item.Properties())),
         nebulaRecords = ITEMS.register("nebula_records", () -> new KeybladeItem(new Item.Properties())),
+        entropysRequiem = ITEMS.register("entropys_requiem", () -> new KeybladeItem(new Item.Properties())),
+        maddeningCorruption = ITEMS.register("maddening_corruption", () -> new KeybladeItem(new Item.Properties())),
 
         kaliKeyblade = ITEMS.register("kali_keyblade", () -> new KeybladeItem(new Item.Properties())),
 
@@ -179,9 +179,9 @@ public class ModItemsRM{
         voidlightChain = ITEMS.register("voidlight_chain", () -> new KeychainItem()),
         fortunaChain = ITEMS.register("fortuna_chain", () -> new KeychainItem()),
         nebulaRecordsChain = ITEMS.register("nebula_records_chain", () -> new KeychainItem()),
-
+        entropysRequiemChain = ITEMS.register("entropys_requiem_chain", () -> new KeychainItem()),
+        maddeningCorruptionChain = ITEMS.register("maddening_corruption_chain", () -> new KeychainItem()),
         kaliKeybladeChain = ITEMS.register("kali_keyblade_chain", () -> new KeychainItem()),
-
         unionUltimaLightChain = ITEMS.register("union_ultima_l_chain", () -> new KeychainItem()),
         unionUltimaDarkChain = ITEMS.register("union_ultima_d_chain", () -> new KeychainItem()),
 

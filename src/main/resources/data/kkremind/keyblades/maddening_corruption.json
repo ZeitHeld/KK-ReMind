@@ -1,0 +1,180 @@
+{
+  "ability": "kkremind:ability_mp_walker",
+  "base_stats": {
+    "mag": 13,
+    "str": 6
+  },
+  "description": "A keyblade which possesses old powers, though not forgotten. It keeps your MP on the rhythm.",
+  "keychain": "kkremind:maddening_corruption_chain",
+  "levels": [
+    {
+      "mag": 11,
+      "recipe": [
+        {
+          "material": "kingdomkeys:fluorite",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:wellspring_shard",
+          "quantity": 2
+        }
+      ],
+      "str": 8
+    },
+    {
+      "mag": 11,
+      "recipe": [
+        {
+          "material": "kingdomkeys:fluorite",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:wellspring_shard",
+          "quantity": 3
+        }
+      ],
+      "str": 9
+    },
+    {
+      "mag": 12,
+      "recipe": [
+        {
+          "material": "kingdomkeys:fluorite",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:wellspring_shard",
+          "quantity": 4
+        }
+      ],
+      "str": 9
+    },
+    {
+      "mag": 12,
+      "recipe": [
+        {
+          "material": "kingdomkeys:damascus",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:wellspring_stone",
+          "quantity": 1
+        }
+      ],
+      "str": 10,
+      "ability": "kingdomkeys:ability_endless_magic"
+    },
+    {
+      "mag": 13,
+      "recipe": [
+        {
+          "material": "kingdomkeys:damascus",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:wellspring_stone",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:writhing_stone",
+          "quantity": 2
+        }
+      ],
+      "str": 10
+    },
+    {
+      "mag": 13,
+      "recipe": [
+        {
+          "material": "kingdomkeys:damascus",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:wellspring_stone",
+          "quantity": 3
+        },
+        {
+          "material": "kingdomkeys:writhing_stone",
+          "quantity": 2
+        }
+      ],
+      "str": 11,
+      "ability": "kingdomkeys:ability_mp_thrift"
+    },
+    {
+      "mag": 13,
+      "recipe": [
+        {
+          "material": "kingdomkeys:adamantite",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:wellspring_gem",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:writhing_gem",
+          "quantity": 1
+        }
+      ],
+      "str": 12
+    },
+    {
+      "mag": 14,
+      "recipe": [
+        {
+          "material": "kingdomkeys:adamantite",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:wellspring_gem",
+          "quantity": 2
+        },
+        {
+          "material": "kingdomkeys:writhing_gem",
+          "quantity": 2
+        }
+      ],
+      "str": 12
+    },
+    {
+      "mag": 14,
+      "recipe": [
+        {
+          "material": "kingdomkeys:adamantite",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:wellspring_gem",
+          "quantity": 3
+        },
+        {
+          "material": "kingdomkeys:writhing_gem",
+          "quantity": 2
+        }
+      ],
+      "str": 13
+    },
+    {
+      "mag": 15,
+      "recipe": [
+        {
+          "material": "kingdomkeys:electrum",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:wellspring_crystal",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:writhing_crystal",
+          "quantity": 1
+        }
+      ],
+      "str": 13,
+      "ability": "kkremind:ability_mp_walker"
+    }
+  ],
+  "reach": 6.0,
+  "sound": "kingdomkeys:keyblade_hit/generic_hit"
+}

@@ -73,7 +73,6 @@ import online.remind.remind.network.cts.CSGrowthPanelActionPacket;
 import online.remind.remind.network.stc.SCOrganizationPanelSyncPacket;
 import online.remind.remind.panels.OrganizationPanelAbilityHelper;
 import online.remind.remind.panels.OrganizationPanelStatHelper;
-import online.remind.remind.panels.PanelRegistry;
 import online.remind.remind.panels.PanelStats;
 import online.remind.remind.reactioncommands.ModReactionCommandsRM;
 
@@ -354,6 +353,8 @@ public class EntityEventsRM {
 		playerData.setDriveFormLevel(ModDriveFormsRM.CRITICAL_IMPACT.location(), 1);
 		playerData.setDriveFormLevel(ModDriveFormsRM.SPELLWEAVER.location(), 1);
 		playerData.setDriveFormLevel(ModDriveFormsRM.BLOOSTLUST.location(), 1);
+
+		playerData.setDriveFormLevel(ModDriveFormsRM.DRACONIC_LIBERATION.location(), 1);
 
 	}
 
@@ -1119,6 +1120,7 @@ public class EntityEventsRM {
 					updateDriveAbilities(player, ModAbilitiesRM.WAY_TO_LIGHT.location(), ModDriveFormsRM.LIGHT.location());
 					updateDriveAbilities(player, ModAbilitiesRM.ROAD_TO_DAWN.location(), ModDriveFormsRM.TWILIGHT.location());
 					updateDriveAbilities(player, ModAbilitiesRM.REGEN.location(), ModDriveFormsRM.REGEN.location());
+					updateDriveAbilities(player, ModAbilitiesRM.SILENCE_HEART.location(), ModDriveFormsRM.DRACONIC_LIBERATION.location());
 
 					// Light/Darkness Within
 
@@ -2382,7 +2384,6 @@ public class EntityEventsRM {
 					}
 				if (playerData.isAbilityEquipped(ModAbilitiesRM.DARK_INFUSION)){
 					if (!event.getSource().type().msgId().equals("darkness") && !event.getSource().type().msgId().equals("explosion.player")){
-						//player.sendSystemMessage(Component.literal("Light Infusion Applied!"));
 						event.getEntity().hurt(KKDamageTypes.getElementalDamage(KKDamageTypes.DARKNESS, event.getEntity(), null), (((float) darkBoosts / 2) * dmg));
 					}
 				}
@@ -2390,6 +2391,28 @@ public class EntityEventsRM {
 						event.getEntity().hurt(KKDamageTypes.getElementalDamage(KKDamageTypes.LIGHT, event.getEntity(), null), (((float) darkBoosts / 2) * dmg)/2);
 						event.getEntity().invulnerableTime = 0;
 						event.getEntity().hurt(KKDamageTypes.getElementalDamage(KKDamageTypes.DARKNESS, event.getEntity(), null), (((float) darkBoosts / 2) * dmg)/2);
+				}
+
+				// Silence Heart
+				if (playerData.isAbilityEquipped(ModAbilitiesRM.SILENCE_HEART)){
+
+					int[] criticalBoostData =
+							playerData.getAbilityMap().get(Strings.criticalBoost);
+
+					int criticalBoostStacks =
+							criticalBoostData != null && criticalBoostData.length > 1
+									? Math.max(0, criticalBoostData[1])
+									: 0;
+
+					// 25% base + 5 percentage points per equipped Critical Boost
+					float silenceChance = Math.min(
+							1.0F,
+							0.25f + criticalBoostStacks * 0.05F
+					);
+
+					if (player.getRandom().nextFloat() < silenceChance) {
+						event.getEntity().addEffect(new MobEffectInstance(ModMobEffectsRM.SILENCE, 100,0));
+					}
 				}
 			}
 		}

@@ -300,9 +300,9 @@
   "ability.ability_counter_rush.name": "Counter Rush",
   "ability.ability_counter_rush.desc": "Upon a successful guard, counter attack with a flurry of blows! Scales with Attack Haste!",
   "ability.ability_tidus.name": "Zanarkand's Ace",
-  "ability.ability_tidus.desc": "The Spirit of Tidus bursts forth! Gain strength and speed when underwater, additionally you cannot drown!",
+  "ability.ability_tidus.desc": "☆Exclusive☆ The Spirit of Tidus bursts forth! Gain strength and speed when underwater, additionally you cannot drown!",
   "ability.ability_jecht.name": "Brutal Blitzer",
-  "ability.ability_jecht.desc": "Unleash Jecht's fury! Your strikes deal extra damage according to the number of Critical Boosts equipped!",
+  "ability.ability_jecht.desc": "☆Exclusive☆ Unleash Jecht's fury! Your strikes deal extra damage according to the number of Critical Boosts equipped!",
   "ability.ability_spellblade.name": "Spellblade",
   "ability.ability_spellblade.desc": "Embrace the power of the elements! Augment your strikes with the element you most align with! Effects vary! \nPlease note, only 1 bonus may be active at a time. \nRequires 4 of a certain boost to activate.",
   "ability.ability_ultima_weapon.name": "Ultima Weapon (Ability)",
@@ -328,18 +328,21 @@
 
 
   "ability.ability_lyric1.name": "Volt Absorb",
-  "ability.ability_lyric1.desc": "When equipped and hit with Lightning or Thunder based magic, take 10% less damage and gain Haste and Speed for 5 seconds.",
+  "ability.ability_lyric1.desc": "☆Exclusive☆  \nWhen equipped and hit with Lightning or Thunder based magic, take 10% less damage and gain Haste and Speed for 5 seconds.",
   "ability.ability_lyric2.name": "Flash and Thunder",
-  "ability.ability_lyric2.desc": "A Thunderous counter. Scales with Thunder Boost. \nRequires Counter Blast.",
+  "ability.ability_lyric2.desc": "☆Exclusive☆  \nA Thunderous counter. Scales with Thunder Boost. \nRequires Counter Blast.",
 
   "ability.ability_xephiro.name": "Vampiric Essence",
-  "ability.ability_xephiro.desc": "Makes your attacks thirst for blood. Granting HP on hit. \nScales with Darkness Boost.",
+  "ability.ability_xephiro.desc": "☆Exclusive☆  \nMakes your attacks thirst for blood. Granting HP on hit. \nScales with Darkness Boost.",
 
   "ability.ability_regen.name": "Dimensional Gaze",
-  "ability.ability_regen.desc": "Grants access to the reaction command 'Ravenous Saber', a deadly 5-hit combo of elemental fury! \nDeals more damage with 'Spellblade' equipped. \n\nGrants access to Gaze Form. \nThis form specializes in heavy hitting attacks imbued with the power of the elements.",
+  "ability.ability_regen.desc": "☆Exclusive☆  \nGrants access to the reaction command 'Ravenous Saber', a deadly 5-hit combo of elemental fury! \nDeals more damage with 'Spellblade' equipped. \n\nGrants access to Gaze Form. \nThis form specializes in heavy hitting attacks imbued with the power of the elements.",
 
   "ability.ability_exceed.name": "Exceed",
   "ability.ability_exceed.desc": "☆Exclusive☆ \nUnlocks the 'Exceed' Reaction Command. \nCost: 10 FP. Can be stacked 3 times. \nBoost your next attack with explosive fury! Time it with your strikes to do even more damage!\nDamage scales with stacks of Exceed and Fire Boosts!\nTime it right and you will get MAX stacks and refund some Focus!",
+
+  "ability.ability_silence_heart.name": "Silence Heart",
+  "ability.ability_silence_heart.desc": "☆Exclusive☆ \n[On-hit] Chance to inflict Silence for 5 seconds. Scales with Critical Boost.",
 
   "shotlock.flame_salvo.name": "Flame Salvo",
   "shotlock.bubble_blaster.name": "Bubble Blaster",
@@ -383,6 +386,7 @@
   "item.kkremind.voidlight": "Voidlight",
   "item.kkremind.fortuna": "Fortuna",
   "item.kkremind.nebula_records": "Nebula Records",
+  "item.kkremind.entropys_requiem": "Entropy's Requiem",
   "item.kkremind.kali_keyblade": "Guardian's Hope",
   "item.kkremind.union_ultima_l": "Union Ultima Weapon (Upright)",
   "item.kkremind.union_ultima_d": "Union Ultima Weapon (Reversed)",
@@ -399,6 +403,7 @@
   "item.kkremind.voidlight_chain": "Voidlight Chain",
   "item.kkremind.fortuna_chain": "Fortuna Chain",
   "item.kkremind.nebula_records_chain": "Nebula Records Chain",
+  "item.kkremind.entropys_requiem_chain": "Entropy's Requiem Chain",
 
   "item.kkremind.kali_keyblade_chain": "Guardian's Hope Chain",
   "item.kkremind.union_ultima_l_chain": "Union Ultima Weapon (Upright) Chain",

@@ -64,9 +64,20 @@ public class ModAbilitiesRM extends ModAbilities{
         ULTIMA_WEAPON_ABILITY = register(StringsRM.ABMA_Prefix+"ultima_weapon", () -> new Ability(ResourceLocation.parse(StringsRM.ultima_weapon_ability), 0, Ability.AbilityType.SUPPORT, order++)),
         MUNNY_MAGIC = register(StringsRM.ABMA_Prefix+"munny_magic", () -> new Ability(ResourceLocation.parse(StringsRM.munny_magic), 10, Ability.AbilityType.SUPPORT, order++)),
         BLOCK_REPLENISHER = register(StringsRM.ABMA_Prefix+"block_replenisher", () -> new Ability(ResourceLocation.parse(StringsRM.blockReplenisher), 3, Ability.AbilityType.SUPPORT, order++)),
+        HP_WALKER = register(StringsRM.ABMA_Prefix+"hp_walker", () -> new Ability(ResourceLocation.parse(StringsRM.hpWalker),10,Ability.AbilityType.SUPPORT, order++)),
+        MP_WALKER = register(StringsRM.ABMA_Prefix+"mp_walker", () -> new Ability(ResourceLocation.parse(StringsRM.mpWalker),10,Ability.AbilityType.SUPPORT, order++)),
+        FOCUS_WALKER = register(StringsRM.ABMA_Prefix+"focus_walker", () -> new Ability(ResourceLocation.parse(StringsRM.focusWalker),10,Ability.AbilityType.SUPPORT, order++)),
+        HEART_WALKER = register(StringsRM.ABMA_Prefix+"heart_walker", () -> new Ability(ResourceLocation.parse(StringsRM.heartWalker),10,Ability.AbilityType.SUPPORT, order++)),
+        EXP_WALKER = register(StringsRM.ABMA_Prefix+"exp_walker", () -> new Ability(ResourceLocation.parse(StringsRM.expWalker),10,Ability.AbilityType.SUPPORT, order++)),
+        ATTACK_HASTE = register(StringsRM.ABMA_Prefix+"attack_haste", () -> new Ability(ResourceLocation.parse(StringsRM.attackHaste),3,Ability.AbilityType.SUPPORT, order++)),
+        MP_SLOW = register(StringsRM.ABMA_Prefix+"mp_slow", () -> new Ability(ResourceLocation.parse(StringsRM.mpSlow),3,Ability.AbilityType.SUPPORT, order++)),
+        MP_SLOWRA = register(StringsRM.ABMA_Prefix+"mp_slowra", () -> new Ability(ResourceLocation.parse(StringsRM.mpSlowra),4,Ability.AbilityType.SUPPORT, order++)),
+        MP_SLOWGA = register(StringsRM.ABMA_Prefix+"mp_slowga", () -> new Ability(ResourceLocation.parse(StringsRM.mpSlowga),5,Ability.AbilityType.SUPPORT, order++)),
+        ONE_HP = register(StringsRM.ABMA_Prefix+"one_hp", () -> new Ability(ResourceLocation.parse(StringsRM.oneHP),5,Ability.AbilityType.SUPPORT, order++)),
+        RIBBON = register(StringsRM.ABMA_Prefix+"ribbon", () -> new Ability(ResourceLocation.parse(StringsRM.ribbon),10,Ability.AbilityType.SUPPORT, order++)),
 
 
-    LIGHT_INFUSION = register(StringsRM.ABMA_Prefix+"light_infusion", () -> new Ability(ResourceLocation.parse(StringsRM.lightInfusion), 0, Ability.AbilityType.SUPPORT, order++)),
+        LIGHT_INFUSION = register(StringsRM.ABMA_Prefix+"light_infusion", () -> new Ability(ResourceLocation.parse(StringsRM.lightInfusion), 0, Ability.AbilityType.SUPPORT, order++)),
         DARK_INFUSION = register(StringsRM.ABMA_Prefix+"dark_infusion", () -> new Ability(ResourceLocation.parse(StringsRM.darkInfusion), 0, Ability.AbilityType.SUPPORT, order++)),
         TWILIGHT_INFUSION = register(StringsRM.ABMA_Prefix+"twilight_infusion", () -> new Ability(ResourceLocation.parse(StringsRM.twilightInfusion), 0, Ability.AbilityType.SUPPORT, order++)),
 
@@ -81,20 +92,9 @@ public class ModAbilitiesRM extends ModAbilities{
 
 
 
-    HP_WALKER = register(StringsRM.ABMA_Prefix+"hp_walker", () -> new Ability(ResourceLocation.parse(StringsRM.hpWalker),10,Ability.AbilityType.SUPPORT, order++)),
-        MP_WALKER = register(StringsRM.ABMA_Prefix+"mp_walker", () -> new Ability(ResourceLocation.parse(StringsRM.mpWalker),10,Ability.AbilityType.SUPPORT, order++)),
-        FOCUS_WALKER = register(StringsRM.ABMA_Prefix+"focus_walker", () -> new Ability(ResourceLocation.parse(StringsRM.focusWalker),10,Ability.AbilityType.SUPPORT, order++)),
-        HEART_WALKER = register(StringsRM.ABMA_Prefix+"heart_walker", () -> new Ability(ResourceLocation.parse(StringsRM.heartWalker),10,Ability.AbilityType.SUPPORT, order++)),
-        EXP_WALKER = register(StringsRM.ABMA_Prefix+"exp_walker", () -> new Ability(ResourceLocation.parse(StringsRM.expWalker),10,Ability.AbilityType.SUPPORT, order++)),
 
-        ATTACK_HASTE = register(StringsRM.ABMA_Prefix+"attack_haste", () -> new Ability(ResourceLocation.parse(StringsRM.attackHaste),3,Ability.AbilityType.SUPPORT, order++)),
-        MP_SLOW = register(StringsRM.ABMA_Prefix+"mp_slow", () -> new Ability(ResourceLocation.parse(StringsRM.mpSlow),3,Ability.AbilityType.SUPPORT, order++)),
-        MP_SLOWRA = register(StringsRM.ABMA_Prefix+"mp_slowra", () -> new Ability(ResourceLocation.parse(StringsRM.mpSlowra),4,Ability.AbilityType.SUPPORT, order++)),
-        MP_SLOWGA = register(StringsRM.ABMA_Prefix+"mp_slowga", () -> new Ability(ResourceLocation.parse(StringsRM.mpSlowga),5,Ability.AbilityType.SUPPORT, order++)),
-        ONE_HP = register(StringsRM.ABMA_Prefix+"one_hp", () -> new Ability(ResourceLocation.parse(StringsRM.oneHP),5,Ability.AbilityType.SUPPORT, order++)),
-        RIBBON = register(StringsRM.ABMA_Prefix+"ribbon", () -> new Ability(ResourceLocation.parse(StringsRM.ribbon),10,Ability.AbilityType.SUPPORT, order++)),
 
-    // Weapon Exclusive Abilities
+        // Weapon Exclusive Abilities
         TIDUS = register(StringsRM.ABMA_Prefix+"tidus", () -> new Ability(ResourceLocation.parse(StringsRM.Tidus),3,Ability.AbilityType.SUPPORT, order++)),
         JECHT = register(StringsRM.ABMA_Prefix+"jecht", () -> new Ability(ResourceLocation.parse(StringsRM.Jecht),3,Ability.AbilityType.SUPPORT, order++)),
 
@@ -102,7 +102,8 @@ public class ModAbilitiesRM extends ModAbilities{
         LYRIC2 = register(StringsRM.ABMA_Prefix+"lyric2", () -> new Ability(ResourceLocation.parse(StringsRM.Lyric2),0,Ability.AbilityType.SUPPORT, order++)),
         XEPHIRO = register(StringsRM.ABMA_Prefix+"xephiro", () -> new Ability(ResourceLocation.parse(StringsRM.Xephiro),0,Ability.AbilityType.SUPPORT, order++)),
         REGEN = register(StringsRM.ABMA_Prefix+"regen", () -> new Ability(ResourceLocation.parse(StringsRM.Regen),0,Ability.AbilityType.SUPPORT, order++)),
-        EXCEED = register(StringsRM.ABMA_Prefix+"exceed", () -> new Ability(ResourceLocation.parse(StringsRM.Exceed),0,Ability.AbilityType.ACTION, order++));
+        EXCEED = register(StringsRM.ABMA_Prefix+"exceed", () -> new Ability(ResourceLocation.parse(StringsRM.Exceed),0,Ability.AbilityType.ACTION, order++)),
+        SILENCE_HEART = register(StringsRM.ABMA_Prefix+"silence_heart", () -> new Ability(ResourceLocation.parse(StringsRM.SilenceHeart),0,Ability.AbilityType.SUPPORT, order++));
 
 
     // Twilight (Double) Form Exclusive Abilities
