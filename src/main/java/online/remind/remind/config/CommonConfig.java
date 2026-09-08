@@ -45,6 +45,7 @@ public class CommonConfig {
     public ModConfigSpec.IntValue netheriteCoinValue;
     public ModConfigSpec.IntValue amethystCoinValue;
     public ModConfigSpec.IntValue heartCoinValue;
+    public ModConfigSpec.IntValue luxCoinValue;
 
 
 
@@ -182,6 +183,10 @@ public class CommonConfig {
         heartCoinValue = builder
                 .comment("Sets the value for the Heart Coin. Default: 1000")
                 .defineInRange("heartCoinValue", 1000, 1, 999999);
+
+        luxCoinValue = builder
+                .comment("Sets the value for the Lux Coin. Default: 1000")
+                .defineInRange("luxCoinValue", 1000, 1, 999999);
 
         builder.pop();
     }

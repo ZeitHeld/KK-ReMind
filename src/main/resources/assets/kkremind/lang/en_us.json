@@ -452,6 +452,7 @@
   "item.kkremind.netherite_coin": "Netherite Coin",
   "item.kkremind.amethyst_coin": "Amethyst Coin",
   "item.kkremind.heart_coin": "Heart Coin",
+  "item.kkremind.lux_coin": "Lux Coin",
   "item.kkremind.ability_orb": "Ability Orb",
   "item.kkremind.slot_releaser": "Slot Releaser",
 
@@ -498,10 +499,11 @@
   "menu_button.ability.desc": "Tells you about the new Abilities added with Re:Mind.",
 
   "menu_button.wallet": "Wallet",
-  "menu_button.wallet.desc": "Allows you to retrieve Munny or Hearts as coins for trade use.",
+  "menu_button.wallet.desc": "Allows you to retrieve Munny, Hearts, or Lux as coins for trade use.",
 
   "message.received.munny": "You've received %s Munny!",
   "message.received.hearts": "You've received %s Hearts!",
+  "message.received.lux": "You've received %s Lux!",
 
   "reactioncommand.kkremind.rc_riskcharge.name": "Riskcharge",
   "reactioncommand.kkremind.rc_rage.name": "Rage Form",
