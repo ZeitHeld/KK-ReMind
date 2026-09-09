@@ -1,0 +1,54 @@
+{
+  "nodes": {
+    "start": {
+      "lines": [
+        "Hello, I'm Chirithy, your personal comp... Dream Eater",
+        "I am able to kill a Rathalos...."
+      ],
+      "answers": [
+        {
+          "text": "Yo WTF that's scary lolxd bye",
+          "goto": "deep_intro",
+          "do": [
+            {
+              "type": "kingdomkeys:close"
+            }
+          ]
+        },
+        {
+          "text": "Nah I'm lvl 2 already what's up?",
+          "goto": "deep_intro",
+          "if": [
+            {
+              "type": "kingdomkeys:level",
+              "min": 2
+            }
+          ]
+        }
+      ]
+    },
+    "deep_intro": {
+      "lines": [
+        "Aha I see you stronk bro",
+        "But you see, this isn't my final form..."
+      ],
+      "answers": [
+        {
+          "text": "Neither is mine bruh the fuck do you think I am? put your hands up and give me diamonds!",
+          "do": [
+            {
+              "type": "kingdomkeys:give_item",
+              "item": {
+                "id": "minecraft:diamond",
+                "count": 16
+              }
+            }
+          ]
+        },
+        {
+          "text": "Ah nice to meet you, but I'm in a hurry, byeeeeeeeeeeeeeeeeee"
+        }
+      ]
+    }
+  }
+}

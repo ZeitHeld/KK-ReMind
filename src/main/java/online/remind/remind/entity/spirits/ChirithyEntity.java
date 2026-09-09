@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -42,6 +43,8 @@ import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.effects.ModMobEffects;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCAeroSoundPacket;
+import online.kingdomkeys.kingdomkeys.world.DialogueHandler;
+import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.capabilities.GlobalDataRM;
 import online.remind.remind.capabilities.ModDataRM;
 import online.remind.remind.client.sound.ModSoundsRM;
@@ -802,31 +805,29 @@ public class ChirithyEntity extends BaseDreamEaterEntity implements GeoEntity {
         return true;
     }
 
-    @Override
-    public InteractionResult mobInteract(Player player, InteractionHand hand) {
-        ItemStack heldStack = player.getItemInHand(hand);
-        int giftExp = getChirithyGiftExp(heldStack);
+	@Override
+	public InteractionResult mobInteract(Player player, InteractionHand hand) {
+		if(player.isCrouching() && !player.level().isClientSide()){
+			DialogueHandler.start((ServerPlayer) player, this, ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID,"dreameater_introduction"));
+			return super.mobInteract(player, hand);
+		}
+		ItemStack heldStack = player.getItemInHand(hand);
+		int giftExp = getChirithyGiftExp(heldStack);
 
-        if (giftExp > 0) {
-            return giveChirithyGift(player, heldStack, giftExp);
-        }
+		if (giftExp > 0) {
+			return giveChirithyGift(player, heldStack, giftExp);
+		}
 
-        InteractionResult result = DreamEaterPetHelper.tryPetDreamEater(
-                this,
-                player,
-                hand,
-                this.getOwnerUUID(),
-                "Chirithy"
-        );
+		InteractionResult result = DreamEaterPetHelper.tryPetDreamEater(this, player, hand, this.getOwnerUUID(), "Chirithy");
 
-        if (result != InteractionResult.PASS) {
-            return result;
-        }
+		if (result != InteractionResult.PASS) {
+			return result;
+		}
 
-        return super.mobInteract(player, hand);
-    }
+		return super.mobInteract(player, hand);
+	}
 
-    private InteractionResult giveChirithyGift(
+	private InteractionResult giveChirithyGift(
             Player player,
             ItemStack heldStack,
             int giftExp
