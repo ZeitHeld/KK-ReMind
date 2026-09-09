@@ -241,6 +241,7 @@ public class ModItemsRM{
         netheriteCoin = ITEMS.register("netherite_coin", () -> new RMCoinItem(new Item.Properties().stacksTo(64), () -> ModConfigs.netheriteCoinValue, "munny")),
         amethystCoin = ITEMS.register("amethyst_coin", () -> new RMCoinItem(new Item.Properties().stacksTo(64), () -> ModConfigs.amethystCoinValue, "munny")),
         heartCoin = ITEMS.register("heart_coin", () -> new RMCoinItem(new Item.Properties().stacksTo(64), () -> ModConfigs.heartCoinValue, "hearts")),
+        luxCoin = ITEMS.register("lux_coin", () -> new RMCoinItem(new Item.Properties().stacksTo(64), () -> ModConfigs.luxCoinValue, "lux")),
 
         // Dream Eater Gifts
         chefsKnife = ITEMS.register("chefs_knife", () -> new ChefsKnifeItem(new Item.Properties().stacksTo(64))),
