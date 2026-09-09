@@ -2,51 +2,51 @@
   "nodes": {
     "start": {
       "lines": [
-        "Hello, I'm Chirithy, your personal comp... Dream Eater",
-        "I am able to kill a Rathalos...."
+        "Hello, I'm Chirithy, your personal comp... Dream Eater.",
+        "I'm to be your guide on your journey, and it's a pleasure to meet you!"
       ],
       "answers": [
         {
-          "text": "Yo WTF that's scary lolxd bye",
-          "goto": "deep_intro",
-          "do": [
-            {
-              "type": "kingdomkeys:close"
-            }
-          ]
-        },
-        {
-          "text": "Nah I'm lvl 2 already what's up?",
-          "goto": "deep_intro",
-          "if": [
-            {
-              "type": "kingdomkeys:level",
-              "min": 2
-            }
-          ]
+          "text": "So what are you?",
+          "goto": "deep_intro"
         }
       ]
     },
     "deep_intro": {
       "lines": [
-        "Aha I see you stronk bro",
-        "But you see, this isn't my final form..."
+        "Well, as I said, I'm a Dream Eater, specifically a \"Spirit\", but you don't need to worry about that part now anyway.",
+        "What -IS- important is I'm your companion and guide. "
       ],
       "answers": [
         {
-          "text": "Neither is mine bruh the fuck do you think I am? put your hands up and give me diamonds!",
-          "do": [
-            {
-              "type": "kingdomkeys:give_item",
-              "item": {
-                "id": "minecraft:diamond",
-                "count": 16
-              }
-            }
-          ]
+          "text": "That's it? I can talk to you and you answers my questions?",
+          "goto": "answers"
         },
         {
-          "text": "Ah nice to meet you, but I'm in a hurry, byeeeeeeeeeeeeeeeeee"
+          "text": "Alright, I'll keep that in mind. We'll talk later.",
+          "goto": "answers",
+          "do": [
+            {
+              "type": "kingdomkeys:close"
+            }
+          ]
+        }
+      ]
+    },
+    "answers": {
+      "lines": [
+        "That's the jist of it. Just gotta ask and I'll do my best to steer you right!",
+        "And remember. May your heart be your guiding key."
+      ],
+      "answers": [
+        {
+          "text": "Talk soon, Chirithy.",
+          "do": [
+            {
+              "type": "kingdomkeys:set_flag",
+              "flag": "kkremind:chirithy_intro"
+            }
+          ]
         }
       ]
     }

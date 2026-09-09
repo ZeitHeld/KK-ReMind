@@ -29,10 +29,7 @@ import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -64,6 +61,7 @@ import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.UUID;
 
@@ -807,10 +805,21 @@ public class ChirithyEntity extends BaseDreamEaterEntity implements GeoEntity {
 
 	@Override
 	public InteractionResult mobInteract(Player player, InteractionHand hand) {
-		if(player.isCrouching() && !player.level().isClientSide()){
-			DialogueHandler.start((ServerPlayer) player, this, ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID,"dreameater_introduction"));
-			return super.mobInteract(player, hand);
-		}
+        PlayerData playerData = PlayerData.get(player);
+        if(!playerData.hasFlag(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID,"chirithy_intro"))){
+            if(player.isCrouching() && !player.level().isClientSide()){
+
+                DialogueHandler.start((ServerPlayer) player, this, ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID,"dreameater_introduction"));
+                return super.mobInteract(player, hand);
+            }
+        } else { // For Default dialog
+            if(player.isCrouching() && !player.level().isClientSide()) {
+                DialogueHandler.start((ServerPlayer) player, this, ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID,"chirithy_guide"));
+                return super.mobInteract(player, hand);
+            }
+        }
+
+
 		ItemStack heldStack = player.getItemInHand(hand);
 		int giftExp = getChirithyGiftExp(heldStack);
 
@@ -928,11 +937,31 @@ public class ChirithyEntity extends BaseDreamEaterEntity implements GeoEntity {
 
     @Override
     protected void registerGoals() {
+
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 5F));
         this.goalSelector.addGoal(3, new ChirithyGoal(this, 0.85D, 2.0F, 10.0F, false));
         this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.25D));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(0, new Goal() {
+            {
+                this.setFlags(EnumSet.of(Goal.Flag.MOVE));
+            }
+
+            @Override
+            public boolean canUse() {
+                return ChirithyEntity.this.isDialogueLocked();
+            }
+
+            @Override
+            public boolean canContinueToUse() {
+                return ChirithyEntity.this.isDialogueLocked();
+            }
+
+            @Override
+            public void tick() {
+                ChirithyEntity.this.getNavigation().stop();
+            }});
     }
 
     public static AttributeSupplier.Builder registerAttributes() {
@@ -1002,6 +1031,21 @@ public class ChirithyEntity extends BaseDreamEaterEntity implements GeoEntity {
 
     @Override
     protected void doPush(Entity entity) {
+    }
+
+    private boolean dialogueLocked = false;
+
+    public void setDialogueLocked(boolean locked) {
+        this.dialogueLocked = locked;
+
+        if (locked) {
+            this.getNavigation().stop();
+            this.setDeltaMovement(0.0D, this.getDeltaMovement().y, 0.0D);
+        }
+    }
+
+    public boolean isDialogueLocked() {
+        return dialogueLocked;
     }
 
     @Override

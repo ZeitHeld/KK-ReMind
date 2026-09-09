@@ -1,0 +1,75 @@
+{
+  "nodes": {
+    "start": {
+      "lines": [
+        "What would you like to know?"
+      ],
+      "answers": [
+        {
+          "text": "Can you tell me about the §cKeyblade§0?",
+          "goto": "keyblade"
+        },
+        {
+          "text": "Can you tell me about §9Magic§0?",
+          "goto": "magic"
+        }
+      ]
+    },
+    "keyblade": {
+      "lines": [
+        "A Keyblade is a mysterious weapon that draws its power from the heart of its wielder.",
+        "Not just anyone can wield one, you know. It takes a strong heart, and the ability to wield a Keyblade is usually passed on through Bequeathing.",
+        "But having a strong heart doesn't mean you have to be the strongest person around. It's the strength of your heart that matters.",
+        "And a Keyblade is more than just a weapon. It can lock and unlock all kinds of things, including the hearts of worlds!",
+        "Of course, there's still plenty you can do to make your Keyblade stronger! You can upgrade it or equip different §cKeychains§0.",
+        "Each Keychain can change its appearance, stats, and abilities. Finding the right one for your fighting style makes a big difference.",
+        "They can by obtained through §cSynthesis§0, but you need the §crecipe§0 first.",
+        "Then you need the correct §cMaterials§0, and maybe a little bit of §cmunny§0."
+      ],
+      "answers": [
+        {
+          "text": "(Back)",
+          "goto": "start"
+        }
+      ]
+    },
+    "magic": {
+      "lines": [
+        "§9Magic§0 is one of the most useful tools a Keyblade wielder has. And no, it's not just for making things explode!",
+        "Casting spells uses §9MP§0, so you'll want to keep an eye on your magic gauge during a fight.",
+        "Different spells have different uses. Some deal damage, some protect you, and others can help you recover when things get dangerous.",
+        "As you grow stronger, you'll be able to make better use of your magic and discover more powerful ways to fight.",
+        "Try mixing magic with your regular attacks. A little creativity can make even a tough enemy easier to handle.",
+        "And if your MP runs low, don't panic. Just be careful until you're ready to cast again!",
+        "Your spells can level up and get stronger, then you can make better spells with §cMelding§0.",
+        "Try to level up as many spells as you can and mix them together, you could get powerful results!"
+      ],
+      "answers": [
+        {
+          "text": "(Back)",
+          "goto": "start"
+        }
+      ]
+    },
+    "items": {
+      "lines": [],
+      "answers": []
+    },
+    "forms": {
+      "lines": [],
+      "answers": []
+    },
+    "shotlocks": {
+      "lines": [],
+      "answers": []
+    },
+    "dream_eaters": {
+      "lines": [],
+      "answers": []
+    },
+    "organization_xiii": {
+      "lines": [],
+      "answers": []
+    }
+  }
+}
