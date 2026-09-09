@@ -14,6 +14,7 @@
 - The 'Walker' abilities no longer require you to sprint to activate.
 - Zettaflare now requires and consumes Max Drive and Max Focus to cast. Otherwise, cast fails.
 - Added config option to turn of Chirithy's chat messages when casting spells. This will be found in the file `kkremind-client.toml`
+- Celestriad fixed from Form Boost back to Fire Boost. (When did that even happen..?)
 
 ### New Spell
 
