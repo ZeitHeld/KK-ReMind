@@ -202,7 +202,7 @@ public class ModItemsRM{
         lightHeart = ITEMS.register("light_heart", () -> new KKAccessoryItem(new Item.Properties().stacksTo(1), 5,0,0,new ResourceLocation[] {ModAbilitiesRM.WAY_TO_LIGHT.location()})),
         darkHeart = ITEMS.register("dark_heart", () -> new KKAccessoryItem(new Item.Properties().stacksTo(1), 5,0,0,new ResourceLocation[] {ModAbilitiesRM.DARK_POWER.location()})),
         ragingHeart = ITEMS.register("raging_heart", () -> new KKAccessoryItem(new Item.Properties().stacksTo(1), 5,0,0,new ResourceLocation[] {ModAbilitiesRM.RAGE_AWAKENED.location()})),
-        celestriad = ITEMS.register("celestriad", () -> new KKAccessoryItem(new Item.Properties().stacksTo(1), 5,2,3,new ResourceLocation[] {ModAbilities.FORM_BOOST.location(),ModAbilities.BLIZZARD_BOOST.location(),ModAbilities.THUNDER_BOOST.location()})),
+        celestriad = ITEMS.register("celestriad", () -> new KKAccessoryItem(new Item.Properties().stacksTo(1), 5,2,3,new ResourceLocation[] {ModAbilities.FIRE_BOOST.location(),ModAbilities.BLIZZARD_BOOST.location(),ModAbilities.THUNDER_BOOST.location()})),
         forestClasp = ITEMS.register("forest_clasp", () -> new KKAccessoryItem(new Item.Properties().stacksTo(1),8,2,3,new ResourceLocation[] {ModAbilitiesRM.HP_WALKER.location()})),
         laughterPin = ITEMS.register("laughter_pin", () -> new KKAccessoryItem(new Item.Properties().stacksTo(1),6,3,2,new ResourceLocation[] {ModAbilitiesRM.MP_WALKER.location()})),
         crystalRegalia = ITEMS.register("crystal_regalia", () -> new KKAccessoryItem(new Item.Properties().stacksTo(1),16,5,5,new ResourceLocation[] {ModAbilities.MP_HASTEGA.location()})),
