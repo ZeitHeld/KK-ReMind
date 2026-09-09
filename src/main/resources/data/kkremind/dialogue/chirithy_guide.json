@@ -12,6 +12,22 @@
         {
           "text": "Can you tell me about §9Magic§0?",
           "goto": "magic"
+        },
+        {
+          "text": "Can you tell me about §2Items§0?",
+          "goto": "items"
+        },
+        {
+          "text": "Can you tell me about §eForms§0?",
+          "goto": "forms"
+        },
+        {
+          "text": "Can you tell me about §aShotlocks§0?",
+          "goto": "shotlocks"
+        },
+        {
+          "text": "Can you tell me about §dDream Eaters§0?",
+          "goto": "dream_eaters"
         }
       ]
     },
@@ -41,6 +57,7 @@
         "As you grow stronger, you'll be able to make better use of your magic and discover more powerful ways to fight.",
         "Try mixing magic with your regular attacks. A little creativity can make even a tough enemy easier to handle.",
         "And if your MP runs low, don't panic. Just be careful until you're ready to cast again!",
+        "You can obtain them via §cPrize Blox§0, and equip them in the menu.",
         "Your spells can level up and get stronger, then you can make better spells with §cMelding§0.",
         "Try to level up as many spells as you can and mix them together, you could get powerful results!"
       ],
@@ -52,20 +69,78 @@
       ]
     },
     "items": {
-      "lines": [],
-      "answers": []
+      "lines": [
+        "§aItems§0 are pretty important, especially when things start getting dangerous!",
+        "§aPotions§0 can restore your §2HP§0, while §9Ethers§0 help recover your §9MP§0.",
+        "But having an item in your inventory doesn't always mean it's ready to use in battle. Make sure you have the items you need equipped before heading into a fight!",
+        "You'll also find plenty of §cMaterials§0 while exploring or defeating enemies.",
+        "Those materials can be used for §cSynthesis§0 to create useful items, equipment, and even new Keychains.",
+        "So don't ignore all that stuff enemies drop! You never know what you'll need later.",
+        "And maybe keep a §aPotion§0 or two handy. I'd rather not have to rescue you every five minutes!"
+      ],
+      "answers": [
+        {
+          "text": "(Back)",
+          "goto": "start"
+        }
+      ]
     },
     "forms": {
-      "lines": [],
-      "answers": []
+      "lines": [
+        "Drive Forms let you tap into different kinds of power and change the way you fight!",
+        "Each Form can give you new abilities, different attacks, and sometimes a completely different combat style.",
+        "But you won't have access to every Form right away. Some Forms are unlocked through certain §cAbilities§0.",
+        "You can also find special Forms hidden inside §cRare Prize Blox§0, so make sure you keep an eye out while you're exploring",
+        "Once you've unlocked a Form, you can use it when the right conditions are met.",
+        "Some forms don't need to be found! Those are called §cStyle Changes§0.",
+        "Style Changes are triggered by using certain kinds of spells or attacks and filling your §cSituation Gauge§0",
+        "Once the gauge is ready, the Style Change tied to what you've been using can become available.",
+        "That means the way you fight can influence what kind of Style Change you get, so try mixing up your attacks and magic!",
+        "Drive Forms and Style Changes both give you new ways to fight, but they work a little differently, so don't be afraid to experiment with both!"
+      ],
+      "answers": [
+        {
+          "text": "(Back)",
+          "goto": "start"
+        }
+      ]
     },
     "shotlocks": {
-      "lines": [],
-      "answers": []
+      "lines": [
+        "§aShotlocks§0 are special attacks that let you lock onto enemies and unleash a powerful technique!",
+        "To use one, hold your lock and target nearby enemies. (Use the \"Pick Block\" button with your keyblade out)",
+        "The longer you hold it, the more targets you may be able to mark.",
+        "Once you're ready, release it and your Shotlock will activate! (Left-Click)",
+        "Different §aShotlocks§0 can work very differently. Some fire projectiles, some rush you toward your target, and others can hit several enemies at once.",
+        "That means some are better for dealing with groups, while others are much better against one strong enemy.",
+        "§aShotlocks§0 aren't something you should just throw out whenever you can, though. Picking the right moment can make them a lot more useful.",
+        "Try out different ones as you find them. You might be surprised which §aShotlocks§0 ends up fitting your fighting style best!"
+      ],
+      "answers": [
+        {
+          "text": "(Back)",
+          "goto": "start"
+        }
+      ]
     },
     "dream_eaters": {
-      "lines": [],
-      "answers": []
+      "lines": [
+        "Dream Eaters are creatures that can travel with you and help out in battle!",
+        "Each Dream Eater has its own strengths, abilities, and ways of supporting you, so they don't all fight the same way",
+        "You can only have one summoned at a time, so choosing the right partner can make a big difference depending on what you're doing.",
+        "Dream Eaters can also gain §cEXP§0 and level up as you fight alongside them.",
+        "As they grow stronger, they can improve their stats and unlock new §cAbilities§0 for you and themselves!",
+        "Some of those abilities can even become permanently available to you through your bond with that Dream Eater!",
+        "You can also give certain Dream Eaters gifts to help them gain EXP a little faster. I'm particularly fond of shiny things... just saying!",
+        "So try spending time with different Dream Eaters. The more you train them, the more they'll be able to help you on your journey!",
+        "And, uh... you don't have to replace me right away, okay?"
+      ],
+      "answers": [
+        {
+          "text": "(Back)",
+          "goto": "start"
+        }
+      ]
     },
     "organization_xiii": {
       "lines": [],
