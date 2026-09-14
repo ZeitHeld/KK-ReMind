@@ -4,7 +4,7 @@
 
 - **[EFM]** Attack Command Animations now play again.
 - **[EFM]** Equipping the Guard ability now gives you EFM's Guard Skill.
-- **[EFM]** 
+- **[EFM]** Forms now have movesets again (Thank you Nathan)
 - Added Cooldown to summoning Dream Eaters, it lasts 30 seconds.
 - Added Cooldown mentioned above for if the Dream Eater dies.
 - Fixed Tonberry (Spirit) immortality bug.
