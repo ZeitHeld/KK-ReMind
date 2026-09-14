@@ -228,7 +228,7 @@
           "quantity": 1
         }
       ],
-      "str": 20,
+      "str": 19,
       "ability": "kkremind:ability_dark_infusion"
     },
     {
@@ -247,7 +247,7 @@
           "quantity": 1
         }
       ],
-      "str": 20
+      "str": 19
     },
     {
       "mag": 13,
