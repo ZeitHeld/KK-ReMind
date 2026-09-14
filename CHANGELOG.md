@@ -59,9 +59,9 @@
   - Base Ability: **NEW** Silence Heart
   - Custom Form: Draconic Liberation
 - Maddening Corruption, commissioned by TheFeralKitsune
-  - Description: 
+  - Description: A keyblade that's been corrupted by Phazon
   - Base Stats: 13/6
-  - Base Ability: Dark Infusion
+  - Base Ability: Dark Power
     
 
 #### What-If Keyblades
