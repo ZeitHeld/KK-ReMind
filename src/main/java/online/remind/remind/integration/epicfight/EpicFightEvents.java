@@ -12,6 +12,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import online.kingdomkeys.kingdomkeys.ability.ModAbilities;
 import online.kingdomkeys.kingdomkeys.api.event.AbilityEvent;
 import online.kingdomkeys.kingdomkeys.api.event.MagicSpellCastEvent;
 import online.kingdomkeys.kingdomkeys.data.PlayerData;
@@ -408,7 +409,7 @@ public class EpicFightEvents {
     }
 
 
-    // Handles Re:Mind guard abilities in Epic Fight
+    // Handles Re:Mind and base KK guard abilities in Epic Fight
     @SubscribeEvent
     public void equipAbility(AbilityEvent.Equip event) {
 
@@ -421,7 +422,8 @@ public class EpicFightEvents {
         GlobalDataRM playerData2 = ModDataRM.getGlobal(event.getPlayer());
         WorldData worldData = WorldData.get(event.getPlayer().getServer());
 
-        if (event.getAbility().equals(ModAbilitiesRM.RENEWAL_BLOCK.get())
+        if (event.getAbility().equals(ModAbilities.GUARD.get()) ||
+                event.getAbility().equals(ModAbilitiesRM.RENEWAL_BLOCK.get())
                 || event.getAbility().equals(ModAbilitiesRM.FOCUS_BLOCK.get())
                 || event.getAbility().equals(ModAbilitiesRM.STOP_BLOCK.get())
                 || event.getAbility().equals(ModAbilitiesRM.ROYAL_GUARD.get())

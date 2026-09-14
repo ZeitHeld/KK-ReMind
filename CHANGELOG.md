@@ -3,6 +3,7 @@
 ### General Changes
 
 - **[EFM]** Attack Command Animations now play again.
+- **[EFM]** Equipping the Guard ability now gives you EFM's Guard Skill.
 - Added Cooldown to summoning Dream Eaters, it lasts 30 seconds.
 - Added Cooldown mentioned above for if the Dream Eater dies.
 - Fixed Tonberry (Spirit) immortality bug.
@@ -34,7 +35,7 @@
 #### **EXP Converter**
 - Cost: 10 AP
 - Description: When picking up XP orbs, gain the value of it as Kingdom Keys EXP.
-- How to Obtain: Added to EXP Ring
+- How to Obtain: EXP Ring
 
 
 

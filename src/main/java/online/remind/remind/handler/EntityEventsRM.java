@@ -36,6 +36,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import online.kingdomkeys.kingdomkeys.ability.ModAbilities;
 import online.kingdomkeys.kingdomkeys.api.event.*;
 import online.kingdomkeys.kingdomkeys.client.sound.ModSounds;
+import online.kingdomkeys.kingdomkeys.config.ServerConfig;
 import online.kingdomkeys.kingdomkeys.damagesource.KKDamageTypes;
 import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.data.WorldData;
@@ -2565,13 +2566,11 @@ public class EntityEventsRM {
 		}
 
 		if (playerData.isAbilityEquipped(ResourceLocation.parse(StringsRM.xpConverter))) {
-
 			// Convert vanilla XP -> Kingdom Keys XP
-			int kkXp = vanillaXp;
-
-			// TODO: Give kkXp using KK's current EXP method
-			player.sendSystemMessage(Component.literal("MC EXP Value: " + vanillaXp));
-			playerData.addExperience(player, kkXp, false, false);
+			int kkXp = (int) Math.max(vanillaXp * online.kingdomkeys.kingdomkeys.config.ModConfigs.SERVER.xpMultiplier.get(),1);
+			player.sendSystemMessage(Component.literal("MC EXP Value: " + kkXp));
+			playerData.addExperience(player, kkXp, false, true);
+			PacketHandler.sendTo(new SCSyncPlayerData(player), (ServerPlayer) player);
 		}
 	}
 }
