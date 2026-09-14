@@ -20,6 +20,7 @@ import online.kingdomkeys.kingdomkeys.lib.DamageCalculation;
 import online.kingdomkeys.kingdomkeys.lib.Party;
 import online.kingdomkeys.kingdomkeys.lib.Party.Member;
 import online.kingdomkeys.kingdomkeys.util.Utils;
+import online.remind.remind.driveform.ModDriveFormsRM;
 import online.remind.remind.entity.ModEntitiesRM;
 import org.joml.Vector3f;
 
@@ -157,9 +158,11 @@ public class DarkMineEntity extends ThrowableProjectile {
                                 e.invulnerableTime = 0;
                             }
                         }
+
                         level().explode(this.getOwner(), this.blockPosition().getX(), this.blockPosition().getY() + (double)(this.getBbHeight() / 16.0F), this.blockPosition().getZ(), radius, false, Level.ExplosionInteraction.NONE);
                         PlayerData playerData = PlayerData.get(player);
-                        playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), playerData.getDriveFormExp(playerData.getActiveDriveForm()) + 20);
+                        float formXP = playerData.getDriveFormLevel(ModDriveFormsRM.DARK.location()) + 20; // TODO: Form EXP Multi Configs for Light, Dark, and Rage Forms
+                        playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (int) formXP));
                         remove(RemovalReason.KILLED);
 
                     }

@@ -17,6 +17,7 @@
 - Celestriad fixed from Form Boost back to Fire Boost. (When did that even happen..?)
 - Chirithy now has dialogs and can act as a guide!
 - EXP Ring now has the **NEW** EXP Converter Ability
+- Light Form should be easier/faster to level now.
 
 ### New Spell
 
