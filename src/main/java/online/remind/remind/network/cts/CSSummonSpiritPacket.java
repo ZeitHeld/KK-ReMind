@@ -551,7 +551,7 @@ public class CSSummonSpiritPacket implements CustomPacketPayload {
         );
     }
 
-    private static void removeSpiritFromParty(ServerPlayer player, UUID spiritUUID) {
+    public static void removeSpiritFromParty(ServerPlayer player, UUID spiritUUID) {
         if (player == null || spiritUUID == null || player.getServer() == null) {
             return;
         }
@@ -583,7 +583,7 @@ public class CSSummonSpiritPacket implements CustomPacketPayload {
     }
 
 
-    private static void addSpiritToParty(ServerPlayer player, LivingEntity spirit) {
+    public static void addSpiritToParty(ServerPlayer player, LivingEntity spirit) {
         if (player == null || spirit == null || player.getServer() == null) {
             return;
         }

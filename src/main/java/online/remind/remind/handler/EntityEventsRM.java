@@ -72,6 +72,7 @@ import online.remind.remind.item.ModItemsRM;
 import online.remind.remind.lib.StringsRM;
 import online.remind.remind.network.PacketHandlerRM;
 import online.remind.remind.network.cts.CSGrowthPanelActionPacket;
+import online.remind.remind.network.cts.CSSummonSpiritPacket;
 import online.remind.remind.network.stc.SCOrganizationPanelSyncPacket;
 import online.remind.remind.panels.OrganizationPanelAbilityHelper;
 import online.remind.remind.panels.OrganizationPanelStatHelper;
@@ -187,31 +188,32 @@ public class EntityEventsRM {
 
 	@SubscribeEvent
 	public void onPlayerLeave(PlayerEvent.PlayerLoggedOutEvent e) {
-		Player player = e.getEntity();
+		if (!(e.getEntity() instanceof ServerPlayer player)) {
+			return;
+		}
+
 		GlobalDataRM globalData = ModDataRM.getGlobal(player);
 
-		/*
-		 * Dream Eaters are temporary summons.
-		 * Remove the actual entity before clearing summon state.
-		 */
-		if (!player.level().isClientSide
-				&& player.level() instanceof ServerLevel serverLevel) {
-
-			MeowWowEntity.removeExistingMeowWow(
-					serverLevel,
-					player.getUUID()
-			);
+		if (globalData == null) {
+			return;
 		}
 
-		if (globalData != null) {
-			globalData.setHasDreamEaterSummoned(false);
-			globalData.setDreamEaterUUID(null);
+		UUID dreamEaterUUID = globalData.getDreamEaterUUID();
 
-			PacketHandlerRM.syncGlobalToAllAround(
+		if (dreamEaterUUID != null) {
+			CSSummonSpiritPacket.removeSpiritFromParty(
 					player,
-					globalData
+					dreamEaterUUID
 			);
 		}
+
+		globalData.setHasDreamEaterSummoned(false);
+		globalData.setDreamEaterUUID(null);
+
+		PacketHandlerRM.syncGlobalToAllAround(
+				player,
+				globalData
+		);
 	}
 
 	@SubscribeEvent
