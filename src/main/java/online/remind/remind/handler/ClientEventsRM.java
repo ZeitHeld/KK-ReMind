@@ -68,10 +68,9 @@ public class ClientEventsRM {
 
     @SubscribeEvent
     public void onTargetSelector(TargetSelectorEvent event) {
+		// TODO: Remove in favor of adding entity to Party
+		/*
         GlobalDataRM globalData = ModDataRM.getGlobal(Minecraft.getInstance().player);
-        //System.out.println(globalData);
-        //System.out.println(globalData.getDreamEaterRL());
-        //System.out.println(globalData.hasDreamEaterSummoned());
         if(globalData == null || globalData.getDreamEaterRL().equals(ModDreamEaters.NONE.get().getRegistryName()) || !globalData.hasDreamEaterSummoned())
             return;
         DreamEater dreamEater = ModDreamEaters.registry.get(ResourceLocation.parse(globalData.getDreamEaterRL()));
@@ -92,7 +91,7 @@ public class ClientEventsRM {
                             item -> event.getSubmenu().getParent().getSelected().onEnter()
                     ).setData(dreamEaterID+"").textColour(Color.CYAN).build(event.getSubmenu())
             );
-        }
+        }*/
     }
 
     @SubscribeEvent

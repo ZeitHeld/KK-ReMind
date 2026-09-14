@@ -4,6 +4,7 @@
 
 - **[EFM]** Attack Command Animations now play again.
 - **[EFM]** Equipping the Guard ability now gives you EFM's Guard Skill.
+- **[EFM]** 
 - Added Cooldown to summoning Dream Eaters, it lasts 30 seconds.
 - Added Cooldown mentioned above for if the Dream Eater dies.
 - Fixed Tonberry (Spirit) immortality bug.
@@ -16,8 +17,9 @@
 - Added config option to turn of Chirithy's chat messages when casting spells. This will be found in the file `kkremind-client.toml`
 - Celestriad fixed from Form Boost back to Fire Boost. (When did that even happen..?)
 - Chirithy now has dialogs and can act as a guide!
-- EXP Ring now has the **NEW** EXP Converter Ability
+- EXP Ring now has the **NEW** EXP Converter Ability.
 - Light Form should be easier/faster to level now.
+- Dream Eaters now register as Party Members.
 
 ### New Spell
 
