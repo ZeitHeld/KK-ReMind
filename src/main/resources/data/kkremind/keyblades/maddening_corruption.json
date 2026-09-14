@@ -1,14 +1,14 @@
 {
-  "ability": "kkremind:ability_mp_walker",
+  "ability": "kkremind:ability_dark_power",
   "base_stats": {
-    "mag": 13,
-    "str": 6
+    "mag": 6,
+    "str": 13
   },
-  "description": "A keyblade which possesses old powers, though not forgotten. It keeps your MP on the rhythm.",
+  "description": "A keyblade which has been corrupted with Phazon.",
   "keychain": "kkremind:maddening_corruption_chain",
   "levels": [
     {
-      "mag": 11,
+      "mag": 6,
       "recipe": [
         {
           "material": "kingdomkeys:fluorite",
@@ -19,10 +19,10 @@
           "quantity": 2
         }
       ],
-      "str": 8
+      "str": 14
     },
     {
-      "mag": 11,
+      "mag": 7,
       "recipe": [
         {
           "material": "kingdomkeys:fluorite",
@@ -33,10 +33,10 @@
           "quantity": 3
         }
       ],
-      "str": 9
+      "str": 14
     },
     {
-      "mag": 12,
+      "mag": 7,
       "recipe": [
         {
           "material": "kingdomkeys:fluorite",
@@ -47,10 +47,10 @@
           "quantity": 4
         }
       ],
-      "str": 9
+      "str": 15
     },
     {
-      "mag": 12,
+      "mag": 8,
       "recipe": [
         {
           "material": "kingdomkeys:damascus",
@@ -61,11 +61,11 @@
           "quantity": 1
         }
       ],
-      "str": 10,
-      "ability": "kingdomkeys:ability_endless_magic"
+      "str": 15,
+      "ability": "kkremind:ability_darkness_boost"
     },
     {
-      "mag": 13,
+      "mag": 8,
       "recipe": [
         {
           "material": "kingdomkeys:damascus",
@@ -80,10 +80,10 @@
           "quantity": 2
         }
       ],
-      "str": 10
+      "str": 16
     },
     {
-      "mag": 13,
+      "mag": 9,
       "recipe": [
         {
           "material": "kingdomkeys:damascus",
@@ -98,11 +98,11 @@
           "quantity": 2
         }
       ],
-      "str": 11,
-      "ability": "kingdomkeys:ability_mp_thrift"
+      "str": 16,
+      "ability": "kkremind:ability_darkness_boost"
     },
     {
-      "mag": 13,
+      "mag": 9,
       "recipe": [
         {
           "material": "kingdomkeys:adamantite",
@@ -117,10 +117,10 @@
           "quantity": 1
         }
       ],
-      "str": 12
+      "str": 17
     },
     {
-      "mag": 14,
+      "mag": 10,
       "recipe": [
         {
           "material": "kingdomkeys:adamantite",
@@ -135,10 +135,10 @@
           "quantity": 2
         }
       ],
-      "str": 12
+      "str": 17
     },
     {
-      "mag": 14,
+      "mag": 10,
       "recipe": [
         {
           "material": "kingdomkeys:adamantite",
@@ -153,10 +153,10 @@
           "quantity": 2
         }
       ],
-      "str": 13
+      "str": 18
     },
     {
-      "mag": 15,
+      "mag": 11,
       "recipe": [
         {
           "material": "kingdomkeys:electrum",
@@ -171,8 +171,102 @@
           "quantity": 1
         }
       ],
-      "str": 13,
-      "ability": "kkremind:ability_mp_walker"
+      "str": 18,
+      "ability": "kkremind:ability_darkness_boost"
+    },
+    {
+      "mag": 11,
+      "recipe": [
+        {
+          "material": "kingdomkeys:electrum",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:wellspring_crystal",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:writhing_crystal",
+          "quantity": 1
+        }
+      ],
+      "str": 19,
+      "ability": "kkremind:ability_darkness_boost"
+    },
+    {
+      "mag": 11,
+      "recipe": [
+        {
+          "material": "kingdomkeys:electrum",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:wellspring_crystal",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:writhing_crystal",
+          "quantity": 1
+        }
+      ],
+      "str": 19,
+      "ability": "kkremind:ability_spellblade"
+    },
+    {
+      "mag": 12,
+      "recipe": [
+        {
+          "material": "kingdomkeys:electrum",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:wellspring_crystal",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:writhing_crystal",
+          "quantity": 1
+        }
+      ],
+      "str": 20,
+      "ability": "kkremind:ability_dark_infusion"
+    },
+    {
+      "mag": 13,
+      "recipe": [
+        {
+          "material": "kingdomkeys:electrum",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:wellspring_crystal",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:writhing_crystal",
+          "quantity": 1
+        }
+      ],
+      "str": 20
+    },
+    {
+      "mag": 13,
+      "recipe": [
+        {
+          "material": "kingdomkeys:electrum",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:wellspring_crystal",
+          "quantity": 1
+        },
+        {
+          "material": "kingdomkeys:writhing_crystal",
+          "quantity": 1
+        }
+      ],
+      "str": 20,
+      "ability": "kingdomkeys:ability_mp_hastega"
     }
   ],
   "reach": 6.0,
