@@ -325,6 +325,8 @@
   "ability.ability_dark_infusion.desc": "Enhances your spells and abilities with the power of Darkness! \nDoes not apply to spells that are already Darkness based.",
   "ability.ability_twilight_infusion.name": "Dawn Infusion",
   "ability.ability_twilight_infusion.desc": "Enhances your spells and abilities with the power of Light and Darkness!",
+  "ability.ability_exp_converter.name": "EXP Converter",
+  "ability.ability_exp_converter.desc": "When picking up XP orbs, gain the value of it as Kingdom Keys EXP.",
 
 
   "ability.ability_lyric1.name": "Volt Absorb",

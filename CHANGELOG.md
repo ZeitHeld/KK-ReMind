@@ -15,6 +15,7 @@
 - Added config option to turn of Chirithy's chat messages when casting spells. This will be found in the file `kkremind-client.toml`
 - Celestriad fixed from Form Boost back to Fire Boost. (When did that even happen..?)
 - Chirithy now has dialogs and can act as a guide!
+- EXP Ring now has the **NEW** EXP Converter Ability
 
 ### New Spell
 
@@ -29,6 +30,13 @@
 - Cost: N/A
 - Description: On-hit, afflict the victim with the Silence status effect. *Scales with Critical Boost*
 - How to Obtain: Equip *Entropy's Requiem* keychain. (See below)
+
+#### **EXP Converter**
+- Cost: 10 AP
+- Description: When picking up XP orbs, gain the value of it as Kingdom Keys EXP.
+- How to Obtain: Added to EXP Ring
+
+
 
 
 ### New Keyblades

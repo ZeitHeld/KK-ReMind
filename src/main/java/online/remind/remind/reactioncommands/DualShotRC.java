@@ -32,11 +32,7 @@ public class DualShotRC extends ReactionCommand {
         playerData.setFP(playerData.getFP() - 40);
 
         // Fire Dual Shot
-
         player.swing(InteractionHand.MAIN_HAND, true);
-
-
-
 
         ThrowableProjectile dualShot = new DualShotEntity(player.level(), player,dmgmult,lockOnEntity);
         dualShot.setPos(player.getX(), player.getY()+0.75,player.getZ());
@@ -46,8 +42,6 @@ public class DualShotRC extends ReactionCommand {
         player.level().playSound(null, player.blockPosition(), ModSoundsRM.DUAL_SHOT.get(), SoundSource.PLAYERS, 1F, 1F);
         // Sync Packet
         PacketHandlerRM.syncGlobalToAllAround(player, globalData);
-
-
     }
 
     @Override

@@ -29,6 +29,7 @@ import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerRespawnEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -2545,4 +2546,32 @@ public class EntityEventsRM {
 			PacketHandler.sendTo(new SCSyncPlayerData(player), (ServerPlayer) player);
 		}
     }
+
+	// MC XP -> KK EXP
+	@SubscribeEvent
+	public void onXpOrbPickup(PlayerXpEvent.PickupXp event) {
+		Player player = event.getEntity();
+
+		if (player.level().isClientSide()) {
+			return;
+		}
+
+		int vanillaXp = event.getOrb().getValue();
+
+		PlayerData playerData = PlayerData.get(player);
+
+		if (playerData == null) {
+			return;
+		}
+
+		if (playerData.isAbilityEquipped(ResourceLocation.parse(StringsRM.xpConverter))) {
+
+			// Convert vanilla XP -> Kingdom Keys XP
+			int kkXp = vanillaXp;
+
+			// TODO: Give kkXp using KK's current EXP method
+			player.sendSystemMessage(Component.literal("MC EXP Value: " + vanillaXp));
+			playerData.addExperience(player, kkXp, false, false);
+		}
+	}
 }
