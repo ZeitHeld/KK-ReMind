@@ -1,0 +1,12 @@
+{
+	"name": "Elementares Orchester",
+	"icon": "kkremind:elemental_crescendo_chain",
+	"sortnum": 3,
+	"category": "kingdomkeys:keyblades_rm",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Ein Schlüsselschwert mit einem Händchen für Zaubersprüche."
+		}
+	]
+}

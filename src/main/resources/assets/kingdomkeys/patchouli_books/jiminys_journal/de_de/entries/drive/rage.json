@@ -1,0 +1,13 @@
+{
+	"name": "Wut-Form",
+	"icon": "kkremind:raging_heart",
+	"sortnum": 3,
+	"category": "kingdomkeys:drive_rm",
+	"advancement": "kingdomkeys:obtain_drive",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Diese Form ist aktivierbar, wenn deine LP in den kritischen Bereich gelangen. In dieser Form, sind Sprüche, Limits und Drive nicht verfügbar. Das Situationskommando \"Hasaradeur\" kann in dieser Form auftauchen.\nEs existiert keine bekannte Methode, diese Form zu verbessern."
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"name": "Dunkel-Form",
+	"icon": "kkremind:dark_heart",
+	"sortnum": 2,
+	"category": "kingdomkeys:drive_rm",
+	"advancement": "kingdomkeys:obtain_drive",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Diese Form erhält Erfahrungspunkte für $(thing)jeden niedergestreckten Mob$() und $(thing)benutzten Situationskommando$(), während man in dieser Form ist.\nDas Verbessern dieser Form, gewährt einen permanenten Zugriff zu den Abilitys: $(item)Dark Step$() und $(item)Dark Power$()."
+		}
+	]
+}

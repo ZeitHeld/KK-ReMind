@@ -1,0 +1,13 @@
+{
+	"name": "Zwielicht-Form",
+	"icon": "kkremind:light_heart",
+	"sortnum": 4,
+	"category": "kingdomkeys:drive_rm",
+	"advancement": "kingdomkeys:hundred_level_up",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Diese Form erhält Erfahrungspunkte für $(thing)jeden niedergestreckten Boss$(), während man in dieser Form ist.\nDas Verbessern dieser Form, gewährt einen permanenten Zugriff zu den Abilitys: $(item)Straße der Dämmerung$()."
+		}
+	]
+}

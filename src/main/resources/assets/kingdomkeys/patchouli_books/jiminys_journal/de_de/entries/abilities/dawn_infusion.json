@@ -1,0 +1,13 @@
+{
+	"name": "Dawn Infusion",
+	"icon": "kingdomkeys:apboost",
+	"sortnum": 1,
+	"category": "kingdomkeys:abilities_rm",
+	"advancement": "kingdomkeys:hundred_level_up",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Enhances your spells and abilities with the power of Light and Darkness! $(p)$(item)Exclusive$() to $(l:kingdomkeys:drive/twilight)Twilight Form.$(/l)"
+		}
+	]
+}

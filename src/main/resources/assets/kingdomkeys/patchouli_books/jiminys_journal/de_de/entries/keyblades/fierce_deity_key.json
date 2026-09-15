@@ -1,0 +1,12 @@
+{
+	"name": "Schlüssel einer Grimmigen Gottheit",
+	"icon": "kkremind:fierce_deity_key_chain",
+	"sortnum": 8,
+	"category": "kingdomkeys:keyblades_rm",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Inspiriert von der Grimmigen Gottheit aus The Legend of Zelda: Majora's Mask."
+		}
+	]
+}

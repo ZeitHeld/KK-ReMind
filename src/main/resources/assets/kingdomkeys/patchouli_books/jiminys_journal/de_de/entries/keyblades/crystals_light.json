@@ -1,0 +1,12 @@
+{
+	"name": "Leuchtender Kristall",
+	"icon": "kkremind:crystals_light_chain",
+	"sortnum": 5,
+	"category": "kingdomkeys:keyblades_rm",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Inspiriert von WoL aus FINAL FANTASY I."
+		}
+	]
+}
