@@ -11,6 +11,7 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.capabilities.GlobalDataRM;
+import online.remind.remind.handler.InputHandlerRM;
 import online.remind.remind.network.cts.*;
 import online.remind.remind.network.stc.SCOrganizationPanelSyncPacket;
 import online.remind.remind.network.stc.SCSyncGlobalCapabilityToAllPacketRM;
@@ -39,6 +40,7 @@ public class PacketHandlerRM {
         registrar.playToServer(CSOrganizationPanelPacket.TYPE, CSOrganizationPanelPacket.STREAM_CODEC, CSOrganizationPanelPacket::handle);
         registrar.playToServer(CSBuyOrganizationPanelPacket.TYPE, CSBuyOrganizationPanelPacket.STREAM_CODEC, CSBuyOrganizationPanelPacket::handle);
         registrar.playToServer(CSGrowthPanelActionPacket.TYPE, CSGrowthPanelActionPacket.STREAM_CODEC, CSGrowthPanelActionPacket::handle);
+        registrar.playToServer(InputHandlerRM.CSDarkStepPacket.TYPE, InputHandlerRM.CSDarkStepPacket.STREAM_CODEC, InputHandlerRM.CSDarkStepPacket::handle);
     }
 
         public static void sendToServer(CustomPacketPayload msg) {
