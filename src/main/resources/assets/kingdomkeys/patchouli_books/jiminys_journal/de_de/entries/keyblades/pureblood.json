@@ -1,0 +1,12 @@
+{
+	"name": "Reinblüter",
+	"icon": "kkremind:pureblood_chain",
+	"sortnum": 2,
+	"category": "kingdomkeys:keyblades_rm",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Ein Schlüsselschwert, das mit Dunkelheit überströmt ist."
+		}
+	]
+}

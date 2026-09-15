@@ -1,0 +1,12 @@
+{
+	"name": "Gemach/Gemachra/Gemachga",
+	"icon": "kkremind:slow_spell",
+	"sortnum": 4,
+	"category": "kingdomkeys:magic_commands_rm",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Dieser Spruch verlangsamt alle Feinde in deinem Umkreis."
+		}
+	]
+}

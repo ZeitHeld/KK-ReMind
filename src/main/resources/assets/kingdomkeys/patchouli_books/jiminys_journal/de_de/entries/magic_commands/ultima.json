@@ -1,0 +1,12 @@
+{
+	"name": "Ultima",
+	"icon": "kkremind:ultima_spell",
+	"sortnum": 19,
+	"category": "kingdomkeys:magic_commands_rm",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Ein Spruch mit der ultimativen Reichweite und Zerstörungskraft."
+		}
+	]
+}

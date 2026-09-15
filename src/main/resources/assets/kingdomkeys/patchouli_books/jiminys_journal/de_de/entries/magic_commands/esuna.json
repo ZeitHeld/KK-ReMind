@@ -1,0 +1,12 @@
+{
+	"name": "Medica",
+	"icon": "kkremind:esuna_spell",
+	"sortnum": 1,
+	"category": "kingdomkeys:magic_commands_rm",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Dieser Spruch $(thing)entfernt$() ALLE $(item)negativen Effekte$(), von dir selbst oder deinen Gruppenmitgliedern, inklusive \"Stopp\"."
+		}
+	]
+}

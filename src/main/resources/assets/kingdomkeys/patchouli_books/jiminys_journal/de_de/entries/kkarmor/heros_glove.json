@@ -1,0 +1,16 @@
+{
+	"name": "Heldenhandschuh",
+	"icon": "kkremind:heros_glove",
+	"sortnum": 2,
+	"category": "kingdomkeys:kkarmor_rm",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Abwehr: 4 $(p)$(#f00)Feuerresistenz: 20%%$() $(p)$(#42c7c7)Eisresistenz: 20%%$() $(p)Dunkel-Resistenz: 20%%$()"
+		},
+		{
+			"type": "patchouli:spotlight",
+			"item": "kkremind:heros_glove"
+		}
+	]
+}

@@ -1,0 +1,16 @@
+{
+	"name": "Regenbogen-Schleife",
+	"icon": "kkremind:ultima_ribbon",
+	"sortnum": 5,
+	"category": "kingdomkeys:kkarmor_rm",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Abwehr: 5 $(p)$(#f00)Feuerresistenz: 50%%$() $(p)$(#42c7c7)Eisresistenz: 50%%$() $(p)$(#bdbd3f)Blitzresistenz: 50%%$() $(p)Dunkel-Resistenz: 50%%$() $(p)$(#717171)Lichresistenz: 50%%$()"
+		},
+		{
+			"type": "patchouli:spotlight",
+			"item": "kkremind:ultima_ribbon"
+		}
+	]
+}

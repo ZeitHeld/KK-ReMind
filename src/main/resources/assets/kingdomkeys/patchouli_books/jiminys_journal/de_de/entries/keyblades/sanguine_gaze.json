@@ -1,0 +1,12 @@
+{
+	"name": "Blutrünstiger Blick",
+	"icon": "kkremind:xephiro_keyblade_chain",
+	"sortnum": 1,
+	"category": "kingdomkeys:keyblades_rm",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Ein Schlüsselschwert mit einem Fokus auf wiederholtes Blutsaugen."
+		}
+	]
+}

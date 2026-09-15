@@ -1,0 +1,12 @@
+{
+	"name": "Haste/Hastera/Hastega",
+	"icon": "kkremind:haste_spell",
+	"sortnum": 3,
+	"category": "kingdomkeys:magic_commands_rm",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Ein Spruch, der dir und deinen Gruppenmitgliedern einen Temposchub!"
+		}
+	]
+}

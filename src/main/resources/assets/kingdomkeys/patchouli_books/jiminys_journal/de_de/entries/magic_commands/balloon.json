@@ -1,0 +1,12 @@
+{
+	"name": "Ballon/Ballonra/Ballonga",
+	"icon": "kkremind:balloon_spell",
+	"sortnum": 13,
+	"category": "kingdomkeys:magic_commands_rm",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Dieser Spruch ruft Ballons herbei, die umherspringen und deine Ziele zerquetschen."
+		}
+	]
+}

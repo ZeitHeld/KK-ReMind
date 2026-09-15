@@ -1,0 +1,12 @@
+{
+	"name": "Sanctus (Re:CoM)",
+	"icon": "kkremind:faith_spell",
+	"sortnum": 16,
+	"category": "kingdomkeys:magic_commands_rm",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Dieser Spruch lässt es durchdringendes Licht herabregnen!"
+		}
+	]
+}

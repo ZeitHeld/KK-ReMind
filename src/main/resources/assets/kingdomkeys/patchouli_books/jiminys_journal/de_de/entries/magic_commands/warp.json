@@ -1,0 +1,12 @@
+{
+	"name": "Elimini",
+	"icon": "kkremind:warp_spell",
+	"sortnum": 18,
+	"category": "kingdomkeys:magic_commands_rm",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Dieser Spruch hat eine Chance das Ziel weit Weg zu teleportieren oder gar zu eliminieren."
+		}
+	]
+}

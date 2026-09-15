@@ -1,0 +1,12 @@
+{
+	"name": "Stumm/Stummra/Stummga",
+	"icon": "kkremind:silence_spell",
+	"sortnum": 10,
+	"category": "kingdomkeys:magic_commands_rm",
+	"pages": [
+		{
+			"type": "text",
+			"text": "Dieser Spruch hindert andere daran Zaubersprüche zu wirken."
+		}
+	]
+}
