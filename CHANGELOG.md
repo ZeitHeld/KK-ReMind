@@ -22,6 +22,7 @@
 - **CHANGE** Dream Eaters now register as Party Members.
 - **CHANGE** Light Step Rework - It now makes you move in an arcing motion
 - **CHANGE** Dark Step Rework - It now makes you -blink- a few blocks in the direction you're facing, leaving an afterimage.
+- **CHANE/FIX** Light and Dark Forms no longer require Quick Run to use their growth abilities. (The abilities themselves outside of form still do however.)
 
 ### New Spell
 
@@ -30,7 +31,7 @@
 - Teleports you to your respawn point.
 - Meld Recipe: Warp + Curaga
 
-### New Ability
+### New Abilities
 
 #### **Silence Heart**
 - Cost: N/A

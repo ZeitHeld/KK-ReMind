@@ -2570,7 +2570,6 @@ public class EntityEventsRM {
 		if (playerData.isAbilityEquipped(ResourceLocation.parse(StringsRM.xpConverter))) {
 			// Convert vanilla XP -> Kingdom Keys XP
 			int kkXp = (int) Math.max(vanillaXp * online.kingdomkeys.kingdomkeys.config.ModConfigs.SERVER.xpMultiplier.get(),1);
-			player.sendSystemMessage(Component.literal("MC EXP Value: " + kkXp));
 			playerData.addExperience(player, kkXp, false, true);
 			PacketHandler.sendTo(new SCSyncPlayerData(player), (ServerPlayer) player);
 		}
