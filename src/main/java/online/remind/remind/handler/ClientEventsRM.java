@@ -1,6 +1,7 @@
 package online.remind.remind.handler;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -13,6 +14,7 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RenderLivingEvent;
+import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import online.kingdomkeys.kingdomkeys.ability.ModAbilities;
 import online.kingdomkeys.kingdomkeys.api.event.client.CommandMenuEvent;
@@ -22,6 +24,7 @@ import online.kingdomkeys.kingdomkeys.client.gui.StopGui;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.CommandMenuItem;
 import online.kingdomkeys.kingdomkeys.client.gui.elements.buttons.MenuButton;
 import online.kingdomkeys.kingdomkeys.client.gui.menu.MenuScreen;
+import online.kingdomkeys.kingdomkeys.client.gui.menu.styles.StylesMenu;
 import online.kingdomkeys.kingdomkeys.client.gui.overlay.CommandMenuGui;
 import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.driveform.ModDriveForms;
@@ -44,10 +47,23 @@ import org.joml.Vector3f;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ClientEventsRM {
+
+	private static final UUID XEPHIRO_UUID =
+			UUID.fromString("70b48fbd-b67f-4f3e-9369-09cef36d51a3");
+
+	private static final UUID DEV_UUID =
+			UUID.fromString("380df991-f603-344c-a090-369bad2a924a");
+
+
     public enum RMButtons {
 		PRESTIGE, DREAMEATER, CREDITS, WIKI, PANEL, WALLET
+	}
+
+	public enum RMStyleButtons {
+		XEPHIRO
 	}
 
 	@SubscribeEvent
@@ -65,34 +81,6 @@ public class ClientEventsRM {
 			}
 		}
 	}
-
-    @SubscribeEvent
-    public void onTargetSelector(TargetSelectorEvent event) {
-		// TODO: Remove in favor of adding entity to Party
-		/*
-        GlobalDataRM globalData = ModDataRM.getGlobal(Minecraft.getInstance().player);
-        if(globalData == null || globalData.getDreamEaterRL().equals(ModDreamEaters.NONE.get().getRegistryName()) || !globalData.hasDreamEaterSummoned())
-            return;
-        DreamEater dreamEater = ModDreamEaters.registry.get(ResourceLocation.parse(globalData.getDreamEaterRL()));
-        if(dreamEater == null)
-            return;
-
-        //System.out.println(globalData.hasDreamEaterSummoned());
-        if(globalData.hasDreamEaterSummoned()) {
-            Entity dreamEaterEntity = ClientUtilsRM.getEntityByUUIDClient(globalData.getDreamEaterUUID());
-
-			if (dreamEaterEntity == null) {
-				return;
-			}
-
-            int dreamEaterID = dreamEaterEntity.getId();
-            event.addTarget(new CommandMenuItem.Builder(ResourceLocation.parse(globalData.getDreamEaterRL()),
-                            Component.translatable(dreamEater.getTranslationKey()),
-                            item -> event.getSubmenu().getParent().getSelected().onEnter()
-                    ).setData(dreamEaterID+"").textColour(Color.CYAN).build(event.getSubmenu())
-            );
-        }*/
-    }
 
     @SubscribeEvent
     public void menuButton(MenuButtonRegisterEvent event){
@@ -152,6 +140,49 @@ public class ClientEventsRM {
         }
     }
 
+	// KK Style Menu Inject?
+	@SubscribeEvent
+	public void onStylesMenuInit(ScreenEvent.Init.Post event) {
+		if (!(event.getScreen() instanceof StylesMenu screen)) {
+			return;
+		}
+
+		Minecraft minecraft = Minecraft.getInstance();
+
+		// Gating off My Animations, uncomment when working
+		/*if (minecraft.player == null ||
+				!minecraft.player.getUUID().equals(XEPHIRO_UUID) || !minecraft.player.getUUID().equals(DEV_UUID)) {
+			return;
+		}*/
+
+		float topBarHeight = (float) screen.height * 0.17F;
+
+		int buttonPosX = (int) ((float) screen.width * 0.80F);
+		int buttonPosY = (int) topBarHeight + 5;
+		int buttonWidth = (int) (((float) screen.width * 0.1744F) - 22);
+
+		event.addListener(new MenuButton(
+				buttonPosX,
+				buttonPosY,
+				buttonWidth,
+				"Xephiro",
+				MenuButton.ButtonType.BUTTON,
+				true,
+				e -> {
+					// Style Swap Here
+					action(RMStyleButtons.XEPHIRO);
+				}
+		));
+	}
+
+	protected void action(RMStyleButtons buttonID){
+		switch (buttonID){
+			case XEPHIRO -> System.out.println("Hi");
+		}
+	}
+
+
+	// VFX for Steps
     @SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void RenderEntity(RenderLivingEvent.Pre event){
 		if (event.getEntity() != null){
