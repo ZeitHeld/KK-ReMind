@@ -325,22 +325,20 @@
   "ability.ability_dark_infusion.desc": "Enhances your spells and abilities with the power of Darkness! \nDoes not apply to spells that are already Darkness based.",
   "ability.ability_twilight_infusion.name": "Dawn Infusion",
   "ability.ability_twilight_infusion.desc": "Enhances your spells and abilities with the power of Light and Darkness!",
+  "ability.ability_exp_converter.name": "EXP Converter",
+  "ability.ability_exp_converter.desc": "When picking up XP orbs, gain the value of it as Kingdom Keys EXP.",
 
 
   "ability.ability_lyric1.name": "Volt Absorb",
   "ability.ability_lyric1.desc": "☆Exclusive☆  \nWhen equipped and hit with Lightning or Thunder based magic, take 10% less damage and gain Haste and Speed for 5 seconds.",
   "ability.ability_lyric2.name": "Flash and Thunder",
   "ability.ability_lyric2.desc": "☆Exclusive☆  \nA Thunderous counter. Scales with Thunder Boost. \nRequires Counter Blast.",
-
   "ability.ability_xephiro.name": "Vampiric Essence",
   "ability.ability_xephiro.desc": "☆Exclusive☆  \nMakes your attacks thirst for blood. Granting HP on hit. \nScales with Darkness Boost.",
-
   "ability.ability_regen.name": "Dimensional Gaze",
   "ability.ability_regen.desc": "☆Exclusive☆  \nGrants access to the reaction command 'Ravenous Saber', a deadly 5-hit combo of elemental fury! \nDeals more damage with 'Spellblade' equipped. \n\nGrants access to Gaze Form. \nThis form specializes in heavy hitting attacks imbued with the power of the elements.",
-
   "ability.ability_exceed.name": "Exceed",
   "ability.ability_exceed.desc": "☆Exclusive☆ \nUnlocks the 'Exceed' Reaction Command. \nCost: 10 FP. Can be stacked 3 times. \nBoost your next attack with explosive fury! Time it with your strikes to do even more damage!\nDamage scales with stacks of Exceed and Fire Boosts!\nTime it right and you will get MAX stacks and refund some Focus!",
-
   "ability.ability_silence_heart.name": "Silence Heart",
   "ability.ability_silence_heart.desc": "☆Exclusive☆ \n[On-hit] Chance to inflict Silence for 5 seconds. Scales with Critical Boost.",
 
@@ -364,6 +362,7 @@
   "form.form_light.name": "Light",
   "form.form_twilight.name": "Twilight",
   "form.form_regen.name": "????",
+  "form.form_draconic_liberation.name": "Draconic Liberation",
 
   "form.form_firestorm.name": "Firestorm",
   "form.form_diamond_dust.name": "Diamond Dust",

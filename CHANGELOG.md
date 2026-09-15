@@ -1,21 +1,27 @@
 ## __8.26.3f__
 
+### General Changes and Fixes
 
-### General Changes
-
-- **[EFM]** Attack Command Animations now play again.
-- Added Cooldown to summoning Dream Eaters, it lasts 30 seconds.
-- Added Cooldown mentioned above for if the Dream Eater dies.
-- Fixed Tonberry (Spirit) immortality bug.
-- Tonberry (Spirit) no longer has a full bright model.
-- Tonberry (Spirit) now emits light like it's hostile counterpart.
-- Tonberry should (hopefully) remove light sources it places upon death.
-- Changed 'Darkness Boost' to 'Dark Boost'
-- The 'Walker' abilities no longer require you to sprint to activate.
-- Zettaflare now requires and consumes Max Drive and Max Focus to cast. Otherwise, cast fails.
-- Added config option to turn of Chirithy's chat messages when casting spells. This will be found in the file `kkremind-client.toml`
-- Celestriad fixed from Form Boost back to Fire Boost. (When did that even happen..?)
-- Chirithy now has dialogs and can act as a guide!
+- **[EFM]** **FIX** Attack Command Animations now play again.
+- **[EFM]** Equipping the Guard ability now gives you EFM's Guard Skill.
+- **[EFM]** **FIX** Forms now have movesets again (Thank you Nathan)
+- **CHANGE** Added Cooldown to summoning Dream Eaters, it lasts 30 seconds.
+- **CHANGE** Added Cooldown mentioned above for if the Dream Eater dies.
+- **FIX** Tonberry (Spirit) immortality bug.
+- **FIX** Tonberry (Spirit) no longer has a full bright model.
+- **FIX** Tonberry (Spirit) now emits light like it's hostile counterpart.
+- **FIX** Tonberry should (hopefully) remove light sources it places upon death.
+- **CHANGE** Changed 'Darkness Boost' to 'Dark Boost'
+- **CHANGE** The 'Walker' abilities no longer require you to sprint to activate.
+- **CHANGE** Zettaflare now requires and consumes Max Drive and Max Focus to cast. Otherwise, cast fails.
+- **CHANGE** Added config option to turn of Chirithy's chat messages when casting spells. This will be found in the file `kkremind-client.toml`
+- **FIX** Celestriad fixed from Form Boost back to Fire Boost. (When did that even happen..?)
+- **NEW** Chirithy now has dialogs and can act as a guide!
+- **CHANGE** EXP Ring now has the **NEW** EXP Converter Ability.
+- **CHANGE** Light Form should be easier/faster to level now.
+- **CHANGE** Dream Eaters now register as Party Members.
+- **CHANGE** Light Step Rework - It now makes you move in an arcing motion
+- **CHANGE** Dark Step Rework - It now makes you -blink- a few blocks in the direction you're facing, leaving an afterimage.
 
 ### New Spell
 
@@ -31,6 +37,13 @@
 - Description: On-hit, afflict the victim with the Silence status effect. *Scales with Critical Boost*
 - How to Obtain: Equip *Entropy's Requiem* keychain. (See below)
 
+#### **EXP Converter**
+- Cost: 10 AP
+- Description: When picking up XP orbs, gain the value of it as Kingdom Keys EXP.
+- How to Obtain: EXP Ring
+
+
+
 
 ### New Keyblades
 
@@ -43,15 +56,14 @@
   - Base Stats: 8/10
   - Base Ability: MP Walker
 - Entropy's Requiem, commissioned by ConstellationDragon
-  - Description: 
+  - Description: This keyblade glimmered into existence upon the shattering of Ragnarök's Requiem, a blade forged tenaciously by a blacksmith, and the freeing weight of its wielder when he was finally liberated from the burdens of his inner Darkness. It strives to show him the Freedom within the Stars.
   - Base Stats: 10/10
   - Base Ability: **NEW** Silence Heart
-  - Custom Form: 
+  - Custom Form: Draconic Liberation
 - Maddening Corruption, commissioned by TheFeralKitsune
-  - Description: 
+  - Description: A keyblade that's been corrupted by Phazon
   - Base Stats: 13/6
-  - Base Ability: Dark Infusion
-    
+  - Base Ability: Dark Power
 
 #### What-If Keyblades
 *Inspired by and based on Marduk-Kurios's Designs*

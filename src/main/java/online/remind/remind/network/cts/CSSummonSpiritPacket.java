@@ -7,12 +7,18 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import online.kingdomkeys.kingdomkeys.data.PlayerData;
+import online.kingdomkeys.kingdomkeys.data.WorldData;
+import online.kingdomkeys.kingdomkeys.lib.Party;
+import online.kingdomkeys.kingdomkeys.network.PacketHandler;
+import online.kingdomkeys.kingdomkeys.network.stc.SCSyncWorldData;
 import online.kingdomkeys.kingdomkeys.util.Utils;
 import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.capabilities.GlobalDataRM;
@@ -109,8 +115,9 @@ public class CSSummonSpiritPacket implements CustomPacketPayload {
 
         ctx.enqueueWork(() -> {
 
-            Player owner =
-                    ctx.player();
+            if (!(ctx.player() instanceof ServerPlayer owner)) {
+                return;
+            }
 
             GlobalDataRM globalData =
                     ModDataRM.getGlobal(owner);
@@ -166,7 +173,7 @@ public class CSSummonSpiritPacket implements CustomPacketPayload {
 
     // Dream Eater summoning
     private static void handleSummon(
-            Player owner,
+            ServerPlayer owner,
             PlayerData kkData,
             GlobalDataRM globalData
     ) {
@@ -241,7 +248,7 @@ public class CSSummonSpiritPacket implements CustomPacketPayload {
             return;
         }
 
-        Entity summonedDreamEater = null;
+        LivingEntity summonedDreamEater = null;
 
         ChirithyEntity.removeExistingChirithy(
                 serverLevel,
@@ -468,6 +475,10 @@ public class CSSummonSpiritPacket implements CustomPacketPayload {
                 true
         );
 
+        // Register the summoned Dream Eater as a real Kingdom Keys party member.
+        // This lets KK's party/friendly-fire systems recognize the Spirit.
+        addSpiritToParty(owner, summonedDreamEater);
+
         owner.level().playSound(
                 null,
                 owner.getX(),
@@ -487,23 +498,32 @@ public class CSSummonSpiritPacket implements CustomPacketPayload {
 
     // Manual Dream Eater desummoning
     private static void handleDesummon(
-            Player owner,
+            ServerPlayer owner,
             GlobalDataRM globalData
     ) {
 
         UUID dreamEaterUUID =
                 globalData.getDreamEaterUUID();
 
-        if (dreamEaterUUID != null
-                && owner.level() instanceof ServerLevel serverLevel) {
+        if (dreamEaterUUID != null) {
 
-            Entity entity =
-                    serverLevel.getEntity(
-                            dreamEaterUUID
-                    );
+            // Remove the summoned Spirit from the Kingdom Keys party first.
+            // Do this by UUID so cleanup still works even if the entity is no longer loaded.
+            removeSpiritFromParty(
+                    owner,
+                    dreamEaterUUID
+            );
 
-            if (entity != null) {
-                entity.discard();
+            if (owner.level() instanceof ServerLevel serverLevel) {
+
+                Entity entity =
+                        serverLevel.getEntity(
+                                dreamEaterUUID
+                        );
+
+                if (entity != null) {
+                    entity.discard();
+                }
             }
         }
 
@@ -528,6 +548,69 @@ public class CSSummonSpiritPacket implements CustomPacketPayload {
 
         globalData.setHasDreamEaterSummoned(
                 false
+        );
+    }
+
+    public static void removeSpiritFromParty(ServerPlayer player, UUID spiritUUID) {
+        if (player == null || spiritUUID == null || player.getServer() == null) {
+            return;
+        }
+
+        WorldData worldData = WorldData.get(player.getServer());
+        if (worldData == null) {
+            return;
+        }
+
+        Party party = worldData.getPartyFromMember(player.getUUID());
+        if (party == null) {
+            return;
+        }
+
+        var spiritMember = party.getMember(spiritUUID);
+        if (spiritMember == null) {
+            return;
+        }
+
+        // Remove the exact Party member object returned by KK.
+        // This avoids needing to know the concrete Party member type here.
+        if (party.getMembers().remove(spiritMember)) {
+            worldData.setDirty();
+
+            PacketHandler.sendToAll(
+                    new SCSyncWorldData(player.getServer())
+            );
+        }
+    }
+
+
+    public static void addSpiritToParty(ServerPlayer player, LivingEntity spirit) {
+        if (player == null || spirit == null || player.getServer() == null) {
+            return;
+        }
+
+        WorldData worldData = WorldData.get(player.getServer());
+        if (worldData == null) {
+            return;
+        }
+
+        Party party = worldData.getPartyFromMember(player.getUUID());
+
+        // The supplied KK party code expects the player to already belong to a party.
+        // If there is no party, there is nothing safe to attach the Spirit to here.
+        if (party == null) {
+            return;
+        }
+
+        // Prevent duplicate party entries if the packet is triggered more than once.
+        if (party.getMember(spirit.getUUID()) != null) {
+            return;
+        }
+
+        worldData.addPartyMember(party, spirit);
+
+        // WorldData is server-side state, so immediately refresh it for clients.
+        PacketHandler.sendToAll(
+                new SCSyncWorldData(player.getServer())
         );
     }
 

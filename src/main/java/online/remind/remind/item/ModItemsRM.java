@@ -215,7 +215,7 @@ public class ModItemsRM{
         darkRing = ITEMS.register("dark_ring", () -> new KKAccessoryItem(new Item.Properties().stacksTo(1),5,5,5, new ResourceLocation[] {ModAbilitiesRM.DARKNESS_BOOST.location()})),
         lightRing = ITEMS.register("light_ring", () -> new KKAccessoryItem(new Item.Properties().stacksTo(1),5,5,5, new ResourceLocation[] {ModAbilitiesRM.LIGHT_BOOST.location()})),
 
-        expRing = ITEMS.register("exp_ring", () -> new KKAccessoryItem(new Item.Properties().stacksTo(1),5,1,1, new ResourceLocation[] {ModAbilitiesRM.EXP_WALKER.location(), ModAbilities.EXPERIENCE_BOOST.location()})),
+        expRing = ITEMS.register("exp_ring", () -> new KKAccessoryItem(new Item.Properties().stacksTo(1),5,1,1, new ResourceLocation[] {ModAbilitiesRM.EXP_WALKER.location(), ModAbilities.EXPERIENCE_BOOST.location(), ModAbilitiesRM.XP_CONVERTER.location()})),
         focusSash = ITEMS.register("focus_sash", () -> new KKAccessoryItem(new Item.Properties().stacksTo(1),3,0,3, new ResourceLocation[] {ModAbilitiesRM.FOCUS_WALKER.location()})),
         heartLocket = ITEMS.register("heart_locket", () -> new KKAccessoryItem(new Item.Properties().stacksTo(1),5,1,1, new ResourceLocation[] {ModAbilitiesRM.HEART_WALKER.location()})),
         friendBinder = ITEMS.register("friendbinder", () -> new KKAccessoryItem(new Item.Properties().stacksTo(1),10,0,0, new ResourceLocation[] {ModAbilitiesRM.FRIEND_POWER.location()})),

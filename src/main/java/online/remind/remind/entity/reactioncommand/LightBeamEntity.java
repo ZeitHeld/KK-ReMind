@@ -100,8 +100,11 @@ public class LightBeamEntity extends ThrowableProjectile {
                         target.hurt(KKDamageTypes.getElementalDamage(KKDamageTypes.LIGHT,this, this.getOwner()), dmg);
                     }
                     PlayerData playerData = PlayerData.get(player);
+
+                    float formXP = playerData.getDriveFormLevel(ModDriveFormsRM.LIGHT.location()) + 20; // TODO: Form EXP Multi Configs for Light, Dark, and Rage Forms
+
                     if(playerData.isFormActive(ModDriveFormsRM.LIGHT)) {
-                        playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), playerData.getDriveFormExp(playerData.getActiveDriveForm()) + 2);
+                        playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), playerData.getDriveFormExp(ModDriveFormsRM.LIGHT.location()) + (int) formXP);
                     }
 
                 }

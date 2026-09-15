@@ -75,6 +75,7 @@ public class ModAbilitiesRM extends ModAbilities{
         MP_SLOWGA = register(StringsRM.ABMA_Prefix+"mp_slowga", () -> new Ability(ResourceLocation.parse(StringsRM.mpSlowga),5,Ability.AbilityType.SUPPORT, order++)),
         ONE_HP = register(StringsRM.ABMA_Prefix+"one_hp", () -> new Ability(ResourceLocation.parse(StringsRM.oneHP),5,Ability.AbilityType.SUPPORT, order++)),
         RIBBON = register(StringsRM.ABMA_Prefix+"ribbon", () -> new Ability(ResourceLocation.parse(StringsRM.ribbon),10,Ability.AbilityType.SUPPORT, order++)),
+        XP_CONVERTER = register(StringsRM.ABMA_Prefix+"exp_converter", () -> new Ability(ResourceLocation.parse(StringsRM.xpConverter),10,Ability.AbilityType.SUPPORT, order++)),
 
 
         LIGHT_INFUSION = register(StringsRM.ABMA_Prefix+"light_infusion", () -> new Ability(ResourceLocation.parse(StringsRM.lightInfusion), 0, Ability.AbilityType.SUPPORT, order++)),

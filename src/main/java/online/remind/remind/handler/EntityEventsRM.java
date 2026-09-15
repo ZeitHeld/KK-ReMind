@@ -29,12 +29,14 @@ import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerRespawnEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import online.kingdomkeys.kingdomkeys.ability.ModAbilities;
 import online.kingdomkeys.kingdomkeys.api.event.*;
 import online.kingdomkeys.kingdomkeys.client.sound.ModSounds;
+import online.kingdomkeys.kingdomkeys.config.ServerConfig;
 import online.kingdomkeys.kingdomkeys.damagesource.KKDamageTypes;
 import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.data.WorldData;
@@ -70,6 +72,7 @@ import online.remind.remind.item.ModItemsRM;
 import online.remind.remind.lib.StringsRM;
 import online.remind.remind.network.PacketHandlerRM;
 import online.remind.remind.network.cts.CSGrowthPanelActionPacket;
+import online.remind.remind.network.cts.CSSummonSpiritPacket;
 import online.remind.remind.network.stc.SCOrganizationPanelSyncPacket;
 import online.remind.remind.panels.OrganizationPanelAbilityHelper;
 import online.remind.remind.panels.OrganizationPanelStatHelper;
@@ -185,31 +188,32 @@ public class EntityEventsRM {
 
 	@SubscribeEvent
 	public void onPlayerLeave(PlayerEvent.PlayerLoggedOutEvent e) {
-		Player player = e.getEntity();
+		if (!(e.getEntity() instanceof ServerPlayer player)) {
+			return;
+		}
+
 		GlobalDataRM globalData = ModDataRM.getGlobal(player);
 
-		/*
-		 * Dream Eaters are temporary summons.
-		 * Remove the actual entity before clearing summon state.
-		 */
-		if (!player.level().isClientSide
-				&& player.level() instanceof ServerLevel serverLevel) {
-
-			MeowWowEntity.removeExistingMeowWow(
-					serverLevel,
-					player.getUUID()
-			);
+		if (globalData == null) {
+			return;
 		}
 
-		if (globalData != null) {
-			globalData.setHasDreamEaterSummoned(false);
-			globalData.setDreamEaterUUID(null);
+		UUID dreamEaterUUID = globalData.getDreamEaterUUID();
 
-			PacketHandlerRM.syncGlobalToAllAround(
+		if (dreamEaterUUID != null) {
+			CSSummonSpiritPacket.removeSpiritFromParty(
 					player,
-					globalData
+					dreamEaterUUID
 			);
 		}
+
+		globalData.setHasDreamEaterSummoned(false);
+		globalData.setDreamEaterUUID(null);
+
+		PacketHandlerRM.syncGlobalToAllAround(
+				player,
+				globalData
+		);
 	}
 
 	@SubscribeEvent
@@ -2545,4 +2549,30 @@ public class EntityEventsRM {
 			PacketHandler.sendTo(new SCSyncPlayerData(player), (ServerPlayer) player);
 		}
     }
+
+	// MC XP -> KK EXP
+	@SubscribeEvent
+	public void onXpOrbPickup(PlayerXpEvent.PickupXp event) {
+		Player player = event.getEntity();
+
+		if (player.level().isClientSide()) {
+			return;
+		}
+
+		int vanillaXp = event.getOrb().getValue();
+
+		PlayerData playerData = PlayerData.get(player);
+
+		if (playerData == null) {
+			return;
+		}
+
+		if (playerData.isAbilityEquipped(ResourceLocation.parse(StringsRM.xpConverter))) {
+			// Convert vanilla XP -> Kingdom Keys XP
+			int kkXp = (int) Math.max(vanillaXp * online.kingdomkeys.kingdomkeys.config.ModConfigs.SERVER.xpMultiplier.get(),1);
+			player.sendSystemMessage(Component.literal("MC EXP Value: " + kkXp));
+			playerData.addExperience(player, kkXp, false, true);
+			PacketHandler.sendTo(new SCSyncPlayerData(player), (ServerPlayer) player);
+		}
+	}
 }

@@ -3,6 +3,7 @@ package online.remind.remind.reactioncommands;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
 import online.kingdomkeys.kingdomkeys.driveform.ModDriveForms;
@@ -29,15 +30,57 @@ public class TwilightFormRC extends ReactionCommand {
 	@Override
 	public boolean conditionsToAppear(Player player, LivingEntity livingEntity) {
 		PlayerData playerData = PlayerData.get(player);
-		if (playerData != null && playerData.getEquippedKeychain(DriveForm.NONE) != null && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.location()) != null) {
-			if (playerData.getDriveFormLevel(ModDriveFormsRM.DARK.location()) == 7 && playerData.getDriveFormLevel(ModDriveFormsRM.LIGHT.location()) == 7) {
-				if (playerData.isFormActive(ModDriveFormsRM.DARK))
-					return playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.oblivionChain.get() && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.location()).getItem() == ModItems.oathkeeperChain.get();
-				
-				if (playerData.isFormActive(ModDriveFormsRM.LIGHT))
-					return playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.oathkeeperChain.get() && playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.location()).getItem() == ModItems.oblivionChain.get();
-			}
+		if (playerData == null) {
+			return false;
 		}
-		return false;
+
+		// Keyblade Check
+		ItemStack baseKeychain =
+				playerData.getEquippedKeychain(DriveForm.NONE);
+
+		ItemStack twilightKeychain =
+				playerData.getEquippedKeychain(ModDriveFormsRM.TWILIGHT.location());
+
+		if (baseKeychain == null || twilightKeychain == null) {
+			return false;
+		}
+
+		// Dark/Light Form Level Check
+		if (playerData.getDriveFormLevel(ModDriveFormsRM.DARK.location()) < 7 ||
+				playerData.getDriveFormLevel(ModDriveFormsRM.LIGHT.location()) < 7) {
+			return false;
+		}
+
+		// Active Form Check
+
+		boolean darkActive =
+				playerData.isFormActive(ModDriveFormsRM.DARK);
+
+		boolean lightActive =
+				playerData.isFormActive(ModDriveFormsRM.LIGHT);
+
+		boolean darkSetup =
+				playerData.isFormActive(ModDriveFormsRM.DARK)
+						&& baseKeychain.is(ModItems.oblivionChain.get())
+						&& twilightKeychain.is(ModItems.oathkeeperChain.get());
+
+		boolean lightSetup =
+				playerData.isFormActive(ModDriveFormsRM.LIGHT)
+						&& baseKeychain.is(ModItems.oathkeeperChain.get())
+						&& twilightKeychain.is(ModItems.oblivionChain.get());
+
+		// DEBUG
+		//		System.out.println(
+		//				"Twilight slot check:"
+		//						+ " client=" + player.level().isClientSide()
+		//						+ " darkLv=" + playerData.getDriveFormLevel(ModDriveFormsRM.DARK.location())
+		//						+ " lightLv=" + playerData.getDriveFormLevel(ModDriveFormsRM.LIGHT.location())
+		//						+ " darkActive=" + darkActive
+		//						+ " lightActive=" + lightActive
+		//						+ " base=" + baseKeychain
+		//						+ " twilight=" + twilightKeychain
+		//		);
+
+		return darkSetup || lightSetup;
 	}
 }

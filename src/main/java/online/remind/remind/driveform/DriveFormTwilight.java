@@ -33,7 +33,7 @@ public class DriveFormTwilight extends DriveForm {
 			ResourceLocation.fromNamespaceAndPath("c", "bosses")
 	);
 
-	// Twilight Form EXP Gain -- If decided to let the form level
+	// Twilight Form EXP Gain
 	@SubscribeEvent
 	public static void getTwilightFormXP(LivingDeathEvent event) {
 		if (!event.getEntity().level().isClientSide && event.getEntity() instanceof LivingEntity killed) {
@@ -43,7 +43,7 @@ public class DriveFormTwilight extends DriveForm {
 					PlayerData playerData = PlayerData.get(player);
 					if (playerData != null && playerData.isFormActive(ModDriveFormsRM.TWILIGHT)) {
 						double mult = Double.parseDouble(ModConfigs.SERVER.driveFormXPMultiplier.get().get(1).split(",")[1]);
-						playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (1 * mult)));
+						playerData.setDriveFormExp(player, playerData.getActiveDriveForm(), (int) (playerData.getDriveFormExp(playerData.getActiveDriveForm()) + (5 * mult)));
 						PacketHandler.sendTo(new SCSyncPlayerData(player), (ServerPlayer) player);
 					}
 				}

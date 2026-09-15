@@ -191,6 +191,7 @@ public class StringsRM {
         mpSlowga = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"mp_slowga",
         oneHP = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"one_hp",
         ribbon = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"ribbon",
+        xpConverter = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"exp_converter",
 
         //Placeholders for Spirit System
         none = "none",
