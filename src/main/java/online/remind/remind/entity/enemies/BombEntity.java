@@ -14,6 +14,9 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageSources;
+import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -1010,6 +1013,12 @@ public class BombEntity extends Monster implements GeoEntity {
             float amount
     ) {
 
+        if (source.is(DamageTypes.IN_FIRE) || source.is(DamageTypes.ON_FIRE) || source.is(DamageTypes.FIREBALL) || source.is(DamageTypes.CAMPFIRE)){
+            this.heal(amount);
+            return false;
+        }
+
+
         if (isFireDamage(source)) {
 
             if (this.level().isClientSide) {
@@ -1027,11 +1036,11 @@ public class BombEntity extends Monster implements GeoEntity {
              *
              * LivingEntity#heal automatically caps at max health.
              */
-            this.heal(amount);
+            this.heal(amount * 1.5f);
 
             growFromFireDamage();
 
-            return true;
+            return false;
         }
 
         if (isIceOrWaterDamage(source)) {
@@ -1484,9 +1493,9 @@ public class BombEntity extends Monster implements GeoEntity {
 
         float multiplier =
                 switch (this.getVariant()) {
-                    case VARIANT_GRENADE -> 3.0F;
-                    case VARIANT_VOLCANO -> 3.6F;
-                    default -> 2.5F;
+                    case VARIANT_GRENADE -> 3.6F;
+                    case VARIANT_VOLCANO -> 4.2F;
+                    default -> 3F;
                 };
 
         return scaledAttack

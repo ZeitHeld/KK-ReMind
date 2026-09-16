@@ -45,7 +45,7 @@
 
 ## New Enemies!
 
-### **The Bomb Family**
+### **The Bomb Family** *from the FINAL FANTASY series.*
 
 There's 3 Enemies in this family!
 - Bomb, The weakest of the Bomb Family.
