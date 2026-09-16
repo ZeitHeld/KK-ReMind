@@ -43,8 +43,22 @@
 - Description: When picking up XP orbs, gain the value of it as Kingdom Keys EXP.
 - How to Obtain: EXP Ring
 
+### New Enemies!
 
+**Bomb Family**
+There's 3 Enemies in this family!
+- Bomb, The weakest of the Bomb Family.
+- Grenade, the middle ground of the Bomb Family.
+- Volcano, the strongest of the Bomb Family.
 
+What do they do?
+- Heal and Grow from Fire Damage.
+- Take x2 Ice/Water Damage.
+- Can cast Fire magic, which spell they cast scales with their level. (Fire, Fira, Firaga, and Firaza)
+- Melee Attack.
+- Self-Destruct while low HP OR after using any Fire commands/spells 3 times.
+- **VERY RARE** Chance to drop either Fire, Fira, or Firaga.
+- Chance to drop ANY Blazing synthesis material. Odds increase with Grenades, even higher with Volcano.
 
 ### New Keyblades
 

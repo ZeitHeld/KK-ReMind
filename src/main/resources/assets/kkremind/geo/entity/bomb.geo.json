@@ -1,0 +1,57 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.bomb",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "Body",
+					"pivot": [0, 6.88, -0.32],
+					"cubes": [
+						{"origin": [-3, 4, -3], "size": [6, 6, 6], "uv": [0, 0]},
+						{"origin": [-2, 9.76, -1.96], "size": [4, 2, 4], "uv": [0, 12]}
+					]
+				},
+				{
+					"name": "ArmL",
+					"parent": "Body",
+					"pivot": [3.36, 7.68, 1.92],
+					"cubes": [
+						{"origin": [3.22476, 6.73629, 1.4], "size": [2, 1, 1], "uv": [2, 24]}
+					]
+				},
+				{
+					"name": "bone",
+					"parent": "ArmL",
+					"pivot": [5.34476, 6.73629, 1.28],
+					"cubes": [
+						{"origin": [5.14476, 6.73629, 1.4], "size": [2, 1, 1], "uv": [2, 24]}
+					]
+				},
+				{
+					"name": "ArmR",
+					"parent": "Body",
+					"pivot": [-3.11908, 6.91052, 1.4748],
+					"cubes": [
+						{"origin": [-5.16004, 6.37261, 0.99404], "size": [2, 1, 1], "uv": [2, 24], "mirror": true}
+					]
+				},
+				{
+					"name": "bone2",
+					"parent": "ArmR",
+					"pivot": [-5.28004, 6.37261, 0.87404],
+					"cubes": [
+						{"origin": [-7.08004, 6.37261, 0.99404], "size": [2, 1, 1], "uv": [2, 24], "mirror": true}
+					]
+				}
+			]
+		}
+	]
+}
