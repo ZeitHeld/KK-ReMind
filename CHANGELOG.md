@@ -75,6 +75,10 @@ Where do they spawn?
   - Description: 
   - Base Stats: 8/8
   - Base Ability: Way to Light
+- Unknown , a **gift** for **CanaliaRose**
+  - Description: 
+  - Base Stats: 
+  - Base Ability: 
 - Nebula Records, commissioned by DogofTheRoad
   - Description: A very musically themed Keyblade with high emphasis on casting and the rhythm of casting.
   - Base Stats: 8/10

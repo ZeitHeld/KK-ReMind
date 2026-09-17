@@ -47,6 +47,7 @@ public class ModReactionCommandsRM {
 
         REGEN_RC = register(StringsRM.RCMA_Prefix+"regen", () -> new RegenRC( ResourceLocation.parse(StringsRM.RegenRC),true)),
         EXCEED_RC = register(StringsRM.RCMA_Prefix+"exceed", () -> new ExceedRC( ResourceLocation.parse(StringsRM.ExceedRC),true, -1, 0x002E68)),
+        ROSE_RC = register(StringsRM.RCMA_Prefix+"rose", () -> new RoseRC( ResourceLocation.parse(StringsRM.RoseRC),true, -1, 0x002E68)),
 
 
     // Reprisals

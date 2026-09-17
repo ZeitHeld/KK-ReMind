@@ -388,6 +388,7 @@
   "item.kkremind.entropys_requiem": "Entropy's Requiem",
   "item.kkremind.maddening_corruption" : "Maddening Corruption",
   "item.kkremind.kali_keyblade": "Guardian's Hope",
+  "item.kkremind.rose_keyblade": "Callous Cavaloir",
   "item.kkremind.union_ultima_l": "Union Ultima Weapon (Upright)",
   "item.kkremind.union_ultima_d": "Union Ultima Weapon (Reversed)",
 
@@ -408,6 +409,7 @@
 
 
   "item.kkremind.kali_keyblade_chain": "Guardian's Hope Chain",
+  "item.kkremind.rose_keyblade_chain": "Callous Cavaloir Chain",
   "item.kkremind.union_ultima_l_chain": "Union Ultima Weapon (Upright) Chain",
   "item.kkremind.union_ultima_d_chain": "Union Ultima Weapon (Reversed) Chain",
 

@@ -39,7 +39,6 @@ public class ModAbilitiesRM extends ModAbilities{
         COUNTER_BLAST = register(StringsRM.ABMA_Prefix+"counter_blast", () -> new Ability( ResourceLocation.parse(StringsRM.counterBlast), 0, Ability.AbilityType.ACTION, order++)),
         COUNTER_RUSH = register(StringsRM.ABMA_Prefix+"counter_rush", () -> new Ability( ResourceLocation.parse(StringsRM.counterRush), 0, Ability.AbilityType.ACTION, order++)),
 
-
             // Growth
         LIGHT_STEP = register(StringsRM.ABMA_Prefix+"light_step", () -> new Ability( ResourceLocation.parse(StringsRM.lightStep), 0, Ability.AbilityType.GROWTH, order++)),
         DARK_STEP = register(StringsRM.ABMA_Prefix+"dark_step", () -> new Ability( ResourceLocation.parse(StringsRM.darkStep), 0, Ability.AbilityType.GROWTH, order++)),
@@ -82,19 +81,6 @@ public class ModAbilitiesRM extends ModAbilities{
         DARK_INFUSION = register(StringsRM.ABMA_Prefix+"dark_infusion", () -> new Ability(ResourceLocation.parse(StringsRM.darkInfusion), 0, Ability.AbilityType.SUPPORT, order++)),
         TWILIGHT_INFUSION = register(StringsRM.ABMA_Prefix+"twilight_infusion", () -> new Ability(ResourceLocation.parse(StringsRM.twilightInfusion), 0, Ability.AbilityType.SUPPORT, order++)),
 
-        // Grand Magics
-        SEEKER_MINE = register(StringsRM.ABMA_Prefix+"seeker_mine", () -> new Ability(ResourceLocation.parse(StringsRM.seekerMine), 0, Ability.AbilityType.SUPPORT, order++)),
-
-
-        // Placeholders for Spirit System
-        CHIRITHY = register(StringsRM.ABMA_Prefix+"chirithy", () -> new Ability( ResourceLocation.parse(StringsRM.chirithy), 0, Ability.AbilityType.ACTION, order++)),
-
-
-
-
-
-
-
         // Weapon Exclusive Abilities
         TIDUS = register(StringsRM.ABMA_Prefix+"tidus", () -> new Ability(ResourceLocation.parse(StringsRM.Tidus),3,Ability.AbilityType.SUPPORT, order++)),
         JECHT = register(StringsRM.ABMA_Prefix+"jecht", () -> new Ability(ResourceLocation.parse(StringsRM.Jecht),3,Ability.AbilityType.SUPPORT, order++)),
@@ -102,6 +88,7 @@ public class ModAbilitiesRM extends ModAbilities{
         LYRIC1 = register(StringsRM.ABMA_Prefix+"lyric1", () -> new Ability(ResourceLocation.parse(StringsRM.Lyric1),0,Ability.AbilityType.SUPPORT, order++)),
         LYRIC2 = register(StringsRM.ABMA_Prefix+"lyric2", () -> new Ability(ResourceLocation.parse(StringsRM.Lyric2),0,Ability.AbilityType.SUPPORT, order++)),
         XEPHIRO = register(StringsRM.ABMA_Prefix+"xephiro", () -> new Ability(ResourceLocation.parse(StringsRM.Xephiro),0,Ability.AbilityType.SUPPORT, order++)),
+        ROSE = register(StringsRM.ABMA_Prefix+"rose", () -> new Ability(ResourceLocation.parse(StringsRM.Rose),0,Ability.AbilityType.SUPPORT, order++)),
         REGEN = register(StringsRM.ABMA_Prefix+"regen", () -> new Ability(ResourceLocation.parse(StringsRM.Regen),0,Ability.AbilityType.SUPPORT, order++)),
         EXCEED = register(StringsRM.ABMA_Prefix+"exceed", () -> new Ability(ResourceLocation.parse(StringsRM.Exceed),0,Ability.AbilityType.ACTION, order++)),
         SILENCE_HEART = register(StringsRM.ABMA_Prefix+"silence_heart", () -> new Ability(ResourceLocation.parse(StringsRM.SilenceHeart),0,Ability.AbilityType.SUPPORT, order++));
