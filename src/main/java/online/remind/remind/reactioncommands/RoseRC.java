@@ -5,8 +5,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import online.kingdomkeys.kingdomkeys.client.sound.ModSounds;
@@ -53,7 +53,7 @@ public class RoseRC extends ReactionCommand {
         }
 
         // Do not allow another pair while either previous summon is active.
-        if (hasActiveRoseSummons(serverPlayer)) {
+        if (hasActivePartySummons(serverPlayer)) {
             return;
         }
 
@@ -139,7 +139,7 @@ public class RoseRC extends ReactionCommand {
         return shadow;
     }
 
-    private static boolean hasActiveRoseSummons(ServerPlayer player) {
+    private static boolean hasActivePartySummons(ServerPlayer player) {
         if (player.getServer() == null) {
             return false;
         }
@@ -153,6 +153,7 @@ public class RoseRC extends ReactionCommand {
         Party party = worldData.getPartyFromMember(player.getUUID());
 
         if (party == null) {
+            validatePartySummons(player);
             return false;
         }
 
@@ -237,6 +238,81 @@ public class RoseRC extends ReactionCommand {
         );
     }
 
+    public static void validatePartySummons(ServerPlayer player) {
+        if (player.getServer() == null) {
+            return;
+        }
+
+        WorldData worldData = WorldData.get(player.getServer());
+
+        if (worldData == null) {
+            return;
+        }
+
+        Party party = worldData.getPartyFromMember(player.getUUID());
+
+        CompoundTag data = player.getPersistentData();
+
+        validatePartySummon(
+                player,
+                party,
+                data,
+                ROSE_SHADOW_1
+        );
+
+        validatePartySummon(
+                player,
+                party,
+                data,
+                ROSE_SHADOW_2
+        );
+    }
+
+    private static void validatePartySummon(
+            ServerPlayer player,
+            Party party,
+            CompoundTag data,
+            String key
+    ) {
+        if (!data.hasUUID(key)) {
+            return;
+        }
+
+        UUID summonUUID = data.getUUID(key);
+
+
+        boolean stillValid =
+                party != null &&
+                        party.hasMember(summonUUID);
+
+        if (stillValid) {
+            return;
+        }
+
+        // Party disappeared, player left it, or summon was removed.
+        despawnPartySummon(player, summonUUID);
+
+        data.remove(key);
+    }
+
+    private static void despawnPartySummon(
+            ServerPlayer player,
+            UUID summonUUID
+    ) {
+        if (player.getServer() == null) {
+            return;
+        }
+
+        for (ServerLevel level : player.getServer().getAllLevels()) {
+            Entity entity = level.getEntity(summonUUID);
+
+            if (entity != null) {
+                entity.discard();
+                return;
+            }
+        }
+    }
+
     @Override
     public boolean conditionsToAppear(Player player, LivingEntity livingEntity) {
         PlayerData playerData = PlayerData.get(player);
@@ -255,7 +331,7 @@ public class RoseRC extends ReactionCommand {
         }
 
         if (player instanceof ServerPlayer serverPlayer) {
-            if (hasActiveRoseSummons(serverPlayer)) {
+            if (hasActivePartySummons(serverPlayer)) {
                 return false;
             }
         }

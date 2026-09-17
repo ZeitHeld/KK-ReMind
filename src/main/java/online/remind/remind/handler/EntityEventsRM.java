@@ -32,6 +32,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerRespawnEvent
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import online.kingdomkeys.kingdomkeys.ability.ModAbilities;
 import online.kingdomkeys.kingdomkeys.api.event.*;
@@ -78,6 +79,7 @@ import online.remind.remind.panels.OrganizationPanelAbilityHelper;
 import online.remind.remind.panels.OrganizationPanelStatHelper;
 import online.remind.remind.panels.PanelStats;
 import online.remind.remind.reactioncommands.ModReactionCommandsRM;
+import online.remind.remind.reactioncommands.RoseRC;
 
 import java.util.*;
 
@@ -92,6 +94,20 @@ public class EntityEventsRM {
 					KingdomKeysReMind.MODID,
 					"attack_haste"
 			);
+
+
+	public static void onServerTick(ServerTickEvent.Post event) {
+		MinecraftServer server = event.getServer();
+
+		// Once per second is plenty.
+		if (server.getTickCount() % 20 != 0) {
+			return;
+		}
+
+		for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+			RoseRC.validatePartySummons(player);
+		}
+	}
 
 
 	@SubscribeEvent
