@@ -1,10 +1,8 @@
 package online.remind.remind;
 
 import com.google.common.base.Suppliers;
-import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -34,7 +32,6 @@ import online.remind.remind.handler.GrowthPanelClientEvents;
 import online.remind.remind.handler.SGaugeEventHandler;
 import online.remind.remind.capabilities.ModDataRM;
 import online.remind.remind.client.sound.ModSoundsRM;
-import online.remind.remind.command.ModCommands;
 import online.remind.remind.config.ModConfigs;
 import online.remind.remind.dreameater.ModDreamEaters;
 import online.remind.remind.driveform.ModDriveFormsRM;
@@ -170,6 +167,10 @@ public class KingdomKeysReMind {
             .icon(() -> new ItemStack(ModItemsRM.heartCoin.get()))
             .displayItems(((params, output) -> {
                 rmMisc.get().forEach(output::accept);
+
+                output.accept(ModEntitiesRM.BOMB_SPAWN_EGG.get());
+                output.accept(ModEntitiesRM.GRENADE_SPAWN_EGG.get());
+                output.accept(ModEntitiesRM.VOLCANO_SPAWN_EGG.get());
             }))
             .build());
     public static final Supplier<CreativeModeTab>
@@ -195,6 +196,8 @@ public class KingdomKeysReMind {
         EntityEventsRM.ALLOWED_UUIDS.put(UUID.fromString("1d9409de-3a3a-4e5c-a249-50958353813a"), ModItemsRM.fierceDeityKeyChain.get());     // NolValue
         EntityEventsRM.ALLOWED_UUIDS.put(UUID.fromString("da1e7feb-6ed3-4f90-992e-6cf8fb1d5514"), ModItemsRM.lyric2025TournamentChain.get());  // Lyric
         EntityEventsRM.ALLOWED_UUIDS.put(UUID.fromString("0d133e30-1b81-4f59-8db6-a8d299bc7d1e"), ModItemsRM.nebulaRecordsChain.get());  // thunderlead8
+        EntityEventsRM.ALLOWED_UUIDS.put(UUID.fromString("6b3efa0a-814b-43c5-99df-3b5f19de3c76"), ModItemsRM.maddeningCorruptionChain.get());  // Nero
+        EntityEventsRM.ALLOWED_UUIDS.put(UUID.fromString("5b1796f4-0eea-4306-9e04-0c2d04f57eaa"), ModItemsRM.roseKeybladeChain.get());  // Rose
 
         // Org Weapons
         ListsRM.loadAddonOrgWeapons();

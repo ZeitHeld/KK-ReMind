@@ -341,6 +341,8 @@
   "ability.ability_exceed.desc": "☆Exclusive☆ \nUnlocks the 'Exceed' Reaction Command. \nCost: 10 FP. Can be stacked 3 times. \nBoost your next attack with explosive fury! Time it with your strikes to do even more damage!\nDamage scales with stacks of Exceed and Fire Boosts!\nTime it right and you will get MAX stacks and refund some Focus!",
   "ability.ability_silence_heart.name": "Silence Heart",
   "ability.ability_silence_heart.desc": "☆Exclusive☆ \n[On-hit] Chance to inflict Silence for 5 seconds. Scales with Critical Boost.",
+  "ability.ability_rose.name": "Dark Entourage",
+  "ability.ability_rose.desc": "☆Exclusive☆ \nAllows you to summon 2 Shadows to your party.",
 
   "shotlock.flame_salvo.name": "Flame Salvo",
   "shotlock.bubble_blaster.name": "Bubble Blaster",
@@ -386,7 +388,9 @@
   "item.kkremind.fortuna": "Fortuna",
   "item.kkremind.nebula_records": "Nebula Records",
   "item.kkremind.entropys_requiem": "Entropy's Requiem",
+  "item.kkremind.maddening_corruption" : "Maddening Corruption",
   "item.kkremind.kali_keyblade": "Guardian's Hope",
+  "item.kkremind.rose_keyblade": "Callous Cavaloir",
   "item.kkremind.union_ultima_l": "Union Ultima Weapon (Upright)",
   "item.kkremind.union_ultima_d": "Union Ultima Weapon (Reversed)",
 
@@ -403,8 +407,11 @@
   "item.kkremind.fortuna_chain": "Fortuna Chain",
   "item.kkremind.nebula_records_chain": "Nebula Records Chain",
   "item.kkremind.entropys_requiem_chain": "Entropy's Requiem Chain",
+  "item.kkremind.maddening_corruption_chain": "Maddening Corruption Chain",
+
 
   "item.kkremind.kali_keyblade_chain": "Guardian's Hope Chain",
+  "item.kkremind.rose_keyblade_chain": "Callous Cavaloir Chain",
   "item.kkremind.union_ultima_l_chain": "Union Ultima Weapon (Upright) Chain",
   "item.kkremind.union_ultima_d_chain": "Union Ultima Weapon (Reversed) Chain",
 
@@ -465,6 +472,10 @@
   "item.kkremind.cactuar_charm": "Cactuar Charm",
   "item.kkremind.tonberry_charm": "Tonberry Charm",
 
+  "item.kkremind.bomb_spawn_egg": "Bomb Spawn Egg",
+  "item.kkremind.grenade_spawn_egg": "Grenade Spawn Egg",
+  "item.kkremind.volcano_spawn_egg": "Volcano Spawn Egg",
+
 
   "key.categories.kkremind": "Re:Mind",
   "key.kkremind.openmenu": "Open Menu",
@@ -524,6 +535,7 @@
 
   "reactioncommand.kkremind.rc_regen.name": "Ravenous Saber",
   "reactioncommand.kkremind.rc_exceed.name": "Exceed",
+  "reactioncommand.kkremind.rc_rose.name": "Dark Entourage",
 
   "reactioncommand.kkremind.rc_finish.name": "Finish",
   "reactioncommand.kkremind.rc_firestorm.name": "Firestorm",
@@ -556,6 +568,10 @@
 
   "entity.kkremind.tonberry": "Tonberry",
   "entity.kkremind.tonberry_king": "Tonberry King",
+
+  "entity.kkremind.bomb": "Bomb",
+  "entity.kkremind.grenade": "Grenade",
+  "entity.kkremind.volcano": "Volcano",
 
   "effect.kkremind.haste_rm": "Haste (Re:Mind)",
   "effect.kkremind.haste_rm.1": "Hastera",

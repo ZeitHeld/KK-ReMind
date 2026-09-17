@@ -214,6 +214,7 @@ public class StringsRM {
         Lyric2 = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"lyric2",
 
         Xephiro = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"xephiro",
+        Rose = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"rose",
 
         Regen = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"regen",
         Exceed = KingdomKeysReMind.MODID+":"+ StringsRM.ABMA_Prefix+"exceed",
@@ -268,6 +269,7 @@ public class StringsRM {
 
         RegenRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"regen",
         ExceedRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"exceed",
+        RoseRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"rose",
 
         // Limits
 

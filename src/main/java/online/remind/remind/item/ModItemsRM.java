@@ -8,6 +8,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SmithingTemplateItem;
 import net.minecraft.world.item.armortrim.TrimPattern;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import online.kingdomkeys.kingdomkeys.ability.ModAbilities;
@@ -16,6 +17,7 @@ import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.ability.ModAbilitiesRM;
 import online.remind.remind.capabilities.GlobalDataRM;
 import online.remind.remind.config.ModConfigs;
+import online.remind.remind.entity.ModEntitiesRM;
 import online.remind.remind.magic.ModMagicsRM;
 import online.remind.remind.shotlock.ModShotlocksRM;
 
@@ -161,6 +163,7 @@ public class ModItemsRM{
         maddeningCorruption = ITEMS.register("maddening_corruption", () -> new KeybladeItem(new Item.Properties())),
 
         kaliKeyblade = ITEMS.register("kali_keyblade", () -> new KeybladeItem(new Item.Properties())),
+        roseKeyblade = ITEMS.register("rose_keyblade", () -> new KeybladeItem(new Item.Properties())),
 
         unionUltimaLight = ITEMS.register("union_ultima_l", () -> new KeybladeItem(new Item.Properties())),
         unionUltimaDark = ITEMS.register("union_ultima_d", () -> new KeybladeItem(new Item.Properties())),
@@ -182,6 +185,7 @@ public class ModItemsRM{
         entropysRequiemChain = ITEMS.register("entropys_requiem_chain", () -> new KeychainItem()),
         maddeningCorruptionChain = ITEMS.register("maddening_corruption_chain", () -> new KeychainItem()),
         kaliKeybladeChain = ITEMS.register("kali_keyblade_chain", () -> new KeychainItem()),
+        roseKeybladeChain = ITEMS.register("rose_keyblade_chain", () -> new KeychainItem()),
         unionUltimaLightChain = ITEMS.register("union_ultima_l_chain", () -> new KeychainItem()),
         unionUltimaDarkChain = ITEMS.register("union_ultima_d_chain", () -> new KeychainItem()),
 
@@ -246,6 +250,16 @@ public class ModItemsRM{
         // Dream Eater Gifts
         chefsKnife = ITEMS.register("chefs_knife", () -> new ChefsKnifeItem(new Item.Properties().stacksTo(64))),
         cactuarNeedle = ITEMS.register("cactuar_needle", () -> new CactuarNeedleItem(new Item.Properties().stacksTo(64)));
+
+
+        // Mob Eggs
+
+
+
+
+
+
+
         // Music Discs
 
         // Armor Trims

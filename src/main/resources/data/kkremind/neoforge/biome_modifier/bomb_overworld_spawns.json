@@ -1,0 +1,12 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#c:is_overworld",
+  "spawners": [
+    {
+      "type": "kkremind:bomb",
+      "weight": 45,
+      "minCount": 1,
+      "maxCount": 3
+    }
+  ]
+}

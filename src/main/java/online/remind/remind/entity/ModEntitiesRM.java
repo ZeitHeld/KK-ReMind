@@ -1,7 +1,5 @@
 package online.remind.remind.entity;
 
-import net.minecraft.client.renderer.entity.NoopRenderer;
-
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -29,6 +27,7 @@ import online.remind.remind.client.render.reactioncommand.DarkMineEntityRenderer
 import online.remind.remind.client.render.reactioncommand.LightBeamEntityRenderer;
 import online.remind.remind.client.render.shotlock.BioShotEntityRenderer;
 import online.remind.remind.entity.attacks.*;
+import online.remind.remind.entity.enemies.BombEntity;
 import online.remind.remind.entity.enemies.CactuarEntity;
 import online.remind.remind.entity.enemies.TonberryEntity;
 import online.remind.remind.entity.enemies.TonberryKingEntity;
@@ -38,10 +37,12 @@ import online.remind.remind.entity.projectile.CactuarNeedleProjectile;
 import online.remind.remind.entity.reactioncommand.*;
 import online.remind.remind.entity.shotlock.*;
 import online.remind.remind.entity.spirits.*;
-import online.remind.remind.item.ModItemsRM;
+import online.remind.remind.item.ICreativeTabRM;
 import online.remind.remind.entity.effects.DreamEaterLevelUpEffectEntity;
 
 import java.util.function.Supplier;
+
+import static online.remind.remind.item.ModItemsRM.ITEMS;
 
 
 @EventBusSubscriber(modid = KingdomKeysReMind.MODID, bus = EventBusSubscriber.Bus.MOD)
@@ -174,9 +175,72 @@ public class ModEntitiesRM {
                             .build("tonberry_king")
             );
 
+    public static final DeferredHolder<EntityType<?>, EntityType<BombEntity>> TYPE_BOMB =
+            ENTITIES.register("bomb", () ->
+                    EntityType.Builder.<BombEntity>of(BombEntity::new, MobCategory.MONSTER)
+                            .sized(0.9F, 0.9F)
+                            .fireImmune()
+                            .clientTrackingRange(8)
+                            .updateInterval(2)
+                            .build("bomb")
+            );
+
+    public static final Supplier<Item> BOMB_SPAWN_EGG =
+            ITEMS.register(
+                    "bomb_spawn_egg",
+                    () -> new DeferredSpawnEggItem(
+                            ModEntitiesRM.TYPE_BOMB,
+                            0xFFFFFF,
+                            0xFFFFFF,
+                            new Item.Properties()
+                    )
+            );
+
+    public static final Supplier<Item> GRENADE_SPAWN_EGG =
+            ITEMS.register(
+                    "grenade_spawn_egg",
+                    () -> new DeferredSpawnEggItem(
+                            ModEntitiesRM.TYPE_GRENADE,
+                            0xFFFFFF,
+                            0xFFFFFF,
+                            new Item.Properties()
+                    )
+            );
+
+    public static final Supplier<Item> VOLCANO_SPAWN_EGG =
+            ITEMS.register(
+                    "volcano_spawn_egg",
+                    () -> new DeferredSpawnEggItem(
+                            ModEntitiesRM.TYPE_VOLCANO,
+                            0xFFFFFF,
+                            0xFFFFFF,
+                            new Item.Properties()
+                    )
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<BombEntity>> TYPE_GRENADE =
+            ENTITIES.register("grenade", () ->
+                    EntityType.Builder.<BombEntity>of(BombEntity::new, MobCategory.MONSTER)
+                            .sized(0.9F, 0.9F)
+                            .fireImmune()
+                            .clientTrackingRange(8)
+                            .updateInterval(2)
+                            .build("grenade")
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<BombEntity>> TYPE_VOLCANO =
+            ENTITIES.register("volcano", () ->
+                    EntityType.Builder.<BombEntity>of(BombEntity::new, MobCategory.MONSTER)
+                            .sized(0.9F, 0.9F)
+                            .fireImmune()
+                            .clientTrackingRange(8)
+                            .updateInterval(2)
+                            .build("volcano")
+            );
 
 
-    public static final Supplier<Item> CHIRITHY_EGG = ModItemsRM.ITEMS.register("chirithy_spawn_egg", () -> new DeferredSpawnEggItem(TYPE_CHIRITHY, 0xAAAAFF, 0xFF00FF, PROPERTIES));
+
+    public static final Supplier<Item> CHIRITHY_EGG = ITEMS.register("chirithy_spawn_egg", () -> new DeferredSpawnEggItem(TYPE_CHIRITHY, 0xAAAAFF, 0xFF00FF, PROPERTIES));
 
 
     public static <T extends Entity, M extends EntityType<T>>Supplier<EntityType<T>> createEntityType(EntityType.EntityFactory<T> factory, MobCategory classification, String name, float sizeX, float sizeY) {        return ENTITIES.register(name, () -> EntityType.Builder.of(factory, classification)
@@ -286,6 +350,10 @@ public class ModEntitiesRM {
 
         event.registerEntityRenderer(TYPE_DREAM_EATER_LEVEL_UP_EFFECT.get(), DreamEaterLevelUpEffectRenderer::new);
 
+        event.registerEntityRenderer(TYPE_BOMB.get(), BombRenderer::new);
+        event.registerEntityRenderer(TYPE_GRENADE.get(), BombRenderer::new);
+        event.registerEntityRenderer(TYPE_VOLCANO.get(), BombRenderer::new);
+
 
     }
 
@@ -303,6 +371,9 @@ public class ModEntitiesRM {
 
         event.put(ModEntitiesRM.TYPE_TONBERRY.get(), TonberryEntity.createAttributes().build());
         event.put(ModEntitiesRM.TYPE_TONBERRY_KING.get(), TonberryKingEntity.createAttributes().build());
+        event.put(TYPE_BOMB.get(), BombEntity.createBombAttributes().build());
+        event.put(TYPE_GRENADE.get(), BombEntity.createGrenadeAttributes().build());
+        event.put(TYPE_VOLCANO.get(), BombEntity.createVolcanoAttributes().build());
     }
 
 

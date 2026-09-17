@@ -27,6 +27,7 @@ public class DreamEaterHUD extends OverlayBaseRM {
         super();
     }
 
+    /*
     @Override
     public void render(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
         super.render(guiGraphics, deltaTracker);
@@ -73,7 +74,7 @@ public class DreamEaterHUD extends OverlayBaseRM {
             renderDreamEater(guiGraphics, dreamEater);
         }
         element.endTransform(guiGraphics);
-    }
+    }*/
 
     private void renderDreamEater(GuiGraphics gui, DreamEater dreamEater) {
         Player player = minecraft.player;
