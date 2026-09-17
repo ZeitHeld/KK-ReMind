@@ -40,6 +40,11 @@
 - Description: On-hit, afflict the victim with the Silence status effect. *Scales with Critical Boost*
 - How to Obtain: Equip *Entropy's Requiem* keychain. (See below)
 
+### **Dark Entourage**
+- Cost: N/A
+- Description: Summon 2 Shadows to fight by your side.
+- How to Obtain: Equip *Callous Cavaloir* keychain. (See below)
+
 ### **EXP Converter**
 - Cost: 10 AP
 - Description: When picking up XP orbs, gain the value of it as Kingdom Keys EXP.
@@ -75,10 +80,10 @@ Where do they spawn?
   - Description: 
   - Base Stats: 8/8
   - Base Ability: Way to Light
-- Unknown , a **gift** for **CanaliaRose**
-  - Description: 
-  - Base Stats: 
-  - Base Ability: 
+- Callous Cavaloir , a **gift** for **CanaliaRose**
+  - Description: First ever recording of this keyblade was seen with an ancient welder who came from nothing. There were never other recordings of it until recently some say it's a keyblade made by someone forgotten, while others say it always existed in people that let go of their hearts.
+  - Base Stats: 5/10
+  - Base Ability: **NEW** Dark Entourage
 - Nebula Records, commissioned by DogofTheRoad
   - Description: A very musically themed Keyblade with high emphasis on casting and the rhythm of casting.
   - Base Stats: 8/10

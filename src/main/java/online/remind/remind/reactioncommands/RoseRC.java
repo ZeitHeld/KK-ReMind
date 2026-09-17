@@ -59,7 +59,7 @@ public class RoseRC extends ReactionCommand {
 
         playerData.remFocus(10);
         playerData.remDP(100);
-        globalData.setRCCooldownTicks(20);
+        globalData.setRCCooldownTicks(200);
 
         LivingEntity shadow1 = summonShadow(serverPlayer, level, 1.5D, 0.5D);
         LivingEntity shadow2 = summonShadow(serverPlayer, level, -1.5D, 0.5D);
@@ -191,33 +191,46 @@ public class RoseRC extends ReactionCommand {
         }
 
         // KK no longer considers this entity a party member.
-        // Forget the old UUID so Rose can summon again.
+        // Forget the old UUID so user can summon again.
         persistentData.remove(key);
 
         return false;
     }
 
-    public static void addSummonToParty(ServerPlayer player, LivingEntity spirit) {
-        if (player == null || spirit == null || player.getServer() == null) {
+    public static void addSummonToParty(ServerPlayer player, LivingEntity summon) {
+        if (player == null || summon == null || player.getServer() == null) {
             return;
         }
 
         WorldData worldData = WorldData.get(player.getServer());
+
         if (worldData == null) {
             return;
         }
 
         Party party = worldData.getPartyFromMember(player.getUUID());
 
+        // Player isn't currently in a party, so create one.
         if (party == null) {
+            String partyName = player.getName().getString() + "'s Party";
+
+
+            party = new Party(
+                    partyName,
+                    player.getUUID(),
+                    player.getGameProfile().getName(),
+                    true,
+                    (byte) 3
+            );
+
+            worldData.addParty(party);
+        }
+
+        if (party.getMember(summon.getUUID()) != null) {
             return;
         }
 
-        if (party.getMember(spirit.getUUID()) != null) {
-            return;
-        }
-
-        worldData.addPartyMember(party, spirit);
+        worldData.addPartyMember(party, summon);
 
         PacketHandler.sendToAll(
                 new SCSyncWorldData(player.getServer())

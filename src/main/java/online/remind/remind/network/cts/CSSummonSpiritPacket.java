@@ -595,10 +595,20 @@ public class CSSummonSpiritPacket implements CustomPacketPayload {
 
         Party party = worldData.getPartyFromMember(player.getUUID());
 
-        // The supplied KK party code expects the player to already belong to a party.
-        // If there is no party, there is nothing safe to attach the Spirit to here.
+
         if (party == null) {
-            return;
+            String partyName = player.getName().getString() + "'s Party";
+
+
+            party = new Party(
+                    partyName,
+                    player.getUUID(),
+                    player.getGameProfile().getName(),
+                    true,
+                    (byte) 3
+            );
+
+            worldData.addParty(party);
         }
 
         // Prevent duplicate party entries if the packet is triggered more than once.
