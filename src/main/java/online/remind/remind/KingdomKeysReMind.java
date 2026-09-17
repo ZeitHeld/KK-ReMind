@@ -197,6 +197,7 @@ public class KingdomKeysReMind {
         EntityEventsRM.ALLOWED_UUIDS.put(UUID.fromString("da1e7feb-6ed3-4f90-992e-6cf8fb1d5514"), ModItemsRM.lyric2025TournamentChain.get());  // Lyric
         EntityEventsRM.ALLOWED_UUIDS.put(UUID.fromString("0d133e30-1b81-4f59-8db6-a8d299bc7d1e"), ModItemsRM.nebulaRecordsChain.get());  // thunderlead8
         EntityEventsRM.ALLOWED_UUIDS.put(UUID.fromString("6b3efa0a-814b-43c5-99df-3b5f19de3c76"), ModItemsRM.maddeningCorruptionChain.get());  // Nero
+        EntityEventsRM.ALLOWED_UUIDS.put(UUID.fromString("5b1796f4-0eea-4306-9e04-0c2d04f57eaa"), ModItemsRM.roseKeybladeChain.get());  // Rose
 
         // Org Weapons
         ListsRM.loadAddonOrgWeapons();
