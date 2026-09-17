@@ -386,6 +386,7 @@
   "item.kkremind.fortuna": "Fortuna",
   "item.kkremind.nebula_records": "Nebula Records",
   "item.kkremind.entropys_requiem": "Entropy's Requiem",
+  "item.kkremind.maddening_corruption" : "Maddening Corruption",
   "item.kkremind.kali_keyblade": "Guardian's Hope",
   "item.kkremind.union_ultima_l": "Union Ultima Weapon (Upright)",
   "item.kkremind.union_ultima_d": "Union Ultima Weapon (Reversed)",
@@ -403,6 +404,8 @@
   "item.kkremind.fortuna_chain": "Fortuna Chain",
   "item.kkremind.nebula_records_chain": "Nebula Records Chain",
   "item.kkremind.entropys_requiem_chain": "Entropy's Requiem Chain",
+  "item.kkremind.maddening_corruption_chain": "Maddening Corruption Chain",
+
 
   "item.kkremind.kali_keyblade_chain": "Guardian's Hope Chain",
   "item.kkremind.union_ultima_l_chain": "Union Ultima Weapon (Upright) Chain",

@@ -163,6 +163,7 @@ public class ModItemsRM{
         maddeningCorruption = ITEMS.register("maddening_corruption", () -> new KeybladeItem(new Item.Properties())),
 
         kaliKeyblade = ITEMS.register("kali_keyblade", () -> new KeybladeItem(new Item.Properties())),
+        roseKeyblade = ITEMS.register("rose_keyblade", () -> new KeybladeItem(new Item.Properties())),
 
         unionUltimaLight = ITEMS.register("union_ultima_l", () -> new KeybladeItem(new Item.Properties())),
         unionUltimaDark = ITEMS.register("union_ultima_d", () -> new KeybladeItem(new Item.Properties())),
@@ -184,6 +185,7 @@ public class ModItemsRM{
         entropysRequiemChain = ITEMS.register("entropys_requiem_chain", () -> new KeychainItem()),
         maddeningCorruptionChain = ITEMS.register("maddening_corruption_chain", () -> new KeychainItem()),
         kaliKeybladeChain = ITEMS.register("kali_keyblade_chain", () -> new KeychainItem()),
+        roseKeybladeChain = ITEMS.register("rose_keyblade_chain", () -> new KeychainItem()),
         unionUltimaLightChain = ITEMS.register("union_ultima_l_chain", () -> new KeychainItem()),
         unionUltimaDarkChain = ITEMS.register("union_ultima_d_chain", () -> new KeychainItem()),
 

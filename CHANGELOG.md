@@ -1,28 +1,30 @@
 ## __9.26.1__
+*(Month.Year.Iteration)*
 
 ## General Changes and Fixes
 
-- **[EFM]** **[FIX]** Attack Command Animations now play again.
-- **[EFM]** Equipping the Guard ability now gives you EFM's Guard Skill.
-- **[EFM]** **[FIX]** Forms now have move sets again (Thank you, Nathan)
-- **[CHANGE]** Added Cooldown to summoning Dream Eaters, it lasts 30 seconds.
-- **[CHANGE]** Added Cooldown mentioned above for if the Dream Eater dies.
+- **[Compatability]** Usable with LATEST KK Release and Beyond.
+- **[NEW]** Chirithy now has dialogs and can act as a guide!
+- **[EFM]**, **[NEW]** Equipping the Guard ability now gives you EFM's Guard Skill.
+- **[EFM]**, **[FIX]** Attack Command Animations now play again.
+- **[EFM]**, **[FIX]** Forms now have move sets again (Thank you, Nathan)
 - **[FIX]** Tonberry (Spirit) immortality bug.
 - **[FIX]** Tonberry (Spirit) no longer has a full bright model.
 - **[FIX]** Tonberry (Spirit) now emits light like it's hostile counterpart.
 - **[FIX]** Tonberry should (hopefully) remove light sources it places upon death.
+- **[FIX]** Celestriad fixed from Form Boost back to Fire Boost. (When did that even happen..?)
+- **[CHANGE/FIX]** Light and Dark Forms no longer require Quick Run to use their growth abilities. (The abilities themselves outside of form still do however.)
+- **[CHANGE]** Added Cooldown to summoning Dream Eaters, it lasts 30 seconds.
+- **[CHANGE]** Added Cooldown mentioned above for if the Dream Eater dies.
 - **[CHANGE]** Changed 'Darkness Boost' to 'Dark Boost'
 - **[CHANGE]** The 'Walker' abilities no longer require you to sprint to activate.
 - **[CHANGE]** Zettaflare now requires and consumes Max Drive and Max Focus to cast. Otherwise, cast fails.
 - **[CHANGE]** Added config option to turn of Chirithy's chat messages when casting spells. This will be found in the file `kkremind-client.toml`
-- **[FIX]** Celestriad fixed from Form Boost back to Fire Boost. (When did that even happen..?)
-- **[NEW]** Chirithy now has dialogs and can act as a guide!
 - **[CHANGE]** EXP Ring now has the **NEW** EXP Converter Ability.
 - **[CHANGE]** Light Form should be easier/faster to level now.
 - **[CHANGE]** Dream Eaters now register as Party Members.
-- **[CHANGE]** Light Step Rework - It now makes you move in an arcing motion
-- **[CHANGE]** Dark Step Rework - It now makes you -blink- a few blocks in the direction you're facing, leaving an afterimage.
-- **[CHANGE/FIX]** Light and Dark Forms no longer require Quick Run to use their growth abilities. (The abilities themselves outside of form still do however.)
+- **[REWORK]** Light Step Rework - It now makes you move in an arcing motion
+- **[REWORK]** Dark Step Rework - It now makes you -blink- a few blocks in the direction you're facing, leaving an afterimage.
 
 ## New Spell
 
@@ -69,7 +71,7 @@ Where do they spawn?
 
 ### Commission/Gift Keyblades
 
-- Guardian's Light, a gift for ***KaliArchon***
+- Guardian's Light, a **gift** for ***KaliArchon***
   - Description: 
   - Base Stats: 8/8
   - Base Ability: Way to Light
