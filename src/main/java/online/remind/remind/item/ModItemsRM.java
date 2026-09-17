@@ -8,6 +8,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SmithingTemplateItem;
 import net.minecraft.world.item.armortrim.TrimPattern;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import online.kingdomkeys.kingdomkeys.ability.ModAbilities;
@@ -16,6 +17,7 @@ import online.remind.remind.KingdomKeysReMind;
 import online.remind.remind.ability.ModAbilitiesRM;
 import online.remind.remind.capabilities.GlobalDataRM;
 import online.remind.remind.config.ModConfigs;
+import online.remind.remind.entity.ModEntitiesRM;
 import online.remind.remind.magic.ModMagicsRM;
 import online.remind.remind.shotlock.ModShotlocksRM;
 
@@ -246,6 +248,16 @@ public class ModItemsRM{
         // Dream Eater Gifts
         chefsKnife = ITEMS.register("chefs_knife", () -> new ChefsKnifeItem(new Item.Properties().stacksTo(64))),
         cactuarNeedle = ITEMS.register("cactuar_needle", () -> new CactuarNeedleItem(new Item.Properties().stacksTo(64)));
+
+
+        // Mob Eggs
+
+
+
+
+
+
+
         // Music Discs
 
         // Armor Trims

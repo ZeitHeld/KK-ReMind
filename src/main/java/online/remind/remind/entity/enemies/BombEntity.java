@@ -1934,6 +1934,5 @@ public class BombEntity extends Monster implements GeoEntity {
 
             applyFireGrowthScale();
         }
-
     }
 }

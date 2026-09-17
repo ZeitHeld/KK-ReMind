@@ -465,6 +465,10 @@
   "item.kkremind.cactuar_charm": "Cactuar Charm",
   "item.kkremind.tonberry_charm": "Tonberry Charm",
 
+  "item.kkremind.bomb_spawn_egg": "Bomb Spawn Egg",
+  "item.kkremind.grenade_spawn_egg": "Grenade Spawn Egg",
+  "item.kkremind.volcano_spawn_egg": "Volcano Spawn Egg",
+
 
   "key.categories.kkremind": "Re:Mind",
   "key.kkremind.openmenu": "Open Menu",

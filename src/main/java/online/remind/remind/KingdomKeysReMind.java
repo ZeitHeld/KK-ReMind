@@ -1,10 +1,8 @@
 package online.remind.remind;
 
 import com.google.common.base.Suppliers;
-import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -34,7 +32,6 @@ import online.remind.remind.handler.GrowthPanelClientEvents;
 import online.remind.remind.handler.SGaugeEventHandler;
 import online.remind.remind.capabilities.ModDataRM;
 import online.remind.remind.client.sound.ModSoundsRM;
-import online.remind.remind.command.ModCommands;
 import online.remind.remind.config.ModConfigs;
 import online.remind.remind.dreameater.ModDreamEaters;
 import online.remind.remind.driveform.ModDriveFormsRM;
@@ -170,6 +167,10 @@ public class KingdomKeysReMind {
             .icon(() -> new ItemStack(ModItemsRM.heartCoin.get()))
             .displayItems(((params, output) -> {
                 rmMisc.get().forEach(output::accept);
+
+                output.accept(ModEntitiesRM.BOMB_SPAWN_EGG.get());
+                output.accept(ModEntitiesRM.GRENADE_SPAWN_EGG.get());
+                output.accept(ModEntitiesRM.VOLCANO_SPAWN_EGG.get());
             }))
             .build());
     public static final Supplier<CreativeModeTab>

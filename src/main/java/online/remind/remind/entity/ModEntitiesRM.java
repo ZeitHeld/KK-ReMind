@@ -1,7 +1,5 @@
 package online.remind.remind.entity;
 
-import net.minecraft.client.renderer.entity.NoopRenderer;
-
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -39,10 +37,12 @@ import online.remind.remind.entity.projectile.CactuarNeedleProjectile;
 import online.remind.remind.entity.reactioncommand.*;
 import online.remind.remind.entity.shotlock.*;
 import online.remind.remind.entity.spirits.*;
-import online.remind.remind.item.ModItemsRM;
+import online.remind.remind.item.ICreativeTabRM;
 import online.remind.remind.entity.effects.DreamEaterLevelUpEffectEntity;
 
 import java.util.function.Supplier;
+
+import static online.remind.remind.item.ModItemsRM.ITEMS;
 
 
 @EventBusSubscriber(modid = KingdomKeysReMind.MODID, bus = EventBusSubscriber.Bus.MOD)
@@ -185,6 +185,39 @@ public class ModEntitiesRM {
                             .build("bomb")
             );
 
+    public static final Supplier<Item> BOMB_SPAWN_EGG =
+            ITEMS.register(
+                    "bomb_spawn_egg",
+                    () -> new DeferredSpawnEggItem(
+                            ModEntitiesRM.TYPE_BOMB,
+                            0xFFFFFF,
+                            0xFFFFFF,
+                            new Item.Properties()
+                    )
+            );
+
+    public static final Supplier<Item> GRENADE_SPAWN_EGG =
+            ITEMS.register(
+                    "grenade_spawn_egg",
+                    () -> new DeferredSpawnEggItem(
+                            ModEntitiesRM.TYPE_GRENADE,
+                            0xFFFFFF,
+                            0xFFFFFF,
+                            new Item.Properties()
+                    )
+            );
+
+    public static final Supplier<Item> VOLCANO_SPAWN_EGG =
+            ITEMS.register(
+                    "volcano_spawn_egg",
+                    () -> new DeferredSpawnEggItem(
+                            ModEntitiesRM.TYPE_VOLCANO,
+                            0xFFFFFF,
+                            0xFFFFFF,
+                            new Item.Properties()
+                    )
+            );
+
     public static final DeferredHolder<EntityType<?>, EntityType<BombEntity>> TYPE_GRENADE =
             ENTITIES.register("grenade", () ->
                     EntityType.Builder.<BombEntity>of(BombEntity::new, MobCategory.MONSTER)
@@ -207,7 +240,7 @@ public class ModEntitiesRM {
 
 
 
-    public static final Supplier<Item> CHIRITHY_EGG = ModItemsRM.ITEMS.register("chirithy_spawn_egg", () -> new DeferredSpawnEggItem(TYPE_CHIRITHY, 0xAAAAFF, 0xFF00FF, PROPERTIES));
+    public static final Supplier<Item> CHIRITHY_EGG = ITEMS.register("chirithy_spawn_egg", () -> new DeferredSpawnEggItem(TYPE_CHIRITHY, 0xAAAAFF, 0xFF00FF, PROPERTIES));
 
 
     public static <T extends Entity, M extends EntityType<T>>Supplier<EntityType<T>> createEntityType(EntityType.EntityFactory<T> factory, MobCategory classification, String name, float sizeX, float sizeY) {        return ENTITIES.register(name, () -> EntityType.Builder.of(factory, classification)
