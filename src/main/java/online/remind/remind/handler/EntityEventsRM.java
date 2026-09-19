@@ -2451,14 +2451,17 @@ public class EntityEventsRM {
 									? Math.max(0, criticalBoostData[1])
 									: 0;
 
-					// 25% base + 5 percentage points per equipped Critical Boost
-					float silenceChance = Math.min(
-							1.0F,
-							0.25f + criticalBoostStacks * 0.05F
-					);
+
+
+					// 20% base + 1.5 percentage points per equipped Critical Boost
+					float silenceChance = 0.20f + (crtBoosts * 0.015F);
+
+					//player.sendSystemMessage(Component.literal("Silence Chance: " + silenceChance));
 
 					if (player.getRandom().nextFloat() < silenceChance) {
-						event.getEntity().addEffect(new MobEffectInstance(ModMobEffectsRM.SILENCE, 100,0));
+						if (event.getSource().type().msgId().equals("player")) {
+							event.getEntity().addEffect(new MobEffectInstance(ModMobEffectsRM.SILENCE, 100, 0));
+						}
 					}
 				}
 			}

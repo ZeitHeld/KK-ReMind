@@ -2,7 +2,6 @@
 *(Month.Year.Iteration)*
 
 ## General Changes and Fixes
-
 - **[Compatability]** Usable with LATEST KK Release and Beyond.
 - **[NEW]** Chirithy now has dialogs and can act as a guide!
 - **[EFM]**, **[NEW]** Equipping the Guard ability now gives you EFM's Guard Skill.
@@ -51,14 +50,12 @@
 - Curaga
 
 ## New Spell
-
 ### **Recall** - *Re:Mind Original*
 - Cost: ALL
 - Teleports you to your respawn point.
 - Meld Recipe: Warp + Curaga
 
 ## New Abilities
-
 ### **Silence Heart**
 - Cost: N/A
 - Description: On-hit, afflict the victim with the Silence status effect. *Scales with Critical Boost*
@@ -75,7 +72,6 @@
 - How to Obtain: EXP Ring
 
 ## New Enemies!
-
 ### **The Bomb Family** *from the FINAL FANTASY series.*
 
 There's 3 Enemies in this family!
@@ -97,7 +93,6 @@ Where do they spawn?
 - Grenades and Volcanos, **ONLY** in the Nether.
 
 ## New Keyblades
-
 ### Commission/Gift Keyblades
 
 - Guardian's Light, a **gift** for ***KaliArchon***
@@ -107,7 +102,7 @@ Where do they spawn?
 - Callous Cavaloir , a **gift** for **CanaliaRose**
   - Description: First ever recording of this keyblade was seen with an ancient welder who came from nothing. There were never other recordings of it until recently some say it's a keyblade made by someone forgotten, while others say it always existed in people that let go of their hearts.
   - Base Stats: 5/10
-  - Base Ability: **NEW** Dark Entourage
+  - Base Ability: **[NEW]** Dark Entourage
 - Nebula Records, commissioned by DogofTheRoad
   - Description: A very musically themed Keyblade with high emphasis on casting and the rhythm of casting.
   - Base Stats: 8/10
@@ -115,7 +110,7 @@ Where do they spawn?
 - Entropy's Requiem, commissioned by ConstellationDragon
   - Description: This keyblade glimmered into existence upon the shattering of Ragnarök's Requiem, a blade forged tenaciously by a blacksmith, and the freeing weight of its wielder when he was finally liberated from the burdens of his inner Darkness. It strives to show him the Freedom within the Stars.
   - Base Stats: 10/10
-  - Base Ability: **NEW** Silence Heart
+  - Base Ability: **[NEW]** Silence Heart
   - Custom Form: Draconic Liberation
 - Maddening Corruption, commissioned by TheFeralKitsune
   - Description: A keyblade that's been corrupted by Phazon
