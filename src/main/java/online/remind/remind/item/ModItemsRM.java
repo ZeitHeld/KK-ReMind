@@ -102,6 +102,8 @@ public class ModItemsRM{
         bindingStrikeAttack = ITEMS.register("binding_strike_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.BINDING_STRIKE.location())),
         confusionStrikeAttack = ITEMS.register("confusion_strike_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.CONFUSION_STRIKE.location())),
         blitzAttack = ITEMS.register("blitz_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.BLITZ.location())),
+        sonicBladeAttack = ITEMS.register("sonic_blade_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.SONIC_BLADE.location())),
+        chaosBladeAttack = ITEMS.register("chaos_blade_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.CHAOS_BLADE.location())),
         slotEdgeAttack = ITEMS.register("slot_edge_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.SLOT_EDGE.location())),
 
         fireSurge1Attack = ITEMS.register("fire_surge1_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.FIRA_SURGE.location())),
