@@ -21,6 +21,7 @@ public class ModMobEffectsRM {
             CONFUSE = MOB_EFFECTS.register("confuse", () -> new StoneEffect(MobEffectCategory.HARMFUL, 0xFFFFFF)),
             BLITZ_CHAIN = MOB_EFFECTS.register("blitz_chain", () -> new BlitzChainEffect(MobEffectCategory.NEUTRAL, 0xFFFFFF)),
             SONIC_BLADE_CHAIN = MOB_EFFECTS.register("sonic_blade_chain", () -> new BlitzChainEffect(MobEffectCategory.NEUTRAL, 0xFFFFFF)),
+            CHAOS_BLADE_CHAIN = MOB_EFFECTS.register("chaos_blade_chain", () -> new BlitzChainEffect(MobEffectCategory.NEUTRAL, 0xFFFFFF)),
             SLOT_EDGE_CHAIN = MOB_EFFECTS.register("slot_edge_chain", () -> new SlotEdgeChainEffect(MobEffectCategory.NEUTRAL, 0xFFFFFF)),
             RM_ANIMATION_LOCK = MOB_EFFECTS.register("rm_animation_lock", () -> new HiddenBeneficialEffect(0x000000)),
 

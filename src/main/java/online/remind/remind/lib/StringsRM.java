@@ -254,6 +254,7 @@ public class StringsRM {
         BlitzRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"blitz",
         SlotEdgeRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"slot_edge",
         SonicBladeRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"sonic_blade",
+        ChaosBladeRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"chaos_blade",
 
         CounterHammerRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"counter_hammer",
         CounterBlastRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"counter_blast",

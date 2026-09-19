@@ -1,0 +1,11 @@
+{
+  "casttime": 5,
+  "cooldown": 60,
+  "cost": 20,
+  "dmg_mult": 3.0,
+  "dmg_mult_max": 3.3,
+  "magic_lock_on": false,
+  "max_exp": 2400,
+  "max_lvl": 4,
+  "spell_type": "PHYSICAL"
+}
