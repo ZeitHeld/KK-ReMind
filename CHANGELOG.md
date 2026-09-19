@@ -51,6 +51,10 @@
 - Dark Firaga
 - Curaga
 
+## New Status Effect
+### Doom
+After the countdown reaches Zero on the afflicted target... they die.
+
 ## New Spell
 ### **Recall** - *Re:Mind Original*
 - Cost: ALL MP
