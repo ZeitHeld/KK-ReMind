@@ -65,6 +65,7 @@ public class ModEntitiesRM {
     // Attack Commands
     public static final Supplier<EntityType<quickBlitzCollider>> TYPE_QUICK_BLITZ = createEntityType(quickBlitzCollider::new, MobCategory.MISC,"quick_blitz_collider", 1.5F, 1.5F);
     public static final DeferredHolder<EntityType<?>, EntityType<BlitzCollider>> TYPE_BLITZ = ENTITIES.register("blitz", () -> EntityType.Builder.<BlitzCollider>of(BlitzCollider::new, MobCategory.MISC).sized(1.5F, 1.8F).clientTrackingRange(64).updateInterval(1).build("blitz"));
+    public static final DeferredHolder<EntityType<?>, EntityType<DarkHazeCollider>> TYPE_DARK_HAZE = ENTITIES.register("dark_haze", () -> EntityType.Builder.<DarkHazeCollider>of(DarkHazeCollider::new, MobCategory.MISC).sized(1.5F, 1.8F).clientTrackingRange(64).updateInterval(1).build("dark_haze"));
     public static final DeferredHolder<EntityType<?>, EntityType<SonicBladeCollider>> TYPE_SONIC_BLADE = ENTITIES.register("sonic_blade", () -> EntityType.Builder.<SonicBladeCollider>of(SonicBladeCollider::new, MobCategory.MISC).sized(1.5F, 1.8F).clientTrackingRange(64).updateInterval(1).build("sonic_blade"));
     public static final DeferredHolder<EntityType<?>, EntityType<ChaosBladeCollider>> TYPE_CHAOS_BLADE = ENTITIES.register("chaos_blade", () -> EntityType.Builder.<ChaosBladeCollider>of(ChaosBladeCollider::new, MobCategory.MISC).sized(1.5F, 1.8F).clientTrackingRange(64).updateInterval(1).build("chaos_blade"));
     public static final DeferredHolder<EntityType<?>, EntityType<SlotEdgeCollider>> TYPE_SLOT_EDGE = ENTITIES.register("slot_edge", () -> EntityType.Builder.<SlotEdgeCollider>of(SlotEdgeCollider::new, MobCategory.MISC).sized(1.5F, 1.8F).clientTrackingRange(64).updateInterval(1).build("slot_edge"));
@@ -293,6 +294,7 @@ public class ModEntitiesRM {
 
         event.registerEntityRenderer(TYPE_QUICK_BLITZ.get(),InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_BLITZ.get(),InvisibleEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_DARK_HAZE.get(),InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_SONIC_BLADE.get(),InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_CHAOS_BLADE.get(),InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_SLOT_EDGE.get(),InvisibleEntityRenderer::new);

@@ -112,6 +112,9 @@
   "item.kkremind.blitz_attack": "Blitz Command",
   "magic.kkremind.attack_blitz.name": "Blitz",
 
+  "item.kkremind.dark_haze_attack": "Dark Haze Command",
+  "magic.kkremind.attack_dark_haze.name": "Dark Haze",
+
   "item.kkremind.sonic_blade_attack": "Sonic Blade Command",
   "magic.kkremind.attack_sonic_blade.name": "Sonic Blade",
 
@@ -592,6 +595,7 @@
   "effect.kkremind.stone": "Stone",
   "effect.kkremind.confuse": "Confuse",
   "effect.kkremind.exceed": "Exceed",
+  "effect.kkremind.doom": "Doom",
 
   "dreameater.none.name": "None",
   "dreameater.dreameater_chirithy.name": "Chirithy",

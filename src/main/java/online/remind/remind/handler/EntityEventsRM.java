@@ -31,6 +31,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerRespawnEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -63,6 +64,7 @@ import online.remind.remind.capabilities.ModDataRM;
 import online.remind.remind.client.sound.ModSoundsRM;
 import online.remind.remind.config.ModConfigs;
 import online.remind.remind.driveform.ModDriveFormsRM;
+import online.remind.remind.effect.DoomEffect;
 import online.remind.remind.effect.ModMobEffectsRM;
 import online.remind.remind.entity.attacks.BlitzCollider;
 import online.remind.remind.entity.attacks.ElementStrikeCollider;
@@ -109,6 +111,67 @@ public class EntityEventsRM {
 
 		for (ServerPlayer player : server.getPlayerList().getPlayers()) {
 			RoseRC.validatePartySummons(player);
+		}
+
+	}
+
+	public static void onLevelTick(
+			LevelTickEvent.Post event
+	) {
+
+		if (!(event.getLevel() instanceof ServerLevel level)) {
+			return;
+		}
+
+		/*
+		 * Check 4 times per second.
+		 *
+		 * Fast enough that /effect clear or Esuna
+		 * appears essentially instant.
+		 */
+		if (level.getGameTime() % 5L != 0L) {
+			return;
+		}
+
+		for (Entity entity : level.getAllEntities()) {
+
+			if (!(entity instanceof LivingEntity living)) {
+				continue;
+			}
+
+			/*
+			 * This entity never had a Doom countdown.
+			 */
+			if (!living
+					.getPersistentData()
+					.hasUUID(
+							DoomEffect.DOOM_DISPLAY_UUID
+					)) {
+
+				continue;
+			}
+
+			/*
+			 * Doom is still active.
+			 *
+			 * Leave its countdown alone.
+			 */
+			if (living.hasEffect(
+					ModMobEffectsRM.DOOM
+			)) {
+
+				continue;
+			}
+
+			/*
+			 * Entity has a stored Doom display,
+			 * but no longer has Doom.
+			 *
+			 * Esuna, /effect clear, milk, etc.
+			 */
+			DoomEffect.removeCountdown(
+					living
+			);
 		}
 	}
 

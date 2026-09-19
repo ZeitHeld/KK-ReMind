@@ -23,6 +23,7 @@
 - **[CHANGE]** EXP Ring now has the **NEW** EXP Converter Ability.
 - **[CHANGE]** Light Form should be easier/faster to level now.
 - **[CHANGE]** Dream Eaters now register as Party Members.
+- **[CHANGE]** Zantetsuken's melding recipe is now Sonic Blade + Stopga or Dark Haze + Stopga to reflect its recipe in BBS.
 - **[REWORK]** Light Step Rework - It now makes you move in an arcing motion
 - **[REWORK]** Dark Step Rework - It now makes you -blink- a few blocks in the direction you're facing, leaving an afterimage.
 
@@ -58,17 +59,17 @@
 
 ## New Attacks
 ### Dark Haze
-- Cost: TBD
+- Cost: 40 MP
 - Cloak yourself in darkness, then charge at faraway enemies. The attack has a chance of dooming them, leaving them five seconds to live.
-- Meld Recipe: TBD
+- Meld Recipe: Zero Gravity + Firaga Surge, Darkga Surge + Sliding Dash
 ### Sonic Blade
 - Cost: 20 MP
 - Press the **R** at the right times to perform a series of charging attacks that will reach faraway enemies.
-- Meld Recipes: Blitz + Sliding Dash, TBD
+- Meld Recipes: Blitz + Dark Haze
 ### Chaos Blade
-- Cost: TBD
+- Cost: 40 MP
 - Press the **R** button at the right times to perform a series of charging attacks that blind or bind some foes.
-- Meld Recipe: TBD
+- Meld Recipe: Sonic Blade + Dark Haze
 
 ## New Abilities
 ### **Silence Heart**

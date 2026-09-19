@@ -180,7 +180,9 @@ public class EpicFightEvents {
 
 
             case "kkremind:attack_sliding_dash",
-                 "kkremind:attack_sonic_blade":
+                 "kkremind:attack_sonic_blade",
+                 "kkremind:attack_chaos_blade",
+                 "kkremind:attack_dark_haze":
 
                 player.addEffect(new MobEffectInstance(
                         ModMobEffectsRM.RM_ANIMATION_LOCK,
@@ -267,7 +269,9 @@ public class EpicFightEvents {
 
 
             case "kkremind:attack_sliding_dash",
-                 "kkremind:attack_sonic_blade":
+                 "kkremind:attack_sonic_blade",
+                 "kkremind:attack_chaos_blade",
+                 "kkremind:attack_dark_haze":
 
                 patch.playAnimationSynchronized(
                         Animations.SWORD_DASH

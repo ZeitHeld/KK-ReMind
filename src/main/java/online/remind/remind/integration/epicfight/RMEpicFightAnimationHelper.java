@@ -36,8 +36,8 @@ public class RMEpicFightAnimationHelper {
             case "blitz" -> playBlitz(playerpatch, chainStep);
             case "slot_edge" -> playSlotEdge(playerpatch, chainStep);
             case "sonic_blade" -> playSonicBlade(playerpatch, chainStep);
-            case "chaos_blade" -> playChaosBlade(playerpatch, chainStep);
-            case "dark_haze" -> playDarkHaze(playerpatch, chainStep);
+            case "chaos_blade" -> playSonicBlade(playerpatch, chainStep);
+            case "dark_haze" -> playSonicBlade(playerpatch, chainStep);
         }
     }
 

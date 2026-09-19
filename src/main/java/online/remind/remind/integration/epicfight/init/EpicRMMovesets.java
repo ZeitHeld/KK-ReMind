@@ -17,7 +17,7 @@ public class EpicRMMovesets {
 
 
     public static final DeferredMoveset TWILIGHT_FORM_MOVESET = MOVESETS.registerMoveset("twilight_form", () -> Moveset.builder()
-            .addComboAttacks(KKAnimations.FINAL_AUTO1, KKAnimations.FINAL_AUTO1, KKAnimations.FINAL_AUTO1,
+            .addComboAttacks(KKAnimations.DUAL_ROXAS_AUTO1, KKAnimations.DUAL_ROXAS_AUTO2, KKAnimations.DUAL_ROXAS_AUTO3,
                     Animations.SWORD_DUAL_DASH, Animations.SWORD_DUAL_AIR_SLASH)
             .addLivingMotionModifier(LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
             .addLivingMotionModifier(LivingMotions.IDLE, KKAnimations.FINAL_FORM_IDLE)
@@ -29,24 +29,24 @@ public class EpicRMMovesets {
 
 
     public static final DeferredMoveset LIGHT_FORM_MOVESET = MOVESETS.registerMoveset("light_form", () -> Moveset.builder()
-            .addComboAttacks(KKAnimations.FINAL_AUTO1, KKAnimations.FINAL_AUTO1, Animations.SWORD_AUTO2,
+            .addComboAttacks(KKAnimations.SORA_AUTO1, KKAnimations.SORA_AUTO2, KKAnimations.SORA_AUTO3, KKAnimations.SORA_FINISHER1,
                     Animations.SWORD_DUAL_DASH, Animations.SWORD_DUAL_AIR_SLASH)
             .addLivingMotionModifier(LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
             .addLivingMotionModifier(LivingMotions.RUN, KKAnimations.ROXAS_RUN)
             .addLivingMotionModifier(LivingMotions.WALK, KKAnimations.ROXAS_RUN)
-            .addLivingMotionModifier(LivingMotions.IDLE, KKAnimations.AQUA_IDLE)
+            .addLivingMotionModifier(LivingMotions.IDLE, KKAnimations.SORA_IDLE)
             .addMountAttacks(Animations.SWORD_MOUNT_ATTACK)
             .setPassiveSkill(KKSkills.comboExtender)
             .addGuardAnimations(GuardSkill.BlockType.GUARD, Animations.SWORD_DUAL_GUARD_HIT).addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, Animations.SWORD_DUAL_GUARD_HIT).addGuardAnimations(GuardSkill.BlockType.GUARD_BREAK, Animations.BIPED_COMMON_NEUTRALIZED));
 
 
     public static final DeferredMoveset DARK_FORM_MOVESET = MOVESETS.registerMoveset("dark_form", () -> Moveset.builder()
-            .addComboAttacks(KKAnimations.FINAL_AUTO1, KKAnimations.FINAL_AUTO1, Animations.SWORD_AUTO1,
+            .addComboAttacks(KKAnimations.SORA_AUTO1, KKAnimations.SORA_AUTO2, KKAnimations.SORA_AUTO3, KKAnimations.SORA_FINISHER1,
                     Animations.SWORD_DUAL_DASH, Animations.SWORD_DUAL_AIR_SLASH)
             .addLivingMotionModifier(LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
             .addLivingMotionModifier(LivingMotions.RUN, KKAnimations.ROXAS_RUN)
             .addLivingMotionModifier(LivingMotions.WALK, KKAnimations.ROXAS_RUN)
-            .addLivingMotionModifier(LivingMotions.IDLE, KKAnimations.AQUA_IDLE)
+            .addLivingMotionModifier(LivingMotions.IDLE, KKAnimations.SORA_IDLE)
             .addMountAttacks(Animations.SWORD_MOUNT_ATTACK)
             .setPassiveSkill(KKSkills.comboExtender)
             .addGuardAnimations(GuardSkill.BlockType.GUARD, Animations.SWORD_DUAL_GUARD_HIT).addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, Animations.SWORD_DUAL_GUARD_HIT).addGuardAnimations(GuardSkill.BlockType.GUARD_BREAK, Animations.BIPED_COMMON_NEUTRALIZED));

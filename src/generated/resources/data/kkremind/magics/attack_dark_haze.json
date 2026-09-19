@@ -1,7 +1,7 @@
 {
   "casttime": 5,
-  "cooldown": 60,
-  "cost": 20,
+  "cooldown": 100,
+  "cost": 40,
   "dmg_mult": 3.0,
   "dmg_mult_max": 3.3,
   "magic_lock_on": false,
