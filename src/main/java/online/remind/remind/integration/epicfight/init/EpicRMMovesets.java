@@ -55,9 +55,9 @@ public class EpicRMMovesets {
             .addComboAttacks(Animations.GREATSWORD_AUTO1, Animations.GREATSWORD_AUTO2, Animations.TACHI_AUTO1, KKAnimations.SORA_FINISHER1, KKAnimations.SORA_AUTO3,
                     Animations.SWORD_DUAL_DASH,  Animations.GREATSWORD_AIR_SLASH)
             .addLivingMotionModifier(LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
-            .addLivingMotionModifier(LivingMotions.RUN, KKAnimations.ROXAS_RUN)
-            .addLivingMotionModifier(LivingMotions.WALK, KKAnimations.ROXAS_RUN)
-            .addLivingMotionModifier(LivingMotions.IDLE, KKAnimations.AQUA_IDLE)
+            .addLivingMotionModifier(LivingMotions.RUN, Animations.BIPED_RUN_SPEAR)
+            .addLivingMotionModifier(LivingMotions.WALK, Animations.BIPED_WALK_SPEAR)
+            .addLivingMotionModifier(LivingMotions.IDLE, Animations.BIPED_HOLD_SPEAR)
             .addMountAttacks(Animations.SWORD_MOUNT_ATTACK)
             .setPassiveSkill(KKSkills.comboExtender)
             .addGuardAnimations(GuardSkill.BlockType.GUARD, Animations.SWORD_DUAL_GUARD_HIT).addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, Animations.SWORD_DUAL_GUARD_HIT).addGuardAnimations(GuardSkill.BlockType.GUARD_BREAK, Animations.BIPED_COMMON_NEUTRALIZED));
