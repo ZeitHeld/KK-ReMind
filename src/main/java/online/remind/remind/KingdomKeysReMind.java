@@ -41,6 +41,7 @@ import online.remind.remind.handler.EntityEventsRM;
 import online.remind.remind.handler.InputHandlerRM;
 import online.remind.remind.integration.epicfight.EpicFightEvents;
 import online.remind.remind.integration.epicfight.init.EpicFightIntegrationRM;
+import online.remind.remind.integration.epicfight.style.ModFightingStylesRM;
 import online.remind.remind.item.ICreativeTabRM;
 import online.remind.remind.item.ModComponentsRM;
 import online.remind.remind.item.ModItemsRM;
@@ -83,6 +84,7 @@ public class KingdomKeysReMind {
             NeoForge.EVENT_BUS.register(GrowthPanelClientEvents.class);
             // other client-only event classes here
         }
+        NeoForge.EVENT_BUS.addListener(ModFightingStylesRM::registerStyles);
         NeoForge.EVENT_BUS.register(new StyleDataReloadListener());
         NeoForge.EVENT_BUS.register(new ContributionDataReloadListener());
         ModDreamEaters.DREAM_EATERS.register(modEventBus);
