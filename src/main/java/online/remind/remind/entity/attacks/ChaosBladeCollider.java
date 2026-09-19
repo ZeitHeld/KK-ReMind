@@ -402,14 +402,6 @@ public class ChaosBladeCollider extends ThrowableProjectile {
                     player
             );
 
-            player.displayClientMessage(
-                    Component.literal(
-                                    "Chaos Blade Finish!"
-                            )
-                            .withColor(0x6F35A5),
-                    true
-            );
-
             return;
         }
 
@@ -427,13 +419,6 @@ public class ChaosBladeCollider extends ThrowableProjectile {
                 )
         );
 
-        player.displayClientMessage(
-                Component.literal(
-                                "Chaos Blade!"
-                        )
-                        .withColor(0x6F35A5),
-                true
-        );
     }
 
     private void endChaosBlade() {
@@ -475,6 +460,18 @@ public class ChaosBladeCollider extends ThrowableProjectile {
 
         serverLevel.sendParticles(
                 ParticleTypes.WITCH,
+                caster.getX(),
+                caster.getY() + 1.0D,
+                caster.getZ(),
+                2,
+                0.20D,
+                0.25D,
+                0.20D,
+                0.01D
+        );
+
+        serverLevel.sendParticles(
+                ParticleTypes.SQUID_INK,
                 caster.getX(),
                 caster.getY() + 1.0D,
                 caster.getZ(),

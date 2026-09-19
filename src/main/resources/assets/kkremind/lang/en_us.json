@@ -115,6 +115,9 @@
   "item.kkremind.sonic_blade_attack": "Sonic Blade Command",
   "magic.kkremind.attack_sonic_blade.name": "Sonic Blade",
 
+  "item.kkremind.chaos_blade_attack": "Chaos Blade Command",
+  "magic.kkremind.attack_chaos_blade.name": "Chaos Blade",
+
   "item.kkremind.slot_edge_attack": "Slot Edge Command",
   "magic.kkremind.attack_slot_edge.name": "Slot Edge",
 
@@ -533,6 +536,7 @@
   "reactioncommand.kkremind.rc_dark_firaga.name": "Dark Firaga",
   "reactioncommand.kkremind.rc_blitz.name": "Blitz",
   "reactioncommand.kkremind.rc_sonic_blade.name": "Rave",
+  "reactioncommand.kkremind.rc_chaos_blade.name": "Chaos Rave",
   "reactioncommand.kkremind.rc_slot_edge.name": "Slot Edge",
 
   "reactioncommand.kkremind.rc_xemnas.name": "Thorns of Nothingness",

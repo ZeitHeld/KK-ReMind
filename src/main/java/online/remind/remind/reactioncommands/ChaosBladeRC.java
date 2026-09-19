@@ -170,21 +170,8 @@ public class ChaosBladeRC extends ReactionCommand {
             return false;
         }
 
-        /*
-         * Only display Chaos Blade while its chain
-         * effect is active.
-         */
-        if (!player.hasEffect(
+        return player.hasEffect(
                 ModMobEffectsRM.CHAOS_BLADE_CHAIN
-        )) {
-            return false;
-        }
-
-        /*
-         * Don't offer the RC if the preserved target
-         * no longer exists.
-         */
-        return attackChaosBlade
-                .getStoredTarget(player) != null;
+        );
     }
 }

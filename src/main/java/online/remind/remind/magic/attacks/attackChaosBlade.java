@@ -132,51 +132,33 @@ public class attackChaosBlade extends Magic {
 
         double teleportDistance = 3.0D;
 
-        Vec3 targetFacing = target.getLookAngle();
-
-        Vec3 flatFacing = new Vec3(
-                targetFacing.x,
-                0.0D,
-                targetFacing.z
-        );
-
-        if (flatFacing.lengthSqr() < 0.001D) {
-            flatFacing = new Vec3(
-                    0.0D,
-                    0.0D,
-                    1.0D
-            );
-        }
-
-        flatFacing = flatFacing.normalize();
-
         /*
-         * Alternate sides each activation.
+         * Each Chaos Blade step teleports to a different
+         * angle around the target.
+         *
+         * Using 137.5 degrees keeps the positions spread out
+         * instead of simply bouncing between two points.
          */
-        Vec3 teleportDirection;
+        double angleDegrees =
+                (target.getYRot() + 180.0D + chainStep * 137.5D) % 360.0D;
 
-        if (chainStep % 2 == 0) {
+        double angleRadians =
+                Math.toRadians(angleDegrees);
 
-            // Behind target.
-            teleportDirection =
-                    flatFacing.scale(-teleportDistance);
+        double x =
+                target.getX()
+                        + Math.sin(angleRadians)
+                        * teleportDistance;
 
-        } else {
-
-            // In front of target.
-            teleportDirection =
-                    flatFacing.scale(teleportDistance);
-        }
-
-        Vec3 destination =
-                target.position().add(
-                        teleportDirection
-                );
+        double z =
+                target.getZ()
+                        - Math.cos(angleRadians)
+                        * teleportDistance;
 
         caster.teleportTo(
-                destination.x,
+                x,
                 target.getY(),
-                destination.z
+                z
         );
 
         caster.setDeltaMovement(
@@ -185,6 +167,10 @@ public class attackChaosBlade extends Magic {
 
         caster.fallDistance = 0.0F;
 
+        /*
+         * Immediately turn toward the target so the following
+         * dash goes directly through them.
+         */
         faceTarget(
                 caster,
                 target
