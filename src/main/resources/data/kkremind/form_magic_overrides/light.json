@@ -1,0 +1,12 @@
+{
+  "form": "kkremind:form_light",
+  "spells": [
+    "kingdomkeys:spellfaith",
+    "kkremind:faith_spell",
+    "kingdomkeys:spellcuraga",
+    "kkremind:holy2_spell",
+    "kkremind:light_strike_attack",
+    "kkremind:light_surge2_attack"
+  ],
+  "lock_equipment": true
+}

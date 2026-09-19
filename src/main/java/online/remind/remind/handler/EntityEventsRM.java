@@ -80,6 +80,9 @@ import online.remind.remind.panels.OrganizationPanelStatHelper;
 import online.remind.remind.panels.PanelStats;
 import online.remind.remind.reactioncommands.ModReactionCommandsRM;
 import online.remind.remind.reactioncommands.RoseRC;
+import online.remind.remind.util.FormMagicOverride;
+import online.remind.remind.util.FormMagicOverrideDefinition;
+import online.remind.remind.util.FormMagicOverrideRegistry;
 
 import java.util.*;
 
@@ -106,6 +109,28 @@ public class EntityEventsRM {
 
 		for (ServerPlayer player : server.getPlayerList().getPlayers()) {
 			RoseRC.validatePartySummons(player);
+		}
+	}
+
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	public void lockFormMagicEquipment(
+			EquipmentEvent.Magic event
+	) {
+		PlayerData playerData =
+				PlayerData.get(event.getPlayer());
+
+		if (playerData == null) {
+			return;
+		}
+
+		FormMagicOverrideDefinition definition =
+				FormMagicOverrideRegistry.get(
+						playerData.getActiveDriveForm()
+				);
+
+		if (definition != null
+				&& definition.lockEquipment()) {
+			event.setCanceled(true);
 		}
 	}
 
@@ -2012,6 +2037,8 @@ public class EntityEventsRM {
 		if (!player.level().isClientSide && player instanceof ServerPlayer serverPlayer) {
 			CSGrowthPanelActionPacket.tick(serverPlayer);
 			OrganizationPanelAbilityHelper.tickPendingPanelAbilityRefresh(serverPlayer);
+
+			handleFormMagicOverride(serverPlayer);
 		}
 	}
 
@@ -2590,4 +2617,76 @@ public class EntityEventsRM {
 			PacketHandler.sendTo(new SCSyncPlayerData(player), (ServerPlayer) player);
 		}
 	}
+
+	// Form Magic Loadouts I hope
+	private void handleFormMagicOverride(
+			ServerPlayer player
+	) {
+		PlayerData playerData =
+				PlayerData.get(player);
+
+		if (playerData == null) {
+			return;
+		}
+
+		ResourceLocation currentForm =
+				playerData.getActiveDriveForm();
+
+		FormMagicOverrideDefinition definition =
+				FormMagicOverrideRegistry.get(currentForm);
+
+		ResourceLocation overrideForm =
+				FormMagicOverride.getOverrideForm(player);
+
+
+		/*
+		 * Current form has no magic override.
+		 */
+		if (overrideForm == null
+				|| !FormMagicOverride.hasSavedLoadout(player)) {
+
+			FormMagicOverride.clearOverrideState(player);
+
+			FormMagicOverride.beginOverride(
+					player,
+					definition
+			);
+
+			return;
+		}
+
+		/*
+		 * We entered a form with an override.
+		 */
+		if (overrideForm == null) {
+			FormMagicOverride.beginOverride(
+					player,
+					definition
+			);
+
+			return;
+		}
+
+		/*
+		 * Direct transition from one override form to another.
+		 *
+		 * Restore the true original loadout first, then save it again
+		 * for the new form.
+		 */
+		if (!overrideForm.equals(currentForm)) {
+
+			FormMagicOverride.restoreOriginalLoadout(player);
+
+			FormMagicOverride.beginOverride(
+					player,
+					definition
+			);
+
+			return;
+		}
+
+		FormMagicOverride.enforceOverride(player);
+	}
+
+
 }

@@ -26,6 +26,13 @@
 - **[REWORK]** Light Step Rework - It now makes you move in an arcing motion
 - **[REWORK]** Dark Step Rework - It now makes you -blink- a few blocks in the direction you're facing, leaving an afterimage.
 
+## New Drive Form Magic Loadouts
+- Drive Forms can now have their own dedicated magic loadouts.
+- Entering a supported Form temporarily replaces your equipped spells with that Form’s configured magic.
+- Leaving the Form restores your original spell loadout exactly as it was.
+- Form loadouts are protected while active, preventing equipped spells from being removed or replaced.
+- The system is fully data-driven, allowing Form-specific spell loadouts to be added or changed through data files without additional hard-coded logic.
+
 ## New Spell
 
 ### **Recall** - *Re:Mind Original*

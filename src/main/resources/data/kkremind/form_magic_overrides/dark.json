@@ -1,0 +1,12 @@
+{
+  "form": "kkremind:form_dark",
+  "spells": [
+    "kingdomkeys:spelldarkfiraga",
+    "kingdomkeys:spellcuraga",
+    "kkremind:ruin2_spell",
+    "kkremind:comet_spell",
+    "kkremind:dark_strike_attack",
+    "kkremind:dark_surge2_attack"
+  ],
+  "lock_equipment": true
+}

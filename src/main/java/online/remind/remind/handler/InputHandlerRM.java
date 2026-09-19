@@ -332,8 +332,8 @@ public class InputHandlerRM {
 		 */
 		double horizontalPower =
 				lightForm
-						? Math.max(1.0D, lightLevel / 2.0D)
-						: Math.max(1.0D, lightLevel - 2.0D);
+						? Math.max(1.5D, lightLevel / 2.0D)
+						: Math.max(1.0D, (lightLevel - 2.0D) / 2.0D);
 
 		/*
 		 * Arc height.
@@ -602,14 +602,14 @@ public class InputHandlerRM {
 				 */
 				double maxDistance =
 						darkForm
-								? Math.max(3.0D, darkLevel)
+								? Math.max(4.0D, darkLevel * 2.0D)
 								: Math.max(2.0D, darkLevel - 2.0D);
 
 				maxDistance =
 						Mth.clamp(
 								maxDistance,
 								1.0D,
-								8.0D
+								14.0D
 						);
 
 				teleportDarkStep(
