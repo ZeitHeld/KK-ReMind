@@ -57,10 +57,18 @@
 - Meld Recipe: Warp + Curaga
 
 ## New Attacks
+### Dark Haze
+- Cost: TBD
+- Cloak yourself in darkness, then charge at faraway enemies. The attack has a chance of dooming them, leaving them five seconds to live.
+- Meld Recipe: TBD
 ### Sonic Blade
 - Cost: 20 MP
 - Press the **R** at the right times to perform a series of charging attacks that will reach faraway enemies.
 - Meld Recipes: Blitz + Sliding Dash, TBD
+### Chaos Blade
+- Cost: TBD
+- Press the **R** button at the right times to perform a series of charging attacks that blind or bind some foes.
+- Meld Recipe: TBD
 
 ## New Abilities
 ### **Silence Heart**
