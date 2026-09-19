@@ -32,6 +32,23 @@
 - Leaving the Form restores your original spell loadout exactly as it was.
 - Form loadouts are protected while active, preventing equipped spells from being removed or replaced.
 - The system is fully data-driven, allowing Form-specific spell loadouts to be added or changed through data files without additional hard-coded logic.
+- Only Light and Dark Forms have this system! (for now)
+
+### Light Form Loadout:
+- Light Strike
+- Lightga Surge
+- Faith
+- Faith (Re:CoM)
+- Curaga
+- Holyga
+
+### Dark Form Loadout:
+- Dark Strike
+- Darkga Surge
+- Ruinga
+- Comet
+- Dark Firaga
+- Curaga
 
 ## New Spell
 
