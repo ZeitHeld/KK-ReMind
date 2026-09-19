@@ -25,30 +25,61 @@ public class slidingDashCollider extends ThrowableProjectile {
 
     private LivingEntity caster;
     private float damage;
+
     private int maxTicks = 10;
     private int hits = 0;
     private int maxHits = 2;
 
-    public slidingDashCollider(EntityType<? extends ThrowableProjectile> type, Level level){
-        super(type, level);
-        this.noPhysics = true;
-        //this.setInvisible(true);
-        this.setBoundingBox(new AABB(-0.5, 0, -0.5, 0.5, 1.5, 0.5));
+    private double lastCasterX;
+    private double lastCasterY;
+    private double lastCasterZ;
+    private boolean hasLastCasterPos = false;
 
+    public slidingDashCollider(
+            EntityType<? extends ThrowableProjectile> type,
+            Level level
+    ) {
+        super(type, level);
+
+        this.noPhysics = true;
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+    protected void defineSynchedData(
+            SynchedEntityData.Builder builder
+    ) {
 
     }
 
-    public slidingDashCollider(Level level, LivingEntity caster, float damage){
-        this(ModEntitiesRM.TYPE_QUICK_BLITZ.get(),level);
+    public slidingDashCollider(
+            Level level,
+            LivingEntity caster,
+            float damage
+    ) {
+        this(
+                ModEntitiesRM.TYPE_QUICK_BLITZ.get(),
+                level
+        );
+
         this.caster = caster;
         this.damage = damage;
-        this.setPos(caster.getX(), caster.getY(), caster.getZ());
+
+        this.setOwner(caster);
+
+        this.setPos(
+                caster.getX(),
+                caster.getY() + 0.5D,
+                caster.getZ()
+        );
+
+        this.lastCasterX = caster.getX();
+        this.lastCasterY = caster.getY();
+        this.lastCasterZ = caster.getZ();
+
+        this.hasLastCasterPos = true;
     }
 
+    @Override
     public void tick() {
 
         if (caster == null || !caster.isAlive()) {
@@ -57,66 +88,252 @@ public class slidingDashCollider extends ThrowableProjectile {
         }
 
         if (this.tickCount > maxTicks) {
-            this.remove(RemovalReason.KILLED);
+            remove(RemovalReason.KILLED);
+            return;
         }
-
-        this.setPos(caster.getX(), caster.getY() + 0.5, caster.getZ());
-
-        if (tickCount > 2){
-            AABB hitBox = this.getBoundingBox().inflate(2.0); // easier to land
-        }
-
-        if (tickCount > 1) {
-            if (caster.level() instanceof ServerLevel serverLevel) {
-
-                serverLevel.sendParticles(ParticleTypes.CRIT,
-                        caster.getX(),
-                        caster.getY()+1,
-                        caster.getZ(),
-                        1, 0, 0, 0, 0);
-            }
-        }
-
-
-
-        // Check Collision
 
         this.setOwner(caster);
 
-        for (Entity entity : level().getEntities(this, this.getBoundingBox(), e -> e instanceof LivingEntity && e != caster)) {
-            if (entity != getOwner()) {
-                Party p = null;
-                if (getOwner() != null) {
-                    p = WorldData.get(getOwner().getServer()).getPartyFromMember(getOwner().getUUID());
-                }
-                LivingEntity target = (LivingEntity) entity;
-                if (p == null || (p.getMember(target.getUUID()) == null || p.getFriendlyFire())){
-                    target.hurt(caster.damageSources().mobAttack(caster), damage);
-                    caster.setDeltaMovement(0, 0, 0);
-                    caster.swing(InteractionHand.MAIN_HAND);
-                    target.invulnerableTime = 0;
-                    hits++;
-                    if (hits == 2) {
-                        this.remove(RemovalReason.KILLED);
-                    }
-                    target.level().playSound(null, target.getX(), target.getY(), target.getZ(),
-                            SoundEvents.PLAYER_ATTACK_STRONG, SoundSource.PLAYERS, 1.0F, 1.0F);
-                    if (KingdomKeysReMind.efmLoaded) {
-                        EpicFightParticles.HIT_BLADE.get().spawnParticleWithArgument(((ServerLevel) target.level()), HitParticleType.RANDOM_WITHIN_BOUNDING_BOX, HitParticleType.ZERO, target, target);
-                        target.level().playSound(null, target.blockPosition(), EpicFightSounds.BLADE_HIT.get(), SoundSource.PLAYERS, 1F, 1F);
-                    } else {
-                        level().addParticle(ParticleTypes.CRIT,
-                                target.getX(), target.getY() + target.getBbHeight(), target.getZ(),
-                                0, 0.1, 0);
-                    }
-                }
+        this.setPos(
+                caster.getX(),
+                caster.getY() + 0.5D,
+                caster.getZ()
+        );
+
+        /*
+         * Trail particles.
+         */
+        if (tickCount > 1
+                && caster.level() instanceof ServerLevel serverLevel) {
+
+            serverLevel.sendParticles(
+                    ParticleTypes.CRIT,
+                    caster.getX(),
+                    caster.getY() + 1.0D,
+                    caster.getZ(),
+                    1,
+                    0.0D,
+                    0.0D,
+                    0.0D,
+                    0.0D
+            );
+        }
+
+        /*
+         * Damage/collision only needs to happen server-side.
+         */
+        if (level().isClientSide) {
+            super.tick();
+            return;
+        }
+
+        double currentX = caster.getX();
+        double currentY = caster.getY();
+        double currentZ = caster.getZ();
+
+        if (!hasLastCasterPos) {
+            lastCasterX = currentX;
+            lastCasterY = currentY;
+            lastCasterZ = currentZ;
+
+            hasLastCasterPos = true;
+        }
+
+        double moveX = currentX - lastCasterX;
+        double moveY = currentY - lastCasterY;
+        double moveZ = currentZ - lastCasterZ;
+
+        /*
+         * Swept hitbox:
+         *
+         * Covers the space the player traveled through between
+         * the previous tick and this tick.
+         *
+         * Much more reliable than simply inflating the hitbox
+         * several blocks in every direction.
+         */
+        AABB hitBox = caster.getBoundingBox()
+                .expandTowards(
+                        -moveX,
+                        -moveY,
+                        -moveZ
+                )
+                .inflate(
+                        0.30D,
+                        0.20D,
+                        0.30D
+                );
+
+        for (Entity entity : level().getEntities(
+                caster,
+                hitBox,
+                e -> e instanceof LivingEntity && e != caster
+        )) {
+
+            if (!(entity instanceof LivingEntity target)) {
+                continue;
+            }
+
+            if (!canHitTarget(target)) {
+                continue;
+            }
+
+            hitTarget(target);
+
+            if (this.isRemoved()) {
+                return;
             }
         }
+
+        lastCasterX = currentX;
+        lastCasterY = currentY;
+        lastCasterZ = currentZ;
+
         super.tick();
     }
 
+    private boolean canHitTarget(LivingEntity target) {
+
+        Party party = null;
+
+        if (getOwner() != null
+                && getOwner().getServer() != null) {
+
+            party = WorldData
+                    .get(getOwner().getServer())
+                    .getPartyFromMember(
+                            getOwner().getUUID()
+                    );
+        }
+
+        return party == null
+                || party.getMember(target.getUUID()) == null
+                || party.getFriendlyFire();
+    }
+
+    private void hitTarget(LivingEntity target) {
+
+        target.invulnerableTime = 0;
+
+        boolean damaged;
+
+        /*
+         * Epic Fight workaround:
+         *
+         * SWORD_DASH is allowed to handle the visuals,
+         * but the Re:Mind collider remains responsible
+         * for actual damage.
+         *
+         * Don't associate this hit with the player's
+         * current Epic Fight attack while EFM is loaded.
+         */
+        if (KingdomKeysReMind.efmLoaded) {
+
+            damaged = target.hurt(
+                    caster.damageSources().magic(),
+                    damage
+            );
+
+        } else {
+
+            damaged = target.hurt(
+                    caster.damageSources().mobAttack(caster),
+                    damage
+            );
+        }
+
+        target.invulnerableTime = 0;
+
+        if (!damaged) {
+            return;
+        }
+
+        hits++;
+
+        caster.setDeltaMovement(
+                0.0D,
+                0.0D,
+                0.0D
+        );
+
+        caster.swing(
+                InteractionHand.MAIN_HAND
+        );
+
+        applyHitEffects(target);
+
+        if (hits >= maxHits) {
+            remove(RemovalReason.KILLED);
+        }
+    }
+
+    private void applyHitEffects(LivingEntity target) {
+
+        Level targetLevel = target.level();
+
+        targetLevel.playSound(
+                null,
+                target.blockPosition(),
+                SoundEvents.PLAYER_ATTACK_STRONG,
+                SoundSource.PLAYERS,
+                1.0F,
+                1.0F
+        );
+
+        if (!(targetLevel instanceof ServerLevel serverLevel)) {
+            return;
+        }
+
+        if (KingdomKeysReMind.efmLoaded) {
+
+            EpicFightParticles.HIT_BLADE.get()
+                    .spawnParticleWithArgument(
+                            serverLevel,
+                            HitParticleType.RANDOM_WITHIN_BOUNDING_BOX,
+                            HitParticleType.ZERO,
+                            target,
+                            target
+                    );
+
+            targetLevel.playSound(
+                    null,
+                    target.blockPosition(),
+                    EpicFightSounds.BLADE_HIT.get(),
+                    SoundSource.PLAYERS,
+                    1.0F,
+                    1.0F
+            );
+
+        } else {
+
+            serverLevel.sendParticles(
+                    ParticleTypes.CRIT,
+                    target.getX(),
+                    target.getY()
+                            + target.getBbHeight() * 0.5D,
+                    target.getZ(),
+                    5,
+                    0.25D,
+                    0.25D,
+                    0.25D,
+                    0.05D
+            );
+        }
+    }
+
     @Override
-    protected void readAdditionalSaveData(CompoundTag tag) {}
+    protected void readAdditionalSaveData(
+            CompoundTag tag
+    ) {
+        this.damage = tag.getFloat("Damage");
+        this.hits = tag.getInt("Hits");
+    }
+
     @Override
-    protected void addAdditionalSaveData(CompoundTag tag) {}
+    protected void addAdditionalSaveData(
+            CompoundTag tag
+    ) {
+        tag.putFloat("Damage", this.damage);
+        tag.putInt("Hits", this.hits);
+    }
 }

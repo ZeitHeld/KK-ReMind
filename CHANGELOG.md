@@ -7,6 +7,7 @@
 - **[EFM]**, **[NEW]** Equipping the Guard ability now gives you EFM's Guard Skill.
 - **[EFM]**, **[FIX]** Attack Command Animations now play again.
 - **[EFM]**, **[FIX]** Forms now have move sets again (Thank you, Nathan)
+- **[EFM]**, **[FIX]** Sliding Dash not doing damage while in Fight Mode.
 - **[FIX]** Tonberry (Spirit) immortality bug.
 - **[FIX]** Tonberry (Spirit) no longer has a full bright model.
 - **[FIX]** Tonberry (Spirit) now emits light like it's hostile counterpart.
@@ -51,9 +52,15 @@
 
 ## New Spell
 ### **Recall** - *Re:Mind Original*
-- Cost: ALL
+- Cost: ALL MP
 - Teleports you to your respawn point.
 - Meld Recipe: Warp + Curaga
+
+## New Attack Commands
+### Sliding Dash
+- Cost: 10 MP
+- Press the **R** at the right times to perform a series of charging attacks that will reach faraway enemies.
+- Meld Recipe: Blitz + Sliding Dash
 
 ## New Abilities
 ### **Silence Heart**

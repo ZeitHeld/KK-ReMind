@@ -28,6 +28,7 @@ public class ModReactionCommandsRM {
         ZEXION_RC = register(StringsRM.RCMA_Prefix+"zexion", () -> new XemnasRC( ResourceLocation.parse(StringsRM.ZexionRC),true)),
         BLITZ_RC = register(StringsRM.RCMA_Prefix+"blitz", () -> new BlitzRC( ResourceLocation.parse(StringsRM.BlitzRC),true)),
         SLOT_EDGE_RC = register(StringsRM.RCMA_Prefix+"slot_edge", () -> new SlotEdgeRC( ResourceLocation.parse(StringsRM.SlotEdgeRC),true)),
+        SONIC_BLADE_RC = register(StringsRM.RCMA_Prefix+"sonic_blade", () -> new SonicBladeRC( ResourceLocation.parse(StringsRM.SonicBladeRC),true)),
 
 
         FINISH_RC = register(StringsRM.RCMA_Prefix+"finish", () -> new FinishRC(ResourceLocation.parse(StringsRM.FinishRC),false)),
