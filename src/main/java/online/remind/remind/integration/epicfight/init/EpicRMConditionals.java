@@ -55,12 +55,21 @@ public class EpicRMConditionals {
 
         PlayerData data = PlayerData.get(player);
 
-        if (data == null || !data.noFormActive() || !KKStyleRegistry.isChosen(player, id)) {
+        if (data == null) {
             return false;
         }
 
-        // Dual wield needs a keyblade in the off-hand, single wield needs the off-hand free
-        boolean offhandKeyblade = player.getOffhandItem().getItem() instanceof KeybladeItem;
+        boolean canUseStyle =
+                data.noFormActive()
+                        || ModDriveFormsRM.styles.contains(data.getActiveDriveForm());
+
+        if (!canUseStyle || !KKStyleRegistry.isChosen(player, id)) {
+            return false;
+        }
+
+        boolean offhandKeyblade =
+                player.getOffhandItem().getItem() instanceof KeybladeItem;
+
         return offhandKeyblade == (style.getHand() == HandStyle.DUAL);
     }
 

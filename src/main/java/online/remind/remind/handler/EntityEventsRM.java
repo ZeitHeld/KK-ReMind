@@ -82,6 +82,9 @@ import online.remind.remind.panels.OrganizationPanelStatHelper;
 import online.remind.remind.panels.PanelStats;
 import online.remind.remind.reactioncommands.ModReactionCommandsRM;
 import online.remind.remind.reactioncommands.RoseRC;
+import online.remind.remind.styles.SGaugeHandler;
+import online.remind.remind.styles.StyleElement;
+import online.remind.remind.styles.StyleUtils;
 import online.remind.remind.util.FormMagicOverride;
 import online.remind.remind.util.FormMagicOverrideDefinition;
 import online.remind.remind.util.FormMagicOverrideRegistry;
@@ -2114,8 +2117,26 @@ public class EntityEventsRM {
 			if (player.hasEffect(ModMobEffectsRM.RM_ANIMATION_LOCK)) {
 				event.setCanceled(true);
 			}
-
 			openFortunaExceedWindow(player);
+
+			// Don't count attacking item frames, boats, etc.
+			if (!(event.getTarget() instanceof LivingEntity target)) {
+				return;
+			}
+
+			// Don't count already-dead entities
+			if (!target.isAlive()) {
+				return;
+			}
+
+			GlobalDataRM globalData = ModDataRM.getGlobal(player);
+
+            SGaugeHandler.addNormalAttackContribution(player);
+			SGaugeHandler.addContribution(player,  ResourceLocation.parse("kkremind:normal_attack"), Set.of(),Set.of(),1 );
+			globalData.setStyleTicks(120);
+			globalData.setSCooldownTicks(120);
+			PacketHandlerRM.syncGlobalToAllAround(player, globalData);
+
 		}
 	}
 

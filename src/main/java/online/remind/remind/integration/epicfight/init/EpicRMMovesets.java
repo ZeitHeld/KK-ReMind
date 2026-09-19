@@ -16,13 +16,15 @@ public class EpicRMMovesets {
     public static final MovesetRegister MOVESETS = MovesetRegister.create(KingdomKeysReMind.MODID);
 
 
+
+
     public static final DeferredMoveset TWILIGHT_FORM_MOVESET = MOVESETS.registerMoveset("twilight_form", () -> Moveset.builder()
             .addComboAttacks(KKAnimations.DUAL_ROXAS_AUTO1, KKAnimations.DUAL_ROXAS_AUTO2, KKAnimations.DUAL_ROXAS_AUTO3,
                     Animations.SWORD_DUAL_DASH, Animations.SWORD_DUAL_AIR_SLASH)
             .addLivingMotionModifier(LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
-            .addLivingMotionModifier(LivingMotions.IDLE, KKAnimations.FINAL_FORM_IDLE)
-            .addLivingMotionModifier(LivingMotions.RUN, KKAnimations.FINAL_FORM_IDLE)
-            .addLivingMotionModifier(LivingMotions.WALK, KKAnimations.FINAL_FORM_IDLE)
+            .addLivingMotionModifier(LivingMotions.IDLE, KKAnimations.KH2_ROXAS_DUAL_IDLE)
+            .addLivingMotionModifier(LivingMotions.RUN, Animations.BIPED_RUN_DUAL)
+            .addLivingMotionModifier(LivingMotions.WALK, KKAnimations.KH2_ROXAS_DUAL_WALK)
             .addMountAttacks(Animations.SWORD_MOUNT_ATTACK)
             .setPassiveSkill(KKSkills.comboExtender)
             .addGuardAnimations(GuardSkill.BlockType.GUARD, Animations.SWORD_DUAL_GUARD_HIT).addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, Animations.SWORD_DUAL_GUARD_HIT).addGuardAnimations(GuardSkill.BlockType.GUARD_BREAK, Animations.BIPED_COMMON_NEUTRALIZED));

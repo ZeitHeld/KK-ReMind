@@ -24,6 +24,7 @@
 - **[CHANGE]** Light Form should be easier/faster to level now.
 - **[CHANGE]** Dream Eaters now register as Party Members.
 - **[CHANGE]** Zantetsuken's melding recipe is now Sonic Blade + Stopga or Dark Haze + Stopga to reflect its recipe in BBS.
+- **[CHANGE]** Normal attacks now contribute to the Situation Gauge.
 - **[REWORK]** Light Step Rework - It now makes you move in an arcing motion
 - **[REWORK]** Dark Step Rework - It now makes you -blink- a few blocks in the direction you're facing, leaving an afterimage.
 
