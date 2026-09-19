@@ -56,11 +56,11 @@
 - Teleports you to your respawn point.
 - Meld Recipe: Warp + Curaga
 
-## New Attack Commands
-### Sliding Dash
-- Cost: 10 MP
+## New Attacks
+### Sonic Blade
+- Cost: 20 MP
 - Press the **R** at the right times to perform a series of charging attacks that will reach faraway enemies.
-- Meld Recipe: Blitz + Sliding Dash
+- Meld Recipes: Blitz + Sliding Dash, TBD
 
 ## New Abilities
 ### **Silence Heart**

@@ -1,6 +1,6 @@
 {
   "casttime": 5,
-  "cooldown": 100,
+  "cooldown": 80,
   "cost": 20,
   "dmg_mult": 1.0,
   "dmg_mult_max": 4.0,
