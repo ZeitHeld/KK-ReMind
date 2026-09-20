@@ -2,7 +2,7 @@
 *(Month.Year.Iteration)*
 
 ## General Changes and Fixes
-- **[Compatability]** Usable with LATEST KK Release and Beyond.
+- **[Compatibility]** Usable with LATEST KK Release and Beyond.
 - **[NEW]** Chirithy now has dialogs and can act as a guide!
 - **[EFM]**, **[NEW]** Equipping the Guard ability now gives you EFM's Guard Skill.
 - **[EFM]**, **[FIX]** Attack Command Animations now play again.

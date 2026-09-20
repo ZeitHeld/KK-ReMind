@@ -155,6 +155,7 @@ public class ModMagicsRM {
 		// FF Attacks
 
 		// Cloud
+		BRAVER = register("attack_braver", () -> new attackBraver(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "attack_braver"), false, 0, null)),
 		CROSS_SLASH = register("attack_cross_slash", () -> new attackCrossSlash(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "attack_cross_slash"), false, 0, null)),
 
 	// Sephiroth

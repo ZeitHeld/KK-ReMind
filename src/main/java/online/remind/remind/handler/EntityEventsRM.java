@@ -464,6 +464,7 @@ public class EntityEventsRM {
 		playerData.setDriveFormLevel(ModDriveFormsRM.CRITICAL_IMPACT.location(), 1);
 		playerData.setDriveFormLevel(ModDriveFormsRM.SPELLWEAVER.location(), 1);
 		playerData.setDriveFormLevel(ModDriveFormsRM.BLOOSTLUST.location(), 1);
+		playerData.setDriveFormLevel(ModDriveFormsRM.EXSOLDIER.location(), 1);
 
 		playerData.setDriveFormLevel(ModDriveFormsRM.DRACONIC_LIBERATION.location(), 1);
 
@@ -810,73 +811,6 @@ public class EntityEventsRM {
 		}
 	}
 
-	/*private void addSituationRCs(Player player) {
-		PlayerData playerData = PlayerData.get(player);
-		GlobalDataRM remindData = ModDataRM.getGlobal(player);
-		if(playerData != null && remindData != null) {
-			if (playerData.getActiveDriveForm().equals(DriveForm.NONE.toString())) {
-				if (remindData.getSituationValue() >= 100) { // Base form finisher
-					if (remindData.getStyle().equals("NONE") || remindData.getStyle().equals("")) {
-						playerData.addReactionCommand(StringsRM.FinishRC, player);
-						PacketHandler.sendTo(new SCSyncPlayerData(player), (ServerPlayer) player);
-					}
-				}
-
-				if (remindData.getStyle().equals("FIRE")) {
-					playerData.addReactionCommand(StringsRM.FireStormRC, player); //To enter form
-				}
-
-				if (remindData.getStyle().equals("BLIZZARD")) {
-					playerData.addReactionCommand(StringsRM.DiamondDustRC, player);
-				}
-
-				if (remindData.getStyle().equals("THUNDER")) {
-					playerData.addReactionCommand(StringsRM.ThunderBoltRC, player);
-				}
-
-				if (remindData.getStyle().equals("PHYSICAL") || remindData.getStyle().equals("AIR")) {
-					if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.waywardWindChain.get() || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.lostMemoryChain.get() || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.missingAcheChain.get()) {
-						playerData.addReactionCommand(StringsRM.FeverPitchRC, player);
-					}
-				}
-
-				if (remindData.getStyle().equals("PHYSICAL") || remindData.getStyle().equals("NONE")) {
-					if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.earthshakerChain.get() || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.endsOfTheEarthChain.get()) {
-						playerData.addReactionCommand(StringsRM.CriticalImpactRC, player);
-					}
-				}
-
-				if (remindData.getStyle().equals("MAGIC")) {
-					if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.rainfellChain.get() || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.stormfallChain.get()) {
-						playerData.addReactionCommand(StringsRM.SpellweaverRC, player);
-					}
-				}
-
-			} else if (ModDriveFormsRM.styles.contains(ResourceLocation.parse(playerData.getActiveDriveForm()))) {
-				if (remindData.getSituationValue() >= 100) {
-					if(playerData.getActiveDriveForm().equals(ModDriveFormsRM.FIRESTORM.get().getRegistryName().toString())) { // To finish form
-						playerData.addReactionCommand(StringsRM.FireStormRC, player);
-					}
-					if(playerData.getActiveDriveForm().equals(ModDriveFormsRM.DIAMOND_DUST.get().getRegistryName().toString())) { // To finish form
-						playerData.addReactionCommand(StringsRM.DiamondDustRC, player);
-					}
-					if(playerData.getActiveDriveForm().equals(ModDriveFormsRM.THUNDER_BOLT.get().getRegistryName().toString())) { // To finish form
-						playerData.addReactionCommand(StringsRM.ThunderBoltRC, player);
-					}
-					if(playerData.getActiveDriveForm().equals(ModDriveFormsRM.FEVER_PITCH.get().getRegistryName().toString())) { // To finish form
-						playerData.addReactionCommand(StringsRM.FeverPitchRC, player);
-					}
-					if(playerData.getActiveDriveForm().equals(ModDriveFormsRM.CRITICAL_IMPACT.get().getRegistryName().toString())) { // To finish form
-						playerData.addReactionCommand(StringsRM.CriticalImpactRC, player);
-					}
-					if(playerData.getActiveDriveForm().equals(ModDriveFormsRM.SPELLWEAVER.get().getRegistryName().toString())) { // To finish form
-						playerData.addReactionCommand(StringsRM.SpellweaverRC, player);
-					}
-
-				}
-			}
-		}
-	}*/
 
 
 	private void playFortunaMaxExceedEffects(ServerLevel level, Player player, LivingEntity target) {
@@ -1950,6 +1884,12 @@ public class EntityEventsRM {
 					// Fever Pitch Passive
 					if (playerData.isFormActive(ModDriveFormsRM.FEVER_PITCH)) {
 						player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,2,1,true,true,true));
+					}
+
+					// EX-SOLDIER Passives
+
+					if (playerData.isFormActive(ModDriveFormsRM.EXSOLDIER)){
+
 					}
 
 				}

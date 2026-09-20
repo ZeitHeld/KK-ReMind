@@ -217,6 +217,14 @@ public class StyleRC extends ReactionCommand {
 						1.25F
 				);
 			}
+
+			case KingdomKeysReMind.MODID + ":" + StringsRM.exSoldier -> {
+				float mult = playerData.getNumberOfAbilitiesEquipped(ModAbilities.CRITICAL_BOOST) * 0.25f;
+				damage += damage * mult;
+				explosionHurt(player, damage, KKDamageTypes.OFFHAND);
+				playSoundAndParticles(player, SoundEvents.PLAYER_ATTACK_SWEEP,
+						ParticleTypes.SNOWFLAKE, ParticleTypes.ITEM_SNOWBALL);
+			}
 		}
 	}
 

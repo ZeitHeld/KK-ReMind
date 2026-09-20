@@ -41,6 +41,7 @@ public class StringsRM {
         criticalImpact = StringsRM.DFMA_Prefix+"critical_impact",
         spellweaver = StringsRM.DFMA_Prefix+"spellweaver",
         bloodlust = StringsRM.DFMA_Prefix+"bloodlust",
+        exSoldier = StringsRM.DFMA_Prefix+"ex_soldier",
 
         regenForm = StringsRM.DFMA_Prefix+"regen",
         draconicLiberation = StringsRM.DFMA_Prefix+"draconic_liberation",
@@ -268,6 +269,7 @@ public class StringsRM {
         CriticalImpactRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"critical_impact",
         SpellweaverRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"spellweaver",
         BloodlustRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"bloodlust",
+        ExSoldierRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"ex_soldier",
 
         RegenRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"regen",
         ExceedRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"exceed",

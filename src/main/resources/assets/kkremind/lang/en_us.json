@@ -164,6 +164,8 @@
   "item.kkremind.zettaflare_spell": "Zettaflare Spell",
   "item.kkremind.recall_spell": "Recall Spell",
 
+  "item.kkremind.braver_attack": "Braver Command",
+  "magic.kkremind.attack_braver.name": "Braver",
   "item.kkremind.cross_slash_attack": "Cross-Slash Command",
   "magic.kkremind.attack_cross_slash.name": "Cross-Slash",
 
@@ -385,6 +387,7 @@
   "form.form_critical_impact.name": "Critical Impact",
   "form.form_spellweaver.name": "Spellweaver",
   "form.form_bloodlust.name": "Bloodlust",
+  "form.form_ex_soldier.name": "Ex-SOLDIER",
 
 
   "item.kkremind.xephiro_keyblade": "Sanguine Gaze",
@@ -559,6 +562,7 @@
   "reactioncommand.kkremind.rc_critical_impact.name": "Critical Impact",
   "reactioncommand.kkremind.rc_spellweaver.name": "Spellweaver",
   "reactioncommand.kkremind.rc_bloodlust.name": "Bloodlust",
+  "reactioncommand.kkremind.rc_ex_soldier.name": "EX-Soldier",
 
 
   "reactioncommand.kkremind.rc_counter_hammer.name": "Counter Hammer",

@@ -43,6 +43,9 @@ public class ModReactionCommandsRM {
         // Xephiro Style
         BLOODLUST_RC = register(StringsRM.RCMA_Prefix+"bloodlust", () -> new StyleRC(ResourceLocation.parse(StringsRM.BloodlustRC),false, KingdomKeysReMind.MODID+":"+StringsRM.bloodlust)),
 
+    // FF Styles
+        EX_SOLDIER_RC = register(StringsRM.RCMA_Prefix+"ex_soldier", () -> new StyleRC(ResourceLocation.parse(StringsRM.ExSoldierRC),false, KingdomKeysReMind.MODID+":"+StringsRM.exSoldier)),
+
 
 
     // Commission RCs

@@ -6,6 +6,7 @@ import net.minecraft.world.item.ItemStack;
 import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.driveform.DriveForm;
 import online.kingdomkeys.kingdomkeys.integration.epicfight.enums.HandStyle;
+import online.kingdomkeys.kingdomkeys.integration.epicfight.enums.KKStyles;
 import online.kingdomkeys.kingdomkeys.integration.epicfight.style.KKFightingStyle;
 import online.kingdomkeys.kingdomkeys.integration.epicfight.style.KKStyleRegistry;
 import online.kingdomkeys.kingdomkeys.item.KeybladeItem;
@@ -90,5 +91,116 @@ public class EpicRMConditionals {
     public static final DeferredConditional XEPHIRO_STYLE = CONDITIONALS.registerConditional("xephiro_style", () ->
             ProviderConditional.createCustom(RMStyle.XEPHIRO_SINGLE, livingEntityPatch -> styleActive(livingEntityPatch, ModFightingStylesRM.XEPHIRO), true)
     );
+    public static final DeferredConditional FIRESTORM_STYLE =
+            CONDITIONALS.registerConditional(
+                    "firestorm_style",
+                    () -> ProviderConditional.createCustom(
+                            KKStyles.LIMIT_FORM,
+                            livingEntityPatch ->
+                                    inForm(
+                                            livingEntityPatch,
+                                            ModDriveFormsRM.FIRESTORM
+                                    ),
+                            true
+                    )
+            );
+
+    public static final DeferredConditional DIAMOND_DUST_STYLE =
+            CONDITIONALS.registerConditional(
+                    "diamond_dust_style",
+                    () -> ProviderConditional.createCustom(
+                            KKStyles.LIMIT_FORM,
+                            livingEntityPatch ->
+                                    inForm(
+                                            livingEntityPatch,
+                                            ModDriveFormsRM.DIAMOND_DUST
+                                    ),
+                            true
+                    )
+            );
+
+    public static final DeferredConditional THUNDER_BOLT_STYLE =
+            CONDITIONALS.registerConditional(
+                    "thunder_bolt_style",
+                    () -> ProviderConditional.createCustom(
+                            KKStyles.LIMIT_FORM,
+                            livingEntityPatch ->
+                                    inForm(
+                                            livingEntityPatch,
+                                            ModDriveFormsRM.THUNDER_BOLT
+                                    ),
+                            true
+                    )
+            );
+
+    public static final DeferredConditional FEVER_PITCH_STYLE =
+            CONDITIONALS.registerConditional(
+                    "fever_pitch_style",
+                    () -> ProviderConditional.createCustom(
+                            KKStyles.LIMIT_FORM,
+                            livingEntityPatch ->
+                                    inForm(
+                                            livingEntityPatch,
+                                            ModDriveFormsRM.FEVER_PITCH
+                                    ),
+                            true
+                    )
+            );
+
+    public static final DeferredConditional CRITICAL_IMPACT_STYLE =
+            CONDITIONALS.registerConditional(
+                    "critical_impact_style",
+                    () -> ProviderConditional.createCustom(
+                            KKStyles.LIMIT_FORM,
+                            livingEntityPatch ->
+                                    inForm(
+                                            livingEntityPatch,
+                                            ModDriveFormsRM.CRITICAL_IMPACT
+                                    ),
+                            true
+                    )
+            );
+
+    public static final DeferredConditional SPELLWEAVER_STYLE =
+            CONDITIONALS.registerConditional(
+                    "spellweaver_style",
+                    () -> ProviderConditional.createCustom(
+                            KKStyles.LIMIT_FORM,
+                            livingEntityPatch ->
+                                    inForm(
+                                            livingEntityPatch,
+                                            ModDriveFormsRM.SPELLWEAVER
+                                    ),
+                            true
+                    )
+            );
+
+    public static final DeferredConditional BLOODLUST_STYLE =
+            CONDITIONALS.registerConditional(
+                    "bloodlust_style",
+                    () -> ProviderConditional.createCustom(
+                            KKStyles.LIMIT_FORM,
+                            livingEntityPatch ->
+                                    inForm(
+                                            livingEntityPatch,
+                                            ModDriveFormsRM.BLOOSTLUST
+                                    ),
+                            true
+                    )
+            );
+
+    public static final DeferredConditional EX_SOLDIER_STYLE =
+            CONDITIONALS.registerConditional(
+                    "ex_soldier_style",
+                    () -> ProviderConditional.createCustom(
+                            KKStyles.LIMIT_FORM,
+                            livingEntityPatch ->
+                                    inForm(
+                                            livingEntityPatch,
+                                            ModDriveFormsRM.EXSOLDIER
+                                    ),
+                            true
+                    )
+            );
 
 }

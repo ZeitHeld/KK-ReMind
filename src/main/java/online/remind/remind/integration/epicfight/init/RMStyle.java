@@ -8,7 +8,15 @@ public enum RMStyle implements Style {
     RAGE_FORM(false),
     TWILIGHT_FORM(true),
     DARK_FORM(false),
-    LIGHT_FORM(false);
+    LIGHT_FORM(false),
+    FIRESTORM(false),
+    DIAMOND_DUST(false),
+    THUNDER_BOLT(false),
+    FEVER_PITCH(false),
+    CRITICAL_IMPACT(false),
+    SPELLWEAVER(false),
+    BLOODLUST(false),
+    EX_SOLDIER(false);
 
     private final boolean canUseOffhand;
     private final int id;

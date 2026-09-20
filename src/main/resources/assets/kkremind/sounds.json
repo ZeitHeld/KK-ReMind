@@ -259,6 +259,16 @@
       "kkremind:slash"
     ]
   },
+  "crit_slash": {
+    "sounds": [
+      "kkremind:crit_slash"
+    ]
+  },
+  "dash": {
+    "sounds": [
+      "kkremind:dash"
+    ]
+  },
   "cactuar_alive": {
     "sounds": [
       "kkremind:cactuar_alive"

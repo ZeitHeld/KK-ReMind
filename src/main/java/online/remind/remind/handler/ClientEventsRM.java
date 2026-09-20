@@ -776,6 +776,19 @@ public class ClientEventsRM {
 						player.level().addParticle(new DustParticleOptions(new Vector3f(1f,1f,1f),0.35f),player.getX() + player.level().random.nextDouble() - 0.45D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
 					}
 
+					if (playerData.isFormActive(ModDriveFormsRM.EXSOLDIER)){
+						if (player.getHealth() > 0.25F) {
+							player.level().addParticle(new DustParticleOptions(new Vector3f(0.0f, 0.65f, 0.65f), 0.5f), player.getX() + player.level().random.nextDouble() - 0.45D, player.getY() + player.level().random.nextDouble() * 2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+							player.level().addParticle(new DustParticleOptions(new Vector3f(0.0f, 0.55f, 0.85f), 0.5f), player.getX() + player.level().random.nextDouble() - 0.45D, player.getY() + player.level().random.nextDouble() * 2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+							player.level().addParticle(new DustParticleOptions(new Vector3f(0.0f, 0.85f, 0.55f), 0.5f), player.getX() + player.level().random.nextDouble() - 0.45D, player.getY() + player.level().random.nextDouble() * 2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+						} else {
+							player.level().addParticle(new DustParticleOptions(new Vector3f(0.0f, 0.65f, 0.65f), 0.75f), player.getX() + player.level().random.nextDouble() - 0.45D, player.getY() + player.level().random.nextDouble() * 2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+							player.level().addParticle(new DustParticleOptions(new Vector3f(0.0f, 0.55f, 0.85f), 0.75f), player.getX() + player.level().random.nextDouble() - 0.45D, player.getY() + player.level().random.nextDouble() * 2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+							player.level().addParticle(new DustParticleOptions(new Vector3f(0.0f, 0.85f, 0.55f), 0.75f), player.getX() + player.level().random.nextDouble() - 0.45D, player.getY() + player.level().random.nextDouble() * 2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+						}
+
+					}
+
 
 					// When I can get particles in other hand
 					//if (playerData.getActiveDriveForm().equals(ModDriveFormsRM.DARK.get().getRegistryName().toString())){

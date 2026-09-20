@@ -1,0 +1,11 @@
+{
+  "form": "kkremind:form_ex_soldier",
+  "spells": [
+    "kkremind:braver_attack",
+    "kkremind:cross_slash_attack",
+    "kkremind:sonic_blade_attack",
+    "kkremind:blitz_attack",
+    "kingdomkeys:spellcuraga"
+  ],
+  "lock_equipment": true
+}

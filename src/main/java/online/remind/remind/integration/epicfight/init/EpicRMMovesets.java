@@ -74,4 +74,6 @@ public class EpicRMMovesets {
             .addMountAttacks(Animations.SWORD_MOUNT_ATTACK)
             .setPassiveSkill(KKSkills.comboExtender)
             .addGuardAnimations(GuardSkill.BlockType.GUARD, Animations.SWORD_DUAL_GUARD_HIT).addGuardAnimations(GuardSkill.BlockType.ADVANCED_GUARD, Animations.SWORD_DUAL_GUARD_HIT).addGuardAnimations(GuardSkill.BlockType.GUARD_BREAK, Animations.BIPED_COMMON_NEUTRALIZED));
+
+
 }

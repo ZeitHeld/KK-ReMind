@@ -124,6 +124,7 @@ public class ModItemsRM{
         darkSurge2Attack = ITEMS.register("dark_surge2_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.DARKGA_SURGE.location())),
 
     // Creative Exclusive
+        braverAttack = ITEMS.register("braver_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.BRAVER.location())),
         crossSlashAttack = ITEMS.register("cross_slash_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.CROSS_SLASH.location())),
         swiftStrikeAttack = ITEMS.register("swift_strike_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.SWIFT_STRIKE.location())),
         deathSpell = ITEMS.register("death_lv_spell", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.DEATH.location())),
