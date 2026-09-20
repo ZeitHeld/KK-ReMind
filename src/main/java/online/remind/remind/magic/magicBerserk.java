@@ -32,6 +32,5 @@ setTier(tier);
 
 	@Override
 	public void playMagicCastSound(LivingEntity player, LivingEntity caster) {
-		player.level().playSound(null, player.getX(), player.getY(), player.getZ(), ModSoundsRM.BERSERK.get(), SoundSource.PLAYERS, 1F, 1F);
 	}
 }

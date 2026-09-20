@@ -152,6 +152,12 @@ public class ModMagicsRM {
 
 		SLOT_EDGE = register("attack_slot_edge", () -> new attackSlotEdge(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "attack_slot_edge"), false, 0, null)),
 
+		// FF Attacks
+
+		// Cloud
+		CROSS_SLASH = register("attack_cross_slash", () -> new attackCrossSlash(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "attack_cross_slash"), false, 0, null)),
+
+	// Sephiroth
 		SWIFT_STRIKE = register("attack_swift_strike", () -> new attackSwiftStrike(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "attack_swift_strike"), false, 1, null)); // SEPHIROTH!
 
 	// Add more magic later...

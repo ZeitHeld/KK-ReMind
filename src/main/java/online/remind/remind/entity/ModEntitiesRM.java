@@ -82,6 +82,19 @@ public class ModEntitiesRM {
 
     // Limits
     public static final Supplier<EntityType<firagaPillarEntity>> TYPE_FIRAGA_PILLAR = createEntityType(firagaPillarEntity::new, MobCategory.MISC,"firaga_pillar", 2f, 5f);
+    public static final DeferredHolder<EntityType<?>, EntityType<CrossSlashEffectEntity>>
+            CROSS_SLASH_EFFECT = ENTITIES.register(
+            "cross_slash_effect",
+            () -> EntityType.Builder
+                    .<CrossSlashEffectEntity>of(
+                            CrossSlashEffectEntity::new,
+                            MobCategory.MISC
+                    )
+                    .sized(0.1F, 0.1F)
+                    .clientTrackingRange(64)
+                    .updateInterval(1)
+                    .build("cross_slash_effect")
+    );
 
 
 
@@ -330,6 +343,11 @@ public class ModEntitiesRM {
         event.registerEntityRenderer(
                 TYPE_ZETTAFLARE_BEAM.get(),
                 ZettaflareBeamRenderer::new
+        );
+
+        event.registerEntityRenderer(
+                ModEntitiesRM.CROSS_SLASH_EFFECT.get(),
+                CrossSlashEffectRenderer::new
         );
 
         event.registerEntityRenderer(TYPE_LIGHT_BEAM.get(), LightBeamEntityRenderer::new);
