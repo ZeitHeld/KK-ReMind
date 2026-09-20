@@ -6,6 +6,7 @@ import online.kingdomkeys.kingdomkeys.integration.epicfight.init.EpicKKWeapons;
 import online.kingdomkeys.kingdomkeys.integration.epicfight.init.KKMoveSets;
 import online.kingdomkeys.kingdomkeys.integration.epicfight.init.KKProviderConditionals;
 import online.remind.remind.KingdomKeysReMind;
+import yesman.epicfight.EpicFight;
 import yesman.epicfight.api.ex_cap.data.modifier.WeaponModifier;
 import yesman.epicfight.registry.deferred.ModifierRegister;
 import yesman.epicfight.registry.deferred.holders.DeferredModifier;

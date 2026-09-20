@@ -7,5 +7,6 @@
     "kkremind:blitz_attack",
     "kingdomkeys:spellcuraga"
   ],
+  "shotlock": "kkremind:omnislash_shotlock",
   "lock_equipment": true
 }

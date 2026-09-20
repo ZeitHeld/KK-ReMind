@@ -82,6 +82,7 @@ import online.remind.remind.panels.OrganizationPanelStatHelper;
 import online.remind.remind.panels.PanelStats;
 import online.remind.remind.reactioncommands.ModReactionCommandsRM;
 import online.remind.remind.reactioncommands.RoseRC;
+import online.remind.remind.shotlock.OmnislashSequenceHandler;
 import online.remind.remind.styles.SGaugeHandler;
 import online.remind.remind.styles.StyleElement;
 import online.remind.remind.styles.StyleUtils;
@@ -297,6 +298,20 @@ public class EntityEventsRM {
 	public void onPlayerLeave(PlayerEvent.PlayerLoggedOutEvent e) {
 		if (!(e.getEntity() instanceof ServerPlayer player)) {
 			return;
+		}
+
+		// ---------------------------------------------------------
+		// FORM MAGIC LOADOUT CLEANUP
+		// ---------------------------------------------------------
+		if (FormMagicOverride.hasSavedLoadout(player)) {
+
+			FormMagicOverride.restoreOriginalLoadout(player);
+
+			FormMagicOverride.clearOverrideState(player);
+
+			System.out.println(
+					"[KKReMind/FormMagic] Restored original loadout before logout"
+			);
 		}
 
 		GlobalDataRM globalData = ModDataRM.getGlobal(player);
@@ -999,14 +1014,23 @@ public class EntityEventsRM {
 		}
 
 		// FIRST: cancel Epic Fight animation damage
+		// FIRST: cancel Epic Fight animation damage
 		if (player.hasEffect(ModMobEffectsRM.RM_ANIMATION_LOCK)) {
-			if (directEntity instanceof quickBlitzCollider ||
-					directEntity instanceof BlitzCollider ||
-					directEntity instanceof SlotEdgeCollider ||
-					directEntity instanceof ElementStrikeCollider) {
-				// Allow custom Re:Mind collider damage.
-			} else {
-				event.setNewDamage(0.0F);
+
+			boolean allowedDamage =
+					directEntity instanceof quickBlitzCollider
+							|| directEntity instanceof BlitzCollider
+							|| directEntity instanceof SlotEdgeCollider
+							|| directEntity instanceof ElementStrikeCollider
+							|| OmnislashSequenceHandler
+							.isApplyingDamage(player);
+
+			if (!allowedDamage) {
+
+				event.setNewDamage(
+						0.0F
+				);
+
 				return;
 			}
 		}
@@ -1890,6 +1914,19 @@ public class EntityEventsRM {
 
 					if (playerData.isFormActive(ModDriveFormsRM.EXSOLDIER)){
 
+
+
+
+						if(player.getHealth() <= 0.25F){
+							// Low HP Passive
+							playerData.getStrengthStat().addModifier("Limit Break", 1, false, false);
+							playerData.getMagicStat().addModifier("Limit Break", 1, false, false);
+							playerData.getDefenseStat().addModifier("Limit Break", 1, false, false);
+						} else {
+							playerData.getStrengthStat().removeModifier("Limit Break");
+							playerData.getMagicStat().removeModifier("Limit Break");
+							playerData.getDefenseStat().removeModifier("Limit Break");
+						}
 					}
 
 				}
@@ -2665,12 +2702,35 @@ public class EntityEventsRM {
 		ResourceLocation overrideForm =
 				FormMagicOverride.getOverrideForm(player);
 
+		boolean hasSavedLoadout =
+				FormMagicOverride.hasSavedLoadout(player);
 
-		/*
-		 * Current form has no magic override.
-		 */
-		if (overrideForm == null
-				|| !FormMagicOverride.hasSavedLoadout(player)) {
+
+		// ---------------------------------------------------------
+		// Current form DOES NOT use a magic override.
+		//
+		// If we previously had one active, restore the original
+		// loadout and completely clear the override state.
+		// ---------------------------------------------------------
+		if (definition == null) {
+
+			if (hasSavedLoadout) {
+				FormMagicOverride.restoreOriginalLoadout(player);
+			}
+
+			FormMagicOverride.clearOverrideState(player);
+
+			return;
+		}
+
+
+		// ---------------------------------------------------------
+		// Current form DOES use an override, but there isn't an
+		// active saved state yet.
+		//
+		// Save the player's REAL current loadout and apply the form.
+		// ---------------------------------------------------------
+		if (overrideForm == null || !hasSavedLoadout) {
 
 			FormMagicOverride.clearOverrideState(player);
 
@@ -2682,28 +2742,19 @@ public class EntityEventsRM {
 			return;
 		}
 
-		/*
-		 * We entered a form with an override.
-		 */
-		if (overrideForm == null) {
-			FormMagicOverride.beginOverride(
-					player,
-					definition
-			);
 
-			return;
-		}
-
-		/*
-		 * Direct transition from one override form to another.
-		 *
-		 * Restore the true original loadout first, then save it again
-		 * for the new form.
-		 */
+		// ---------------------------------------------------------
+		// Changed directly from override form A -> override form B.
+		//
+		// Restore the player's original loadout first, then use that
+		// as the backup for the new form.
+		// ---------------------------------------------------------
 		if (!overrideForm.equals(currentForm)) {
 
 			FormMagicOverride.restoreOriginalLoadout(player);
 
+			FormMagicOverride.clearOverrideState(player);
+
 			FormMagicOverride.beginOverride(
 					player,
 					definition
@@ -2712,6 +2763,11 @@ public class EntityEventsRM {
 			return;
 		}
 
+
+		// ---------------------------------------------------------
+		// Same override form is still active.
+		// Keep its forced loadout equipped.
+		// ---------------------------------------------------------
 		FormMagicOverride.enforceOverride(player);
 	}
 

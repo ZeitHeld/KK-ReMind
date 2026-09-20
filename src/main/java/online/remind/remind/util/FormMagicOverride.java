@@ -1,15 +1,16 @@
 package online.remind.remind.util;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.component.CustomData;
 import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.item.MagicSpellItem;
+import online.kingdomkeys.kingdomkeys.item.ShotlockItem;
 import online.kingdomkeys.kingdomkeys.network.PacketHandler;
 import online.kingdomkeys.kingdomkeys.network.stc.SCSyncPlayerData;
 
@@ -22,13 +23,29 @@ public final class FormMagicOverride {
     /**
      * Stores the player's original magic loadout while an override is active.
      *
-     * Currently memory-only.
-     * Logout/death/restart safety can be handled later.
+     * These are session-only snapshots. The logout handler should restore the
+     * original loadout before the player leaves so temporary form equipment is
+     * never persisted as the player's real equipment.
      */
     private static final Map<UUID, Map<Integer, ItemStack>> SAVED_LOADOUTS =
             new HashMap<>();
 
+    /**
+     * Stores the player's real Shotlock before a form-specific Shotlock is
+     * applied. ItemStack.EMPTY is a valid saved value and means the player had
+     * no Shotlock equipped.
+     */
+    private static final Map<UUID, ItemStack> SAVED_SHOTLOCKS =
+            new HashMap<>();
+
     private static final Map<UUID, Map<Integer, ItemStack>> FORCED_LOADOUTS =
+            new HashMap<>();
+
+    /**
+     * Stores the form-owned Shotlock while an override is active.
+     * No entry means the current form does not override Shotlocks.
+     */
+    private static final Map<UUID, ItemStack> FORCED_SHOTLOCKS =
             new HashMap<>();
 
     private static final Map<UUID, ResourceLocation> OVERRIDE_FORMS =
@@ -93,7 +110,8 @@ public final class FormMagicOverride {
     }
 
     /**
-     * Restores the exact spell loadout the player had before the override.
+     * Restores the exact spell loadout and Shotlock the player had before the
+     * override.
      */
     public static boolean restoreOriginalLoadout(ServerPlayer player) {
         if (player == null) {
@@ -122,10 +140,25 @@ public final class FormMagicOverride {
                 true
         );
 
-        SAVED_LOADOUTS.remove(uuid);
-        FORCED_LOADOUTS.remove(uuid);
+        /*
+         * Only forms with a data-driven Shotlock entry create this snapshot.
+         * ItemStack.EMPTY is valid here and correctly unequips the temporary
+         * form Shotlock when the player originally had none equipped.
+         */
+        if (SAVED_SHOTLOCKS.containsKey(uuid)) {
+            ItemStack originalShotlock = SAVED_SHOTLOCKS.get(uuid);
 
-        // THIS is the missing one
+            playerData.equipShotlock(
+                    originalShotlock == null
+                            ? ItemStack.EMPTY
+                            : originalShotlock.copy()
+            );
+        }
+
+        SAVED_LOADOUTS.remove(uuid);
+        SAVED_SHOTLOCKS.remove(uuid);
+        FORCED_LOADOUTS.remove(uuid);
+        FORCED_SHOTLOCKS.remove(uuid);
         OVERRIDE_FORMS.remove(uuid);
 
         sync(player);
@@ -189,16 +222,24 @@ public final class FormMagicOverride {
         UUID uuid = player.getUUID();
 
         SAVED_LOADOUTS.remove(uuid);
+        SAVED_SHOTLOCKS.remove(uuid);
         FORCED_LOADOUTS.remove(uuid);
+        FORCED_SHOTLOCKS.remove(uuid);
         OVERRIDE_FORMS.remove(uuid);
     }
 
     /**
-     * Returns true if this player currently has an override active.
+     * Returns true if this player currently has an override snapshot active.
      */
     public static boolean hasSavedLoadout(ServerPlayer player) {
-        return player != null
-                && SAVED_LOADOUTS.containsKey(player.getUUID());
+        if (player == null) {
+            return false;
+        }
+
+        UUID uuid = player.getUUID();
+
+        return SAVED_LOADOUTS.containsKey(uuid)
+                || SAVED_SHOTLOCKS.containsKey(uuid);
     }
 
     /**
@@ -270,6 +311,31 @@ public final class FormMagicOverride {
     }
 
     /**
+     * Builds and validates a form-owned Shotlock from the data-driven ID.
+     */
+    private static ItemStack buildShotlock(ResourceLocation shotlockId) {
+        if (shotlockId == null) {
+            return ItemStack.EMPTY;
+        }
+
+        Item item = BuiltInRegistries.ITEM
+                .getOptional(shotlockId)
+                .orElseThrow(() ->
+                        new IllegalArgumentException(
+                                "Unknown Shotlock item: " + shotlockId
+                        )
+                );
+
+        if (!(item instanceof ShotlockItem)) {
+            throw new IllegalArgumentException(
+                    shotlockId + " is not a ShotlockItem"
+            );
+        }
+
+        return new ItemStack(item);
+    }
+
+    /**
      * Saves the player's original loadout and applies the temporary one.
      */
     public static boolean beginOverride(
@@ -284,6 +350,12 @@ public final class FormMagicOverride {
             return false;
         }
 
+        PlayerData playerData = PlayerData.get(player);
+
+        if (playerData == null) {
+            return false;
+        }
+
         String[] spellIds =
                 definition.spells()
                         .stream()
@@ -291,12 +363,19 @@ public final class FormMagicOverride {
                         .toArray(String[]::new);
 
         Map<Integer, ItemStack> loadout;
+        ItemStack forcedShotlock = null;
 
         try {
             loadout = buildLoadout(
                     player,
                     spellIds
             );
+
+            if (definition.shotlock() != null) {
+                forcedShotlock = buildShotlock(
+                        definition.shotlock()
+                );
+            }
         } catch (IllegalArgumentException | IllegalStateException e) {
             return false;
         }
@@ -305,22 +384,46 @@ public final class FormMagicOverride {
             return false;
         }
 
+        UUID uuid = player.getUUID();
+
         OVERRIDE_FORMS.put(
-                player.getUUID(),
+                uuid,
                 definition.form()
         );
 
         FORCED_LOADOUTS.put(
-                player.getUUID(),
+                uuid,
                 copyLoadout(loadout)
         );
 
+        /*
+         * A missing "shotlock" field means this form leaves the player's
+         * existing Shotlock completely alone.
+         */
+        if (forcedShotlock != null) {
+            SAVED_SHOTLOCKS.put(
+                    uuid,
+                    playerData.getEquippedShotlock().copy()
+            );
+
+            FORCED_SHOTLOCKS.put(
+                    uuid,
+                    forcedShotlock.copy()
+            );
+
+            playerData.equipShotlock(
+                    forcedShotlock.copy()
+            );
+        }
+
+        /*
+         * applyTemporaryLoadout performs the PlayerData sync. The Shotlock is
+         * applied first so the same sync also sends the new Shotlock state.
+         */
         applyTemporaryLoadout(
                 player,
                 loadout
         );
-
-
 
         return true;
     }
@@ -336,75 +439,95 @@ public final class FormMagicOverride {
             return;
         }
 
-        Map<Integer, ItemStack> forced =
-                FORCED_LOADOUTS.get(player.getUUID());
+        UUID uuid = player.getUUID();
 
-        if (forced == null) {
+        Map<Integer, ItemStack> forced =
+                FORCED_LOADOUTS.get(uuid);
+
+        ItemStack forcedShotlock =
+                FORCED_SHOTLOCKS.get(uuid);
+
+        if (forced == null && forcedShotlock == null) {
             return;
         }
 
-        Map<Integer, ItemStack> current =
-                playerData.getEquippedMagics();
+        boolean magicChanged = false;
 
-        boolean changed = false;
+        if (forced != null) {
+            Map<Integer, ItemStack> current =
+                    playerData.getEquippedMagics();
 
-        if (current.size() != forced.size()) {
-            changed = true;
-        }
+            if (current.size() != forced.size()) {
+                magicChanged = true;
+            }
 
-        if (!changed) {
-            for (Map.Entry<Integer, ItemStack> entry : forced.entrySet()) {
-                int slot = entry.getKey();
+            if (!magicChanged) {
+                for (Map.Entry<Integer, ItemStack> entry : forced.entrySet()) {
+                    int slot = entry.getKey();
 
-                ItemStack wanted =
-                        entry.getValue() == null
-                                ? ItemStack.EMPTY
-                                : entry.getValue();
+                    ItemStack wanted =
+                            entry.getValue() == null
+                                    ? ItemStack.EMPTY
+                                    : entry.getValue();
 
-                ItemStack equipped =
-                        current.getOrDefault(
-                                slot,
-                                ItemStack.EMPTY
-                        );
+                    ItemStack equipped =
+                            current.getOrDefault(
+                                    slot,
+                                    ItemStack.EMPTY
+                            );
 
-                if (!ItemStack.matches(equipped, wanted)) {
-                    changed = true;
-                    break;
+                    if (!ItemStack.matches(equipped, wanted)) {
+                        magicChanged = true;
+                        break;
+                    }
                 }
+            }
+
+            if (magicChanged) {
+                /*
+                 * VERY IMPORTANT:
+                 *
+                 * Before replacing the equipped magic map, rescue any real
+                 * spell that KK moved into one of these slots.
+                 */
+                returnDisplacedRealSpells(
+                        player,
+                        current,
+                        forced
+                );
+
+                /*
+                 * Delete temporary form spells that escaped from the equipment
+                 * slots into the player's inventory.
+                 */
+                removeEscapedFormSpells(player);
+
+                /*
+                 * Now it is safe to restore the forced loadout.
+                 */
+                playerData.equipAllMagics(
+                        copyLoadout(forced),
+                        true
+                );
             }
         }
 
-        if (!changed) {
-            return;
+        boolean shotlockChanged =
+                forcedShotlock != null
+                        && !ItemStack.matches(
+                        playerData.getEquippedShotlock(),
+                        forcedShotlock
+                );
+
+        if (shotlockChanged) {
+            playerData.equipShotlock(
+                    forcedShotlock.copy()
+            );
         }
 
-        /*
-         * VERY IMPORTANT:
-         *
-         * Before replacing the equipped magic map, rescue any real
-         * spell that KK moved into one of these slots.
-         */
-        returnDisplacedRealSpells(
-                player,
-                current,
-                forced
-        );
-
-        /*
-         * Delete temporary form spells that escaped from the equipment
-         * slots into the player's inventory.
-         */
-        removeEscapedFormSpells(player);
-
-        /*
-         * Now it is safe to restore the forced loadout.
-         */
-        playerData.equipAllMagics(
-                copyLoadout(forced),
-                true
-        );
-
-        sync(player);
+        if (magicChanged || shotlockChanged) {
+            sync(player);
+        }
     }
 
     private static ItemStack makeTemporaryFormSpell(Item item) {

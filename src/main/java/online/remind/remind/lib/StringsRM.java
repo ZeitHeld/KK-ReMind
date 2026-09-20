@@ -236,6 +236,7 @@ public class StringsRM {
         darkDivide = "dark_divide",
 
         heartlessAngel = "heartless_angel",
+        omnislash = "omnislash",
 
         // Reaction Commands
         riskchargeRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"riskcharge",

@@ -365,6 +365,7 @@
   "shotlock.meteor_shower.name": "Meteor Shower",
   "shotlock.dark_divide.name": "Dark Divide",
   "shotlock.heartless_angel.name": "Heartless Angel",
+  "shotlock.omnislash.name": "Omnislash",
 
   "item.kkremind.flame_salvo_shotlock": "Flame Salvo Shotlock",
   "item.kkremind.bubble_blaster_shotlock": "Bubble Blaster Shotlock",
@@ -372,6 +373,7 @@
   "item.kkremind.bio_barrage_shotlock": "Bio Barrage Shotlock",
   "item.kkremind.meteor_shower_shotlock": "Meteor Shower Shotlock",
   "item.kkremind.dark_divide_shotlock": "Dark Divide Shotlock",
+  "item.kkremind.omnislash_shotlock": "Omnislash Shotlock",
 
   "form.form_rage.name": "Rage",
   "form.form_dark.name": "Dark",

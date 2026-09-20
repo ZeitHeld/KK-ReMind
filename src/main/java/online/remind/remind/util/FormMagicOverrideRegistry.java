@@ -40,32 +40,46 @@ public final class FormMagicOverrideRegistry
         return DEFINITIONS.get(form);
     }
 
-    public static boolean has(ResourceLocation form) {
-        return form != null && DEFINITIONS.containsKey(form);
+    public static boolean has(
+            ResourceLocation form
+    ) {
+        return form != null
+                && DEFINITIONS.containsKey(form);
     }
 
     @Override
     public void onResourceManagerReload(
             ResourceManager resourceManager
     ) {
+
         Map<ResourceLocation, FormMagicOverrideDefinition> loaded =
                 new HashMap<>();
 
         Map<ResourceLocation, Resource> resources =
                 resourceManager.listResources(
                         DIRECTORY,
-                        location -> location.getPath().endsWith(".json")
+                        location ->
+                                location.getPath().endsWith(".json")
                 );
 
         for (Map.Entry<ResourceLocation, Resource> entry
                 : resources.entrySet()) {
 
-            ResourceLocation fileId = entry.getKey();
+            ResourceLocation fileId =
+                    entry.getKey();
 
-            try (Reader reader = entry.getValue().openAsReader()) {
+            try (Reader reader =
+                         entry.getValue().openAsReader()) {
 
                 JsonObject json =
-                        JsonParser.parseReader(reader).getAsJsonObject();
+                        JsonParser
+                                .parseReader(reader)
+                                .getAsJsonObject();
+
+
+                // -----------------------------------------------------
+                // Form
+                // -----------------------------------------------------
 
                 if (!json.has("form")) {
                     throw new IllegalArgumentException(
@@ -75,8 +89,15 @@ public final class FormMagicOverrideRegistry
 
                 ResourceLocation formId =
                         ResourceLocation.parse(
-                                json.get("form").getAsString()
+                                json
+                                        .get("form")
+                                        .getAsString()
                         );
+
+
+                // -----------------------------------------------------
+                // Spells
+                // -----------------------------------------------------
 
                 List<ResourceLocation> spells =
                         new ArrayList<>();
@@ -85,7 +106,10 @@ public final class FormMagicOverrideRegistry
                         json.getAsJsonArray("spells");
 
                 if (spellArray != null) {
-                    for (JsonElement element : spellArray) {
+
+                    for (JsonElement element
+                            : spellArray) {
+
                         spells.add(
                                 ResourceLocation.parse(
                                         element.getAsString()
@@ -94,27 +118,80 @@ public final class FormMagicOverrideRegistry
                     }
                 }
 
+
+                // -----------------------------------------------------
+                // Optional Shotlock
+                // -----------------------------------------------------
+
+                ResourceLocation shotlock =
+                        null;
+
+                if (json.has("shotlock")
+                        && !json.get("shotlock").isJsonNull()) {
+
+                    String shotlockString =
+                            json
+                                    .get("shotlock")
+                                    .getAsString();
+
+                    if (!shotlockString.isBlank()) {
+                        shotlock =
+                                ResourceLocation.parse(
+                                        shotlockString
+                                );
+                    }
+                }
+
+
+                // -----------------------------------------------------
+                // Equipment lock
+                //
+                // Defaults to true if omitted.
+                // -----------------------------------------------------
+
                 boolean lockEquipment =
                         !json.has("lock_equipment")
-                                || json.get("lock_equipment").getAsBoolean();
+                                || json
+                                .get("lock_equipment")
+                                .getAsBoolean();
 
-                loaded.put(
-                        formId,
+
+                // -----------------------------------------------------
+                // Register definition
+                // -----------------------------------------------------
+
+                FormMagicOverrideDefinition definition =
                         new FormMagicOverrideDefinition(
                                 formId,
                                 List.copyOf(spells),
+                                shotlock,
                                 lockEquipment
-                        )
+                        );
+
+                loaded.put(
+                        formId,
+                        definition
                 );
 
-                DEFINITIONS = Map.copyOf(loaded);
-
                 System.out.println(
-                        "[KKReMind] Total form magic overrides loaded: "
-                                + DEFINITIONS.size()
+                        "[KKReMind/FormMagic] Loaded "
+                                + formId
+                                + " from "
+                                + fileId
+                                + " | spells="
+                                + spells.size()
+                                + " | shotlock="
+                                + (
+                                shotlock != null
+                                        ? shotlock
+                                        : "none"
+                        )
+                                + " | locked="
+                                + lockEquipment
                 );
 
             } catch (Exception e) {
+
                 throw new IllegalStateException(
                         "Failed to load form magic override: "
                                 + fileId,
@@ -123,33 +200,18 @@ public final class FormMagicOverrideRegistry
             }
         }
 
-        DEFINITIONS = Map.copyOf(loaded);
-    }
 
-    private static ResourceLocation formIdFromFile(
-            ResourceLocation fileId
-    ) {
-        String path = fileId.getPath();
+        // ---------------------------------------------------------
+        // Only replace the live registry after EVERYTHING loaded
+        // successfully.
+        // ---------------------------------------------------------
 
-        String prefix =
-                DIRECTORY + "/";
+        DEFINITIONS =
+                Map.copyOf(loaded);
 
-        if (!path.startsWith(prefix)
-                || !path.endsWith(".json")) {
-            throw new IllegalArgumentException(
-                    "Invalid form magic override path: "
-                            + fileId
-            );
-        }
-
-        String formPath = path.substring(
-                prefix.length(),
-                path.length() - ".json".length()
-        );
-
-        return ResourceLocation.fromNamespaceAndPath(
-                fileId.getNamespace(),
-                formPath
+        System.out.println(
+                "[KKReMind/FormMagic] Total form magic overrides loaded: "
+                        + DEFINITIONS.size()
         );
     }
 }
