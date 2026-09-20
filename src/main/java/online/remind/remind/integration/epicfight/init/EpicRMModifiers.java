@@ -29,6 +29,20 @@ public class EpicRMModifiers {
                     .addConditionalModifier(EpicRMConditionals.DARK_FORM_STYLE)
                     .addMovesetModifier(RMStyle.LIGHT_FORM, EpicRMMovesets.LIGHT_FORM_MOVESET)
                     .addConditionalModifier(EpicRMConditionals.LIGHT_FORM_STYLE)
+                    .addMovesetModifier(RMStyle.FIRESTORM, KKMoveSets.SORA_MOVESET)
+                    .addConditionalModifier(EpicRMConditionals.FIRESTORM_STYLE)
+                    .addMovesetModifier(RMStyle.DIAMOND_DUST, KKMoveSets.SORA_MOVESET)
+                    .addConditionalModifier(EpicRMConditionals.DIAMOND_DUST_STYLE)
+                    .addMovesetModifier(RMStyle.THUNDER_BOLT, KKMoveSets.SORA_MOVESET)
+                    .addConditionalModifier(EpicRMConditionals.THUNDER_BOLT_STYLE)
+                    .addMovesetModifier(RMStyle.FEVER_PITCH, KKMoveSets.SORA_MOVESET)
+                    .addConditionalModifier(EpicRMConditionals.FEVER_PITCH_STYLE)
+                    .addMovesetModifier(RMStyle.SPELLWEAVER, KKMoveSets.SORA_MOVESET)
+                    .addConditionalModifier(EpicRMConditionals.SPELLWEAVER_STYLE)
+                    .addMovesetModifier(RMStyle.CRITICAL_IMPACT, KKMoveSets.SORA_MOVESET)
+                    .addConditionalModifier(EpicRMConditionals.CRITICAL_IMPACT_STYLE)
+                    .addMovesetModifier(RMStyle.EX_SOLDIER, KKMoveSets.SORA_MOVESET)
+                    .addConditionalModifier(EpicRMConditionals.EX_SOLDIER_STYLE)
     );
 
 }

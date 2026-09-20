@@ -91,33 +91,11 @@ public class EpicRMConditionals {
     public static final DeferredConditional XEPHIRO_STYLE = CONDITIONALS.registerConditional("xephiro_style", () ->
             ProviderConditional.createCustom(RMStyle.XEPHIRO_SINGLE, livingEntityPatch -> styleActive(livingEntityPatch, ModFightingStylesRM.XEPHIRO), true)
     );
-    public static final DeferredConditional FIRESTORM_STYLE =
-            CONDITIONALS.registerConditional(
-                    "firestorm_style",
-                    () -> ProviderConditional.createCustom(
-                            KKStyles.LIMIT_FORM,
-                            livingEntityPatch ->
-                                    inForm(
-                                            livingEntityPatch,
-                                            ModDriveFormsRM.FIRESTORM
-                                    ),
-                            true
-                    )
-            );
+    public static final DeferredConditional FIRESTORM_STYLE = CONDITIONALS.registerConditional("firestorm_style", () ->
+            ProviderConditional.createCustom(KKStyles.LIMIT_FORM, livingEntityPatch -> inForm(livingEntityPatch, ModDriveFormsRM.FIRESTORM), true));
 
-    public static final DeferredConditional DIAMOND_DUST_STYLE =
-            CONDITIONALS.registerConditional(
-                    "diamond_dust_style",
-                    () -> ProviderConditional.createCustom(
-                            KKStyles.LIMIT_FORM,
-                            livingEntityPatch ->
-                                    inForm(
-                                            livingEntityPatch,
-                                            ModDriveFormsRM.DIAMOND_DUST
-                                    ),
-                            true
-                    )
-            );
+    public static final DeferredConditional DIAMOND_DUST_STYLE = CONDITIONALS.registerConditional("diamond_dust_style", () ->
+            ProviderConditional.createCustom(KKStyles.LIMIT_FORM, livingEntityPatch -> inForm(livingEntityPatch, ModDriveFormsRM.DIAMOND_DUST), true));
 
     public static final DeferredConditional THUNDER_BOLT_STYLE =
             CONDITIONALS.registerConditional(
