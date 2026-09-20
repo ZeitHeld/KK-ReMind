@@ -1919,14 +1919,19 @@ public class EntityEventsRM {
 
 						if(player.getHealth() <= 0.25F){
 							// Low HP Passive
-							playerData.getStrengthStat().addModifier("Limit Break", 1, false, false);
-							playerData.getMagicStat().addModifier("Limit Break", 1, false, false);
-							playerData.getDefenseStat().addModifier("Limit Break", 1, false, false);
+							//playerData.getStrengthStat().addModifier("Limit Break", 1, false, false);
+							//playerData.getMagicStat().addModifier("Limit Break", 1, false, false);
+							playerData.getDefenseStat().addModifier("Limit Break", 10, false, false);
+							playerData.addFocus(0.5);
+							PacketHandler.sendTo(new SCSyncPlayerData(player), (ServerPlayer) player);
 						} else {
-							playerData.getStrengthStat().removeModifier("Limit Break");
-							playerData.getMagicStat().removeModifier("Limit Break");
+							//playerData.getStrengthStat().removeModifier("Limit Break");
+							//playerData.getMagicStat().removeModifier("Limit Break");
 							playerData.getDefenseStat().removeModifier("Limit Break");
+							playerData.addFocus(0.1);
 						}
+					} else {
+						playerData.getDefenseStat().removeModifier("Limit Break");
 					}
 
 				}

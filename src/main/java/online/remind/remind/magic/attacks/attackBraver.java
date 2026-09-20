@@ -1,9 +1,12 @@
 package online.remind.remind.magic.attacks;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import online.kingdomkeys.kingdomkeys.data.PlayerData;
 import online.kingdomkeys.kingdomkeys.magic.Magic;
 import online.remind.remind.client.sound.ModSoundsRM;
 
@@ -27,6 +30,16 @@ public class attackBraver extends Magic {
         if (!(caster instanceof ServerPlayer serverPlayer)) {
             return;
         }
+
+        PlayerData playerData = PlayerData.get((Player) caster);
+        if (playerData.getFocus() <= 20){
+            player.sendSystemMessage(Component.literal("Not enough Focus!"));
+            playerData.addMP(getMagicData().getCost());
+            playerData.setMagicCooldownTicks(0);
+            return;
+        }
+
+        playerData.remFocus(20);
 
         float dmg;
 
