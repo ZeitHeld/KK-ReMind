@@ -31,9 +31,9 @@ public class attackCrossSlash extends Magic {
         float dmg;
 
         switch (getTier()) {
-            case 0 -> dmg = casterStrengthStat(caster) * 0.75F;
-            case 1 -> dmg = casterStrengthStat(caster) * 0.80F;
-            case 2 -> dmg = casterStrengthStat(caster) * 0.85F;
+            case 0 -> dmg = casterStrengthStat(caster) * 0.5F;
+            case 1 -> dmg = casterStrengthStat(caster) * 0.65F;
+            case 2 -> dmg = casterStrengthStat(caster) * 0.8F;
             default -> dmg = casterStrengthStat(caster);
         }
 
