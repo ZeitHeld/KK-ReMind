@@ -1913,10 +1913,7 @@ public class EntityEventsRM {
 					// EX-SOLDIER Passives
 
 					if (playerData.isFormActive(ModDriveFormsRM.EXSOLDIER)){
-
-
-
-
+						// Passive Focus Regen, amplified at low HP
 						if(player.getHealth() <= 0.25F){
 							// Low HP Passive
 							//playerData.getStrengthStat().addModifier("Limit Break", 1, false, false);
@@ -2380,6 +2377,19 @@ public class EntityEventsRM {
 					if (event.getSource().type().msgId().equals("player")) { // Applies to ONLY melee
 						player.heal((playerData.getStrength(true) * 0.05f) * darkScaling);
 						player.getFoodData().eat(2, 5);
+					}
+				}
+
+				if (playerData.isFormActive(ModDriveFormsRM.EXSOLDIER)){
+					if (event.getSource().type().msgId().equals("player")) {
+						float dmg = event.getNewDamage();
+						double focusGain = dmg * 0.005f; // Should be 0.5% of damage dealt.
+						double formGain = dmg * 0.01f; // Should be 1% of damage dealt.
+						double mpGain = dmg * 0.015f; // Should be 1.5% of damage dealt.
+						playerData.addFocus(focusGain);
+						playerData.addFP(formGain);
+						playerData.addMP(mpGain);
+						PacketHandler.sendTo(new SCSyncPlayerData(player), (ServerPlayer) player);
 					}
 				}
 
