@@ -31,7 +31,9 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerRespawnEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import online.kingdomkeys.kingdomkeys.ability.ModAbilities;
 import online.kingdomkeys.kingdomkeys.api.event.*;
@@ -62,6 +64,7 @@ import online.remind.remind.capabilities.ModDataRM;
 import online.remind.remind.client.sound.ModSoundsRM;
 import online.remind.remind.config.ModConfigs;
 import online.remind.remind.driveform.ModDriveFormsRM;
+import online.remind.remind.effect.DoomEffect;
 import online.remind.remind.effect.ModMobEffectsRM;
 import online.remind.remind.entity.attacks.BlitzCollider;
 import online.remind.remind.entity.attacks.ElementStrikeCollider;
@@ -78,6 +81,14 @@ import online.remind.remind.panels.OrganizationPanelAbilityHelper;
 import online.remind.remind.panels.OrganizationPanelStatHelper;
 import online.remind.remind.panels.PanelStats;
 import online.remind.remind.reactioncommands.ModReactionCommandsRM;
+import online.remind.remind.reactioncommands.RoseRC;
+import online.remind.remind.shotlock.OmnislashSequenceHandler;
+import online.remind.remind.styles.SGaugeHandler;
+import online.remind.remind.styles.StyleElement;
+import online.remind.remind.styles.StyleUtils;
+import online.remind.remind.util.FormMagicOverride;
+import online.remind.remind.util.FormMagicOverrideDefinition;
+import online.remind.remind.util.FormMagicOverrideRegistry;
 
 import java.util.*;
 
@@ -92,6 +103,103 @@ public class EntityEventsRM {
 					KingdomKeysReMind.MODID,
 					"attack_haste"
 			);
+
+
+	public static void onServerTick(ServerTickEvent.Post event) {
+		MinecraftServer server = event.getServer();
+
+		// Once per second is plenty.
+		if (server.getTickCount() % 20 != 0) {
+			return;
+		}
+
+		for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+			RoseRC.validatePartySummons(player);
+		}
+
+	}
+
+	public static void onLevelTick(
+			LevelTickEvent.Post event
+	) {
+
+		if (!(event.getLevel() instanceof ServerLevel level)) {
+			return;
+		}
+
+		/*
+		 * Check 4 times per second.
+		 *
+		 * Fast enough that /effect clear or Esuna
+		 * appears essentially instant.
+		 */
+		if (level.getGameTime() % 5L != 0L) {
+			return;
+		}
+
+		for (Entity entity : level.getAllEntities()) {
+
+			if (!(entity instanceof LivingEntity living)) {
+				continue;
+			}
+
+			/*
+			 * This entity never had a Doom countdown.
+			 */
+			if (!living
+					.getPersistentData()
+					.hasUUID(
+							DoomEffect.DOOM_DISPLAY_UUID
+					)) {
+
+				continue;
+			}
+
+			/*
+			 * Doom is still active.
+			 *
+			 * Leave its countdown alone.
+			 */
+			if (living.hasEffect(
+					ModMobEffectsRM.DOOM
+			)) {
+
+				continue;
+			}
+
+			/*
+			 * Entity has a stored Doom display,
+			 * but no longer has Doom.
+			 *
+			 * Esuna, /effect clear, milk, etc.
+			 */
+			DoomEffect.removeCountdown(
+					living
+			);
+		}
+	}
+
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	public void lockFormMagicEquipment(
+			EquipmentEvent.Magic event
+	) {
+		PlayerData playerData =
+				PlayerData.get(event.getPlayer());
+
+		if (playerData == null) {
+			return;
+		}
+
+		FormMagicOverrideDefinition definition =
+				FormMagicOverrideRegistry.get(
+						playerData.getActiveDriveForm()
+				);
+
+		if (definition != null
+				&& definition.lockEquipment()) {
+			event.setCanceled(true);
+		}
+	}
 
 
 	@SubscribeEvent
@@ -190,6 +298,20 @@ public class EntityEventsRM {
 	public void onPlayerLeave(PlayerEvent.PlayerLoggedOutEvent e) {
 		if (!(e.getEntity() instanceof ServerPlayer player)) {
 			return;
+		}
+
+		// ---------------------------------------------------------
+		// FORM MAGIC LOADOUT CLEANUP
+		// ---------------------------------------------------------
+		if (FormMagicOverride.hasSavedLoadout(player)) {
+
+			FormMagicOverride.restoreOriginalLoadout(player);
+
+			FormMagicOverride.clearOverrideState(player);
+
+			System.out.println(
+					"[KKReMind/FormMagic] Restored original loadout before logout"
+			);
 		}
 
 		GlobalDataRM globalData = ModDataRM.getGlobal(player);
@@ -357,6 +479,7 @@ public class EntityEventsRM {
 		playerData.setDriveFormLevel(ModDriveFormsRM.CRITICAL_IMPACT.location(), 1);
 		playerData.setDriveFormLevel(ModDriveFormsRM.SPELLWEAVER.location(), 1);
 		playerData.setDriveFormLevel(ModDriveFormsRM.BLOOSTLUST.location(), 1);
+		playerData.setDriveFormLevel(ModDriveFormsRM.EXSOLDIER.location(), 1);
 
 		playerData.setDriveFormLevel(ModDriveFormsRM.DRACONIC_LIBERATION.location(), 1);
 
@@ -703,73 +826,6 @@ public class EntityEventsRM {
 		}
 	}
 
-	/*private void addSituationRCs(Player player) {
-		PlayerData playerData = PlayerData.get(player);
-		GlobalDataRM remindData = ModDataRM.getGlobal(player);
-		if(playerData != null && remindData != null) {
-			if (playerData.getActiveDriveForm().equals(DriveForm.NONE.toString())) {
-				if (remindData.getSituationValue() >= 100) { // Base form finisher
-					if (remindData.getStyle().equals("NONE") || remindData.getStyle().equals("")) {
-						playerData.addReactionCommand(StringsRM.FinishRC, player);
-						PacketHandler.sendTo(new SCSyncPlayerData(player), (ServerPlayer) player);
-					}
-				}
-
-				if (remindData.getStyle().equals("FIRE")) {
-					playerData.addReactionCommand(StringsRM.FireStormRC, player); //To enter form
-				}
-
-				if (remindData.getStyle().equals("BLIZZARD")) {
-					playerData.addReactionCommand(StringsRM.DiamondDustRC, player);
-				}
-
-				if (remindData.getStyle().equals("THUNDER")) {
-					playerData.addReactionCommand(StringsRM.ThunderBoltRC, player);
-				}
-
-				if (remindData.getStyle().equals("PHYSICAL") || remindData.getStyle().equals("AIR")) {
-					if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.waywardWindChain.get() || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.lostMemoryChain.get() || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.missingAcheChain.get()) {
-						playerData.addReactionCommand(StringsRM.FeverPitchRC, player);
-					}
-				}
-
-				if (remindData.getStyle().equals("PHYSICAL") || remindData.getStyle().equals("NONE")) {
-					if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.earthshakerChain.get() || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.endsOfTheEarthChain.get()) {
-						playerData.addReactionCommand(StringsRM.CriticalImpactRC, player);
-					}
-				}
-
-				if (remindData.getStyle().equals("MAGIC")) {
-					if (playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.rainfellChain.get() || playerData.getEquippedKeychain(DriveForm.NONE).getItem() == ModItems.stormfallChain.get()) {
-						playerData.addReactionCommand(StringsRM.SpellweaverRC, player);
-					}
-				}
-
-			} else if (ModDriveFormsRM.styles.contains(ResourceLocation.parse(playerData.getActiveDriveForm()))) {
-				if (remindData.getSituationValue() >= 100) {
-					if(playerData.getActiveDriveForm().equals(ModDriveFormsRM.FIRESTORM.get().getRegistryName().toString())) { // To finish form
-						playerData.addReactionCommand(StringsRM.FireStormRC, player);
-					}
-					if(playerData.getActiveDriveForm().equals(ModDriveFormsRM.DIAMOND_DUST.get().getRegistryName().toString())) { // To finish form
-						playerData.addReactionCommand(StringsRM.DiamondDustRC, player);
-					}
-					if(playerData.getActiveDriveForm().equals(ModDriveFormsRM.THUNDER_BOLT.get().getRegistryName().toString())) { // To finish form
-						playerData.addReactionCommand(StringsRM.ThunderBoltRC, player);
-					}
-					if(playerData.getActiveDriveForm().equals(ModDriveFormsRM.FEVER_PITCH.get().getRegistryName().toString())) { // To finish form
-						playerData.addReactionCommand(StringsRM.FeverPitchRC, player);
-					}
-					if(playerData.getActiveDriveForm().equals(ModDriveFormsRM.CRITICAL_IMPACT.get().getRegistryName().toString())) { // To finish form
-						playerData.addReactionCommand(StringsRM.CriticalImpactRC, player);
-					}
-					if(playerData.getActiveDriveForm().equals(ModDriveFormsRM.SPELLWEAVER.get().getRegistryName().toString())) { // To finish form
-						playerData.addReactionCommand(StringsRM.SpellweaverRC, player);
-					}
-
-				}
-			}
-		}
-	}*/
 
 
 	private void playFortunaMaxExceedEffects(ServerLevel level, Player player, LivingEntity target) {
@@ -958,14 +1014,23 @@ public class EntityEventsRM {
 		}
 
 		// FIRST: cancel Epic Fight animation damage
+		// FIRST: cancel Epic Fight animation damage
 		if (player.hasEffect(ModMobEffectsRM.RM_ANIMATION_LOCK)) {
-			if (directEntity instanceof quickBlitzCollider ||
-					directEntity instanceof BlitzCollider ||
-					directEntity instanceof SlotEdgeCollider ||
-					directEntity instanceof ElementStrikeCollider) {
-				// Allow custom Re:Mind collider damage.
-			} else {
-				event.setNewDamage(0.0F);
+
+			boolean allowedDamage =
+					directEntity instanceof quickBlitzCollider
+							|| directEntity instanceof BlitzCollider
+							|| directEntity instanceof SlotEdgeCollider
+							|| directEntity instanceof ElementStrikeCollider
+							|| OmnislashSequenceHandler
+							.isApplyingDamage(player);
+
+			if (!allowedDamage) {
+
+				event.setNewDamage(
+						0.0F
+				);
+
 				return;
 			}
 		}
@@ -1845,6 +1910,27 @@ public class EntityEventsRM {
 						player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED,2,1,true,true,true));
 					}
 
+					// EX-SOLDIER Passives
+
+					if (playerData.isFormActive(ModDriveFormsRM.EXSOLDIER)){
+						// Passive Focus Regen, amplified at low HP
+						if(player.getHealth() <= 0.25F){
+							// Low HP Passive
+							//playerData.getStrengthStat().addModifier("Limit Break", 1, false, false);
+							//playerData.getMagicStat().addModifier("Limit Break", 1, false, false);
+							playerData.getDefenseStat().addModifier("Limit Break", 10, false, false);
+							playerData.addFocus(0.5);
+							PacketHandler.sendTo(new SCSyncPlayerData(player), (ServerPlayer) player);
+						} else {
+							//playerData.getStrengthStat().removeModifier("Limit Break");
+							//playerData.getMagicStat().removeModifier("Limit Break");
+							playerData.getDefenseStat().removeModifier("Limit Break");
+							playerData.addFocus(0.1);
+						}
+					} else {
+						playerData.getDefenseStat().removeModifier("Limit Break");
+					}
+
 				}
 
 
@@ -1996,6 +2082,8 @@ public class EntityEventsRM {
 		if (!player.level().isClientSide && player instanceof ServerPlayer serverPlayer) {
 			CSGrowthPanelActionPacket.tick(serverPlayer);
 			OrganizationPanelAbilityHelper.tickPendingPanelAbilityRefresh(serverPlayer);
+
+			handleFormMagicOverride(serverPlayer);
 		}
 	}
 
@@ -2008,8 +2096,26 @@ public class EntityEventsRM {
 			if (player.hasEffect(ModMobEffectsRM.RM_ANIMATION_LOCK)) {
 				event.setCanceled(true);
 			}
-
 			openFortunaExceedWindow(player);
+
+			// Don't count attacking item frames, boats, etc.
+			if (!(event.getTarget() instanceof LivingEntity target)) {
+				return;
+			}
+
+			// Don't count already-dead entities
+			if (!target.isAlive()) {
+				return;
+			}
+
+			GlobalDataRM globalData = ModDataRM.getGlobal(player);
+
+            SGaugeHandler.addNormalAttackContribution(player);
+			SGaugeHandler.addContribution(player,  ResourceLocation.parse("kkremind:normal_attack"), Set.of(),Set.of(),1 );
+			globalData.setStyleTicks(120);
+			globalData.setSCooldownTicks(120);
+			PacketHandlerRM.syncGlobalToAllAround(player, globalData);
+
 		}
 	}
 
@@ -2274,6 +2380,19 @@ public class EntityEventsRM {
 					}
 				}
 
+				if (playerData.isFormActive(ModDriveFormsRM.EXSOLDIER)){
+					if (event.getSource().type().msgId().equals("player")) {
+						float dmg = event.getNewDamage();
+						double focusGain = dmg * 0.005f; // Should be 0.5% of damage dealt.
+						double formGain = dmg * 0.01f; // Should be 1% of damage dealt.
+						double mpGain = dmg * 0.015f; // Should be 1.5% of damage dealt.
+						playerData.addFocus(focusGain);
+						playerData.addFP(formGain);
+						playerData.addMP(mpGain);
+						PacketHandler.sendTo(new SCSyncPlayerData(player), (ServerPlayer) player);
+					}
+				}
+
 
 				// Spellblade Ability
 				int fireBoosts = playerData.getNumberOfAbilitiesEquipped(ModAbilities.FIRE_BOOST);
@@ -2408,14 +2527,17 @@ public class EntityEventsRM {
 									? Math.max(0, criticalBoostData[1])
 									: 0;
 
-					// 25% base + 5 percentage points per equipped Critical Boost
-					float silenceChance = Math.min(
-							1.0F,
-							0.25f + criticalBoostStacks * 0.05F
-					);
+
+
+					// 20% base + 1.5 percentage points per equipped Critical Boost
+					float silenceChance = 0.20f + (crtBoosts * 0.015F);
+
+					//player.sendSystemMessage(Component.literal("Silence Chance: " + silenceChance));
 
 					if (player.getRandom().nextFloat() < silenceChance) {
-						event.getEntity().addEffect(new MobEffectInstance(ModMobEffectsRM.SILENCE, 100,0));
+						if (event.getSource().type().msgId().equals("player")) {
+							event.getEntity().addEffect(new MobEffectInstance(ModMobEffectsRM.SILENCE, 100, 0));
+						}
 					}
 				}
 			}
@@ -2574,4 +2696,95 @@ public class EntityEventsRM {
 			PacketHandler.sendTo(new SCSyncPlayerData(player), (ServerPlayer) player);
 		}
 	}
+
+	// Form Magic Loadouts I hope
+	private void handleFormMagicOverride(
+			ServerPlayer player
+	) {
+		PlayerData playerData =
+				PlayerData.get(player);
+
+		if (playerData == null) {
+			return;
+		}
+
+		ResourceLocation currentForm =
+				playerData.getActiveDriveForm();
+
+		FormMagicOverrideDefinition definition =
+				FormMagicOverrideRegistry.get(currentForm);
+
+		ResourceLocation overrideForm =
+				FormMagicOverride.getOverrideForm(player);
+
+		boolean hasSavedLoadout =
+				FormMagicOverride.hasSavedLoadout(player);
+
+
+		// ---------------------------------------------------------
+		// Current form DOES NOT use a magic override.
+		//
+		// If we previously had one active, restore the original
+		// loadout and completely clear the override state.
+		// ---------------------------------------------------------
+		if (definition == null) {
+
+			if (hasSavedLoadout) {
+				FormMagicOverride.restoreOriginalLoadout(player);
+			}
+
+			FormMagicOverride.clearOverrideState(player);
+
+			return;
+		}
+
+
+		// ---------------------------------------------------------
+		// Current form DOES use an override, but there isn't an
+		// active saved state yet.
+		//
+		// Save the player's REAL current loadout and apply the form.
+		// ---------------------------------------------------------
+		if (overrideForm == null || !hasSavedLoadout) {
+
+			FormMagicOverride.clearOverrideState(player);
+
+			FormMagicOverride.beginOverride(
+					player,
+					definition
+			);
+
+			return;
+		}
+
+
+		// ---------------------------------------------------------
+		// Changed directly from override form A -> override form B.
+		//
+		// Restore the player's original loadout first, then use that
+		// as the backup for the new form.
+		// ---------------------------------------------------------
+		if (!overrideForm.equals(currentForm)) {
+
+			FormMagicOverride.restoreOriginalLoadout(player);
+
+			FormMagicOverride.clearOverrideState(player);
+
+			FormMagicOverride.beginOverride(
+					player,
+					definition
+			);
+
+			return;
+		}
+
+
+		// ---------------------------------------------------------
+		// Same override form is still active.
+		// Keep its forced loadout equipped.
+		// ---------------------------------------------------------
+		FormMagicOverride.enforceOverride(player);
+	}
+
+
 }

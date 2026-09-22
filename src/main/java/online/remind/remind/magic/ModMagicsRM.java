@@ -146,9 +146,19 @@ public class ModMagicsRM {
 		CONFUSION_STRIKE = register("attack_confusion_strike", () -> new attackConfusionStrike(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "attack_confusion_strike"), false, 0, null)),
 
 		BLITZ = register("attack_blitz", () -> new attackBlitz(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "attack_blitz"), false, 0, null)),
+		DARK_HAZE = register("attack_dark_haze", () -> new attackDarkHaze(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "attack_dark_haze"), false, 0, null)),
+		SONIC_BLADE = register("attack_sonic_blade", () -> new attackSonicBlade(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "attack_sonic_blade"), false, 0, null)),
+		CHAOS_BLADE = register("attack_chaos_blade", () -> new attackChaosBlade(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "attack_chaos_blade"), false, 0, null)),
 
 		SLOT_EDGE = register("attack_slot_edge", () -> new attackSlotEdge(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "attack_slot_edge"), false, 0, null)),
 
+		// FF Attacks
+
+		// Cloud
+		BRAVER = register("attack_braver", () -> new attackBraver(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "attack_braver"), false, 0, null)),
+		CROSS_SLASH = register("attack_cross_slash", () -> new attackCrossSlash(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "attack_cross_slash"), false, 0, null)),
+
+	// Sephiroth
 		SWIFT_STRIKE = register("attack_swift_strike", () -> new attackSwiftStrike(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "attack_swift_strike"), false, 1, null)); // SEPHIROTH!
 
 	// Add more magic later...

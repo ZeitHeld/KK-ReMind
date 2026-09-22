@@ -65,6 +65,9 @@ public class ModEntitiesRM {
     // Attack Commands
     public static final Supplier<EntityType<quickBlitzCollider>> TYPE_QUICK_BLITZ = createEntityType(quickBlitzCollider::new, MobCategory.MISC,"quick_blitz_collider", 1.5F, 1.5F);
     public static final DeferredHolder<EntityType<?>, EntityType<BlitzCollider>> TYPE_BLITZ = ENTITIES.register("blitz", () -> EntityType.Builder.<BlitzCollider>of(BlitzCollider::new, MobCategory.MISC).sized(1.5F, 1.8F).clientTrackingRange(64).updateInterval(1).build("blitz"));
+    public static final DeferredHolder<EntityType<?>, EntityType<DarkHazeCollider>> TYPE_DARK_HAZE = ENTITIES.register("dark_haze", () -> EntityType.Builder.<DarkHazeCollider>of(DarkHazeCollider::new, MobCategory.MISC).sized(1.5F, 1.8F).clientTrackingRange(64).updateInterval(1).build("dark_haze"));
+    public static final DeferredHolder<EntityType<?>, EntityType<SonicBladeCollider>> TYPE_SONIC_BLADE = ENTITIES.register("sonic_blade", () -> EntityType.Builder.<SonicBladeCollider>of(SonicBladeCollider::new, MobCategory.MISC).sized(1.5F, 1.8F).clientTrackingRange(64).updateInterval(1).build("sonic_blade"));
+    public static final DeferredHolder<EntityType<?>, EntityType<ChaosBladeCollider>> TYPE_CHAOS_BLADE = ENTITIES.register("chaos_blade", () -> EntityType.Builder.<ChaosBladeCollider>of(ChaosBladeCollider::new, MobCategory.MISC).sized(1.5F, 1.8F).clientTrackingRange(64).updateInterval(1).build("chaos_blade"));
     public static final DeferredHolder<EntityType<?>, EntityType<SlotEdgeCollider>> TYPE_SLOT_EDGE = ENTITIES.register("slot_edge", () -> EntityType.Builder.<SlotEdgeCollider>of(SlotEdgeCollider::new, MobCategory.MISC).sized(1.5F, 1.8F).clientTrackingRange(64).updateInterval(1).build("slot_edge"));
     public static final Supplier<EntityType<slidingDashCollider>> TYPE_SLIDING_DASH = createEntityType(slidingDashCollider::new, MobCategory.MISC,"sliding_dash_collider", 1.5F, 1.5F);
     public static final Supplier<EntityType<fireSurgeCollider>> TYPE_FIRE_SURGE = createEntityType(fireSurgeCollider::new, MobCategory.MISC,"fire_surge_collider", 1.5F, 1.5F);
@@ -79,6 +82,19 @@ public class ModEntitiesRM {
 
     // Limits
     public static final Supplier<EntityType<firagaPillarEntity>> TYPE_FIRAGA_PILLAR = createEntityType(firagaPillarEntity::new, MobCategory.MISC,"firaga_pillar", 2f, 5f);
+    public static final DeferredHolder<EntityType<?>, EntityType<CrossSlashEffectEntity>>
+            CROSS_SLASH_EFFECT = ENTITIES.register(
+            "cross_slash_effect",
+            () -> EntityType.Builder
+                    .<CrossSlashEffectEntity>of(
+                            CrossSlashEffectEntity::new,
+                            MobCategory.MISC
+                    )
+                    .sized(0.1F, 0.1F)
+                    .clientTrackingRange(64)
+                    .updateInterval(1)
+                    .build("cross_slash_effect")
+    );
 
 
 
@@ -291,6 +307,9 @@ public class ModEntitiesRM {
 
         event.registerEntityRenderer(TYPE_QUICK_BLITZ.get(),InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_BLITZ.get(),InvisibleEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_DARK_HAZE.get(),InvisibleEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_SONIC_BLADE.get(),InvisibleEntityRenderer::new);
+        event.registerEntityRenderer(TYPE_CHAOS_BLADE.get(),InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_SLOT_EDGE.get(),InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_SLIDING_DASH.get(),InvisibleEntityRenderer::new);
         event.registerEntityRenderer(TYPE_AERO_SURGE.get(),InvisibleEntityRenderer::new);
@@ -324,6 +343,11 @@ public class ModEntitiesRM {
         event.registerEntityRenderer(
                 TYPE_ZETTAFLARE_BEAM.get(),
                 ZettaflareBeamRenderer::new
+        );
+
+        event.registerEntityRenderer(
+                ModEntitiesRM.CROSS_SLASH_EFFECT.get(),
+                CrossSlashEffectRenderer::new
         );
 
         event.registerEntityRenderer(TYPE_LIGHT_BEAM.get(), LightBeamEntityRenderer::new);

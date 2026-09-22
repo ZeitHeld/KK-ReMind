@@ -21,6 +21,60 @@ public class SGaugeHandler {
 
     private static final Map<UUID, Map<ResourceLocation, Double>> WEIGHTS = new HashMap<>();
 
+    private static final int BASIC_ATTACK_VALUE = 5;
+
+    public static void addNormalAttackContribution(Player player) {
+
+        if (player == null || player.level().isClientSide) {
+            return;
+        }
+
+        GlobalDataRM globalData = ModDataRM.getGlobal(player);
+        PlayerData playerData = PlayerData.get(player);
+
+        int totalValue = BASIC_ATTACK_VALUE;
+
+        // ------------------------------------------------------------
+        // Situation Boost
+        // 10% per equipped instance
+        // ------------------------------------------------------------
+        int boostStacks =
+                playerData.getNumberOfAbilitiesEquipped(ModAbilitiesRM.SITUATION_BOOST);
+
+        if (boostStacks > 0) {
+            double multiplier = 1.0 + (0.10 * boostStacks);
+            totalValue = (int) (totalValue * multiplier);
+        }
+
+        System.out.println("SGauge + " + totalValue + " from normal attack");
+
+        // ------------------------------------------------------------
+        // Apply SGauge
+        // ------------------------------------------------------------
+        double current = globalData.getSituationValue();
+        double updated = current + totalValue;
+
+        globalData.setSituationValue(updated);
+
+        PacketHandlerRM.syncGlobalToAllAround(player, globalData);
+
+        // ------------------------------------------------------------
+        // Get existing weight map.
+        //
+        // Normal attacks DO NOT add Style weight.
+        // They only advance the Situation Gauge.
+        // ------------------------------------------------------------
+        Map<ResourceLocation, Double> weightMap =
+                WEIGHTS.computeIfAbsent(player.getUUID(), k -> new HashMap<>());
+
+        // ------------------------------------------------------------
+        // Trigger normal Style/Finisher selection at 100
+        // ------------------------------------------------------------
+        if (updated >= 100) {
+            triggerStyleSelection(player, globalData, weightMap);
+        }
+    }
+
     public static void addContribution(Player player, ResourceLocation actionId, Set<StyleElement> elements, Set<ResourceLocation> specificStyles, int level) {
 
         GlobalDataRM globalData = ModDataRM.getGlobal(player);

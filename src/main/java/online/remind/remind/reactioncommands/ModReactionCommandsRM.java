@@ -28,6 +28,8 @@ public class ModReactionCommandsRM {
         ZEXION_RC = register(StringsRM.RCMA_Prefix+"zexion", () -> new XemnasRC( ResourceLocation.parse(StringsRM.ZexionRC),true)),
         BLITZ_RC = register(StringsRM.RCMA_Prefix+"blitz", () -> new BlitzRC( ResourceLocation.parse(StringsRM.BlitzRC),true)),
         SLOT_EDGE_RC = register(StringsRM.RCMA_Prefix+"slot_edge", () -> new SlotEdgeRC( ResourceLocation.parse(StringsRM.SlotEdgeRC),true)),
+        SONIC_BLADE_RC = register(StringsRM.RCMA_Prefix+"sonic_blade", () -> new SonicBladeRC( ResourceLocation.parse(StringsRM.SonicBladeRC),true)),
+        CHAOS_BLADE_RC = register(StringsRM.RCMA_Prefix+"chaos_blade", () -> new ChaosBladeRC( ResourceLocation.parse(StringsRM.ChaosBladeRC),true)),
 
 
         FINISH_RC = register(StringsRM.RCMA_Prefix+"finish", () -> new FinishRC(ResourceLocation.parse(StringsRM.FinishRC),false)),
@@ -40,6 +42,9 @@ public class ModReactionCommandsRM {
 
         // Xephiro Style
         BLOODLUST_RC = register(StringsRM.RCMA_Prefix+"bloodlust", () -> new StyleRC(ResourceLocation.parse(StringsRM.BloodlustRC),false, KingdomKeysReMind.MODID+":"+StringsRM.bloodlust)),
+
+    // FF Styles
+        EX_SOLDIER_RC = register(StringsRM.RCMA_Prefix+"ex_soldier", () -> new StyleRC(ResourceLocation.parse(StringsRM.ExSoldierRC),false, KingdomKeysReMind.MODID+":"+StringsRM.exSoldier)),
 
 
 

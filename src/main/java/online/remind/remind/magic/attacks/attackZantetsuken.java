@@ -22,7 +22,6 @@ setTier(tier);
     @Override
     public void magicUse(LivingEntity player, LivingEntity caster, float fullMPBlastMult, LivingEntity lockOnEntity) {
 
-
         double speed = 2;
         double yawRad = Math.toRadians(player.getYRot());
         double dx = -Math.sin(yawRad) * speed;

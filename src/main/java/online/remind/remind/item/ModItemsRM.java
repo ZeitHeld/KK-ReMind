@@ -102,6 +102,9 @@ public class ModItemsRM{
         bindingStrikeAttack = ITEMS.register("binding_strike_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.BINDING_STRIKE.location())),
         confusionStrikeAttack = ITEMS.register("confusion_strike_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.CONFUSION_STRIKE.location())),
         blitzAttack = ITEMS.register("blitz_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.BLITZ.location())),
+        darkHazeAttack = ITEMS.register("dark_haze_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.DARK_HAZE.location())),
+        sonicBladeAttack = ITEMS.register("sonic_blade_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.SONIC_BLADE.location())),
+        chaosBladeAttack = ITEMS.register("chaos_blade_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.CHAOS_BLADE.location())),
         slotEdgeAttack = ITEMS.register("slot_edge_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.SLOT_EDGE.location())),
 
         fireSurge1Attack = ITEMS.register("fire_surge1_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.FIRA_SURGE.location())),
@@ -121,16 +124,14 @@ public class ModItemsRM{
         darkSurge2Attack = ITEMS.register("dark_surge2_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.DARKGA_SURGE.location())),
 
     // Creative Exclusive
+        braverAttack = ITEMS.register("braver_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.BRAVER.location())),
+        crossSlashAttack = ITEMS.register("cross_slash_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.CROSS_SLASH.location())),
         swiftStrikeAttack = ITEMS.register("swift_strike_attack", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.SWIFT_STRIKE.location())),
         deathSpell = ITEMS.register("death_lv_spell", () -> new RMMagicSpellItem(new Item.Properties(), ModMagicsRM.DEATH.location())),
 
         // Shotlock Orbs
-        /*flameSalvo = ITEMS.register("flame_salvo_shotlock",() -> new ShotlockItem(new Item.Properties(), ModShotlocksRM.FLAME_SALVO.location())),
-        bubbleBlaster = ITEMS.register("bubble_blaster_shotlock",() -> new ShotlockItem(new Item.Properties(), ModShotlocksRM.BUBBLE_BLASTER.location())),
-        thunderStorm = ITEMS.register("thunderstorm_shotlock",() -> new ShotlockItem(new Item.Properties(), ModShotlocksRM.THUNDERSTORM.location())),
-        bioBarrage = ITEMS.register("bio_barrage_shotlock",() -> new ShotlockItem(new Item.Properties(), ModShotlocksRM.BIO_BARRAGE.location())),
-        meteorShower = ITEMS.register("meteor_shower_shotlock",() -> new ShotlockItem(new Item.Properties(), ModShotlocksRM.METEOR_SHOWER.location())),*/
         darkDivide = ITEMS.register("dark_divide_shotlock",() -> new ShotlockItem(new Item.Properties(), ModShotlocksRM.DARK_DIVIDE.location())),
+        omnislash = ITEMS.register("omnislash_shotlock",() -> new ShotlockItem(new Item.Properties(), ModShotlocksRM.OMNISLASH.location())),
 
     // Dream Eater Charms
         meowWowCharm = ITEMS.register("meow_wow_charm",() -> new DreamEaterCharmItem(new Item.Properties().stacksTo(1), GlobalDataRM.DREAM_EATER_MEOW_WOW, "Meow Wow")),

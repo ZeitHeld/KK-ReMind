@@ -4,7 +4,9 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.TickTask;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -215,6 +217,129 @@ public class StyleRC extends ReactionCommand {
 						SoundSource.PLAYERS,
 						0.8F,
 						1.25F
+				);
+			}
+
+			case KingdomKeysReMind.MODID + ":" + StringsRM.exSoldier -> {
+
+				/*
+				 * CHERRY BLOSSOM
+				 *
+				 * Three enormous elemental impacts:
+				 *
+				 * 1. Thunder
+				 * 2. Ice
+				 * 3. Fire
+				 *
+				 * The damage calculation is captured now so changing state
+				 * during the sequence doesn't alter the later hits.
+				 */
+
+				float mult =
+						playerData.getNumberOfAbilitiesEquipped(
+								ModAbilities.CRITICAL_BOOST
+						) * 0.25F;
+
+				damage +=
+						damage * mult;
+
+				final float cherryBlossomDamage =
+						damage;
+
+
+				if (!(player instanceof ServerPlayer serverPlayer)) {
+					break;
+				}
+
+
+				var server =
+						serverPlayer.getServer();
+
+				int startTick =
+						server.getTickCount();
+
+
+				// ============================================================
+				// HIT 1 - THUNDER
+				// ============================================================
+
+				server.tell(
+						new TickTask(
+								startTick + 1,
+								() -> {
+
+									if (!serverPlayer.isAlive()) {
+										return;
+									}
+
+									explosionHurt(
+											serverPlayer,
+											cherryBlossomDamage,
+											KKDamageTypes.LIGHTNING
+									);
+
+									playSoundAndParticles(
+											serverPlayer,
+											SoundEvents.LIGHTNING_BOLT_IMPACT,
+											ParticleTypes.ELECTRIC_SPARK,
+											ParticleTypes.FLASH
+									);
+								}
+						)
+				);
+
+
+				// ============================================================
+				// HIT 2 - ICE
+				// ============================================================
+
+				server.tell(
+						new TickTask(
+								startTick + 10,
+								() -> {
+
+									if (!serverPlayer.isAlive()) {
+										return;
+									}
+
+									explosionHurt(
+											serverPlayer,
+											cherryBlossomDamage,
+											KKDamageTypes.ICE
+									);
+
+									playSoundAndParticles(
+											serverPlayer,
+											SoundEvents.GLASS_BREAK,
+											ParticleTypes.SNOWFLAKE,
+											ParticleTypes.ITEM_SNOWBALL
+									);
+								}
+						)
+				);
+
+
+				// ============================================================
+				// HIT 3 - FIRE
+				// ============================================================
+
+				server.tell(
+						new TickTask(
+								startTick + 19,
+								() -> {
+
+									if (!serverPlayer.isAlive()) {
+										return;
+									}
+
+									explosionHurt(
+											serverPlayer,
+											cherryBlossomDamage,
+											KKDamageTypes.FIRE
+									);
+
+								}
+						)
 				);
 			}
 		}

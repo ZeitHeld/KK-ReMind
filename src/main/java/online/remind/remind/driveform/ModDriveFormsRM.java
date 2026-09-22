@@ -39,6 +39,8 @@ public class ModDriveFormsRM {
 
             BLOOSTLUST = register(StringsRM.DFMA_Prefix+"bloodlust", () -> new StyleBloodlust(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, StringsRM.DFMA_Prefix + "bloodlust"), order++, ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "textures/models/armor/regen.png"), false, true)),
 
+            EXSOLDIER = register(StringsRM.DFMA_Prefix+"ex_soldier", () -> new StyleExSOLDIER(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, StringsRM.DFMA_Prefix + "ex_soldier"), order++, ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "textures/models/armor/regen.png"), false, true)),
+
         // Commission Forms
 
             REGEN = register(StringsRM.DFMA_Prefix + "regen", () -> new DriveFormRegen(ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, StringsRM.DFMA_Prefix + "regen"), order++, ResourceLocation.fromNamespaceAndPath(KingdomKeysReMind.MODID, "textures/models/armor/regen.png"), false, true)),

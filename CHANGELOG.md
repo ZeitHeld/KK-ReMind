@@ -2,12 +2,12 @@
 *(Month.Year.Iteration)*
 
 ## General Changes and Fixes
-
-- **[Compatability]** Usable with LATEST KK Release and Beyond.
+- **[Compatibility]** Usable with LATEST KK Release and Beyond.
 - **[NEW]** Chirithy now has dialogs and can act as a guide!
 - **[EFM]**, **[NEW]** Equipping the Guard ability now gives you EFM's Guard Skill.
 - **[EFM]**, **[FIX]** Attack Command Animations now play again.
 - **[EFM]**, **[FIX]** Forms now have move sets again (Thank you, Nathan)
+- **[EFM]**, **[FIX]** Sliding Dash not doing damage while in Fight Mode.
 - **[FIX]** Tonberry (Spirit) immortality bug.
 - **[FIX]** Tonberry (Spirit) no longer has a full bright model.
 - **[FIX]** Tonberry (Spirit) now emits light like it's hostile counterpart.
@@ -23,18 +23,60 @@
 - **[CHANGE]** EXP Ring now has the **NEW** EXP Converter Ability.
 - **[CHANGE]** Light Form should be easier/faster to level now.
 - **[CHANGE]** Dream Eaters now register as Party Members.
+- **[CHANGE]** Zantetsuken's melding recipe is now Sonic Blade + Stopga or Dark Haze + Stopga to reflect its recipe in BBS.
+- **[CHANGE]** Normal attacks now contribute to the Situation Gauge.
 - **[REWORK]** Light Step Rework - It now makes you move in an arcing motion
 - **[REWORK]** Dark Step Rework - It now makes you -blink- a few blocks in the direction you're facing, leaving an afterimage.
 
-## New Spell
+## New Drive Form Magic Loadouts
+- Drive Forms can now have their own dedicated magic loadouts.
+- Entering a supported Form temporarily replaces your equipped spells with that Form’s configured magic.
+- Leaving the Form restores your original spell loadout exactly as it was.
+- Form loadouts are protected while active, preventing equipped spells from being removed or replaced.
+- The system is fully data-driven, allowing Form-specific spell loadouts to be added or changed through data files without additional hard-coded logic.
+- Only Light and Dark Forms have this system! (for now)
 
+### Light Form Loadout:
+- Light Strike
+- Lightga Surge
+- Faith
+- Faith (Re:CoM)
+- Curaga
+- Holyga
+
+### Dark Form Loadout:
+- Dark Strike
+- Darkga Surge
+- Ruinga
+- Comet
+- Dark Firaga
+- Curaga
+
+## New Status Effect
+### Doom
+After the countdown reaches Zero on the afflicted target... they die.
+
+## New Spell
 ### **Recall** - *Re:Mind Original*
-- Cost: ALL
+- Cost: ALL MP
 - Teleports you to your respawn point.
 - Meld Recipe: Warp + Curaga
 
-## New Abilities
+## New Attacks
+### Dark Haze
+- Cost: 40 MP
+- Cloak yourself in darkness, then charge at faraway enemies. The attack has a chance of dooming them, leaving them five seconds to live.
+- Meld Recipe: Zero Gravity + Firaga Surge, Darkga Surge + Sliding Dash
+### Sonic Blade
+- Cost: 20 MP
+- Press the **R** at the right times to perform a series of charging attacks that will reach faraway enemies.
+- Meld Recipes: Blitz + Dark Haze
+### Chaos Blade
+- Cost: 40 MP
+- Press the **R** button at the right times to perform a series of charging attacks that blind or bind some foes.
+- Meld Recipe: Sonic Blade + Dark Haze
 
+## New Abilities
 ### **Silence Heart**
 - Cost: N/A
 - Description: On-hit, afflict the victim with the Silence status effect. *Scales with Critical Boost*
@@ -51,7 +93,6 @@
 - How to Obtain: EXP Ring
 
 ## New Enemies!
-
 ### **The Bomb Family** *from the FINAL FANTASY series.*
 
 There's 3 Enemies in this family!
@@ -73,7 +114,6 @@ Where do they spawn?
 - Grenades and Volcanos, **ONLY** in the Nether.
 
 ## New Keyblades
-
 ### Commission/Gift Keyblades
 
 - Guardian's Light, a **gift** for ***KaliArchon***
@@ -83,7 +123,7 @@ Where do they spawn?
 - Callous Cavaloir , a **gift** for **CanaliaRose**
   - Description: First ever recording of this keyblade was seen with an ancient welder who came from nothing. There were never other recordings of it until recently some say it's a keyblade made by someone forgotten, while others say it always existed in people that let go of their hearts.
   - Base Stats: 5/10
-  - Base Ability: **NEW** Dark Entourage
+  - Base Ability: **[NEW]** Dark Entourage
 - Nebula Records, commissioned by DogofTheRoad
   - Description: A very musically themed Keyblade with high emphasis on casting and the rhythm of casting.
   - Base Stats: 8/10
@@ -91,7 +131,7 @@ Where do they spawn?
 - Entropy's Requiem, commissioned by ConstellationDragon
   - Description: This keyblade glimmered into existence upon the shattering of Ragnarök's Requiem, a blade forged tenaciously by a blacksmith, and the freeing weight of its wielder when he was finally liberated from the burdens of his inner Darkness. It strives to show him the Freedom within the Stars.
   - Base Stats: 10/10
-  - Base Ability: **NEW** Silence Heart
+  - Base Ability: **[NEW]** Silence Heart
   - Custom Form: Draconic Liberation
 - Maddening Corruption, commissioned by TheFeralKitsune
   - Description: A keyblade that's been corrupted by Phazon

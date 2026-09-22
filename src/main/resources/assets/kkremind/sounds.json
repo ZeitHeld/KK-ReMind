@@ -249,6 +249,26 @@
       "kkremind:kamehameha"
     ]
   },
+  "limit_break": {
+    "sounds": [
+      "kkremind:limit_break"
+    ]
+  },
+  "slash": {
+    "sounds": [
+      "kkremind:slash"
+    ]
+  },
+  "crit_slash": {
+    "sounds": [
+      "kkremind:crit_slash"
+    ]
+  },
+  "dash": {
+    "sounds": [
+      "kkremind:dash"
+    ]
+  },
   "cactuar_alive": {
     "sounds": [
       "kkremind:cactuar_alive"

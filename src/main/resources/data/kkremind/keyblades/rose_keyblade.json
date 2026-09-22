@@ -137,7 +137,7 @@
         }
       ],
       "str": 7,
-      "ability": "kkremind:ability_attack_haste"
+      "ability": "kkremind:ability_darkness_boost"
     },
     {
       "mag": 15,
@@ -174,12 +174,12 @@
         }
       ],
       "str": 9,
-      "ability": "kingdomkeys:ability_critical_boost"
+      "ability": "kingdomkeys:ability_mp_hastega"
     },
     {
       "str": 10,
       "mag": 15,
-      "ability": "kkremind:ability_attack_haste",
+      "ability": "kingdomkeys:ability_mp_hastega",
       "recipe": [
         {
           "material": "kingdomkeys:electrum",
@@ -233,7 +233,7 @@
     {
       "str": 12,
       "mag": 15,
-      "ability": "kkremind:ability_attack_haste",
+      "ability": "kingdomkeys:ability_mp_hastega",
       "recipe": [
         {
           "material": "kingdomkeys:electrum",
@@ -286,7 +286,7 @@
     {
       "str": 15,
       "mag": 15,
-      "ability": "kingdomkeys:ability_lucky_lucky",
+      "ability": "kingdomkeys:ability_mp_thrift",
       "recipe": [
         {
           "material": "kingdomkeys:electrum",

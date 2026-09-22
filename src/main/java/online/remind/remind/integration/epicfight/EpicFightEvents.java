@@ -3,6 +3,7 @@ package online.remind.remind.integration.epicfight;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -52,6 +53,7 @@ public class EpicFightEvents {
     int maxTicks;
 
     private final Map<UUID, PendingAttackAnimation> pendingAttackAnimations = new HashMap<>();
+
 
 
     // Delayed Attack Command animation data
@@ -177,7 +179,10 @@ public class EpicFightEvents {
                 break;
 
 
-            case "kkremind:attack_sliding_dash":
+            case "kkremind:attack_sliding_dash",
+                 "kkremind:attack_sonic_blade",
+                 "kkremind:attack_chaos_blade",
+                 "kkremind:attack_dark_haze":
 
                 player.addEffect(new MobEffectInstance(
                         ModMobEffectsRM.RM_ANIMATION_LOCK,
@@ -263,7 +268,10 @@ public class EpicFightEvents {
                 break;
 
 
-            case "kkremind:attack_sliding_dash":
+            case "kkremind:attack_sliding_dash",
+                 "kkremind:attack_sonic_blade",
+                 "kkremind:attack_chaos_blade",
+                 "kkremind:attack_dark_haze":
 
                 patch.playAnimationSynchronized(
                         Animations.SWORD_DASH
@@ -510,5 +518,46 @@ public class EpicFightEvents {
 
             }
         }
+    }
+
+    public static void playSonicBladeAnimation(ServerPlayer player) {
+
+        if (!KingdomKeysReMind.efmLoaded) {
+            return;
+        }
+
+        ServerPlayerPatch patch =
+                EpicFightCapabilities.getEntityPatch(
+                        player,
+                        ServerPlayerPatch.class
+                );
+
+        if (patch == null || !patch.isEpicFightMode()) {
+            return;
+        }
+
+        /*
+         * Keep normal Epic Fight animations from immediately
+         * overriding Sonic Blade.
+         */
+        player.addEffect(new MobEffectInstance(
+                ModMobEffectsRM.RM_ANIMATION_LOCK,
+                20,
+                0,
+                false,
+                false,
+                false
+        ));
+
+        /*
+         * Restart the dash animation from the beginning
+         * for every Sonic Blade activation.
+         */
+        patch.playAnimationSynchronized(
+                Animations.SWORD_DASH
+                        .get()
+                        .getRealAnimation(),
+                0.0F
+        );
     }
 }

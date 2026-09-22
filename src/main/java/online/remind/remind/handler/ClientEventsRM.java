@@ -485,48 +485,6 @@ public class ClientEventsRM {
 		}
 	}
 
-	// KK Style Menu Inject?
-	@SubscribeEvent
-	public void onStylesMenuInit(ScreenEvent.Init.Post event) {
-		if (!(event.getScreen() instanceof StylesMenu screen)) {
-			return;
-		}
-
-		Minecraft minecraft = Minecraft.getInstance();
-
-		// Gating off My Animations, uncomment when working
-       /*if (minecraft.player == null ||
-             !minecraft.player.getUUID().equals(XEPHIRO_UUID) || !minecraft.player.getUUID().equals(DEV_UUID)) {
-          return;
-       }*/
-
-		float topBarHeight = (float) screen.height * 0.17F;
-
-		int buttonPosX = (int) ((float) screen.width * 0.80F);
-		int buttonPosY = (int) topBarHeight + 5;
-		int buttonWidth = (int) (((float) screen.width * 0.1744F) - 22);
-
-		event.addListener(new MenuButton(
-				buttonPosX,
-				buttonPosY,
-				buttonWidth,
-				"Xephiro",
-				MenuButton.ButtonType.BUTTON,
-				false,
-				e -> {
-					// Style Swap Here
-					action(RMStyleButtons.XEPHIRO);
-				}
-		));
-	}
-
-	protected void action(RMStyleButtons buttonID){
-		switch (buttonID){
-			case XEPHIRO -> System.out.println("Hi");
-		}
-	}
-
-
 	// VFX for Steps
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void RenderEntity(RenderLivingEvent.Pre event){
@@ -816,6 +774,19 @@ public class ClientEventsRM {
 						player.level().addParticle(new DustParticleOptions(new Vector3f(0f,0f,0f),0.65f),player.getX() + player.level().random.nextDouble() - 0.45D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
 						player.level().addParticle(new DustParticleOptions(new Vector3f(0.25f,0f,0.25f),0.35f),player.getX() + player.level().random.nextDouble() - 0.45D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
 						player.level().addParticle(new DustParticleOptions(new Vector3f(1f,1f,1f),0.35f),player.getX() + player.level().random.nextDouble() - 0.45D, player.getY()+ player.level().random.nextDouble() *2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+					}
+
+					if (playerData.isFormActive(ModDriveFormsRM.EXSOLDIER)){
+						if (player.getHealth() > 0.25F) {
+							player.level().addParticle(new DustParticleOptions(new Vector3f(0.0f, 0.65f, 0.65f), 0.5f), player.getX() + player.level().random.nextDouble() - 0.45D, player.getY() + player.level().random.nextDouble() * 2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+							player.level().addParticle(new DustParticleOptions(new Vector3f(0.0f, 0.55f, 0.85f), 0.5f), player.getX() + player.level().random.nextDouble() - 0.45D, player.getY() + player.level().random.nextDouble() * 2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+							player.level().addParticle(new DustParticleOptions(new Vector3f(0.0f, 0.85f, 0.55f), 0.5f), player.getX() + player.level().random.nextDouble() - 0.45D, player.getY() + player.level().random.nextDouble() * 2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+						} else {
+							player.level().addParticle(new DustParticleOptions(new Vector3f(0.0f, 0.65f, 0.65f), 0.75f), player.getX() + player.level().random.nextDouble() - 0.45D, player.getY() + player.level().random.nextDouble() * 2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+							player.level().addParticle(new DustParticleOptions(new Vector3f(0.0f, 0.55f, 0.85f), 0.75f), player.getX() + player.level().random.nextDouble() - 0.45D, player.getY() + player.level().random.nextDouble() * 2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+							player.level().addParticle(new DustParticleOptions(new Vector3f(0.0f, 0.85f, 0.55f), 0.75f), player.getX() + player.level().random.nextDouble() - 0.45D, player.getY() + player.level().random.nextDouble() * 2D, player.getZ() + player.level().random.nextDouble() - 0.45D, -1, -1, -1);
+						}
+
 					}
 
 

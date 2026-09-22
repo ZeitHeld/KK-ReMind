@@ -41,6 +41,7 @@ public class StringsRM {
         criticalImpact = StringsRM.DFMA_Prefix+"critical_impact",
         spellweaver = StringsRM.DFMA_Prefix+"spellweaver",
         bloodlust = StringsRM.DFMA_Prefix+"bloodlust",
+        exSoldier = StringsRM.DFMA_Prefix+"ex_soldier",
 
         regenForm = StringsRM.DFMA_Prefix+"regen",
         draconicLiberation = StringsRM.DFMA_Prefix+"draconic_liberation",
@@ -235,6 +236,7 @@ public class StringsRM {
         darkDivide = "dark_divide",
 
         heartlessAngel = "heartless_angel",
+        omnislash = "omnislash",
 
         // Reaction Commands
         riskchargeRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"riskcharge",
@@ -253,6 +255,8 @@ public class StringsRM {
         ZexionRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"zexion",
         BlitzRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"blitz",
         SlotEdgeRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"slot_edge",
+        SonicBladeRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"sonic_blade",
+        ChaosBladeRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"chaos_blade",
 
         CounterHammerRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"counter_hammer",
         CounterBlastRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"counter_blast",
@@ -266,6 +270,7 @@ public class StringsRM {
         CriticalImpactRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"critical_impact",
         SpellweaverRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"spellweaver",
         BloodlustRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"bloodlust",
+        ExSoldierRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"ex_soldier",
 
         RegenRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"regen",
         ExceedRC = KingdomKeysReMind.MODID+":"+StringsRM.RCMA_Prefix+"exceed",
